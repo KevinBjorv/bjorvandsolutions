@@ -266,6 +266,15 @@ p {
   border: 1px solid var(--accent);
 }
 
+.button.disabled {
+  background: #e6e6e6;
+  color: #8a8a8a;
+  border: 1px solid #d0d0d0;
+  box-shadow: none;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 .hero-sub {
   color: var(--muted);
   max-width: 640px;

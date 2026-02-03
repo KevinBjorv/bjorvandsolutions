@@ -479,6 +479,10 @@ p {
   gap: 16px;
 }
 
+.game-grid--fixed {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .game-card {
   padding: 16px;
   display: flex;
@@ -1069,6 +1073,10 @@ footer {
 @media (max-width: 719px) {
   nav {
     display: none;
+  }
+
+  .game-grid--fixed {
+    grid-template-columns: 1fr;
   }
 
   main {

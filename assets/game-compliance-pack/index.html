@@ -145,6 +145,18 @@
       border-color: var(--accent);
     }
 
+    .button.orange {
+      background: #f47b20;
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 10px 18px rgba(244, 123, 32, 0.25);
+    }
+
+    .button.orange:hover {
+      background: #d86a17;
+      transform: translateY(-1px);
+    }
+
     .price-badge {
       display: inline-flex;
       align-items: center;
@@ -274,9 +286,61 @@
       box-shadow: var(--shadow);
     }
 
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
     footer {
       padding: 40px 0 80px;
       color: var(--muted);
+    }
+
+    .footer-content {
+      display: grid;
+      gap: 20px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-weight: 600;
+    }
+
+    .footer-title {
+      color: var(--text);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin: 0 0 6px;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 12px;
+    }
+
+    .contact-form label {
+      display: grid;
+      gap: 6px;
+      font-weight: 600;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      font: inherit;
+      background: #fff;
+      color: var(--text);
+    }
+
+    .contact-form textarea {
+      min-height: 120px;
+      resize: vertical;
     }
 
     .mobile-cta {
@@ -338,8 +402,11 @@
         <a href="#faq">FAQ</a>
         <a href="#support">Support</a>
       </nav>
-      <!-- Replace [UNITY_ASSET_STORE_LINK] below -->
-      <a class="button primary" href="[UNITY_ASSET_STORE_LINK]">Get it on the Unity Asset Store</a>
+      <div class="nav-cta">
+        <!-- Replace [UNITY_ASSET_STORE_LINK] below -->
+        <a class="button primary" href="[UNITY_ASSET_STORE_LINK]">Get it now</a>
+        <a class="button orange" href="/">Smart Indie</a>
+      </div>
     </div>
   </header>
 
@@ -508,8 +575,21 @@
       <p>Email: Kevin@smartindie.dev</p>
       <p>Expected reply time: within 48 hours</p>
       <p>You can also use the contact form on this site.</p>
-      <!-- Replace [CONTACT_FORM_URL] below -->
-      <a class="button secondary" href="[CONTACT_FORM_URL]">Contact form</a>
+      <form class="contact-form" action="https://formspree.io/f/xeoylwlp" method="POST">
+        <label>
+          <span>Name</span>
+          <input type="text" name="name" placeholder="Your name" required>
+        </label>
+        <label>
+          <span>Email</span>
+          <input type="email" name="email" placeholder="you@example.com" required>
+        </label>
+        <label>
+          <span>Message</span>
+          <textarea name="message" placeholder="How can I help?" required></textarea>
+        </label>
+        <button class="button primary" type="submit">Send message</button>
+      </form>
     </section>
 
     <section id="faq" class="container reveal">
@@ -556,7 +636,19 @@
 
   <footer>
     <div class="container">
-      <p class="muted">Not legal advice. No compliance guarantee.</p>
+      <div class="footer-content">
+        <div>
+          <div class="footer-title">Game Compliance Pack</div>
+          <p class="muted">A Unity Editor tool from Bjorvand Solutions that helps you ship with clear third-party attributions and compliance artifacts.</p>
+        </div>
+        <div class="footer-links">
+          <a href="[UNITY_ASSET_STORE_LINK]">Unity Asset Store</a>
+          <a href="#support">Support</a>
+          <a href="#faq">FAQ</a>
+          <a href="/assets/">More Unity tools</a>
+        </div>
+        <div class="muted">Not legal advice. No compliance guarantee.</div>
+      </div>
     </div>
   </footer>
 

@@ -266,6 +266,17 @@ p {
   border: 1px solid var(--accent);
 }
 
+.button.disabled,
+.button[aria-disabled="true"] {
+  background: #1b1f26;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  box-shadow: none;
+  cursor: not-allowed;
+  pointer-events: none;
+  transform: none;
+}
+
 .hero-sub {
   color: var(--muted);
   max-width: 640px;

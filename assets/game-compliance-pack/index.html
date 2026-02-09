@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Compliance Pack | Unity Editor Tool</title>
+  <meta name="description" content="Game Compliance Pack is a Unity Editor tool that scans your project for third-party components and generates release-ready attribution artifacts you can ship.">
+  <style>
+    :root {
+      --bg: #f7f7f9;
+      --card: #ffffff;
+      --text: #1c1f26;
+      --muted: #5b6472;
+      --border: #e3e5ea;
+      --accent: #ff7a18;
+      --accent-dark: #e6680a;
+      --shadow: 0 12px 30px rgba(17, 18, 23, 0.08);
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(247, 247, 249, 0.95);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 16px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+    }
+
+    .nav-links a:focus,
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    section {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .hero {
+      display: grid;
+      gap: 28px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 3vw, 3rem);
+      margin: 0 0 8px;
+    }
+
+    .hero p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .button {
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .button.primary {
+      background: var(--accent);
+      color: #15161a;
+      box-shadow: 0 14px 30px rgba(255, 122, 24, 0.3);
+    }
+
+    .button.primary:hover,
+    .button.primary:focus {
+      background: var(--accent-dark);
+      transform: translateY(-1px);
+    }
+
+    .button.ghost {
+      background: transparent;
+      border-color: var(--border);
+      color: var(--text);
+    }
+
+    .price-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: #ffe9d9;
+      color: #9a3f00;
+      font-weight: 700;
+      width: fit-content;
+    }
+
+    .trust-list {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0 0;
+      display: grid;
+      gap: 10px;
+      color: var(--muted);
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .image-placeholder {
+      border: 1px dashed var(--border);
+      border-radius: var(--radius);
+      background: #f1f2f6;
+      padding: 20px;
+      min-height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .section-title {
+      font-size: clamp(1.4rem, 2.2vw, 2rem);
+      margin: 0;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      align-items: start;
+    }
+
+    .highlight {
+      background: #fff5ec;
+      border-left: 4px solid var(--accent);
+      padding: 14px 16px;
+      border-radius: 12px;
+      color: #7a3c0c;
+      font-weight: 600;
+    }
+
+    .list {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .video-embed {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #0d0f14;
+    }
+
+    .video-embed iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    details {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 16px;
+      background: var(--card);
+    }
+
+    details + details {
+      margin-top: 12px;
+    }
+
+    summary {
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    summary:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px 80px;
+      color: var(--muted);
+    }
+
+    .mobile-cta {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: none;
+      gap: 10px;
+      padding: 12px 16px;
+      background: #ffffff;
+      border-top: 1px solid var(--border);
+      box-shadow: 0 -10px 30px rgba(16, 18, 22, 0.12);
+      z-index: 1000;
+    }
+
+    .mobile-cta .button {
+      flex: 1;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .mobile-cta {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="nav-logo">Game Compliance Pack</div>
+      <nav class="nav-links" aria-label="Page sections">
+        <a href="#overview">Overview</a>
+        <a href="#outputs">Outputs</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#demo">Demo</a>
+        <a href="#faq">FAQ</a>
+        <a href="#support">Support</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="overview" class="hero reveal">
+      <div>
+        <div class="price-badge">$39.99 USD</div>
+        <h1>Stop the last minute license scramble before you ship.</h1>
+        <p>Game Compliance Pack is a Unity Editor tool that scans your project for third-party components and generates release-ready attribution artifacts you can actually ship.</p>
+        <div class="hero-actions">
+          <!-- Replace [UNITY_ASSET_STORE_LINK] -->
+          <a class="button primary" href="[UNITY_ASSET_STORE_LINK]">Get it on the Unity Asset Store</a>
+          <a class="button ghost" href="#demo">Watch demo</a>
+        </div>
+        <ul class="trust-list">
+          <li>Local-first: scans your project on disk inside Unity</li>
+          <li>Deterministic outputs: stable ordering, meaningful diffs</li>
+          <li>No guessing: anything unverified is marked UNKNOWN and surfaced clearly</li>
+          <li>Generates three shippable files: THIRD_PARTY_NOTICES.txt, CREDITS.md, compliance-manifest.json</li>
+        </ul>
+      </div>
+      <figure class="card">
+        <div class="image-placeholder">Unity Editor window showing Scan results with UNKNOWN highlighted plus Export buttons</div>
+        <figcaption>Hero product screenshot placeholder</figcaption>
+      </figure>
+    </section>
+
+    <section class="reveal">
+      <h2 class="section-title">Why this approach</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Local-first</h3>
+          <p>Local-first: scans your project on disk inside Unity</p>
+        </div>
+        <div class="card">
+          <h3>Deterministic outputs</h3>
+          <p>Deterministic outputs: stable ordering, meaningful diffs</p>
+        </div>
+        <div class="card">
+          <h3>No guessing</h3>
+          <p>No guessing: anything unverified is marked UNKNOWN and surfaced clearly</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="reveal">
+      <h2 class="section-title">The problem</h2>
+      <p>Indie and small studio projects routinely ship with a messy third-party dependency graph: Unity Package Manager dependencies (direct and transitive), Asset Store plugins and embedded third-party code, DLLs and native plugins, and small copied code folders. At release time you are forced to manually identify third-party components, track licenses, and build notices. It is error-prone and easy to forget until the last week.</p>
+    </section>
+
+    <section class="reveal" id="how-it-works">
+      <h2 class="section-title">What Game Compliance Pack does</h2>
+      <ol class="list">
+        <li>Scan your project for third-party components</li>
+        <li>Resolve anything marked UNKNOWN with evidence shown</li>
+        <li>Export deterministic, release-ready compliance files</li>
+      </ol>
+      <div class="highlight">It does not fabricate license IDs or license text. If something cannot be verified, it stays UNKNOWN until you resolve it.</div>
+    </section>
+
+    <section class="reveal" id="outputs">
+      <div class="two-column">
+        <div>
+          <h2 class="section-title">What you get (outputs you can ship)</h2>
+          <div class="card-grid">
+            <div class="card">
+              <h3>THIRD_PARTY_NOTICES.txt</h3>
+              <p>Full attributions plus license text when available. One entry per component, stable-sorted.</p>
+            </div>
+            <div class="card">
+              <h3>CREDITS.md</h3>
+              <p>Short, human-readable credits block suitable for in-game credits or store listings.</p>
+            </div>
+            <div class="card">
+              <h3>compliance-manifest.json</h3>
+              <p>Machine-readable source of truth for audits, diffs, and repeatable builds.</p>
+            </div>
+          </div>
+        </div>
+        <figure class="card">
+          <div class="image-placeholder">Generated THIRD_PARTY_NOTICES.txt excerpt with component name, version, source, license info</div>
+          <figcaption>Outputs placeholder</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="reveal">
+      <h2 class="section-title">What it scans</h2>
+      <div class="two-column">
+        <div class="card">
+          <h3>UPM</h3>
+          <ul class="list">
+            <li>Direct dependencies from Packages/manifest.json</li>
+            <li>Resolved dependency graph (direct + transitive) from Packages/packages-lock.json</li>
+            <li>Captures package name, version, and source (registry, git, local path)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>File system</h3>
+          <ul class="list">
+            <li>Common plugin locations like Assets/Plugins and configurable third-party folders</li>
+            <li>Detects binaries and native plugins (.dll, .so, .dylib, .bundle)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="reveal">
+      <div class="two-column">
+        <div>
+          <h2 class="section-title">How license resolution works (conservative by design)</h2>
+          <ol class="list">
+            <li>Manual override (your decision wins for that component key)</li>
+            <li>Detected license or notice file near the component (uses extracted text as evidence)</li>
+            <li>Known verifiable metadata mapped to canonical SPDX text stored locally</li>
+            <li>UNKNOWN if nothing reliable exists</li>
+          </ol>
+        </div>
+        <div class="card">
+          <h3>Built for stable, reviewable releases</h3>
+          <ul class="list">
+            <li>Deterministic component keys and ordering so diffs are meaningful</li>
+            <li>Plain text outputs that are easy to audit</li>
+            <li>Optional build integration to warn or fail builds if UNKNOWN items remain</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="reveal">
+      <figure class="card">
+        <div class="image-placeholder">Diff concept showing Added/Removed/Changed between manifests</div>
+        <figcaption>Stability placeholder</figcaption>
+      </figure>
+    </section>
+
+    <section id="demo" class="reveal">
+      <h2 class="section-title">Demo</h2>
+      <p>Watch a full walkthrough (screen recording):</p>
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/vwmiiVQYvZ8" title="Game Compliance Pack demo video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <section class="reveal">
+      <h2 class="section-title">Who this is for</h2>
+      <ul class="list">
+        <li>Indie devs shipping on Steam, console, mobile</li>
+        <li>Small studios with multiple contributors importing assets and packages</li>
+        <li>Anyone who wants a repeatable, local workflow for third-party notices</li>
+      </ul>
+    </section>
+
+    <section class="reveal">
+      <h2 class="section-title">What it is not</h2>
+      <ul class="list">
+        <li>Not legal advice</li>
+        <li>Not a compliance guarantee</li>
+        <li>Not a tool that magically detects every license with perfect accuracy</li>
+      </ul>
+      <p>It is a workflow tool that makes obligations visible early, and makes resolution deterministic and shareable.</p>
+    </section>
+
+    <section id="support" class="reveal">
+      <h2 class="section-title">Support</h2>
+      <p>Email: Kevin@smartindie.dev</p>
+      <p>Expected reply time: within 48 hours</p>
+      <p>You can also use the contact form on this site.</p>
+      <!-- Replace [CONTACT_FORM_URL] -->
+      <a class="button ghost" href="[CONTACT_FORM_URL]">Contact form</a>
+    </section>
+
+    <section id="faq" class="reveal">
+      <h2 class="section-title">FAQ</h2>
+      <details>
+        <summary>Q: Does this guarantee I am compliant?</summary>
+        <p>A: No. It is not legal advice and does not guarantee compliance. It reduces risk by making third-party items visible and forcing explicit resolution of unknowns.</p>
+      </details>
+      <details>
+        <summary>Q: Will it detect everything in every project?</summary>
+        <p>A: No. It targets the most common Unity dependency sources and keeps rules conservative. If something cannot be verified, it is marked UNKNOWN so you do not get false certainty.</p>
+      </details>
+      <details>
+        <summary>Q: Does it upload my project or code anywhere?</summary>
+        <p>A: No. It is local-first and runs inside the Unity Editor.</p>
+      </details>
+      <details>
+        <summary>Q: What happens when something is UNKNOWN?</summary>
+        <p>A: You resolve it once using the evidence shown (paths, hints, license files). The resolution is stored in a project file so builds remain reproducible across machines.</p>
+      </details>
+      <details>
+        <summary>Q: What files do I ship?</summary>
+        <p>A: Typically THIRD_PARTY_NOTICES.txt and CREDITS.md with your release. The manifest is your internal source of truth for audits and diffs.</p>
+      </details>
+      <details>
+        <summary>Q: Is it only for UPM packages?</summary>
+        <p>A: No. It also scans common third-party folders and plugin binaries.</p>
+      </details>
+    </section>
+
+    <section class="reveal">
+      <div class="card">
+        <h2 class="section-title">Ready to stop last minute compliance chaos?</h2>
+        <div class="hero-actions">
+          <!-- Replace [UNITY_ASSET_STORE_LINK] -->
+          <a class="button primary" href="[UNITY_ASSET_STORE_LINK]">Get it on the Unity Asset Store</a>
+          <a class="button ghost" href="#demo">Watch demo</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Not legal advice. No compliance guarantee.</p>
+  </footer>
+
+  <div class="mobile-cta" aria-label="Mobile call to action">
+    <!-- Replace [UNITY_ASSET_STORE_LINK] -->
+    <a class="button primary" href="[UNITY_ASSET_STORE_LINK]">Get it on the Unity Asset Store</a>
+    <a class="button ghost" href="#demo">Watch demo</a>
+  </div>
+
+  <script>
+    const revealItems = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealItems.forEach(item => observer.observe(item));
+  </script>
+</body>
+</html>

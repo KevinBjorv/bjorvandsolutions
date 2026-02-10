@@ -13,6 +13,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://smartindie.dev/assets/game-compliance-pack/</loc>
+    <lastmod>2025-12-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://smartindie.dev/articles/</loc>
     <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>

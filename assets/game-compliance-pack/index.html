@@ -183,17 +183,27 @@
       padding-left: 18px;
     }
 
-    .image-placeholder {
-      border-radius: var(--radius);
-      border: 1px dashed var(--border);
-      background: #f1f2f5;
-      padding: 22px;
-      text-align: center;
-      color: var(--muted);
-      font-weight: 600;
-      min-height: 220px;
+
+
+    .product-image {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: #fff;
+      object-fit: cover;
+      aspect-ratio: 3 / 2;
+    }
+
+    .diff-images {
       display: grid;
-      place-items: center;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    @media (max-width: 680px) {
+      .diff-images {
+        grid-template-columns: 1fr;
+      }
     }
 
     .grid-two {
@@ -403,8 +413,7 @@
         <a href="#support">Support</a>
       </nav>
       <div class="nav-cta">
-        <!-- Replace [UNITY_ASSET_STORE_LINK] below -->
-        <a class="button primary" href="[UNITY_ASSET_STORE_LINK]">Get it now</a>
+        <a class="button primary" href="https://u3d.as/3PWR">Get it now</a>
         <a class="button orange" href="/">Smart Indie</a>
       </div>
     </div>
@@ -418,8 +427,7 @@
           <h1>Stop the last minute license scramble before you ship.</h1>
           <p>Game Compliance Pack is a Unity Editor tool that scans your project for third-party components and generates release-ready attribution artifacts you can actually ship.</p>
           <div class="cta-group">
-            <!-- Replace [UNITY_ASSET_STORE_LINK] below -->
-            <a class="button primary" href="[UNITY_ASSET_STORE_LINK]">Get it on the Unity Asset Store</a>
+                <a class="button primary" href="https://u3d.as/3PWR">Get it on the Unity Asset Store</a>
             <a class="button secondary" href="#demo">Watch demo</a>
           </div>
           <ul class="trust-list">
@@ -430,8 +438,8 @@
           </ul>
         </div>
         <figure class="card">
-          <div class="image-placeholder">Unity Editor window showing Scan results with UNKNOWN highlighted plus Export buttons</div>
-          <figcaption class="muted">Hero product screenshot placeholder.</figcaption>
+          <img class="product-image" src="/assets/images/CompliancePack/Card image.jpg" alt="Game Compliance Pack Unity Editor overview with core features highlighted">
+          <figcaption class="muted">Game Compliance Pack overview in the Unity Editor.</figcaption>
         </figure>
       </div>
     </section>
@@ -489,8 +497,8 @@
           </div>
         </div>
         <figure class="card">
-          <div class="image-placeholder">Generated THIRD_PARTY_NOTICES.txt excerpt with component name, version, source, license info</div>
-          <figcaption class="muted">Outputs placeholder.</figcaption>
+          <img class="product-image" src="/assets/images/CompliancePack/What it scans.jpg" alt="Game Compliance Pack scan view showing detected third-party components and generated outputs">
+          <figcaption class="muted">Scan results with release-ready output artifacts.</figcaption>
         </figure>
       </div>
     </section>
@@ -537,8 +545,11 @@
           </ul>
         </div>
         <figure class="card">
-          <div class="image-placeholder">Diff concept showing Added/Removed/Changed between manifests</div>
-          <figcaption class="muted">Stability placeholder.</figcaption>
+          <div class="diff-images">
+            <img class="product-image" src="/assets/images/CompliancePack/Difference-Before.svg" alt="Before comparison showing unresolved and changing compliance data">
+            <img class="product-image" src="/assets/images/CompliancePack/Difference-After.svg" alt="After comparison showing stable deterministic compliance output">
+          </div>
+          <figcaption class="muted">Before and after comparison for cleaner, reviewable release diffs.</figcaption>
         </figure>
       </div>
     </section>
@@ -547,7 +558,7 @@
       <h2 class="section-title">Demo</h2>
       <p>Watch a full walkthrough (screen recording):</p>
       <div class="video-wrapper" aria-label="Game Compliance Pack demo video">
-        <iframe src="https://www.youtube.com/embed/vwmiiVQYvZ8" title="Game Compliance Pack demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/gTlTMZTiWAk" title="Game Compliance Pack demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </section>
 
@@ -626,8 +637,7 @@
           <h2 class="section-title">Ready to stop last minute compliance chaos?</h2>
         </div>
         <div class="cta-group">
-          <!-- Replace [UNITY_ASSET_STORE_LINK] below -->
-          <a class="button primary" href="[UNITY_ASSET_STORE_LINK]">Get it on the Unity Asset Store</a>
+            <a class="button primary" href="https://u3d.as/3PWR">Get it on the Unity Asset Store</a>
           <a class="button secondary" href="#demo">Watch demo</a>
         </div>
       </div>
@@ -642,7 +652,7 @@
           <p class="muted">A Unity Editor tool from Bjorvand Solutions that helps you ship with clear third-party attributions and compliance artifacts.</p>
         </div>
         <div class="footer-links">
-          <a href="[UNITY_ASSET_STORE_LINK]">Unity Asset Store</a>
+          <a href="https://u3d.as/3PWR">Unity Asset Store</a>
           <a href="#support">Support</a>
           <a href="#faq">FAQ</a>
           <a href="/assets/">More Unity tools</a>
@@ -653,8 +663,7 @@
   </footer>
 
   <div class="mobile-cta" aria-label="Mobile call to action">
-    <!-- Replace [UNITY_ASSET_STORE_LINK] below -->
-    <a class="button primary" href="[UNITY_ASSET_STORE_LINK]">Get it on the Unity Asset Store</a>
+    <a class="button primary" href="https://u3d.as/3PWR">Get it on the Unity Asset Store</a>
   </div>
 
   <script>

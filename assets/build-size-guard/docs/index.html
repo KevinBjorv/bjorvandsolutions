@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Build Size Guard documentation</title>
+  <meta name="description" content="Documentation shell for Build Size Guard, a Unity Editor tool for build size snapshots, diffing, budgets, and CI guardrails.">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+  <link rel="icon" href="/assets/favicon/favicon.ico">
+  <link rel="manifest" href="/assets/favicon/site.webmanifest">
+  <link rel="stylesheet" href="/assets/compliance/docs/docs.css">
+  <script>
+    (function () {
+      var theme = "light";
+      try {
+        theme = localStorage.getItem("assets-theme") || "light";
+      } catch (error) {
+        theme = "light";
+      }
+      document.documentElement.setAttribute("data-theme", theme === "dark" ? "dark" : "light");
+    })();
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="/assets/build-size-guard/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Build Size Guard docs</span>
+      </a>
+      <div class="top-actions">
+        <a class="button button-secondary" href="/assets/build-size-guard/">Product page</a>
+        <a class="button button-primary" href="https://assetstore.unity.com/packages/slug/361332">Unity Asset Store</a>
+        <button
+          class="theme-toggle"
+          id="themeToggle"
+          type="button"
+          aria-label="Switch to dark mode"
+          aria-pressed="false"
+          data-sun-icon="/assets/compliance/sun-svgrepo-com.svg"
+          data-moon-icon="/assets/compliance/moon-svgrepo-com.svg"
+        >
+          <img class="theme-toggle-icon" src="/assets/compliance/moon-svgrepo-com.svg" alt="Moon icon">
+          <span class="theme-toggle-label">Dark</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="shell layout">
+    <aside class="sidebar" aria-label="Documentation navigation">
+      <h2>Documentation</h2>
+      <p>Page scaffold is ready. Content sections are placeholders.</p>
+      <label class="search-label" for="docSearch">Search</label>
+      <input class="search-input" type="search" id="docSearch" placeholder="Search sections..." autocomplete="off">
+      <p class="search-status" id="searchStatus">Showing 8 sections</p>
+      <nav class="sidebar-nav" id="sidebarNav">
+        <a class="sidebar-link" href="#overview">Overview</a>
+        <a class="sidebar-link" href="#requirements">Requirements</a>
+        <a class="sidebar-link" href="#installation">Installation</a>
+        <a class="sidebar-link" href="#quick-start">Quick Start</a>
+        <a class="sidebar-link" href="#workflow">Editor Workflow</a>
+        <a class="sidebar-link" href="#ci">CI / Batchmode</a>
+        <a class="sidebar-link" href="#outputs">Outputs</a>
+        <a class="sidebar-link" href="#faq">FAQ</a>
+      </nav>
+    </aside>
+
+    <main class="content" id="docContent">
+      <section class="doc-card" id="overview" data-section>
+        <h1>Build Size Guard - Documentation</h1>
+        <p class="lead">Documentation content is intentionally blank for now.</p>
+      </section>
+
+      <section class="doc-card" id="requirements" data-section>
+        <h2>Requirements</h2>
+        <p class="muted-note">Placeholder section.</p>
+      </section>
+
+      <section class="doc-card" id="installation" data-section>
+        <h2>Installation</h2>
+        <p class="muted-note">Placeholder section.</p>
+      </section>
+
+      <section class="doc-card" id="quick-start" data-section>
+        <h2>Quick Start</h2>
+        <p class="muted-note">Placeholder section.</p>
+      </section>
+
+      <section class="doc-card" id="workflow" data-section>
+        <h2>Editor Workflow</h2>
+        <p class="muted-note">Placeholder section.</p>
+      </section>
+
+      <section class="doc-card" id="ci" data-section>
+        <h2>CI / Batchmode</h2>
+        <p class="muted-note">Placeholder section.</p>
+      </section>
+
+      <section class="doc-card" id="outputs" data-section>
+        <h2>Outputs</h2>
+        <p class="muted-note">Placeholder section.</p>
+      </section>
+
+      <section class="doc-card" id="faq" data-section>
+        <h2>FAQ</h2>
+        <p class="muted-note">Placeholder section.</p>
+      </section>
+
+      <div class="empty-state" id="emptyState" role="status" aria-live="polite">
+        No sections match your search.
+      </div>
+    </main>
+  </div>
+
+  <script src="/assets/compliance/theme-toggle.js"></script>
+  <script src="/assets/compliance/docs/docs.js"></script>
+</body>
+</html>

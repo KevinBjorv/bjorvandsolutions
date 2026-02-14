@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Build Size Guard License | Bjorvand Solutions</title>
+  <meta name="description" content="Full software license agreement for Build Size Guard by Bjorvand Solutions.">
+  <script>
+    (function () {
+      var theme = "light";
+      try {
+        theme = localStorage.getItem("assets-theme") || "light";
+      } catch (error) {
+        theme = "light";
+      }
+      document.documentElement.setAttribute("data-theme", theme === "dark" ? "dark" : "light");
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f7f8;
+      --surface: #ffffff;
+      --text: #1c1d22;
+      --muted: #5a5f6b;
+      --accent: #2f6bf0;
+      --accent-dark: #2453ba;
+      --border: #e1e3e8;
+      --shadow: 0 10px 24px rgba(20, 25, 35, 0.08);
+      --radius: 16px;
+      --max-width: 920px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--accent-dark);
+      text-decoration: underline;
+    }
+
+    .container {
+      width: min(100%, var(--max-width));
+      margin: 0 auto;
+      padding: 28px 20px 60px;
+    }
+
+    .top-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-weight: 600;
+    }
+
+    .top-bar {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-1px);
+    }
+
+    .theme-toggle:focus-visible {
+      outline: 3px solid rgba(47, 107, 240, 0.25);
+      outline-offset: 2px;
+    }
+
+    .theme-toggle-icon {
+      width: 18px;
+      height: 18px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px;
+    }
+
+    h1 {
+      font-size: clamp(1.9rem, 3vw, 2.5rem);
+      margin: 0 0 10px;
+    }
+
+    h2 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-size: 1.35rem;
+    }
+
+    p {
+      margin-top: 0;
+      margin-bottom: 12px;
+    }
+
+    ul {
+      margin-top: 0;
+      margin-bottom: 0;
+      padding-left: 20px;
+    }
+
+    li + li {
+      margin-top: 6px;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .license-text {
+      margin: 0;
+      background: #11141a;
+      color: #edf1f7;
+      border-radius: 12px;
+      border: 1px solid #1c2532;
+      padding: 16px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 0.92rem;
+      line-height: 1.55;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      overflow-x: auto;
+    }
+
+    [data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #10151d;
+      --surface: #171f2a;
+      --text: #e8edf5;
+      --muted: #b2bfce;
+      --accent: #7baeff;
+      --accent-dark: #9ac2ff;
+      --border: #314051;
+      --shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+    }
+
+    [data-theme="dark"] .theme-toggle {
+      background: #141b26;
+      border-color: #3a4b61;
+    }
+
+    [data-theme="dark"] .license-text {
+      background: #0b1018;
+      color: #e9f0ff;
+      border-color: #223145;
+    }
+
+    @media (max-width: 680px) {
+      .theme-toggle-label {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <div class="top-bar">
+      <nav class="top-links" aria-label="Page links">
+        <a href="/assets/build-size-guard/">Product page</a>
+        <a href="/assets/build-size-guard/docs/">Docs</a>
+        <a href="https://assetstore.unity.com/packages/slug/361332">Unity Asset Store</a>
+      </nav>
+      <button
+        class="theme-toggle"
+        id="themeToggle"
+        type="button"
+        aria-label="Switch to dark mode"
+        aria-pressed="false"
+        data-sun-icon="/assets/compliance/sun-svgrepo-com.svg"
+        data-moon-icon="/assets/compliance/moon-svgrepo-com.svg"
+      >
+        <img class="theme-toggle-icon" src="/assets/compliance/moon-svgrepo-com.svg" alt="Moon icon">
+        <span class="theme-toggle-label">Dark</span>
+      </button>
+    </div>
+
+    <section class="card" aria-labelledby="license-title">
+      <h1 id="license-title">Build Size Guard License</h1>
+      <p class="muted">Version 1.0, last updated: February 14, 2026.</p>
+      <p>This page includes a short summary followed by the full license text.</p>
+    </section>
+
+    <section class="card" aria-labelledby="summary-title" style="margin-top: 18px;">
+      <h2 id="summary-title">Summary</h2>
+      <ul>
+        <li>License covers internal use and modification for your own projects.</li>
+        <li>You can share internally with employees and contractors under protective written obligations.</li>
+        <li>You can distribute finished projects built with the software, but not the software as a standalone tool.</li>
+        <li>Resale, redistribution, sublicensing, and transfer of license rights are prohibited.</li>
+        <li>Support is best-effort with no guaranteed SLA.</li>
+        <li>Software is provided "AS IS" with warranty disclaimer and liability limits.</li>
+      </ul>
+    </section>
+
+    <section class="card" aria-labelledby="full-license-title" style="margin-top: 18px;">
+      <h2 id="full-license-title">Full License Text</h2>
+      <pre class="license-text">BUILD SIZE GUARD LICENSE (COMMERCIAL, NO-REDISTRIBUTION)
+Version: 1.0
+Last updated: 2026-02-14
+
+Copyright (c) 2026 Bjorvand Solutions
+Kevin Bjorvand
+All rights reserved.
+
+This License Agreement ("License") governs the use of the Build Size Guard software package, including
+all source code, editor scripts, binaries, UI, documentation, examples, and associated files
+(collectively, the "Software").
+
+IMPORTANT PLATFORM NOTE
+If you obtained the Software via the Unity Asset Store, your rights and obligations are governed by
+the Unity Asset Store End User License Agreement ("Unity EULA"). This License is provided as
+supplemental terms and applies only where it does not conflict with the Unity EULA.
+If you obtained the Software via itch.io (or direct sale), this License is the primary license.
+
+1. DEFINITIONS
+"Licensee" means the individual or legal entity that purchased or otherwise lawfully obtained the
+Software, including its employees and contractors working under Licensee's direction.
+"Project" means a product or internal work created by Licensee (for example, a game, app, or tool).
+"Redistribute" means to sell, resell, rent, lease, lend, sublicense, transfer, share, publish, or
+otherwise make the Software available to any third party, whether in source or compiled form,
+whether modified or unmodified, except as explicitly permitted below.
+
+2. LICENSE GRANT
+Subject to this License and payment of any applicable fees, Licensor grants Licensee a non-exclusive,
+non-transferable, revocable license to:
+  a) Install and use the Software internally for development and production of Projects.
+  b) Modify the Software for internal use within Licensee's Projects.
+
+3. PERMITTED SHARING WITHIN A TEAM
+Licensee may share the Software internally with:
+  a) Employees of Licensee, and
+  b) Contractors working for Licensee on Licensee's Projects,
+only to the extent necessary for that work, and only if those recipients are bound by written
+obligations at least as protective as this License. Contractors must delete the Software when their
+engagement ends or when no longer needed for the Project, whichever occurs first.
+
+4. DISTRIBUTION OF YOUR PROJECTS
+Licensee may distribute finished Projects (for example, games or applications) built using the
+Software, provided that:
+  a) The Software itself is not redistributed as a standalone product, toolkit, editor extension, or
+     otherwise separable component; and
+  b) Licensee does not enable third parties to extract, reuse, or access the Software as a Unity editor
+     extension or development tool.
+
+5. PROHIBITED USES (NO RESELLING, NO REDISTRIBUTION)
+Licensee must not, and must not allow others to:
+  a) Resell or redistribute the Software (standalone or bundled), including via any marketplace,
+     "asset pack", git repository (public or private where third parties can access), file-sharing
+     service, or as part of a template/starter project intended for redistribution.
+  b) Sublicense, transfer, assign, or otherwise convey the license rights to another party.
+  c) Offer the Software as a service, hosted tool, or part of a product where the primary value is the
+     Software itself.
+  d) Remove or obscure copyright, trademark, or proprietary notices contained in the Software.
+
+6. OWNERSHIP
+The Software is licensed, not sold. Licensor retains all right, title, and interest in and to the
+Software and all intellectual property rights therein. Licensee retains ownership of Licensee's
+Projects.
+
+7. SUPPORT
+Support is best-effort only, with no guaranteed response time or SLA.
+Support contact: kevin@smartindie.dev
+
+8. WARRANTY DISCLAIMER
+THE SOFTWARE IS PROVIDED "AS IS" AND "AS AVAILABLE", WITH ALL FAULTS.
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, LICENSOR DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+PURPOSE, AND NON-INFRINGEMENT. LICENSEE ASSUMES ALL RISK ARISING OUT OF USE OR PERFORMANCE OF THE
+SOFTWARE.
+
+9. LIMITATION OF LIABILITY
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT WILL LICENSOR BE LIABLE FOR ANY INDIRECT,
+INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR EXEMPLARY DAMAGES, OR FOR ANY LOSS OF PROFITS, REVENUE,
+DATA, BUSINESS INTERRUPTION, OR GOODWILL, ARISING OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THIS
+LICENSE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, LICENSOR'S TOTAL LIABILITY FOR ANY CLAIM WILL NOT EXCEED
+THE AMOUNT PAID BY LICENSEE FOR THE SOFTWARE (IF ANY) IN THE TWELVE (12) MONTHS PRECEDING THE EVENT
+GIVING RISE TO THE CLAIM.
+
+10. TERMINATION
+This License terminates automatically if Licensee breaches any term of this License. Upon
+termination, Licensee must cease use of the Software and delete all copies in Licensee's possession
+or control, including copies held by contractors, except where retention is required by law.
+
+11. MISCELLANEOUS
+If any provision of this License is held unenforceable, the remaining provisions will remain in
+effect.
+This License is the entire agreement regarding the Software for non-Unity-Asset-Store sales, and
+supersedes prior discussions or understandings on that subject.
+
+Licensor:
+Bjorvand Solutions
+Kevin Bjorvand
+Support: kevin@smartindie.dev
+</pre>
+    </section>
+  </main>
+  <script src="/assets/compliance/theme-toggle.js"></script>
+</body>
+</html>

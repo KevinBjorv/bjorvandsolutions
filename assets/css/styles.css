@@ -521,7 +521,8 @@ p {
 .game-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  column-gap: 6px;
+  row-gap: 10px;
 }
 
 .game-card--orbital {
@@ -529,7 +530,8 @@ p {
 }
 
 .game-actions--orbital {
-  gap: 6px;
+  column-gap: 6px;
+  row-gap: 10px;
 }
 
 .game-banner {

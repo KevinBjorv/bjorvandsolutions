@@ -240,20 +240,22 @@
       border-radius: 12px;
       border: 1px solid var(--border);
       background: #fff;
-      object-fit: cover;
-      aspect-ratio: 3 / 2;
+      object-fit: contain;
     }
 
-    .diff-images {
+    .media-row {
+      margin-top: 22px;
+      padding: 18px;
+    }
+
+    .media-row figcaption {
+      margin-top: 12px;
+    }
+
+    .media-stack {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    @media (max-width: 680px) {
-      .diff-images {
-        grid-template-columns: 1fr;
-      }
+      gap: 18px;
+      margin-top: 22px;
     }
 
     .grid-two {
@@ -546,11 +548,11 @@
             <li>Generates three shippable files: THIRD_PARTY_NOTICES.txt, CREDITS.md, compliance-manifest.json</li>
           </ul>
         </div>
-        <figure class="card">
-          <img class="product-image" src="/assets/images/CompliancePack/Card image.jpg" alt="Third-Party Notices & Credits: License Compliance for Unity overview with core features highlighted in Unity Editor">
-          <figcaption class="muted">Third-Party Notices & Credits: License Compliance for Unity overview in the Unity Editor.</figcaption>
-        </figure>
       </div>
+      <figure class="card media-row">
+        <img class="product-image" src="/assets/images/CompliancePack/Card image.jpg" alt="Third-Party Notices & Credits: License Compliance for Unity overview with core features highlighted in Unity Editor">
+        <figcaption class="muted">Third-Party Notices & Credits: License Compliance for Unity overview in the Unity Editor.</figcaption>
+      </figure>
     </section>
 
     <section class="container reveal">
@@ -587,28 +589,20 @@
     </section>
 
     <section id="outputs" class="container reveal">
-      <div class="grid-two">
+      <h2 class="section-title">What you get (outputs you can ship)</h2>
+      <div class="outputs-list">
         <div>
-          <h2 class="section-title">What you get (outputs you can ship)</h2>
-          <div class="outputs-list">
-            <div>
-              <h3>THIRD_PARTY_NOTICES.txt</h3>
-              <p>Full attributions plus license text when available. One entry per component, stable-sorted.</p>
-            </div>
-            <div>
-              <h3>CREDITS.md</h3>
-              <p>Short, human-readable credits block suitable for in-game credits or store listings.</p>
-            </div>
-            <div>
-              <h3>compliance-manifest.json</h3>
-              <p>Machine-readable source of truth for audits, diffs, and repeatable builds.</p>
-            </div>
-          </div>
+          <h3>THIRD_PARTY_NOTICES.txt</h3>
+          <p>Full attributions plus license text when available. One entry per component, stable-sorted.</p>
         </div>
-        <figure class="card">
-          <img class="product-image" src="/assets/images/CompliancePack/What it scans.jpg" alt="Third-Party Notices & Credits: License Compliance for Unity scan view showing detected components and generated outputs">
-          <figcaption class="muted">Scan results with release-ready output artifacts.</figcaption>
-        </figure>
+        <div>
+          <h3>CREDITS.md</h3>
+          <p>Short, human-readable credits block suitable for in-game credits or store listings.</p>
+        </div>
+        <div>
+          <h3>compliance-manifest.json</h3>
+          <p>Machine-readable source of truth for audits, diffs, and repeatable builds.</p>
+        </div>
       </div>
     </section>
 
@@ -631,6 +625,10 @@
           </ul>
         </div>
       </div>
+      <figure class="card media-row">
+        <img class="product-image" src="/assets/images/CompliancePack/What it scans.jpg" alt="Third-Party Notices & Credits: License Compliance for Unity scan view showing detected components and generated outputs">
+        <figcaption class="muted">Scan results with detected components and release-ready output artifacts.</figcaption>
+      </figure>
     </section>
 
     <section class="container reveal">
@@ -644,27 +642,30 @@
     </section>
 
     <section class="container reveal">
-      <div class="grid-two">
-        <div>
-          <h2 class="section-title">Built for stable, reviewable releases</h2>
-          <ul>
-            <li>Deterministic component keys and ordering so diffs are meaningful</li>
-            <li>Plain text outputs that are easy to audit</li>
-            <li>Optional build integration to warn or fail builds if UNKNOWN items remain</li>
-          </ul>
-        </div>
-        <figure class="card">
-          <div class="diff-images">
-            <img class="product-image" src="/assets/images/CompliancePack/Difference-Before.svg" alt="Before comparison showing unresolved and changing compliance data">
-            <img class="product-image" src="/assets/images/CompliancePack/Difference-After.svg" alt="After comparison showing stable deterministic compliance output">
-          </div>
-          <figcaption class="muted">Before and after comparison for cleaner, reviewable release diffs.</figcaption>
+      <h2 class="section-title">Built for stable, reviewable releases</h2>
+      <ul>
+        <li>Deterministic component keys and ordering so diffs are meaningful</li>
+        <li>Plain text outputs that are easy to audit</li>
+        <li>Optional build integration to warn or fail builds if UNKNOWN items remain</li>
+      </ul>
+      <div class="media-stack">
+        <figure class="card media-row">
+          <img class="product-image" src="/assets/images/CompliancePack/Difference-Before.svg" alt="Before comparison showing unresolved and changing compliance data">
+          <figcaption class="muted">Before: unresolved UNKNOWN items and unstable ordering create noisy diffs.</figcaption>
+        </figure>
+        <figure class="card media-row">
+          <img class="product-image" src="/assets/images/CompliancePack/Difference-After.svg" alt="After comparison showing stable deterministic compliance output">
+          <figcaption class="muted">After: deterministic ordering and explicit resolutions produce clean, reviewable diffs.</figcaption>
         </figure>
       </div>
     </section>
 
     <section id="demo" class="container reveal">
       <h2 class="section-title">Demo</h2>
+      <figure class="card media-row">
+        <img class="product-image" src="/assets/images/CompliancePack/ToolScreenshot1.jpg" alt="Third-Party Notices & Credits: License Compliance for Unity screenshot showing an in-editor compliance report with readable details">
+        <figcaption class="muted">Large in-editor screenshot with readable scan and output detail.</figcaption>
+      </figure>
       <p>Watch a full walkthrough (screen recording):</p>
       <div class="video-wrapper" aria-label="Third-Party Notices & Credits: License Compliance for Unity demo video">
         <iframe src="https://www.youtube.com/embed/gTlTMZTiWAk" title="Third-Party Notices & Credits: License Compliance for Unity demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -678,6 +679,10 @@
         <li>Small studios with multiple contributors importing assets and packages</li>
         <li>Anyone who wants a repeatable, local workflow for third-party notices</li>
       </ul>
+      <figure class="card media-row">
+        <img class="product-image" src="/assets/images/CompliancePack/Who it's for (and not for).jpg" alt="Third-Party Notices & Credits: License Compliance for Unity matrix showing who the tool is for and not for">
+        <figcaption class="muted">Who this workflow is for, and where it is not the right fit.</figcaption>
+      </figure>
     </section>
 
     <section class="container reveal">
@@ -778,7 +783,8 @@
           <a href="#support">Support</a>
           <a href="#faq">FAQ</a>
           <a href="#license-sale-terms">License &amp; sale terms</a>
-          <a href="/assets/">More Unity tools</a>
+          <a href="/games/">More Unity tools</a>
+          <a href="/">Homepage</a>
         </div>
         <div class="muted">Not legal advice. No compliance guarantee.</div>
       </div>

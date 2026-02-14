@@ -249,6 +249,34 @@ p {
   transition: transform var(--transition), box-shadow var(--transition), background var(--transition), color var(--transition);
 }
 
+.button-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+}
+
+.button-icon--google-play {
+  width: 24px;
+  height: 24px;
+}
+
+.button-icon--appstore {
+  width: 26px;
+  height: 26px;
+}
+
+.button-icon--itch {
+  width: 24px;
+  height: 24px;
+}
+
+.button-icon--unity {
+  width: 24px;
+  height: 24px;
+}
+
 .button.primary {
   background: var(--accent);
   color: #111217;
@@ -488,6 +516,20 @@ p {
   display: flex;
   flex-direction: column;
   gap: 12px;
+}
+
+.game-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.game-card--orbital {
+  padding-bottom: 18px;
+}
+
+.game-actions--orbital {
+  gap: 6px;
 }
 
 .game-banner {

@@ -379,6 +379,10 @@ li + li {
   vertical-align: top;
 }
 
+.text-right {
+  text-align: right !important;
+}
+
 .data-table th {
   color: #17334f;
   background: #f5f8fc;

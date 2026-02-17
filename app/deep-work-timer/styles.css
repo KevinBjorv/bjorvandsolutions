@@ -1,0 +1,121 @@
+body {
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 18px 80px;
+    }
+
+    .timer-shell {
+      max-width: 540px;
+      width: 100%;
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 36px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .timer-shell h1 {
+      margin-bottom: 10px;
+    }
+
+    .timer-shell p {
+      margin-bottom: 24px;
+    }
+
+    .timer-display {
+      font-size: clamp(2.6rem, 6vw, 4.2rem);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      margin: 16px 0 24px;
+    }
+
+    .timer-controls,
+    .timer-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .timer-actions {
+      margin-top: 20px;
+    }
+
+    .timer-footer {
+      margin-top: 24px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .timer-footer .button {
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .timer-shell .button {
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text);
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform var(--transition), background var(--transition), color var(--transition);
+    }
+
+    .timer-shell .button:hover {
+      transform: translateY(-1px);
+    }
+
+    .timer-shell .button.primary {
+      background: var(--accent);
+      color: #0e1116;
+      border-color: transparent;
+    }
+
+    .timer-shell .button.ghost {
+      background: var(--accent-light);
+      color: var(--accent);
+      border-color: transparent;
+    }
+
+    .timer-shell .button[disabled] {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .timer-status {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-top: 16px;
+    }
+
+    body.timer-fullscreen header,
+    body.timer-fullscreen footer {
+      display: none;
+    }
+
+    body.timer-fullscreen main {
+      padding: 24px 18px 32px;
+    }
+
+    .timer-shell:fullscreen,
+    body.timer-fullscreen .timer-shell {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+

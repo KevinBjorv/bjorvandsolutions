@@ -308,6 +308,49 @@ p {
   max-width: 640px;
 }
 
+.home-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 14px 0 8px;
+}
+
+.home-hero-note {
+  margin-top: 2px;
+}
+
+.home-vsl-section {
+  margin-top: 40px;
+}
+
+.home-vsl-cta {
+  margin-top: 16px;
+}
+
+.home-section-gap {
+  margin-top: 50px;
+}
+
+.home-what-cta {
+  margin-top: 18px;
+}
+
+.home-muted-copy {
+  color: var(--muted);
+}
+
+.home-cta-section {
+  margin-top: 60px;
+}
+
+.home-cta-title {
+  margin: 0 0 6px;
+}
+
+.home-cta-copy {
+  margin: 0;
+}
+
 .pill {
   display: inline-flex;
   align-items: center;

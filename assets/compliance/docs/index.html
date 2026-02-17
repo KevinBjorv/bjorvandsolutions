@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -11,17 +11,7 @@
   <link rel="icon" href="/assets/favicon/favicon.ico">
   <link rel="manifest" href="/assets/favicon/site.webmanifest">
   <link rel="stylesheet" href="/assets/compliance/docs/docs.css">
-  <script>
-    (function () {
-      var theme = "light";
-      try {
-        theme = localStorage.getItem("assets-theme") || "light";
-      } catch (error) {
-        theme = "light";
-      }
-      document.documentElement.setAttribute("data-theme", theme === "dark" ? "dark" : "light");
-    })();
-  </script>
+    <script src="/assets/compliance/theme-init.js"></script>
 </head>
 <body>
   <header class="topbar">
@@ -510,3 +500,4 @@ url = optional source URL from prompt</code></pre>
   <script src="/assets/compliance/docs/docs.js"></script>
 </body>
 </html>
+

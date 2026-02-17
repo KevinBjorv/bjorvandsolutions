@@ -57,6 +57,10 @@
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
+.app-directory-grid--offset {
+  margin-top: 24px;
+}
+
 .app-directory-card {
   overflow: hidden;
   padding: 0;
@@ -115,6 +119,22 @@
   inset: 0;
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.42));
   z-index: 1;
+}
+
+.app-banner--deep-work {
+  --banner-image: url('/assets/images/banners/DeepWorkBanner.png');
+}
+
+.app-banner--idea-generator {
+  --banner-image: url('/assets/images/banners/IdeaGeneratorBanner.png');
+}
+
+.app-banner--asset-websites {
+  --banner-image: url('/assets/images/banners/AssetWebsitesBanner.png');
+}
+
+.app-banner--forum-search {
+  --banner-image: url('/assets/images/banners/ForumSearchBanner.png');
 }
 
 .app-banner-image {

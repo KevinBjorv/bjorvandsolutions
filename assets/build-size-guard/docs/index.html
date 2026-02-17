@@ -11,17 +11,7 @@
   <link rel="icon" href="/assets/favicon/favicon.ico">
   <link rel="manifest" href="/assets/favicon/site.webmanifest">
   <link rel="stylesheet" href="/assets/compliance/docs/docs.css">
-  <script>
-    (function () {
-      var theme = "light";
-      try {
-        theme = localStorage.getItem("assets-theme") || "light";
-      } catch (error) {
-        theme = "light";
-      }
-      document.documentElement.setAttribute("data-theme", theme === "dark" ? "dark" : "light");
-    })();
-  </script>
+    <script src="/assets/compliance/theme-init.js"></script>
 </head>
 <body>
   <header class="topbar">
@@ -203,82 +193,82 @@
         <thead>
         <tr>
         <th>Field</th>
-        <th style="text-align: right;">Code Default</th>
-        <th style="text-align: right;">Current Project Value</th>
+        <th class="text-right">Code Default</th>
+        <th class="text-right">Current Project Value</th>
         <th>Behavior</th>
         </tr>
         </thead>
         <tbody>
         <tr>
         <td><code>dataRootPath</code></td>
-        <td style="text-align: right;"><code>BuildSizeGuardData</code></td>
-        <td style="text-align: right;"><code>BuildSizeGuardData</code></td>
+        <td class="text-right"><code>BuildSizeGuardData</code></td>
+        <td class="text-right"><code>BuildSizeGuardData</code></td>
         <td>Root folder for snapshots/reports. Relative paths resolve from project root.</td>
         </tr>
         <tr>
         <td><code>autoCaptureSnapshots</code></td>
-        <td style="text-align: right;"><code>true</code></td>
-        <td style="text-align: right;"><code>true</code></td>
+        <td class="text-right"><code>true</code></td>
+        <td class="text-right"><code>true</code></td>
         <td>Master switch for post-build auto capture.</td>
         </tr>
         <tr>
         <td><code>captureSuccessfulBuildsOnly</code> (legacy)</td>
-        <td style="text-align: right;"><code>true</code></td>
-        <td style="text-align: right;"><code>false</code></td>
+        <td class="text-right"><code>true</code></td>
+        <td class="text-right"><code>false</code></td>
         <td>Legacy migration field. Mirrors successful+failed toggles.</td>
         </tr>
         <tr>
         <td><code>captureSuccessfulBuilds</code></td>
-        <td style="text-align: right;"><code>true</code></td>
-        <td style="text-align: right;"><code>true</code></td>
+        <td class="text-right"><code>true</code></td>
+        <td class="text-right"><code>true</code></td>
         <td>Capture snapshots for successful builds.</td>
         </tr>
         <tr>
         <td><code>captureFailedBuilds</code></td>
-        <td style="text-align: right;"><code>false</code></td>
-        <td style="text-align: right;"><code>true</code></td>
+        <td class="text-right"><code>false</code></td>
+        <td class="text-right"><code>true</code></td>
         <td>Capture snapshots for failed/canceled builds.</td>
         </tr>
         <tr>
         <td><code>treatUnknownBuildResultAsUsable</code></td>
-        <td style="text-align: right;"><code>false</code></td>
-        <td style="text-align: right;"><code>true</code></td>
+        <td class="text-right"><code>false</code></td>
+        <td class="text-right"><code>true</code></td>
         <td>Affects Unknown result capture routing and completeness classification.</td>
         </tr>
         <tr>
         <td><code>topContributorLimit</code></td>
-        <td style="text-align: right;"><code>200</code></td>
-        <td style="text-align: right;"><code>200</code></td>
+        <td class="text-right"><code>200</code></td>
+        <td class="text-right"><code>200</code></td>
         <td>Max ranked contributors stored per snapshot.</td>
         </tr>
         <tr>
         <td><code>snapshotRetentionPerTarget</code></td>
-        <td style="text-align: right;"><code>50</code></td>
-        <td style="text-align: right;"><code>50</code></td>
+        <td class="text-right"><code>50</code></td>
+        <td class="text-right"><code>50</code></td>
         <td>Keep latest N snapshots per target. Older snapshots pruned on new capture/import.</td>
         </tr>
         <tr>
         <td><code>failOnViolationInBatchMode</code></td>
-        <td style="text-align: right;"><code>true</code></td>
-        <td style="text-align: right;"><code>true</code></td>
+        <td class="text-right"><code>true</code></td>
+        <td class="text-right"><code>true</code></td>
         <td>CLI default behavior when violations exist.</td>
         </tr>
         <tr>
         <td><code>defaultComparisonMetric</code></td>
-        <td style="text-align: right;"><code>ReportTotal</code></td>
-        <td style="text-align: right;"><code>ReportTotal</code></td>
+        <td class="text-right"><code>ReportTotal</code></td>
+        <td class="text-right"><code>ReportTotal</code></td>
         <td>Metric driving totals/deltas in compare UI.</td>
         </tr>
         <tr>
         <td><code>displayUnits</code></td>
-        <td style="text-align: right;"><code>Auto</code></td>
-        <td style="text-align: right;"><code>Auto</code></td>
+        <td class="text-right"><code>Auto</code></td>
+        <td class="text-right"><code>Auto</code></td>
         <td>Byte display units in UI/report formatting.</td>
         </tr>
         <tr>
         <td><code>budgetInputMode</code></td>
-        <td style="text-align: right;"><code>Friendly</code></td>
-        <td style="text-align: right;"><code>Friendly</code></td>
+        <td class="text-right"><code>Friendly</code></td>
+        <td class="text-right"><code>Friendly</code></td>
         <td>Budget input UX mode.</td>
         </tr>
         </tbody>
@@ -873,3 +863,4 @@
   <script src="/assets/compliance/docs/docs.js"></script>
 </body>
 </html>
+

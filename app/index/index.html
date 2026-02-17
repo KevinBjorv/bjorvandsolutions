@@ -13,13 +13,7 @@
   <link rel="stylesheet" href="/assets/css/styles.css">
   <link rel="stylesheet" href="/assets/css/app-hub.css">
   <!-- MailerLite Universal -->
-  <script>
-    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
-    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
-    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
-    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
-    ml('account', '2012841');
-  </script>
+  <script src="/assets/js/mailerlite.js"></script>
   <!-- End MailerLite Universal -->
 </head>
 <body>
@@ -76,7 +70,7 @@
         </div>
         <div class="app-grid app-directory-grid">
           <article class="card app-directory-card" data-reveal data-reveal-delay="0ms">
-            <div class="app-banner has-banner" style="--banner-image: url('../assets/images/banners/DeepWorkBanner.png');" aria-hidden="true">
+            <div class="app-banner has-banner app-banner--deep-work" aria-hidden="true">
               <img src="/assets/images/banners/DeepWorkBanner.png" alt="Deep Work Timer app banner preview" class="app-banner-image" loading="lazy">
             </div>
             <div class="app-card-body">
@@ -92,7 +86,7 @@
           </article>
 
           <article class="card app-directory-card" data-reveal data-reveal-delay="80ms">
-            <div class="app-banner has-banner" style="--banner-image: url('../assets/images/banners/IdeaGeneratorBanner.png');" aria-hidden="true">
+            <div class="app-banner has-banner app-banner--idea-generator" aria-hidden="true">
               <img src="/assets/images/banners/IdeaGeneratorBanner.png" alt="Game Idea Generator app banner preview" class="app-banner-image" loading="lazy">
             </div>
             <div class="app-card-body">
@@ -108,7 +102,7 @@
           </article>
 
           <article class="card app-directory-card" data-reveal data-reveal-delay="120ms">
-            <div class="app-banner has-banner" style="--banner-image: url('../assets/images/banners/AssetWebsitesBanner.png');" aria-hidden="true">
+            <div class="app-banner has-banner app-banner--asset-websites" aria-hidden="true">
               <img src="/assets/images/banners/AssetWebsitesBanner.png" alt="Asset Websites app banner preview" class="app-banner-image" loading="lazy">
             </div>
             <div class="app-card-body">
@@ -124,7 +118,7 @@
           </article>
 
           <article class="card app-directory-card" data-reveal data-reveal-delay="160ms">
-            <div class="app-banner has-banner" style="--banner-image: url('../assets/images/banners/ForumSearchBanner.png');" aria-hidden="true">
+            <div class="app-banner has-banner app-banner--forum-search" aria-hidden="true">
               <img src="/assets/images/banners/ForumSearchBanner.png" alt="Forum Search app banner preview" class="app-banner-image" loading="lazy">
             </div>
             <div class="app-card-body">
@@ -140,7 +134,7 @@
           </article>
         </div>
 
-        <div class="app-grid app-directory-grid" style="margin-top: 24px;" data-reveal>
+        <div class="app-grid app-directory-grid app-directory-grid--offset" data-reveal>
           <article class="card app-directory-card" data-reveal data-reveal-delay="0ms">
             <div class="app-card-body">
               <div class="app-card-top">
@@ -188,3 +182,4 @@
   <script src="/assets/js/global.js"></script>
 </body>
 </html>
+

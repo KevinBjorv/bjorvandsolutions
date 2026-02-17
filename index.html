@@ -12,13 +12,7 @@
   <link rel="manifest" href="/assets/favicon/site.webmanifest">
   <link rel="stylesheet" href="/assets/css/styles.css">
   <!-- MailerLite Universal -->
-  <script>
-    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
-    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
-    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
-    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
-    ml('account', '2012841');
-  </script>
+  <script src="/assets/js/mailerlite.js"></script>
   <!-- End MailerLite Universal -->
 </head>
 <body>
@@ -59,11 +53,11 @@
           <div>
             <h1 id="home-title">Release your first small indie game in 60 days</h1>
             <p class="hero-sub">Smart Indie is a focused step by step system for busy beginners who keep restarting, get stuck in tutorials, and just want one finished game they can be proud of.</p>
-            <div style="display:flex; flex-wrap: wrap; gap: 12px; margin: 14px 0 8px;">
+            <div class="home-hero-actions">
               <a class="button primary" href="https://www.skool.com/smart-indie-6927/about?ref=6e183e0cb40b468289dc9bf659028fe2">Get the 60 day release plan</a>
               <a class="button ghost" href="#vsl-title">See how it works</a>
             </div>
-            <p style="margin-top: 2px;">No fluff, no endless videos. Just the plan, accountability, and support you need to finally ship.</p>
+            <p class="home-hero-note">No fluff, no endless videos. Just the plan, accountability, and support you need to finally ship.</p>
           </div>
           <div class="hero-right">
             <h3>For beginner solo devs stuck in tutorials</h3>
@@ -77,13 +71,13 @@
         </div>
       </div>
 
-      <section aria-labelledby="vsl-title" style="margin-top: 40px;" data-reveal>
+      <section aria-labelledby="vsl-title" class="home-vsl-section" data-reveal>
         <h2 id="vsl-title">Start here: how Smart Indie gets you to a finished game</h2>
         <p>In this short video I show you the exact 60 day plan my students use to go from tutorial hell to a finished, released game.</p>
         <div class="video-wrapper" aria-label="Smart Indie overview video">
           <iframe width="1840" height="1035" src="https://www.youtube.com/embed/UP7gjg_8YnM" title="Smart Indie Program Overview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
-        <div style="margin-top: 16px;">
+        <div class="home-vsl-cta">
           <a class="button primary" href="https://www.skool.com/smart-indie-6927/about?ref=6e183e0cb40b468289dc9bf659028fe2">Get the 60 day release plan</a>
         </div>
       </section>
@@ -109,7 +103,7 @@
         </div>
       </section>
 
-      <section id="what-is" aria-labelledby="what-title" style="margin-top: 50px;" data-reveal>
+      <section id="what-is" aria-labelledby="what-title" class="home-section-gap" data-reveal>
         <h2 id="what-title">What you get inside Smart Indie</h2>
         <p>Smart Indie gives you a clear, finish focused path from tutorials to a released game. You follow simple weekly sprints, use lightweight systems that save you hours, and get guidance so you stop restarting and actually finish.</p>
         <div class="benefits">
@@ -126,12 +120,12 @@
             <p>Checklists, feedback, and a community that keeps you moving when motivation drops so you do not quietly quit again.</p>
           </div>
         </div>
-        <div style="margin-top: 18px;">
+        <div class="home-what-cta">
           <a class="button primary" href="https://www.skool.com/smart-indie-6927/about?ref=6e183e0cb40b468289dc9bf659028fe2">Get the 60 day release plan</a>
         </div>
       </section>
 
-      <section aria-labelledby="guarantees-title" style="margin-top: 50px;" data-reveal>
+      <section aria-labelledby="guarantees-title" class="home-section-gap" data-reveal>
         <h2 id="guarantees-title">My personal guarantees and bonuses</h2>
         <p>Smart Indie is not just another course. It is a commitment that you will finally finish and release your first game. Here are the two promises I give every student, before we even talk about the bonuses.</p>
         <div class="promise-grid">
@@ -171,7 +165,7 @@
         </div>
       </section>
 
-      <section aria-labelledby="why-title" style="margin-top: 50px;" data-reveal>
+      <section aria-labelledby="why-title" class="home-section-gap" data-reveal>
         <h2 id="why-title">Why learn from me</h2>
         <p>I am Kevin, an indie dev and YouTuber who helps beginners stop binging tutorials and actually finish games.</p>
         <div class="trust-grid">
@@ -179,14 +173,14 @@
           <div class="card" data-reveal data-reveal-delay="60ms"><h3>Shipped the same type of games</h3><p>I build the same kind of focused, small games I teach you to build, so every lesson comes from real projects.</p></div>
           <div class="card" data-reveal data-reveal-delay="120ms"><h3>Students using the system</h3><p>Smart Indie members are finishing projects they had restarted for years by finally following one clear plan.</p></div>
         </div>
-        <p style="color: var(--muted);">I keep everything practical, simple, and focused on one goal: getting your first finished game out into the world.</p>
+        <p class="home-muted-copy">I keep everything practical, simple, and focused on one goal: getting your first finished game out into the world.</p>
       </section>
 
-      <section aria-labelledby="cta-strip-title" style="margin-top: 60px;" data-reveal>
+      <section aria-labelledby="cta-strip-title" class="home-cta-section" data-reveal>
         <div class="cta-strip">
           <div>
-            <h3 id="cta-strip-title" style="margin: 0 0 6px;">Ready to stop restarting and release a real game in the next 60 days?</h3>
-            <p style="margin: 0;">Smart Indie gives you the small scope plan, accountability, and my personal help so you finally ship your first game instead of watching more tutorials.</p>
+            <h3 id="cta-strip-title" class="home-cta-title">Ready to stop restarting and release a real game in the next 60 days?</h3>
+            <p class="home-cta-copy">Smart Indie gives you the small scope plan, accountability, and my personal help so you finally ship your first game instead of watching more tutorials.</p>
           </div>
           <a class="button primary" href="https://www.skool.com/smart-indie-6927/about?ref=6e183e0cb40b468289dc9bf659028fe2">Get the 60 day release plan</a>
         </div>
@@ -211,3 +205,4 @@
   <script src="/assets/js/global.js"></script>
 </body>
 </html>
+

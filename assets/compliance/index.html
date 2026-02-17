@@ -109,6 +109,10 @@
       margin-bottom: 68px;
     }
 
+    #get-it-now {
+      scroll-margin-top: 88px;
+    }
+
     #license-sale-terms a {
       color: var(--accent);
       text-decoration: underline;
@@ -348,6 +352,44 @@
       box-shadow: var(--shadow);
     }
 
+    .get-it-now-section {
+      display: grid;
+      gap: 16px;
+    }
+
+    .itch-embed-wrap {
+      width: 100%;
+    }
+
+    .itch-embed-dark {
+      display: none;
+    }
+
+    [data-theme="dark"] .itch-embed-light {
+      display: none;
+    }
+
+    [data-theme="dark"] .itch-embed-dark {
+      display: block;
+    }
+
+    .itch-embed-frame {
+      border: 0;
+      width: 100%;
+      max-width: none;
+      height: 184px;
+    }
+
+    .unity-store-link {
+      gap: 8px;
+    }
+
+    .unity-icon {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+    }
+
     .nav-cta {
       display: flex;
       align-items: center;
@@ -493,6 +535,24 @@
         display: none;
       }
 
+      .media-row {
+        padding: 0;
+        border: 0;
+        background: transparent;
+        box-shadow: none;
+        margin-left: calc(50% - 50vw + 10px);
+        margin-right: calc(50% - 50vw + 10px);
+      }
+
+      .media-row .product-image {
+        border-radius: 12px;
+      }
+
+      .media-row figcaption {
+        margin-top: 10px;
+        padding: 0 2px;
+      }
+
       main {
         padding-bottom: 140px;
       }
@@ -513,7 +573,7 @@
       </nav>
         <div class="nav-cta">
           <a class="button orange" href="/assets/compliance/docs/">Docs</a>
-          <a class="button primary" href="https://u3d.as/3PWR">Get it now</a>
+          <a class="button primary" href="#get-it-now">Get it now</a>
           <button
             class="theme-toggle"
             id="themeToggle"
@@ -538,7 +598,7 @@
           <h1>Stop the last minute license scramble before you ship.</h1>
           <p>Third-Party Notices & Credits: License Compliance for Unity is a Unity Editor tool that scans your project for third-party components and generates release-ready attribution artifacts you can actually ship.</p>
           <div class="cta-group">
-                <a class="button primary" href="https://u3d.as/3PWR">Get it on the Unity Asset Store</a>
+                <a class="button primary" href="#get-it-now">Get it now</a>
             <a class="button secondary" href="#demo">Watch demo</a>
           </div>
           <ul class="trust-list">
@@ -758,15 +818,23 @@
       </details>
     </section>
 
-    <section class="container reveal">
-      <div class="cta-strip">
-        <div>
-          <h2 class="section-title">Ready to stop last minute compliance chaos?</h2>
+    <section id="get-it-now" class="container reveal get-it-now-section">
+      <div>
+        <h2 class="section-title">Get it now</h2>
+      </div>
+      <div class="itch-embed-wrap" aria-label="itch.io checkout embed for Third-Party Notices and Credits Generator for Unity">
+        <div class="itch-embed-light">
+          <iframe class="itch-embed-frame" frameborder="0" src="https://itch.io/embed/4278616?linkback=true&amp;bg_color=FFFFFF&amp;fg_color=1C1D22&amp;link_color=2F6BF0&amp;border_color=E1E3E8" width="552" height="184"><a href="https://kevindevelopment.itch.io/compliance">Third-Party Notices &amp; Credits: License Compliance for Unity by Kevin Bjorvand</a></iframe>
         </div>
-        <div class="cta-group">
-            <a class="button primary" href="https://u3d.as/3PWR">Get it on the Unity Asset Store</a>
-          <a class="button secondary" href="#demo">Watch demo</a>
+        <div class="itch-embed-dark">
+          <iframe class="itch-embed-frame" frameborder="0" src="https://itch.io/embed/4278616?linkback=true&amp;bg_color=141B26&amp;fg_color=E8EDF5&amp;link_color=7BAEFF&amp;border_color=314051" width="552" height="184"><a href="https://kevindevelopment.itch.io/compliance">Third-Party Notices &amp; Credits: License Compliance for Unity by Kevin Bjorvand</a></iframe>
         </div>
+      </div>
+      <div class="cta-group">
+        <a class="button secondary unity-store-link" href="https://u3d.as/3PWR">
+          <img class="unity-icon" src="/assets/images/icons/UnityLogoPng.png" alt="Unity Asset Store icon">
+          <span>Get it on the Unity Asset Store</span>
+        </a>
       </div>
     </section>
   </main>
@@ -792,7 +860,7 @@
   </footer>
 
   <div class="mobile-cta" aria-label="Mobile call to action">
-    <a class="button primary" href="https://u3d.as/3PWR">Get it on the Unity Asset Store</a>
+    <a class="button primary" href="#get-it-now">Get it now</a>
   </div>
 
   <script src="/assets/compliance/theme-toggle.js"></script>

@@ -546,12 +546,14 @@ p {
 
 .game-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: 1fr;
   gap: 16px;
+  align-items: stretch;
 }
 
-.game-grid--fixed {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+.game-grid--three,
+.game-grid--four {
+  grid-template-columns: 1fr;
 }
 
 .game-card {
@@ -559,6 +561,7 @@ p {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  height: 100%;
 }
 
 .game-actions {
@@ -583,7 +586,12 @@ p {
   border-radius: 12px;
   border: 1px solid var(--border);
   object-fit: cover;
+  display: block;
   box-shadow: var(--shadow);
+}
+
+.game-banner--stretch {
+  object-fit: fill;
 }
 
 .game-placeholder {
@@ -596,6 +604,42 @@ p {
   justify-content: center;
   color: var(--muted);
   font-weight: 700;
+}
+
+.prototype-details {
+  margin-top: 26px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+.prototype-details summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  list-style: none;
+  cursor: pointer;
+}
+
+.prototype-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.prototype-details summary h2 {
+  margin: 0;
+}
+
+.prototype-summary-meta {
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.prototype-subtext {
+  margin: 12px 0 18px;
 }
 
 .idea-generator {
@@ -1118,6 +1162,11 @@ footer {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .game-grid--three,
+  .game-grid--four {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .nav-links {
     display: flex;
   }
@@ -1157,13 +1206,24 @@ footer {
   }
 }
 
+@media (min-width: 980px) {
+  .game-grid--three {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .game-grid--four {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 719px) {
   nav {
     display: none;
   }
 
-  .game-grid--fixed {
-    grid-template-columns: 1fr;
+  .prototype-details summary {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   main {

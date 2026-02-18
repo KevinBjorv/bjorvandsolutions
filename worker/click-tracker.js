@@ -1,4 +1,4 @@
-const DEFAULT_TARGET = 'https://www.skool.com/smart-indie-6927/about?ref=6e183e0cb40b468289dc9bf659028fe2';
+const DEFAULT_TARGET = 'https://www.skool.com/smart-indie-6927';
 const DEFAULT_SOURCE = 'website';
 
 const SOURCE_ALIASES = new Map([
@@ -44,12 +44,14 @@ export default {
     const source = resolveSource(url, pathname);
     const target = env.SKOOL_TARGET || DEFAULT_TARGET;
 
-    trackClick(request, env, {
-      source,
-      target,
-      path: url.pathname,
-      host: url.host
-    });
+    if (request.method === 'GET') {
+      trackClick(request, env, {
+        source,
+        target,
+        path: url.pathname,
+        host: url.host
+      });
+    }
 
     return new Response(null, {
       status: 302,

@@ -43,3 +43,26 @@ In the Cloudflare dashboard (Security → WAF):
 - Verify failed Turnstile responses return HTTP 400 and show the on-page error.
 - Trigger more than 10 submissions from one IP within 5 minutes to confirm HTTP 429 from the Worker.
 - Confirm a successful submission returns HTTP 200 and that the email appears in MailerLite under Subscribers (and in the specified Group if `GROUP_ID` is set).
+
+---
+
+# Cloudflare Click Tracking Redirect Worker
+
+This Worker tracks click sources in Analytics Engine and redirects to the Skool CTA URL.
+
+## Files
+- `worker/click-tracker.js`
+- `wrangler.click-tracker.toml`
+- `CLICK_TRACKING.md`
+
+## Deploy
+```bash
+npx wrangler whoami
+npx wrangler deploy --config wrangler.click-tracker.toml
+```
+
+## Tracked Source URLs
+- `https://go.smartindie.dev/s/youtube-video`
+- `https://go.smartindie.dev/s/email`
+- `https://go.smartindie.dev/s/website`
+- `https://go.smartindie.dev/s/youtube-profile`

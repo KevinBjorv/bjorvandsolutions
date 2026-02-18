@@ -10,10 +10,10 @@ This project now includes a dedicated redirect tracker Worker that:
 
 ## Source Links
 Use these links in each channel:
-- YouTube video: `https://go.smartindie.dev/s/youtube-video`
+- YouTube video: `https://go.smartindie.dev/youtube`
 - Email: `https://go.smartindie.dev/s/email`
 - Website: `https://go.smartindie.dev/s/website`
-- YouTube profile: `https://go.smartindie.dev/s/youtube-profile`
+- YouTube profile: `https://go.smartindie.dev/bio`
 
 All website CTA links in this repo now point to the website source link above.
 

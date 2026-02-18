@@ -2,16 +2,25 @@ const DEFAULT_TARGET = 'https://www.skool.com/smart-indie-6927/about?ref=6e183e0
 const DEFAULT_SOURCE = 'website';
 
 const SOURCE_ALIASES = new Map([
+  ['youtube', 'youtube-video'],
   ['youtube-video', 'youtube-video'],
   ['youtubevideo', 'youtube-video'],
   ['yt-video', 'youtube-video'],
   ['ytvideo', 'youtube-video'],
   ['email', 'email'],
+  ['bio', 'youtube-profile'],
   ['website', 'website'],
   ['youtube-profile', 'youtube-profile'],
   ['youtubeprofile', 'youtube-profile'],
   ['yt-profile', 'youtube-profile'],
   ['ytprofile', 'youtube-profile']
+]);
+
+const SOURCE_PATHS = new Map([
+  ['/youtube', 'youtube-video'],
+  ['/bio', 'youtube-profile'],
+  ['/website', 'website'],
+  ['/email', 'email']
 ]);
 
 export default {
@@ -61,6 +70,11 @@ function stripTrailingSlash(pathname) {
 }
 
 function resolveSource(url, pathname) {
+  const pathSource = SOURCE_PATHS.get(pathname);
+  if (pathSource) {
+    return pathSource;
+  }
+
   let rawSource = '';
 
   if (pathname.startsWith('/s/')) {

@@ -62,7 +62,7 @@ npx wrangler deploy --config wrangler.click-tracker.toml
 ```
 
 ## Tracked Source URLs
-- `https://go.smartindie.dev/s/youtube-video`
+- `https://go.smartindie.dev/youtube`
 - `https://go.smartindie.dev/s/email`
 - `https://go.smartindie.dev/s/website`
-- `https://go.smartindie.dev/s/youtube-profile`
+- `https://go.smartindie.dev/bio`

@@ -50,7 +50,7 @@
           <p>Build Size Guard captures snapshots after builds, diffs snapshots, enforces budgets, and generates CI-friendly report artifacts with deterministic exit codes.</p>
           <div class="cta-group">
             <a class="button primary" href="https://assetstore.unity.com/packages/slug/361332">Get it on the Unity Asset Store</a>
-            <a class="button secondary" href="#demo">View draft demo section</a>
+            <a class="button secondary" href="#demo">View product highlights</a>
           </div>
           <ul class="trust-list">
             <li>Automatic snapshot capture from Unity BuildReport</li>
@@ -59,13 +59,17 @@
             <li>CI batchmode runner with stable exit codes and optional JSON/Markdown reports</li>
           </ul>
         </div>
-        <figure class="card">
-          <div class="image-slot" role="img" aria-label="Placeholder for Build Size Guard overview screenshot" data-gallery-item>
-            Placeholder screenshot slot
-            <br>
-            Overview card / main editor window
-          </div>
-          <figcaption class="muted">Placeholder for the final hero screenshot.</figcaption>
+        <figure class="card media-card">
+          <img
+            class="marketing-image"
+            src="/assets/images/BuildSizeGuard/BuildSizeGuardMarketing/Build%20size%20guard%20cover%20image.jpg"
+            alt="Build Size Guard overview marketing image showing the tool and key value points."
+            data-gallery-item
+            data-gallery-caption="Build Size Guard overview marketing image."
+            loading="eager"
+            fetchpriority="high"
+          >
+          <figcaption class="muted">Build Size Guard overview marketing image.</figcaption>
         </figure>
       </div>
     </section>
@@ -105,33 +109,32 @@
     </section>
 
     <section id="outputs" class="container reveal">
-      <div class="grid-two">
+      <h2 class="section-title">What you get (generated artifacts)</h2>
+      <div class="outputs-list">
         <div>
-          <h2 class="section-title">What you get (generated artifacts)</h2>
-          <div class="outputs-list">
-            <div>
-              <h3>Snapshots (`*.json`)</h3>
-              <p>Stored under the configured data root (default `BuildSizeGuardData/snapshots/`) with build identifiers, size metrics, and contributor/grouped totals.</p>
-            </div>
-            <div>
-              <h3>Reports (`*.json`, `*.md`)</h3>
-              <p>Optional report outputs for CI artifacts and review workflows (default `BuildSizeGuardData/reports/`).</p>
-            </div>
-            <div>
-              <h3>Latest passing index</h3>
-              <p>Baseline index file (`BuildSizeGuardData/latest_passing_snapshots.json`) used for `latestPassing` resolution in CI.</p>
-            </div>
-          </div>
+          <h3>Snapshots (`*.json`)</h3>
+          <p>Stored under the configured data root (default `BuildSizeGuardData/snapshots/`) with build identifiers, size metrics, and contributor/grouped totals.</p>
         </div>
-        <figure class="card">
-          <div class="image-slot short" role="img" aria-label="Placeholder for outputs screenshot" data-gallery-item>
-            Placeholder screenshot slot
-            <br>
-            Snapshots and reports view
-          </div>
-          <figcaption class="muted">Placeholder for snapshots/reports output screenshot.</figcaption>
-        </figure>
+        <div>
+          <h3>Reports (`*.json`, `*.md`)</h3>
+          <p>Optional report outputs for CI artifacts and review workflows (default `BuildSizeGuardData/reports/`).</p>
+        </div>
+        <div>
+          <h3>Latest passing index</h3>
+          <p>Baseline index file (`BuildSizeGuardData/latest_passing_snapshots.json`) used for `latestPassing` resolution in CI.</p>
+        </div>
       </div>
+      <figure class="card media-card media-card--spacious">
+        <img
+          class="marketing-image"
+          src="/assets/images/BuildSizeGuard/BuildSizeGuardMarketing/Export%20summary%20to%20file%20formats.jpg"
+          alt="Build Size Guard marketing image focused on exporting summaries and report outputs."
+          data-gallery-item
+          data-gallery-caption="Export summary and report outputs."
+          loading="lazy"
+        >
+        <figcaption class="muted">Export summary and report outputs.</figcaption>
+      </figure>
     </section>
 
     <section id="how-it-works" class="container reveal">
@@ -168,39 +171,53 @@
     </section>
 
     <section class="container reveal">
-      <div class="grid-two">
-        <div>
-          <h2 class="section-title">CI / batchmode runner</h2>
-          <p>Batchmode execute method:</p>
-          <pre><code>BuildSizeGuard.Editor.Cli.BuildSizeGuardBatchRunner.Run</code></pre>
-          <p>CLI supports baseline/current selection, match mode, optional report paths/prefix, and violation fail behavior.</p>
-          <p>Exit codes:</p>
-          <ul>
-            <li>`0`: success</li>
-            <li>`2`: budget/regression violation (with failure enabled)</li>
-            <li>`3`-`7`: argument, baseline, load, write, or runtime error states</li>
-          </ul>
+      <h2 class="section-title">CI / batchmode runner</h2>
+      <p>Batchmode execute method:</p>
+      <pre><code>BuildSizeGuard.Editor.Cli.BuildSizeGuardBatchRunner.Run</code></pre>
+      <p>CLI supports baseline/current selection, match mode, optional report paths/prefix, and violation fail behavior.</p>
+      <p>Exit codes:</p>
+      <ul>
+        <li>`0`: success</li>
+        <li>`2`: budget/regression violation (with failure enabled)</li>
+        <li>`3`-`7`: argument, baseline, load, write, or runtime error states</li>
+      </ul>
+      <figure class="card media-card media-card--spacious">
+        <div class="feature-image-stack">
+          <img
+            class="marketing-image"
+            src="/assets/images/BuildSizeGuard/BuildSizeGuardMarketing/Compare%20any%20two%20builds%20in%20seconds.jpg"
+            alt="Build Size Guard marketing image showing rapid comparison between two builds."
+            data-gallery-item
+            data-gallery-caption="Compare any two builds in seconds."
+            loading="lazy"
+          >
+          <img
+            class="marketing-image"
+            src="/assets/images/BuildSizeGuard/BuildSizeGuardMarketing/Track%20regressions%20per%20build%20target.jpg"
+            alt="Build Size Guard marketing image showing regression tracking by build target."
+            data-gallery-item
+            data-gallery-caption="Track regressions per build target."
+            loading="lazy"
+          >
         </div>
-        <figure class="card">
-          <div class="diff-images">
-            <div class="image-slot short" role="img" aria-label="Placeholder for baseline snapshot selection screenshot" data-gallery-item>Placeholder slot<br>Baseline selection</div>
-            <div class="image-slot short" role="img" aria-label="Placeholder for diff results screenshot" data-gallery-item>Placeholder slot<br>Diff results</div>
-          </div>
-          <figcaption class="muted">Placeholders for baseline/current compare screenshots.</figcaption>
-        </figure>
-      </div>
+        <figcaption class="muted">Compare builds quickly and track regressions by build target.</figcaption>
+      </figure>
     </section>
 
     <section id="demo" class="container reveal">
-      <h2 class="section-title">Demo</h2>
-      <p>Demo media placeholder. Add video embed or walkthrough recording here when ready.</p>
-      <div class="card">
-        <div class="image-slot tall" role="img" aria-label="Placeholder for demo video area" data-gallery-item>
-          Demo placeholder slot
-          <br>
-          (video embed coming soon)
-        </div>
-      </div>
+      <h2 class="section-title">Highlights</h2>
+      <p>A focused visual summary of the core workflow and the regression guardrail intent.</p>
+      <figure class="card media-card media-card--spacious">
+        <img
+          class="marketing-image"
+          src="/assets/images/BuildSizeGuard/BuildSizeGuardMarketing/Stop%20build%20size%20regressions%20before%20they%20ship.jpg"
+          alt="Build Size Guard marketing image emphasizing stopping size regressions before release."
+          data-gallery-item
+          data-gallery-caption="Stop build size regressions before they ship."
+          loading="lazy"
+        >
+        <figcaption class="muted">Stop build size regressions before they ship.</figcaption>
+      </figure>
     </section>
 
     <section class="container reveal">

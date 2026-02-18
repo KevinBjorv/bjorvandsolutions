@@ -590,6 +590,10 @@ p {
   box-shadow: var(--shadow);
 }
 
+.game-banner--build-size-guard {
+  height: 220px;
+}
+
 .game-banner--stretch {
   object-fit: fill;
 }

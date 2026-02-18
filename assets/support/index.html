@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assets Support | Bjorvand Solutions</title>
+  <meta name="description" content="Support for Bjorvand Solutions assets, including Build Size Guard and Third-Party Notices &amp; Credits: License Compliance for Unity.">
+  <script src="/assets/compliance/theme-init.js"></script>
+  <link rel="stylesheet" href="/assets/compliance/styles.css">
+  <style>
+    .support-note ul {
+      margin: 0;
+      padding-left: 18px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .support-note a,
+    .docs-grid a,
+    .contact-email a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .support-note a:hover,
+    .docs-grid a:hover,
+    .contact-email a:hover {
+      color: var(--accent-dark);
+    }
+
+    .docs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .docs-grid .card {
+      display: grid;
+      gap: 14px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container top-nav">
+      <a class="brand" href="/games/">Bjorvand Solutions Assets</a>
+      <nav class="nav-links" aria-label="Page">
+        <a href="#support-overview">Overview</a>
+        <a href="#tool-docs">Tool docs</a>
+        <a href="#contact-support">Contact</a>
+      </nav>
+      <div class="nav-cta">
+        <a class="button secondary" href="/games/">All assets</a>
+        <button
+          class="theme-toggle"
+          id="themeToggle"
+          type="button"
+          aria-label="Switch to dark mode"
+          aria-pressed="false"
+          data-sun-icon="/assets/compliance/sun-svgrepo-com.svg"
+          data-moon-icon="/assets/compliance/moon-svgrepo-com.svg"
+        >
+          <img class="theme-toggle-icon" src="/assets/compliance/moon-svgrepo-com.svg" alt="Moon icon for dark mode toggle">
+          <span class="theme-toggle-label">Dark</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="support-overview" class="container reveal">
+      <div class="hero">
+        <div>
+          <div class="price-badge">Assets support</div>
+          <h1>Dedicated support for Bjorvand Solutions assets</h1>
+          <p>This page is solely for asset support and is not related to the Smart Indie course, even though the contact form and email are the same.</p>
+          <p>You can contact support for pre-purchase questions, issues with your assets, feature requests, business inquiries, and any other asset-related requests.</p>
+          <ul class="trust-list">
+            <li>Expected reply time is under 48 hours.</li>
+            <li>Support goes directly to Kevin.</li>
+            <li>Email and form submissions reach the same inbox.</li>
+          </ul>
+        </div>
+        <div class="card support-note">
+          <h2 class="section-title">Quick links</h2>
+          <ul>
+            <li><a href="/assets/build-size-guard/">Build Size Guard product page</a></li>
+            <li><a href="/assets/compliance/">Third-Party Notices &amp; Credits product page</a></li>
+            <li><a href="#contact-support">Jump to contact form</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="tool-docs" class="container reveal">
+      <h2 class="section-title">Documentation for all current asset tools</h2>
+      <div class="docs-grid">
+        <article class="card">
+          <h3>Build Size Guard docs</h3>
+          <p>Read setup, workflows, CLI usage, snapshot/diff behavior, budget policies, and troubleshooting details.</p>
+          <a class="button secondary" href="/assets/build-size-guard/docs/">Open Build Size Guard docs</a>
+        </article>
+        <article class="card">
+          <h3>Compliance tool docs</h3>
+          <p>Read scan scope, rule behavior, export formats, verification flow, and release-check integration guidance.</p>
+          <a class="button secondary" href="/assets/compliance/docs/">Open Compliance docs</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact-support" class="container reveal">
+      <h2 class="section-title">Contact support</h2>
+      <p class="contact-email"><strong>Email:</strong> <a href="mailto:kevin@smartindie.dev">kevin@smartindie.dev</a></p>
+      <p>Expected reply time: under 48 hours.</p>
+      <p>Use the embedded contact form below for asset-related support requests.</p>
+      <form class="contact-form" action="https://formspree.io/f/xeoylwlp" method="POST">
+        <label>
+          <span>Name</span>
+          <input type="text" name="name" placeholder="Your name" required>
+        </label>
+        <label>
+          <span>Email</span>
+          <input type="email" name="email" placeholder="you@example.com" required>
+        </label>
+        <label>
+          <span>Message</span>
+          <textarea name="message" placeholder="How can I help with your assets?" required></textarea>
+        </label>
+        <button class="button primary" type="submit">Send message</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <div class="footer-title">Bjorvand Solutions Assets Support</div>
+          <p class="muted">Support for Build Size Guard and Third-Party Notices &amp; Credits: License Compliance for Unity.</p>
+        </div>
+        <div class="footer-links">
+          <a href="/assets/build-size-guard/">Build Size Guard</a>
+          <a href="/assets/build-size-guard/docs/">Build Size Guard docs</a>
+          <a href="/assets/compliance/">Compliance tool</a>
+          <a href="/assets/compliance/docs/">Compliance docs</a>
+          <a href="/games/">More Unity tools</a>
+          <a href="/">Homepage</a>
+        </div>
+        <div class="muted">Assets only support channel. Not for Smart Indie course support.</div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="mobile-cta" aria-label="Mobile call to action">
+    <a class="button primary" href="#contact-support">Contact support</a>
+  </div>
+
+  <script src="/assets/compliance/theme-toggle.js"></script>
+  <script src="/assets/compliance/reveal.js"></script>
+</body>
+</html>

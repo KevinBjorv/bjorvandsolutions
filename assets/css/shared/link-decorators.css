@@ -1,0 +1,48 @@
+.link-with-platform-icon,
+.link-with-external-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.dropdown a.link-with-platform-icon,
+.dropdown a.link-with-external-indicator,
+.mobile-nav-group a.link-with-platform-icon,
+.mobile-nav-group a.link-with-external-indicator,
+.link-list a.link-with-platform-icon,
+.link-list a.link-with-external-indicator {
+  display: flex;
+}
+
+.platform-icon,
+.external-link-indicator {
+  width: 0.95rem;
+  height: 0.95rem;
+  flex: 0 0 auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.platform-icon--unity {
+  width: 1rem;
+  height: 1rem;
+}
+
+.platform-icon--itch {
+  width: 1.03rem;
+  height: 1.03rem;
+}
+
+.platform-icon--google-play {
+  width: 0.98rem;
+  height: 0.98rem;
+}
+
+.platform-icon--apple-app-store {
+  width: 0.88rem;
+  height: 0.88rem;
+}
+
+.external-link-indicator {
+  opacity: 0.82;
+}

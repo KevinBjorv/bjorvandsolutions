@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bjorvand Solutions | Tools, Games, Smart Indie, Socials, Support</title>
-  <meta name="description" content="Bjorvand Solutions hub for Unity tools, game links, Smart Indie destinations, social channels, and support.">
-  <link rel="canonical" href="/">
+  <title>Support | Bjorvand Solutions</title>
+  <meta name="description" content="Unified support page for Bjorvand Solutions tools and Smart Indie routing, including support form and FAQ.">
+  <link rel="canonical" href="/support/">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="/assets/css/site/base.css">
   <link rel="stylesheet" href="/assets/css/site/layout.css">
   <link rel="stylesheet" href="/assets/css/site/components.css">
-  <link rel="stylesheet" href="/assets/css/site/pages/home.css">
+  <link rel="stylesheet" href="/assets/css/site/pages/support.css">
   <link rel="stylesheet" href="/assets/css/shared/link-decorators.css">
   <link rel="stylesheet" href="/assets/css/shared/typography-overrides.css">
 </head>
@@ -115,7 +115,7 @@
             </div>
           </li>
           <li class="menu-item">
-            <a class="menu-link" href="/support/" data-nav-trigger="support" aria-haspopup="menu" aria-expanded="false" aria-controls="menu-support">Support <span class="menu-chevron" aria-hidden="true">v</span></a>
+            <a class="menu-link" aria-current="page" href="/support/" data-nav-trigger="support" aria-haspopup="menu" aria-expanded="false" aria-controls="menu-support">Support <span class="menu-chevron" aria-hidden="true">v</span></a>
             <div class="dropdown" id="menu-support" data-nav-menu="support" role="menu" aria-label="Support links">
               <a role="menuitem" href="/support/">Support Overview</a>
               <a role="menuitem" href="/support/#tools-support">Tool Support</a>
@@ -215,130 +215,98 @@
   <main class="site-main">
     <section class="page-section container reveal">
       <div class="hero">
-        <div class="badge">Bjorvand Solutions Hub</div>
-        <h1>Tools, game destinations, and support in one clear navigation system.</h1>
-        <p class="hero-note">This website is the primary hub for Bjorvand Solutions Unity tools and support. Smart Indie remains a separate domain and is linked through dedicated bridge pages and outbound destinations.</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="/tools/">Browse Tools</a>
-          <a class="button button-secondary" href="/support/">Get Support</a>
+        <div class="badge">Unified Support</div>
+        <h1>Route tool questions and Smart Indie requests clearly.</h1>
+        <p>This page separates support paths so users can quickly send tool-related requests to Bjorvand Solutions and use Smart Indie-specific destinations for Smart Indie topics.</p>
+      </div>
+    </section>
+
+    <section class="page-section container reveal support-lanes" aria-labelledby="support-lanes-title">
+      <h2 id="support-lanes-title" class="sr-only">Support lanes</h2>
+      <article class="card" id="tools-support">
+        <h2>Tool Support</h2>
+        <p>Use this form for Bjorvand Solutions tool questions, setup issues, and license/documentation clarifications.</p>
+        <form class="form-grid" action="https://formspree.io/f/xeoylwlp" method="POST">
+          <label for="support-name">Name
+            <input id="support-name" name="name" type="text" autocomplete="name" required>
+          </label>
+          <label for="support-email">Email
+            <input id="support-email" name="email" type="email" autocomplete="email" required>
+          </label>
+          <label for="support-topic">Product / Topic
+            <select id="support-topic" name="topic" required>
+              <option value="">Select a product/topic</option>
+              <option value="Build Size Guard">Build Size Guard</option>
+              <option value="Third-Party Notices & Credits">Third-Party Notices &amp; Credits</option>
+              <option value="Import Settings Validator & Fix">Import Settings Validator &amp; Fix</option>
+              <option value="General Tool Question">General Tool Question</option>
+            </select>
+          </label>
+          <label for="support-reference">Order / Reference ID (optional)
+            <input id="support-reference" name="reference" type="text" autocomplete="off">
+          </label>
+          <label for="support-message">Message
+            <textarea id="support-message" name="message" required></textarea>
+          </label>
+          <button class="button button-primary" type="submit">Send Support Request</button>
+          <p class="form-note">If the form fails, email <a href="mailto:kevin@smartindie.dev">kevin@smartindie.dev</a>.</p>
+        </form>
+      </article>
+
+      <article class="card" id="smart-indie-support">
+        <h2>Smart Indie Support</h2>
+        <p>For Smart Indie product/content questions, use Smart Indie support destinations directly.</p>
+        <ul class="link-list">
+          <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/about-contact/">Smart Indie About &amp; Contact</a></li>
+          <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/faq/">Smart Indie FAQ</a></li>
+          <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/email-updates/">Smart Indie Email Updates</a></li>
+        </ul>
+        <div class="card-actions">
+          <a class="button button-secondary" href="/smart-indie/">Smart Indie Bridge Page</a>
         </div>
-      </div>
+      </article>
     </section>
 
-    <section class="page-section container reveal" aria-labelledby="hub-sections-title">
+    <section class="page-section container reveal" aria-labelledby="docs-shortcuts-title">
       <div class="section-head">
-        <h2 id="hub-sections-title">Main Sections</h2>
-        <p>Use these section hubs to navigate quickly based on what you need.</p>
+        <h2 id="docs-shortcuts-title">Self-Service Documentation</h2>
       </div>
-      <div class="hub-grid">
-        <article class="card hub-card">
-          <h2>Tools</h2>
-          <p>Unity tool pages, docs, license terms, and store links.</p>
-          <div class="card-actions"><a class="button button-secondary" href="/tools/">Open Tools</a></div>
+      <div class="support-doc-grid card-list">
+        <article class="card">
+          <h3>Build Size Guard Docs</h3>
+          <p>Setup, snapshot workflows, CI options, and troubleshooting.</p>
+          <div class="card-actions"><a class="button button-secondary" href="/assets/build-size-guard/docs/">Open Docs</a></div>
         </article>
-        <article class="card hub-card">
-          <h2>Games</h2>
-          <p>Current game releases and prototype links from Smart Indie channels.</p>
-          <div class="card-actions"><a class="button button-secondary" href="/games/">Open Games</a></div>
+        <article class="card">
+          <h3>Compliance Docs</h3>
+          <p>Scan behavior, outputs, and deterministic compliance workflow details.</p>
+          <div class="card-actions"><a class="button button-secondary" href="/assets/compliance/docs/">Open Docs</a></div>
         </article>
-        <article class="card hub-card">
-          <h2>Smart Indie</h2>
-          <p>Bridge page with direct links to Smart Indie website destinations.</p>
-          <div class="card-actions"><a class="button button-secondary" href="/smart-indie/">Open Smart Indie</a></div>
-        </article>
-        <article class="card hub-card">
-          <h2>Socials</h2>
-          <p>Platform links for updates, videos, and short-form posts.</p>
-          <div class="card-actions"><a class="button button-secondary" href="/socials/">Open Socials</a></div>
-        </article>
-        <article class="card hub-card">
-          <h2>Support</h2>
-          <p>Tool support form, Smart Indie routing guidance, and FAQs.</p>
-          <div class="card-actions"><a class="button button-secondary" href="/support/">Open Support</a></div>
+        <article class="card">
+          <h3>Import Validator Docs</h3>
+          <p>Placeholder technical docs and structure for importer workflow support.</p>
+          <div class="card-actions"><a class="button button-secondary" href="/assets/import-settings-validator-fix/docs/">Open Docs</a></div>
         </article>
       </div>
     </section>
 
-    <section class="page-section container reveal" aria-labelledby="featured-tools-title">
+    <section class="page-section container reveal" id="faq" aria-labelledby="support-faq-title">
       <div class="section-head">
-        <h2 id="featured-tools-title">Featured Tools</h2>
-        <p>Current Unity tool pages maintained under the Bjorvand Solutions site structure.</p>
+        <h2 id="support-faq-title">Support FAQ</h2>
       </div>
-      <div class="feature-grid card-list">
-        <article class="card">
-          <h3>Build Size Guard</h3>
-          <p>Detect and prevent build size regressions with snapshots, diffs, and CI-friendly reporting.</p>
-          <div class="card-actions">
-            <a class="button button-primary" href="/assets/build-size-guard/">Product Page</a>
-            <a class="button button-secondary" href="/assets/build-size-guard/docs/">Docs</a>
-            <a class="button button-secondary" href="/assets/build-size-guard/license/">License</a>
-          </div>
-        </article>
-        <article class="card">
-          <h3>Third-Party Notices &amp; Credits</h3>
-          <p>Generate deterministic notices, credits, and compliance manifests for Unity release workflows.</p>
-          <div class="card-actions">
-            <a class="button button-primary" href="/assets/compliance/">Product Page</a>
-            <a class="button button-secondary" href="/assets/compliance/docs/">Docs</a>
-            <a class="button button-secondary" href="/assets/compliance/license/">License</a>
-          </div>
-        </article>
-        <article class="card">
-          <h3>Import Settings Validator &amp; Fix</h3>
-          <p>Enforce importer standards and fix project drift with deterministic rule-based workflows.</p>
-          <div class="card-actions">
-            <a class="button button-primary" href="/assets/import-settings-validator-fix/">Product Page</a>
-            <a class="button button-secondary" href="/assets/import-settings-validator-fix/docs/">Docs</a>
-            <a class="button button-secondary" href="/assets/import-settings-validator-fix/license/">License</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="page-section container reveal" aria-labelledby="featured-games-title">
-      <div class="section-head">
-        <h2 id="featured-games-title">Featured Games</h2>
-        <p>Published and prototype game entries are sourced from Smart Indie channels. Catalog snapshot: <span data-catalog-date>February 27, 2026</span>.</p>
-      </div>
-      <div class="feature-grid card-list">
-        <article class="card">
-          <h3>Orbital Chaos</h3>
-          <p>Mobile release with a dedicated landing page and official store links.</p>
-          <div class="card-actions">
-            <a class="button button-primary" href="/games/orbital-chaos/">Homepage</a>
-            <a class="button button-secondary" target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.kevinbjorvand.orbitalchaos">Google Play</a>
-            <a class="button button-secondary" target="_blank" rel="noopener noreferrer" href="https://apps.apple.com/us/app/orbital-chaos/id6754812237">App Store</a>
-          </div>
-        </article>
-        <article class="card">
-          <h3>NeonSurge 2</h3>
-          <p>Current NeonSurge sequel with a dedicated landing page.</p>
-          <div class="card-actions">
-            <a class="button button-primary" href="/games/neonsurge-2/">Homepage</a>
-            <a class="button button-secondary" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge-2">Open on itch.io</a>
-          </div>
-        </article>
-        <article class="card">
-          <h3>NeonSurge</h3>
-          <p>Original NeonSurge release with a dedicated landing page.</p>
-          <div class="card-actions">
-            <a class="button button-primary" href="/games/neonsurge/">Homepage</a>
-            <a class="button button-secondary" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge">Open on itch.io</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="page-section container reveal">
-      <div class="cta-strip">
-        <div>
-          <h2>Need product docs, links, or support fast?</h2>
-          <p class="muted">Use the dedicated tools and support hubs for the most direct path.</p>
-        </div>
-        <div class="hero-actions">
-          <a class="button button-primary" href="/tools/">Go to Tools</a>
-          <a class="button button-secondary" href="/support/">Go to Support</a>
-        </div>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Where should I ask tool-specific setup or bug questions?</summary>
+          <p>Use the Tool Support form on this page under the Tool Support lane.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Where should I ask Smart Indie game or content questions?</summary>
+          <p>Use Smart Indie support destinations via About &amp; Contact or Smart Indie FAQ.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I send support by email instead of the form?</summary>
+          <p>Yes. Use <a href="mailto:kevin@smartindie.dev">kevin@smartindie.dev</a> as fallback if the form is unavailable.</p>
+        </details>
       </div>
     </section>
   </main>

@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unity license compliance documentation</title>
+  <meta name="description" content="Documentation for Unity license compliance, a Unity Editor tool that scans third-party components and generates compliance artifacts.">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+  <link rel="icon" href="/assets/favicon/favicon.ico">
+  <link rel="manifest" href="/assets/favicon/site.webmanifest">
+  <link rel="stylesheet" href="/assets/css/products/product-docs.css">
+    <script src="/assets/js/theme/theme-init.js"></script>
+  <link rel="stylesheet" href="/assets/css/shared/link-decorators.css">
+  <link rel="stylesheet" href="/assets/css/shared/typography-overrides.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="/assets/compliance/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Unity license compliance docs</span>
+      </a>
+      <div class="top-actions">
+        <a class="button button-secondary" href="/assets/compliance/">Product page</a>
+        <a class="button button-primary" href="https://u3d.as/3PWR">Unity Asset Store</a>
+</div>
+    </div>
+  </header>
+
+  <div class="shell layout">
+    <aside class="sidebar" aria-label="Documentation navigation">
+      <h2>Documentation</h2>
+      <p>Technical behavior based on the repository implementation.</p>
+      <label class="search-label" for="docSearch">Search</label>
+      <input class="search-input" type="search" id="docSearch" placeholder="Search scanners, overrides, build hook..." autocomplete="off">
+      <p class="search-status" id="searchStatus">Showing 15 sections</p>
+      <nav class="sidebar-nav" id="sidebarNav">
+        <a class="sidebar-link" href="#overview">Overview</a>
+        <a class="sidebar-link" href="#what-you-get">What You Get</a>
+        <a class="sidebar-link" href="#feature-summary">Feature Summary</a>
+        <a class="sidebar-link" href="#installation">Installation</a>
+        <a class="sidebar-link" href="#quick-start">Quick Start</a>
+        <a class="sidebar-link" href="#scanner-detection">Scanner and Detection</a>
+        <a class="sidebar-link" href="#license-resolution">License Resolution Rules</a>
+        <a class="sidebar-link" href="#validation-required-fields">Validation and Required Fields</a>
+        <a class="sidebar-link" href="#overrides-manual-entries">Overrides and Manual Entries</a>
+        <a class="sidebar-link" href="#build-integration">Build Integration</a>
+        <a class="sidebar-link" href="#configuration-settings">Configuration and Settings</a>
+        <a class="sidebar-link" href="#output-formats">Output Format Details</a>
+        <a class="sidebar-link" href="#editor-ui-reference">Editor UI Reference</a>
+        <a class="sidebar-link" href="#package-import-monitor">Package Import Monitor</a>
+        <a class="sidebar-link" href="#determinism-diff-stability">Determinism and Diff Stability</a>
+      </nav>
+    </aside>
+
+    <main class="content" id="docContent">
+      <section class="doc-card" id="overview" data-section>
+        <h1>Third-Party Notices &amp; Credits: License Compliance for Unity - Technical Documentation</h1>
+        <p class="lead">Third-Party Notices &amp; Credits: License Compliance for Unity is a Unity Editor tool for detecting third-party components and generating compliance artifacts.</p>
+        <h3>Primary code locations</h3>
+        <ul>
+          <li><code>Assets/GameCompliancePack/Compliance/Editor</code> (editor logic)</li>
+          <li><code>Assets/GameCompliancePack/Compliance/Runtime</code> (runtime model/logic)</li>
+        </ul>
+        <p class="muted-note">Asset was developed and tested using Unity editor version <code>6000.3.5f2</code>.</p>
+      </section>
+
+      <section class="doc-card" id="what-you-get" data-section>
+        <h2>What You Get</h2>
+        <p>On export, the tool writes artifacts to <code>Settings.outputDirectory</code> (default <code>Compliance</code>).</p>
+        <h3>Default outputs</h3>
+        <ul>
+          <li><code>THIRD_PARTY_NOTICES.txt</code></li>
+          <li><code>CREDITS.md</code></li>
+          <li><code>compliance-manifest.json</code></li>
+          <li><code>compliance-overrides.json</code> (saved when overrides/manual entries change)</li>
+        </ul>
+        <h3>Output purpose</h3>
+        <ul>
+          <li><code>THIRD_PARTY_NOTICES.txt</code>: per-component notice blocks with license text or explicit UNKNOWN/incomplete placeholders.</li>
+          <li><code>CREDITS.md</code>: concise attribution list for credits pages.</li>
+          <li><code>compliance-manifest.json</code>: machine-readable manifest of component metadata and resolved license state.</li>
+          <li><code>compliance-overrides.json</code>: persistent manual decisions, manual entries, and package import monitor rules.</li>
+        </ul>
+      </section>
+
+      <section class="doc-card" id="feature-summary" data-section>
+        <h2>Feature Summary</h2>
+        <div class="module-grid">
+          <article class="module-card">
+            <h4>Scanning and Detection</h4>
+            <ul>
+              <li>Scans UPM dependencies from <code>Packages/manifest.json</code> and <code>Packages/packages-lock.json</code>.</li>
+              <li>Scans configured file-system roots and native libraries in <code>Assets</code>.</li>
+              <li>Finds nearby legal files with bounded scope traversal.</li>
+            </ul>
+          </article>
+          <article class="module-card">
+            <h4>License Classification</h4>
+            <ul>
+              <li>Uses SPDX IDs found in text.</li>
+              <li>Reads package metadata from <code>package.json</code>.</li>
+              <li>Falls back to text similarity against local SPDX corpus.</li>
+            </ul>
+          </article>
+          <article class="module-card">
+            <h4>Overrides and Manual Entries</h4>
+            <ul>
+              <li>Per-component override workflow for license and attribution fields.</li>
+              <li>Manual entry workflow for dependencies not auto-detected.</li>
+              <li>Orphan manual entry handling (keep missing, remove, map).</li>
+            </ul>
+          </article>
+          <article class="module-card">
+            <h4>Build and Export</h4>
+            <ul>
+              <li>Exports notices, credits, and manifest with <code>added/removed/changed</code> diff support.</li>
+              <li>Build-time warning/fail policies via <code>BuildHook</code>.</li>
+              <li>Package import monitor for out-of-scope <code>.unitypackage</code> imports.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="doc-card" id="installation" data-section>
+        <h2>Installation</h2>
+        <ol>
+          <li>Copy <code>Assets/GameCompliancePack/Compliance</code> into the target project <code>Assets</code> folder.</li>
+          <li>Open the project and allow script compilation.</li>
+          <li>Open <code>Tools/Compliance Pack</code>.</li>
+          <li>If missing, settings are auto-created at <code>Assets/Settings/CompliancePackSettings.asset</code>.</li>
+        </ol>
+        <p class="callout"><strong>Notes:</strong> The scanner/resolver pipeline is local and offline (no network calls), and the build hook activates automatically through Unity pre-build integration.</p>
+      </section>
+
+      <section class="doc-card" id="quick-start" data-section>
+        <h2>Quick Start</h2>
+        <ol>
+          <li>Open <code>Tools/Compliance Pack</code>.</li>
+          <li>Use <code>Scan</code> and choose <code>Scan All</code>, <code>Scan UPM Only</code>, or <code>Scan Folders Only</code>.</li>
+          <li>Review list items using filters such as <code>Needs attention</code>, <code>UNKNOWN</code>, <code>Missing fields</code>, source filters, and diff filters.</li>
+          <li>Select a component and complete required fields in <code>Override</code>.</li>
+          <li>For undetected dependencies, click <code>+ Manual</code> and fill manual entry fields.</li>
+          <li>Click <code>Export Pack</code>.</li>
+        </ol>
+        <h3>Export behavior</h3>
+        <ul>
+          <li>If <code>failBuildOnUnknown</code> is enabled and unresolved items exist, export is blocked.</li>
+          <li>Otherwise export writes manifest, notices, and credits, and updates the diff tab.</li>
+        </ul>
+      </section>
+
+      <section class="doc-card" id="scanner-detection" data-section>
+        <h2>Scanner and Detection Details</h2>
+        <h3>UPM scanner (<code>UpmDependencyScanner</code>)</h3>
+        <ul>
+          <li>Inputs: <code>Packages/manifest.json</code> (direct) and <code>Packages/packages-lock.json</code> (resolved graph).</li>
+          <li>Skips package names starting with <code>com.unity.</code>.</li>
+          <li>Adds direct dependencies plus lock-only entries not already added.</li>
+          <li>Source type from lock <code>source</code> or inferred from version spec (<code>local</code>, <code>git</code>, <code>registry</code>); appends <code>-transitive</code> when lock depth is greater than 0.</li>
+          <li>Component path is <code>Packages/&lt;packageName&gt;</code>.</li>
+          <li>Confidence: <code>0.8</code> (manifest + lock), <code>0.6</code> (manifest only), <code>0.7</code> (lock-only).</li>
+        </ul>
+
+        <h3>File-system scanner (<code>FileSystemScanner</code>)</h3>
+        <ul>
+          <li>Always includes roots <code>Assets/Plugins</code> and <code>Assets/ThirdParty</code>, plus configured <code>scanFolders</code>.</li>
+          <li>Each top-level subdirectory under each root becomes one <code>sourceType = "folder"</code> component.</li>
+          <li>Recursively scans <code>Assets</code> for native libraries with default extensions <code>.dll</code>, <code>.so</code>, <code>.dylib</code>, <code>.bundle</code> and configured extras.</li>
+          <li>Each native library becomes <code>sourceType = "native-lib"</code> and gets a SHA-256 hash.</li>
+          <li><code>Packages</code> roots are honored only when <code>showUnityPackages</code> is enabled.</li>
+        </ul>
+
+        <h3>License file discovery (<code>LicenseFileDetector</code>)</h3>
+        <ul>
+          <li>Ranked filename categories: Primary (<code>LICENSE</code>, <code>LICENCE</code>, <code>COPYING</code>, <code>EULA</code>), Notice (<code>NOTICE</code>, <code>COPYRIGHT</code>, <code>PATENTS</code>), Attribution (<code>AUTHORS</code>, <code>CONTRIBUTORS</code>, <code>ATTRIBUTION</code>), and third-party notice bundle patterns.</li>
+          <li>Searches near component path/package root, legal subfolders, then walks parent folders until scope boundary.</li>
+          <li>For direct text population, uses the first Primary candidate only.</li>
+          <li>If <code>maxTextFileBytesToRead</code> is set, oversized files are skipped.</li>
+        </ul>
+
+        <h3>License scope boundaries (<code>ComplianceScanner.ResolveLicenseScopeRoot</code>)</h3>
+        <ul>
+          <li>Under <code>Packages/</code>: scope root is the package directory.</li>
+          <li>Under <code>Library/PackageCache/</code>: scope root is the package cache package directory.</li>
+          <li>Under <code>Assets</code> within a configured scan root: scope root is the first child directory below that root.</li>
+          <li>Under <code>Assets</code> outside configured roots: scope root is the first child under <code>Assets</code>.</li>
+        </ul>
+
+        <h3>Classification (<code>LicenseClassifier</code>)</h3>
+        <ol>
+          <li>Skip manual-folder components.</li>
+          <li>Skip components that already have a non-UNKNOWN license ID.</li>
+          <li>If text contains <code>SPDX-License-Identifier</code>, prefer a known local catalog ID.</li>
+          <li>Read <code>package.json</code> metadata (license, author, URLs).</li>
+          <li>If still unresolved and text exists, run cosine similarity against normalized SPDX texts.</li>
+          <li>Assign UNKNOWN if unresolved.</li>
+        </ol>
+        <p class="muted-note">Similarity threshold uses <code>licenseDetectionConfidenceThreshold</code>. Third-party notice bundles are not matched as canonical single-license text.</p>
+
+        <h3>Component keying and deduplication</h3>
+        <ul>
+          <li>Key base: <code>idOrName|version|sourceType</code> (lowercased).</li>
+          <li>Folder source appends primary path.</li>
+          <li>Native source appends hash if present, else path.</li>
+          <li>UPM-like sources (<code>registry</code>, <code>git</code>, <code>local</code>, <code>embedded</code>, <code>upm</code>, and transitive variants) do not append path/hash.</li>
+          <li>Dedup pipeline: merge by component key, dedup by <code>name|primaryPath</code>, then stable order via <code>ComponentOrdering.Compare</code>.</li>
+        </ul>
+      </section>
+
+      <section class="doc-card" id="license-resolution" data-section>
+        <h2>License Resolution Rules (<code>LicenseResolver</code>)</h2>
+        <h3>Resolution order</h3>
+        <ol>
+          <li>Manual-folder special handling.</li>
+          <li>Override entry from <code>compliance-overrides.json</code> by key (with legacy key fallback).</li>
+          <li>Known catalog text by license ID.</li>
+          <li>Detected file text fallback.</li>
+          <li>UNKNOWN.</li>
+        </ol>
+        <h3>Manual-folder specifics</h3>
+        <ul>
+          <li>No ID and no text: UNKNOWN.</li>
+          <li>Known SPDX ID and no manual text: use catalog text.</li>
+          <li>Otherwise: use provided manual ID/text.</li>
+        </ul>
+        <h3>Override specifics</h3>
+        <ul>
+          <li>Override ID/text can replace detected values.</li>
+          <li>If override has ID but no text and the ID exists in catalog, catalog text is used.</li>
+          <li>URL fields are normalized and must pass absolute <code>http/https</code> validation.</li>
+        </ul>
+      </section>
+
+      <section class="doc-card" id="validation-required-fields" data-section>
+        <h2>Validation and Required Fields</h2>
+        <h3>Validation checks (<code>ComponentValidation.ValidateComponent</code>)</h3>
+        <ul>
+          <li><code>isUnknownLicense</code> when license ID is UNKNOWN.</li>
+          <li>Missing required fields by policy: <code>Author</code>, <code>Source URL</code>, <code>Changes Made</code>.</li>
+        </ul>
+        <h3>License attribution policy highlights (<code>LicenseAttributionPolicy</code>)</h3>
+        <ul>
+          <li>Default/unknown: <code>Author</code> and <code>Source URL</code> required.</li>
+          <li><code>LicenseRef-Unity-Asset-Store-EULA</code>: only <code>Source URL</code> required.</li>
+          <li>CC BY family (<code>CC-BY-*</code>, including NC/ND/SA): <code>Author</code>, <code>Source URL</code>, and <code>Changes Made</code> required.</li>
+          <li>Many SPDX licenses (MIT/BSD/Apache/LGPL/MPL/GPL/AGPL and others) make these fields optional.</li>
+        </ul>
+        <h3>URL validation rule (<code>UrlUtility.ValidateUrl</code>)</h3>
+        <p>URLs must be absolute <code>http://</code> or <code>https://</code>, well-formed, and include a host.</p>
+      </section>
+
+      <section class="doc-card" id="overrides-manual-entries" data-section>
+        <h2>Overrides and Manual Entries</h2>
+        <p><code>compliance-overrides.json</code> stores three top-level arrays: <code>entries</code>, <code>manualEntries</code>, and <code>packageImportRules</code>.</p>
+
+        <h3>Per-component override fields (<code>OverrideEntry</code>)</h3>
+        <ul>
+          <li><code>key</code></li>
+          <li><code>licenseId</code>, <code>licenseText</code>, <code>licenseTextSource</code></li>
+          <li><code>author</code>, <code>url</code>, <code>licenseUrl</code></li>
+          <li><code>creditLine</code>/<code>attribution</code>, <code>creditLineIsManual</code></li>
+          <li><code>changesWereMade</code>, <code>changesWereMadeSet</code></li>
+          <li><code>notes</code> (supports <code>IGNORE:</code> marker prefix)</li>
+          <li><code>noticesEntry</code>, <code>noticesEntryIsManual</code></li>
+          <li><code>licenseYear</code>, <code>licenseHolder</code></li>
+        </ul>
+
+        <h3>Manual entry fields (<code>ManualEntry</code>)</h3>
+        <ul>
+          <li><code>folderPath</code> (UI workflows require it to resolve under <code>Assets</code>)</li>
+          <li><code>displayName</code></li>
+          <li><code>author</code>, <code>url</code>, <code>licenseUrl</code></li>
+          <li><code>licenseId</code>, <code>licenseText</code></li>
+          <li><code>creditLine</code>/<code>attribution</code>, <code>creditLineIsManual</code>, <code>useAttributionText</code></li>
+          <li><code>changesWereMade</code>, <code>changesWereMadeSet</code></li>
+          <li><code>missing</code>, <code>includeWhenMissing</code></li>
+          <li><code>noticesEntry</code>, <code>noticesEntryIsManual</code></li>
+        </ul>
+        <p class="muted-note">Manual entries map to runtime source type <code>ManualFolder</code>.</p>
+
+        <h3>Ignore marker behavior</h3>
+        <ul>
+          <li><code>Mark Ignored...</code> writes <code>notes = "IGNORE: ..."</code>.</li>
+          <li>Ignored entries are hidden from "needs attention" counts in the editor list.</li>
+          <li>Ignore does not remove entries from build hook validation logic.</li>
+          <li>Ignore is not a hard exclusion from exported files.</li>
+        </ul>
+      </section>
+
+      <section class="doc-card" id="build-integration" data-section>
+        <h2>Build Integration (<code>BuildHook</code>)</h2>
+        <h3>Pre-build sequence</h3>
+        <ol>
+          <li>Scan, apply overrides, and resolve licenses.</li>
+          <li>Filter Unity packages when <code>showUnityPackages</code> is false.</li>
+          <li>Optionally export outputs when <code>generateOnBuild</code> is enabled.</li>
+          <li>Run license and field policy checks.</li>
+        </ol>
+        <h3>Policy checks</h3>
+        <ul>
+          <li>Non-commercial licenses (<code>IsCommerciallyRestricted</code>): fail when <code>failBuildOnNonCommercial</code>, otherwise warn.</li>
+          <li>No-derivatives with confirmed modifications (<code>IsNoDerivatives</code> + <code>changesWereMade = true</code>): always fail.</li>
+          <li>No-derivatives without change confirmation (<code>changesWereMadeSet</code> unset): warn.</li>
+          <li>Strong copyleft (<code>IsStrongCopyleft</code>): warn.</li>
+          <li>Unknown/missing required fields: fail when <code>failBuildOnUnknown</code>, warn when <code>warnOnUnknown</code>.</li>
+        </ul>
+        <p class="callout"><strong>Special case:</strong> No-derivatives components missing only <code>Changes Made</code> are warned separately and are not counted as fail conditions in the unknown/missing pass.</p>
+      </section>
+
+      <section class="doc-card" id="configuration-settings" data-section>
+        <h2>Configuration and Settings</h2>
+        <p>Settings asset path: <code>Assets/Settings/CompliancePackSettings.asset</code>.</p>
+
+        <h3>Script defaults (<code>Settings.cs</code>)</h3>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Field</th>
+              <th>Code default</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><code>settingsSchemaVersion</code></td><td><code>0</code> (upgraded to <code>1</code> by <code>EnsureDefaults</code>)</td></tr>
+            <tr><td><code>outputDirectory</code></td><td><code>Compliance</code></td></tr>
+            <tr><td><code>noticesFileName</code></td><td><code>THIRD_PARTY_NOTICES.txt</code></td></tr>
+            <tr><td><code>creditsFileName</code></td><td><code>CREDITS.md</code></td></tr>
+            <tr><td><code>manifestFileName</code></td><td><code>compliance-manifest.json</code></td></tr>
+            <tr><td><code>overridesFileName</code></td><td><code>compliance-overrides.json</code></td></tr>
+            <tr><td><code>scanUpmDependencies</code></td><td><code>true</code></td></tr>
+            <tr><td><code>scanFolders</code></td><td><code>Assets/Plugins</code>, <code>Assets/ThirdParty</code></td></tr>
+            <tr><td><code>nativeExtensions</code></td><td><code>.dll</code>, <code>.so</code>, <code>.dylib</code>, <code>.bundle</code></td></tr>
+            <tr><td><code>generateOnBuild</code></td><td><code>true</code></td></tr>
+            <tr><td><code>warnOnUnknown</code></td><td><code>true</code></td></tr>
+            <tr><td><code>failBuildOnUnknown</code></td><td><code>false</code></td></tr>
+            <tr><td><code>failBuildOnNonCommercial</code></td><td><code>true</code></td></tr>
+            <tr><td><code>showUnityPackages</code></td><td><code>false</code></td></tr>
+            <tr><td><code>allowOutputPreviewOverrides</code></td><td><code>false</code></td></tr>
+            <tr><td><code>packageImportMonitorEnabled</code></td><td><code>true</code></td></tr>
+            <tr><td><code>licenseDetectionConfidenceThreshold</code></td><td><code>0.90</code></td></tr>
+            <tr><td><code>maxTextFileBytesToRead</code></td><td><code>1048576</code> (1 MB)</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Current project values (<code>CompliancePackSettings.asset</code>)</h3>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Field</th>
+              <th>Current value in this repository</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><code>settingsSchemaVersion</code></td><td><code>1</code></td></tr>
+            <tr><td><code>outputDirectory</code></td><td><code>Compliance</code></td></tr>
+            <tr><td><code>scanUpmDependencies</code></td><td><code>true</code></td></tr>
+            <tr><td><code>scanFolders</code></td><td><code>Assets/ThirdParty</code>, <code>Assets/Plugins</code>, <code>Packages</code></td></tr>
+            <tr><td><code>nativeExtensions</code></td><td><code>.dll</code>, <code>.so</code>, <code>.dylib</code>, <code>.bundle</code></td></tr>
+            <tr><td><code>generateOnBuild</code></td><td><code>true</code></td></tr>
+            <tr><td><code>warnOnUnknown</code></td><td><code>true</code></td></tr>
+            <tr><td><code>failBuildOnUnknown</code></td><td><code>true</code></td></tr>
+            <tr><td><code>failBuildOnNonCommercial</code></td><td><code>true</code></td></tr>
+            <tr><td><code>showUnityPackages</code></td><td><code>true</code></td></tr>
+            <tr><td><code>allowOutputPreviewOverrides</code></td><td><code>true</code></td></tr>
+            <tr><td><code>packageImportMonitorEnabled</code></td><td><code>true</code></td></tr>
+            <tr><td><code>licenseDetectionConfidenceThreshold</code></td><td><code>0.9</code></td></tr>
+            <tr><td><code>maxTextFileBytesToRead</code></td><td><code>1048576</code></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="doc-card" id="output-formats" data-section>
+        <h2>Output Format Details</h2>
+
+        <h3><code>compliance-manifest.json</code></h3>
+        <p>Top-level fields in <code>ComplianceManifest</code>:</p>
+        <ul>
+          <li><code>unityVersion</code></li>
+          <li><code>platform</code></li>
+          <li><code>timestampUtc</code></li>
+          <li><code>toolVersion</code></li>
+          <li><code>components[]</code></li>
+        </ul>
+        <p>Each component includes identity/source, license, attribution, change metadata, and scanner confidence fields. <code>ManifestWriter.WriteWithDiff</code> computes diffs against prior manifest and preserves prior manifest content when no change is detected to avoid timestamp churn.</p>
+
+        <h3><code>THIRD_PARTY_NOTICES.txt</code></h3>
+        <ol>
+          <li>Title header</li>
+          <li>"What Changed" section</li>
+          <li>"Components" section with one block per component</li>
+        </ol>
+        <p>Component blocks can include version, URLs, author, source/location, text source, credit line, license metadata, and either license text content or explicit UNKNOWN/incomplete placeholders. If <code>noticesEntryIsManual</code> is true, manual notices text is emitted verbatim.</p>
+
+        <h3><code>CREDITS.md</code></h3>
+        <ol>
+          <li><code># Credits</code></li>
+          <li><code>## What Changed</code></li>
+          <li><code>## Component Credits</code></li>
+        </ol>
+        <p>Auto line format: <code>- &lt;name&gt; by &lt;author&gt; (&lt;version&gt;) - &lt;url&gt;</code> with only available elements. Manual attribution replaces auto output when <code>creditLineIsManual</code> is true.</p>
+      </section>
+
+      <section class="doc-card" id="editor-ui-reference" data-section>
+        <h2>Editor UI Reference</h2>
+        <h3>Toolbar actions</h3>
+        <ul>
+          <li><code>Scan</code> dropdown (<code>All</code>, <code>UPM Only</code>, <code>Folders Only</code>)</li>
+          <li><code>Resolve Next</code></li>
+          <li><code>Export Pack</code></li>
+          <li><code>+ Manual</code></li>
+          <li>Icon buttons: reload overrides, open output folder, open overrides JSON, open help</li>
+        </ul>
+
+        <h3>List panel</h3>
+        <ul>
+          <li>Search fields: name, key, path, id, version, license, author, url</li>
+          <li>Sort modes: <code>Name</code>, <code>Status</code>, <code>License</code>, <code>Source</code>, <code>Diff</code></li>
+          <li>Attention filters: <code>Needs attention</code>, <code>UNKNOWN</code>, <code>Missing fields</code></li>
+          <li>Diff filters: <code>Added</code>, <code>Changed</code>, <code>Removed</code></li>
+          <li>Source filters: <code>UPM</code>, <code>Assets</code>, <code>Packages</code>, <code>Native</code>, <code>Manual</code></li>
+        </ul>
+
+        <h3>Row context menu</h3>
+        <ul>
+          <li><code>Reveal in Explorer</code></li>
+          <li><code>Open License File</code></li>
+          <li><code>Copy Component Key</code></li>
+          <li><code>Mark Ignored...</code></li>
+          <li><code>Reset Override</code></li>
+        </ul>
+
+        <h3>Inspector sections and tabs</h3>
+        <ul>
+          <li><code>Component Summary</code></li>
+          <li><code>Manual Entry</code> (manual-folder components)</li>
+          <li><code>Evidence &amp; Detection</code></li>
+          <li><code>Override</code></li>
+          <li><code>Output Previews</code></li>
+          <li><code>Project Settings</code></li>
+        </ul>
+        <p>Bottom tabs: <code>Diff</code>, <code>Outputs</code>, <code>Log</code>.</p>
+      </section>
+
+      <section class="doc-card" id="package-import-monitor" data-section>
+        <h2>Package Import Monitor</h2>
+        <p><code>PackageImportMonitor</code> is enabled by default and tracks <code>.unitypackage</code> imports.</p>
+        <h3>Prompt behavior for out-of-scope imports</h3>
+        <ul>
+          <li><code>No</code></li>
+          <li><code>Don't ask again</code></li>
+          <li><code>Move only</code></li>
+          <li><code>Yes, move &amp; add license</code> (requires valid source URL)</li>
+        </ul>
+        <h3>Move target and auto-license behavior</h3>
+        <ul>
+          <li>Move target: first configured scan root plus sanitized package folder name.</li>
+          <li><code>Move &amp; add license</code> creates/updates override with:</li>
+        </ul>
+        <pre><code>licenseId = LicenseRef-Unity-Asset-Store-EULA
+licenseTextSource = Built-in profile
+url = optional source URL from prompt</code></pre>
+      </section>
+
+      <section class="doc-card" id="determinism-diff-stability" data-section>
+        <h2>Determinism and Diff Stability</h2>
+        <h3>Deterministic behavior in implementation</h3>
+        <ul>
+          <li>Ordered component lists via <code>ComponentOrdering.Order</code>.</li>
+          <li>Stable ordering for diff lists (<code>added</code>, <code>removed</code>, <code>changed</code>).</li>
+          <li>Override store sorting before save: entries by key, manual entries by folder/display name, and package import rules by package/fingerprint.</li>
+          <li>Manifest no-change write optimization to avoid timestamp-only diffs.</li>
+        </ul>
+        <h3>Determinism-focused tests</h3>
+        <ul>
+          <li><code>ComponentOrderingTests</code></li>
+          <li><code>ComponentKeyBuilderTests</code></li>
+          <li><code>OverrideStoreDeterminismTests</code></li>
+        </ul>
+      </section>
+
+      <div class="empty-state" id="emptyState" role="status" aria-live="polite">
+        No sections match your search. Try a broader term like <code>scanner</code>, <code>override</code>, or <code>build hook</code>.
+      </div>
+    </main>
+  </div>
+  <script src="/assets/js/docs/product-docs.js"></script>
+  <script defer src="/assets/js/site/link-decorators.js"></script>
+</body>
+</html>
+

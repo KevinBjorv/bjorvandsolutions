@@ -1,0 +1,33 @@
+.tool-grid {
+  display: grid;
+  gap: var(--space-lg);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.tool-grid h2 {
+  font-size: 1.24rem;
+}
+
+.tool-meta {
+  margin-top: 0.65rem;
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+}
+
+.tools-links {
+  display: grid;
+  gap: var(--space-lg);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.review-note {
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+}
+
+@media (max-width: 1024px) {
+  .tool-grid,
+  .tools-links {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,360 @@
+# Import Settings Rule Engine (Unity)
+
+Project Description File
+
+## One-line pitch
+
+Enforce Unity asset import standards automatically using rules, with continuous enforcement on import plus a lint and fix workflow and an exportable compliance report.
+
+## Problem
+
+Unity projects drift. Import settings vary by person, machine, asset source, and time. That causes:
+
+* Bloated builds (wrong compression, max size, streaming settings).
+* Inconsistent quality (filtering, mipmaps, normal map flags).
+* Audio and model overhead (load type, sample rate, rig settings, mesh options).
+* Time loss from manual “select asset, tweak importer” loops.
+* “It works on my machine” because import settings are not centrally enforced.
+
+## Solution
+
+A deterministic rule engine:
+
+* Rules match assets by path pattern and importer type.
+* When an asset is imported or reimported, the tool auto-applies the correct importer settings.
+* A validator scans the whole project, lists non-compliant assets, and can fix them.
+* A report exports compliance status for reviews, CI, and handoff.
+
+## Target user
+
+* Solo and small teams who want consistent import settings without policing.
+* Teams with contractors or frequent asset drops.
+* Projects targeting multiple platforms where overrides matter.
+
+## Guiding principles
+
+* Deterministic and transparent. No “smart guesses”.
+* Safe defaults. Always allow preview (dry run) before mass changes.
+* Minimal friction. Works from import hooks and a single Editor window.
+* Scope discipline. MVP is import enforcement + lint/fix + report.
+
+---
+
+# MVP Feature Set (explicit)
+
+## A. Rule system
+
+1. **Rule definition asset**
+
+   * ScriptableObject: `ImportRuleSet`
+   * Contains ordered list of `ImportRule` entries.
+
+2. **Rule matching**
+
+   * Match by path using **glob** (required) and optional **regex** (optional, advanced toggle).
+   * Match by importer type:
+
+     * TextureImporter
+     * AudioImporter
+     * ModelImporter
+     * Default fallback: AssetImporter (non-texture/audio/model are ignored in MVP)
+
+3. **Rule actions**
+
+   * Apply a **Unity Preset** to the matched importer.
+   * Optional platform overrides per rule (MVP targets: Standalone, iOS, Android, WebGL).
+   * Rule priority is list order, last match wins (simple, predictable).
+
+4. **Rule evaluation metadata**
+
+   * “Explain” output for an asset: which rules matched, which applied, what changed.
+
+## B. Auto-apply on import (enforcement)
+
+1. **AssetPostprocessor hook**
+
+   * OnPreprocessTexture / OnPreprocessAudio / OnPreprocessModel
+   * Apply rule-set presets and overrides automatically.
+
+2. **Change detection**
+
+   * Avoid needless churn:
+
+     * Only apply when computed settings differ from current importer settings.
+   * Log a single concise message per asset when changes occur (configurable verbosity).
+
+3. **Enable/disable**
+
+   * Project setting toggle: enforcement on/off.
+   * Optional “dry run on import” mode that logs intended changes but does not apply.
+
+## C. Validator (lint)
+
+1. **Project scan**
+
+   * Scan Assets/ for textures, audio, models.
+   * For each asset, compute expected settings from rules.
+   * Compare against current importer settings.
+
+2. **Results list**
+
+   * Group by importer type.
+   * Show:
+
+     * Asset path
+     * Status: compliant / non-compliant / skipped
+     * Rule applied
+     * Summary diff (human-readable)
+
+3. **Filters**
+
+   * Filter by importer type.
+   * Filter by compliance status.
+   * Text search by path.
+
+## D. Fix workflow
+
+1. **Fix selected**
+
+   * Apply changes to selected non-compliant assets and reimport.
+
+2. **Fix all**
+
+   * Apply changes to all non-compliant assets in current filter scope.
+
+3. **Safety**
+
+   * Confirmation dialog for Fix All.
+   * Dry-run preview for Fix All: count assets, list top N diffs.
+
+## E. Report export
+
+1. **Export formats**
+
+   * CSV (required)
+   * JSON (optional in MVP if cheap)
+
+2. **Report content**
+
+   * Timestamp
+   * RuleSet name/version
+   * Unity version
+   * Totals: compliant, non-compliant, skipped
+   * Per-asset row with path, importer type, status, rule id/name, diff summary
+
+## F. Editor UX
+
+1. **Single entry point**
+
+   * `Tools/Import Settings Rule Engine`
+
+2. **Tabs**
+
+   * Rules (view selected RuleSet, basic validation messages)
+   * Validator (scan, results, fix actions)
+   * Settings (toggles, logging, report path)
+
+3. **No custom rule editor in MVP**
+
+   * MVP assumes rules are edited via ScriptableObject inspector.
+   * The window can select the active RuleSet asset.
+
+---
+
+# Non-goals for MVP (explicit)
+
+These are out of scope for MVP even if they are valuable:
+
+* Visual rule builder UI, complex conflict resolution UI.
+* A custom preset editor or embedded importer editor.
+* Dependency graph analysis, addressables integration, or build pipeline changes.
+* CI package, Git hooks, or automated PR commenting.
+* “Auto-detect best settings” or any heuristic optimization.
+* Per-asset exceptions list UI (beyond rule ordering).
+* Runtime components. Editor-only tool.
+
+---
+
+# Definition of Done (DoD)
+
+## Global DoD (applies to MVP)
+
+* Works on a clean Unity project with only the package installed.
+* Deterministic behavior: same inputs produce same importer settings.
+* No infinite reimport loops and no continuous dirtying of assets.
+* Clear logging and “Explain” for why settings were applied.
+* Zero runtime code. Everything under `Editor/` or in an editor-only assembly definition.
+* Basic documentation:
+
+  * Setup steps
+  * How rules work
+  * Known limitations
+  * Example RuleSet + Presets
+
+## Feature-level DoD
+
+### Rule system
+
+* RuleSet ScriptableObject can be created from Create menu.
+* Rules support glob matching; regex optional and can be disabled.
+* Rules can be limited to importer type.
+* Preset reference required for a rule to apply.
+* Last match wins is documented and tested.
+
+### Auto-apply on import
+
+* Importing a matching texture/audio/model applies the preset.
+* Reimport does not keep changing the asset if it already matches.
+* Enforcement can be turned off globally.
+* Dry-run mode logs intended changes without applying them.
+
+### Validator
+
+* Scan produces a stable list of assets with correct compliant status.
+* Diff summary is readable and not excessively verbose.
+* Selecting a result pings the asset in Project window.
+
+### Fix workflow
+
+* Fix Selected applies only to selected rows and reimports those assets.
+* Fix All applies to all filtered non-compliant assets.
+* Fix All shows a confirmation with counts.
+
+### Report export
+
+* Export creates a file on disk and overwrites safely (or adds suffix).
+* CSV opens cleanly in Excel/Sheets with correct columns.
+* Totals match the validator counts.
+
+### QA and compatibility
+
+* Tested on at least two Unity LTS versions available to you.
+* Tested on Windows and macOS if feasible, otherwise avoid OS-specific file operations.
+* Handles missing presets and missing RuleSet gracefully with actionable errors.
+
+---
+
+# Development stages (feature stages, not dates)
+
+## Stage 1: Foundations
+
+* Data model: RuleSet, Rule, matcher, expected-settings computation.
+* Minimal “Explain” output for a single asset.
+* Unit-style tests for matching and rule precedence (Editor tests).
+
+## Stage 2: Enforcement hook
+
+* AssetPostprocessor integration for Texture, Audio, Model.
+* Apply preset + platform overrides.
+* Change detection to prevent churn.
+* Settings asset: active RuleSet reference, toggles, logging.
+
+## Stage 3: Validator core
+
+* Project scan and compliance evaluation.
+* Diff generation (only key importer fields, not raw serialized blobs).
+* Basic list output in EditorWindow.
+
+## Stage 4: Fix actions
+
+* Fix Selected and Fix All
+* Dry-run preview summary
+* Reimport handling, progress bar, cancel support
+
+## Stage 5: Reporting and polish
+
+* CSV and JSON export
+* Better grouping/filter/search UX
+* Documentation + example presets and example RuleSet
+* Edge case hardening (missing preset, invalid regex, excluded folders)
+
+---
+
+# What matters for success
+
+1. **Trustworthiness**
+
+   * The tool must not randomly alter settings or reimport forever.
+   * Explainability is critical: users must see why something changed.
+
+2. **Low friction adoption**
+
+   * “Drop in, create RuleSet, assign presets, done.”
+   * Good defaults and sample assets reduce setup time.
+
+3. **Real build impact**
+
+   * Obvious wins: texture max size, compression, streaming, audio load type, model mesh settings.
+   * Reports that show measurable reductions or compliance rates help justify purchase.
+
+4. **Speed**
+
+   * Validator must handle thousands of assets without locking the editor for long.
+   * Incremental scan is a future item, but MVP should be reasonably optimized.
+
+5. **Compatibility**
+
+   * Stick to stable Unity APIs (Preset, AssetPostprocessor, importer properties).
+   * Avoid reflection hacks where possible.
+
+---
+
+# Anti-overscope rules (hard constraints)
+
+Use these as enforcement against scope creep.
+
+1. **No complex rule language**
+
+   * Only: glob, optional regex, importer type, preset, platform overrides, rule order priority.
+
+2. **No deep diff engine**
+
+   * MVP diff is a curated summary of key importer properties only.
+   * Do not attempt full serialized importer diff.
+
+3. **No custom UI for editing rules**
+
+   * Inspector editing only. The window is for selecting RuleSet, scanning, fixing, exporting.
+
+4. **No automatic “optimization suggestions”**
+
+   * The tool enforces declared standards. It does not decide standards.
+
+5. **No build pipeline integration**
+
+   * No pre-build steps, no CI hooks, no command line runner in MVP.
+
+6. **No per-platform explosion**
+
+   * Support a small fixed set of platform overrides in MVP.
+   * Do not implement every Unity platform.
+
+7. **No exception system**
+
+   * No “ignore this one asset” list beyond rule patterns and folder exclusions.
+
+8. **No runtime footprint**
+
+   * Editor-only, no runtime assemblies, no components.
+
+---
+
+# Deliverables included in MVP package
+
+* EditorWindow tool (Rules, Validator, Settings).
+* RuleSet ScriptableObject types and matching engine.
+* AssetPostprocessor enforcement.
+* Validator scan + fix operations.
+* CSV export.
+* Example RuleSet and example Presets (Texture, Audio, Model).
+* README with setup, examples, and limitations.
+
+---
+
+# Minimal future roadmap (post-MVP, optional)
+
+* Incremental validator with caching.
+* Rule UI editor with drag-and-drop ordering.
+* CI-friendly command line validation.
+* Per-folder ignore settings.
+* More platforms and more importer types.

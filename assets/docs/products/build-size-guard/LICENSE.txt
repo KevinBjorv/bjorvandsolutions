@@ -1,0 +1,119 @@
+BUILD SIZE GUARD LICENSE (COMMERCIAL, PER-SEAT, NO-REDISTRIBUTION)
+Version: 1.1
+Last updated: 2026-02-14
+
+Copyright (c) 2026 Bjorvand Solutions
+Kevin Bjorvand
+All rights reserved.
+
+This License Agreement ("License") governs use of the Build Size Guard software package, including
+all source code, editor scripts, binaries, UI, documentation, examples, and associated files
+(collectively, the "Software").
+
+PLATFORM NOTE (UNITY ASSET STORE)
+If you obtained the Software via the Unity Asset Store, your use is governed primarily by the Unity
+Asset Store End User License Agreement ("Unity EULA") and the license type you purchased there.
+This License applies only as supplemental terms to the extent it does not conflict with the Unity EULA.
+If a conflict exists, the Unity EULA controls.
+If you obtained the Software via itch.io or direct sale, this License is the primary license.
+
+1. DEFINITIONS
+"Licensor" means Bjorvand Solutions (Kevin Bjorvand).
+"Licensee" means the individual or legal entity that purchased or otherwise lawfully obtained the Software.
+"Seat" means one (1) individual human user who is authorized to install, access, or use the Software
+(including Editor tooling and CLI/batchmode features) for Licensee's benefit.
+"Project" means a product or internal work created by Licensee (for example, a game, app, or tool).
+"Redistribute" means to sell, resell, rent, lease, lend, sublicense, transfer, share, publish, or
+otherwise make the Software available to any third party, whether in source or compiled form, whether
+modified or unmodified, except as explicitly permitted below.
+
+2. LICENSE GRANT
+Subject to this License and payment of applicable fees, Licensor grants Licensee a non-exclusive,
+non-transferable, revocable, per-seat license to install and use the Software solely for developing
+and maintaining Licensee’s Projects.
+
+3. SEAT COUNT AND AUTHORIZED USERS
+3.1 Seat requirement
+Licensee must have purchased a Seat for each individual who uses or accesses the Software.
+
+3.2 Reassignment
+Seats may be reassigned to a different individual only when the original assignee no longer uses the
+Software (for example, role change or leaving the team). Reassignments must not be used to increase
+concurrent usage beyond purchased Seats.
+
+3.3 Contractors
+Contractors count as Seats if they use or access the Software. Licensee is responsible for ensuring
+contractors comply with this License.
+
+3.4 Build servers and CI
+Use of the Software on build machines or CI runners is permitted only to support Licensee’s Projects.
+Such use does not require an additional Seat if:
+  (a) it is used solely for automated builds/checks for Licensee’s Projects, and
+  (b) it is configured and initiated by individuals covered by purchased Seats, and
+  (c) the build/CI environment is not provided as a service to third parties.
+If the Software is made available to third parties (for example, a hosted build gate service), that is
+prohibited under Section 6.
+
+4. PERMITTED MODIFICATIONS AND INTERNAL SHARING
+Licensee may modify the Software for internal use.
+Licensee may share the Software internally with employees and contractors only as necessary for work
+on Licensee’s Projects, provided those recipients are bound by written obligations at least as
+protective as this License. Contractors must delete all copies when their engagement ends or when no
+longer needed for the Project, whichever occurs first.
+
+5. DISTRIBUTION OF YOUR PROJECTS
+Licensee may distribute finished Projects built using the Software, provided that the Software itself
+is not redistributed as a standalone product, editor extension, toolkit, or otherwise separable
+component, and Licensee does not enable third parties to extract, reuse, or access the Software.
+
+6. PROHIBITED USES (NO RESELLING, NO REDISTRIBUTION)
+Licensee must not, and must not allow others to:
+  a) Redistribute, resell, or share the Software, including via any marketplace, asset pack,
+     template project intended for redistribution, public or third-party-accessible repository,
+     or file-sharing service.
+  b) Sublicense, transfer, assign, or otherwise convey license rights to any other party.
+  c) Offer the Software as a service, hosted tool, or part of a product where the primary value is
+     the Software itself or where third parties gain access to the Software.
+  d) Remove or obscure copyright, trademark, or proprietary notices.
+
+7. OWNERSHIP
+The Software is licensed, not sold. Licensor retains all right, title, and interest in and to the
+Software and all intellectual property rights therein. Licensee retains ownership of Licensee’s Projects.
+
+8. COMPLIANCE AND RECORDS
+Upon reasonable request, Licensee will confirm the number of Seats in use and the number purchased.
+Licensor may request a written certification of compliance. No access to Licensee systems is required.
+
+9. SUPPORT
+Support is best-effort only, with no guaranteed response time or service level.
+Support contact: kevin@smartindie.dev
+
+10. WARRANTY DISCLAIMER
+THE SOFTWARE IS PROVIDED "AS IS" AND "AS AVAILABLE", WITH ALL FAULTS.
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, LICENSOR DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE,
+AND NON-INFRINGEMENT. LICENSEE ASSUMES ALL RISK ARISING OUT OF USE OR PERFORMANCE OF THE SOFTWARE.
+
+11. LIMITATION OF LIABILITY
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT WILL LICENSOR BE LIABLE FOR ANY INDIRECT,
+INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR EXEMPLARY DAMAGES, OR FOR ANY LOSS OF PROFITS, REVENUE, DATA,
+BUSINESS INTERRUPTION, OR GOODWILL, ARISING OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THIS LICENSE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, LICENSOR’S TOTAL LIABILITY FOR ANY CLAIM WILL NOT EXCEED THE
+AMOUNT PAID BY LICENSEE FOR THE SOFTWARE IN THE TWELVE (12) MONTHS PRECEDING THE EVENT GIVING RISE TO
+THE CLAIM.
+
+12. TERMINATION
+This License terminates automatically if Licensee breaches any term. Upon termination, Licensee must
+cease use of the Software and delete all copies in Licensee’s possession or control, including copies
+held by contractors, except where retention is required by law.
+
+13. MISCELLANEOUS
+If any provision of this License is held unenforceable, the remaining provisions will remain in effect.
+This License is the entire agreement regarding the Software for non-Unity-Asset-Store sales and
+supersedes prior discussions or understandings on that subject.
+
+Licensor:
+Bjorvand Solutions
+Kevin Bjorvand
+Support: kevin@smartindie.dev

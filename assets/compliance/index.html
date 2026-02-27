@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Third-Party Notices & Credits: License Compliance for Unity | Unity Editor Tool</title>
+  <meta name="description" content="Third-Party Notices & Credits: License Compliance for Unity is a Unity Editor tool that scans your project for third-party components and generates release-ready attribution artifacts.">
+    <script src="/assets/js/theme/theme-init.js"></script>
+  <link rel="stylesheet" href="/assets/css/products/compliance.css">
+  <link rel="stylesheet" href="/assets/css/product-gallery.css">
+
+  <link rel="stylesheet" href="/assets/css/shared/link-decorators.css">
+  <link rel="stylesheet" href="/assets/css/shared/typography-overrides.css">
+</head>
+<body>
+  <header>
+      <div class="container top-nav">
+        <a class="brand" href="/assets/compliance/" aria-label="Unity license compliance top of page">
+          <img class="brand-icon" src="/assets/images/CompliancePack/IconcompliancePack.jpg" alt="Unity license compliance icon" width="28" height="28" loading="eager">
+          <span class="brand-label">Unity license compliance</span>
+        </a>
+        <nav class="nav-links" aria-label="Page">
+          <a href="#outputs">Outputs</a>
+          <a href="#how-it-works">How it works</a>
+          <a href="#demo">Demo</a>
+          <a href="#faq">FAQ</a>
+        <a href="#license-sale-terms">License &amp; sale terms</a>
+        <a href="/assets/support/">Support</a>
+      </nav>
+        <div class="nav-cta">
+          <a class="button orange" href="/assets/compliance/docs/">Docs</a>
+          <a class="button primary" href="#get-it-now">Get it now</a>
+</div>
+    </div>
+  </header>
+
+  <main>
+    <section id="overview" class="container reveal">
+      <div class="hero">
+        <div>
+          <div class="price-badge">$39.99 USD</div>
+          <h1>Stop the last minute license scramble before you ship.</h1>
+          <p>Third-Party Notices & Credits: License Compliance for Unity is a Unity Editor tool that scans your project for third-party components and generates release-ready attribution artifacts you can actually ship.</p>
+          <div class="cta-group">
+                <a class="button primary" href="#get-it-now">Get it now</a>
+            <a class="button secondary" href="#demo">Watch demo</a>
+          </div>
+          <ul class="trust-list">
+            <li>Local-first: scans your project on disk inside Unity</li>
+            <li>Deterministic outputs: stable ordering, meaningful diffs</li>
+            <li>No guessing: anything unverified is marked UNKNOWN and surfaced clearly</li>
+            <li>Generates three shippable files: THIRD_PARTY_NOTICES.txt, CREDITS.md, compliance-manifest.json</li>
+          </ul>
+        </div>
+      </div>
+      <figure class="card media-row">
+        <img class="product-image" src="/assets/images/CompliancePack/Card image.jpg" alt="Third-Party Notices & Credits: License Compliance for Unity card image." data-gallery-item>
+        <figcaption class="muted">Third-Party Notices & Credits: License Compliance for Unity card image.</figcaption>
+      </figure>
+    </section>
+
+    <section class="container reveal">
+      <h2 class="section-title">The problem</h2>
+      <p>Indie and small studio projects routinely ship with a messy third-party dependency graph: Unity Package Manager dependencies (direct and transitive), Asset Store plugins and embedded third-party code, DLLs and native plugins, and small copied code folders. At release time you are forced to manually identify third-party components, track licenses, and build notices. It is error-prone and easy to forget until the last week.</p>
+    </section>
+
+    <section class="container reveal">
+      <h2 class="section-title">What Third-Party Notices & Credits: License Compliance for Unity does</h2>
+      <ol>
+        <li>Scan your project for third-party components</li>
+        <li>Resolve anything marked UNKNOWN with evidence shown</li>
+        <li>Export deterministic, release-ready compliance files</li>
+      </ol>
+      <div class="inline-note">It does not fabricate license IDs or license text. If something cannot be verified, it stays UNKNOWN until you resolve it.</div>
+    </section>
+
+    <section class="container reveal">
+      <h2 class="section-title">Why this approach</h2>
+      <div class="grid-three">
+        <div class="card">
+          <h3>Local-first</h3>
+          <p class="muted">Local-first: scans your project on disk inside Unity</p>
+        </div>
+        <div class="card">
+          <h3>Deterministic outputs</h3>
+          <p class="muted">Deterministic outputs: stable ordering, meaningful diffs</p>
+        </div>
+        <div class="card">
+          <h3>No guessing</h3>
+          <p class="muted">No guessing: anything unverified is marked UNKNOWN and surfaced clearly</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="outputs" class="container reveal">
+      <h2 class="section-title">What you get (outputs you can ship)</h2>
+      <div class="outputs-list">
+        <div>
+          <h3>THIRD_PARTY_NOTICES.txt</h3>
+          <p>Full attributions plus license text when available. One entry per component, stable-sorted.</p>
+        </div>
+        <div>
+          <h3>CREDITS.md</h3>
+          <p>Short, human-readable credits block suitable for in-game credits or store listings.</p>
+        </div>
+        <div>
+          <h3>compliance-manifest.json</h3>
+          <p>Machine-readable source of truth for audits, diffs, and repeatable builds.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-it-works" class="container reveal">
+      <h2 class="section-title">What it scans</h2>
+      <div class="grid-two">
+        <div class="card">
+          <h3>UPM</h3>
+          <ul>
+            <li>Direct dependencies from Packages/manifest.json</li>
+            <li>Resolved dependency graph (direct + transitive) from Packages/packages-lock.json</li>
+            <li>Captures package name, version, and source (registry, git, local path)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>File system</h3>
+          <ul>
+            <li>Common plugin locations like Assets/Plugins and configurable third-party folders</li>
+            <li>Detects binaries and native plugins (.dll, .so, .dylib, .bundle)</li>
+          </ul>
+        </div>
+      </div>
+      <figure class="card media-row">
+        <img class="product-image" src="/assets/images/CompliancePack/What it scans.jpg" alt="Third-Party Notices & Credits: License Compliance for Unity scan view showing detected components and generated outputs" data-gallery-item>
+        <figcaption class="muted">Scan results with detected components and release-ready output artifacts.</figcaption>
+      </figure>
+    </section>
+
+    <section class="container reveal">
+      <h2 class="section-title">How license resolution works (conservative by design)</h2>
+      <ol>
+        <li>Manual override (your decision wins for that component key)</li>
+        <li>Detected license or notice file near the component (uses extracted text as evidence)</li>
+        <li>Known verifiable metadata mapped to canonical SPDX text stored locally</li>
+        <li>UNKNOWN if nothing reliable exists</li>
+      </ol>
+    </section>
+
+    <section class="container reveal">
+      <h2 class="section-title">Built for stable, reviewable releases</h2>
+      <ul>
+        <li>Deterministic component keys and ordering so diffs are meaningful</li>
+        <li>Plain text outputs that are easy to audit</li>
+        <li>Optional build integration to warn or fail builds if UNKNOWN items remain</li>
+      </ul>
+      <div class="media-stack">
+        <figure class="card media-row">
+          <img class="product-image" src="/assets/images/CompliancePack/Difference-Before.svg" alt="Before comparison showing unresolved and changing compliance data" data-gallery-item>
+          <figcaption class="muted">Before: unresolved UNKNOWN items and unstable ordering create noisy diffs.</figcaption>
+        </figure>
+        <figure class="card media-row">
+          <img class="product-image" src="/assets/images/CompliancePack/Difference-After.svg" alt="After comparison showing stable deterministic compliance output" data-gallery-item>
+          <figcaption class="muted">After: deterministic ordering and explicit resolutions produce clean, reviewable diffs.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="demo" class="container reveal">
+      <h2 class="section-title">Demo</h2>
+      <figure class="card media-row">
+        <img class="product-image" src="/assets/images/CompliancePack/ToolScreenshot1.jpg" alt="Third-Party Notices & Credits: License Compliance for Unity screenshot showing an in-editor compliance report with readable details" data-gallery-item>
+        <figcaption class="muted">Large in-editor screenshot with readable scan and output detail.</figcaption>
+      </figure>
+      <p>Watch a full walkthrough (screen recording):</p>
+      <div class="video-wrapper" aria-label="Third-Party Notices & Credits: License Compliance for Unity demo video">
+        <iframe src="https://www.youtube.com/embed/gTlTMZTiWAk" title="Third-Party Notices & Credits: License Compliance for Unity demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <section class="container reveal">
+      <h2 class="section-title">Who this is for</h2>
+      <ul>
+        <li>Indie devs shipping on Steam, console, mobile</li>
+        <li>Small studios with multiple contributors importing assets and packages</li>
+        <li>Anyone who wants a repeatable, local workflow for third-party notices</li>
+      </ul>
+      <figure class="card media-row">
+        <img class="product-image" src="/assets/images/CompliancePack/Who it's for (and not for).jpg" alt="Third-Party Notices & Credits: License Compliance for Unity matrix showing who the tool is for and not for" data-gallery-item>
+        <figcaption class="muted">Who this workflow is for, and where it is not the right fit.</figcaption>
+      </figure>
+    </section>
+
+    <section class="container reveal">
+      <h2 class="section-title">What it is not</h2>
+      <ul>
+        <li>Not legal advice</li>
+        <li>Not a compliance guarantee</li>
+        <li>Not a tool that magically detects every license with perfect accuracy</li>
+      </ul>
+      <p>It is a workflow tool that makes obligations visible early, and makes resolution deterministic and shareable.</p>
+    </section>
+
+    <section id="faq" class="container reveal">
+      <h2 class="section-title">FAQ</h2>
+      <details>
+        <summary>Q: Does this guarantee I am compliant?</summary>
+        <p>A: No. It is not legal advice and does not guarantee compliance. It reduces risk by making third-party items visible and forcing explicit resolution of unknowns.</p>
+      </details>
+      <details>
+        <summary>Q: Will it detect everything in every project?</summary>
+        <p>A: No. It targets the most common Unity dependency sources and keeps rules conservative. If something cannot be verified, it is marked UNKNOWN so you do not get false certainty.</p>
+      </details>
+      <details>
+        <summary>Q: Does it upload my project or code anywhere?</summary>
+        <p>A: No. It is local-first and runs inside the Unity Editor.</p>
+      </details>
+      <details>
+        <summary>Q: What happens when something is UNKNOWN?</summary>
+        <p>A: You resolve it once using the evidence shown (paths, hints, license files). The resolution is stored in a project file so builds remain reproducible across machines.</p>
+      </details>
+      <details>
+        <summary>Q: What files do I ship?</summary>
+        <p>A: Typically THIRD_PARTY_NOTICES.txt and CREDITS.md with your release. The manifest is your internal source of truth for audits and diffs.</p>
+      </details>
+      <details>
+        <summary>Q: Is it only for UPM packages?</summary>
+        <p>A: No. It also scans common third-party folders and plugin binaries.</p>
+      </details>
+    </section>
+
+    <section id="license-sale-terms" class="container reveal">
+      <h2 class="section-title">License and sale terms</h2>
+      <details>
+        <summary>View summary</summary>
+        <p><strong>License:</strong> Per-seat (one person). Seats may not be shared.</p>
+        <p><strong>Restrictions:</strong> No resale, redistribution, sublicensing, or public re-upload of any part of the Tool.</p>
+        <p><strong>Refunds:</strong> No refunds, to the maximum extent permitted by applicable law and platform policies.</p>
+        <p><strong>Disclaimer:</strong> Not legal advice. No guarantee of compliance or accuracy. You remain responsible for verification.</p>
+        <p><strong>Warranty/Liability:</strong> Provided "AS IS" with no warranties. Liability is disclaimed to the maximum extent permitted by law.</p>
+        <p><strong>Full license:</strong> <a href="/assets/compliance/license/">Read the complete license agreement</a>.</p>
+      </details>
+    </section>
+
+    <section id="get-it-now" class="container reveal get-it-now-section">
+      <div>
+        <h2 class="section-title">Get it now</h2>
+      </div>
+      <div class="itch-embed-wrap" aria-label="itch.io checkout embed for Third-Party Notices and Credits Generator for Unity">
+        <div class="itch-embed-light">
+          <iframe class="itch-embed-frame" frameborder="0" src="https://itch.io/embed/4278616?linkback=true&amp;bg_color=ffffff&amp;fg_color=1c1d22&amp;link_color=2f6bf0&amp;border_color=f7f7f8" width="552" height="184"><a href="https://kevindevelopment.itch.io/compliance">Third-Party Notices &amp; Credits: License Compliance for Unity by Kevin Bjorvand</a></iframe>
+        </div>
+        <div class="itch-embed-dark">
+          <iframe class="itch-embed-frame" frameborder="0" src="https://itch.io/embed/4278616?linkback=true&amp;bg_color=141b26&amp;fg_color=e8edf5&amp;link_color=7baeff&amp;border_color=314051" width="552" height="184"><a href="https://kevindevelopment.itch.io/compliance">Third-Party Notices &amp; Credits: License Compliance for Unity by Kevin Bjorvand</a></iframe>
+        </div>
+      </div>
+      <div class="cta-group">
+        <a class="button secondary unity-store-link" href="https://u3d.as/3PWR">
+          <img class="unity-icon" src="/assets/images/icons/UnityLogoPng.png" alt="Unity Asset Store icon">
+          <span>Get it on the Unity Asset Store</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <div class="footer-title">Third-Party Notices & Credits: License Compliance for Unity</div>
+          <p class="muted">A Unity Editor tool from Bjorvand Solutions that helps you ship with clear third-party attributions and compliance artifacts.</p>
+        </div>
+        <div class="footer-links">
+          <a href="https://u3d.as/3PWR">Unity Asset Store</a>
+          <a href="#faq">FAQ</a>
+          <a href="#license-sale-terms">License &amp; sale terms</a>
+          <a href="/tools/">More Unity tools</a>
+          <a href="/">Homepage</a>
+        </div>
+        <div class="muted">Not legal advice. No compliance guarantee.</div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="mobile-cta" aria-label="Mobile call to action">
+    <a class="button primary" href="#get-it-now">Get it now</a>
+  </div>
+  <script src="/assets/js/ui/reveal.js"></script>
+  <script src="/assets/js/product-gallery.js"></script>
+  <script defer src="/assets/js/site/link-decorators.js"></script>
+</body>
+</html>

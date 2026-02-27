@@ -1,0 +1,24 @@
+.social-grid {
+  display: grid;
+  gap: var(--space-lg);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.social-handle {
+  display: inline-flex;
+  margin-top: 0.48rem;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 980px) {
+  .social-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .social-grid {
+    grid-template-columns: 1fr;
+  }
+}

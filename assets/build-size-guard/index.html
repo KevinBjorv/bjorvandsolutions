@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Build Size Guard | Unity Editor Tool</title>
+  <meta name="description" content="Build Size Guard is a Unity Editor tool for detecting and preventing build size regressions with snapshots, diffs, budgets, and CI-friendly reports.">
+    <script src="/assets/js/theme/theme-init.js"></script>
+  <link rel="stylesheet" href="/assets/css/products/build-size-guard.css">
+  <link rel="stylesheet" href="/assets/css/product-gallery.css">
+
+  <link rel="stylesheet" href="/assets/css/shared/link-decorators.css">
+  <link rel="stylesheet" href="/assets/css/shared/typography-overrides.css">
+</head>
+<body>
+  <header>
+    <div class="container top-nav">
+      <a class="brand" href="/assets/build-size-guard/" aria-label="Build Size Guard top of page">
+        <img class="brand-icon" src="/assets/images/BuildSizeGuard/icons/BuildSizeGuardIcon160.jpg" alt="Build Size Guard icon" width="28" height="28" loading="eager">
+        <span class="brand-label">Build Size Guard</span>
+      </a>
+      <nav class="nav-links" aria-label="Page">
+        <a href="#outputs">Outputs</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#demo">Demo</a>
+        <a href="#faq">FAQ</a>
+        <a href="#license-sale-terms">License</a>
+        <a href="/assets/support/">Support</a>
+      </nav>
+      <div class="nav-cta">
+        <a class="button orange" href="/assets/build-size-guard/docs/">Docs</a>
+        <a class="button primary" href="https://assetstore.unity.com/packages/slug/361332">Get it now</a>
+</div>
+    </div>
+  </header>
+
+  <main>
+    <section id="overview" class="container reveal">
+      <div class="hero">
+        <div>
+          <div class="price-badge">Unity Editor Tool</div>
+          <h1>Detect and prevent build size regressions before they slow down your release.</h1>
+          <p>Build Size Guard captures snapshots after builds, diffs snapshots, enforces budgets, and generates CI-friendly report artifacts with deterministic exit codes.</p>
+          <div class="cta-group">
+            <a class="button primary" href="https://assetstore.unity.com/packages/slug/361332">Get it on the Unity Asset Store</a>
+            <a class="button secondary" href="#demo">View product highlights</a>
+          </div>
+          <ul class="trust-list">
+            <li>Automatic snapshot capture from Unity BuildReport</li>
+            <li>Snapshot diffing with total delta, percent delta, and contributor changes</li>
+            <li>Budget enforcement for totals, deltas, percent growth, and categories</li>
+            <li>CI batchmode runner with stable exit codes and optional JSON/Markdown reports</li>
+          </ul>
+        </div>
+        <figure class="card media-card">
+          <img
+            class="marketing-image"
+            src="/assets/images/BuildSizeGuard/BuildSizeGuardMarketing/Card%20incl%20name%20and%20mockup%20on%20pc%20screenshot.jpg"
+            alt="Build Size Guard card image with tool name and Unity Editor mockup."
+            data-gallery-item
+            data-gallery-caption="Build Size Guard card image."
+            loading="eager"
+            fetchpriority="high"
+          >
+          <figcaption class="muted">Build Size Guard card image.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="container reveal">
+      <h2 class="section-title">The problem</h2>
+      <p>Build size can jump unexpectedly between builds. Teams then have to answer the same release-critical questions under time pressure: what changed, what contributed most to the change, whether budgets were violated, and whether CI should fail the build.</p>
+    </section>
+
+    <section class="container reveal">
+      <h2 class="section-title">What Build Size Guard does</h2>
+      <ol>
+        <li>Capture snapshot data after each build from BuildReport</li>
+        <li>Diff baseline and current snapshots</li>
+        <li>Evaluate budgets and produce violations</li>
+        <li>Output concise summaries plus JSON/Markdown report artifacts</li>
+      </ol>
+      <div class="inline-note">Snapshots store a ranked top-N contributor list plus grouped remainder totals. This keeps snapshots small and diffs fast.</div>
+    </section>
+
+    <section class="container reveal">
+      <h2 class="section-title">Why this approach</h2>
+      <div class="grid-three">
+        <div class="card">
+          <h3>Automatic capture</h3>
+          <p class="muted">Snapshots are captured after builds with optional retention per build target.</p>
+        </div>
+        <div class="card">
+          <h3>Focused diffs</h3>
+          <p class="muted">Top contributors plus grouped remainder totals keep comparisons practical and reviewable.</p>
+        </div>
+        <div class="card">
+          <h3>Editor-only runtime impact</h3>
+          <p class="muted">The tool runs in Unity Editor and batchmode editor and does not ship in your player build.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="outputs" class="container reveal">
+      <h2 class="section-title">What you get (generated artifacts)</h2>
+      <div class="outputs-list">
+        <div>
+          <h3>Snapshots (`*.json`)</h3>
+          <p>Stored under the configured data root (default `BuildSizeGuardData/snapshots/`) with build identifiers, size metrics, and contributor/grouped totals.</p>
+        </div>
+        <div>
+          <h3>Reports (`*.json`, `*.md`)</h3>
+          <p>Optional report outputs for CI artifacts and review workflows (default `BuildSizeGuardData/reports/`).</p>
+        </div>
+        <div>
+          <h3>Latest passing index</h3>
+          <p>Baseline index file (`BuildSizeGuardData/latest_passing_snapshots.json`) used for `latestPassing` resolution in CI.</p>
+        </div>
+      </div>
+      <figure class="card media-card media-card--spacious">
+        <img
+          class="marketing-image"
+          src="/assets/images/BuildSizeGuard/BuildSizeGuardMarketing/Export%20summary%20to%20file%20formats.jpg"
+          alt="Build Size Guard marketing image focused on exporting summaries and report outputs."
+          data-gallery-item
+          data-gallery-caption="Export summary and report outputs."
+          loading="lazy"
+        >
+        <figcaption class="muted">Export summary and report outputs.</figcaption>
+      </figure>
+    </section>
+
+    <section id="how-it-works" class="container reveal">
+      <h2 class="section-title">How it works in practice</h2>
+      <div class="grid-two">
+        <div class="card">
+          <h3>Diff data included</h3>
+          <ul>
+            <li>Total delta and percent delta</li>
+            <li>Increases, decreases, new, removed, and moved items (when GUID exists)</li>
+            <li>Grouped totals by category and folder, including remainder grouping</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Addressables rollups (when available)</h3>
+          <ul>
+            <li>Grouped totals by group</li>
+            <li>Grouped totals by bundle</li>
+            <li>Grouped totals by asset</li>
+          </ul>
+          <p class="muted">Addressables totals are captured when `buildlayout.json` is present and readable.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container reveal">
+      <h2 class="section-title">Budget policies supported</h2>
+      <ul>
+        <li>Report total (`BuildReport.summary.totalSize`)</li>
+        <li>Report delta and report percent increase</li>
+        <li>Output artifact total, delta, and percent increase</li>
+        <li>Per-category budgets (texture, audio, mesh, shader, code, other)</li>
+      </ul>
+    </section>
+
+    <section class="container reveal">
+      <h2 class="section-title">CI / batchmode runner</h2>
+      <p>Batchmode execute method:</p>
+      <pre><code>BuildSizeGuard.Editor.Cli.BuildSizeGuardBatchRunner.Run</code></pre>
+      <p>CLI supports baseline/current selection, match mode, optional report paths/prefix, and violation fail behavior.</p>
+      <p>Exit codes:</p>
+      <ul>
+        <li>`0`: success</li>
+        <li>`2`: budget/regression violation (with failure enabled)</li>
+        <li>`3`-`7`: argument, baseline, load, write, or runtime error states</li>
+      </ul>
+      <figure class="card media-card media-card--spacious">
+        <div class="feature-image-stack">
+          <img
+            class="marketing-image"
+            src="/assets/images/BuildSizeGuard/BuildSizeGuardMarketing/Compare%20any%20two%20builds%20in%20seconds.jpg"
+            alt="Build Size Guard marketing image showing rapid comparison between two builds."
+            data-gallery-item
+            data-gallery-caption="Compare any two builds in seconds."
+            loading="lazy"
+          >
+          <img
+            class="marketing-image"
+            src="/assets/images/BuildSizeGuard/BuildSizeGuardMarketing/Track%20regressions%20per%20build%20target.jpg"
+            alt="Build Size Guard marketing image showing regression tracking by build target."
+            data-gallery-item
+            data-gallery-caption="Track regressions per build target."
+            loading="lazy"
+          >
+        </div>
+        <figcaption class="muted">Compare builds quickly and track regressions by build target.</figcaption>
+      </figure>
+    </section>
+
+    <section id="demo" class="container reveal">
+      <h2 class="section-title">Highlights</h2>
+      <p>A focused visual summary of the core workflow and the regression guardrail intent.</p>
+      <figure class="card media-card media-card--spacious">
+        <img
+          class="marketing-image"
+          src="/assets/images/BuildSizeGuard/BuildSizeGuardMarketing/Stop%20build%20size%20regressions%20before%20they%20ship.jpg"
+          alt="Build Size Guard marketing image emphasizing stopping size regressions before release."
+          data-gallery-item
+          data-gallery-caption="Stop build size regressions before they ship."
+          loading="lazy"
+        >
+        <figcaption class="muted">Stop build size regressions before they ship.</figcaption>
+      </figure>
+    </section>
+
+    <section class="container reveal">
+      <h2 class="section-title">Who this helps</h2>
+      <ul>
+        <li>Teams that need quick answers when build size changes unexpectedly</li>
+        <li>Teams that want budget guardrails in CI with deterministic pass/fail behavior</li>
+        <li>Teams comparing baseline/current snapshots with contributor-focused diffs</li>
+      </ul>
+    </section>
+
+    <section class="container reveal">
+      <h2 class="section-title">What it is not</h2>
+      <ul>
+        <li>Not a store/download size predictor (packaging and compression vary by platform)</li>
+        <li>Not a complete inventory of every file in the build diff table (top-N contributor model)</li>
+        <li>Not an in-player runtime feature (Editor-only tool)</li>
+      </ul>
+    </section>
+
+    <section class="container reveal">
+      <h2 class="section-title">Roadmap notes from README</h2>
+      <ul>
+        <li>UI upgrades with timeline charts, bar-first tables, and budget gauges</li>
+        <li>Selection details drawer with asset actions and richer context</li>
+        <li>Stripping/dependency summary and "why included" visibility</li>
+        <li>Snapshot capture and diff for build settings</li>
+        <li>Low-priority unused-assets list</li>
+      </ul>
+    </section>
+
+    <section id="faq" class="container reveal">
+      <h2 class="section-title">FAQ</h2>
+      <details>
+        <summary>Q: Why do report total size and output artifact size differ?</summary>
+        <p>A: They are related but not identical metrics, and platform packaging can vary.</p>
+      </details>
+      <details>
+        <summary>Q: Why is contributor detail limited?</summary>
+        <p>A: Snapshot detail depends on what Unity exposes and your `Top Contributor Limit` setting. Higher limits store more detail.</p>
+      </details>
+      <details>
+        <summary>Q: What does `latestPassing` need in CI?</summary>
+        <p>A: Persist the data root between runs (cache or artifact restore), so the next run can resolve older snapshots.</p>
+      </details>
+      <details>
+        <summary>Q: What if Addressables data is missing?</summary>
+        <p>A: If `buildlayout.json` is missing, malformed, or stale, Addressables totals are empty for that snapshot.</p>
+      </details>
+      <details>
+        <summary>Q: Does this ship into my player build?</summary>
+        <p>A: No. Build Size Guard is Editor-only.</p>
+      </details>
+    </section>
+
+    <section id="license-sale-terms" class="container reveal">
+      <h2 class="section-title">License and sale terms</h2>
+      <details>
+        <summary>View license link</summary>
+        <p><strong>Full license:</strong> <a href="/assets/build-size-guard/license/">Read the complete Build Size Guard license agreement</a>.</p>
+      </details>
+    </section>
+
+    <section class="container reveal">
+      <div class="cta-strip">
+        <div>
+          <h2 class="section-title">Ready to guard your build size regressions?</h2>
+        </div>
+        <div class="cta-group">
+          <a class="button primary" href="https://assetstore.unity.com/packages/slug/361332">Get it on the Unity Asset Store</a>
+          <a class="button secondary" href="/assets/build-size-guard/docs/">Open docs</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <div class="footer-title">Build Size Guard</div>
+          <p class="muted">A Unity Editor tool from Bjorvand Solutions for build size snapshotting, diffing, budgets, and CI guardrails.</p>
+        </div>
+        <div class="footer-links">
+          <a href="https://assetstore.unity.com/packages/slug/361332">Unity Asset Store</a>
+          <a href="#faq">FAQ</a>
+          <a href="#license-sale-terms">License</a>
+          <a href="/assets/build-size-guard/docs/">Docs</a>
+          <a href="/tools/">More Unity tools</a>
+          <a href="/">Homepage</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="mobile-cta" aria-label="Mobile call to action">
+    <a class="button primary" href="https://assetstore.unity.com/packages/slug/361332">Get it on the Unity Asset Store</a>
+  </div>
+  <script src="/assets/js/ui/reveal.js"></script>
+  <script src="/assets/js/product-gallery.js"></script>
+  <script defer src="/assets/js/site/link-decorators.js"></script>
+</body>
+</html>
+

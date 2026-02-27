@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Build Size Guard technical documentation</title>
+  <meta name="description" content="Technical documentation for Build Size Guard, an editor-only Unity build size regression tool.">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+  <link rel="icon" href="/assets/favicon/favicon.ico">
+  <link rel="manifest" href="/assets/favicon/site.webmanifest">
+  <link rel="stylesheet" href="/assets/css/products/product-docs.css">
+    <script src="/assets/js/theme/theme-init.js"></script>
+  <link rel="stylesheet" href="/assets/css/shared/link-decorators.css">
+  <link rel="stylesheet" href="/assets/css/shared/typography-overrides.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="/assets/build-size-guard/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Build Size Guard technical docs</span>
+      </a>
+      <div class="top-actions">
+        <a class="button button-secondary" href="/assets/build-size-guard/">Product page</a>
+        <a class="button button-primary" href="https://assetstore.unity.com/packages/slug/361332">Unity Asset Store</a>
+</div>
+    </div>
+  </header>
+
+  <div class="shell layout">
+    <aside class="sidebar" aria-label="Documentation navigation">
+      <h2>Documentation</h2>
+      <p>Technical behavior based on the repository implementation and settings.</p>
+      <label class="search-label" for="docSearch">Search</label>
+      <input class="search-input" type="search" id="docSearch" placeholder="Search snapshots, budgets, CLI, reports..." autocomplete="off">
+      <p class="search-status" id="searchStatus">Showing 20 sections</p>
+      <nav class="sidebar-nav" id="sidebarNav">
+        <a class="sidebar-link" href="#overview">Overview</a>
+        <a class="sidebar-link" href="#scope-and-source-of-truth">Scope and Source of Truth</a>
+        <a class="sidebar-link" href="#what-you-get">What You Get</a>
+        <a class="sidebar-link" href="#feature-set">Feature Set</a>
+        <a class="sidebar-link" href="#installation">Installation</a>
+        <a class="sidebar-link" href="#quick-start">Quick Start</a>
+        <a class="sidebar-link" href="#configuration-and-settings">Configuration and Settings</a>
+        <a class="sidebar-link" href="#snapshot-capture-and-completeness">Snapshot Capture and Completeness</a>
+        <a class="sidebar-link" href="#snapshot-schema-and-storage">Snapshot Schema and Storage</a>
+        <a class="sidebar-link" href="#category-resolution">Category Resolution</a>
+        <a class="sidebar-link" href="#diff-and-budget-evaluation-semantics">Diff and Budget Evaluation Semantics</a>
+        <a class="sidebar-link" href="#addressables-layout-parsing">Addressables Layout Parsing</a>
+        <a class="sidebar-link" href="#editor-window-behavior">Editor Window Behavior</a>
+        <a class="sidebar-link" href="#cli-batch-mode">CLI / Batch Mode</a>
+        <a class="sidebar-link" href="#report-outputs">Report Outputs</a>
+        <a class="sidebar-link" href="#import-behavior">Import Behavior</a>
+        <a class="sidebar-link" href="#data-layout-example">Data Layout Example</a>
+        <a class="sidebar-link" href="#validation-and-tests">Validation and Tests</a>
+        <a class="sidebar-link" href="#known-behavior-notes-and-constraints">Known Behavior Notes and Constraints</a>
+        <a class="sidebar-link" href="#license-and-support">License and Support</a>
+      </nav>
+    </aside>
+
+    <main class="content" id="docContent">
+      <section class="doc-card" id="overview" data-section>
+        <h1>Build Size Guard Technical Documentation</h1>
+        <p class="lead">Build Size Guard is an editor-only Unity build size regression tool. It captures build snapshots, computes diffs between snapshots, evaluates size budgets, and exports reports for local inspection and CI.</p>
+        <p>It is implemented as source code inside this project (not as a UPM package in this repository).</p>
+      </section>
+      <section class="doc-card" id="scope-and-source-of-truth" data-section>
+        <h2>1. Scope and Source of Truth</h2>
+        <p>This document is derived from code and serialized project settings in this repository, mainly under <code>Assets/BuildSizeGuard</code> and <code>ProjectSettings/BuildSizeGuardSettings.asset</code>.</p>
+        <p>Validated source anchors:</p>
+        <ul>
+        <li><code>Assets/BuildSizeGuard/Core/*</code></li>
+        <li><code>Assets/BuildSizeGuard/Editor/*</code></li>
+        <li><code>Assets/BuildSizeGuard/Tests/Editor/*</code></li>
+        <li><code>ProjectSettings/BuildSizeGuardSettings.asset</code></li>
+        <li><code>ProjectSettings/ProjectVersion.txt</code></li>
+        <li><code>scripts/verify_clean_import.sh</code></li>
+        </ul>
+        <p>Repository Unity editor version:</p>
+        <ul>
+        <li><code>6000.3.7f1</code> (<code>ProjectSettings/ProjectVersion.txt</code>)</li>
+        </ul>
+      </section>
+      <section class="doc-card" id="what-you-get" data-section>
+        <h2>3. What You Get</h2>
+        <h3>3.1 Assemblies</h3>
+        <ul>
+        <li><code>BuildSizeGuard.Core</code> (Editor-only)</li>
+        <li><code>BuildSizeGuard.Editor</code> (Editor-only, references <code>BuildSizeGuard.Core</code>)</li>
+        <li><code>BuildSizeGuard.Editor.Tests</code> (Editor-only test assembly, <code>UNITY_INCLUDE_TESTS</code>)</li>
+        </ul>
+        <p>All three asmdefs are restricted to <code>includePlatforms: ["Editor"]</code>.</p>
+        <h3>3.2 Functional Areas</h3>
+        <ul>
+        <li>Snapshot model and diff model (<code>Core/Models</code>)</li>
+        <li>Category classification, diff, and budget evaluation services (<code>Core/Services</code>)</li>
+        <li>Build hook and snapshot capture (<code>Editor/Build</code>, <code>Editor/Application</code>)</li>
+        <li>Snapshot persistence/indexing (<code>Editor/Infrastructure</code>)</li>
+        <li>Addressables layout parsing from JSON (<code>Editor/Infrastructure/AddressablesBuildLayoutParser.cs</code>)</li>
+        <li>Editor window workflow (<code>Editor/UI/BuildSizeGuardWindow.cs</code>)</li>
+        <li>CLI/batch runner (<code>Editor/Cli/BuildSizeGuardBatchRunner.cs</code>)</li>
+        <li>Report writers (Console, Markdown, JSON, XML, CSV)</li>
+        <li>Editor tests for parser, diffing, budgets, CLI, import, settings providers</li>
+        </ul>
+      </section>
+      <section class="doc-card" id="feature-set" data-section>
+        <h2>4. Feature Set</h2>
+        <ul>
+        <li>Automatic snapshot capture on build completion via <code>IPostprocessBuildWithReport</code></li>
+        <li>Build result aware capture filtering (Succeeded/Failed/Cancelled/Unknown)</li>
+        <li>Snapshot completeness classification policy</li>
+        <li>Top-N contributor retention with grouped remainder rollups</li>
+        <li>Grouped totals by category and by folder</li>
+        <li>Addressables grouped totals (group, bundle, asset) parsed from layout JSON</li>
+        <li>Deterministic snapshot IDs when Unity summary GUID is unavailable</li>
+        <li>Diff computation (increases, decreases, new, removed, moved)</li>
+        <li>Budget policies:<ul>
+        <li>report total limit</li>
+        <li>report delta limit</li>
+        <li>report percent limit</li>
+        <li>output artifact total limit</li>
+        <li>output artifact delta limit</li>
+        <li>output artifact percent limit</li>
+        <li>per-category max limits</li>
+        </ul>
+        </li>
+        <li>Batch/CI runner with explicit exit codes</li>
+        <li>Report export formats: JSON, Markdown, XML, CSV</li>
+        <li>Latest passing snapshot index keyed by build target and build profile</li>
+        <li>Snapshot import from <code>.buildreport</code> files</li>
+        </ul>
+      </section>
+      <section class="doc-card" id="installation" data-section>
+        <h2>5. Installation</h2>
+        <h3>5.1 In This Repository</h3>
+        <p>No additional installation is required. The module is already present at:</p>
+        <ul>
+        <li><code>Assets/BuildSizeGuard</code></li>
+        </ul>
+        <p>Project settings asset exists at:</p>
+        <ul>
+        <li><code>ProjectSettings/BuildSizeGuardSettings.asset</code></li>
+        </ul>
+        <h3>5.2 Into Another Unity Project</h3>
+        <p>Code-backed install method from this repo layout:</p>
+        <ol>
+        <li>Copy <code>Assets/BuildSizeGuard</code> into the target project.</li>
+        <li>Open the project in Unity Editor.</li>
+        <li>Open the tool via menu <code>Tools/Build Size Guard/Open Window</code>.</li>
+        <li>Configure project settings under <code>Project/Build Size Guard</code>.</li>
+        </ol>
+      </section>
+      <section class="doc-card" id="quick-start" data-section>
+        <h2>6. Quick Start</h2>
+        <ol>
+        <li>Open <code>Tools/Build Size Guard/Open Window</code>.</li>
+        <li>Build your player.<ul>
+        <li>If auto capture is enabled, a snapshot is created after build completion.</li>
+        </ul>
+        </li>
+        <li>In the window, run <code>Latest vs Previous</code> or choose explicit baseline/current and click <code>Compare</code>.</li>
+        <li>Review:<ul>
+        <li>Summary (totals, delta, violations)</li>
+        <li>Grouped totals (<code>By Category</code>, <code>By Folder</code>, optional <code>By Addressables Group</code>)</li>
+        <li>Diff tables (<code>Increases</code>, <code>Decreases</code>, <code>New</code>, <code>Removed</code>)</li>
+        </ul>
+        </li>
+        <li>Set or edit budgets in the Budgets section and save.</li>
+        <li>Export report from toolbar (<code>Markdown</code>, <code>JSON</code>, <code>XML</code>, <code>CSV</code>, or copy Markdown to clipboard).</li>
+        </ol>
+      </section>
+      <section class="doc-card" id="configuration-and-settings" data-section>
+        <h2>7. Configuration and Settings</h2>
+        <p>Settings class:</p>
+        <ul>
+        <li><code>BuildSizeGuard.Editor.Settings.BuildSizeGuardSettings</code></li>
+        <li>File path attribute: <code>ProjectSettings/BuildSizeGuardSettings.asset</code></li>
+        </ul>
+        <h3>7.1 Core Settings Fields</h3>
+        <table class="data-table">
+        <thead>
+        <tr>
+        <th>Field</th>
+        <th class="text-right">Code Default</th>
+        <th class="text-right">Current Project Value</th>
+        <th>Behavior</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><code>dataRootPath</code></td>
+        <td class="text-right"><code>BuildSizeGuardData</code></td>
+        <td class="text-right"><code>BuildSizeGuardData</code></td>
+        <td>Root folder for snapshots/reports. Relative paths resolve from project root.</td>
+        </tr>
+        <tr>
+        <td><code>autoCaptureSnapshots</code></td>
+        <td class="text-right"><code>true</code></td>
+        <td class="text-right"><code>true</code></td>
+        <td>Master switch for post-build auto capture.</td>
+        </tr>
+        <tr>
+        <td><code>captureSuccessfulBuildsOnly</code> (legacy)</td>
+        <td class="text-right"><code>true</code></td>
+        <td class="text-right"><code>false</code></td>
+        <td>Legacy migration field. Mirrors successful+failed toggles.</td>
+        </tr>
+        <tr>
+        <td><code>captureSuccessfulBuilds</code></td>
+        <td class="text-right"><code>true</code></td>
+        <td class="text-right"><code>true</code></td>
+        <td>Capture snapshots for successful builds.</td>
+        </tr>
+        <tr>
+        <td><code>captureFailedBuilds</code></td>
+        <td class="text-right"><code>false</code></td>
+        <td class="text-right"><code>true</code></td>
+        <td>Capture snapshots for failed/canceled builds.</td>
+        </tr>
+        <tr>
+        <td><code>treatUnknownBuildResultAsUsable</code></td>
+        <td class="text-right"><code>false</code></td>
+        <td class="text-right"><code>true</code></td>
+        <td>Affects Unknown result capture routing and completeness classification.</td>
+        </tr>
+        <tr>
+        <td><code>topContributorLimit</code></td>
+        <td class="text-right"><code>200</code></td>
+        <td class="text-right"><code>200</code></td>
+        <td>Max ranked contributors stored per snapshot.</td>
+        </tr>
+        <tr>
+        <td><code>snapshotRetentionPerTarget</code></td>
+        <td class="text-right"><code>50</code></td>
+        <td class="text-right"><code>50</code></td>
+        <td>Keep latest N snapshots per target. Older snapshots pruned on new capture/import.</td>
+        </tr>
+        <tr>
+        <td><code>failOnViolationInBatchMode</code></td>
+        <td class="text-right"><code>true</code></td>
+        <td class="text-right"><code>true</code></td>
+        <td>CLI default behavior when violations exist.</td>
+        </tr>
+        <tr>
+        <td><code>defaultComparisonMetric</code></td>
+        <td class="text-right"><code>ReportTotal</code></td>
+        <td class="text-right"><code>ReportTotal</code></td>
+        <td>Metric driving totals/deltas in compare UI.</td>
+        </tr>
+        <tr>
+        <td><code>displayUnits</code></td>
+        <td class="text-right"><code>Auto</code></td>
+        <td class="text-right"><code>Auto</code></td>
+        <td>Byte display units in UI/report formatting.</td>
+        </tr>
+        <tr>
+        <td><code>budgetInputMode</code></td>
+        <td class="text-right"><code>Friendly</code></td>
+        <td class="text-right"><code>Friendly</code></td>
+        <td>Budget input UX mode.</td>
+        </tr>
+        </tbody>
+        </table>
+        <h3>7.2 Budget Policy Structure</h3>
+        <p>Policy type: <code>BuildSizeGuard.Core.Models.BudgetPolicy</code></p>
+        <p>Fields:</p>
+        <ul>
+        <li><code>enabled</code></li>
+        <li><code>maxTotalSizeEnabled</code> + <code>maxTotalSizeBytes</code></li>
+        <li><code>maxDeltaIncreaseEnabled</code> + <code>maxDeltaIncreaseBytes</code></li>
+        <li><code>maxPercentIncreaseEnabled</code> + <code>maxPercentIncrease</code></li>
+        <li><code>maxOutputArtifactSizeEnabled</code> + <code>maxOutputArtifactSizeBytes</code></li>
+        <li><code>maxOutputArtifactDeltaIncreaseEnabled</code> + <code>maxOutputArtifactDeltaIncreaseBytes</code></li>
+        <li><code>maxOutputArtifactPercentIncreaseEnabled</code> + <code>maxOutputArtifactPercentIncrease</code></li>
+        <li><code>categoryBudgets[]</code> (<code>category</code>, <code>maxSizeBytes</code>)</li>
+        <li><code>limitsMigrationCompleted</code></li>
+        </ul>
+        <p>Current project default policy (<code>ProjectSettings/BuildSizeGuardSettings.asset</code>):</p>
+        <ul>
+        <li><code>enabled = true</code></li>
+        <li><code>maxTotalSizeEnabled = true</code></li>
+        <li><code>maxTotalSizeBytes = 3221225472</code> (3 GiB)</li>
+        <li>Other default limits disabled (<code>Enabled=false</code>, value <code>0</code>)</li>
+        <li>Category budgets include:<ul>
+        <li><code>code: 0</code></li>
+        <li><code>other: 0</code></li>
+        </ul>
+        </li>
+        </ul>
+        <p>Current project target override policy:</p>
+        <ul>
+        <li>One entry for <code>StandaloneWindows</code></li>
+        <li><code>enabled = true</code></li>
+        <li>All explicit size limits disabled/0</li>
+        </ul>
+        <h3>7.3 Category Budget Keys</h3>
+        <p>Canonical categories from <code>SizeCategoryResolver</code> and <code>CategoryOptionsProvider</code>:</p>
+        <ul>
+        <li><code>texture</code></li>
+        <li><code>audio</code></li>
+        <li><code>mesh</code></li>
+        <li><code>shader</code></li>
+        <li><code>code</code></li>
+        <li><code>other</code></li>
+        </ul>
+      </section>
+      <section class="doc-card" id="snapshot-capture-and-completeness" data-section>
+        <h2>8. Snapshot Capture and Completeness</h2>
+        <h3>8.1 Build Hook</h3>
+        <p>Class: <code>BuildSizeGuardBuildProcessor : IPostprocessBuildWithReport</code></p>
+        <ul>
+        <li><code>callbackOrder = 1000</code></li>
+        <li>Capture decision uses:<ul>
+        <li><code>autoCaptureSnapshots</code></li>
+        <li><code>captureSuccessfulBuilds</code></li>
+        <li><code>captureFailedBuilds</code></li>
+        <li><code>treatUnknownBuildResultAsUsable</code></li>
+        </ul>
+        </li>
+        </ul>
+        <p>Capture decision matrix (<code>ShouldCaptureSnapshot</code>):</p>
+        <ul>
+        <li><code>Succeeded</code> -&gt; <code>captureSuccessfulBuilds</code></li>
+        <li><code>Failed</code> or <code>Cancelled</code> -&gt; <code>captureFailedBuilds</code></li>
+        <li><code>Unknown</code> -&gt;<ul>
+        <li>if <code>treatUnknownBuildResultAsUsable</code>: <code>captureSuccessfulBuilds</code></li>
+        <li>else: <code>captureFailedBuilds</code></li>
+        </ul>
+        </li>
+        <li>any other enum value -&gt; <code>captureSuccessfulBuilds</code></li>
+        </ul>
+        <h3>8.2 Completeness Policy</h3>
+        <p>Class: <code>SnapshotCompletenessPolicy</code></p>
+        <p><code>isIncomplete</code> becomes:</p>
+        <ul>
+        <li><code>false</code> when <code>buildResult == Succeeded</code></li>
+        <li><code>true</code> when <code>buildResult == Failed</code> or <code>Cancelled</code></li>
+        <li>for <code>Unknown</code>:<ul>
+        <li><code>false</code> only if <code>treatUnknownBuildResultAsUsable == true</code> and <code>outputArtifactSizeBytes &gt; 0</code></li>
+        <li>otherwise <code>true</code></li>
+        </ul>
+        </li>
+        <li>all other cases: <code>true</code></li>
+        </ul>
+        <h3>8.3 Extractor Pipeline</h3>
+        <p>Class: <code>BuildReportSnapshotExtractor</code></p>
+        <p>Data source preference:</p>
+        <ol>
+        <li>Packed assets (<code>report.packedAssets</code>) when available</li>
+        <li>Build report files (<code>GetFiles()</code> / <code>files</code>) fallback</li>
+        </ol>
+        <p>Contributor handling:</p>
+        <ul>
+        <li>Contributors are normalized and aggregated deterministically by normalized key.</li>
+        <li>Top contributors: first <code>topContributorLimit</code> sorted by descending size.</li>
+        <li>Remainder grouped into:<ul>
+        <li><code>remainderGroupedTotals</code> (category)</li>
+        <li><code>remainderGroupedTotalsByFolder</code> (first two path segments)</li>
+        </ul>
+        </li>
+        <li>If no contributors are found, extractor creates a fallback contributor from output path and total size.</li>
+        </ul>
+        <p>Snapshot identity:</p>
+        <ul>
+        <li>Uses build summary GUID when present.</li>
+        <li>Otherwise generates deterministic <code>det-&lt;hash&gt;</code> ID from build metadata + metrics.</li>
+        </ul>
+        <p>Build metadata enrichment:</p>
+        <ul>
+        <li><code>buildProfileId</code>, <code>buildProfileName</code> read via reflection (<code>summary.buildProfile</code> or <code>report.buildProfile</code> when present)</li>
+        <li><code>settingsFingerprint</code> is SHA-256 of selected build settings/features</li>
+        <li><code>environmentMetadata</code> captures first available values from CI variables:<ul>
+        <li><code>branch</code>: <code>BUILD_SOURCEBRANCHNAME</code> / <code>GITHUB_REF_NAME</code> / <code>CI_COMMIT_REF_NAME</code></li>
+        <li><code>commit</code>: <code>BUILD_SOURCEVERSION</code> / <code>GITHUB_SHA</code> / <code>CI_COMMIT_SHA</code></li>
+        <li><code>buildNumber</code>: <code>BUILD_BUILDNUMBER</code> / <code>GITHUB_RUN_NUMBER</code> / <code>CI_PIPELINE_ID</code></li>
+        <li><code>workflow</code>: <code>GITHUB_WORKFLOW</code> / <code>CI_PIPELINE_SOURCE</code></li>
+        </ul>
+        </li>
+        </ul>
+      </section>
+      <section class="doc-card" id="snapshot-schema-and-storage" data-section>
+        <h2>9. Snapshot Schema and Storage</h2>
+        <h3>9.1 Schema</h3>
+        <p>Model: <code>BuildSizeSnapshot</code></p>
+        <ul>
+        <li>Current schema version constant: <code>"6"</code></li>
+        </ul>
+        <p>Important fields:</p>
+        <ul>
+        <li>Identity/metadata:<ul>
+        <li><code>schemaVersion</code>, <code>snapshotId</code>, <code>label</code>, <code>toolVersion</code>, <code>unityVersion</code></li>
+        <li><code>buildTarget</code>, <code>buildTargetGroup</code>, <code>buildProfileId</code>, <code>buildProfileName</code></li>
+        <li><code>buildOptions</code>, <code>detailedBuildReportEnabled</code>, <code>settingsFingerprint</code></li>
+        </ul>
+        </li>
+        <li>Build state:<ul>
+        <li><code>buildResult</code>, <code>isIncomplete</code>, <code>outputPath</code>, <code>buildStartedUtc</code>, <code>buildEndedUtc</code></li>
+        </ul>
+        </li>
+        <li>Metrics:<ul>
+        <li><code>reportTotalSizeBytes</code>, <code>outputArtifactSizeBytes</code>, <code>addressablesTotalBytes</code></li>
+        <li>legacy mirror: <code>totalSizeBytes</code></li>
+        </ul>
+        </li>
+        <li>Contributor sets:<ul>
+        <li><code>sourceContributorCount</code>, <code>topContributorLimit</code>, <code>remainderSizeBytes</code></li>
+        <li><code>contributors</code></li>
+        <li>grouped remainder/category/folder lists</li>
+        <li>addressables grouped totals by group/bundle/asset</li>
+        </ul>
+        </li>
+        <li>Environment:<ul>
+        <li><code>environmentMetadata</code></li>
+        </ul>
+        </li>
+        </ul>
+        <h3>9.2 Data Directories</h3>
+        <p>From <code>BuildSizeGuardPaths</code>:</p>
+        <ul>
+        <li>Data root default folder name: <code>BuildSizeGuardData</code></li>
+        <li>Snapshots folder: <code>&lt;DataRoot&gt;/snapshots</code></li>
+        <li>Reports folder: <code>&lt;DataRoot&gt;/reports</code></li>
+        </ul>
+        <p>Relative data root paths are resolved against Unity project root (<code>Application.dataPath/..</code>).</p>
+        <h3>9.3 Snapshot File Naming and Ordering</h3>
+        <p>Snapshot file pattern (<code>JsonSnapshotRepository</code>):</p>
+        <ul>
+        <li><code>yyyyMMddTHHmmssfffZ_&lt;Target&gt;_&lt;Label&gt;_&lt;SnapshotId&gt;.json</code></li>
+        </ul>
+        <p>Repository ordering:</p>
+        <ul>
+        <li>Snapshot path listing sorted descending by path (ordinal)</li>
+        <li>Snapshot objects sorted by <code>buildEndedUtc</code> descending, then <code>snapshotId</code> descending</li>
+        </ul>
+        <h3>9.4 Latest Passing Index</h3>
+        <p>File:</p>
+        <ul>
+        <li><code>&lt;DataRoot&gt;/latest_passing_snapshots.json</code></li>
+        </ul>
+        <p>Behavior:</p>
+        <ul>
+        <li>Keyed by normalized <code>buildTarget</code> + normalized <code>buildProfileId</code></li>
+        <li>Backward-compatible lookup fallback to empty profile entry when profile-specific key not found</li>
+        <li>Updated only on batch runs that finish without violations</li>
+        </ul>
+      </section>
+      <section class="doc-card" id="category-resolution" data-section>
+        <h2>10. Category Resolution</h2>
+        <p>Class: <code>SizeCategoryResolver</code></p>
+        <p>Canonical output categories:</p>
+        <ul>
+        <li><code>texture</code>, <code>audio</code>, <code>mesh</code>, <code>shader</code>, <code>code</code>, <code>other</code></li>
+        </ul>
+        <p>Resolution strategy:</p>
+        <ol>
+        <li>Code-output heuristics first (<code>code</code>): managed outputs, IL2CPP artifacts, global metadata, platform-native build libraries</li>
+        <li>Extension mapping (<code>.png</code>, <code>.wav</code>, <code>.fbx</code>, <code>.shader</code>, etc.)</li>
+        <li>Name/path keyword fallback (<code>texture</code>, <code>audio</code>, <code>mesh</code>, <code>shader</code>)</li>
+        <li>Fallback to <code>other</code></li>
+        </ol>
+        <p>Important detail:</p>
+        <ul>
+        <li>Paths that look like project assets (<code>Assets/*</code>, <code>Packages/*</code>) are not auto-classified as code outputs, except known build-output patterns (for example Android <code>assets/bin/data/...</code>).</li>
+        </ul>
+      </section>
+      <section class="doc-card" id="diff-and-budget-evaluation-semantics" data-section>
+        <h2>11. Diff and Budget Evaluation Semantics</h2>
+        <h3>11.1 Diffing</h3>
+        <p>Class: <code>SnapshotDiffService</code></p>
+        <p>Identity priority:</p>
+        <ol>
+        <li><code>guid</code> (if present)</li>
+        <li><code>key</code></li>
+        <li><code>pathAtBuildTime</code></li>
+        </ol>
+        <p>Computed sections:</p>
+        <ul>
+        <li><code>entries</code></li>
+        <li><code>increases</code></li>
+        <li><code>decreases</code></li>
+        <li><code>newItems</code></li>
+        <li><code>removedItems</code></li>
+        <li><code>movedItems</code> (requires same GUID and changed path)</li>
+        </ul>
+        <p>Percent rule:</p>
+        <ul>
+        <li>If baseline bytes <code>&lt;= 0</code> and delta <code>&gt; 0</code>, percent is <code>100%</code>.</li>
+        </ul>
+        <p>Grouped totals in diff:</p>
+        <ul>
+        <li>Category baseline/current/delta</li>
+        <li>Folder baseline/current/delta</li>
+        <li>Addressables group/bundle/asset baseline/current/delta</li>
+        </ul>
+        <h3>11.2 Budget Evaluation</h3>
+        <p>Class: <code>BudgetEvaluationService</code></p>
+        <p>Violation codes:</p>
+        <ul>
+        <li><code>REPORT_TOTAL_MAX</code></li>
+        <li><code>REPORT_DELTA_MAX</code></li>
+        <li><code>REPORT_PERCENT_MAX</code></li>
+        <li><code>ARTIFACT_TOTAL_MAX</code></li>
+        <li><code>ARTIFACT_DELTA_MAX</code></li>
+        <li><code>ARTIFACT_PERCENT_MAX</code></li>
+        <li><code>CATEGORY_MAX</code></li>
+        </ul>
+        <p>Category budget behavior:</p>
+        <ul>
+        <li>Evaluated only when <code>category</code> is non-empty and <code>maxSizeBytes &gt; 0</code></li>
+        <li>Uses <code>diff.currentGroupedTotalsByCategory</code> when available</li>
+        <li>Falls back to summing <code>diff.entries.currentSizeBytes</code> by category otherwise</li>
+        </ul>
+        <p>Migration compatibility behavior:</p>
+        <ul>
+        <li>If <code>limitsMigrationCompleted == false</code>, enabled state can be inferred from non-zero budget values.</li>
+        </ul>
+      </section>
+      <section class="doc-card" id="addressables-layout-parsing" data-section>
+        <h2>12. Addressables Layout Parsing</h2>
+        <p>Class: <code>AddressablesBuildLayoutParser</code></p>
+        <p>What it parses:</p>
+        <ul>
+        <li>Addressables layout JSON into grouped totals by:<ul>
+        <li>group</li>
+        <li>bundle</li>
+        <li>asset</li>
+        </ul>
+        </li>
+        </ul>
+        <p>Lookup behavior:</p>
+        <ul>
+        <li>Primary expected filename: <code>buildlayout.json</code></li>
+        <li>Also accepts JSON files with addressables/layout naming patterns</li>
+        <li>Search locations include output directory, ancestor/project-related directories, and recursive search up to depth 5</li>
+        <li>Chooses most recently modified candidate</li>
+        </ul>
+        <p>Parser behavior:</p>
+        <ul>
+        <li>Uses internal tolerant JSON reader (no dependency on external JSON package APIs)</li>
+        <li>For group/bundle duplicates, keeps largest size per key</li>
+        <li>For asset duplicates, accumulates size</li>
+        <li>Total bytes fallback order:<ol>
+        <li>bundle sum</li>
+        <li>group sum</li>
+        <li>asset sum</li>
+        </ol>
+        </li>
+        <li>On missing/unreadable/invalid JSON, returns empty result (with warning log)</li>
+        </ul>
+      </section>
+      <section class="doc-card" id="editor-window-behavior" data-section>
+        <h2>13. Editor Window Behavior</h2>
+        <p>Main class: <code>BuildSizeGuardWindow</code></p>
+        <p>Menu entry:</p>
+        <ul>
+        <li><code>Tools/Build Size Guard/Open Window</code></li>
+        </ul>
+        <p>Toolbar actions:</p>
+        <ul>
+        <li>Refresh snapshots</li>
+        <li>Open latest report</li>
+        <li>Open reports folder</li>
+        <li>Import <code>.buildreport</code></li>
+        <li>Export summary (<code>Markdown</code>, <code>JSON</code>, <code>XML</code>, <code>CSV</code>, <code>Copy to clipboard</code>)</li>
+        </ul>
+        <p>Snapshots pane:</p>
+        <ul>
+        <li>Search tokens are AND-matched against:<ul>
+        <li>target</li>
+        <li>label</li>
+        <li>output path</li>
+        <li>snapshot file path</li>
+        <li>build profile name</li>
+        </ul>
+        </li>
+        <li>Target filter dropdown</li>
+        <li>Toggle <code>Show non-usable/incomplete</code></li>
+        </ul>
+        <p>Compare pane:</p>
+        <ul>
+        <li>Metric options:<ul>
+        <li><code>ReportTotal</code></li>
+        <li><code>OutputArtifact</code></li>
+        <li><code>AddressablesWhenPresent</code> (falls back to report total when addressables not available)</li>
+        </ul>
+        </li>
+        <li>Baseline/current selectors</li>
+        <li>Actions:<ul>
+        <li><code>Swap</code></li>
+        <li><code>Compare</code></li>
+        <li><code>Latest vs Previous</code></li>
+        <li>selector shortcuts (<code>Latest</code>, <code>Previous</code>)</li>
+        </ul>
+        </li>
+        </ul>
+        <p>Default selection logic:</p>
+        <ul>
+        <li>Current defaults to latest selectable snapshot</li>
+        <li>Baseline defaults to previous snapshot for same target</li>
+        </ul>
+        <p>Snapshot interactions:</p>
+        <ul>
+        <li>Double-click snapshot compares it against previous snapshot of same target</li>
+        <li>Context menu:<ul>
+        <li>Set as Baseline</li>
+        <li>Set as Current</li>
+        <li>Compare Baseline vs This</li>
+        <li>Reveal Snapshot File</li>
+        <li>Delete Snapshot</li>
+        </ul>
+        </li>
+        </ul>
+        <p>Budgets pane:</p>
+        <ul>
+        <li>In-window draft editing of default and per-target policies</li>
+        <li><code>Raw Bytes Mode</code> toggle</li>
+        <li><code>Show unavailable targets</code> toggle</li>
+        <li>Actions:<ul>
+        <li>Save</li>
+        <li>Save + Re-run Compare</li>
+        <li>Reload</li>
+        </ul>
+        </li>
+        </ul>
+        <p>Grouped totals tabs shown by UI:</p>
+        <ul>
+        <li><code>By Category</code></li>
+        <li><code>By Folder</code></li>
+        <li><code>By Addressables Group</code> (only when group data exists)</li>
+        </ul>
+        <p>Diff tables shown by UI:</p>
+        <ul>
+        <li><code>Increases</code></li>
+        <li><code>Decreases</code></li>
+        <li><code>New</code></li>
+        <li><code>Removed</code></li>
+        </ul>
+        <p>Moved entries:</p>
+        <ul>
+        <li>Included in diff model and report outputs</li>
+        <li>Count appears in summary</li>
+        <li>No dedicated <code>Moved</code> diff table is rendered in current window</li>
+        </ul>
+        <p>Diff row interactions:</p>
+        <ul>
+        <li>Single click attempts to ping corresponding <code>Assets/</code> or <code>Packages/</code> object</li>
+        <li>Context menu supports:<ul>
+        <li><code>Copy File Location</code></li>
+        <li><code>Copy GUID</code></li>
+        </ul>
+        </li>
+        </ul>
+        <p>Change-over-time:</p>
+        <ul>
+        <li>Computed per target from consecutive snapshots</li>
+        <li>Row count is configurable from 5 to 100 (default 20)</li>
+        <li>Clicking a row applies that baseline/current pair and reruns compare</li>
+        </ul>
+      </section>
+      <section class="doc-card" id="cli-batch-mode" data-section>
+        <h2>14. CLI / Batch Mode</h2>
+        <p>Entry method:</p>
+        <ul>
+        <li><code>BuildSizeGuard.Editor.Cli.BuildSizeGuardBatchRunner.Run</code></li>
+        </ul>
+        <p>Use with Unity <code>-executeMethod</code> in batch mode.</p>
+        <h3>14.1 CLI Arguments</h3>
+        <p>From <code>CliArgumentParser.Usage</code>:</p>
+        <ul>
+        <li><code>-buildSizeGuard.baseline &lt;path|latest|latestPassing&gt;</code></li>
+        <li><code>-buildSizeGuard.current &lt;path|latest&gt;</code></li>
+        <li><code>-buildSizeGuard.baselineMatch &lt;targetAndProfile|targetOnly|any&gt;</code></li>
+        <li><code>-buildSizeGuard.reportJson &lt;path&gt;</code></li>
+        <li><code>-buildSizeGuard.reportMarkdown &lt;path&gt;</code></li>
+        <li><code>-buildSizeGuard.reportXml &lt;path&gt;</code></li>
+        <li><code>-buildSizeGuard.reportCsv &lt;path&gt;</code></li>
+        <li><code>-buildSizeGuard.exportPrefix &lt;path-prefix&gt;</code></li>
+        <li><code>-buildSizeGuard.failOnViolation &lt;true|false&gt;</code></li>
+        </ul>
+        <p>Defaults:</p>
+        <ul>
+        <li><code>baseline = latest</code></li>
+        <li><code>current = latest</code></li>
+        <li><code>baselineMatch = targetAndProfile</code></li>
+        </ul>
+        <h3>14.2 Baseline Resolution Logic</h3>
+        <ul>
+        <li><code>baseline=latestPassing</code><ul>
+        <li>Looks up latest passing index by target/profile</li>
+        <li>For <code>baselineMatch=targetOnly|any</code>, profile lookup is relaxed (empty profile)</li>
+        </ul>
+        </li>
+        <li><code>baseline=latest</code><ul>
+        <li>Selects most recent matching historical snapshot excluding current path</li>
+        <li>If mode is <code>targetAndProfile</code> and no match is found, falls back to <code>targetOnly</code></li>
+        </ul>
+        </li>
+        <li>explicit baseline path<ul>
+        <li>loads exact specified snapshot file</li>
+        </ul>
+        </li>
+        </ul>
+        <p>If <code>current=latest</code> and <code>baseline=latest</code>, at least two matching snapshots are required.</p>
+        <h3>14.3 Output Path Behavior</h3>
+        <ul>
+        <li>Relative report paths are resolved against project root.</li>
+        <li><code>exportPrefix</code> auto-fills missing report outputs:<ul>
+        <li><code>&lt;prefix&gt;.json</code></li>
+        <li><code>&lt;prefix&gt;.md</code></li>
+        <li><code>&lt;prefix&gt;.xml</code></li>
+        <li><code>&lt;prefix&gt;.csv</code></li>
+        </ul>
+        </li>
+        <li>If prefix already ends with known report extension, extension is stripped before suffixing.</li>
+        </ul>
+        <h3>14.4 Exit Codes</h3>
+        <ul>
+        <li><code>0</code> success</li>
+        <li><code>2</code> violations found and configured to fail</li>
+        <li><code>3</code> invalid CLI arguments</li>
+        <li><code>4</code> baseline resolution error</li>
+        <li><code>5</code> snapshot load error</li>
+        <li><code>6</code> report write error</li>
+        <li><code>7</code> runtime error</li>
+        </ul>
+      </section>
+      <section class="doc-card" id="report-outputs" data-section>
+        <h2>15. Report Outputs</h2>
+        <p>Writers:</p>
+        <ul>
+        <li><code>JsonReportWriter</code></li>
+        <li><code>MarkdownReportWriter</code></li>
+        <li><code>XmlReportWriter</code></li>
+        <li><code>CsvReportWriter</code></li>
+        <li><code>ConsoleReportWriter</code></li>
+        </ul>
+        <p>Common behavior:</p>
+        <ul>
+        <li>If output path is empty/whitespace, file writer returns without writing.</li>
+        <li>Writes are atomic (<code>AtomicFileWriter</code> uses temp file + replace/move).</li>
+        </ul>
+        <p>Content highlights:</p>
+        <ul>
+        <li>JSON: serialized full <code>GuardEvaluationResult</code></li>
+        <li>Markdown: summary + top sections + violations + grouped addressables deltas</li>
+        <li>XML: structured summary/snapshots/top entries/violations/grouped deltas</li>
+        <li>CSV: flat records for summary, top diffs, violations, grouped deltas</li>
+        <li>Console: short summary for logs</li>
+        </ul>
+      </section>
+      <section class="doc-card" id="import-behavior" data-section>
+        <h2>16. Import Behavior</h2>
+        <p>Import service: <code>BuildReportImportService</code></p>
+        <p>Rules:</p>
+        <ul>
+        <li>Input path must exist</li>
+        <li>Extension must be <code>.buildreport</code></li>
+        <li>Uses <code>InternalEditorUtility.LoadSerializedFileAndForget</code></li>
+        <li>Must contain a Unity <code>BuildReport</code> object</li>
+        </ul>
+        <p>Import processing:</p>
+        <ul>
+        <li>Extract snapshot via same <code>BuildReportSnapshotExtractor</code></li>
+        <li>Apply completeness policy</li>
+        <li>Save snapshot</li>
+        <li>Prune per-target retention</li>
+        </ul>
+        <p>Label normalization:</p>
+        <ul>
+        <li>Provided label used unless empty or <code>auto</code></li>
+        <li>Empty/<code>auto</code> falls back to file stem</li>
+        <li>File stem <code>auto</code> becomes <code>import</code></li>
+        </ul>
+      </section>
+      <section class="doc-card" id="data-layout-example" data-section>
+        <h2>17. Data Layout Example</h2>
+        <p>With default <code>dataRootPath = BuildSizeGuardData</code>:</p>
+        <pre><code class="language-text">BuildSizeGuardData/
+          latest_passing_snapshots.json
+          snapshots/
+            20260211T100000000Z_StandaloneWindows64_auto_&lt;snapshotId&gt;.json
+            ...
+          reports/
+            &lt;target&gt;_&lt;currentId&gt;_vs_&lt;baselineId&gt;.md
+            &lt;target&gt;_&lt;currentId&gt;_vs_&lt;baselineId&gt;.json
+            &lt;target&gt;_&lt;currentId&gt;_vs_&lt;baselineId&gt;.xml
+            &lt;target&gt;_&lt;currentId&gt;_vs_&lt;baselineId&gt;.csv
+        </code></pre>
+        <p>Current repository state observed:</p>
+        <ul>
+        <li><code>BuildSizeGuardData/snapshots</code> exists</li>
+        <li><code>BuildSizeGuardData/reports</code> exists</li>
+        </ul>
+      </section>
+      <section class="doc-card" id="validation-and-tests" data-section>
+        <h2>18. Validation and Tests</h2>
+        <p>Editor test assembly includes tests for:</p>
+        <ul>
+        <li>Addressables layout parsing</li>
+        <li>Build report extraction</li>
+        <li>Auto-capture decision logic</li>
+        <li>Snapshot completeness policy</li>
+        <li>Diff service</li>
+        <li>Budget evaluation</li>
+        <li>Snapshot repository and latest passing index</li>
+        <li>CLI argument parsing and batch runner behavior</li>
+        <li>Category/build target option providers</li>
+        <li>Asset store readiness constraints</li>
+        </ul>
+        <p>Additional helper script:</p>
+        <ul>
+        <li><code>scripts/verify_clean_import.sh</code><ul>
+        <li>launches Unity in batch mode</li>
+        <li>scans log for BuildSizeGuard C# errors and warnings</li>
+        <li>default Unity path points to macOS Hub install for <code>6000.3.7f1</code></li>
+        </ul>
+        </li>
+        </ul>
+      </section>
+      <section class="doc-card" id="known-behavior-notes-and-constraints" data-section>
+        <h2>19. Known Behavior Notes and Constraints</h2>
+        <ul>
+        <li>Module is editor-only by assembly definition and Unity API usage.</li>
+        <li>Snapshot/report keys and many stored paths are normalized to lowercase forward-slash format.</li>
+        <li>Category budgets set to <code>0</code> are effectively inactive (<code>maxSizeBytes &gt; 0</code> required).</li>
+        <li>Incomplete snapshots are hidden by default in compare selection unless user enables <code>Show non-usable/incomplete</code>.</li>
+        <li>Addressables bundle/asset deltas are captured in snapshot/diff/report models, but current grouped totals UI tab exposes Addressables group only.</li>
+        <li>UI diff tables do not currently render a separate moved-items section even though moved entries are computed and reported.</li>
+        </ul>
+      </section>
+      <section class="doc-card" id="license-and-support" data-section>
+        <h2>20. License and Support</h2>
+        <p>Build Size Guard includes a dedicated license file:</p>
+        <ul>
+        <li><code>Assets/BuildSizeGuard/License.txt</code></li>
+        </ul>
+        <p>License file states:</p>
+        <ul>
+        <li>Commercial, per-seat, no redistribution terms</li>
+        <li>Support contact: <code>kevin@smartindie.dev</code></li>
+        </ul>
+      </section>
+
+      <div class="empty-state" id="emptyState" role="status" aria-live="polite">
+        No sections match your search. Try a broader term like <code>snapshot</code>, <code>budget</code>, or <code>batch</code>.
+      </div>
+    </main>
+  </div>
+  <script src="/assets/js/docs/product-docs.js"></script>
+  <script defer src="/assets/js/site/link-decorators.js"></script>
+</body>
+</html>
+

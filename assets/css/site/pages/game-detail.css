@@ -1,0 +1,25 @@
+.game-detail-shell {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+.game-detail-shell p {
+  color: var(--color-text-muted);
+}
+
+.game-store-grid {
+  display: grid;
+  gap: var(--space-md);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.game-store-grid .card-actions {
+  margin-top: var(--space-sm);
+}
+
+@media (max-width: 760px) {
+  .game-store-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Import Settings Validator &amp; Fix | Unity Editor Tool</title>
+  <meta name="description" content="Import Settings Validator &amp; Fix enforces Unity asset import standards with deterministic rules, continuous import enforcement, project-wide validation, fix workflows, and compliance reporting.">
+  <script src="/assets/js/theme/theme-init.js"></script>
+  <link rel="stylesheet" href="/assets/css/products/build-size-guard.css">
+  <link rel="stylesheet" href="/assets/css/products/import-settings-validator-fix.css">
+  <link rel="stylesheet" href="/assets/css/product-gallery.css">
+  <link rel="stylesheet" href="/assets/css/shared/link-decorators.css">
+  <link rel="stylesheet" href="/assets/css/shared/typography-overrides.css">
+</head>
+<body>
+  <header>
+    <div class="container top-nav">
+      <a class="brand" href="/assets/import-settings-validator-fix/" aria-label="Import Settings Validator and Fix top of page">
+        <img class="brand-icon" src="/assets/images/ImportSettingsValidatorFix/icons/ImportSettingsValidatorFixIcon160.jpg" alt="Import Settings Validator and Fix icon" width="28" height="28" loading="eager">
+        <span class="brand-label">Import Settings Validator &amp; Fix</span>
+      </a>
+      <nav class="nav-links" aria-label="Page">
+        <a href="#features">Features</a>
+        <a href="#validator">Validator</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#faq">FAQ</a>
+        <a href="#license-sale-terms">License</a>
+        <a href="/assets/support/">Support</a>
+      </nav>
+      <div class="nav-cta">
+        <a class="button orange" href="/assets/import-settings-validator-fix/docs/">Docs</a>
+        <a class="button primary" href="https://assetstore.unity.com/packages/slug/362308">Get it now</a>
+</div>
+    </div>
+  </header>
+
+  <main>
+    <section id="overview" class="container reveal">
+      <div class="hero">
+        <div>
+          <div class="price-badge">Placeholder Product Page</div>
+          <h1>Enforce Unity import settings automatically, validate drift, and fix issues fast.</h1>
+          <p>Import Settings Validator &amp; Fix uses deterministic rules to keep texture, audio, and model import settings consistent across teams, machines, and asset drops.</p>
+          <div class="cta-group">
+            <a class="button primary" href="https://assetstore.unity.com/packages/slug/362308">Get it on the Unity Asset Store</a>
+            <a class="button secondary" href="https://kevindevelopment.itch.io/importvalidator">View on itch.io</a>
+          </div>
+          <ul class="trust-list">
+            <li>Rule-based matching by path and importer type</li>
+            <li>Automatic enforcement on import and reimport</li>
+            <li>Project-wide validator with non-compliance diffs</li>
+            <li>Fix selected or fix all plus exportable compliance reports</li>
+          </ul>
+        </div>
+        <figure class="card media-card">
+          <div class="image-slot image-slot-hero" data-gallery-item data-gallery-caption="Hero screenshot placeholder for Import Settings Validator &amp; Fix.">
+            <div>
+              <strong>Hero Screenshot Placeholder</strong><br>
+              Replace with a large product overview image showing rules, scan status, and fix actions.
+            </div>
+          </div>
+          <figcaption class="muted">Large placeholder for your main product image.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="container reveal">
+      <h2 class="section-title">The problem</h2>
+      <p>Unity projects drift over time. Import settings vary by person, machine, source package, and timeline. That inconsistency can bloat builds, reduce visual or audio quality, and create repetitive manual importer editing work.</p>
+    </section>
+
+    <section id="features" class="container reveal">
+      <h2 class="section-title">What it does</h2>
+      <ol>
+        <li>Match assets using ordered rules by path pattern and importer type</li>
+        <li>Auto-apply expected settings during import through Unity import hooks</li>
+        <li>Scan the full project and flag non-compliant assets with readable diffs</li>
+        <li>Fix selected items or fix all in scope, then export compliance reports</li>
+      </ol>
+      <div class="inline-note">MVP scope is focused by design: import enforcement, validator, fix workflow, and report export.</div>
+    </section>
+
+    <section class="container reveal">
+      <h2 class="section-title">Core MVP capabilities</h2>
+      <div class="grid-two">
+        <div class="card">
+          <h3>Rule system</h3>
+          <p class="muted"><code>ImportRuleSet</code> ScriptableObject with ordered rules. Last match wins for predictable outcomes. Rules can target TextureImporter, AudioImporter, and ModelImporter.</p>
+        </div>
+        <div class="card">
+          <h3>Auto enforcement on import</h3>
+          <p class="muted">Uses pre-process hooks for texture, audio, and model importers. Applies only when settings differ to avoid churn and noise.</p>
+        </div>
+        <div class="card">
+          <h3>Validator and fix flow</h3>
+          <p class="muted">Scan Assets/ to compute expected settings, compare against current importer state, then fix selected rows or all filtered rows.</p>
+        </div>
+        <div class="card">
+          <h3>Reporting</h3>
+          <p class="muted">Export compliance summaries with totals and per-asset rows, including path, importer type, status, applied rule, and diff summary.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="validator" class="container reveal">
+      <h2 class="section-title">Validator and fix workflow</h2>
+      <div class="grid-two">
+        <div class="card">
+          <h3>Validator output</h3>
+          <ul>
+            <li>Compliant / non-compliant / skipped status</li>
+            <li>Asset path and importer type</li>
+            <li>Rule applied</li>
+            <li>Human-readable diff summary</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Safety controls</h3>
+          <ul>
+            <li>Global enforcement on/off toggle</li>
+            <li>Dry-run mode for previewing changes</li>
+            <li>Fix All confirmation dialog with counts</li>
+            <li>Concise logging with configurable verbosity</li>
+          </ul>
+        </div>
+      </div>
+      <figure class="card media-card media-card--spacious">
+        <div class="placeholder-grid">
+          <div class="image-slot image-slot-xl" data-gallery-item data-gallery-caption="Validator list placeholder image.">
+            <div>
+              <strong>Validator Results Placeholder</strong><br>
+              Large screenshot area for compliance table view.
+            </div>
+          </div>
+          <div class="image-slot image-slot-xl" data-gallery-item data-gallery-caption="Fix actions placeholder image.">
+            <div>
+              <strong>Fix Workflow Placeholder</strong><br>
+              Large screenshot area for Fix Selected / Fix All actions.
+            </div>
+          </div>
+        </div>
+        <figcaption class="muted">Two large placeholders for validator and fix workflow screenshots.</figcaption>
+      </figure>
+    </section>
+
+    <section id="workflow" class="container reveal">
+      <h2 class="section-title">Planned MVP stages</h2>
+      <ol>
+        <li>Foundations: rules, matching engine, expected settings computation, explain output</li>
+        <li>Enforcement: import hooks, preset apply, change detection, project toggles</li>
+        <li>Validator core: full scan, compliance evaluation, readable diffs</li>
+        <li>Fix actions: fix selected, fix all, dry-run preview, reimport handling</li>
+        <li>Reporting and polish: CSV/JSON export, UX filtering, docs and sample RuleSet</li>
+      </ol>
+    </section>
+
+    <section class="container reveal">
+      <h2 class="section-title">MVP non-goals</h2>
+      <ul>
+        <li>No visual rule builder UI in MVP</li>
+        <li>No heuristic optimization or auto-suggested settings</li>
+        <li>No build pipeline or CI hook integration in MVP</li>
+        <li>No runtime components. Editor-only tool.</li>
+      </ul>
+      <div class="inline-note">Scope discipline keeps behavior deterministic and implementation practical for teams that need reliable enforcement first.</div>
+    </section>
+
+    <section class="container reveal">
+      <h2 class="section-title">Definition of done focus</h2>
+      <ul>
+        <li>Deterministic behavior across machines and reimports</li>
+        <li>No infinite reimport loops or continuous dirty state</li>
+        <li>Clear explainability for why a rule changed an importer</li>
+        <li>Example RuleSet and Presets included for quick setup</li>
+      </ul>
+    </section>
+
+    <section class="container reveal">
+      <h2 class="section-title">More placeholder media</h2>
+      <figure class="card media-card media-card--spacious">
+        <div class="image-slot image-slot-xl" data-gallery-item data-gallery-caption="Rule definition and explain output placeholder image.">
+          <div>
+            <strong>Rules + Explain View Placeholder</strong><br>
+            Large screenshot area for rules inspector and explain output.
+          </div>
+        </div>
+        <figcaption class="muted">Large placeholder for rules and explainability view.</figcaption>
+      </figure>
+    </section>
+
+    <section id="faq" class="container reveal">
+      <h2 class="section-title">FAQ</h2>
+      <details>
+        <summary>Q: Does this tool choose import settings for me automatically?</summary>
+        <p>A: No. You define standards through rules and presets. The tool enforces what you declared.</p>
+      </details>
+      <details>
+        <summary>Q: Can I preview before applying changes?</summary>
+        <p>A: Yes. Dry-run modes are part of the MVP scope so you can review intended changes before mass updates.</p>
+      </details>
+      <details>
+        <summary>Q: Which importer types are covered in MVP?</summary>
+        <p>A: TextureImporter, AudioImporter, and ModelImporter.</p>
+      </details>
+      <details>
+        <summary>Q: Will this add runtime code to my game build?</summary>
+        <p>A: No. The tool is editor-only.</p>
+      </details>
+      <details>
+        <summary>Q: Can it export compliance data for reviews?</summary>
+        <p>A: Yes. CSV export is required in MVP, with JSON export included when practical.</p>
+      </details>
+    </section>
+
+    <section id="license-sale-terms" class="container reveal">
+      <h2 class="section-title">License and sale terms</h2>
+      <details>
+        <summary>View license link</summary>
+        <p><strong>Full license:</strong> <a href="/assets/import-settings-validator-fix/license/">Read the Import Settings Validator &amp; Fix license placeholder page</a>.</p>
+      </details>
+    </section>
+
+    <section id="get-it-now" class="container reveal">
+      <div class="cta-strip">
+        <div>
+          <h2 class="section-title">Get Import Settings Validator &amp; Fix</h2>
+          <p class="muted">This placeholder page is ready for final screenshots and demo media.</p>
+        </div>
+        <div class="cta-group">
+          <a class="button primary" href="https://assetstore.unity.com/packages/slug/362308">Unity Asset Store</a>
+          <a class="button secondary" href="https://kevindevelopment.itch.io/importvalidator">itch.io</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <div class="footer-title">Import Settings Validator &amp; Fix</div>
+          <p class="muted">A Unity Editor workflow tool from Bjorvand Solutions for import-setting consistency and compliance reporting.</p>
+        </div>
+        <div class="footer-links">
+          <a href="https://assetstore.unity.com/packages/slug/362308">Unity Asset Store</a>
+          <a href="https://kevindevelopment.itch.io/importvalidator">itch.io</a>
+          <a href="#faq">FAQ</a>
+          <a href="/assets/import-settings-validator-fix/license/">License</a>
+          <a href="/assets/import-settings-validator-fix/docs/">Docs</a>
+          <a href="/tools/">More Unity tools</a>
+          <a href="/">Homepage</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="mobile-cta" aria-label="Mobile call to action">
+    <a class="button primary" href="https://assetstore.unity.com/packages/slug/362308">Get it on Unity Asset Store</a>
+  </div>
+  <script src="/assets/js/ui/reveal.js"></script>
+  <script src="/assets/js/product-gallery.js"></script>
+  <script defer src="/assets/js/site/link-decorators.js"></script>
+</body>
+</html>

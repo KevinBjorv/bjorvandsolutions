@@ -1,0 +1,531 @@
+# Third-Party Notices & Credits: License Compliance for Unity - Technical User Guide
+
+This document describes the current implementation in this repository, based on the code under `Assets/GameCompliancePack/Compliance` and project settings files. It intentionally avoids assumptions.
+
+## 1. Overview
+
+Third-Party Notices & Credits: License Compliance for Unity is a Unity Editor tool for detecting third-party components and generating compliance artifacts.
+
+- Unity menu entry: `Tools/Compliance Pack`
+- Main window class: `ComplianceToolWindow`
+- Tool version constant in code: `0.1.0`
+- Build hook: `BuildHook` (`IPreprocessBuildWithReport`)
+- Current project Unity editor version: `6000.3.5f2` (`ProjectSettings/ProjectVersion.txt`)
+
+Primary code locations:
+
+- Editor logic: `Assets/GameCompliancePack/Compliance/Editor`
+- Runtime model/logic: `Assets/GameCompliancePack/Compliance/Runtime`
+- Tests: `Assets/GameCompliancePack/Compliance/Tests/Editor`
+
+## 2. What You Get
+
+When you export, the tool writes compliance artifacts to the configured output directory (`Settings.outputDirectory`, default `Compliance`).
+
+Default file names:
+
+- `THIRD_PARTY_NOTICES.txt`
+- `CREDITS.md`
+- `compliance-manifest.json`
+- `compliance-overrides.json` (saved when overrides/manual entries are changed)
+
+What each file is for:
+
+- `THIRD_PARTY_NOTICES.txt`: full per-component notice blocks, including license text or explicit UNKNOWN/incomplete placeholders.
+- `CREDITS.md`: concise bullet list suitable for credits/attribution pages.
+- `compliance-manifest.json`: machine-readable manifest with component metadata and resolved license state.
+- `compliance-overrides.json`: persistent manual decisions (license IDs/text, credit lines, manual entries, package import monitor rules).
+
+## 3. Feature Summary
+
+Implemented features include:
+
+- Scan UPM dependencies from `Packages/manifest.json` and `Packages/packages-lock.json`.
+- Scan file-system components from configured roots plus native libraries in `Assets`.
+- Detect nearby legal files (`LICENSE`, `NOTICE`, `COPYING`, etc.) within bounded scan scope.
+- Classify licenses via:
+  - SPDX identifiers found in text,
+  - package metadata (`package.json`),
+  - text similarity against local SPDX license corpus.
+- Resolve licenses conservatively with UNKNOWN fallback.
+- Override workflow (per component) for license, URL, author, credit line, notices entry, and changes-made state.
+- Manual entry workflow for dependencies not auto-detected.
+- Orphan manual entry handling (keep missing, remove, or map to detected component).
+- Export with manifest diff (`added`, `removed`, `changed`) and "What Changed" sections.
+- Build-time integration with warning/fail policies.
+- Package import monitor for `.unitypackage` imports outside scan roots.
+
+## 4. Installation
+
+### 4.1 In this repository
+
+No additional installation step is required beyond opening the project in Unity. The tool code is already present under `Assets/GameCompliancePack/Compliance`.
+
+### 4.2 In another Unity project
+
+To reuse this tool in another project:
+
+1. Copy `Assets/GameCompliancePack/Compliance` into the target project `Assets` folder.
+2. Open the project in Unity and allow script compilation.
+3. Open `Tools/Compliance Pack`.
+4. The settings asset is auto-created if missing at `Assets/Settings/CompliancePackSettings.asset`.
+
+Notes:
+
+- The tool is local/offline by design (no network calls in scanner/resolver pipeline).
+- Build hook activates automatically because `BuildHook` implements Unity pre-build interface.
+
+## 5. Quick Start
+
+1. Open `Tools/Compliance Pack`.
+2. Click `Scan` and choose one:
+   - `Scan All`
+   - `Scan UPM Only`
+   - `Scan Folders Only`
+3. Review components in the left list. Use filters (`Needs attention`, `UNKNOWN`, `Missing fields`, source filters, diff filters).
+4. Select a component and resolve required fields in `Override`.
+5. For non-auto-detected dependencies, click `+ Manual` and complete manual entry fields.
+6. Click `Export Pack`.
+
+Export behavior in the window:
+
+- If `failBuildOnUnknown` is enabled and unresolved items exist, export is blocked.
+- Otherwise export writes manifest, notices, and credits and updates the diff tab.
+
+## 6. Scanner and Detection Details
+
+## 6.1 UPM scanner (`UpmDependencyScanner`)
+
+Inputs:
+
+- `Packages/manifest.json` (direct dependencies)
+- `Packages/packages-lock.json` (resolved graph)
+
+Behavior:
+
+- Skips package names starting with `com.unity.`.
+- Adds direct dependencies from `manifest.json`.
+- Adds lock-only dependencies (typically transitive) not already added.
+- Source type rules:
+  - From lock entry `source` if present.
+  - Otherwise inferred from version spec:
+    - local path/file spec => `local`
+    - git/url spec => `git`
+    - fallback => `registry`
+  - If lock `depth > 0`, appends `-transitive`.
+- Component path is set to `Packages/<packageName>`.
+
+Confidence values set by scanner:
+
+- `0.8` for manifest entries with lock data
+- `0.6` for manifest entries without lock data
+- `0.7` for lock-only entries
+
+## 6.2 File-system scanner (`FileSystemScanner`)
+
+Folder component detection:
+
+- Always includes default roots:
+  - `Assets/Plugins`
+  - `Assets/ThirdParty`
+- Adds configured `scanFolders` as additional roots.
+- Enumerates only top-level subdirectories under each root.
+- Each top-level subdirectory becomes one `sourceType = "folder"` component.
+
+Native library detection:
+
+- Scans all files recursively under `Assets`.
+- Detects extensions from default + configured list:
+  - defaults: `.dll`, `.so`, `.dylib`, `.bundle`
+- Each matching file becomes a `sourceType = "native-lib"` component.
+- Computes SHA-256 file hash for native components.
+
+`Packages` handling:
+
+- `Packages` roots are only honored by the file-system scanner when `showUnityPackages` is enabled.
+
+## 6.3 License file discovery (`LicenseFileDetector`)
+
+Primary discovery target for license text population:
+
+- Prefix categories searched and ranked:
+  - Primary: `LICENSE`, `LICENCE`, `COPYING`, `EULA`
+  - Notice: `NOTICE`, `COPYRIGHT`, `PATENTS`
+  - Attribution: `AUTHORS`, `CONTRIBUTORS`, `ATTRIBUTION`
+  - Third-party notice bundles recognized by file name patterns (`thirdpartynotices`, `3rdpartynotices`, etc.)
+
+Search behavior:
+
+- Starts near component path (or resolved package root).
+- Searches current directory and known legal subfolders (`legal`, `licenses`, `docs`, `ThirdPartyNotices`, etc.).
+- Walks parent directories until a computed scope root boundary.
+- For direct license text population, uses first Primary candidate only.
+
+Size cap:
+
+- If `maxTextFileBytesToRead` is set, files larger than cap are not read.
+
+## 6.4 License scope boundaries (`ComplianceScanner.ResolveLicenseScopeRoot`)
+
+The tool prevents inheriting unrelated top-level licenses (for example project root `LICENSE`) by bounding parent traversal:
+
+- Under `Packages/`: scope root is the package directory.
+- Under `Library/PackageCache/`: scope root is the package cache package directory.
+- Under `Assets` and inside configured scan root: scope root is first child directory below that scan root.
+- Under `Assets` but outside configured scan roots: scope root is first child under `Assets`.
+
+This behavior is covered by tests (`LicenseScopeTests`, `ScopeRootResolverTests`).
+
+## 6.5 Classification (`LicenseClassifier`)
+
+Order of classification work:
+
+1. Skip manual-folder components.
+2. Skip if component already has a non-UNKNOWN license ID.
+3. If license text contains `SPDX-License-Identifier`, prefer known ID from local catalog.
+4. Read package metadata (`package.json`) for:
+   - license ID
+   - author
+   - URLs (`homepage`, `repository.url`, `licensesUrl`, `documentationUrl`, `changelogUrl`)
+5. If still unresolved and text exists, compute cosine similarity against normalized SPDX texts.
+6. Assign UNKNOWN if still unresolved.
+
+Important details:
+
+- Similarity threshold comes from `licenseDetectionConfidenceThreshold`.
+- Third-party notice bundle files are treated specially and not text-matched as canonical SPDX single-license text.
+- Classifier stores evidence hints shown in UI (`Evidence & Detection` section).
+
+## 6.6 Component keying and deduplication
+
+Key construction (`ComponentKeyBuilder.Build`):
+
+- Base key: `idOrName|version|sourceType` (lowercased)
+- For folder source: appends primary path.
+- For native source: appends hash if present, else primary path.
+- For UPM-like sources (`registry`, `git`, `local`, `embedded`, `upm`, including `-transitive`): no path/hash suffix.
+
+Dedup pipeline:
+
+- Merge by component key (`MergeByComponentKey`) with stable precedence rules.
+- Deduplicate by `name|primaryPath` (`DeduplicateByNameAndPathKeepLatest`).
+- Stable ordering with `ComponentOrdering.Compare`.
+
+Determinism of these behaviors is covered by tests (`ComponentOrderingTests`, `ComponentKeyBuilderTests`).
+
+## 7. License Resolution Rules (`LicenseResolver`)
+
+Final license resolution order:
+
+1. Manual-folder special handling.
+2. Override entry (`compliance-overrides.json`) by key, with legacy key fallback.
+3. Known catalog text by license ID.
+4. Detected file text fallback.
+5. UNKNOWN.
+
+Manual-folder handling specifics:
+
+- No ID and no text => UNKNOWN.
+- ID is known SPDX and no manual text => use catalog text.
+- Otherwise use provided manual ID/text.
+
+Override behavior specifics:
+
+- Override ID/text can replace detected values.
+- If override has ID but no text and ID exists in catalog, catalog text is used.
+- URL fields are normalized through URL validation (`http`/`https` absolute only).
+
+## 8. Validation and Required Fields
+
+Validation (`ComponentValidation.ValidateComponent`) checks:
+
+- `isUnknownLicense` if license ID is UNKNOWN.
+- Missing required fields based on license policy:
+  - `Author`
+  - `Source URL`
+  - `Changes Made`
+
+Policy highlights from `LicenseAttributionPolicy`:
+
+- Default/unknown: `Author` + `Source URL` required.
+- `LicenseRef-Unity-Asset-Store-EULA`: only `Source URL` required.
+- CC BY family (`CC-BY-*`, including NC/ND/SA): `Author`, `Source URL`, and `Changes Made` required.
+- Many SPDX licenses (MIT/BSD/Apache/LGPL/MPL/GPL/AGPL/etc.) are optional for these fields.
+
+URL rule (`UrlUtility.ValidateUrl`):
+
+- Must be absolute `http://` or `https://`, well-formed, with host.
+
+## 9. Overrides and Manual Entries
+
+Overrides are stored in `compliance-overrides.json` with three top-level arrays:
+
+- `entries`: per-component override records
+- `manualEntries`: manually defined components
+- `packageImportRules`: "dont ask again" rules for import monitor
+
+### 9.1 Per-component override fields (`OverrideEntry`)
+
+Key fields:
+
+- `key`
+- `licenseId`, `licenseText`, `licenseTextSource`
+- `author`, `url`, `licenseUrl`
+- `creditLine`/`attribution`, `creditLineIsManual`
+- `changesWereMade`, `changesWereMadeSet`
+- `notes` (includes ignore marker prefix `IGNORE:`)
+- `noticesEntry`, `noticesEntryIsManual`
+- `licenseYear`, `licenseHolder`
+
+### 9.2 Manual entry fields (`ManualEntry`)
+
+Key fields:
+
+- `folderPath` (must resolve under `Assets` in UI workflows)
+- `displayName`
+- `author`, `url`, `licenseUrl`
+- `licenseId`, `licenseText`
+- `creditLine`/`attribution`, `creditLineIsManual`, `useAttributionText`
+- `changesWereMade`, `changesWereMadeSet`
+- `missing`, `includeWhenMissing`
+- `noticesEntry`, `noticesEntryIsManual`
+
+Manual entry source type is `ManualFolder` in runtime components.
+
+### 9.3 Ignore marker behavior
+
+`Mark Ignored...` writes `notes = "IGNORE: ..."` in override entry.
+
+Current behavior:
+
+- Hidden from "needs attention" counts in the editor list.
+- Not used by build hook validation logic.
+- Not a hard exclusion from exported files.
+
+## 10. Build Integration (`BuildHook`)
+
+The pre-build hook performs:
+
+1. Scan + apply overrides + resolve licenses.
+2. Filter Unity packages if `showUnityPackages` is false.
+3. Optionally export outputs (`generateOnBuild`).
+4. Evaluate policy checks:
+
+- Non-commercial license detection (`IsCommerciallyRestricted`):
+  - fails build if `failBuildOnNonCommercial`
+  - otherwise warning
+- No-derivatives modified (`IsNoDerivatives` + `changesWereMade = true`):
+  - always fails build
+- No-derivatives unconfirmed (`IsNoDerivatives` + no change indicator set):
+  - warning
+- Strong copyleft (`IsStrongCopyleft`):
+  - warning
+- Unknown/missing required fields:
+  - fail if `failBuildOnUnknown`
+  - warn if `warnOnUnknown`
+
+Special case in unknown/missing logic:
+
+- ND components missing only `Changes Made` are warned separately and not counted as fail condition for the unknown/missing pass.
+
+## 11. Configuration and Settings
+
+Settings asset path:
+
+- `Assets/Settings/CompliancePackSettings.asset`
+
+## 11.1 Script defaults (`Settings.cs`)
+
+| Field | Code default |
+|---|---|
+| `settingsSchemaVersion` | `0` (upgraded to `1` by `EnsureDefaults`) |
+| `outputDirectory` | `Compliance` |
+| `noticesFileName` | `THIRD_PARTY_NOTICES.txt` |
+| `creditsFileName` | `CREDITS.md` |
+| `manifestFileName` | `compliance-manifest.json` |
+| `overridesFileName` | `compliance-overrides.json` |
+| `scanUpmDependencies` | `true` |
+| `scanFolders` | `Assets/Plugins`, `Assets/ThirdParty` |
+| `nativeExtensions` | `.dll`, `.so`, `.dylib`, `.bundle` |
+| `generateOnBuild` | `true` |
+| `warnOnUnknown` | `true` |
+| `failBuildOnUnknown` | `false` |
+| `failBuildOnNonCommercial` | `true` |
+| `showUnityPackages` | `false` |
+| `allowOutputPreviewOverrides` | `false` |
+| `packageImportMonitorEnabled` | `true` |
+| `licenseDetectionConfidenceThreshold` | `0.90` |
+| `maxTextFileBytesToRead` | `1048576` (1 MB) |
+
+## 11.2 Current project asset values (`CompliancePackSettings.asset`)
+
+| Field | Current value in this repo |
+|---|---|
+| `settingsSchemaVersion` | `1` |
+| `outputDirectory` | `Compliance` |
+| `scanUpmDependencies` | `true` |
+| `scanFolders` | `Assets/ThirdParty`, `Assets/Plugins`, `Packages` |
+| `nativeExtensions` | `.dll`, `.so`, `.dylib`, `.bundle` |
+| `generateOnBuild` | `true` |
+| `warnOnUnknown` | `true` |
+| `failBuildOnUnknown` | `true` |
+| `failBuildOnNonCommercial` | `true` |
+| `showUnityPackages` | `true` |
+| `allowOutputPreviewOverrides` | `true` |
+| `packageImportMonitorEnabled` | `true` |
+| `licenseDetectionConfidenceThreshold` | `0.9` |
+| `maxTextFileBytesToRead` | `1048576` |
+
+## 12. Output Format Details
+
+## 12.1 `compliance-manifest.json`
+
+Top-level fields (`ComplianceManifest`):
+
+- `unityVersion`
+- `platform`
+- `timestampUtc`
+- `toolVersion`
+- `components[]`
+
+Each component serializes runtime `Component` public fields, including:
+
+- identity/source: `id`, `name`, `version`, `sourceType`, `paths`, `hash`
+- license: `licenseId`, `licenseText`, `licenseTextSource`, `licenseFilePath`, `licenseUrl`
+- attribution metadata: `author`, `attribution`, `creditLineIsManual`, `url`
+- change metadata: `changesWereMade`, `changesWereMadeSet`
+- scanner metadata: `confidence`
+
+`ManifestWriter.WriteWithDiff` behavior:
+
+- Computes diff against prior manifest.
+- If no change is detected, rewrites previous manifest content (avoids timestamp churn).
+
+## 12.2 `THIRD_PARTY_NOTICES.txt`
+
+Structure:
+
+1. Title header
+2. "What Changed" section
+3. "Components" section with one block per component
+
+Per-component block may include:
+
+- Name/title
+- `Version`
+- `URL`
+- `Author`
+- `Source Type`
+- `Location`
+- `License Text Source`
+- `License URL`
+- `Credit Line`
+- `License`
+- `License File Path` (when text source is detected file)
+- License text content or UNKNOWN/incomplete placeholder block
+
+If `licenseId` is UNKNOWN, or license requires manual text but text is missing, generator inserts explicit placeholder markers.
+
+Manual notices override:
+
+- If `noticesEntryIsManual` is true, manual text is emitted verbatim for that component.
+
+## 12.3 `CREDITS.md`
+
+Structure:
+
+1. `# Credits`
+2. `## What Changed`
+3. `## Component Credits`
+
+Per line format (auto mode):
+
+- `- <name> by <author> (<version>) - <url>`
+
+Elements are included only when data exists.
+
+Manual credit line:
+
+- If `creditLineIsManual` is true and attribution text exists, manual line replaces auto composition.
+
+## 13. Editor UI Reference
+
+Toolbar actions:
+
+- `Scan` dropdown (`All`, `UPM Only`, `Folders Only`)
+- `Resolve Next`
+- `Export Pack`
+- `+ Manual`
+- icon buttons: reload overrides, open output folder, open overrides JSON, open help
+
+List panel:
+
+- Search by name/key/path/id/version/license/author/url
+- Sort modes: `Name`, `Status`, `License`, `Source`, `Diff`
+- Filters:
+  - attention: `Needs attention`, `UNKNOWN`, `Missing fields`
+  - diff: `Added`, `Changed`, `Removed`
+  - source: `UPM`, `Assets`, `Packages`, `Native`, `Manual`
+
+Row context menu:
+
+- `Reveal in Explorer`
+- `Open License File`
+- `Copy Component Key`
+- `Mark Ignored...`
+- `Reset Override`
+
+Inspector sections:
+
+- `Component Summary`
+- `Manual Entry` (for manual-folder components)
+- `Evidence & Detection`
+- `Override`
+- `Output Previews`
+- `Project Settings`
+
+Bottom tabs:
+
+- `Diff`
+- `Outputs`
+- `Log`
+
+## 14. Package Import Monitor
+
+`PackageImportMonitor` is enabled by default and tracks `.unitypackage` import events.
+
+When imported roots land outside configured scan folders, it prompts with options:
+
+- `No`
+- `Don't ask again`
+- `Move only`
+- `Yes, move & add license` (requires valid source URL)
+
+Move target:
+
+- first configured scan root + sanitized package folder name
+
+Optional auto-license behavior (`Move & add license`):
+
+- creates/updates override with:
+  - `licenseId = LicenseRef-Unity-Asset-Store-EULA`
+  - `licenseTextSource = Built-in profile`
+  - optional source URL from prompt
+
+## 15. Determinism and Diff Stability
+
+Deterministic behavior implemented in code:
+
+- Ordered component lists via `ComponentOrdering.Order`.
+- Stable diff lists (`added`, `removed`, `changed`) ordered before rendering.
+- Override store sorting before save:
+  - entries by key
+  - manual entries by folder/display name
+  - package import rules by package/fingerprint
+- Manifest no-change write optimization (prevents unnecessary timestamp-only diffs).
+
+Determinism-focused tests:
+
+- `ComponentOrderingTests`
+- `ComponentKeyBuilderTests`
+- `OverrideStoreDeterminismTests`

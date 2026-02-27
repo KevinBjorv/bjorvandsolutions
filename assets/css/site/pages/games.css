@@ -1,0 +1,26 @@
+.game-grid {
+  display: grid;
+  gap: var(--space-lg);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.game-grid h3 {
+  min-height: 2.4em;
+}
+
+.game-source-note {
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+}
+
+@media (max-width: 1080px) {
+  .game-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .game-grid {
+    grid-template-columns: 1fr;
+  }
+}

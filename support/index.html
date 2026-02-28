@@ -115,7 +115,7 @@
             </div>
           </li>
           <li class="menu-item">
-            <a class="menu-link" aria-current="page" href="/support/" data-nav-trigger="support" aria-haspopup="menu" aria-expanded="false" aria-controls="menu-support">Support <span class="menu-chevron" aria-hidden="true">v</span></a>
+            <a class="menu-link" href="/support/" data-nav-trigger="support" aria-haspopup="menu" aria-expanded="false" aria-controls="menu-support">Support <span class="menu-chevron" aria-hidden="true">v</span></a>
             <div class="dropdown" id="menu-support" data-nav-menu="support" role="menu" aria-label="Support links">
               <a role="menuitem" href="/support/">Support Overview</a>
               <a role="menuitem" href="/support/#tools-support">Tool Support</a>
@@ -248,6 +248,7 @@
           <label for="support-message">Message
             <textarea id="support-message" name="message" required></textarea>
           </label>
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAACj6uOAzr56SGjsl" data-theme="dark"></div>
           <button class="button button-primary" type="submit">Send Support Request</button>
           <p class="form-note">If the form fails, email <a href="mailto:kevin@smartindie.dev">kevin@smartindie.dev</a>.</p>
         </form>
@@ -366,5 +367,6 @@
   <script defer src="/assets/js/site/nav.js"></script>
   <script defer src="/assets/js/site/reveal.js"></script>
   <script defer src="/assets/js/site/link-decorators.js"></script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </body>
 </html>

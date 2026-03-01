@@ -147,6 +147,10 @@
   outline: none;
 }
 
+.site-header .dropdown a[aria-current="page"] {
+  color: var(--site-nav-accent);
+}
+
 .site-header .dropdown-submenu {
   position: relative;
 }
@@ -247,6 +251,10 @@
   background: rgba(251, 129, 20, 0.16);
   text-decoration: none;
   outline: none;
+}
+
+.mobile-nav-panel .mobile-nav-group a[aria-current="page"] {
+  color: var(--site-nav-accent);
 }
 
 body.nav-open {

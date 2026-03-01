@@ -238,6 +238,10 @@
   outline: none;
 }
 
+.dropdown a[aria-current="page"] {
+  color: var(--color-accent);
+}
+
 .dropdown-submenu {
   position: relative;
 }
@@ -353,6 +357,10 @@
 .mobile-nav-group a:hover {
   color: var(--color-text);
   background: color-mix(in srgb, var(--color-accent) 16%, transparent);
+}
+
+.mobile-nav-group a[aria-current="page"] {
+  color: var(--color-accent);
 }
 
 body.nav-open {

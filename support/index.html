@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Support | Bjorvand Solutions</title>
-  <meta name="description" content="Unified support page for Bjorvand Solutions tools and Smart Indie routing, including support form and FAQ.">
+  <meta name="description" content="Support page for Bjorvand Solutions with one contact form for tool questions, Smart Indie questions, and business inquiries.">
   <link rel="canonical" href="/support/">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
@@ -119,7 +119,6 @@
             <div class="dropdown" id="menu-support" data-nav-menu="support" role="menu" aria-label="Support links">
               <a role="menuitem" href="/support/">Support Overview</a>
               <a role="menuitem" href="/support/#tools-support">Tool Support</a>
-              <a role="menuitem" href="/support/#smart-indie-support">Smart Indie Support</a>
               <a role="menuitem" href="/support/#faq">Support FAQ</a>
             </div>
           </li>
@@ -193,7 +192,6 @@
           <ul>
             <li><a href="/support/">Support Overview</a></li>
             <li><a href="/support/#tools-support">Tool Support</a></li>
-            <li><a href="/support/#smart-indie-support">Smart Indie Support</a></li>
             <li><a href="/support/#faq">Support FAQ</a></li>
           </ul>
         </details>
@@ -216,8 +214,8 @@
     <section class="page-section container reveal">
       <div class="hero">
         <div class="badge">Unified Support</div>
-        <h1>Route tool questions and Smart Indie requests clearly.</h1>
-        <p>This page separates support paths so users can quickly send tool-related requests to Bjorvand Solutions and use Smart Indie-specific destinations for Smart Indie topics.</p>
+        <h1>Send tool, Smart Indie, and business questions from one support form.</h1>
+        <p>Use the support form to reach Bjorvand Solutions for tool help, Smart Indie questions, and business inquiries.</p>
       </div>
     </section>
 
@@ -240,9 +238,11 @@
               <option value="Third-Party Notices & Credits">Third-Party Notices &amp; Credits</option>
               <option value="Import Settings Validator & Fix">Import Settings Validator &amp; Fix</option>
               <option value="General Tool Question">General Tool Question</option>
+              <option value="SmartIndie question">SmartIndie question</option>
+              <option value="Business inquire">Business inquire</option>
             </select>
           </label>
-          <label for="support-reference">Order / Reference ID (optional)
+          <label id="support-reference-field" for="support-reference">Order / Reference ID (optional)
             <input id="support-reference" name="reference" type="text" autocomplete="off">
           </label>
           <label for="support-message">Message
@@ -254,18 +254,6 @@
         </form>
       </article>
 
-      <article class="card" id="smart-indie-support">
-        <h2>Smart Indie Support</h2>
-        <p>For Smart Indie product/content questions, use Smart Indie support destinations directly.</p>
-        <ul class="link-list">
-          <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/about-contact/">Smart Indie About &amp; Contact</a></li>
-          <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/faq/">Smart Indie FAQ</a></li>
-          <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/email-updates/">Smart Indie Email Updates</a></li>
-        </ul>
-        <div class="card-actions">
-          <a class="button button-secondary" href="/smart-indie/">Smart Indie Bridge Page</a>
-        </div>
-      </article>
     </section>
 
     <section class="page-section container reveal" aria-labelledby="docs-shortcuts-title">
@@ -302,7 +290,7 @@
         </details>
         <details class="faq-item">
           <summary>Where should I ask Smart Indie game or content questions?</summary>
-          <p>Use Smart Indie support destinations via About &amp; Contact or Smart Indie FAQ.</p>
+          <p>Use this support form and select <strong>SmartIndie question</strong> in Product / Topic.</p>
         </details>
         <details class="faq-item">
           <summary>Can I send support by email instead of the form?</summary>
@@ -349,7 +337,6 @@
           <h2>Support</h2>
           <ul class="link-list">
             <li><a href="/support/#tools-support">Tool Support</a></li>
-            <li><a href="/support/#smart-indie-support">Smart Indie Support</a></li>
             <li><a href="/support/#faq">Support FAQ</a></li>
             <li><a href="mailto:kevin@smartindie.dev">Email Fallback</a></li>
           </ul>
@@ -365,6 +352,7 @@
 
   <script defer src="/assets/js/site/catalog.js"></script>
   <script defer src="/assets/js/site/nav.js"></script>
+  <script defer src="/assets/js/site/support-form.js"></script>
   <script defer src="/assets/js/site/reveal.js"></script>
   <script defer src="/assets/js/site/link-decorators.js"></script>
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>

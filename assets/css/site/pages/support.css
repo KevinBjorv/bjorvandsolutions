@@ -1,7 +1,12 @@
 .support-lanes {
   display: grid;
   gap: var(--space-lg);
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+
+.support-lanes > .card {
+  width: min(100%, 860px);
 }
 
 .support-doc-grid {

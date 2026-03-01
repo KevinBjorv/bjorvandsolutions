@@ -620,6 +620,89 @@
     setMobileOpen(false);
   });
 
+  function normalizePathname(pathname) {
+    if (!pathname) {
+      return "/";
+    }
+
+    let normalized = pathname.replace(/\\/g, "/");
+    if (!normalized.startsWith("/")) {
+      normalized = `/${normalized}`;
+    }
+
+    normalized = normalized.replace(/\/index\.html$/i, "/");
+
+    if (normalized.length > 1) {
+      normalized = normalized.replace(/\/+$/, "");
+    }
+
+    return normalized || "/";
+  }
+
+  function markCurrentPageInNavigation() {
+    const currentPath = normalizePathname(window.location.pathname);
+    const currentHash = window.location.hash;
+    const navLinks = Array.from(
+      document.querySelectorAll(".site-header .dropdown a[role='menuitem'], .mobile-nav-panel a")
+    );
+
+    navLinks.forEach((link) => link.removeAttribute("aria-current"));
+
+    if (!navLinks.length || currentPath === "/") {
+      return;
+    }
+
+    const exactHashMatches = [];
+    const hashlessMatches = [];
+    const pathMatches = [];
+
+    navLinks.forEach((link) => {
+      const href = link.getAttribute("href");
+      if (!href) {
+        return;
+      }
+
+      let resolvedUrl;
+      try {
+        resolvedUrl = new URL(href, window.location.origin);
+      } catch {
+        return;
+      }
+
+      if (resolvedUrl.origin !== window.location.origin) {
+        return;
+      }
+
+      if (normalizePathname(resolvedUrl.pathname) !== currentPath) {
+        return;
+      }
+
+      if (currentHash && resolvedUrl.hash === currentHash) {
+        exactHashMatches.push(link);
+        return;
+      }
+
+      if (!currentHash && !resolvedUrl.hash) {
+        hashlessMatches.push(link);
+        return;
+      }
+
+      pathMatches.push(link);
+    });
+
+    const matches = exactHashMatches.length
+      ? exactHashMatches
+      : hashlessMatches.length
+        ? hashlessMatches
+        : pathMatches;
+
+    matches.forEach((link) => {
+      link.setAttribute("aria-current", "page");
+    });
+  }
+
+  markCurrentPageInNavigation();
+
   const year = String(new Date().getFullYear());
   document.querySelectorAll("[data-current-year]").forEach((node) => {
     node.textContent = year;

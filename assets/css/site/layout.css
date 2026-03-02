@@ -96,6 +96,43 @@
   gap: var(--space-xl);
 }
 
+.footer-email-updates {
+  grid-column: span 2;
+  width: min(760px, 100%);
+  max-width: 100%;
+}
+
+.footer-email-updates .ml-embedded,
+.footer-email-updates .ml-form-embedContainer,
+.footer-email-updates .ml-form-embedWrapper,
+.footer-email-updates .ml-form-embedBody,
+.footer-email-updates .ml-form-successBody {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.footer-email-updates .ml-form-embedBody form {
+  display: flex;
+  gap: 0.75rem;
+  align-items: stretch;
+}
+
+.footer-email-updates .ml-form-fieldRow {
+  flex: 1 1 auto;
+}
+
+.footer-email-updates .ml-form-fieldRow input {
+  width: 100% !important;
+}
+
+.footer-email-updates .ml-form-embedSubmit {
+  flex: 0 0 auto;
+}
+
+.footer-email-updates .ml-form-embedSubmit button {
+  white-space: nowrap;
+}
+
 .footer-legal {
   border-top: 1px solid var(--color-border);
   padding-top: var(--space-md);
@@ -109,6 +146,10 @@
 @media (max-width: 1080px) {
   .footer-columns {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer-email-updates {
+    grid-column: span 2;
   }
 }
 
@@ -132,5 +173,10 @@
 
   .container {
     width: min(var(--max-width), calc(100% - 1.5rem));
+  }
+
+  .footer-email-updates {
+    grid-column: auto;
+    width: 100%;
   }
 }

@@ -2,10 +2,9 @@
   display: grid;
   gap: var(--space-lg);
   grid-template-columns: 1fr;
-  justify-items: center;
 }
 
-.support-lanes > .card {
+.support-form-card {
   width: min(100%, 860px);
 }
 
@@ -15,9 +14,53 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.form-field-note,
 .form-note {
   color: var(--color-text-muted);
   font-size: 0.9rem;
+}
+
+.form-field-note {
+  margin-top: -0.15rem;
+}
+
+.response-card {
+  width: min(100%, 860px);
+}
+
+.support-note-callout {
+  width: min(100%, 860px);
+  padding: 0.9rem 1rem;
+  border-left: 3px solid var(--color-accent);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--color-accent) 10%, var(--color-surface) 90%);
+}
+
+.support-note-label,
+.support-note-text {
+  margin: 0;
+}
+
+.support-note-label {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.support-note-text {
+  margin-top: 0.6rem;
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+}
+
+.policy-list {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.policy-list + p {
+  margin-top: var(--space-md);
 }
 
 .faq-list {
@@ -42,8 +85,14 @@
   color: var(--color-text-muted);
 }
 
+.support-checklist {
+  margin: 0.55rem 0 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
 @media (max-width: 980px) {
-  .support-lanes,
   .support-doc-grid {
     grid-template-columns: 1fr;
   }

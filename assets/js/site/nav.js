@@ -643,7 +643,7 @@
     const currentPath = normalizePathname(window.location.pathname);
     const currentHash = window.location.hash;
     const navLinks = Array.from(
-      document.querySelectorAll(".site-header .dropdown a[role='menuitem'], .mobile-nav-panel a")
+      document.querySelectorAll(".site-header .menu-root > .menu-item > .menu-link, .site-header .dropdown a[role='menuitem'], .mobile-nav-panel a")
     );
 
     navLinks.forEach((link) => link.removeAttribute("aria-current"));

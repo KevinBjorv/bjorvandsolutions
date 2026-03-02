@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Support | Bjorvand Solutions</title>
-  <meta name="description" content="Support page for Bjorvand Solutions with one contact form for tool questions, Smart Indie questions, and business inquiries.">
+  <title>Contact & Support | Bjorvand Solutions</title>
+  <meta name="description" content="Use one contact form to send Bjorvand Solutions tool support, Smart Indie, business, and general inquiries.">
   <link rel="canonical" href="/support/">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
@@ -116,12 +116,7 @@
             </div>
           </li>
           <li class="menu-item">
-            <a class="menu-link" href="/support/" data-nav-trigger="support" aria-haspopup="menu" aria-expanded="false" aria-controls="menu-support">Support <span class="menu-chevron" aria-hidden="true">v</span></a>
-            <div class="dropdown" id="menu-support" data-nav-menu="support" role="menu" aria-label="Support links">
-              <a role="menuitem" href="/support/">Support Overview</a>
-              <a role="menuitem" href="/support/#tools-support">Tool Support</a>
-              <a role="menuitem" href="/support/#faq">Support FAQ</a>
-            </div>
+            <a class="menu-link" href="/support/">Contact</a>
           </li>
           <li class="menu-item">
             <a class="menu-link" href="https://www.youtube.com/@devwithkevin" target="_blank" rel="noopener noreferrer" data-external-indicator="off" data-nav-trigger="socials" aria-haspopup="menu" aria-expanded="false" aria-controls="menu-socials">Socials <span class="menu-chevron" aria-hidden="true">v</span></a>
@@ -187,14 +182,9 @@
             <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/about-contact/">About &amp; Contact</a></li>
           </ul>
         </details>
-        <details class="mobile-nav-group">
-          <summary>Support</summary>
-          <ul>
-            <li><a href="/support/">Support Overview</a></li>
-            <li><a href="/support/#tools-support">Tool Support</a></li>
-            <li><a href="/support/#faq">Support FAQ</a></li>
-          </ul>
-        </details>
+        <div class="mobile-nav-group mobile-nav-single-link">
+          <a href="/support/">Contact</a>
+        </div>
         <details class="mobile-nav-group">
           <summary>Socials</summary>
           <ul>
@@ -213,16 +203,18 @@
     <section class="page-section container reveal">
       <div class="hero">
         <div class="badge">Unified Support</div>
-        <h1>Send tool, Smart Indie, and business questions from one support form.</h1>
-        <p>Use the support form to reach Bjorvand Solutions for tool help, Smart Indie questions, and business inquiries.</p>
+        <h1>Send tool, Smart Indie, and business questions from one form.</h1>
+        <p>Use this form to reach Bjorvand Solutions for Unity tool support, Smart Indie course questions, YouTube business inquiries, or general contact. Select the correct topic to ensure the fastest response.</p>
       </div>
     </section>
 
     <section class="page-section container reveal support-lanes" aria-labelledby="support-lanes-title">
-      <h2 id="support-lanes-title" class="sr-only">Support lanes</h2>
-      <article class="card" id="tools-support">
-        <h2>Tool Support</h2>
-        <p>Use this form for Bjorvand Solutions tool questions, setup issues, and license/documentation clarifications.</p>
+      <span id="smart-indie-support" aria-hidden="true"></span>
+      <div class="section-head">
+        <h2 id="support-lanes-title">Contact &amp; Support</h2>
+        <p>All inquiries are handled through this form. Choose the correct topic so your message is routed properly.</p>
+      </div>
+      <article class="card support-form-card" id="tools-support">
         <form class="form-grid" action="https://formspree.io/f/xeoylwlp" method="POST">
           <label for="support-name">Name
             <input id="support-name" name="name" type="text" autocomplete="name" required>
@@ -232,50 +224,77 @@
           </label>
           <label for="support-topic">Product / Topic
             <select id="support-topic" name="topic" required>
-              <option value="">Select a product/topic</option>
+              <option value="">Select a topic</option>
               <option value="Build Size Guard">Build Size Guard</option>
               <option value="Third-Party Notices & Credits">Third-Party Notices &amp; Credits</option>
               <option value="Import Settings Validator & Fix">Import Settings Validator &amp; Fix</option>
-              <option value="General Tool Question">General Tool Question</option>
               <option value="SmartIndie question">SmartIndie question</option>
-              <option value="Business inquire">Business inquire</option>
+              <option value="General Tool Question">General Tool Question</option>
+              <option value="Business inquiry">Business inquiry</option>
             </select>
           </label>
-          <label id="support-reference-field" for="support-reference">Order / Reference ID (optional)
+          <label for="support-reference">Order / Reference ID (optional)
             <input id="support-reference" name="reference" type="text" autocomplete="off">
           </label>
           <label for="support-message">Message
             <textarea id="support-message" name="message" required></textarea>
           </label>
+          <p class="form-field-note">Include Unity version, tool version, and steps to reproduce if reporting a bug.</p>
           <div class="cf-turnstile" data-sitekey="0x4AAAAAACj6uOAzr56SGjsl" data-theme="dark"></div>
-          <button class="button button-primary" type="submit">Send Support Request</button>
-          <p class="form-note">If the form fails, email <a href="mailto:kevin@smartindie.dev">kevin@smartindie.dev</a>.</p>
+          <button class="button button-primary" type="submit">Send Request</button>
+          <p class="form-note">You will receive a confirmation email after submission.</p>
         </form>
       </article>
-
+      <aside class="support-note-callout" aria-labelledby="urgent-support-note-title">
+        <p class="support-note-label" id="urgent-support-note-title">For urgent technical blockers, include:</p>
+        <ul class="support-checklist">
+          <li>Unity version</li>
+          <li>Platform target</li>
+          <li>Console logs</li>
+          <li>Screenshots</li>
+          <li>Exact steps to reproduce</li>
+        </ul>
+        <p class="support-note-text">Clear reports get faster solutions.</p>
+      </aside>
     </section>
 
     <section class="page-section container reveal" aria-labelledby="docs-shortcuts-title">
       <div class="section-head">
         <h2 id="docs-shortcuts-title">Self-Service Documentation</h2>
+        <p>Most setup and usage questions are answered in the documentation. Check here before submitting a support request.</p>
       </div>
       <div class="support-doc-grid card-list">
         <article class="card">
           <h3>Build Size Guard Docs</h3>
-          <p>Setup, snapshot workflows, CI options, and troubleshooting.</p>
-          <div class="card-actions"><a class="button button-secondary" href="/assets/build-size-guard/docs/">Open Docs</a></div>
+          <p>Setup, snapshot workflows, CI integration, budgets, troubleshooting.</p>
+          <div class="card-actions"><a class="button button-secondary" href="/docs/build-size-guard">Open Docs &rarr;</a></div>
         </article>
         <article class="card">
           <h3>Compliance Docs</h3>
-          <p>Scan behavior, outputs, and deterministic compliance workflow details.</p>
-          <div class="card-actions"><a class="button button-secondary" href="/assets/compliance/docs/">Open Docs</a></div>
+          <p>Scan behavior, license detection logic, export formats, manual overrides.</p>
+          <div class="card-actions"><a class="button button-secondary" href="/docs/third-party-notices">Open Docs &rarr;</a></div>
         </article>
         <article class="card">
           <h3>Import Validator Docs</h3>
-          <p>Placeholder technical docs and structure for importer workflow support.</p>
-          <div class="card-actions"><a class="button button-secondary" href="/assets/import-settings-validator-fix/docs/">Open Docs</a></div>
+          <p>Rule sets, platform overrides, enforcement mode, auto-fix workflow.</p>
+          <div class="card-actions"><a class="button button-secondary" href="/docs/import-settings-validator">Open Docs &rarr;</a></div>
         </article>
       </div>
+    </section>
+
+    <section class="page-section container reveal" aria-labelledby="response-policy-title">
+      <div class="section-head">
+        <h2 id="response-policy-title">Response Policy</h2>
+      </div>
+      <article class="card response-card">
+        <ul class="policy-list">
+          <li>Tool support: 1-2 business days</li>
+          <li>Smart Indie course questions: 1-3 business days</li>
+          <li>Business inquiries: Response depends on relevance and fit</li>
+          <li>Incomplete bug reports may delay response</li>
+        </ul>
+        <p>Support is provided in English.</p>
+      </article>
     </section>
 
     <section class="page-section container reveal" id="faq" aria-labelledby="support-faq-title">
@@ -285,15 +304,27 @@
       <div class="faq-list">
         <details class="faq-item">
           <summary>Where should I ask tool-specific setup or bug questions?</summary>
-          <p>Use the Tool Support form on this page under the Tool Support lane.</p>
+          <p>Select the specific tool in the Product / Topic dropdown and include Unity version, tool version, and reproduction steps.</p>
         </details>
         <details class="faq-item">
-          <summary>Where should I ask Smart Indie game or content questions?</summary>
-          <p>Use this support form and select <strong>SmartIndie question</strong> in Product / Topic.</p>
+          <summary>Where should I ask Smart Indie course or community questions?</summary>
+          <p>Select "SmartIndie question" in the dropdown. Include your order reference if applicable.</p>
         </details>
         <details class="faq-item">
-          <summary>Can I send support by email instead of the form?</summary>
-          <p>Yes. Use <a href="mailto:kevin@smartindie.dev">kevin@smartindie.dev</a> as fallback if the form is unavailable.</p>
+          <summary>Can I send business partnership or sponsorship proposals?</summary>
+          <p>Yes. Select "Business inquiry" and provide a clear proposal, audience details, and expected collaboration structure.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I request refunds from this form?</summary>
+          <p>Refunds must follow the policy of the platform where you purchased (Unity Asset Store or itch.io). Include your order ID when contacting support.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do you provide custom development or consulting?</summary>
+          <p>Select "Business inquiry" and describe the project scope. Availability depends on current capacity.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I email directly instead of using the form?</summary>
+          <p>The form is the primary support channel. Direct emails may not receive priority.</p>
         </details>
       </div>
     </section>
@@ -310,7 +341,7 @@
             <li><a href="/games/">Games</a></li>
             <li><a href="/smart-indie/">Smart Indie</a></li>
             <li><a href="https://www.youtube.com/@devwithkevin" target="_blank" rel="noopener noreferrer">Socials</a></li>
-            <li><a href="/support/">Support</a></li>
+            <li><a href="/support/">Contact</a></li>
           </ul>
         </section>
         <section>
@@ -333,25 +364,25 @@
           </ul>
         </section>
         <section>
-          <h2>Support</h2>
+          <h2>Contact</h2>
           <ul class="link-list">
+            <li><a href="/support/">Contact Page</a></li>
             <li><a href="/support/#tools-support">Tool Support</a></li>
+            <li><a href="/support/#response-policy-title">Response Policy</a></li>
             <li><a href="/support/#faq">Support FAQ</a></li>
-            <li><a href="mailto:kevin@smartindie.dev">Email Fallback</a></li>
           </ul>
         </section>
       </div>
       <div class="footer-legal">
         <span>&copy; <span data-current-year>2026</span> Bjorvand Solutions</span>
         <a href="/LICENSE">License</a>
-        <span>Support intake uses Formspree and direct email fallback.</span>
+        <span>Contact requests are processed through Formspree.</span>
       </div>
     </div>
   </footer>
 
   <script defer src="/assets/js/site/catalog.js"></script>
   <script defer src="/assets/js/site/nav.js"></script>
-  <script defer src="/assets/js/site/support-form.js"></script>
   <script defer src="/assets/js/site/reveal.js"></script>
   <script defer src="/assets/js/site/link-decorators.js"></script>
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>

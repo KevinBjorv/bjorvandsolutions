@@ -206,258 +206,337 @@
 
   <main>
     <div class="container sales-page">
-      <section id="overview" class="sales-section reveal">
-        <div class="sales-copy">
+      <section id="overview" class="sales-section sales-hero reveal">
+        <div class="sales-hero__content sales-copy" data-stagger>
+          <p class="sales-kicker">Unity Editor Tool</p>
           <h1>Build Size Guard for Unity</h1>
-          <h2>Stop Build Size Regressions Before They Ship</h2>
-          <figure class="sales-media-card">
-            <img
-              class="marketing-image"
-              src="/assets/images/BuildSizeGuard/BuildSizeGuardMarketing/Build%20size%20guard%20cover%20image.jpg"
-              alt="Build Size Guard Cover"
-              data-gallery-item
-              data-gallery-caption="Build Size Guard Cover"
-              loading="eager"
-              fetchpriority="high"
-            >
-            <figcaption>Build Size Guard Cover</figcaption>
-          </figure>
-          <p>Build Size Guard is a Unity Editor tool that snapshots every build, compares it to a baseline, enforces size budgets, and fails CI when regressions exceed limits.</p>
-          <p class="sales-inline-lines">No more guessing why your build suddenly grew.<br>No more shipping size explosions to production.</p>
+          <p class="sales-subtitle">Stop Build Size Regressions Before They Ship</p>
+          <p class="sales-lede">Build Size Guard snapshots every build, compares it to a baseline, enforces size budgets, and fails CI when regressions exceed your limits.</p>
+          <p class="sales-inline-lines">See the size jump before it reaches your store build. Keep size growth measurable, reviewable, and enforceable.</p>
+          <ul class="sales-chip-list">
+            <li>Snapshot every build</li>
+            <li>Set hard size budgets</li>
+            <li>Fail CI on regressions</li>
+          </ul>
+          <div class="sales-actions">
+            <a class="sales-button sales-button--primary" target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/361332">Buy on Unity Asset Store</a>
+            <a class="sales-button sales-button--secondary" href="#purchase-embed">Open embedded checkout</a>
+            <a class="sales-button sales-button--ghost" href="/assets/build-size-guard/docs/">Read the docs</a>
+          </div>
+          <div class="sales-stat-list">
+            <article class="sales-stat" data-spotlight>
+              <strong>Baseline diffing</strong>
+              <span>Compare the current build against the latest approved baseline.</span>
+            </article>
+            <article class="sales-stat" data-spotlight>
+              <strong>Budget rules</strong>
+              <span>Gate total size, disk output, delta growth, and category limits.</span>
+            </article>
+            <article class="sales-stat" data-spotlight>
+              <strong>Pipeline exports</strong>
+              <span>Send JSON and Markdown reports directly into CI workflows.</span>
+            </article>
+          </div>
         </div>
+        <figure class="sales-hero__media sales-media-card">
+          <img
+            class="marketing-image"
+            src="/assets/images/BuildSizeGuard/BuildSizeGuardMarketing/Build%20size%20guard%20cover%20image.jpg"
+            alt="Build Size Guard Cover"
+            data-gallery-item
+            data-gallery-caption="Build Size Guard Cover"
+            loading="eager"
+            fetchpriority="high"
+          >
+          <figcaption>Build Size Guard overview</figcaption>
+        </figure>
       </section>
 
       <section id="buy-now" class="sales-section reveal">
-        <div class="sales-copy">
-          <h2>&#x1F680; Buy Now</h2>
-          <ul class="sales-link-list">
-            <li><strong>Unity Asset Store:</strong> <a target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/361332">https://assetstore.unity.com/packages/slug/361332</a></li>
-            <li><strong>Buy on itch.io:</strong> <a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/buildsizeguard">https://kevindevelopment.itch.io/buildsizeguard</a></li>
-            <li><strong>Documentation:</strong> <a href="/assets/build-size-guard/docs/">/docs/build-size-guard</a></li>
-            <li><strong>Full License:</strong> <a href="/assets/build-size-guard/license/">/license</a></li>
-            <li><strong>Support:</strong> <a href="/support/">/support</a></li>
-          </ul>
+        <div class="sales-purchase-shell">
+          <div class="sales-copy" data-stagger>
+            <p class="sales-kicker">Buy Now</p>
+            <h2>Choose your checkout path, then go straight into setup.</h2>
+            <p class="sales-lede">The storefront is the purchase step. Docs, license, and support stay one click away so evaluation and rollout stay clean.</p>
+            <div class="sales-actions">
+              <a class="sales-button sales-button--primary" target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/361332">Buy on Unity Asset Store</a>
+              <a class="sales-button sales-button--secondary" href="#purchase-embed">Use the embedded checkout</a>
+            </div>
+          </div>
+          <aside class="sales-side-card" data-spotlight>
+            <div class="sales-copy" data-stagger>
+              <h3>Everything after checkout</h3>
+              <div class="sales-support-grid">
+                <a class="sales-support-link" href="/assets/build-size-guard/docs/">
+                  <span>Documentation</span>
+                  <small>Installation, quick start, and common workflows.</small>
+                </a>
+                <a class="sales-support-link" href="/assets/build-size-guard/license/">
+                  <span>License</span>
+                  <small>Read the full license terms for this tool.</small>
+                </a>
+                <a class="sales-support-link" href="/support/#tools-support">
+                  <span>Support</span>
+                  <small>Get help if you need setup or troubleshooting assistance.</small>
+                </a>
+              </div>
+            </div>
+          </aside>
         </div>
       </section>
 
       <section id="purchase-embed" class="sales-section reveal">
-        <div class="sales-copy">
-          <h2>&#x1F6D2; itch.io Purchase Embed</h2>
-          <div class="sales-embed-card" aria-label="itch.io purchase embed for Build Size Guard">
-            <iframe frameborder="0" src="https://itch.io/embed/4289373?bg_color=000623&amp;fg_color=ffffff&amp;link_color=0007e3&amp;border_color=303967" width="552" height="167"><a href="https://kevindevelopment.itch.io/buildsizeguard">Build Size Guard (Unity) | Build Size Regression Diffs, Budgets, and CI Gate by Kevin Bjorvand</a></iframe>
+        <div class="sales-copy" data-stagger>
+          <p class="sales-kicker">Embedded Checkout</p>
+          <h2>Buy without leaving the page.</h2>
+          <div class="sales-embed-card" data-spotlight aria-label="Embedded checkout for Build Size Guard">
+            <iframe title="Embedded checkout for Build Size Guard" src="https://itch.io/embed/4289373?bg_color=000623&amp;fg_color=ffffff&amp;link_color=0007e3&amp;border_color=303967" width="552" height="167">Embedded checkout unavailable.</iframe>
           </div>
         </div>
       </section>
 
       <section id="problem" class="sales-section reveal">
-        <div class="sales-copy">
-          <h2>The Problem</h2>
-          <p>Build size growth is silent.</p>
-          <p class="sales-inline-lines">A texture gets imported incorrectly.<br>A mesh doubles in size.<br>Addressables shift.<br>A dependency changes compression.</p>
-          <p>And suddenly your APK jumps +40MB.</p>
-          <p>You only notice when:</p>
-          <ul>
-            <li>CI times spike</li>
-            <li>Store upload fails</li>
-            <li>Players complain</li>
-            <li>Patch size balloons</li>
+        <div class="sales-copy" data-stagger>
+          <p class="sales-kicker">Why teams use it</p>
+          <h2>Build size growth is usually silent until it is expensive.</h2>
+          <p class="sales-lede">A bad texture import, a larger mesh, an Addressables shift, or a compression change can land in source control without anyone noticing.</p>
+          <ul class="sales-feature-list">
+            <li>CI times spike because the build suddenly got heavier.</li>
+            <li>Store uploads fail later than they should.</li>
+            <li>Players feel larger downloads and patches.</li>
+            <li>Release reviews become reactive instead of predictable.</li>
           </ul>
-          <p>Build Size Guard makes build size measurable, enforceable, and automated.</p>
+          <p>Build Size Guard makes size changes visible early enough to act on them.</p>
         </div>
       </section>
 
-      <section id="see-what-changed" class="sales-section reveal">
-        <div class="sales-copy">
-          <h2>&#x1F4CA; See Exactly What Changed</h2>
-          <figure class="sales-media-card">
-            <img
-              class="marketing-image"
-              src="/assets/images/BuildSizeGuard/BuildSizeGuardMarketing/See%20excactly%20what%20changed.jpg"
-              alt="See Exactly What Changed"
-              data-gallery-item
-              data-gallery-caption="See Exactly What Changed"
-              loading="lazy"
-            >
-            <figcaption>See Exactly What Changed</figcaption>
-          </figure>
-          <p>Compare:</p>
-          <ul>
-            <li>Total size delta</li>
-            <li>% increase</li>
-            <li>Top contributors</li>
-            <li>Category-level increases</li>
-            <li>Newly added / removed content</li>
-          </ul>
-          <p class="sales-inline-lines">You don&rsquo;t get noise.<br>You get ranked signal.</p>
-        </div>
-      </section>
-
-      <section id="budgets" class="sales-section reveal">
-        <div class="sales-copy">
-          <h2>&#x1F512; Enforce Budgets &amp; Regression Rules</h2>
-          <figure class="sales-media-card">
-            <img
-              class="marketing-image"
-              src="/assets/images/BuildSizeGuard/BuildSizeGuardMarketing/Set%20budgets%20and%20regression%20rules.jpg"
-              alt="Set Budgets and Regression Rules"
-              data-gallery-item
-              data-gallery-caption="Set Budgets and Regression Rules"
-              loading="lazy"
-            >
-            <figcaption>Set Budgets and Regression Rules</figcaption>
-          </figure>
-          <p>Define hard limits:</p>
-          <ul>
-            <li>Total build size</li>
-            <li>Artifact size on disk</li>
-            <li>% growth limit</li>
-            <li>Absolute delta cap</li>
-            <li>Per-category budgets (Textures, Audio, Meshes, Shaders, Code)</li>
-          </ul>
-          <p>If limits are exceeded:</p>
-          <ul>
-            <li>CI fails</li>
-            <li>Exit codes are deterministic</li>
-            <li>Reports are exported automatically</li>
+      <section id="see-what-changed" class="sales-section sales-block reveal">
+        <div class="sales-block__content sales-copy" data-stagger>
+          <p class="sales-kicker">Diff the regression</p>
+          <h2>See exactly what changed.</h2>
+          <p>Get ranked signal instead of noise when a build grows.</p>
+          <ul class="sales-feature-list">
+            <li>Total size delta and percentage increase.</li>
+            <li>Top contributors to the growth.</li>
+            <li>Category-level increases.</li>
+            <li>Newly added and removed content.</li>
           </ul>
         </div>
+        <figure class="sales-block__media sales-media-card">
+          <img
+            class="marketing-image"
+            src="/assets/images/BuildSizeGuard/BuildSizeGuardMarketing/See%20excactly%20what%20changed.jpg"
+            alt="See Exactly What Changed"
+            data-gallery-item
+            data-gallery-caption="See Exactly What Changed"
+            loading="lazy"
+          >
+          <figcaption>Diff view</figcaption>
+        </figure>
       </section>
 
-      <section id="ci-batchmode" class="sales-section reveal">
-        <div class="sales-copy">
-          <h2>&#x2699; CI / Batchmode Ready</h2>
-          <figure class="sales-media-card">
-            <img
-              class="marketing-image"
-              src="/assets/images/BuildSizeGuard/BuildSizeGuardMarketing/CLI%20and%20batch%20mode%20for%20CL%20pipelines%20%2B%20documentation%20image.jpg"
-              alt="CLI and Batch Mode"
-              data-gallery-item
-              data-gallery-caption="CLI and Batch Mode"
-              loading="lazy"
-            >
-            <figcaption>CLI and Batch Mode</figcaption>
-          </figure>
-          <p>Run in batchmode:</p>
-          <ul>
-            <li>Deterministic output</li>
-            <li>JSON export</li>
-            <li>Markdown export</li>
-            <li>Automated baseline comparison</li>
+      <section id="budgets" class="sales-section sales-block sales-block--reverse reveal">
+        <div class="sales-block__content sales-copy" data-stagger>
+          <p class="sales-kicker">Enforce the limit</p>
+          <h2>Turn size budgets into release rules.</h2>
+          <p>Define the boundaries that matter to your shipping process.</p>
+          <ul class="sales-feature-list">
+            <li>Total build size budget.</li>
+            <li>Artifact size on disk.</li>
+            <li>Percentage growth limit.</li>
+            <li>Absolute delta cap.</li>
+            <li>Per-category budgets for textures, audio, meshes, shaders, and code.</li>
           </ul>
-          <p>Treat build size like a real metric.</p>
+          <p>When a limit is exceeded, CI can fail with deterministic exit codes and exported reports.</p>
         </div>
+        <figure class="sales-block__media sales-media-card">
+          <img
+            class="marketing-image"
+            src="/assets/images/BuildSizeGuard/BuildSizeGuardMarketing/Set%20budgets%20and%20regression%20rules.jpg"
+            alt="Set Budgets and Regression Rules"
+            data-gallery-item
+            data-gallery-caption="Set Budgets and Regression Rules"
+            loading="lazy"
+          >
+          <figcaption>Budget and rule setup</figcaption>
+        </figure>
       </section>
 
-      <section id="snapshots" class="sales-section reveal">
-        <div class="sales-copy">
-          <h2>&#x1F4E6; Snapshots &amp; Comparisons</h2>
-          <figure class="sales-media-card">
-            <img
-              class="marketing-image"
-              src="/assets/images/BuildSizeGuard/BuildSizeGuardMarketing/Build%20automatically%20create%20snapshots.jpg"
-              alt="Build Automatically Create Snapshots"
-              data-gallery-item
-              data-gallery-caption="Build Automatically Create Snapshots"
-              loading="lazy"
-            >
-            <figcaption>Build Automatically Create Snapshots</figcaption>
-          </figure>
-          <p>Every build can:</p>
-          <ul>
-            <li>Create a snapshot</li>
-            <li>Compare to latest passing baseline</li>
-            <li>Store history</li>
-            <li>Track regression trends</li>
-          </ul>
-        </div>
-      </section>
-
-      <section id="who-this-is-for" class="sales-section reveal">
-        <div class="sales-copy">
-          <h2>Who This Is For</h2>
-          <ul>
-            <li>Unity teams shipping to mobile</li>
-            <li>Devs using CI/CD</li>
-            <li>Studios tired of size surprises</li>
-            <li>Projects using Addressables</li>
-            <li>Anyone shipping patches</li>
+      <section id="ci-batchmode" class="sales-section sales-block reveal">
+        <div class="sales-block__content sales-copy" data-stagger>
+          <p class="sales-kicker">CI Ready</p>
+          <h2>Run it in batchmode and treat size like a real metric.</h2>
+          <ul class="sales-feature-list">
+            <li>Deterministic output for automation.</li>
+            <li>JSON export for pipelines.</li>
+            <li>Markdown export for readable reports.</li>
+            <li>Automated baseline comparison during CI runs.</li>
           </ul>
         </div>
+        <figure class="sales-block__media sales-media-card">
+          <img
+            class="marketing-image"
+            src="/assets/images/BuildSizeGuard/BuildSizeGuardMarketing/CLI%20and%20batch%20mode%20for%20CL%20pipelines%20%2B%20documentation%20image.jpg"
+            alt="CLI and Batch Mode"
+            data-gallery-item
+            data-gallery-caption="CLI and Batch Mode"
+            loading="lazy"
+          >
+          <figcaption>Batchmode workflow</figcaption>
+        </figure>
       </section>
 
-      <section id="who-this-is-not-for" class="sales-section reveal">
-        <div class="sales-copy">
-          <h2>Who This Is NOT For</h2>
-          <ul>
-            <li>Devs who don&rsquo;t track builds</li>
-            <li>Projects that don&rsquo;t care about size</li>
-            <li>Runtime optimization tools (Editor-only)</li>
+      <section id="snapshots" class="sales-section sales-block sales-block--reverse reveal">
+        <div class="sales-block__content sales-copy" data-stagger>
+          <p class="sales-kicker">Track history</p>
+          <h2>Keep a clean record of build snapshots over time.</h2>
+          <ul class="sales-feature-list">
+            <li>Create a snapshot on every build.</li>
+            <li>Compare to the latest passing baseline.</li>
+            <li>Store build history for review.</li>
+            <li>Track regression trends across releases.</li>
           </ul>
+        </div>
+        <figure class="sales-block__media sales-media-card">
+          <img
+            class="marketing-image"
+            src="/assets/images/BuildSizeGuard/BuildSizeGuardMarketing/Build%20automatically%20create%20snapshots.jpg"
+            alt="Build Automatically Create Snapshots"
+            data-gallery-item
+            data-gallery-caption="Build Automatically Create Snapshots"
+            loading="lazy"
+          >
+          <figcaption>Snapshot history</figcaption>
+        </figure>
+      </section>
+
+      <section id="fit" class="sales-section reveal">
+        <div class="sales-panel-grid">
+          <div class="sales-side-card" data-spotlight>
+            <div class="sales-copy" data-stagger>
+              <p class="sales-kicker">Who it is for</p>
+              <h2>Built for teams that need release guardrails.</h2>
+              <ul class="sales-feature-list">
+                <li>Unity teams shipping to mobile.</li>
+                <li>Developers using CI/CD.</li>
+                <li>Studios tired of size surprises.</li>
+                <li>Projects using Addressables.</li>
+                <li>Teams shipping patches and updates.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="sales-side-card" data-spotlight>
+            <div class="sales-copy" data-stagger>
+              <p class="sales-kicker">Who it is not for</p>
+              <h2>Not meant for teams that do not manage build size.</h2>
+              <ul class="sales-feature-list">
+                <li>Projects that do not track builds.</li>
+                <li>Teams that do not care about install size.</li>
+                <li>Runtime optimization workflows, since this is editor-only.</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
 
       <section id="faq" class="sales-section reveal">
-        <div class="sales-copy">
-          <h2>Frequently Asked Questions</h2>
+        <div class="sales-copy" data-stagger>
+          <p class="sales-kicker">FAQ</p>
+          <h2>Common questions before rollout.</h2>
           <div class="sales-faq-list">
-            <details class="sales-faq">
+            <details class="sales-faq" data-spotlight>
               <summary>Does this modify my build?</summary>
               <p>No. It only reads BuildReport data and file sizes.</p>
             </details>
-            <details class="sales-faq">
+            <details class="sales-faq" data-spotlight>
               <summary>Does it ship in the final build?</summary>
-              <p>No. Editor-only.</p>
+              <p>No. It is editor-only.</p>
             </details>
-            <details class="sales-faq">
+            <details class="sales-faq" data-spotlight>
               <summary>Does it support CI?</summary>
-              <p>Yes. Batchmode runner with stable exit codes.</p>
+              <p>Yes. It includes a batchmode runner with stable exit codes.</p>
             </details>
-            <details class="sales-faq">
+            <details class="sales-faq" data-spotlight>
               <summary>Can I export reports?</summary>
-              <p>Yes. JSON and Markdown supported.</p>
+              <p>Yes. JSON and Markdown are supported.</p>
             </details>
           </div>
         </div>
       </section>
 
       <section id="final-cta" class="sales-section reveal">
-        <div class="sales-copy">
-          <h2>Final Call To Action</h2>
-          <p>Stop shipping regressions.</p>
-          <ul class="sales-link-list">
-            <li><strong>Unity Asset Store:</strong> <a target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/361332">https://assetstore.unity.com/packages/slug/361332</a></li>
-            <li><strong>itch.io:</strong> <a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/buildsizeguard">https://kevindevelopment.itch.io/buildsizeguard</a></li>
-            <li><strong>Documentation:</strong> <a href="/assets/build-size-guard/docs/">/docs/build-size-guard</a></li>
-            <li><strong>License:</strong> <a href="/assets/build-size-guard/license/">/license</a></li>
-            <li><strong>Support:</strong> <a href="/support/">/support</a></li>
-          </ul>
+        <div class="sales-cta-panel" data-spotlight>
+          <div class="sales-copy" data-stagger>
+            <p class="sales-kicker">Buy Now</p>
+            <h2>Stop shipping build size regressions blind.</h2>
+            <p>Buy Build Size Guard, then move straight into docs, setup, and CI integration.</p>
+            <div class="sales-actions">
+              <a class="sales-button sales-button--primary" target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/361332">Buy on Unity Asset Store</a>
+              <a class="sales-button sales-button--secondary" href="#buy-now">Review purchase options</a>
+            </div>
+          </div>
         </div>
       </section>
     </div>
   </main>
 
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-title">Build Size Guard for Unity</div>
-        <div class="footer-links">
-          <a target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/361332">Unity Asset Store</a>
-          <a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/buildsizeguard">itch.io</a>
-          <a href="/assets/build-size-guard/docs/">Documentation</a>
-          <a href="/assets/build-size-guard/license/">Full License</a>
-          <a href="/support/">Support</a>
-          <a href="#faq">FAQ</a>
-        </div>
+  <footer class="site-footer">
+    <div class="container footer-shell">
+      <div class="footer-columns">
+        <section>
+          <h2>Explore</h2>
+          <ul class="link-list">
+            <li><a href="/">Home</a></li>
+            <li><a href="/tools/">Tools</a></li>
+            <li><a href="/games/">Games</a></li>
+            <li><a href="/smart-indie/">Smart Indie</a></li>
+            <li><a href="https://www.youtube.com/@devwithkevin" target="_blank" rel="noopener noreferrer">Socials</a></li>
+            <li><a href="/support/">Support</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Tools</h2>
+          <ul class="link-list">
+            <li><a href="/assets/build-size-guard/">Build Size Guard</a></li>
+            <li><a href="/assets/compliance/">Third-Party Notices &amp; Credits</a></li>
+            <li><a href="/assets/import-settings-validator-fix/">Import Settings Validator &amp; Fix</a></li>
+            <li><a href="/tools/">Tools Directory</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Documentation</h2>
+          <ul class="link-list">
+            <li><a href="/assets/build-size-guard/docs/">Build Size Guard Docs</a></li>
+            <li><a href="/assets/build-size-guard/license/">Build Size Guard License</a></li>
+            <li><a href="#faq">Build Size Guard FAQ</a></li>
+            <li><a href="/support/#tools-support">Tool Support</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Support</h2>
+          <ul class="link-list">
+            <li><a href="/support/#tools-support">Tool Support</a></li>
+            <li><a href="/support/#smart-indie-support">Smart Indie Support</a></li>
+            <li><a href="/support/#faq">Support FAQ</a></li>
+            <li><a href="mailto:kevin@smartindie.dev">Email Fallback</a></li>
+          </ul>
+        </section>
+      </div>
+      <div class="footer-legal">
+        <span>&copy; 2026 Bjorvand Solutions</span>
+        <a href="/LICENSE">License</a>
+        <span>Support intake uses Formspree and direct email fallback.</span>
       </div>
     </div>
   </footer>
 
   <div class="mobile-cta" aria-label="Mobile call to action">
     <div class="container">
-      <a class="sales-cta-link" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/buildsizeguard">Buy on itch.io</a>
+      <a class="sales-cta-link" target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/361332">Buy Now</a>
     </div>
   </div>
   <script src="/assets/js/ui/reveal.js"></script>
+  <script src="/assets/js/ui/tool-sales-pages.js"></script>
   <script src="/assets/js/product-gallery.js"></script>
   <script defer src="/assets/js/site/nav.js"></script>
   <script defer src="/assets/js/site/link-decorators.js"></script>

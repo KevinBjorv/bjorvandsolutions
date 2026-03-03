@@ -180,6 +180,11 @@
   position: relative;
 }
 
+.menu-item-smart-indie {
+  margin-left: auto;
+  order: 10;
+}
+
 .menu-link {
   display: inline-flex;
   align-items: center;
@@ -197,6 +202,24 @@
 .menu-link[aria-current="page"] {
   border-color: var(--color-border-strong);
   color: var(--color-accent);
+}
+
+.menu-link-smart-indie {
+  background: var(--color-accent);
+  border-color: color-mix(in srgb, var(--color-accent) 78%, #000 22%);
+  color: #101114;
+  box-shadow: var(--shadow-accent);
+}
+
+.menu-link-smart-indie:hover,
+.menu-link-smart-indie:focus-visible {
+  background: #ffa14d;
+  border-color: #ffa14d;
+  color: #101114;
+}
+
+.menu-link-smart-indie .external-link-indicator {
+  filter: brightness(0) saturate(100%);
 }
 
 .menu-chevron {

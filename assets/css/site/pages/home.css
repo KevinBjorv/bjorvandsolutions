@@ -39,6 +39,11 @@
   margin-bottom: clamp(2rem, 4vw, 3.5rem);
 }
 
+.home-main p:not(.button-helper) {
+  font-size: clamp(1rem, 1.05vw, 1.08rem);
+  line-height: 1.65;
+}
+
 .home-main .section-head {
   position: relative;
   gap: var(--space-md);
@@ -54,8 +59,12 @@
 }
 
 .home-main .section-head h2 {
-  max-width: 18ch;
-  font-size: clamp(1.7rem, 3vw, 2.45rem);
+  max-width: 24ch;
+  font-size: clamp(1.9rem, 3.4vw, 2.8rem);
+}
+
+.home-main .section-head p {
+  max-width: 62ch;
 }
 
 .home-main .button {
@@ -63,6 +72,7 @@
   overflow: hidden;
   min-height: 3.15rem;
   padding: 0.85rem 1.18rem;
+  font-size: 1rem;
   transition:
     transform var(--motion-base) var(--easing-standard),
     border-color var(--motion-base) var(--easing-standard),
@@ -114,7 +124,7 @@
 }
 
 .button-helper {
-  font-size: 0.92rem;
+  font-size: 0.96rem;
   line-height: 1.5;
   color: var(--color-text-muted);
 }
@@ -122,9 +132,9 @@
 .hero-shell {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.75fr);
-  gap: clamp(1.2rem, 3vw, 2.5rem);
-  padding: clamp(1.5rem, 4vw, 3rem);
+  grid-template-columns: minmax(0, 1.12fr) minmax(19rem, 0.88fr);
+  gap: clamp(1.35rem, 2.8vw, 2.25rem);
+  padding: clamp(1.7rem, 4vw, 2.7rem);
   border: 1px solid color-mix(in srgb, var(--color-border-strong) 82%, var(--color-accent) 18%);
   border-radius: calc(var(--radius-lg) + 8px);
   background:
@@ -174,18 +184,18 @@
 }
 
 .hero-shell > h1 {
-  max-width: 10.5ch;
-  font-size: clamp(2.5rem, 6vw, 4.35rem);
+  max-width: 11.5ch;
+  font-size: clamp(2.75rem, 5.4vw, 4.55rem);
   letter-spacing: -0.03em;
 }
 
 .hero-shell > p:first-of-type {
-  max-width: 58ch;
-  font-size: clamp(1.05rem, 1.7vw, 1.2rem);
+  max-width: 44ch;
+  font-size: clamp(1.12rem, 1.6vw, 1.28rem);
 }
 
 .hero-note {
-  max-width: 52ch;
+  max-width: 46ch;
 }
 
 .hero-shell > .hero-actions {
@@ -193,7 +203,8 @@
   grid-row: 1 / span 3;
   display: grid;
   gap: var(--space-md);
-  align-content: center;
+  align-content: start;
+  padding-top: clamp(0.15rem, 0.8vw, 0.65rem);
   position: relative;
   z-index: 1;
 }
@@ -201,8 +212,9 @@
 .action-stack {
   position: relative;
   display: grid;
-  gap: 0.7rem;
-  padding: 1.15rem;
+  gap: 0.8rem;
+  align-content: start;
+  padding: clamp(1.15rem, 2vw, 1.4rem);
   border: 1px solid color-mix(in srgb, var(--color-border-strong) 84%, var(--color-accent) 16%);
   border-radius: calc(var(--radius-md) + 2px);
   background:
@@ -235,24 +247,28 @@
 }
 
 .action-stack .button {
-  justify-self: start;
+  justify-self: stretch;
+  width: 100%;
+  min-width: 0;
 }
 
 .decision-grid {
   counter-reset: decision;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  grid-template-areas:
-    "primary primary secondary"
-    "primary primary tertiary";
+  gap: clamp(1rem, 1.8vw, 1.35rem);
+  grid-template-columns: minmax(0, 1.16fr) minmax(0, 0.92fr) minmax(0, 0.92fr);
+  grid-template-areas: "primary secondary tertiary";
   align-items: stretch;
 }
 
 .decision-card {
   position: relative;
   display: grid;
-  gap: 0.95rem;
+  gap: 1rem;
+  grid-template-rows: auto 1fr auto auto;
+  align-content: start;
   min-height: 100%;
-  padding: clamp(1.35rem, 2.8vw, 2rem);
+  min-height: clamp(15.5rem, 22vw, 18.5rem);
+  padding: clamp(1.45rem, 2.4vw, 1.9rem);
   border-radius: calc(var(--radius-lg) + 2px);
   background:
     linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 95%, transparent), color-mix(in srgb, var(--color-surface-2) 96%, transparent));
@@ -319,8 +335,13 @@
 }
 
 .decision-card h3 {
-  max-width: 16ch;
-  font-size: clamp(1.22rem, 2.1vw, 1.7rem);
+  max-width: 14ch;
+  margin-bottom: 0;
+  font-size: clamp(1.38rem, 2.2vw, 1.95rem);
+}
+
+.decision-card p:not(.button-helper) {
+  max-width: 34ch;
 }
 
 .decision-card .card-actions,
@@ -338,9 +359,11 @@
   position: relative;
   display: grid;
   gap: 1rem;
+  grid-template-rows: auto auto 1fr auto;
+  align-content: start;
   min-height: 100%;
-  padding: clamp(1.35rem, 2.6vw, 1.85rem);
-  padding-top: 3.1rem;
+  padding: clamp(1.45rem, 2.4vw, 2rem);
+  padding-top: 3.25rem;
   border-radius: calc(var(--radius-lg) + 2px);
   background:
     linear-gradient(180deg, color-mix(in srgb, var(--color-surface-2) 96%, transparent), color-mix(in srgb, var(--color-surface) 96%, transparent));
@@ -375,20 +398,11 @@
   pointer-events: none;
 }
 
-.tool-card:nth-child(2) {
-  transform: translateY(-0.8rem);
-}
-
 .tool-card:hover,
 .tool-card:focus-within {
-  transform: translateY(-0.45rem);
+  transform: translateY(-6px);
   border-color: color-mix(in srgb, var(--color-accent) 38%, var(--color-border-strong) 62%);
   box-shadow: 0 22px 42px rgba(3, 8, 16, 0.38);
-}
-
-.tool-card:nth-child(2):hover,
-.tool-card:nth-child(2):focus-within {
-  transform: translateY(-1.15rem);
 }
 
 .tool-card h3,
@@ -399,6 +413,15 @@
   z-index: 1;
 }
 
+.tool-card h3 {
+  margin-bottom: 0;
+  font-size: clamp(1.32rem, 1.7vw, 1.58rem);
+}
+
+.tool-card p {
+  max-width: 30ch;
+}
+
 .tool-card ul {
   list-style: none;
   padding: 0;
@@ -407,33 +430,39 @@
 }
 
 .tool-card li {
-  padding: 0.7rem 0.8rem;
+  padding: 0.78rem 0.9rem;
   border-radius: var(--radius-sm);
   border: 1px solid rgba(255, 255, 255, 0.04);
   background: color-mix(in srgb, var(--color-surface) 76%, transparent);
+  font-size: 0.98rem;
+  line-height: 1.45;
   color: color-mix(in srgb, var(--color-text) 92%, var(--color-text-muted) 8%);
 }
 
 .tool-card .card-actions {
-  gap: 0.65rem;
+  gap: 0.7rem;
 }
 
 .tool-card .card-actions .button-primary {
   flex: 1 1 100%;
 }
 
+.tool-card .card-actions .button-secondary {
+  flex: 1 1 calc(50% - 0.35rem);
+}
+
 .feature-grid {
-  gap: clamp(1rem, 2vw, 1.7rem);
+  gap: clamp(1rem, 1.8vw, 1.45rem);
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .feature-strip {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(15rem, 0.72fr);
-  gap: clamp(1.25rem, 3vw, 2.5rem);
+  grid-template-columns: minmax(0, 1.2fr) minmax(16rem, 0.8fr);
+  gap: clamp(1.25rem, 2.8vw, 2.1rem);
   align-items: center;
-  padding: clamp(1.4rem, 3.5vw, 2.6rem);
+  padding: clamp(1.5rem, 3.2vw, 2.4rem);
   border-radius: calc(var(--radius-lg) + 8px);
   border: 1px solid color-mix(in srgb, var(--color-border-strong) 80%, var(--color-accent) 20%);
   background:
@@ -469,21 +498,38 @@
 
 .feature-strip > :first-child {
   display: grid;
-  gap: 0.85rem;
-  max-width: 64ch;
+  gap: 0.9rem;
+  max-width: 60ch;
+}
+
+.feature-strip h2 {
+  font-size: clamp(1.95rem, 3vw, 2.65rem);
 }
 
 .feature-strip-action {
   position: relative;
   display: grid;
   gap: 0.8rem;
-  justify-items: start;
-  padding: 1.2rem;
+  align-content: center;
+  justify-items: stretch;
+  justify-self: end;
+  width: min(100%, 18rem);
+  min-height: auto;
+  padding: clamp(1.15rem, 2vw, 1.4rem);
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: calc(var(--radius-md) + 2px);
   background: color-mix(in srgb, var(--color-surface) 74%, transparent);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
   z-index: 1;
+}
+
+.feature-strip-action .button {
+  width: 100%;
+  min-width: 0;
+}
+
+.feature-strip-action .button-helper {
+  text-align: center;
 }
 
 .support-strip {
@@ -497,19 +543,21 @@
 }
 
 .games-grid {
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
-  grid-template-areas:
-    "featured secondary"
-    "featured tertiary";
+  gap: clamp(1rem, 1.8vw, 1.45rem);
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.94fr) minmax(0, 0.94fr);
+  grid-template-areas: "featured secondary tertiary";
   align-items: stretch;
 }
 
 .game-card {
   position: relative;
   display: grid;
-  gap: 0.95rem;
+  gap: 1rem;
+  grid-template-rows: auto 1fr auto;
+  align-content: start;
   min-height: 100%;
-  padding: clamp(1.35rem, 2.4vw, 1.9rem);
+  min-height: clamp(14rem, 18vw, 17rem);
+  padding: clamp(1.45rem, 2.2vw, 1.95rem);
   border-radius: calc(var(--radius-lg) + 2px);
   background:
     linear-gradient(180deg, color-mix(in srgb, var(--color-surface-2) 95%, transparent), color-mix(in srgb, var(--color-surface) 96%, transparent));
@@ -533,6 +581,7 @@
 
 .game-card:nth-child(1) {
   grid-area: featured;
+  min-height: clamp(15rem, 20vw, 18rem);
   background:
     radial-gradient(circle at 82% 14%, rgba(251, 129, 20, 0.12), transparent 22%),
     linear-gradient(180deg, color-mix(in srgb, var(--color-surface-2) 96%, transparent), color-mix(in srgb, var(--color-surface) 96%, transparent));
@@ -559,12 +608,21 @@
   z-index: 1;
 }
 
+.game-card h3 {
+  margin-bottom: 0;
+  font-size: clamp(1.3rem, 1.7vw, 1.55rem);
+}
+
+.game-card p {
+  max-width: 34ch;
+}
+
 .final-cta-strip {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: clamp(1rem, 2.5vw, 2rem);
   align-items: center;
-  padding: clamp(1.3rem, 3vw, 2rem);
+  padding: clamp(1.45rem, 2.8vw, 2.25rem);
   border-radius: calc(var(--radius-lg) + 8px);
   border: 1px solid color-mix(in srgb, var(--color-border-strong) 78%, var(--color-accent) 22%);
   background:
@@ -574,12 +632,13 @@
 }
 
 .final-cta-strip h2 {
-  max-width: 14ch;
-  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  max-width: 16ch;
+  font-size: clamp(1.8rem, 3.2vw, 2.55rem);
 }
 
 .final-cta-strip .hero-actions {
   gap: 0.85rem;
+  justify-content: flex-end;
 }
 
 .home-footer {
@@ -664,9 +723,29 @@
   right: 0;
 }
 
+.home-footer .footer-email-updates {
+  display: grid;
+  gap: 0.9rem;
+  align-content: start;
+  background:
+    radial-gradient(circle at 84% 22%, rgba(251, 129, 20, 0.14), transparent 24%),
+    linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 94%, transparent), color-mix(in srgb, var(--color-surface-2) 96%, transparent));
+}
+
+.home-footer .footer-email-updates h2 {
+  margin-bottom: 0;
+  font-size: 1.05rem;
+}
+
+.home-footer .footer-email-updates .ml-embedded {
+  position: relative;
+  z-index: 1;
+}
+
 .home-footer .footer-legal {
   padding-top: var(--space-lg);
   align-items: center;
+  justify-content: space-between;
 }
 
 @keyframes hero-drift {
@@ -701,6 +780,9 @@
 
   .games-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "featured featured"
+      "secondary tertiary";
   }
 }
 
@@ -715,18 +797,18 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .tool-card:nth-child(2) {
-    transform: none;
-  }
-
-  .tool-card:nth-child(2):hover,
-  .tool-card:nth-child(2):focus-within {
-    transform: translateY(-0.45rem);
-  }
-
   .feature-strip,
   .final-cta-strip {
     grid-template-columns: 1fr;
+  }
+
+  .feature-strip-action {
+    justify-self: stretch;
+    width: 100%;
+  }
+
+  .feature-strip-action .button-helper {
+    text-align: left;
   }
 }
 
@@ -747,8 +829,18 @@
     grid-area: auto;
   }
 
+  .decision-card,
+  .game-card {
+    min-height: auto;
+  }
+
   .final-cta-strip .hero-actions {
     width: 100%;
+    justify-content: flex-start;
+  }
+
+  .home-footer .footer-legal {
+    justify-content: flex-start;
   }
 }
 
@@ -768,6 +860,15 @@
 
   .tool-card .card-actions .button {
     flex: 1 1 100%;
+  }
+
+  .home-footer .footer-email-updates .ml-form-embedBody form {
+    flex-direction: column;
+  }
+
+  .home-footer .footer-email-updates .ml-form-embedSubmit,
+  .home-footer .footer-email-updates .ml-form-embedSubmit button {
+    width: 100%;
   }
 }
 

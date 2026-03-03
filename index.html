@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="/assets/css/site/pages/home.css">
   <link rel="stylesheet" href="/assets/css/shared/link-decorators.css">
   <link rel="stylesheet" href="/assets/css/shared/typography-overrides.css">
+  <script src="/assets/js/site/mailerlite-universal.js"></script>
 </head>
 <body>
     <header class="site-header">
@@ -39,7 +40,7 @@
                 <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Build Size Guard links">
                   <a role="menuitem" href="/assets/build-size-guard/">Homepage</a>
                   <a role="menuitem" href="/assets/build-size-guard/docs/">Docs</a>
-                  <a role="menuitem" href="/support/#tools-support">Support</a>
+                  <a role="menuitem" href="/support/">Support</a>
                   <a role="menuitem" href="/assets/build-size-guard/license/">License</a>
                 </div>
               </div>
@@ -48,7 +49,7 @@
                 <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Third-Party Notices and Credits links">
                   <a role="menuitem" href="/assets/compliance/">Homepage</a>
                   <a role="menuitem" href="/assets/compliance/docs/">Docs</a>
-                  <a role="menuitem" href="/support/#tools-support">Support</a>
+                  <a role="menuitem" href="/support/">Support</a>
                   <a role="menuitem" href="/assets/compliance/license/">License</a>
                 </div>
               </div>
@@ -57,7 +58,7 @@
                 <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Import Settings Validator and Fix links">
                   <a role="menuitem" href="/assets/import-settings-validator-fix/">Homepage</a>
                   <a role="menuitem" href="/assets/import-settings-validator-fix/docs/">Docs</a>
-                  <a role="menuitem" href="/support/#tools-support">Support</a>
+                  <a role="menuitem" href="/support/">Support</a>
                   <a role="menuitem" href="/assets/import-settings-validator-fix/license/">License</a>
                 </div>
               </div>
@@ -101,17 +102,8 @@
               </div>
             </div>
           </li>
-          <li class="menu-item">
-            <a class="menu-link" href="/smart-indie/" data-nav-trigger="smart-indie" aria-haspopup="menu" aria-expanded="false" aria-controls="menu-smart-indie">Smart Indie <span class="menu-chevron" aria-hidden="true">v</span></a>
-            <div class="dropdown" id="menu-smart-indie" data-nav-menu="smart-indie" role="menu" aria-label="Smart Indie links">
-              <a role="menuitem" href="/smart-indie/">Smart Indie Overview</a>
-              <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie Website</a>
-              <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/app/index/">App Hub</a>
-              <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/games/">Games</a>
-              <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/articles/">Articles</a>
-              <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/faq/">FAQ</a>
-              <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/about-contact/">About &amp; Contact</a>
-            </div>
+          <li class="menu-item menu-item-smart-indie">
+            <a class="menu-link menu-link-smart-indie" target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a>
           </li>
                     <li class="menu-item">
             <a class="menu-link" href="/support/">Support</a>
@@ -147,7 +139,7 @@
             <li><a href="/assets/import-settings-validator-fix/">Import Settings Validator &amp; Fix Homepage</a></li>
             <li><a href="/assets/import-settings-validator-fix/docs/">Import Settings Validator &amp; Fix Docs</a></li>
             <li><a href="/assets/import-settings-validator-fix/license/">Import Settings Validator &amp; Fix License</a></li>
-            <li><a href="/support/#tools-support">Tool Support</a></li>
+            <li><a href="/support/">Support Form</a></li>
           </ul>
         </details>
         <details class="mobile-nav-group">
@@ -168,18 +160,9 @@
             <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/duestien">Duestien: City Scene</a></li>
           </ul>
         </details>
-        <details class="mobile-nav-group">
-          <summary>Smart Indie</summary>
-          <ul>
-            <li><a href="/smart-indie/">Smart Indie Overview</a></li>
-            <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Website</a></li>
-            <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/app/index/">App Hub</a></li>
-            <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/games/">Games</a></li>
-            <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/articles/">Articles</a></li>
-            <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/faq/">FAQ</a></li>
-            <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/about-contact/">About &amp; Contact</a></li>
-          </ul>
-        </details>
+        <div class="mobile-nav-group mobile-nav-single-link">
+          <a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a>
+        </div>
                 <div class="mobile-nav-group mobile-nav-single-link">
           <a href="/support/">Support</a>
         </div>
@@ -209,7 +192,7 @@
             <p class="button-helper">View product pages, docs, and licenses.</p>
           </div>
           <div class="action-stack">
-            <a class="button button-secondary" href="/smart-indie/">Start Smart Indie</a>
+            <a class="button button-secondary" target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Start Smart Indie</a>
             <p class="button-helper">Learn the system to ship your first real game.</p>
           </div>
         </div>
@@ -233,7 +216,7 @@
           <h3>I want to ship my first game.</h3>
           <p>I am stuck in tutorials and need a structured path to actually release something.</p>
           <div class="card-actions">
-            <a class="button button-secondary" href="/smart-indie/">Go to Smart Indie</a>
+            <a class="button button-secondary" target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Go to Smart Indie</a>
           </div>
           <p class="button-helper">View the 60-day system &rarr;</p>
         </article>
@@ -308,7 +291,7 @@
           <p>Smart Indie replaces randomness with a clear build framework, scope control, and release accountability.</p>
         </div>
         <div class="feature-strip-action">
-          <a class="button button-primary" href="/smart-indie/">View Smart Indie</a>
+          <a class="button button-primary" target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">View Smart Indie</a>
           <p class="button-helper">See the full breakdown &rarr;</p>
         </div>
       </div>
@@ -369,57 +352,60 @@
         </div>
         <div class="hero-actions">
           <a class="button button-primary" href="/tools/">Browse Unity Tools</a>
-          <a class="button button-secondary" href="/smart-indie/">Go to Smart Indie</a>
+          <a class="button button-secondary" target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Go to Smart Indie</a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer home-footer">
+  <footer class="site-footer">
     <div class="container footer-shell">
-      <div class="footer-columns home-footer-columns">
+      <div class="footer-columns">
         <section>
-          <h2>Footer Quick Links</h2>
+          <h2>Explore</h2>
           <ul class="link-list">
             <li><a href="/">Home</a></li>
             <li><a href="/tools/">Tools</a></li>
-            <li><a href="/smart-indie/">Smart Indie</a></li>
             <li><a href="/games/">Games</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li>
+            <li><a href="https://www.youtube.com/@devwithkevin" target="_blank" rel="noopener noreferrer">Socials</a></li>
             <li><a href="/support/">Support</a></li>
           </ul>
         </section>
         <section>
-          <h2>Unity Tools</h2>
+          <h2>Tools</h2>
           <ul class="link-list">
-            <li><a href="/tools/">Tools Directory</a></li>
             <li><a href="/assets/build-size-guard/">Build Size Guard</a></li>
             <li><a href="/assets/compliance/">Third-Party Notices &amp; Credits</a></li>
             <li><a href="/assets/import-settings-validator-fix/">Import Settings Validator &amp; Fix</a></li>
+            <li><a href="/tools/">Tools Directory</a></li>
           </ul>
         </section>
         <section>
-          <h2>Shipped Games</h2>
+          <h2>Games</h2>
           <ul class="link-list">
             <li><a href="/games/">Games Directory</a></li>
-            <li><a href="/games/orbital-chaos/">Orbital Chaos</a></li>
-            <li><a href="/games/neonsurge-2/">NeonSurge 2</a></li>
-            <li><a href="/games/neonsurge/">NeonSurge</a></li>
+            <li><a href="/games/orbital-chaos/">Orbital Chaos Homepage</a></li>
+            <li><a href="/games/neonsurge-2/">NeonSurge 2 Homepage</a></li>
+            <li><a href="/games/neonsurge/">NeonSurge Homepage</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/games/">Smart Indie Games</a></li>
           </ul>
         </section>
         <section>
           <h2>Support</h2>
           <ul class="link-list">
-            <li><a href="/support/">Open Support</a></li>
-            <li><a href="/support/#tools-support">Tool Support</a></li>
-            <li><a href="/support/#smart-indie-support">Smart Indie Support</a></li>
-            <li><a href="/support/#faq">FAQ</a></li>
+            <li><a href="/support/">Support Form</a></li>
+            <li><a href="/support/#docs-shortcuts-title">Documentation</a></li>
+            <li><a href="/support/#faq">Support FAQ</a></li>
           </ul>
+        </section>
+        <section class="footer-email-updates" aria-label="Email subscription">
+          <h2>Email Updates</h2>
+          <div class="ml-embedded" data-form="bk4D7K"></div>
         </section>
       </div>
       <div class="footer-legal">
-        <span>&copy; <span data-current-year>2026</span> Bjorvand Solutions</span>
-        <a href="/LICENSE">License</a>
-        <a href="/support/">Support</a>
+        <span>&copy; Bjorvand Solutions <span data-current-year>2026</span> &bull; Company registration number: 836 135 652 (Norway)</span>
       </div>
     </div>
   </footer>

@@ -566,9 +566,84 @@ footer,
   box-shadow: var(--page-shadow);
 }
 
+.footer-columns > section {
+  position: relative;
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: calc(var(--page-radius-md) + 2px);
+  background:
+    linear-gradient(180deg, rgba(20, 28, 39, 0.82), rgba(14, 20, 29, 0.94));
+  overflow: hidden;
+  transition:
+    transform var(--page-motion-base) var(--page-easing),
+    border-color var(--page-motion-base) var(--page-easing),
+    box-shadow var(--page-motion-base) var(--page-easing);
+}
+
+.footer-columns > section::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(251, 129, 20, 0.7), transparent 62%);
+}
+
+.footer-columns > section:hover,
+.footer-columns > section:focus-within {
+  transform: translateY(-4px);
+  border-color: rgba(251, 129, 20, 0.32);
+  box-shadow: 0 20px 34px rgba(0, 0, 0, 0.28);
+}
+
 .footer-columns h2 {
   margin-bottom: 0.75rem;
   font-size: 0.98rem;
+}
+
+.footer-email-updates {
+  display: grid;
+  gap: 0.9rem;
+  align-content: start;
+  grid-column: 1 / -1;
+  background:
+    radial-gradient(circle at 84% 22%, rgba(251, 129, 20, 0.14), transparent 24%),
+    linear-gradient(180deg, rgba(20, 28, 39, 0.82), rgba(14, 20, 29, 0.94));
+}
+
+.footer-email-updates h2 {
+  margin-bottom: 0;
+}
+
+.footer-email-updates .ml-embedded,
+.footer-email-updates .ml-form-embedContainer,
+.footer-email-updates .ml-form-embedWrapper,
+.footer-email-updates .ml-form-embedBody,
+.footer-email-updates .ml-form-successBody {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.footer-email-updates .ml-form-embedBody form {
+  display: flex;
+  gap: 0.75rem;
+  align-items: stretch;
+}
+
+.footer-email-updates .ml-form-fieldRow {
+  flex: 1 1 auto;
+}
+
+.footer-email-updates .ml-form-fieldRow input {
+  width: 100% !important;
+}
+
+.footer-email-updates .ml-form-embedSubmit {
+  flex: 0 0 auto;
+}
+
+.footer-email-updates .ml-form-embedSubmit button {
+  white-space: nowrap;
 }
 
 .link-list {
@@ -586,6 +661,8 @@ footer,
 }
 
 .footer-legal {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 1rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.8rem 1rem;
@@ -657,6 +734,10 @@ footer,
 
   .sales-stat-list {
     grid-template-columns: 1fr;
+  }
+
+  .footer-email-updates .ml-form-embedBody form {
+    flex-direction: column;
   }
 }
 

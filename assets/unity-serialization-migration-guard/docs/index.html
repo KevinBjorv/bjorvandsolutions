@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unity Serialization Migration Guard technical documentation</title>
+  <meta name="description" content="Technical documentation for Unity Serialization Migration Guard (RMSS), including tabs, mapping risks, coverage scanning, reserialize behavior, batch mode, and cleanup proof checks.">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon/favicon-192x192.png">
+  <link rel="icon" type="image/x-icon" href="/assets/favicon/favicon.ico">
+  <link rel="manifest" href="/assets/favicon/site.webmanifest">
+  <link rel="stylesheet" href="/assets/css/products/product-docs.css">
+  <script src="/assets/js/theme/theme-init.js"></script>
+  <link rel="stylesheet" href="/assets/css/shared/site-navbar.css">
+  <link rel="stylesheet" href="/assets/css/shared/link-decorators.css">
+  <link rel="stylesheet" href="/assets/css/shared/typography-overrides.css">
+  <script src="/assets/js/site/mailerlite-universal.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Bjorvand Solutions</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="menu-root">
+          <li class="menu-item">
+            <a class="menu-link" href="/tools/">Tools</a>
+          </li>
+          <li class="menu-item">
+            <a class="menu-link" href="/support/">Support</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="shell layout">
+    <aside class="sidebar" aria-label="Documentation navigation">
+      <h2>Documentation</h2>
+      <p>Technical behavior based on the documented implementation for RMSS.</p>
+      <label class="search-label" for="docSearch">Search</label>
+      <input class="search-input" type="search" id="docSearch" placeholder="Search mappings, coverage, reserialize, cleanup..." autocomplete="off">
+      <p class="search-status" id="searchStatus">Showing 14 sections</p>
+      <nav class="sidebar-nav" id="sidebarNav">
+        <a class="sidebar-link" href="#overview">Overview</a>
+        <a class="sidebar-link" href="#access-paths">Access paths</a>
+        <a class="sidebar-link" href="#rmss-window">RMSS window</a>
+        <a class="sidebar-link" href="#audit-tab">Audit tab</a>
+        <a class="sidebar-link" href="#coverage-tab">Coverage tab</a>
+        <a class="sidebar-link" href="#reserialize-tab">Reserialize tab</a>
+        <a class="sidebar-link" href="#cleanup-tab">Cleanup tab</a>
+        <a class="sidebar-link" href="#settings-tab">Settings</a>
+        <a class="sidebar-link" href="#project-settings">Project settings</a>
+        <a class="sidebar-link" href="#mapping-format">Mapping JSON schema</a>
+        <a class="sidebar-link" href="#batch-mode">Batch mode</a>
+        <a class="sidebar-link" href="#validation-scripts">Validation scripts</a>
+        <a class="sidebar-link" href="#practical-workflow">Practical workflow</a>
+        <a class="sidebar-link" href="#constraints">Constraints</a>
+        <a class="sidebar-link" href="#license-and-support">License and support</a>
+      </nav>
+    </aside>
+
+    <main class="content" id="docContent">
+      <section class="doc-card" id="overview" data-section>
+        <h1>Unity Serialization Migration Guard technical documentation</h1>
+        <p class="lead">Unity Serialization Migration Guard supports controlled serialized field migration workflows through Audit, Coverage, Reserialize, Cleanup, and Settings operations.</p>
+        <p>It is centered on practical migration safety: identify risky renames, locate affected assets, and generate proof artifacts before changing the long-term mapping baseline.</p>
+      </section>
+
+      <section class="doc-card" id="access-paths" data-section>
+        <h2>1. Access paths</h2>
+        <ul>
+          <li>Unity menu: <code>Tools / Refactor Migration Safety Suite / Open Window</code>.</li>
+          <li>Unity menu: <code>Tools / Refactor Migration Safety Suite / Open Project Settings</code>.</li>
+          <li>Project settings path: <code>Project / Refactor Migration Safety Suite</code>.</li>
+          <li>Batch entrypoint: <code>RefactorMigrationSafetySuite.Batch.RMSSBatchEntryPoint.Run</code>.</li>
+        </ul>
+      </section>
+
+      <section class="doc-card" id="rmss-window" data-section>
+        <h2>2. RMSS window</h2>
+        <p>Window title: <code>RMSS</code>.</p>
+        <p>Minimum size: <code>760 x 420</code>.</p>
+        <p>Tab order:</p>
+        <ol>
+          <li>Audit</li>
+          <li>Coverage Scan</li>
+          <li>Reserialize</li>
+          <li>Cleanup</li>
+          <li>Settings</li>
+        </ol>
+      </section>
+
+      <section class="doc-card" id="audit-tab" data-section>
+        <h2>3. Audit tab</h2>
+        <h3>Controls</h3>
+        <ul>
+          <li><code>Git Diff Import</code>: text input, diff file field, <code>Browse Diff File</code>, <code>Preview Diff Import</code>, <code>Append Candidates</code>, <code>Replace Manual Mappings</code>.</li>
+          <li><code>Manual Rename Mappings</code>: add, clear, import JSON, export JSON, and remove row actions.</li>
+          <li>Per-row fields: <code>Type Name</code>, <code>Old Name</code>, <code>New Name</code>.</li>
+          <li><code>Run Audit</code>.</li>
+        </ul>
+        <h3>Behavior and checks</h3>
+        <ul>
+          <li>Mappings are validated against indexed <code>MonoScript</code> assets in <code>Assets</code>.</li>
+          <li>Whitespace is normalized and duplicates are dropped.</li>
+          <li>Risk severity includes:</li>
+        </ul>
+        <ul>
+          <li><strong>High:</strong> missing type, ambiguous type name, missing target field, non-serializable target field, missing <code>FormerlySerializedAs</code>.</li>
+          <li><strong>Medium:</strong> token used by multiple resolved types, same legacy token still active on unresolved mapped type.</li>
+          <li><strong>Low:</strong> case-only rename only.</li>
+        </ul>
+        <p>Audit results clear when mappings change to avoid stale data. A remediation message is shown for missing <code>FormerlySerializedAs</code>.</p>
+      </section>
+
+      <section class="doc-card" id="coverage-tab" data-section>
+        <h2>4. Coverage tab</h2>
+        <h3>Controls</h3>
+        <ul>
+          <li><code>Run Coverage Scan</code>.</li>
+          <li><code>Export Coverage JSON</code>.</li>
+          <li><code>Export Coverage CSV</code>.</li>
+        </ul>
+        <h3>Scope and behavior</h3>
+        <ul>
+          <li>Manual mappings must be valid: all <code>Type</code>, <code>Old</code>, <code>New</code> fields non-empty.</li>
+          <li>Requires Unity Force Text serialization.</li>
+          <li>Supported assets: <code>.unity</code> scenes, <code>.prefab</code>, standalone ScriptableObject <code>.asset</code> files, and parent assets with embedded ScriptableObjects.</li>
+          <li>Reports include candidate assets, scanned assets, unreadable assets, scope-complete state, affected assets, and token occurrence counts.</li>
+          <li>Per-field summary order: total occurrences, affected assets, type name, legacy field.</li>
+        </ul>
+      </section>
+
+      <section class="doc-card" id="reserialize-tab" data-section>
+        <h2>5. Reserialize tab</h2>
+        <h3>Controls</h3>
+        <ul>
+          <li>Scope dropdown: <code>Coverage Results</code>, <code>Folder</code>, <code>Selection</code>.</li>
+          <li>Folder object field for Folder scope.</li>
+          <li><code>Create Backup</code> toggle.</li>
+          <li><code>Build Preview</code>.</li>
+          <li><code>Run Reserialize</code>.</li>
+        </ul>
+        <h3>Preview and execution</h3>
+        <ul>
+          <li>Preview includes source, asset count, skipped inputs, and warnings.</li>
+          <li><code>Run Reserialize</code> is disabled until preview has at least one asset.</li>
+          <li>Scenes are reserialized through scene save flow, prefabs through prefab load/save, and other scriptable objects through <code>AssetDatabase.ForceReserializeAssets</code>.</li>
+          <li>Progress updates expose current stage, current path, and completed/total counters.</li>
+        </ul>
+      </section>
+
+      <section class="doc-card" id="cleanup-tab" data-section>
+        <h2>6. Cleanup tab</h2>
+        <h3>Controls</h3>
+        <ul>
+          <li><code>Evaluate Cleanup Proof</code>.</li>
+          <li><code>Export Cleanup JSON</code>.</li>
+          <li><code>Export Cleanup CSV</code>.</li>
+        </ul>
+        <h3>Cleanup output</h3>
+        <ul>
+          <li><code>IsSafeToRemoveLegacyMappings</code> bool.</li>
+          <li><code>IsSupportedScopeComplete</code> bool.</li>
+          <li><code>RemainingLegacyTokenOccurrences</code>.</li>
+          <li>Human-readable scope summary and notes.</li>
+        </ul>
+        <p>Unsafe states include no coverage report, remaining legacy tokens, or incomplete scope.</p>
+      </section>
+
+      <section class="doc-card" id="settings-tab" data-section>
+        <h2>7. Settings tab</h2>
+        <p>Controls:</p>
+        <ul>
+          <li><code>Enable Verbose Logging</code>.</li>
+          <li><code>Create Backups By Default</code>.</li>
+          <li><code>Default Export Directory</code>.</li>
+          <li><code>Backup Directory</code>.</li>
+          <li><code>Save Project Settings</code> and <code>Open Project Settings Page</code>.</li>
+        </ul>
+        <p>Settings are stored in <code>ProjectSettings/RefactorMigrationSafetySuiteSettings.asset</code> via <code>ScriptableSingleton</code>.</p>
+        <ul>
+          <li>Default export directory: <code>Logs</code>.</li>
+          <li>Default backup directory: <code>Logs</code>.</li>
+          <li>Verbose logging and backup-by-default are enabled by default.</li>
+        </ul>
+      </section>
+
+      <section class="doc-card" id="project-settings" data-section>
+        <h2>8. Project Settings provider</h2>
+        <p>Provider path: <code>Project / Refactor Migration Safety Suite</code>.</p>
+        <p>Provider exposes the same fields as the Settings tab and supports explicit save persistence.</p>
+      </section>
+
+      <section class="doc-card" id="mapping-format" data-section>
+        <h2>9. Rename mapping JSON schema</h2>
+        <p>Schema version is <code>1</code>.</p>
+        <p>Top-level fields: <code>schemaVersion</code>, <code>mappings</code>.</p>
+        <p>Each mapping includes:</p>
+        <ul>
+          <li><code>typeName</code></li>
+          <li><code>oldName</code></li>
+          <li><code>newName</code></li>
+        </ul>
+        <pre><code>{
+  "schemaVersion": 1,
+  "mappings": [
+    {
+      "typeName": "MyCompany.CharacterState",
+      "oldName": "oldHealth",
+      "newName": "currentHealth"
+    }
+  ]
+}</code></pre>
+        <p>JSON is shared by Audit import/export and batch commands.</p>
+      </section>
+
+      <section class="doc-card" id="batch-mode" data-section>
+        <h2>10. Batch mode</h2>
+        <p>Command entry:</p>
+        <pre><code>Unity -batchmode ... -executeMethod RefactorMigrationSafetySuite.Batch.RMSSBatchEntryPoint.Run</code></pre>
+        <p>Supported commands:</p>
+        <ul>
+          <li><code>audit</code></li>
+          <li><code>coverage</code></li>
+          <li><code>cleanup</code></li>
+        </ul>
+        <p>Common options:</p>
+        <ul>
+          <li><code>--mappingsJson &lt;path&gt;</code> required for coverage and cleanup, optional for audit.</li>
+          <li><code>--jsonOut &lt;path&gt;</code> optional output path.</li>
+          <li><code>--failOnRisk true|false</code> for audit.</li>
+          <li><code>--failOnCoverage true|false</code> for coverage/cleanup.</li>
+        </ul>
+        <p>Exit codes:</p>
+        <ul>
+          <li><code>0</code> success.</li>
+          <li><code>1</code> parse, input, or setup error.</li>
+          <li><code>2</code> audit high-risk failure when fail-on-risk is enabled.</li>
+          <li><code>3</code> coverage/cleanup failure when coverage failure is enabled.</li>
+        </ul>
+      </section>
+
+      <section class="doc-card" id="validation-scripts" data-section>
+        <h2>11. Validation scripts</h2>
+        <ul>
+          <li><code>scripts/run-batch-audit.sh</code></li>
+          <li><code>scripts/run-batch-coverage.sh</code></li>
+          <li><code>scripts/run-batch-cleanup.sh</code></li>
+          <li><code>scripts/run-window-smoke-headful.sh</code></li>
+        </ul>
+        <p>Scripts use a shared batch entrypoint and write to <code>Logs</code>.</p>
+      </section>
+
+      <section class="doc-card" id="practical-workflow" data-section>
+        <h2>12. Practical workflow</h2>
+        <ol>
+          <li>Build or import mappings manually or from git diff.</li>
+          <li>Export mappings for reuse and traceability.</li>
+          <li>Run <code>Run Audit</code> and clear high and medium risks where possible.</li>
+          <li>Enable Force Text and run <code>Run Coverage Scan</code>.</li>
+          <li>Optionally use folder or selection scoped preview + reserialize.</li>
+          <li>Run <code>Evaluate Cleanup Proof</code>.</li>
+          <li>Export cleanup data before removing legacy fields or attributes.</li>
+        </ol>
+      </section>
+
+      <section class="doc-card" id="constraints" data-section>
+        <h2>13. Constraints and known hard limits</h2>
+        <ul>
+          <li>Coverage and cleanup depend on Force Text serialization.</li>
+          <li>Project Window selection scope only uses selection assets.</li>
+          <li>Reserialize is scope-limited and may skip unsupported assets.</li>
+          <li>Invalid backup folders under <code>Assets</code> or <code>Packages</code> are rejected and a project log fallback is used.</li>
+          <li>Unsupported diff hunks are skipped with warnings.</li>
+        </ul>
+      </section>
+
+      <section class="doc-card" id="license-and-support" data-section>
+        <h2>14. License and support</h2>
+        <ul>
+          <li>License page: <a href="/assets/unity-serialization-migration-guard/license/">Unity Serialization Migration Guard license</a>.</li>
+          <li>Support contact and routing: <a href="/support/">Bjorvand support</a>.</li>
+        </ul>
+      </section>
+
+      <div class="empty-state" id="emptyState" role="status" aria-live="polite">
+        No sections match your search. Try a broader term like <code>coverage</code>, <code>audit</code>, or <code>cleanup</code>.
+      </div>
+    </main>
+  </div>
+
+  <script src="/assets/js/docs/product-docs.js"></script>
+  <script defer src="/assets/js/site/nav.js"></script>
+  <script defer src="/assets/js/site/link-decorators.js"></script>
+</body>
+</html>

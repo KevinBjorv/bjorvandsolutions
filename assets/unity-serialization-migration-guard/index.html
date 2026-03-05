@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unity Serialization Migration Guard for Unity | Migration-Safe Serialized Refactors</title>
+  <meta name="description" content="Unity Serialization Migration Guard audits serialized field mappings, scans affected assets, and validates cleanup safety for large refactors and CI workflows.">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon/favicon-192x192.png">
+  <link rel="icon" type="image/x-icon" href="/assets/favicon/favicon.ico">
+  <link rel="manifest" href="/assets/favicon/site.webmanifest">
+  <script src="/assets/js/theme/theme-init.js"></script>
+  <link rel="stylesheet" href="/assets/css/products/tool-sales-pages.css">
+  <link rel="stylesheet" href="/assets/css/shared/site-navbar.css">
+  <link rel="stylesheet" href="/assets/css/shared/link-decorators.css">
+  <link rel="stylesheet" href="/assets/css/shared/typography-overrides.css">
+  <script src="/assets/js/site/mailerlite-universal.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Bjorvand Solutions</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="menu-root">
+          <li class="menu-item">
+            <a class="menu-link" href="/">Home</a>
+          </li>
+          <li class="menu-item">
+            <a class="menu-link" href="/tools/">Tools</a>
+          </li>
+          <li class="menu-item">
+            <a class="menu-link" href="/support/">Support</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="site-main">
+    <div class="container sales-page">
+      <section id="overview" class="sales-section sales-hero reveal">
+        <div class="sales-hero__content sales-copy" data-stagger>
+          <p class="sales-kicker">Unity Editor Tool</p>
+          <h1>Unity Serialization Migration Guard</h1>
+          <p class="sales-subtitle">A safe workflow for serialized field migration and cleanup.</p>
+          <p class="sales-lede">Use it to validate renamed fields, map risks to concrete actions, scan assets for legacy tokens, and confirm cleanup safety before removing migration paths.</p>
+          <p class="sales-inline-lines">Built from manual mappings, diff import, scope-based coverage, and batch checks for deterministic migration quality.</p>
+          <ul class="sales-chip-list">
+            <li>Manual + diff-based mapping import</li>
+            <li>Coverage-aware rescan and backup path control</li>
+            <li>Batchmode audit, coverage, and cleanup checks</li>
+          </ul>
+          <div class="sales-actions">
+            <a class="sales-button sales-button--primary" href="/assets/unity-serialization-migration-guard/docs/">Read the docs</a>
+            <a class="sales-button sales-button--secondary" href="/support/">Get support</a>
+            <a class="sales-button sales-button--ghost" href="/assets/unity-serialization-migration-guard/license/">License</a>
+          </div>
+        </div>
+        <figure class="sales-hero__media sales-media-card">
+          <img
+            class="marketing-image"
+            src="/assets/images/icons/UnityLogoPng.png"
+            alt="Unity logo"
+            data-gallery-item
+            data-gallery-caption="Unity"
+            loading="eager"
+            fetchpriority="high"
+          >
+          <figcaption>Unity Serialization Migration Guard</figcaption>
+        </figure>
+      </section>
+
+      <section id="what-it-solves" class="sales-section reveal">
+        <div class="sales-copy" data-stagger>
+          <p class="sales-kicker">What it is for</p>
+          <h2>Keep serialized migration paths verifiable and reversible.</h2>
+          <p>During large refactors, serialized field and type changes can persist in project assets long after code compiles. This tool reduces hidden breakage by surfacing mapping risks, confirming scope coverage, and proving when cleanup is safe.</p>
+          <ul class="sales-feature-list">
+            <li>Manual mapping and Git-diff import support for refactor workflows.</li>
+            <li>Asset scanning for scenes, prefabs, and ScriptableObjects before cleanup actions.</li>
+            <li>Re-serialize preview and backup-aware execution.</li>
+            <li>Batch export and deterministic exit codes for CI.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="workflow" class="sales-section sales-block reveal">
+        <div class="sales-block__content sales-copy" data-stagger>
+          <p class="sales-kicker">Workflow model</p>
+          <h2>Use the same tabs you already use: Audit, Coverage, Reserialize, Cleanup, Settings.</h2>
+          <ul class="sales-feature-list">
+            <li><strong>Audit:</strong> validate field mappings and risk scores.</li>
+            <li><strong>Coverage:</strong> scan legacy tokens across supported asset kinds.</li>
+            <li><strong>Reserialize:</strong> build a scoped preview and run controlled updates.</li>
+            <li><strong>Cleanup:</strong> evaluate whether mappings are safe to remove.</li>
+            <li><strong>Settings:</strong> control defaults and persistence behavior.</li>
+          </ul>
+        </div>
+        <figure class="sales-block__media sales-media-card">
+          <img
+            class="marketing-image"
+            src="/assets/images/icons/UnityLogoPng.png"
+            alt="Workflow diagram"
+            data-gallery-item
+            data-gallery-caption="Workflow"
+            loading="lazy"
+          >
+          <figcaption>Refactor-safe workflow order</figcaption>
+        </figure>
+      </section>
+
+      <section id="who-is-it-for" class="sales-section sales-block sales-block--reverse reveal">
+        <div class="sales-block__content sales-copy" data-stagger>
+          <p class="sales-kicker">Who it is for</p>
+          <h2>Teams shipping refactors with serialized state.</h2>
+          <ul class="sales-feature-list">
+            <li>Unity teams replacing fields, types, or namespaces at project scale.</li>
+            <li>Teams using CI where migration safety needs deterministic checks.</li>
+            <li>Projects that need explicit cleanup proofs before removing legacy compatibility.</li>
+          </ul>
+        </div>
+        <div class="sales-block__content sales-copy" data-stagger>
+          <p class="sales-kicker">Who it is not for</p>
+          <h2>Not the first choice for non-editor, non-serialized migration work.</h2>
+          <ul class="sales-feature-list">
+            <li>Gameplay runtime tuning workflows with no serialized refactor risk.</li>
+            <li>Projects not using Force Text serialization.</li>
+            <li>One-off projects that do not remove legacy serialized mappings.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="next-action" class="sales-section reveal">
+        <div class="sales-cta-panel" data-spotlight>
+          <div class="sales-copy" data-stagger>
+            <p class="sales-kicker">Next action</p>
+            <h2>Start with the technical documentation.</h2>
+            <p>Use the docs for exact access paths, risk categories, JSON schema, batch options, and known constraints before enabling cleanup at scale.</p>
+            <div class="sales-actions">
+              <a class="sales-button sales-button--primary" href="/assets/unity-serialization-migration-guard/docs/">Open docs</a>
+              <a class="sales-button sales-button--secondary" href="/assets/unity-serialization-migration-guard/docs/#practical-workflow">Review workflow checklist</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-shell">
+      <div class="footer-columns">
+        <section>
+          <h2>Explore</h2>
+          <ul class="link-list">
+            <li><a href="/">Home</a></li>
+            <li><a href="/tools/">Tools</a></li>
+            <li><a href="/support/">Support</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Tools</h2>
+          <ul class="link-list">
+            <li><a href="/assets/unity-serialization-migration-guard/">Unity Serialization Migration Guard</a></li>
+            <li><a href="/assets/build-size-guard/">Build Size Guard</a></li>
+            <li><a href="/assets/import-settings-validator-fix/">Import Settings Validator &amp; Fix</a></li>
+            <li><a href="/tools/">Tools Directory</a></li>
+          </ul>
+        </section>
+      </div>
+      <div class="footer-legal">
+        <span>&copy; Bjorvand Solutions <span data-current-year>2026</span> &bull; Company registration number: 836 135 652 (Norway)</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/ui/reveal.js"></script>
+  <script src="/assets/js/ui/tool-sales-pages.js"></script>
+  <script defer src="/assets/js/site/nav.js"></script>
+  <script defer src="/assets/js/site/link-decorators.js"></script>
+</body>
+</html>

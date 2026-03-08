@@ -74,16 +74,13 @@ pre {
   align-items: center;
   gap: 10px;
   color: var(--text);
+  font-size: 1.12rem;
   font-weight: 700;
   letter-spacing: 0.2px;
 }
 
 .brand-mark {
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
-  background: var(--accent);
-  box-shadow: 0 0 0 7px rgba(15, 99, 215, 0.16);
+  display: none;
 }
 
 .top-actions {
@@ -482,9 +479,6 @@ pre {
   background: rgba(15, 20, 29, 0.92);
 }
 
-[data-theme="dark"] .brand-mark {
-  box-shadow: 0 0 0 7px rgba(124, 174, 255, 0.2);
-}
 
 [data-theme="dark"] .button-primary {
   box-shadow: 0 10px 20px rgba(93, 143, 232, 0.35);

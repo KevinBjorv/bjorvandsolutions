@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8">
@@ -44,6 +44,16 @@
                   <a role="menuitem" href="/assets/build-size-guard/license/">License</a>
                 </div>
               </div>
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/assets/shader-variant-budget-ci-guard/" aria-haspopup="menu">Shader Variant Budget &amp; CI Guard <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Shader Variant Budget and CI Guard links">
+                  <a role="menuitem" href="/assets/shader-variant-budget-ci-guard/">Homepage</a>
+                  <a role="menuitem" href="/assets/shader-variant-budget-ci-guard/docs/">Docs</a>
+                  <a role="menuitem" href="/support/">Support</a>
+                  <a role="menuitem" href="/assets/shader-variant-budget-ci-guard/license/">License</a>
+                </div>
+              </div>
+
               <div class="dropdown-submenu">
                 <a class="dropdown-submenu-trigger" role="menuitem" href="/assets/compliance/" aria-haspopup="menu">Third-Party Notices &amp; Credits <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
                 <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Third-Party Notices and Credits links">
@@ -142,6 +152,9 @@
             <li><a href="/assets/build-size-guard/">Build Size Guard Homepage</a></li>
             <li><a href="/assets/build-size-guard/docs/">Build Size Guard Docs</a></li>
             <li><a href="/assets/build-size-guard/license/">Build Size Guard License</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/">Shader Variant Budget &amp; CI Guard Homepage</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/docs/">Shader Variant Budget &amp; CI Guard Docs</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/license/">Shader Variant Budget &amp; CI Guard License</a></li>
             <li><a href="/assets/compliance/">Third-Party Notices &amp; Credits Homepage</a></li>
             <li><a href="/assets/compliance/docs/">Third-Party Notices &amp; Credits Docs</a></li>
             <li><a href="/assets/compliance/license/">Third-Party Notices &amp; Credits License</a></li>
@@ -219,6 +232,8 @@
             <select id="support-topic" name="topic" required>
               <option value="">Select a topic</option>
               <option value="Build Size Guard">Build Size Guard</option>
+              <option value="Shader Variant Budget &amp; CI Guard">Shader Variant Budget &amp; CI Guard</option>
+              <option value="Unity Serialization Migration Guard">Unity Serialization Migration Guard</option>
               <option value="Third-Party Notices & Credits">Third-Party Notices &amp; Credits</option>
               <option value="Import Settings Validator & Fix">Import Settings Validator &amp; Fix</option>
               <option value="SmartIndie question">SmartIndie question</option>
@@ -252,28 +267,38 @@
     </section>
 
     <section class="page-section container reveal" aria-labelledby="docs-shortcuts-title">
-      <div class="section-head">
-        <h2 id="docs-shortcuts-title">Self-Service Documentation</h2>
-        <p>Most setup and usage questions are answered in the documentation. Check here before submitting a support request.</p>
-      </div>
-      <div class="support-doc-grid card-list">
-        <article class="card">
-          <h3>Build Size Guard Docs</h3>
-          <p>Setup, snapshot workflows, CI integration, budgets, troubleshooting.</p>
-          <div class="card-actions"><a class="button button-secondary" href="/docs/build-size-guard">Open Docs &rarr;</a></div>
-        </article>
-        <article class="card">
-          <h3>Compliance Docs</h3>
-          <p>Scan behavior, license detection logic, export formats, manual overrides.</p>
-          <div class="card-actions"><a class="button button-secondary" href="/docs/third-party-notices">Open Docs &rarr;</a></div>
-        </article>
-        <article class="card">
-          <h3>Import Validator Docs</h3>
-          <p>Rule sets, platform overrides, enforcement mode, auto-fix workflow.</p>
-          <div class="card-actions"><a class="button button-secondary" href="/docs/import-settings-validator">Open Docs &rarr;</a></div>
-        </article>
-      </div>
-    </section>
+  <div class="section-head">
+    <h2 id="docs-shortcuts-title">Self-Service Documentation</h2>
+    <p>Most setup and usage questions are answered in the documentation. Check here before submitting a support request.</p>
+  </div>
+  <div class="support-doc-grid card-list">
+    <article class="card">
+      <h3>Build Size Guard Docs</h3>
+      <p>Setup, snapshot workflows, CI integration, budgets, troubleshooting.</p>
+      <div class="card-actions"><a class="button button-secondary" href="/docs/build-size-guard">Open Docs &rarr;</a></div>
+    </article>
+    <article class="card">
+      <h3>Shader Variant Guard Docs</h3>
+      <p>Snapshot capture, budgets, baseline selection, batchmode, and incomplete-snapshot gating.</p>
+      <div class="card-actions"><a class="button button-secondary" href="/docs/shader-variant-budget-ci-guard">Open Docs &rarr;</a></div>
+    </article>
+    <article class="card">
+      <h3>Serialization Migration Guard Docs</h3>
+      <p>Audit mappings, coverage scanning, scoped reserialize, cleanup proof, and CI commands.</p>
+      <div class="card-actions"><a class="button button-secondary" href="/docs/unity-serialization-migration-guard">Open Docs &rarr;</a></div>
+    </article>
+    <article class="card">
+      <h3>Import Validator Docs</h3>
+      <p>Rule sets, platform overrides, enforcement mode, auto-fix workflow.</p>
+      <div class="card-actions"><a class="button button-secondary" href="/docs/import-settings-validator">Open Docs &rarr;</a></div>
+    </article>
+    <article class="card">
+      <h3>Compliance Docs</h3>
+      <p>Scan behavior, license detection logic, export formats, manual overrides.</p>
+      <div class="card-actions"><a class="button button-secondary" href="/docs/third-party-notices">Open Docs &rarr;</a></div>
+    </article>
+  </div>
+</section>
 
     <section class="page-section container reveal" aria-labelledby="response-policy-title">
       <div class="section-head">
@@ -341,7 +366,9 @@
           <h2>Tools</h2>
           <ul class="link-list">
             <li><a href="/assets/build-size-guard/">Build Size Guard</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/">Shader Variant Budget &amp; CI Guard</a></li>
             <li><a href="/assets/compliance/">Third-Party Notices &amp; Credits</a></li>
+            <li><a href="/assets/unity-serialization-migration-guard/">Unity Serialization Migration Guard</a></li>
             <li><a href="/assets/import-settings-validator-fix/">Import Settings Validator &amp; Fix</a></li>
             <li><a href="/tools/">Tools Directory</a></li>
           </ul>
@@ -382,6 +409,12 @@
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </body>
 </html>
+
+
+
+
+
+
 
 
 

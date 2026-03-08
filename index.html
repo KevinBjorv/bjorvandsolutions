@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8">
@@ -44,6 +44,16 @@
                   <a role="menuitem" href="/assets/build-size-guard/license/">License</a>
                 </div>
               </div>
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/assets/shader-variant-budget-ci-guard/" aria-haspopup="menu">Shader Variant Budget &amp; CI Guard <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Shader Variant Budget and CI Guard links">
+                  <a role="menuitem" href="/assets/shader-variant-budget-ci-guard/">Homepage</a>
+                  <a role="menuitem" href="/assets/shader-variant-budget-ci-guard/docs/">Docs</a>
+                  <a role="menuitem" href="/support/">Support</a>
+                  <a role="menuitem" href="/assets/shader-variant-budget-ci-guard/license/">License</a>
+                </div>
+              </div>
+
               <div class="dropdown-submenu">
                 <a class="dropdown-submenu-trigger" role="menuitem" href="/assets/compliance/" aria-haspopup="menu">Third-Party Notices &amp; Credits <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
                 <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Third-Party Notices and Credits links">
@@ -142,6 +152,9 @@
             <li><a href="/assets/build-size-guard/">Build Size Guard Homepage</a></li>
             <li><a href="/assets/build-size-guard/docs/">Build Size Guard Docs</a></li>
             <li><a href="/assets/build-size-guard/license/">Build Size Guard License</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/">Shader Variant Budget &amp; CI Guard Homepage</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/docs/">Shader Variant Budget &amp; CI Guard Docs</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/license/">Shader Variant Budget &amp; CI Guard License</a></li>
             <li><a href="/assets/compliance/">Third-Party Notices &amp; Credits Homepage</a></li>
             <li><a href="/assets/compliance/docs/">Third-Party Notices &amp; Credits Docs</a></li>
             <li><a href="/assets/compliance/license/">Third-Party Notices &amp; Credits License</a></li>
@@ -244,69 +257,83 @@
     </section>
 
     <section class="page-section tools-section container reveal" aria-labelledby="featured-tools-title">
-      <div class="section-head">
-        <h2 id="featured-tools-title">Unity Tools Built for Production Projects</h2>
-        <p>These tools exist to reduce release risk and enforce clean workflows.</p>
+  <div class="section-head">
+    <h2 id="featured-tools-title">Unity Tools Built for Production Projects</h2>
+    <p>These tools exist to reduce release risk, enforce clean workflows, and make build problems visible before they become expensive.</p>
+  </div>
+  <div class="feature-grid card-list tool-grid">
+    <article class="card tool-card">
+      <h3>Build Size Guard</h3>
+      <p>Detect unexpected build size increases before they reach players.</p>
+      <ul>
+        <li>Snapshot size tracking</li>
+        <li>Diff-based comparison</li>
+        <li>CI-friendly reporting</li>
+      </ul>
+      <div class="card-actions">
+        <a class="button button-primary" href="/assets/build-size-guard/">Product Page</a>
+        <a class="button button-secondary" href="/assets/build-size-guard/docs/">Docs</a>
+        <a class="button button-secondary" href="/assets/build-size-guard/license/">License</a>
       </div>
-      <div class="feature-grid card-list tool-grid">
-        <article class="card tool-card">
-          <h3>Build Size Guard</h3>
-          <p>Detect unexpected build size increases before they reach players.</p>
-          <ul>
-            <li>Snapshot size tracking</li>
-            <li>Diff-based comparison</li>
-            <li>CI-friendly reporting</li>
-          </ul>
-          <div class="card-actions">
-            <a class="button button-primary" href="/assets/build-size-guard/">Product Page</a>
-            <a class="button button-secondary" href="/assets/build-size-guard/docs/">Docs</a>
-            <a class="button button-secondary" href="/assets/build-size-guard/license/">License</a>
-          </div>
-        </article>
-        <article class="card tool-card">
-          <h3>Third-Party Notices &amp; Credits</h3>
-          <p>Generate deterministic third-party notices and compliance manifests for Unity releases.</p>
-          <ul>
-            <li>Automatic license aggregation</li>
-            <li>Deterministic output</li>
-            <li>Release-ready manifests</li>
-          </ul>
-          <div class="card-actions">
-            <a class="button button-primary" href="/assets/compliance/">Product Page</a>
-            <a class="button button-secondary" href="/assets/compliance/docs/">Docs</a>
-            <a class="button button-secondary" href="/assets/compliance/license/">License</a>
-          </div>
-        </article>
-        <article class="card tool-card">
-          <h3>Import Settings Validator &amp; Fix</h3>
-          <p>Enforce consistent import settings and fix drift across your Unity project.</p>
-          <ul>
-            <li>Rule-based validation</li>
-            <li>Bulk auto-fix</li>
-            <li>Project-wide enforcement</li>
-          </ul>
-          <div class="card-actions">
-            <a class="button button-primary" href="/assets/import-settings-validator-fix/">Product Page</a>
-            <a class="button button-secondary" href="/assets/import-settings-validator-fix/docs/">Docs</a>
-            <a class="button button-secondary" href="/assets/import-settings-validator-fix/license/">License</a>
-          </div>
-        </article>
-        <article class="card tool-card">
-          <h3>Unity Serialization Migration Guard</h3>
-          <p>Protect serialized project data during refactors with audited mapping checks, scoped coverage scans, and cleanup readiness reporting.</p>
-          <ul>
-            <li>Audit mappings for risk level and resolution issues</li>
-            <li>Scan scenes, prefabs, and ScriptableObjects for legacy tokens</li>
-            <li>Run batchmode audit, coverage, and cleanup checks</li>
-          </ul>
-          <div class="card-actions">
-            <a class="button button-primary" href="/assets/unity-serialization-migration-guard/">Product Page</a>
-            <a class="button button-secondary" href="/assets/unity-serialization-migration-guard/docs/">Docs</a>
-            <a class="button button-secondary" href="/assets/unity-serialization-migration-guard/license/">License</a>
-          </div>
-        </article>
+    </article>
+    <article class="card tool-card">
+      <h3>Shader Variant Budget &amp; CI Guard</h3>
+      <p>Track shader variant counts over time, compare builds, and stop regressions with budgets and CI gates.</p>
+      <ul>
+        <li>Editor.log snapshot capture</li>
+        <li>Baseline versus current diffing</li>
+        <li>Budget enforcement in CI</li>
+      </ul>
+      <div class="card-actions">
+        <a class="button button-primary" href="/assets/shader-variant-budget-ci-guard/">Product Page</a>
+        <a class="button button-secondary" href="/assets/shader-variant-budget-ci-guard/docs/">Docs</a>
+        <a class="button button-secondary" href="/assets/shader-variant-budget-ci-guard/license/">License</a>
       </div>
-    </section>
+    </article>
+    <article class="card tool-card">
+      <h3>Unity Serialization Migration Guard</h3>
+      <p>Protect serialized project data during refactors with audited mapping checks, scoped coverage scans, and cleanup readiness reporting.</p>
+      <ul>
+        <li>Audit mappings for risk level and resolution issues</li>
+        <li>Scan scenes, prefabs, and ScriptableObjects for legacy tokens</li>
+        <li>Run batchmode audit, coverage, and cleanup checks</li>
+      </ul>
+      <div class="card-actions">
+        <a class="button button-primary" href="/assets/unity-serialization-migration-guard/">Product Page</a>
+        <a class="button button-secondary" href="/assets/unity-serialization-migration-guard/docs/">Docs</a>
+        <a class="button button-secondary" href="/assets/unity-serialization-migration-guard/license/">License</a>
+      </div>
+    </article>
+    <article class="card tool-card">
+      <h3>Import Settings Validator &amp; Fix</h3>
+      <p>Enforce consistent import settings and fix drift across your Unity project.</p>
+      <ul>
+        <li>Rule-based validation</li>
+        <li>Bulk auto-fix</li>
+        <li>Project-wide enforcement</li>
+      </ul>
+      <div class="card-actions">
+        <a class="button button-primary" href="/assets/import-settings-validator-fix/">Product Page</a>
+        <a class="button button-secondary" href="/assets/import-settings-validator-fix/docs/">Docs</a>
+        <a class="button button-secondary" href="/assets/import-settings-validator-fix/license/">License</a>
+      </div>
+    </article>
+    <article class="card tool-card">
+      <h3>Third-Party Notices &amp; Credits</h3>
+      <p>Generate deterministic third-party notices and compliance manifests for Unity releases.</p>
+      <ul>
+        <li>Automatic license aggregation</li>
+        <li>Deterministic output</li>
+        <li>Release-ready manifests</li>
+      </ul>
+      <div class="card-actions">
+        <a class="button button-primary" href="/assets/compliance/">Product Page</a>
+        <a class="button button-secondary" href="/assets/compliance/docs/">Docs</a>
+        <a class="button button-secondary" href="/assets/compliance/license/">License</a>
+      </div>
+    </article>
+  </div>
+</section>
 
     <section class="page-section smart-indie-section container reveal" aria-labelledby="smart-indie-title">
       <div class="cta-strip feature-strip">
@@ -402,6 +429,7 @@
           <h2>Tools</h2>
           <ul class="link-list">
             <li><a href="/assets/build-size-guard/">Build Size Guard</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/">Shader Variant Budget &amp; CI Guard</a></li>
             <li><a href="/assets/compliance/">Third-Party Notices &amp; Credits</a></li>
             <li><a href="/assets/import-settings-validator-fix/">Import Settings Validator &amp; Fix</a></li>
             <li><a href="/assets/unity-serialization-migration-guard/">Unity Serialization Migration Guard</a></li>
@@ -443,6 +471,12 @@
   <script defer src="/assets/js/site/link-decorators.js"></script>
 </body>
 </html>
+
+
+
+
+
+
 
 
 

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8">
@@ -44,6 +44,16 @@
                   <a role="menuitem" href="/assets/build-size-guard/license/">License</a>
                 </div>
               </div>
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/assets/shader-variant-budget-ci-guard/" aria-haspopup="menu">Shader Variant Budget &amp; CI Guard <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Shader Variant Budget and CI Guard links">
+                  <a role="menuitem" href="/assets/shader-variant-budget-ci-guard/">Homepage</a>
+                  <a role="menuitem" href="/assets/shader-variant-budget-ci-guard/docs/">Docs</a>
+                  <a role="menuitem" href="/support/">Support</a>
+                  <a role="menuitem" href="/assets/shader-variant-budget-ci-guard/license/">License</a>
+                </div>
+              </div>
+
               <div class="dropdown-submenu">
                 <a class="dropdown-submenu-trigger" role="menuitem" href="/assets/compliance/" aria-haspopup="menu">Third-Party Notices &amp; Credits <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
                 <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Third-Party Notices and Credits links">
@@ -142,6 +152,9 @@
             <li><a href="/assets/build-size-guard/">Build Size Guard Homepage</a></li>
             <li><a href="/assets/build-size-guard/docs/">Build Size Guard Docs</a></li>
             <li><a href="/assets/build-size-guard/license/">Build Size Guard License</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/">Shader Variant Budget &amp; CI Guard Homepage</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/docs/">Shader Variant Budget &amp; CI Guard Docs</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/license/">Shader Variant Budget &amp; CI Guard License</a></li>
             <li><a href="/assets/compliance/">Third-Party Notices &amp; Credits Homepage</a></li>
             <li><a href="/assets/compliance/docs/">Third-Party Notices &amp; Credits Docs</a></li>
             <li><a href="/assets/compliance/license/">Third-Party Notices &amp; Credits License</a></li>
@@ -206,81 +219,95 @@
     </section>
 
     <section class="page-section container reveal" aria-labelledby="tool-list-title">
-      <div class="section-head">
-        <h2 id="tool-list-title">Current Tool Pages</h2>
-        <p>Each entry includes what the tool is for, who it is for, and direct links to product, docs, license, and storefront pages.</p>
+  <div class="section-head">
+    <h2 id="tool-list-title">Current Tool Pages</h2>
+    <p>Each entry includes what the tool is for, who it is for, and direct links to product, docs, license, and storefront pages.</p>
+  </div>
+  <div class="tool-grid card-list">
+    <article class="card">
+      <h2>Build Size Guard</h2>
+      <p>Detect and prevent build size regressions with snapshot capture, diffing, budgets, and CI report outputs.</p>
+      <p class="tool-meta"><strong>Who it is for:</strong> Unity teams that need deterministic size guardrails before release.</p>
+      <div class="card-actions">
+        <a class="button button-primary" href="/assets/build-size-guard/">Product</a>
+        <a class="button button-secondary" href="/assets/build-size-guard/docs/">Docs</a>
+        <a class="button button-secondary" href="/assets/build-size-guard/license/">License</a>
+        <a class="button button-secondary" target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/361332">Store</a>
       </div>
-      <div class="tool-grid card-list">
-        <article class="card">
-          <h2>Build Size Guard</h2>
-          <p>Detect and prevent build size regressions with snapshot capture, diffing, budgets, and CI report outputs.</p>
-          <p class="tool-meta"><strong>Who it is for:</strong> Unity teams that need deterministic size guardrails before release.</p>
-          <div class="card-actions">
-            <a class="button button-primary" href="/assets/build-size-guard/">Product</a>
-            <a class="button button-secondary" href="/assets/build-size-guard/docs/">Docs</a>
-            <a class="button button-secondary" href="/assets/build-size-guard/license/">License</a>
-            <a class="button button-secondary" target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/361332">Store</a>
-          </div>
-        </article>
-        <article class="card">
-          <h2>Third-Party Notices &amp; Credits</h2>
-          <p>Generate deterministic notices, credits, and compliance manifests for Unity projects shipping with third-party dependencies.</p>
-          <p class="tool-meta"><strong>Who it is for:</strong> Teams that need a repeatable pre-release attribution workflow.</p>
-          <div class="card-actions">
-            <a class="button button-primary" href="/assets/compliance/">Product</a>
-            <a class="button button-secondary" href="/assets/compliance/docs/">Docs</a>
-            <a class="button button-secondary" href="/assets/compliance/license/">License</a>
-            <a class="button button-secondary" target="_blank" rel="noopener noreferrer" href="https://u3d.as/3PWR">Store</a>
-          </div>
-        </article>
-        <article class="card">
-          <h2>Import Settings Validator &amp; Fix</h2>
-          <p>Apply deterministic importer rule standards across texture, model, and audio assets, then validate and fix drift.</p>
-          <p class="tool-meta"><strong>Who it is for:</strong> Teams standardizing importer behavior across contributors and machines.</p>
-          <div class="card-actions">
-            <a class="button button-primary" href="/assets/import-settings-validator-fix/">Product</a>
-            <a class="button button-secondary" href="/assets/import-settings-validator-fix/docs/">Docs</a>
-            <a class="button button-secondary" href="/assets/import-settings-validator-fix/license/">License</a>
-            <a class="button button-secondary" target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/362308">Store</a>
-          </div>
-        </article>
-        <article class="card">
-          <h2>Unity Serialization Migration Guard</h2>
-          <p>Audit renamed fields, run scoped serialization coverage checks, preview reserialize results, and validate cleanup safety before removing legacy mappings.</p>
-          <p class="tool-meta"><strong>Who it is for:</strong> Teams migrating serialized fields during refactors and large data model changes.</p>
-          <div class="card-actions">
-            <a class="button button-primary" href="/assets/unity-serialization-migration-guard/">Product</a>
-            <a class="button button-secondary" href="/assets/unity-serialization-migration-guard/docs/">Docs</a>
-            <a class="button button-secondary" href="/assets/unity-serialization-migration-guard/license/">License</a>
-          </div>
-        </article>
+    </article>
+    <article class="card">
+      <h2>Shader Variant Budget &amp; CI Guard</h2>
+      <p>Track shader variant counts over time, compare builds, enforce budgets, and stop shader variant regressions before they spread.</p>
+      <p class="tool-meta"><strong>Who it is for:</strong> Teams that need repeatable shader variant visibility in the editor and CI.</p>
+      <div class="card-actions">
+        <a class="button button-primary" href="/assets/shader-variant-budget-ci-guard/">Product</a>
+        <a class="button button-secondary" href="/assets/shader-variant-budget-ci-guard/docs/">Docs</a>
+        <a class="button button-secondary" href="/assets/shader-variant-budget-ci-guard/license/">License</a>
+        <a class="button button-secondary" target="_blank" rel="noopener noreferrer" href="https://u3d.as/3SYC">Store</a>
       </div>
-    </section>
+    </article>
+    <article class="card">
+      <h2>Unity Serialization Migration Guard</h2>
+      <p>Audit renamed fields, run scoped serialization coverage checks, preview reserialize results, and validate cleanup safety before removing legacy mappings.</p>
+      <p class="tool-meta"><strong>Who it is for:</strong> Teams migrating serialized fields during refactors and large data model changes.</p>
+      <div class="card-actions">
+        <a class="button button-primary" href="/assets/unity-serialization-migration-guard/">Product</a>
+        <a class="button button-secondary" href="/assets/unity-serialization-migration-guard/docs/">Docs</a>
+        <a class="button button-secondary" href="/assets/unity-serialization-migration-guard/license/">License</a>
+        <a class="button button-secondary" target="_blank" rel="noopener noreferrer" href="https://u3d.as/3Sae">Store</a>
+      </div>
+    </article>
+    <article class="card">
+      <h2>Import Settings Validator &amp; Fix</h2>
+      <p>Apply deterministic importer rule standards across texture, model, and audio assets, then validate and fix drift.</p>
+      <p class="tool-meta"><strong>Who it is for:</strong> Teams standardizing importer behavior across contributors and machines.</p>
+      <div class="card-actions">
+        <a class="button button-primary" href="/assets/import-settings-validator-fix/">Product</a>
+        <a class="button button-secondary" href="/assets/import-settings-validator-fix/docs/">Docs</a>
+        <a class="button button-secondary" href="/assets/import-settings-validator-fix/license/">License</a>
+        <a class="button button-secondary" target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/362308">Store</a>
+      </div>
+    </article>
+    <article class="card">
+      <h2>Third-Party Notices &amp; Credits</h2>
+      <p>Generate deterministic third-party notice, credits, and compliance manifest files for Unity release workflows.</p>
+      <p class="tool-meta"><strong>Who it is for:</strong> Teams that need repeatable attribution outputs before shipping.</p>
+      <div class="card-actions">
+        <a class="button button-primary" href="/assets/compliance/">Product</a>
+        <a class="button button-secondary" href="/assets/compliance/docs/">Docs</a>
+        <a class="button button-secondary" href="/assets/compliance/license/">License</a>
+        <a class="button button-secondary" target="_blank" rel="noopener noreferrer" href="https://u3d.as/3PWR">Store</a>
+      </div>
+    </article>
+  </div>
+</section>
 
     <section class="page-section container reveal" aria-labelledby="tool-links-title">
-      <div class="section-head">
-        <h2 id="tool-links-title">Quick Support and Documentation Paths</h2>
-      </div>
-      <div class="tools-links card-list">
-        <article class="card">
-          <h3>Documentation Shortcuts</h3>
-          <ul class="link-list">
-            <li><a href="/assets/build-size-guard/docs/">Build Size Guard Docs</a></li>
-            <li><a href="/assets/compliance/docs/">Compliance Docs</a></li>
-            <li><a href="/assets/import-settings-validator-fix/docs/">Import Validator Docs</a></li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>Support Shortcuts</h3>
-          <ul class="link-list">
-            <li><a href="/support/">Open Support Form</a></li>
-            <li><a href="/support/#faq">Read Support FAQ</a></li>
-            <li><a href="/support/#docs-shortcuts-title">Browse Documentation</a></li>
-          </ul>
-        </article>
-      </div>
-      <p class="review-note">Tool catalog last reviewed against source links on <span data-catalog-date>February 27, 2026</span>.</p>
-    </section>
+  <div class="section-head">
+    <h2 id="tool-links-title">Quick Support and Documentation Paths</h2>
+  </div>
+  <div class="tools-links card-list">
+    <article class="card">
+      <h3>Documentation Shortcuts</h3>
+      <ul class="link-list">
+        <li><a href="/assets/build-size-guard/docs/">Build Size Guard Docs</a></li>
+        <li><a href="/assets/shader-variant-budget-ci-guard/docs/">Shader Variant Budget &amp; CI Guard Docs</a></li>
+        <li><a href="/assets/unity-serialization-migration-guard/docs/">Unity Serialization Migration Guard Docs</a></li>
+        <li><a href="/assets/import-settings-validator-fix/docs/">Import Validator Docs</a></li>
+        <li><a href="/assets/compliance/docs/">Compliance Docs</a></li>
+      </ul>
+    </article>
+    <article class="card">
+      <h3>Support Shortcuts</h3>
+      <ul class="link-list">
+        <li><a href="/support/">Open Support Form</a></li>
+        <li><a href="/support/#faq">Read Support FAQ</a></li>
+        <li><a href="/support/#docs-shortcuts-title">Browse Documentation</a></li>
+      </ul>
+    </article>
+  </div>
+  <p class="review-note">Tool catalog last reviewed against source links on <span data-catalog-date>March 8, 2026</span>.</p>
+</section>
   </main>
 
   <footer class="site-footer">
@@ -301,7 +328,9 @@
           <h2>Tools</h2>
           <ul class="link-list">
             <li><a href="/assets/build-size-guard/">Build Size Guard</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/">Shader Variant Budget &amp; CI Guard</a></li>
             <li><a href="/assets/compliance/">Third-Party Notices &amp; Credits</a></li>
+            <li><a href="/assets/unity-serialization-migration-guard/">Unity Serialization Migration Guard</a></li>
             <li><a href="/assets/import-settings-validator-fix/">Import Settings Validator &amp; Fix</a></li>
             <li><a href="/tools/">Tools Directory</a></li>
           </ul>
@@ -341,6 +370,12 @@
   <script defer src="/assets/js/site/link-decorators.js"></script>
 </body>
 </html>
+
+
+
+
+
+
 
 
 

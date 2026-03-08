@@ -1,14 +1,14 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Unity Serialization Migration Guard technical documentation</title>
-  <meta name="description" content="Technical documentation for Unity Serialization Migration Guard (RMSS), including tabs, mapping risks, coverage scanning, reserialize behavior, batch mode, and cleanup proof checks.">
+  <meta name="description" content="Technical documentation for Unity Serialization Migration Guard, including audit, coverage scan, reserialize preview, cleanup proof, exports, and batchmode CI usage.">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon/favicon-192x192.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon/android-chrome-192x192.png">
   <link rel="icon" type="image/x-icon" href="/assets/favicon/favicon.ico">
   <link rel="manifest" href="/assets/favicon/site.webmanifest">
   <link rel="stylesheet" href="/assets/css/products/product-docs.css">
@@ -25,189 +25,308 @@
         <span class="brand-mark" aria-hidden="true"></span>
         <span>Bjorvand Solutions</span>
       </a>
+
       <nav class="site-nav" aria-label="Primary">
         <ul class="menu-root">
           <li class="menu-item">
-            <a class="menu-link" href="/tools/">Tools</a>
+            <a class="menu-link" href="/tools/" data-nav-trigger="tools" aria-haspopup="menu" aria-expanded="false" aria-controls="menu-tools">Tools <span class="menu-chevron" aria-hidden="true">v</span></a>
+            <div class="dropdown" id="menu-tools" data-nav-menu="tools" role="menu" aria-label="Tools links">
+              <a role="menuitem" href="/tools/">Tools Overview</a>
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/assets/build-size-guard/" aria-haspopup="menu">Build Size Guard <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Build Size Guard links">
+                  <a role="menuitem" href="/assets/build-size-guard/">Homepage</a>
+                  <a role="menuitem" href="/assets/build-size-guard/docs/">Docs</a>
+                  <a role="menuitem" href="/support/">Support</a>
+                  <a role="menuitem" href="/assets/build-size-guard/license/">License</a>
+                </div>
+              </div>
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/assets/shader-variant-budget-ci-guard/" aria-haspopup="menu">Shader Variant Budget &amp; CI Guard <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Shader Variant Budget and CI Guard links">
+                  <a role="menuitem" href="/assets/shader-variant-budget-ci-guard/">Homepage</a>
+                  <a role="menuitem" href="/assets/shader-variant-budget-ci-guard/docs/">Docs</a>
+                  <a role="menuitem" href="/support/">Support</a>
+                  <a role="menuitem" href="/assets/shader-variant-budget-ci-guard/license/">License</a>
+                </div>
+              </div>
+
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/assets/compliance/" aria-haspopup="menu">Third-Party Notices &amp; Credits <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Third-Party Notices and Credits links">
+                  <a role="menuitem" href="/assets/compliance/">Homepage</a>
+                  <a role="menuitem" href="/assets/compliance/docs/">Docs</a>
+                  <a role="menuitem" href="/support/">Support</a>
+                  <a role="menuitem" href="/assets/compliance/license/">License</a>
+                </div>
+              </div>
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/assets/import-settings-validator-fix/" aria-haspopup="menu">Import Settings Validator &amp; Fix <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Import Settings Validator and Fix links">
+                  <a role="menuitem" href="/assets/import-settings-validator-fix/">Homepage</a>
+                  <a role="menuitem" href="/assets/import-settings-validator-fix/docs/">Docs</a>
+                  <a role="menuitem" href="/support/">Support</a>
+                  <a role="menuitem" href="/assets/import-settings-validator-fix/license/">License</a>
+                </div>
+              </div>
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/assets/unity-serialization-migration-guard/" aria-haspopup="menu">Unity Serialization Migration Guard <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Unity Serialization Migration Guard links">
+                  <a role="menuitem" href="/assets/unity-serialization-migration-guard/">Homepage</a>
+                  <a role="menuitem" href="/assets/unity-serialization-migration-guard/docs/">Docs</a>
+                  <a role="menuitem" href="/support/">Support</a>
+                  <a role="menuitem" href="/assets/unity-serialization-migration-guard/license/">License</a>
+                </div>
+              </div>
+            </div>
           </li>
           <li class="menu-item">
-            <a class="menu-link" href="/support/">Support</a>
+            <a class="menu-link" href="/games/" data-nav-trigger="games" aria-haspopup="menu" aria-expanded="false" aria-controls="menu-games">Games <span class="menu-chevron" aria-hidden="true">v</span></a>
+            <div class="dropdown" id="menu-games" data-nav-menu="games" role="menu" aria-label="Games links">
+              <a role="menuitem" href="/games/">Games Overview</a>
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/games/orbital-chaos/" aria-haspopup="menu">Orbital Chaos <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Orbital Chaos links">
+                  <a role="menuitem" href="/games/orbital-chaos/">Homepage</a>
+                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.kevinbjorvand.orbitalchaos">Google Play</a>
+                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://apps.apple.com/us/app/orbital-chaos/id6754812237">App Store</a>
+                </div>
+              </div>
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/games/neonsurge-2/" aria-haspopup="menu">NeonSurge 2 <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="NeonSurge 2 links">
+                  <a role="menuitem" href="/games/neonsurge-2/">Homepage</a>
+                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge-2">itch.io</a>
+                </div>
+              </div>
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/games/neonsurge/" aria-haspopup="menu">NeonSurge <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="NeonSurge links">
+                  <a role="menuitem" href="/games/neonsurge/">Homepage</a>
+                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge">itch.io</a>
+                </div>
+              </div>
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/games/#prototype-games-title" aria-haspopup="menu">Prototypes <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Prototype links">
+                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/teleportation-prototype">Teleportation Prototype</a>
+                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/core-ascend">Core Ascend</a>
+                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/dodge-the-blocks">Dodge the Blocks</a>
+                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/lumacore-minigame">LumaCore</a>
+                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/duestien">Duestien: City Scene</a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="menu-item menu-item-smart-indie">
+            <a class="menu-link menu-link-smart-indie" target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a>
+          </li>
+                    <li class="menu-item">
+            <a class="menu-link" href="/support/">Contact</a>
+          </li>
+          <li class="menu-item">
+            <a class="menu-link" href="https://www.youtube.com/@devwithkevin" target="_blank" rel="noopener noreferrer" data-external-indicator="off" data-nav-trigger="socials" aria-haspopup="menu" aria-expanded="false" aria-controls="menu-socials">Socials <span class="menu-chevron" aria-hidden="true">v</span></a>
+            <div class="dropdown" id="menu-socials" data-nav-menu="socials" role="menu" aria-label="Social links">
+              <a class="social-nav-link" role="menuitem" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/@devwithkevin"><img class="social-nav-icon" src="/assets/images/icons/youtube.png" alt="" aria-hidden="true" loading="lazy">YouTube</a>
+              <a class="social-nav-link" role="menuitem" target="_blank" rel="noopener noreferrer" href="https://x.com/BjorvandKevin"><img class="social-nav-icon" src="/assets/images/icons/twitter.png" alt="" aria-hidden="true" loading="lazy">X</a>
+              <a class="social-nav-link" role="menuitem" target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/kevinbdev/"><img class="social-nav-icon" src="/assets/images/icons/instagram.png" alt="" aria-hidden="true" loading="lazy">Instagram</a>
+              <a class="social-nav-link" role="menuitem" target="_blank" rel="noopener noreferrer" href="https://www.tiktok.com/@kevinbdev"><img class="social-nav-icon" src="/assets/images/icons/tiktok.png" alt="" aria-hidden="true" loading="lazy">TikTok</a>
+              <a class="social-nav-link" role="menuitem" target="_blank" rel="noopener noreferrer" href="https://skool.com/@kevin-bjorvand-9175"><img class="social-nav-icon social-nav-icon-skool" src="/Skool%20logo.png" alt="" aria-hidden="true" loading="lazy">Skool</a>
+            </div>
           </li>
         </ul>
       </nav>
+
+      <button class="mobile-nav-toggle" type="button" data-mobile-nav-toggle aria-controls="mobileNavPanel" aria-expanded="false">Menu</button>
+    </div>
+
+    <div class="mobile-nav-panel" id="mobileNavPanel" data-mobile-nav-panel hidden>
+      <div class="mobile-nav-shell container">
+        <details class="mobile-nav-group">
+          <summary>Tools</summary>
+          <ul>
+            <li><a href="/tools/">Tools Overview</a></li>
+            <li><a href="/assets/build-size-guard/">Build Size Guard Homepage</a></li>
+            <li><a href="/assets/build-size-guard/docs/">Build Size Guard Docs</a></li>
+            <li><a href="/assets/build-size-guard/license/">Build Size Guard License</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/">Shader Variant Budget &amp; CI Guard Homepage</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/docs/">Shader Variant Budget &amp; CI Guard Docs</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/license/">Shader Variant Budget &amp; CI Guard License</a></li>
+            <li><a href="/assets/compliance/">Third-Party Notices &amp; Credits Homepage</a></li>
+            <li><a href="/assets/compliance/docs/">Third-Party Notices &amp; Credits Docs</a></li>
+            <li><a href="/assets/compliance/license/">Third-Party Notices &amp; Credits License</a></li>
+            <li><a href="/assets/import-settings-validator-fix/">Import Settings Validator &amp; Fix Homepage</a></li>
+            <li><a href="/assets/import-settings-validator-fix/docs/">Import Settings Validator &amp; Fix Docs</a></li>
+            <li><a href="/assets/import-settings-validator-fix/license/">Import Settings Validator &amp; Fix License</a></li>
+            <li><a href="/assets/unity-serialization-migration-guard/">Unity Serialization Migration Guard Homepage</a></li>
+            <li><a href="/assets/unity-serialization-migration-guard/docs/">Unity Serialization Migration Guard Docs</a></li>
+            <li><a href="/assets/unity-serialization-migration-guard/license/">Unity Serialization Migration Guard License</a></li>
+            <li><a href="/support/">Support Form</a></li>
+          </ul>
+        </details>
+        <details class="mobile-nav-group">
+          <summary>Games</summary>
+          <ul>
+            <li><a href="/games/">Games Overview</a></li>
+            <li><a href="/games/orbital-chaos/">Orbital Chaos Homepage</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.kevinbjorvand.orbitalchaos">Orbital Chaos Google Play</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://apps.apple.com/us/app/orbital-chaos/id6754812237">Orbital Chaos App Store</a></li>
+            <li><a href="/games/neonsurge-2/">NeonSurge 2 Homepage</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge-2">NeonSurge 2 itch.io</a></li>
+            <li><a href="/games/neonsurge/">NeonSurge Homepage</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge">NeonSurge itch.io</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/teleportation-prototype">Teleportation Prototype</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/core-ascend">Core Ascend</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/dodge-the-blocks">Dodge the Blocks</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/lumacore-minigame">LumaCore</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/duestien">Duestien: City Scene</a></li>
+          </ul>
+        </details>
+        <div class="mobile-nav-group mobile-nav-single-link">
+          <a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a>
+        </div>
+                <div class="mobile-nav-group mobile-nav-single-link">
+          <a href="/support/">Contact</a>
+        </div>
+        <details class="mobile-nav-group">
+          <summary>Socials</summary>
+          <ul>
+                        <li><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/@devwithkevin">YouTube</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://x.com/BjorvandKevin">X</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/kevinbdev/">Instagram</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://www.tiktok.com/@kevinbdev">TikTok</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://skool.com/@kevin-bjorvand-9175">Skool</a></li>
+          </ul>
+        </details>
+      </div>
     </div>
   </header>
 
   <div class="shell layout">
-    <aside class="sidebar" aria-label="Documentation navigation">
-      <h2>Documentation</h2>
-      <p>Technical behavior based on the documented implementation for RMSS.</p>
-      <label class="search-label" for="docSearch">Search</label>
-      <input class="search-input" type="search" id="docSearch" placeholder="Search mappings, coverage, reserialize, cleanup..." autocomplete="off">
-      <p class="search-status" id="searchStatus">Showing 14 sections</p>
-      <nav class="sidebar-nav" id="sidebarNav">
-        <a class="sidebar-link" href="#overview">Overview</a>
-        <a class="sidebar-link" href="#access-paths">Access paths</a>
-        <a class="sidebar-link" href="#rmss-window">RMSS window</a>
-        <a class="sidebar-link" href="#audit-tab">Audit tab</a>
-        <a class="sidebar-link" href="#coverage-tab">Coverage tab</a>
-        <a class="sidebar-link" href="#reserialize-tab">Reserialize tab</a>
-        <a class="sidebar-link" href="#cleanup-tab">Cleanup tab</a>
-        <a class="sidebar-link" href="#settings-tab">Settings</a>
-        <a class="sidebar-link" href="#project-settings">Project settings</a>
-        <a class="sidebar-link" href="#mapping-format">Mapping JSON schema</a>
-        <a class="sidebar-link" href="#batch-mode">Batch mode</a>
-        <a class="sidebar-link" href="#validation-scripts">Validation scripts</a>
-        <a class="sidebar-link" href="#practical-workflow">Practical workflow</a>
-        <a class="sidebar-link" href="#constraints">Constraints</a>
-        <a class="sidebar-link" href="#license-and-support">License and support</a>
-      </nav>
-    </aside>
+  <aside class="sidebar" aria-label="Documentation navigation">
+    <h2>Documentation</h2>
+    <p>Reference for audit, coverage scan, reserialize, cleanup proof, exports, and CI behavior.</p>
+    <label class="search-label" for="docSearch">Search</label>
+    <input class="search-input" type="search" id="docSearch" placeholder="Search mappings, coverage, cleanup, batchmode..." autocomplete="off">
+    <p class="search-status" id="searchStatus">Showing 15 sections</p>
+    <nav class="sidebar-nav" id="sidebarNav">
+      <a class="sidebar-link" href="#overview">Overview</a>
+      <a class="sidebar-link" href="#what-you-get">What you get</a>
+      <a class="sidebar-link" href="#access-paths">Access paths</a>
+      <a class="sidebar-link" href="#supported-scope">Supported asset scope</a>
+      <a class="sidebar-link" href="#audit-tab">Audit tab</a>
+      <a class="sidebar-link" href="#coverage-scan">Coverage scan</a>
+      <a class="sidebar-link" href="#reserialize-workflow">Reserialize workflow</a>
+      <a class="sidebar-link" href="#cleanup-proof">Cleanup proof</a>
+      <a class="sidebar-link" href="#settings-and-storage">Settings and storage</a>
+      <a class="sidebar-link" href="#mapping-json">Mapping JSON</a>
+      <a class="sidebar-link" href="#exports-and-reports">Exports and reports</a>
+      <a class="sidebar-link" href="#batchmode-and-ci">Batchmode and CI</a>
+      <a class="sidebar-link" href="#practical-workflow">Practical workflow</a>
+      <a class="sidebar-link" href="#requirements-and-notes">Requirements and notes</a>
+      <a class="sidebar-link" href="#license-and-support">License and support</a>
+    </nav>
+  </aside>
 
-    <main class="content" id="docContent">
-      <section class="doc-card" id="overview" data-section>
-        <h1>Unity Serialization Migration Guard technical documentation</h1>
-        <p class="lead">Unity Serialization Migration Guard supports controlled serialized field migration workflows through Audit, Coverage, Reserialize, Cleanup, and Settings operations.</p>
-        <p>It is centered on practical migration safety: identify risky renames, locate affected assets, and generate proof artifacts before changing the long-term mapping baseline.</p>
-      </section>
+  <main class="content" id="docContent">
+    <section class="doc-card" id="overview" data-section>
+      <h1>Unity Serialization Migration Guard technical documentation</h1>
+      <p class="lead">Unity Serialization Migration Guard is an editor-only migration workflow for serialized field renames. It helps teams audit rename mappings, scan text-serialized assets for legacy tokens, preview scoped reserialize work, and prove when cleanup is safe.</p>
+      <div class="callout">
+        Coverage Scan and Cleanup Proof require <strong>Project Settings &gt; Editor &gt; Asset Serialization Mode = Force Text</strong>. Audit can run without it.
+      </div>
+    </section>
 
-      <section class="doc-card" id="access-paths" data-section>
-        <h2>1. Access paths</h2>
-        <ul>
-          <li>Unity menu: <code>Tools / Refactor Migration Safety Suite / Open Window</code>.</li>
-          <li>Unity menu: <code>Tools / Refactor Migration Safety Suite / Open Project Settings</code>.</li>
-          <li>Project settings path: <code>Project / Refactor Migration Safety Suite</code>.</li>
-          <li>Batch entrypoint: <code>RefactorMigrationSafetySuite.Batch.RMSSBatchEntryPoint.Run</code>.</li>
-        </ul>
-      </section>
+    <section class="doc-card" id="what-you-get" data-section>
+      <h2>1. What you get</h2>
+      <ul>
+        <li>Audit warnings for missing types, ambiguous type names, missing target fields, non-serializable target fields, and missing <code>FormerlySerializedAs</code>.</li>
+        <li>Coverage reporting with counts per field and per asset, plus unreadable asset tracking.</li>
+        <li>Reserialize preview, scoped execution, progress reporting, cancellation, and optional backups.</li>
+        <li>Cleanup proof that tells you when it is safe to remove legacy mappings and old paths.</li>
+        <li>JSON and CSV exports for audit, coverage, and cleanup reports.</li>
+        <li>Batchmode commands and exit codes for CI gates.</li>
+      </ul>
+    </section>
 
-      <section class="doc-card" id="rmss-window" data-section>
-        <h2>2. RMSS window</h2>
-        <p>Window title: <code>RMSS</code>.</p>
-        <p>Minimum size: <code>760 x 420</code>.</p>
-        <p>Tab order:</p>
-        <ol>
-          <li>Audit</li>
-          <li>Coverage Scan</li>
-          <li>Reserialize</li>
-          <li>Cleanup</li>
-          <li>Settings</li>
-        </ol>
-      </section>
+    <section class="doc-card" id="access-paths" data-section>
+      <h2>2. Access paths</h2>
+      <ul>
+        <li>Window: <code>Tools/Unity Serialization Migration Guard/Open Window</code></li>
+        <li>Project Settings: <code>Project/Unity Serialization Migration Guard</code></li>
+        <li>Project Settings shortcut: <code>Tools/Unity Serialization Migration Guard/Open Project Settings</code></li>
+        <li>Batch entrypoint: <code>RefactorMigrationSafetySuite.Batch.RMSSBatchEntryPoint.Run</code></li>
+      </ul>
+      <p>Window title: <code>RMSS</code>. Minimum size: <code>760 x 420</code>. Tab order: <code>Audit</code>, <code>Coverage Scan</code>, <code>Reserialize</code>, <code>Cleanup</code>, <code>Settings</code>.</p>
+    </section>
 
-      <section class="doc-card" id="audit-tab" data-section>
-        <h2>3. Audit tab</h2>
-        <h3>Controls</h3>
-        <ul>
-          <li><code>Git Diff Import</code>: text input, diff file field, <code>Browse Diff File</code>, <code>Preview Diff Import</code>, <code>Append Candidates</code>, <code>Replace Manual Mappings</code>.</li>
-          <li><code>Manual Rename Mappings</code>: add, clear, import JSON, export JSON, and remove row actions.</li>
-          <li>Per-row fields: <code>Type Name</code>, <code>Old Name</code>, <code>New Name</code>.</li>
-          <li><code>Run Audit</code>.</li>
-        </ul>
-        <h3>Behavior and checks</h3>
-        <ul>
-          <li>Mappings are validated against indexed <code>MonoScript</code> assets in <code>Assets</code>.</li>
-          <li>Whitespace is normalized and duplicates are dropped.</li>
-          <li>Risk severity includes:</li>
-        </ul>
-        <ul>
-          <li><strong>High:</strong> missing type, ambiguous type name, missing target field, non-serializable target field, missing <code>FormerlySerializedAs</code>.</li>
-          <li><strong>Medium:</strong> token used by multiple resolved types, same legacy token still active on unresolved mapped type.</li>
-          <li><strong>Low:</strong> case-only rename only.</li>
-        </ul>
-        <p>Audit results clear when mappings change to avoid stale data. A remediation message is shown for missing <code>FormerlySerializedAs</code>.</p>
-      </section>
+    <section class="doc-card" id="supported-scope" data-section>
+      <h2>3. Supported asset scope</h2>
+      <ul>
+        <li>Scenes: <code>.unity</code></li>
+        <li>Prefabs: <code>.prefab</code></li>
+        <li>ScriptableObject assets: <code>.asset</code>, including parent assets with embedded ScriptableObjects</li>
+      </ul>
+      <p>Coverage is token-based inside text-serialized YAML. Unsupported asset types are skipped and shown as skipped inputs.</p>
+    </section>
 
-      <section class="doc-card" id="coverage-tab" data-section>
-        <h2>4. Coverage tab</h2>
-        <h3>Controls</h3>
-        <ul>
-          <li><code>Run Coverage Scan</code>.</li>
-          <li><code>Export Coverage JSON</code>.</li>
-          <li><code>Export Coverage CSV</code>.</li>
-        </ul>
-        <h3>Scope and behavior</h3>
-        <ul>
-          <li>Manual mappings must be valid: all <code>Type</code>, <code>Old</code>, <code>New</code> fields non-empty.</li>
-          <li>Requires Unity Force Text serialization.</li>
-          <li>Supported assets: <code>.unity</code> scenes, <code>.prefab</code>, standalone ScriptableObject <code>.asset</code> files, and parent assets with embedded ScriptableObjects.</li>
-          <li>Reports include candidate assets, scanned assets, unreadable assets, scope-complete state, affected assets, and token occurrence counts.</li>
-          <li>Per-field summary order: total occurrences, affected assets, type name, legacy field.</li>
-        </ul>
-      </section>
+    <section class="doc-card" id="audit-tab" data-section>
+      <h2>4. Audit tab</h2>
+      <p>Audit validates rename mappings against the current project code before you trust them in a migration run.</p>
+      <ul>
+        <li><code>Git Diff Import</code> supports pasted diff text or a diff file path, plus preview, append, and replace actions.</li>
+        <li><code>Manual Rename Mappings</code> supports add, clear, JSON import/export, and row removal.</li>
+        <li>Checks include missing types, ambiguous names, missing target fields, non-serializable target fields, missing <code>FormerlySerializedAs</code>, and lower-risk mapping issues.</li>
+      </ul>
+    </section>
 
-      <section class="doc-card" id="reserialize-tab" data-section>
-        <h2>5. Reserialize tab</h2>
-        <h3>Controls</h3>
-        <ul>
-          <li>Scope dropdown: <code>Coverage Results</code>, <code>Folder</code>, <code>Selection</code>.</li>
-          <li>Folder object field for Folder scope.</li>
-          <li><code>Create Backup</code> toggle.</li>
-          <li><code>Build Preview</code>.</li>
-          <li><code>Run Reserialize</code>.</li>
-        </ul>
-        <h3>Preview and execution</h3>
-        <ul>
-          <li>Preview includes source, asset count, skipped inputs, and warnings.</li>
-          <li><code>Run Reserialize</code> is disabled until preview has at least one asset.</li>
-          <li>Scenes are reserialized through scene save flow, prefabs through prefab load/save, and other scriptable objects through <code>AssetDatabase.ForceReserializeAssets</code>.</li>
-          <li>Progress updates expose current stage, current path, and completed/total counters.</li>
-        </ul>
-      </section>
+    <section class="doc-card" id="coverage-scan" data-section>
+      <h2>5. Coverage scan</h2>
+      <ul>
+        <li>Requires valid mappings with non-empty <code>Type</code>, <code>Old</code>, and <code>New</code> values.</li>
+        <li>Requires Force Text serialization.</li>
+        <li>Reports candidate assets, scanned assets, unreadable assets, affected assets, total legacy token occurrences, and supported-scope completeness.</li>
+        <li>Orders per-field summary by total occurrences, affected assets, type name, then legacy field.</li>
+      </ul>
+    </section>
 
-      <section class="doc-card" id="cleanup-tab" data-section>
-        <h2>6. Cleanup tab</h2>
-        <h3>Controls</h3>
-        <ul>
-          <li><code>Evaluate Cleanup Proof</code>.</li>
-          <li><code>Export Cleanup JSON</code>.</li>
-          <li><code>Export Cleanup CSV</code>.</li>
-        </ul>
-        <h3>Cleanup output</h3>
-        <ul>
-          <li><code>IsSafeToRemoveLegacyMappings</code> bool.</li>
-          <li><code>IsSupportedScopeComplete</code> bool.</li>
-          <li><code>RemainingLegacyTokenOccurrences</code>.</li>
-          <li>Human-readable scope summary and notes.</li>
-        </ul>
-        <p>Unsafe states include no coverage report, remaining legacy tokens, or incomplete scope.</p>
-      </section>
+    <section class="doc-card" id="reserialize-workflow" data-section>
+      <h2>6. Reserialize workflow</h2>
+      <ul>
+        <li><strong>Coverage Results:</strong> use current coverage hits.</li>
+        <li><strong>Folder:</strong> recurse under a selected folder.</li>
+        <li><strong>Selection:</strong> use the current Project window selection and expand folders.</li>
+        <li>Preview shows source, asset count, skipped inputs, and warnings before the run starts.</li>
+        <li>Scenes use scene save flow, prefabs use prefab save flow, and other supported assets use <code>AssetDatabase.ForceReserializeAssets</code>.</li>
+      </ul>
+    </section>
 
-      <section class="doc-card" id="settings-tab" data-section>
-        <h2>7. Settings tab</h2>
-        <p>Controls:</p>
-        <ul>
-          <li><code>Enable Verbose Logging</code>.</li>
-          <li><code>Create Backups By Default</code>.</li>
-          <li><code>Default Export Directory</code>.</li>
-          <li><code>Backup Directory</code>.</li>
-          <li><code>Save Project Settings</code> and <code>Open Project Settings Page</code>.</li>
-        </ul>
-        <p>Settings are stored in <code>ProjectSettings/RefactorMigrationSafetySuiteSettings.asset</code> via <code>ScriptableSingleton</code>.</p>
-        <ul>
-          <li>Default export directory: <code>Logs</code>.</li>
-          <li>Default backup directory: <code>Logs</code>.</li>
-          <li>Verbose logging and backup-by-default are enabled by default.</li>
-        </ul>
-      </section>
+    <section class="doc-card" id="cleanup-proof" data-section>
+      <h2>7. Cleanup proof</h2>
+      <ul>
+        <li><code>IsSafeToRemoveLegacyMappings</code></li>
+        <li><code>IsSupportedScopeComplete</code></li>
+        <li><code>RemainingLegacyTokenOccurrences</code></li>
+        <li><code>ScopeSummary</code></li>
+        <li><code>Notes[]</code></li>
+      </ul>
+      <p>Cleanup is unsafe when there is no coverage report, when legacy tokens still remain, or when supported scope is incomplete because assets could not be read.</p>
+    </section>
 
-      <section class="doc-card" id="project-settings" data-section>
-        <h2>8. Project Settings provider</h2>
-        <p>Provider path: <code>Project / Refactor Migration Safety Suite</code>.</p>
-        <p>Provider exposes the same fields as the Settings tab and supports explicit save persistence.</p>
-      </section>
+    <section class="doc-card" id="settings-and-storage" data-section>
+      <h2>8. Settings and storage</h2>
+      <ul>
+        <li><code>Enable Verbose Logging</code></li>
+        <li><code>Create Backups By Default</code></li>
+        <li><code>Default Export Directory</code></li>
+        <li><code>Backup Directory</code></li>
+      </ul>
+      <p>Settings are stored in <code>ProjectSettings/RefactorMigrationSafetySuiteSettings.asset</code>. Relative paths resolve from the Unity project root. Backup paths inside <code>Assets</code> or <code>Packages</code> are rejected.</p>
+    </section>
 
-      <section class="doc-card" id="mapping-format" data-section>
-        <h2>9. Rename mapping JSON schema</h2>
-        <p>Schema version is <code>1</code>.</p>
-        <p>Top-level fields: <code>schemaVersion</code>, <code>mappings</code>.</p>
-        <p>Each mapping includes:</p>
-        <ul>
-          <li><code>typeName</code></li>
-          <li><code>oldName</code></li>
-          <li><code>newName</code></li>
-        </ul>
-        <pre><code>{
+    <section class="doc-card" id="mapping-json" data-section>
+      <h2>9. Mapping JSON</h2>
+      <pre><code class="language-json">{
   "schemaVersion": 1,
   "mappings": [
     {
@@ -217,86 +336,93 @@
     }
   ]
 }</code></pre>
-        <p>JSON is shared by Audit import/export and batch commands.</p>
-      </section>
+      <p>Fields: <code>schemaVersion</code>, <code>mappings[]</code>, <code>typeName</code>, <code>oldName</code>, and <code>newName</code>.</p>
+    </section>
 
-      <section class="doc-card" id="batch-mode" data-section>
-        <h2>10. Batch mode</h2>
-        <p>Command entry:</p>
-        <pre><code>Unity -batchmode ... -executeMethod RefactorMigrationSafetySuite.Batch.RMSSBatchEntryPoint.Run</code></pre>
-        <p>Supported commands:</p>
-        <ul>
-          <li><code>audit</code></li>
-          <li><code>coverage</code></li>
-          <li><code>cleanup</code></li>
-        </ul>
-        <p>Common options:</p>
-        <ul>
-          <li><code>--mappingsJson &lt;path&gt;</code> required for coverage and cleanup, optional for audit.</li>
-          <li><code>--jsonOut &lt;path&gt;</code> optional output path.</li>
-          <li><code>--failOnRisk true|false</code> for audit.</li>
-          <li><code>--failOnCoverage true|false</code> for coverage/cleanup.</li>
-        </ul>
-        <p>Exit codes:</p>
-        <ul>
-          <li><code>0</code> success.</li>
-          <li><code>1</code> parse, input, or setup error.</li>
-          <li><code>2</code> audit high-risk failure when fail-on-risk is enabled.</li>
-          <li><code>3</code> coverage/cleanup failure when coverage failure is enabled.</li>
-        </ul>
-      </section>
+    <section class="doc-card" id="exports-and-reports" data-section>
+      <h2>10. Exports and reports</h2>
+      <ul>
+        <li><strong>Audit:</strong> JSON and CSV with input mappings, risks, and counts</li>
+        <li><strong>Coverage:</strong> JSON and CSV with metrics, unreadable assets, per-field summary, and per-asset hits</li>
+        <li><strong>Cleanup:</strong> JSON and CSV with safe state, completeness, remaining tokens, and notes</li>
+      </ul>
+    </section>
 
-      <section class="doc-card" id="validation-scripts" data-section>
-        <h2>11. Validation scripts</h2>
-        <ul>
-          <li><code>scripts/run-batch-audit.sh</code></li>
-          <li><code>scripts/run-batch-coverage.sh</code></li>
-          <li><code>scripts/run-batch-cleanup.sh</code></li>
-          <li><code>scripts/run-window-smoke-headful.sh</code></li>
-        </ul>
-        <p>Scripts use a shared batch entrypoint and write to <code>Logs</code>.</p>
-      </section>
+    <section class="doc-card" id="batchmode-and-ci" data-section>
+      <h2>11. Batchmode and CI</h2>
+      <p>Run Unity with <code>-executeMethod RefactorMigrationSafetySuite.Batch.RMSSBatchEntryPoint.Run</code>.</p>
+      <table class="data-table">
+        <thead><tr><th>Option</th><th>Meaning</th></tr></thead>
+        <tbody>
+          <tr><td><code>--mappingsJson &lt;path&gt;</code></td><td>Required for coverage and cleanup. Optional for audit.</td></tr>
+          <tr><td><code>--jsonOut &lt;path&gt;</code></td><td>Optional JSON output path.</td></tr>
+          <tr><td><code>--failOnRisk true|false</code></td><td>Fail audit when high-risk findings exist.</td></tr>
+          <tr><td><code>--failOnCoverage true|false</code></td><td>Fail coverage or cleanup when remaining risk exists.</td></tr>
+        </tbody>
+      </table>
+      <table class="data-table">
+        <thead><tr><th>Exit code</th><th>Meaning</th></tr></thead>
+        <tbody>
+          <tr><td><code>0</code></td><td>Success</td></tr>
+          <tr><td><code>1</code></td><td>Parse, input, or setup error</td></tr>
+          <tr><td><code>2</code></td><td>Audit failure with high risk and fail-on-risk enabled</td></tr>
+          <tr><td><code>3</code></td><td>Coverage or cleanup failure with fail-on-coverage enabled</td></tr>
+        </tbody>
+      </table>
+    </section>
 
-      <section class="doc-card" id="practical-workflow" data-section>
-        <h2>12. Practical workflow</h2>
-        <ol>
-          <li>Build or import mappings manually or from git diff.</li>
-          <li>Export mappings for reuse and traceability.</li>
-          <li>Run <code>Run Audit</code> and clear high and medium risks where possible.</li>
-          <li>Enable Force Text and run <code>Run Coverage Scan</code>.</li>
-          <li>Optionally use folder or selection scoped preview + reserialize.</li>
-          <li>Run <code>Evaluate Cleanup Proof</code>.</li>
-          <li>Export cleanup data before removing legacy fields or attributes.</li>
-        </ol>
-      </section>
+    <section class="doc-card" id="practical-workflow" data-section>
+      <h2>12. Practical workflow</h2>
+      <ol>
+        <li>Build mappings manually or import candidates from a unified git diff.</li>
+        <li>Export mappings to JSON for reuse and traceability.</li>
+        <li>Run Audit and clear high or medium risks before changing asset scope.</li>
+        <li>Enable Force Text serialization if you need coverage or cleanup.</li>
+        <li>Run Coverage Scan and review unreadable assets.</li>
+        <li>Build a Reserialize preview and optionally enable backups.</li>
+        <li>Run Reserialize for the specific scope that needs migration.</li>
+        <li>Run Cleanup Proof before removing legacy attributes or old mapping paths.</li>
+      </ol>
+    </section>
 
-      <section class="doc-card" id="constraints" data-section>
-        <h2>13. Constraints and known hard limits</h2>
-        <ul>
-          <li>Coverage and cleanup depend on Force Text serialization.</li>
-          <li>Project Window selection scope only uses selection assets.</li>
-          <li>Reserialize is scope-limited and may skip unsupported assets.</li>
-          <li>Invalid backup folders under <code>Assets</code> or <code>Packages</code> are rejected and a project log fallback is used.</li>
-          <li>Unsupported diff hunks are skipped with warnings.</li>
-        </ul>
-      </section>
+    <section class="doc-card" id="requirements-and-notes" data-section>
+      <h2>13. Requirements and notes</h2>
+      <ul>
+        <li>Coverage Scan and Cleanup Proof require Force Text serialization.</li>
+        <li>Coverage is token-based. If multiple fields share the same token name, results can be ambiguous.</li>
+        <li>Unsupported asset types are skipped and shown as skipped inputs.</li>
+        <li>Selection scope only considers Project window assets, not arbitrary scene selections.</li>
+      </ul>
+    </section>
 
-      <section class="doc-card" id="license-and-support" data-section>
-        <h2>14. License and support</h2>
-        <ul>
-          <li>License page: <a href="/assets/unity-serialization-migration-guard/license/">Unity Serialization Migration Guard license</a>.</li>
-          <li>Support contact and routing: <a href="/support/">Bjorvand support</a>.</li>
-        </ul>
-      </section>
+    <section class="doc-card" id="license-and-support" data-section>
+      <h2>14. License and support</h2>
+      <ul>
+        <li>License page: <a href="/assets/unity-serialization-migration-guard/license/">Unity Serialization Migration Guard License</a></li>
+        <li>Support page: <a href="/support/">Bjorvand Solutions Support</a></li>
+        <li>Store page: <a target="_blank" rel="noopener noreferrer" href="https://u3d.as/3Sae">Unity Asset Store listing</a></li>
+      </ul>
+    </section>
 
-      <div class="empty-state" id="emptyState" role="status" aria-live="polite">
-        No sections match your search. Try a broader term like <code>coverage</code>, <code>audit</code>, or <code>cleanup</code>.
-      </div>
-    </main>
-  </div>
-
-  <script src="/assets/js/docs/product-docs.js"></script>
+    <div class="empty-state" id="emptyState" role="status" aria-live="polite">
+      No sections match your search. Try a broader term like <code>coverage</code>, <code>cleanup</code>, or <code>batchmode</code>.
+    </div>
+  </main>
+</div>
+<script src="/assets/js/docs/product-docs.js"></script>
   <script defer src="/assets/js/site/nav.js"></script>
   <script defer src="/assets/js/site/link-decorators.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+

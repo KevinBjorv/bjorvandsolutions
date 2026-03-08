@@ -4,16 +4,13 @@
   gap: 0.65rem;
   margin-right: auto;
   font-family: var(--font-display);
+  font-size: 1.12rem;
   font-weight: 700;
   letter-spacing: 0.02em;
 }
 
 .brand-mark {
-  width: 1.2rem;
-  height: 1.2rem;
-  border-radius: 4px;
-  background: linear-gradient(145deg, var(--color-accent) 0%, #ffc183 100%);
-  box-shadow: var(--shadow-accent);
+  display: none;
 }
 
 .badge {

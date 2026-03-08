@@ -1,0 +1,436 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shader Variant Budget &amp; CI Guard technical documentation</title>
+  <meta name="description" content="Technical documentation for Shader Variant Budget &amp; CI Guard, including snapshot capture, compare workflow, budgets, baselines, batchmode, and troubleshooting.">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon/android-chrome-192x192.png">
+  <link rel="icon" type="image/x-icon" href="/assets/favicon/favicon.ico">
+  <link rel="manifest" href="/assets/favicon/site.webmanifest">
+  <link rel="stylesheet" href="/assets/css/products/product-docs.css">
+  <script src="/assets/js/theme/theme-init.js"></script>
+  <link rel="stylesheet" href="/assets/css/shared/site-navbar.css">
+  <link rel="stylesheet" href="/assets/css/shared/link-decorators.css">
+  <link rel="stylesheet" href="/assets/css/shared/typography-overrides.css">
+  <script src="/assets/js/site/mailerlite-universal.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Bjorvand Solutions</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="menu-root">
+          <li class="menu-item">
+            <a class="menu-link" href="/tools/" data-nav-trigger="tools" aria-haspopup="menu" aria-expanded="false" aria-controls="menu-tools">Tools <span class="menu-chevron" aria-hidden="true">v</span></a>
+            <div class="dropdown" id="menu-tools" data-nav-menu="tools" role="menu" aria-label="Tools links">
+              <a role="menuitem" href="/tools/">Tools Overview</a>
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/assets/build-size-guard/" aria-haspopup="menu">Build Size Guard <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Build Size Guard links">
+                  <a role="menuitem" href="/assets/build-size-guard/">Homepage</a>
+                  <a role="menuitem" href="/assets/build-size-guard/docs/">Docs</a>
+                  <a role="menuitem" href="/support/">Support</a>
+                  <a role="menuitem" href="/assets/build-size-guard/license/">License</a>
+                </div>
+              </div>
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/assets/shader-variant-budget-ci-guard/" aria-haspopup="menu">Shader Variant Budget &amp; CI Guard <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Shader Variant Budget and CI Guard links">
+                  <a role="menuitem" href="/assets/shader-variant-budget-ci-guard/">Homepage</a>
+                  <a role="menuitem" href="/assets/shader-variant-budget-ci-guard/docs/">Docs</a>
+                  <a role="menuitem" href="/support/">Support</a>
+                  <a role="menuitem" href="/assets/shader-variant-budget-ci-guard/license/">License</a>
+                </div>
+              </div>
+
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/assets/compliance/" aria-haspopup="menu">Third-Party Notices &amp; Credits <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Third-Party Notices and Credits links">
+                  <a role="menuitem" href="/assets/compliance/">Homepage</a>
+                  <a role="menuitem" href="/assets/compliance/docs/">Docs</a>
+                  <a role="menuitem" href="/support/">Support</a>
+                  <a role="menuitem" href="/assets/compliance/license/">License</a>
+                </div>
+              </div>
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/assets/import-settings-validator-fix/" aria-haspopup="menu">Import Settings Validator &amp; Fix <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Import Settings Validator and Fix links">
+                  <a role="menuitem" href="/assets/import-settings-validator-fix/">Homepage</a>
+                  <a role="menuitem" href="/assets/import-settings-validator-fix/docs/">Docs</a>
+                  <a role="menuitem" href="/support/">Support</a>
+                  <a role="menuitem" href="/assets/import-settings-validator-fix/license/">License</a>
+                </div>
+              </div>
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/assets/unity-serialization-migration-guard/" aria-haspopup="menu">Unity Serialization Migration Guard <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Unity Serialization Migration Guard links">
+                  <a role="menuitem" href="/assets/unity-serialization-migration-guard/">Homepage</a>
+                  <a role="menuitem" href="/assets/unity-serialization-migration-guard/docs/">Docs</a>
+                  <a role="menuitem" href="/support/">Support</a>
+                  <a role="menuitem" href="/assets/unity-serialization-migration-guard/license/">License</a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="menu-item">
+            <a class="menu-link" href="/games/" data-nav-trigger="games" aria-haspopup="menu" aria-expanded="false" aria-controls="menu-games">Games <span class="menu-chevron" aria-hidden="true">v</span></a>
+            <div class="dropdown" id="menu-games" data-nav-menu="games" role="menu" aria-label="Games links">
+              <a role="menuitem" href="/games/">Games Overview</a>
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/games/orbital-chaos/" aria-haspopup="menu">Orbital Chaos <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Orbital Chaos links">
+                  <a role="menuitem" href="/games/orbital-chaos/">Homepage</a>
+                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.kevinbjorvand.orbitalchaos">Google Play</a>
+                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://apps.apple.com/us/app/orbital-chaos/id6754812237">App Store</a>
+                </div>
+              </div>
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/games/neonsurge-2/" aria-haspopup="menu">NeonSurge 2 <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="NeonSurge 2 links">
+                  <a role="menuitem" href="/games/neonsurge-2/">Homepage</a>
+                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge-2">itch.io</a>
+                </div>
+              </div>
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/games/neonsurge/" aria-haspopup="menu">NeonSurge <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="NeonSurge links">
+                  <a role="menuitem" href="/games/neonsurge/">Homepage</a>
+                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge">itch.io</a>
+                </div>
+              </div>
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/games/#prototype-games-title" aria-haspopup="menu">Prototypes <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Prototype links">
+                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/teleportation-prototype">Teleportation Prototype</a>
+                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/core-ascend">Core Ascend</a>
+                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/dodge-the-blocks">Dodge the Blocks</a>
+                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/lumacore-minigame">LumaCore</a>
+                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/duestien">Duestien: City Scene</a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="menu-item menu-item-smart-indie">
+            <a class="menu-link menu-link-smart-indie" target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a>
+          </li>
+                    <li class="menu-item">
+            <a class="menu-link" href="/support/">Contact</a>
+          </li>
+          <li class="menu-item">
+            <a class="menu-link" href="https://www.youtube.com/@devwithkevin" target="_blank" rel="noopener noreferrer" data-external-indicator="off" data-nav-trigger="socials" aria-haspopup="menu" aria-expanded="false" aria-controls="menu-socials">Socials <span class="menu-chevron" aria-hidden="true">v</span></a>
+            <div class="dropdown" id="menu-socials" data-nav-menu="socials" role="menu" aria-label="Social links">
+              <a class="social-nav-link" role="menuitem" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/@devwithkevin"><img class="social-nav-icon" src="/assets/images/icons/youtube.png" alt="" aria-hidden="true" loading="lazy">YouTube</a>
+              <a class="social-nav-link" role="menuitem" target="_blank" rel="noopener noreferrer" href="https://x.com/BjorvandKevin"><img class="social-nav-icon" src="/assets/images/icons/twitter.png" alt="" aria-hidden="true" loading="lazy">X</a>
+              <a class="social-nav-link" role="menuitem" target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/kevinbdev/"><img class="social-nav-icon" src="/assets/images/icons/instagram.png" alt="" aria-hidden="true" loading="lazy">Instagram</a>
+              <a class="social-nav-link" role="menuitem" target="_blank" rel="noopener noreferrer" href="https://www.tiktok.com/@kevinbdev"><img class="social-nav-icon" src="/assets/images/icons/tiktok.png" alt="" aria-hidden="true" loading="lazy">TikTok</a>
+              <a class="social-nav-link" role="menuitem" target="_blank" rel="noopener noreferrer" href="https://skool.com/@kevin-bjorvand-9175"><img class="social-nav-icon social-nav-icon-skool" src="/Skool%20logo.png" alt="" aria-hidden="true" loading="lazy">Skool</a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+
+      <button class="mobile-nav-toggle" type="button" data-mobile-nav-toggle aria-controls="mobileNavPanel" aria-expanded="false">Menu</button>
+    </div>
+
+    <div class="mobile-nav-panel" id="mobileNavPanel" data-mobile-nav-panel hidden>
+      <div class="mobile-nav-shell container">
+        <details class="mobile-nav-group">
+          <summary>Tools</summary>
+          <ul>
+            <li><a href="/tools/">Tools Overview</a></li>
+            <li><a href="/assets/build-size-guard/">Build Size Guard Homepage</a></li>
+            <li><a href="/assets/build-size-guard/docs/">Build Size Guard Docs</a></li>
+            <li><a href="/assets/build-size-guard/license/">Build Size Guard License</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/">Shader Variant Budget &amp; CI Guard Homepage</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/docs/">Shader Variant Budget &amp; CI Guard Docs</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/license/">Shader Variant Budget &amp; CI Guard License</a></li>
+            <li><a href="/assets/compliance/">Third-Party Notices &amp; Credits Homepage</a></li>
+            <li><a href="/assets/compliance/docs/">Third-Party Notices &amp; Credits Docs</a></li>
+            <li><a href="/assets/compliance/license/">Third-Party Notices &amp; Credits License</a></li>
+            <li><a href="/assets/import-settings-validator-fix/">Import Settings Validator &amp; Fix Homepage</a></li>
+            <li><a href="/assets/import-settings-validator-fix/docs/">Import Settings Validator &amp; Fix Docs</a></li>
+            <li><a href="/assets/import-settings-validator-fix/license/">Import Settings Validator &amp; Fix License</a></li>
+            <li><a href="/assets/unity-serialization-migration-guard/">Unity Serialization Migration Guard Homepage</a></li>
+            <li><a href="/assets/unity-serialization-migration-guard/docs/">Unity Serialization Migration Guard Docs</a></li>
+            <li><a href="/assets/unity-serialization-migration-guard/license/">Unity Serialization Migration Guard License</a></li>
+            <li><a href="/support/">Support Form</a></li>
+          </ul>
+        </details>
+        <details class="mobile-nav-group">
+          <summary>Games</summary>
+          <ul>
+            <li><a href="/games/">Games Overview</a></li>
+            <li><a href="/games/orbital-chaos/">Orbital Chaos Homepage</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.kevinbjorvand.orbitalchaos">Orbital Chaos Google Play</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://apps.apple.com/us/app/orbital-chaos/id6754812237">Orbital Chaos App Store</a></li>
+            <li><a href="/games/neonsurge-2/">NeonSurge 2 Homepage</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge-2">NeonSurge 2 itch.io</a></li>
+            <li><a href="/games/neonsurge/">NeonSurge Homepage</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge">NeonSurge itch.io</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/teleportation-prototype">Teleportation Prototype</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/core-ascend">Core Ascend</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/dodge-the-blocks">Dodge the Blocks</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/lumacore-minigame">LumaCore</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/duestien">Duestien: City Scene</a></li>
+          </ul>
+        </details>
+        <div class="mobile-nav-group mobile-nav-single-link">
+          <a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a>
+        </div>
+                <div class="mobile-nav-group mobile-nav-single-link">
+          <a href="/support/">Contact</a>
+        </div>
+        <details class="mobile-nav-group">
+          <summary>Socials</summary>
+          <ul>
+                        <li><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/@devwithkevin">YouTube</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://x.com/BjorvandKevin">X</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/kevinbdev/">Instagram</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://www.tiktok.com/@kevinbdev">TikTok</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://skool.com/@kevin-bjorvand-9175">Skool</a></li>
+          </ul>
+        </details>
+      </div>
+    </div>
+  </header>
+
+  <div class="shell layout">
+  <aside class="sidebar" aria-label="Documentation navigation">
+    <h2>Documentation</h2>
+    <p>Reference for snapshot capture, compare workflow, budgets, baselines, and batchmode usage.</p>
+    <label class="search-label" for="docSearch">Search</label>
+    <input class="search-input" type="search" id="docSearch" placeholder="Search snapshots, budgets, latestPassing, CI..." autocomplete="off">
+    <p class="search-status" id="searchStatus">Showing 15 sections</p>
+    <nav class="sidebar-nav" id="sidebarNav">
+      <a class="sidebar-link" href="#overview">Overview</a>
+      <a class="sidebar-link" href="#what-it-does-not-do">What it does not do</a>
+      <a class="sidebar-link" href="#access-paths">Access paths</a>
+      <a class="sidebar-link" href="#storage-layout">Storage layout</a>
+      <a class="sidebar-link" href="#core-workflow">Core workflow</a>
+      <a class="sidebar-link" href="#snapshot-capture">Snapshot capture</a>
+      <a class="sidebar-link" href="#snapshot-completeness">Snapshot completeness</a>
+      <a class="sidebar-link" href="#editor-window">Editor window</a>
+      <a class="sidebar-link" href="#project-settings">Project Settings</a>
+      <a class="sidebar-link" href="#budget-policy">Budget policy</a>
+      <a class="sidebar-link" href="#budgets-json">Budgets JSON</a>
+      <a class="sidebar-link" href="#batchmode-and-ci">Batchmode and CI</a>
+      <a class="sidebar-link" href="#report-outputs">Report outputs</a>
+      <a class="sidebar-link" href="#troubleshooting">Troubleshooting</a>
+      <a class="sidebar-link" href="#license-and-support">License and support</a>
+    </nav>
+  </aside>
+
+  <main class="content" id="docContent">
+    <section class="doc-card" id="overview" data-section>
+      <h1>Shader Variant Budget &amp; CI Guard technical documentation</h1>
+      <p class="lead">Shader Variant Budget &amp; CI Guard is an editor-only Unity tool for capturing shader variant snapshots from <code>Editor.log</code>, comparing a baseline against a current build, applying budgets, and gating CI with stable exit codes.</p>
+      <div class="callout">
+        Incomplete snapshots are hidden by default in the editor and, by default, fail batchmode so broken capture data does not quietly hide regressions.
+      </div>
+    </section>
+
+    <section class="doc-card" id="what-it-does-not-do" data-section>
+      <h2>1. What it does not do</h2>
+      <ul>
+        <li>No runtime or in-game UI.</li>
+        <li>No editor-window export for full compare reports. Full JSON and Markdown reports are batchmode features.</li>
+        <li>No target-specific budget policy editor in the Project Settings UI. The UI edits the default policy block.</li>
+        <li>No file picker for path-based compare fields. Snapshot paths are entered manually.</li>
+      </ul>
+    </section>
+
+    <section class="doc-card" id="access-paths" data-section>
+      <h2>2. Access paths</h2>
+      <ul>
+        <li>Window: <code>Tools/Shader Variant Guard/Open Window</code></li>
+        <li>Project Settings: <code>Project/Shader Variant Guard</code></li>
+        <li>Batch entrypoint: <code>ShaderVariantGuard.Editor.Cli.ShaderVariantGuardBatchRunner.Run</code></li>
+      </ul>
+    </section>
+
+    <section class="doc-card" id="storage-layout" data-section>
+      <h2>3. Storage layout</h2>
+      <ul>
+        <li><code>ShaderVariantGuardData/snapshots</code></li>
+        <li><code>ShaderVariantGuardData/reports</code></li>
+        <li><code>ShaderVariantGuardData/diagnostics</code></li>
+        <li><code>ShaderVariantGuardData/latest_passing_snapshots.json</code></li>
+      </ul>
+      <pre><code class="language-text">YYYYMMDDTHHmmssfffZ_&lt;target&gt;_&lt;label&gt;_&lt;snapshotId&gt;.json</code></pre>
+    </section>
+
+    <section class="doc-card" id="core-workflow" data-section>
+      <h2>4. Core workflow</h2>
+      <ol>
+        <li>Capture a snapshot from <code>Editor.log</code>.</li>
+        <li>Store the snapshot as deterministic JSON.</li>
+        <li>Compare a baseline snapshot against a current snapshot.</li>
+        <li>Apply ignore rules to the diff.</li>
+        <li>Evaluate budgets and per-shader caps.</li>
+        <li>Review results in the window or emit reports in batchmode.</li>
+        <li>Optionally promote the current snapshot to <code>latestPassing</code> when the run passes.</li>
+      </ol>
+    </section>
+
+    <section class="doc-card" id="snapshot-capture" data-section>
+      <h2>5. Snapshot capture</h2>
+      <ul>
+        <li><strong>Manual capture:</strong> reads the current <code>Editor.log</code>, uses label <code>manual</code>, saves immediately, and selects the snapshot as current.</li>
+        <li><strong>Automatic capture:</strong> runs after builds when <code>Auto Capture Snapshots</code> is enabled.</li>
+        <li>The parser recognizes shader summary lines and a trailing <code>total shader variants</code> summary block.</li>
+        <li>Capture retries or falls back to a temporary log copy when Unity is actively writing the log.</li>
+      </ul>
+    </section>
+
+    <section class="doc-card" id="snapshot-completeness" data-section>
+      <h2>6. Snapshot completeness</h2>
+      <ul>
+        <li>Missing snapshot data</li>
+        <li>Negative totals</li>
+        <li>No per-shader contributors</li>
+        <li>Contributor totals that do not match <code>totalVariants</code></li>
+        <li>No recognized patterns in a scanned log</li>
+      </ul>
+      <p>Incomplete snapshots are hidden by default in the editor and fail batchmode with exit code <code>9</code> by default.</p>
+    </section>
+
+    <section class="doc-card" id="editor-window" data-section>
+      <h2>7. Editor window</h2>
+      <ul>
+        <li>Snapshot browser with search, target filter, <code>Show Incomplete</code>, and <code>Compare Selection</code>.</li>
+        <li>Compare controls for baseline/current selection, <code>Swap</code>, <code>Latest vs Previous</code>, and path-based compare.</li>
+        <li>Summary cards plus diff tabs for increases, decreases, new items, and removed items.</li>
+        <li>Diagnostics export in <code>txt</code>, JSON, Markdown, XML, or CSV.</li>
+      </ul>
+    </section>
+
+    <section class="doc-card" id="project-settings" data-section>
+      <h2>8. Project Settings</h2>
+      <table class="data-table">
+        <thead><tr><th>Setting</th><th>Default</th><th>Behavior</th></tr></thead>
+        <tbody>
+          <tr><td><code>Data Root Path</code></td><td><code>ShaderVariantGuardData</code></td><td>Project-relative root for snapshots, reports, and latest-passing index.</td></tr>
+          <tr><td><code>Diagnostics Export Folder</code></td><td><code>ShaderVariantGuardData/diagnostics</code></td><td>Export destination for diagnostics from the editor window.</td></tr>
+          <tr><td><code>Auto Capture Snapshots</code></td><td><code>true</code></td><td>Enables post-build capture.</td></tr>
+          <tr><td><code>Capture Successful Builds</code></td><td><code>true</code></td><td>Controls capture after successful builds.</td></tr>
+          <tr><td><code>Capture Failed Builds</code></td><td><code>false</code></td><td>Controls capture after failed or canceled builds.</td></tr>
+          <tr><td><code>Display Entry Limit (UI Only)</code></td><td><code>200</code></td><td>Limits visible diff rows only.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="doc-card" id="budget-policy" data-section>
+      <h2>9. Budget policy</h2>
+      <ul>
+        <li>Hard caps for total variants, delta variants, and percent delta.</li>
+        <li>Warning thresholds for the same metrics.</li>
+        <li>Per-shader caps based on current snapshot totals.</li>
+        <li>Ignore rules matching shader names by exact, contains, or regex.</li>
+        <li>Allow rules that skip matching per-shader caps.</li>
+      </ul>
+    </section>
+
+    <section class="doc-card" id="budgets-json" data-section>
+      <h2>10. Budgets JSON</h2>
+      <p>Batchmode can load an external budgets file via <code>-shaderVariantGuard.budgets &lt;path&gt;</code>.</p>
+      <ol>
+        <li>Exact <code>buildTarget</code> plus <code>buildProfileId</code></li>
+        <li>Target-only policy with empty <code>buildProfileId</code></li>
+        <li><code>defaultPolicy</code></li>
+      </ol>
+      <pre><code class="language-json">{
+  "schemaVersion": "1",
+  "defaultPolicy": {
+    "enabled": true,
+    "maxDeltaVariantsEnabled": true,
+    "maxDeltaVariants": 500
+  }
+}</code></pre>
+    </section>
+
+    <section class="doc-card" id="batchmode-and-ci" data-section>
+      <h2>11. Batchmode and CI</h2>
+      <p>Run Unity with <code>-executeMethod ShaderVariantGuard.Editor.Cli.ShaderVariantGuardBatchRunner.Run</code>.</p>
+      <table class="data-table">
+        <thead><tr><th>Argument</th><th>Default</th><th>Meaning</th></tr></thead>
+        <tbody>
+          <tr><td><code>-shaderVariantGuard.baseline &lt;path|latest|latestPassing&gt;</code></td><td><code>latest</code></td><td>Baseline snapshot source.</td></tr>
+          <tr><td><code>-shaderVariantGuard.current &lt;path|latest&gt;</code></td><td><code>latest</code></td><td>Current snapshot source.</td></tr>
+          <tr><td><code>-shaderVariantGuard.baselineMatch &lt;targetAndProfile|targetOnly|any&gt;</code></td><td><code>targetAndProfile</code></td><td>Baseline resolution mode.</td></tr>
+          <tr><td><code>-shaderVariantGuard.budgets &lt;path&gt;</code></td><td>empty</td><td>External budget JSON file.</td></tr>
+          <tr><td><code>-shaderVariantGuard.exportPrefix &lt;path-prefix&gt;</code></td><td>empty</td><td>Auto-fill JSON and Markdown report outputs.</td></tr>
+          <tr><td><code>-shaderVariantGuard.failOnIncompleteSnapshot &lt;true|false&gt;</code></td><td><code>true</code></td><td>Fail when baseline or current is incomplete.</td></tr>
+        </tbody>
+      </table>
+      <table class="data-table">
+        <thead><tr><th>Exit code</th><th>Meaning</th></tr></thead>
+        <tbody>
+          <tr><td><code>0</code></td><td>Success</td></tr>
+          <tr><td><code>2</code></td><td>Blocking violation</td></tr>
+          <tr><td><code>3</code></td><td>Invalid arguments</td></tr>
+          <tr><td><code>4</code></td><td>Baseline resolution error</td></tr>
+          <tr><td><code>5</code></td><td>Snapshot load error</td></tr>
+          <tr><td><code>6</code></td><td>Report write error</td></tr>
+          <tr><td><code>7</code></td><td>Runtime error</td></tr>
+          <tr><td><code>8</code></td><td>Budget policy load or parse error</td></tr>
+          <tr><td><code>9</code></td><td>Incomplete snapshot gating error</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="doc-card" id="report-outputs" data-section>
+      <h2>12. Report outputs</h2>
+      <ul>
+        <li><strong>JSON report:</strong> serialized evaluation result with diff, violations, diagnostics, baseline source, and policy source.</li>
+        <li><strong>Markdown report:</strong> summary, execution context, diagnostics, blocking violations, warnings, and top increases.</li>
+        <li><strong>Diagnostics export:</strong> editor-window export in <code>txt</code>, JSON, Markdown, XML, or CSV.</li>
+      </ul>
+    </section>
+
+    <section class="doc-card" id="troubleshooting" data-section>
+      <h2>13. Troubleshooting</h2>
+      <ul>
+        <li>If no snapshots appear, check that capture ran and that filters are not hiding all rows.</li>
+        <li>If capture succeeds but the snapshot is incomplete, inspect diagnostics and verify the correct <code>Editor.log</code> path and tail line count.</li>
+        <li>If <code>latestPassing</code> cannot be resolved, confirm the index exists and contains a matching target/profile, or bootstrap it intentionally.</li>
+      </ul>
+    </section>
+
+    <section class="doc-card" id="license-and-support" data-section>
+      <h2>14. License and support</h2>
+      <ul>
+        <li>License page: <a href="/assets/shader-variant-budget-ci-guard/license/">Shader Variant Budget &amp; CI Guard License</a></li>
+        <li>Support page: <a href="/support/">Bjorvand Solutions Support</a></li>
+        <li>Store page: <a target="_blank" rel="noopener noreferrer" href="https://u3d.as/3SYC">Unity Asset Store listing</a></li>
+      </ul>
+    </section>
+
+    <div class="empty-state" id="emptyState" role="status" aria-live="polite">
+      No sections match your search. Try a broader term like <code>snapshot</code>, <code>latestPassing</code>, or <code>budget</code>.
+    </div>
+  </main>
+</div>
+<script src="/assets/js/docs/product-docs.js"></script>
+  <script defer src="/assets/js/site/nav.js"></script>
+  <script defer src="/assets/js/site/link-decorators.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

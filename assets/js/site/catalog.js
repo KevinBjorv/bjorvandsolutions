@@ -1,8 +1,8 @@
-(() => {
+﻿(() => {
   window.SiteCatalog = {
-    snapshotDate: "2026-02-27",
-    snapshotDateLabel: "February 27, 2026",
-    tools: [
+    snapshotDate: "2026-03-08",
+    snapshotDateLabel: "March 8, 2026",
+        tools: [
       {
         name: "Build Size Guard",
         summary: "Detect and prevent Unity build size regressions with snapshots, diffs, budgets, and CI-ready reports.",
@@ -15,6 +15,39 @@
         }
       },
       {
+        name: "Shader Variant Budget & CI Guard",
+        summary: "Capture shader variant snapshots from Editor.log, compare builds, enforce budgets, and stop regressions in CI.",
+        audience: "Teams that need shader variant visibility across editor workflows and CI.",
+        links: {
+          product: "/assets/shader-variant-budget-ci-guard/",
+          docs: "/assets/shader-variant-budget-ci-guard/docs/",
+          license: "/assets/shader-variant-budget-ci-guard/license/",
+          store: "https://u3d.as/3SYC"
+        }
+      },
+      {
+        name: "Unity Serialization Migration Guard",
+        summary: "Audit serialized rename mappings, scan YAML coverage, preview reserialize work, and prove cleanup safety.",
+        audience: "Teams migrating serialized fields during refactors and long-lived data model changes.",
+        links: {
+          product: "/assets/unity-serialization-migration-guard/",
+          docs: "/assets/unity-serialization-migration-guard/docs/",
+          license: "/assets/unity-serialization-migration-guard/license/",
+          store: "https://u3d.as/3Sae"
+        }
+      },
+      {
+        name: "Import Settings Validator & Fix",
+        summary: "Enforce Unity import setting standards and validate/fix drift across projects.",
+        audience: "Teams standardizing texture, audio, and model import settings across contributors.",
+        links: {
+          product: "/assets/import-settings-validator-fix/",
+          docs: "/assets/import-settings-validator-fix/docs/",
+          license: "/assets/import-settings-validator-fix/license/",
+          store: "https://assetstore.unity.com/packages/slug/362308"
+        }
+      },
+      {
         name: "Third-Party Notices & Credits",
         summary: "Generate deterministic third-party notice, credits, and manifest files for Unity release workflows.",
         audience: "Teams that need repeatable attribution outputs before shipping.",
@@ -24,20 +57,8 @@
           license: "/assets/compliance/license/",
           store: "https://u3d.as/3PWR"
         }
-      },
-      {
-        name: "Import Settings Validator & Fix",
-        summary: "Enforce Unity import setting standards and validate/fix drift across projects.",
-        audience: "Teams standardizing texture/audio/model import settings across contributors.",
-        links: {
-          product: "/assets/import-settings-validator-fix/",
-          docs: "/assets/import-settings-validator-fix/docs/",
-          license: "/assets/import-settings-validator-fix/license/",
-          store: "https://assetstore.unity.com/packages/slug/362308"
-        }
       }
-    ],
-    games: {
+    ],    games: {
       published: [
         {
           name: "Orbital Chaos",

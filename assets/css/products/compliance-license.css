@@ -37,6 +37,10 @@
     .container {
       width: min(100%, var(--max-width));
       margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    main.container {
       padding: 28px 20px 60px;
     }
 
@@ -170,4 +174,121 @@
 
 .section-gap {
   margin-top: 18px;
+}
+
+.link-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.link-list a {
+  color: var(--muted);
+}
+
+.link-list a:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.site-footer {
+  margin-top: 44px;
+  border-top: 1px solid var(--border);
+  background:
+    radial-gradient(circle at 10% 10%, rgba(47, 107, 240, 0.08), transparent 22%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.4), transparent 45%),
+    var(--bg);
+}
+
+.footer-shell {
+  display: grid;
+  gap: 1.5rem;
+  padding: 2rem 0 2.4rem;
+}
+
+.footer-columns {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.footer-columns > section {
+  padding: 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, var(--surface), color-mix(in srgb, var(--surface) 76%, var(--bg) 24%));
+  box-shadow: var(--shadow);
+}
+
+.footer-columns h2 {
+  margin: 0 0 0.7rem;
+  font-size: 0.98rem;
+}
+
+.footer-email-updates {
+  display: grid;
+  gap: 0.9rem;
+  grid-column: 1 / -1;
+}
+
+.footer-email-updates h2 {
+  margin-bottom: 0;
+}
+
+.footer-email-updates .ml-embedded,
+.footer-email-updates .ml-form-embedContainer,
+.footer-email-updates .ml-form-embedWrapper,
+.footer-email-updates .ml-form-embedBody,
+.footer-email-updates .ml-form-successBody {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.footer-email-updates .ml-form-embedBody form {
+  display: flex;
+  gap: 0.75rem;
+  align-items: stretch;
+}
+
+.footer-email-updates .ml-form-fieldRow {
+  flex: 1 1 auto;
+}
+
+.footer-email-updates .ml-form-fieldRow input {
+  width: 100% !important;
+}
+
+.footer-email-updates .ml-form-embedSubmit {
+  flex: 0 0 auto;
+}
+
+.footer-email-updates .ml-form-embedSubmit button {
+  white-space: nowrap;
+}
+
+.footer-legal {
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+@media (max-width: 680px) {
+  .footer-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-email-updates .ml-form-embedBody form {
+    flex-direction: column;
+  }
+
+  .footer-email-updates .ml-form-embedSubmit,
+  .footer-email-updates .ml-form-embedSubmit button {
+    width: 100%;
+  }
 }

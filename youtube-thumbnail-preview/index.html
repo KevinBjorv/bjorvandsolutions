@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Thumbnail Preview Tool | Bjorvand Solutions</title>
+  <meta name="description" content="Preview up to six thumbnails and titles inside a YouTube-style homepage layout, shuffle the feed order, and compare how each option reads in light and dark mode.">
+  <link rel="canonical" href="/youtube-thumbnail-preview/">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+  <link rel="icon" href="/assets/favicon/favicon.ico">
+  <link rel="manifest" href="/assets/favicon/site.webmanifest">
+  <link rel="stylesheet" href="/assets/css/services/youtube-thumbnail-preview.css">
+  <script defer src="/assets/js/services/youtube-thumbnail-preview.js"></script>
+</head>
+<body data-theme="light">
+  <h1 class="sr-only">YouTube Thumbnail Preview Tool</h1>
+
+  <div class="youtube-shell">
+    <header class="yt-topbar" aria-label="YouTube top bar mockup">
+      <div class="yt-topbar__left">
+        <button class="yt-icon-button" type="button" aria-label="Collapse sidebar" aria-controls="ytSidebar" aria-expanded="true" data-sidebar-toggle>
+          <span class="yt-icon yt-icon--menu" aria-hidden="true"></span>
+        </button>
+        <a class="yt-logo" href="/youtube-thumbnail-preview/" aria-label="YouTube thumbnail preview homepage">
+          <img class="yt-logo__icon" src="/assets/images/icons/youtube.png" alt="" aria-hidden="true">
+          <span class="yt-logo__wordmark">YouTube</span>
+          <span class="yt-logo__country">NO</span>
+        </a>
+      </div>
+
+      <form class="yt-search" action="#" method="get" role="search" aria-label="Search mockup" data-mock-search-form>
+        <label class="sr-only" for="ytMockSearch">Search</label>
+        <input id="ytMockSearch" class="yt-search__input" type="search" name="q" placeholder="Search" value="">
+        <button class="yt-search__submit" type="submit" aria-label="Search">
+          <span class="yt-icon yt-icon--search" aria-hidden="true"></span>
+        </button>
+        <button class="yt-icon-button yt-icon-button--search-voice" type="button" aria-label="Search with your voice">
+          <span class="yt-icon yt-icon--mic" aria-hidden="true"></span>
+        </button>
+      </form>
+
+      <div class="yt-topbar__actions">
+        <button class="yt-appearance-toggle" type="button" data-theme-toggle aria-pressed="false">
+          <span class="yt-icon yt-icon--theme" aria-hidden="true"></span>
+          <span data-theme-toggle-label>Dark mode</span>
+        </button>
+        <button class="yt-pill-action" type="button">
+          <span class="yt-icon yt-icon--plus" aria-hidden="true"></span>
+          <span>Create</span>
+        </button>
+        <button class="yt-icon-button" type="button" aria-label="Notifications">
+          <span class="yt-icon yt-icon--bell" aria-hidden="true"></span>
+        </button>
+        <button class="yt-avatar-button" type="button" aria-label="Your channel">
+          <span class="yt-avatar">KB</span>
+        </button>
+      </div>
+    </header>
+
+    <div class="yt-layout">
+      <aside class="yt-sidebar" id="ytSidebar" aria-label="YouTube sidebar mockup">
+        <nav class="yt-sidebar__section">
+          <a class="yt-sidebar__link is-active" href="/youtube-thumbnail-preview/">
+            <span class="yt-sidebar__icon yt-sidebar__icon--home" aria-hidden="true"></span>
+            <span>Home</span>
+          </a>
+          <a class="yt-sidebar__link" href="#thumbnail-preview-grid">
+            <span class="yt-sidebar__icon yt-sidebar__icon--shorts" aria-hidden="true"></span>
+            <span>Shorts</span>
+          </a>
+          <a class="yt-sidebar__link" href="#preview-controls">
+            <span class="yt-sidebar__icon yt-sidebar__icon--subscriptions" aria-hidden="true"></span>
+            <span>Subscriptions</span>
+          </a>
+        </nav>
+
+        <div class="yt-sidebar__divider" aria-hidden="true"></div>
+
+        <nav class="yt-sidebar__section">
+          <a class="yt-sidebar__link" href="#preview-controls">
+            <span class="yt-sidebar__icon yt-sidebar__icon--you" aria-hidden="true"></span>
+            <span>You</span>
+          </a>
+          <a class="yt-sidebar__link" href="#thumbnail-preview-grid">
+            <span class="yt-sidebar__icon yt-sidebar__icon--history" aria-hidden="true"></span>
+            <span>History</span>
+          </a>
+          <a class="yt-sidebar__link" href="#thumbnail-preview-grid">
+            <span class="yt-sidebar__icon yt-sidebar__icon--playlist" aria-hidden="true"></span>
+            <span>Playlists</span>
+          </a>
+        </nav>
+
+        <div class="yt-sidebar__divider" aria-hidden="true"></div>
+
+        <section class="yt-sidebar__section yt-sidebar__note" aria-labelledby="preview-tools-label">
+          <h2 id="preview-tools-label">Preview tip</h2>
+          <p>Add up to six custom thumbnails, then shuffle them into the homepage feed to compare them in a more realistic layout.</p>
+        </section>
+      </aside>
+
+      <main class="yt-main">
+        <section class="yt-chip-row" aria-label="Suggested categories">
+          <button class="yt-chip is-active" type="button">All</button>
+          <button class="yt-chip" type="button">Gaming</button>
+          <button class="yt-chip" type="button">Animation</button>
+          <button class="yt-chip" type="button">Filmmaking</button>
+          <button class="yt-chip" type="button">Travel</button>
+          <button class="yt-chip" type="button">Growth</button>
+          <button class="yt-chip" type="button">Blender</button>
+          <button class="yt-chip" type="button">Editing</button>
+        </section>
+
+        <section class="preview-panel" id="preview-controls" aria-labelledby="preview-controls-title">
+          <div class="preview-panel__header">
+            <div class="preview-panel__copy">
+              <h2 id="preview-controls-title">Compare up to six thumbnail options</h2>
+              <p>Select one of your cards below, then update its thumbnail, title, and advanced metadata without leaving the YouTube-style homepage view.</p>
+            </div>
+            <div class="preview-panel__actions">
+              <p class="preview-panel__status">Editing <strong data-active-slot-label>Thumbnail 1</strong></p>
+              <button class="preview-toolbar-button" type="button" data-randomize-grid>Shuffle layout</button>
+            </div>
+          </div>
+
+          <div class="preview-slot-management">
+            <p class="preview-slot-count" aria-live="polite">Custom thumbnails: <strong data-slot-count-label>3 of 6 active</strong></p>
+            <div class="preview-slot-actions">
+              <button class="preview-toolbar-button" type="button" data-remove-slot>Remove thumbnail</button>
+              <button class="preview-toolbar-button" type="button" data-add-slot>Add thumbnail</button>
+            </div>
+          </div>
+
+          <div class="preview-slot-picker" aria-label="Choose which thumbnail to edit" data-slot-picker-list></div>
+
+          <div class="preview-panel__controls">
+            <div class="preview-panel__fields">
+              <label class="preview-upload">
+                <span>Upload thumbnail</span>
+                <input class="preview-upload__input" type="file" accept="image/*" data-control="thumbnail">
+              </label>
+              <label class="preview-field">
+                <span>Video title</span>
+                <input class="preview-field__input" type="text" maxlength="100" value="Thumbnail option one goes here" data-control="title">
+              </label>
+              <button class="preview-reset" type="button" data-custom-reset>Reset selected card</button>
+            </div>
+
+            <details class="preview-advanced">
+              <summary>Advanced settings</summary>
+              <div class="preview-advanced__content">
+                <div class="preview-advanced__grid">
+                  <label class="preview-field">
+                    <span>Channel name</span>
+                    <input class="preview-field__input" type="text" maxlength="60" value="Your Channel" data-control="channel">
+                  </label>
+                  <label class="preview-upload">
+                    <span>Channel profile picture</span>
+                    <input class="preview-upload__input" type="file" accept="image/*" data-control="avatar">
+                  </label>
+                  <label class="preview-field">
+                    <span>Views</span>
+                    <input class="preview-field__input" type="text" maxlength="30" value="0 views" data-control="views">
+                  </label>
+                  <label class="preview-field">
+                    <span>Published</span>
+                    <input class="preview-field__input" type="text" maxlength="30" value="Just now" data-control="date">
+                  </label>
+                  <label class="preview-field">
+                    <span>Duration</span>
+                    <input class="preview-field__input" type="text" maxlength="10" value="12:34" data-control="duration">
+                  </label>
+                </div>
+              </div>
+            </details>
+          </div>
+        </section>
+
+        <section class="video-grid-section" id="thumbnail-preview-grid" aria-labelledby="thumbnail-preview-title">
+          <h2 class="sr-only" id="thumbnail-preview-title">YouTube homepage preview</h2>
+          <div class="video-grid" data-video-grid></div>
+        </section>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

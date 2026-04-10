@@ -1,26 +1,55 @@
 ﻿<!DOCTYPE html>
+
+
 <html lang="en" class="no-js">
+
+
 <head>
+
+
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Shader Variant Budget &amp; CI Guard for Unity | Stop Shader Variant Regressions Early</title>
+
   <meta name="description" content="Shader Variant Budget &amp; CI Guard captures Editor.log snapshots, compares builds, enforces shader variant budgets, and fails CI when variant regressions break your limits.">
+
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+
   <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon/android-chrome-192x192.png">
+
   <link rel="icon" type="image/x-icon" href="/assets/favicon/favicon.ico">
+
   <link rel="manifest" href="/assets/favicon/site.webmanifest">
+
   <script src="/assets/js/theme/theme-init.js"></script>
+
   <link rel="stylesheet" href="/assets/css/products/tool-sales-pages.css">
+
   <link rel="stylesheet" href="/assets/css/product-gallery.css">
 
+
+
   <link rel="stylesheet" href="/assets/css/shared/site-navbar.css">
+
   <link rel="stylesheet" href="/assets/css/shared/link-decorators.css">
+
   <link rel="stylesheet" href="/assets/css/shared/typography-overrides.css">
+
   <script src="/assets/js/site/mailerlite-universal.js"></script>
+
+
 </head>
+
+
 <body>
+
+
 <header class="site-header">
     <div class="container nav-shell">
       <a class="brand" href="/">
@@ -34,6 +63,7 @@
             <a class="menu-link" href="/tools/" data-nav-trigger="tools" aria-haspopup="menu" aria-expanded="false" aria-controls="menu-tools">Tools <span class="menu-chevron" aria-hidden="true">v</span></a>
             <div class="dropdown" id="menu-tools" data-nav-menu="tools" role="menu" aria-label="Tools links">
               <a role="menuitem" href="/tools/">Tools Overview</a>
+
               <div class="dropdown-submenu">
                 <a class="dropdown-submenu-trigger" role="menuitem" href="/assets/build-size-guard/" aria-haspopup="menu">Build Size Guard <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
                 <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Build Size Guard links">
@@ -43,34 +73,17 @@
                   <a role="menuitem" href="/assets/build-size-guard/license/">License</a>
                 </div>
               </div>
+  
               <div class="dropdown-submenu">
-                <a class="dropdown-submenu-trigger" role="menuitem" href="/assets/shader-variant-budget-ci-guard/" aria-haspopup="menu">Shader Variant Budget &amp; CI Guard <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
-                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Shader Variant Budget and CI Guard links">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/assets/shader-variant-budget-ci-guard/" aria-haspopup="menu">Shader Variant Budget & CI Guard <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Shader Variant Budget & CI Guard links">
                   <a role="menuitem" href="/assets/shader-variant-budget-ci-guard/">Homepage</a>
                   <a role="menuitem" href="/assets/shader-variant-budget-ci-guard/docs/">Docs</a>
                   <a role="menuitem" href="/support/">Support</a>
                   <a role="menuitem" href="/assets/shader-variant-budget-ci-guard/license/">License</a>
                 </div>
               </div>
-
-              <div class="dropdown-submenu">
-                <a class="dropdown-submenu-trigger" role="menuitem" href="/assets/compliance/" aria-haspopup="menu">Third-Party Notices &amp; Credits <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
-                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Third-Party Notices and Credits links">
-                  <a role="menuitem" href="/assets/compliance/">Homepage</a>
-                  <a role="menuitem" href="/assets/compliance/docs/">Docs</a>
-                  <a role="menuitem" href="/support/">Support</a>
-                  <a role="menuitem" href="/assets/compliance/license/">License</a>
-                </div>
-              </div>
-              <div class="dropdown-submenu">
-                <a class="dropdown-submenu-trigger" role="menuitem" href="/assets/import-settings-validator-fix/" aria-haspopup="menu">Import Settings Validator &amp; Fix <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
-                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Import Settings Validator and Fix links">
-                  <a role="menuitem" href="/assets/import-settings-validator-fix/">Homepage</a>
-                  <a role="menuitem" href="/assets/import-settings-validator-fix/docs/">Docs</a>
-                  <a role="menuitem" href="/support/">Support</a>
-                  <a role="menuitem" href="/assets/import-settings-validator-fix/license/">License</a>
-                </div>
-              </div>
+  
               <div class="dropdown-submenu">
                 <a class="dropdown-submenu-trigger" role="menuitem" href="/assets/unity-serialization-migration-guard/" aria-haspopup="menu">Unity Serialization Migration Guard <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
                 <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Unity Serialization Migration Guard links">
@@ -78,6 +91,77 @@
                   <a role="menuitem" href="/assets/unity-serialization-migration-guard/docs/">Docs</a>
                   <a role="menuitem" href="/support/">Support</a>
                   <a role="menuitem" href="/assets/unity-serialization-migration-guard/license/">License</a>
+                </div>
+              </div>
+  
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/assets/import-settings-validator-fix/" aria-haspopup="menu">Import Settings Validator & Fix <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Import Settings Validator & Fix links">
+                  <a role="menuitem" href="/assets/import-settings-validator-fix/">Homepage</a>
+                  <a role="menuitem" href="/assets/import-settings-validator-fix/docs/">Docs</a>
+                  <a role="menuitem" href="/support/">Support</a>
+                  <a role="menuitem" href="/assets/import-settings-validator-fix/license/">License</a>
+                </div>
+              </div>
+  
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/assets/compliance/" aria-haspopup="menu">Third-Party Notices & Credits <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Third-Party Notices & Credits links">
+                  <a role="menuitem" href="/assets/compliance/">Homepage</a>
+                  <a role="menuitem" href="/assets/compliance/docs/">Docs</a>
+                  <a role="menuitem" href="/support/">Support</a>
+                  <a role="menuitem" href="/assets/compliance/license/">License</a>
+                </div>
+              </div>
+  
+            </div>
+          </li>
+          <li class="menu-item">
+            <a class="menu-link" href="/articles/" data-nav-trigger="articles" aria-haspopup="menu" aria-expanded="false" aria-controls="menu-articles">Articles <span class="menu-chevron" aria-hidden="true">v</span></a>
+            <div class="dropdown" id="menu-articles" data-nav-menu="articles" role="menu" aria-label="Articles links">
+              <a role="menuitem" href="/articles/">All Articles</a>
+              <a role="menuitem" href="/articles/?category=build-ci">Build & CI</a>
+              <a role="menuitem" href="/articles/?category=asset-pipeline">Asset Pipeline</a>
+              <a role="menuitem" href="/articles/?category=serialization-refactoring">Serialization & Refactoring</a>
+              <a role="menuitem" href="/articles/?category=compliance-release">Compliance & Release</a>
+<div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/articles/?tool=build-size-guard" aria-haspopup="menu">Build Size Guard <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Build Size Guard article links">
+                  <a role="menuitem" href="/articles/build-size-guard/catch-unity-build-size-regressions-before-release/">How to Catch Unity Build Size Regressions Before Release</a>
+                  <a role="menuitem" href="/articles/build-size-guard/set-build-size-budgets-in-unity-ci/">How to Set Build Size Budgets in Unity CI</a>
+                  <a role="menuitem" href="/articles/build-size-guard/compare-unity-build-snapshots-and-find-what-changed/">How to Compare Unity Build Snapshots and Find What Changed</a>
+                </div>
+              </div>
+<div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/articles/?tool=shader-variant-budget-ci-guard" aria-haspopup="menu">Shader Variant Budget & CI Guard <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Shader Variant Budget & CI Guard article links">
+                  <a role="menuitem" href="/articles/shader-variant-budget-ci-guard/reduce-shader-variant-creep-in-unity/">How to Reduce Shader Variant Creep in Unity</a>
+                  <a role="menuitem" href="/articles/shader-variant-budget-ci-guard/set-shader-variant-budgets-in-unity-ci/">How to Set Shader Variant Budgets in Unity CI</a>
+                  <a role="menuitem" href="/articles/shader-variant-budget-ci-guard/compare-shader-variant-snapshots-from-editor-log/">How to Compare Shader Variant Snapshots from Editor.log</a>
+                </div>
+              </div>
+<div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/articles/?tool=unity-serialization-migration-guard" aria-haspopup="menu">Unity Serialization Migration Guard <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Unity Serialization Migration Guard article links">
+                  <a role="menuitem" href="/articles/unity-serialization-migration-guard/safely-rename-serialized-fields-in-unity/">How to Safely Rename Serialized Fields in Unity</a>
+                  <a role="menuitem" href="/articles/unity-serialization-migration-guard/audit-unity-yaml-coverage-before-removing-old-rename-mappings/">How to Audit Unity YAML Coverage Before Removing Old Rename Mappings</a>
+                  <a role="menuitem" href="/articles/unity-serialization-migration-guard/preview-and-validate-unity-reserialization-during-refactors/">How to Preview and Validate Unity Reserialization During Refactors</a>
+                </div>
+              </div>
+<div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/articles/?tool=import-settings-validator-fix" aria-haspopup="menu">Import Settings Validator & Fix <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Import Settings Validator & Fix article links">
+                  <a role="menuitem" href="/articles/import-settings-validator-fix/enforce-unity-import-settings-across-a-team/">How to Enforce Unity Import Settings Across a Team</a>
+                  <a role="menuitem" href="/articles/import-settings-validator-fix/validate-texture-audio-and-model-import-settings-in-unity/">How to Validate Texture, Audio, and Model Import Settings in Unity</a>
+                  <a role="menuitem" href="/articles/import-settings-validator-fix/fix-import-setting-drift-without-manual-reimports/">How to Fix Import Setting Drift Without Manual Reimports</a>
+                </div>
+              </div>
+<div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/articles/?tool=compliance" aria-haspopup="menu">Third-Party Notices & Credits <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Third-Party Notices & Credits article links">
+                  <a role="menuitem" href="/articles/compliance/generate-third-party-notices-for-a-unity-game/">How to Generate Third-Party Notices for a Unity Game</a>
+                  <a role="menuitem" href="/articles/compliance/build-a-repeatable-unity-license-compliance-workflow/">How to Build a Repeatable Unity License Compliance Workflow</a>
+                  <a role="menuitem" href="/articles/compliance/export-unity-credits-and-compliance-manifests-before-release/">How to Export Unity Credits and Compliance Manifests Before Release</a>
                 </div>
               </div>
             </div>
@@ -123,7 +207,7 @@
           <li class="menu-item menu-item-smart-indie">
             <a class="menu-link menu-link-smart-indie" target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a>
           </li>
-                    <li class="menu-item">
+          <li class="menu-item">
             <a class="menu-link" href="/support/">Contact</a>
           </li>
           <li class="menu-item">
@@ -148,22 +232,58 @@
           <summary>Tools</summary>
           <ul>
             <li><a href="/tools/">Tools Overview</a></li>
+
             <li><a href="/assets/build-size-guard/">Build Size Guard Homepage</a></li>
             <li><a href="/assets/build-size-guard/docs/">Build Size Guard Docs</a></li>
             <li><a href="/assets/build-size-guard/license/">Build Size Guard License</a></li>
-            <li><a href="/assets/shader-variant-budget-ci-guard/">Shader Variant Budget &amp; CI Guard Homepage</a></li>
-            <li><a href="/assets/shader-variant-budget-ci-guard/docs/">Shader Variant Budget &amp; CI Guard Docs</a></li>
-            <li><a href="/assets/shader-variant-budget-ci-guard/license/">Shader Variant Budget &amp; CI Guard License</a></li>
-            <li><a href="/assets/compliance/">Third-Party Notices &amp; Credits Homepage</a></li>
-            <li><a href="/assets/compliance/docs/">Third-Party Notices &amp; Credits Docs</a></li>
-            <li><a href="/assets/compliance/license/">Third-Party Notices &amp; Credits License</a></li>
-            <li><a href="/assets/import-settings-validator-fix/">Import Settings Validator &amp; Fix Homepage</a></li>
-            <li><a href="/assets/import-settings-validator-fix/docs/">Import Settings Validator &amp; Fix Docs</a></li>
-            <li><a href="/assets/import-settings-validator-fix/license/">Import Settings Validator &amp; Fix License</a></li>
+  
+            <li><a href="/assets/shader-variant-budget-ci-guard/">Shader Variant Budget & CI Guard Homepage</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/docs/">Shader Variant Budget & CI Guard Docs</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/license/">Shader Variant Budget & CI Guard License</a></li>
+  
             <li><a href="/assets/unity-serialization-migration-guard/">Unity Serialization Migration Guard Homepage</a></li>
             <li><a href="/assets/unity-serialization-migration-guard/docs/">Unity Serialization Migration Guard Docs</a></li>
             <li><a href="/assets/unity-serialization-migration-guard/license/">Unity Serialization Migration Guard License</a></li>
+  
+            <li><a href="/assets/import-settings-validator-fix/">Import Settings Validator & Fix Homepage</a></li>
+            <li><a href="/assets/import-settings-validator-fix/docs/">Import Settings Validator & Fix Docs</a></li>
+            <li><a href="/assets/import-settings-validator-fix/license/">Import Settings Validator & Fix License</a></li>
+  
+            <li><a href="/assets/compliance/">Third-Party Notices & Credits Homepage</a></li>
+            <li><a href="/assets/compliance/docs/">Third-Party Notices & Credits Docs</a></li>
+            <li><a href="/assets/compliance/license/">Third-Party Notices & Credits License</a></li>
+  
             <li><a href="/support/">Support Form</a></li>
+          </ul>
+        </details>
+        <details class="mobile-nav-group">
+          <summary>Articles</summary>
+          <ul>
+            <li><a href="/articles/">All Articles</a></li>
+            <li><a href="/articles/?category=build-ci">Build & CI</a></li>
+            <li><a href="/articles/?category=asset-pipeline">Asset Pipeline</a></li>
+            <li><a href="/articles/?category=serialization-refactoring">Serialization & Refactoring</a></li>
+            <li><a href="/articles/?category=compliance-release">Compliance & Release</a></li>
+            <li class="mobile-nav-list-label">Build Size Guard</li>
+            <li><a href="/articles/build-size-guard/catch-unity-build-size-regressions-before-release/">How to Catch Unity Build Size Regressions Before Release</a></li>
+            <li><a href="/articles/build-size-guard/set-build-size-budgets-in-unity-ci/">How to Set Build Size Budgets in Unity CI</a></li>
+            <li><a href="/articles/build-size-guard/compare-unity-build-snapshots-and-find-what-changed/">How to Compare Unity Build Snapshots and Find What Changed</a></li>
+            <li class="mobile-nav-list-label">Shader Variant Budget & CI Guard</li>
+            <li><a href="/articles/shader-variant-budget-ci-guard/reduce-shader-variant-creep-in-unity/">How to Reduce Shader Variant Creep in Unity</a></li>
+            <li><a href="/articles/shader-variant-budget-ci-guard/set-shader-variant-budgets-in-unity-ci/">How to Set Shader Variant Budgets in Unity CI</a></li>
+            <li><a href="/articles/shader-variant-budget-ci-guard/compare-shader-variant-snapshots-from-editor-log/">How to Compare Shader Variant Snapshots from Editor.log</a></li>
+            <li class="mobile-nav-list-label">Unity Serialization Migration Guard</li>
+            <li><a href="/articles/unity-serialization-migration-guard/safely-rename-serialized-fields-in-unity/">How to Safely Rename Serialized Fields in Unity</a></li>
+            <li><a href="/articles/unity-serialization-migration-guard/audit-unity-yaml-coverage-before-removing-old-rename-mappings/">How to Audit Unity YAML Coverage Before Removing Old Rename Mappings</a></li>
+            <li><a href="/articles/unity-serialization-migration-guard/preview-and-validate-unity-reserialization-during-refactors/">How to Preview and Validate Unity Reserialization During Refactors</a></li>
+            <li class="mobile-nav-list-label">Import Settings Validator & Fix</li>
+            <li><a href="/articles/import-settings-validator-fix/enforce-unity-import-settings-across-a-team/">How to Enforce Unity Import Settings Across a Team</a></li>
+            <li><a href="/articles/import-settings-validator-fix/validate-texture-audio-and-model-import-settings-in-unity/">How to Validate Texture, Audio, and Model Import Settings in Unity</a></li>
+            <li><a href="/articles/import-settings-validator-fix/fix-import-setting-drift-without-manual-reimports/">How to Fix Import Setting Drift Without Manual Reimports</a></li>
+            <li class="mobile-nav-list-label">Third-Party Notices & Credits</li>
+            <li><a href="/articles/compliance/generate-third-party-notices-for-a-unity-game/">How to Generate Third-Party Notices for a Unity Game</a></li>
+            <li><a href="/articles/compliance/build-a-repeatable-unity-license-compliance-workflow/">How to Build a Repeatable Unity License Compliance Workflow</a></li>
+            <li><a href="/articles/compliance/export-unity-credits-and-compliance-manifests-before-release/">How to Export Unity Credits and Compliance Manifests Before Release</a></li>
           </ul>
         </details>
         <details class="mobile-nav-group">
@@ -187,13 +307,13 @@
         <div class="mobile-nav-group mobile-nav-single-link">
           <a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a>
         </div>
-                <div class="mobile-nav-group mobile-nav-single-link">
+        <div class="mobile-nav-group mobile-nav-single-link">
           <a href="/support/">Contact</a>
         </div>
         <details class="mobile-nav-group">
           <summary>Socials</summary>
           <ul>
-                        <li><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/@devwithkevin">YouTube</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/@devwithkevin">YouTube</a></li>
             <li><a target="_blank" rel="noopener noreferrer" href="https://x.com/BjorvandKevin">X</a></li>
             <li><a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/kevinbdev/">Instagram</a></li>
             <li><a target="_blank" rel="noopener noreferrer" href="https://www.tiktok.com/@kevinbdev">TikTok</a></li>
@@ -204,302 +324,653 @@
     </div>
   </header>
 
+
+
+
+
   <main>
+
   <div class="container sales-page">
+
     <section id="overview" class="sales-section sales-hero reveal">
+
       <div class="sales-hero__content sales-copy" data-stagger>
+
         <p class="sales-kicker">Unity Editor Tool</p>
+
         <h1>Shader Variant Budget &amp; CI Guard</h1>
+
         <p class="sales-subtitle">Stop shader variant regressions before they turn into bigger build problems.</p>
+
         <p class="sales-lede">Shader Variant Budget &amp; CI Guard helps Unity teams capture deterministic snapshots from <code>Editor.log</code>, compare builds, define budgets, and fail CI when shader variant counts move in the wrong direction.</p>
+
         <p class="sales-inline-lines">Make variant growth visible. Compare the right builds. Turn budget checks into a repeatable workflow for the editor and CI.</p>
+
         <ul class="sales-chip-list">
+
           <li>Snapshot variant data from <code>Editor.log</code></li>
+
           <li>Compare baseline versus current builds</li>
+
           <li>Gate CI with budgets and exit codes</li>
+
         </ul>
+
         <div class="sales-actions">
+
           <a class="sales-button sales-button--primary" target="_blank" rel="noopener noreferrer" href="https://u3d.as/3SYC">Buy on Unity Asset Store</a>
+
           <a class="sales-button sales-button--secondary" href="#purchase-embed">Open embedded checkout</a>
+
           <a class="sales-button sales-button--ghost" href="/assets/shader-variant-budget-ci-guard/docs/">Read the docs</a>
+
         </div>
+
         <div class="sales-stat-list">
+
           <article class="sales-stat" data-spotlight>
+
             <strong>Deterministic snapshots</strong>
+
             <span>Save stable JSON snapshots so the same build data can be reviewed locally, in code review, and in CI.</span>
+
           </article>
+
           <article class="sales-stat" data-spotlight>
+
             <strong>Budget rules</strong>
+
             <span>Set warning and blocking thresholds for totals, deltas, percent growth, and per-shader counts.</span>
+
           </article>
+
           <article class="sales-stat" data-spotlight>
+
             <strong>Baseline control</strong>
+
             <span>Compare against latest, latest passing, or a specific path with profile-aware matching.</span>
+
           </article>
+
         </div>
+
       </div>
+
       <figure class="sales-hero__media sales-media-card">
+
         <img
+
           class="marketing-image"
+
           src="/assets/images/ShaderVariantBudgetCIGuard/marketing/Cover%20image.jpg"
+
           alt="Shader Variant Budget and CI Guard overview"
+
           data-gallery-item
+
           data-gallery-caption="Shader Variant Budget and CI Guard overview"
+
           loading="eager"
+
           fetchpriority="high"
+
         >
+
         <figcaption>Variant snapshots, diffs, and budget checks</figcaption>
+
       </figure>
+
     </section>
+
+
 
     <section id="buy-now" class="sales-section reveal">
+
       <div class="sales-purchase-shell">
+
         <div class="sales-copy" data-stagger>
+
           <p class="sales-kicker">Buy Now</p>
+
           <h2>Choose the storefront, then move straight into baseline capture.</h2>
+
           <p class="sales-lede">The site keeps documentation, license terms, and support close so evaluation and rollout stay simple after checkout.</p>
+
           <div class="sales-actions">
+
             <a class="sales-button sales-button--primary" target="_blank" rel="noopener noreferrer" href="https://u3d.as/3SYC">Buy on Unity Asset Store</a>
+
             <a class="sales-button sales-button--secondary" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/shader-variant-tool">Buy on itch.io</a>
+
           </div>
+
         </div>
+
         <aside class="sales-side-card" data-spotlight>
+
           <div class="sales-copy" data-stagger>
+
             <h3>Everything after checkout</h3>
+
             <div class="sales-support-grid">
+
               <a class="sales-support-link" href="/assets/shader-variant-budget-ci-guard/docs/">
+
                 <span>Documentation</span>
+
                 <small>Window reference, settings, budgets, CI arguments, and troubleshooting.</small>
+
               </a>
+
               <a class="sales-support-link" href="/assets/shader-variant-budget-ci-guard/license/">
+
                 <span>License</span>
+
                 <small>Review the commercial per-seat license and CI usage terms.</small>
+
               </a>
+
               <a class="sales-support-link" href="/support/">
+
                 <span>Support</span>
+
                 <small>Get help with baseline setup, budget policies, or CI rollout.</small>
+
               </a>
+
             </div>
+
           </div>
+
         </aside>
+
       </div>
+
     </section>
+
+
 
     <section id="purchase-embed" class="sales-section reveal">
+
       <div class="sales-copy" data-stagger>
+
         <p class="sales-kicker">Embedded Checkout</p>
+
         <h2>Buy without leaving the page.</h2>
+
         <div class="sales-embed-card" data-spotlight aria-label="Embedded checkout for Shader Variant Budget and CI Guard">
+
           <iframe title="Embedded checkout for Shader Variant Budget and CI Guard" src="https://itch.io/embed/4358096?dark=true" width="552" height="167">Embedded checkout unavailable.</iframe>
+
         </div>
+
       </div>
+
     </section>
+
+
 
     <section id="problem" class="sales-section sales-block reveal">
+
       <div class="sales-block__content sales-copy" data-stagger>
+
         <p class="sales-kicker">Why teams use it</p>
+
         <h2>Shader variant growth is easy to miss until the pipeline is already noisier.</h2>
+
         <ul class="sales-feature-list">
+
           <li>Capture snapshots after builds and track counts over time.</li>
+
           <li>Compare a known baseline against the current result instead of scanning raw logs by hand.</li>
+
           <li>Fail CI at the point where the regression is introduced.</li>
+
         </ul>
+
       </div>
+
       <figure class="sales-block__media sales-media-card">
+
         <img
+
           class="marketing-image"
+
           src="/assets/images/ShaderVariantBudgetCIGuard/marketing/Stop%20shader%20variant%20creep.jpg"
+
           alt="Stop shader variant creep"
+
           data-gallery-item
+
           data-gallery-caption="Stop shader variant creep"
+
           loading="lazy"
+
         >
+
         <figcaption>Keep slow variant creep visible</figcaption>
+
       </figure>
+
     </section>
+
+
 
     <section id="see-what-changed" class="sales-section sales-block sales-block--reverse reveal">
+
       <div class="sales-block__content sales-copy" data-stagger>
+
         <p class="sales-kicker">Compare builds</p>
+
         <h2>See exactly what changed between baseline and current.</h2>
+
         <ul class="sales-feature-list">
+
           <li>Summary cards for baseline total, current total, delta, and percent delta.</li>
+
           <li>Filtered diff views with search and sorting.</li>
+
           <li>Explicit baseline/current selection or direct path-based compare.</li>
+
         </ul>
+
       </div>
+
       <figure class="sales-block__media sales-media-card">
+
         <img
+
           class="marketing-image"
+
           src="/assets/images/ShaderVariantBudgetCIGuard/marketing/See%20what%20changed%20fast.jpg"
+
           alt="See what changed fast"
+
           data-gallery-item
+
           data-gallery-caption="See what changed fast"
+
           loading="lazy"
+
         >
+
         <figcaption>Fast diffing across snapshot pairs</figcaption>
+
       </figure>
+
     </section>
+
+
 
     <section id="top-offenders" class="sales-section sales-block reveal">
+
       <div class="sales-block__content sales-copy" data-stagger>
+
         <p class="sales-kicker">Find the cause</p>
+
         <h2>Catch top offenders instead of treating the whole diff like noise.</h2>
+
         <ul class="sales-feature-list">
+
           <li>Search and filter shader names in the diff results.</li>
+
           <li>Sort by delta, total variants, or percent delta.</li>
+
           <li>Review increases, decreases, new entries, and removed entries separately.</li>
+
         </ul>
+
       </div>
+
       <figure class="sales-block__media sales-media-card">
+
         <img
+
           class="marketing-image"
+
           src="/assets/images/ShaderVariantBudgetCIGuard/marketing/Catch%20top%20offenders.jpg"
+
           alt="Catch top offenders"
+
           data-gallery-item
+
           data-gallery-caption="Catch top offenders"
+
           loading="lazy"
+
         >
+
         <figcaption>Prioritize the shaders that actually moved the count</figcaption>
+
       </figure>
+
     </section>
+
+
 
     <section id="budgets" class="sales-section sales-block sales-block--reverse reveal">
+
       <div class="sales-block__content sales-copy" data-stagger>
+
         <p class="sales-kicker">Budget guardrails</p>
+
         <h2>Turn variant limits into clear production rules.</h2>
+
         <ul class="sales-feature-list">
+
           <li>Hard and warning limits for total variants, delta variants, and percent delta.</li>
+
           <li>Per-shader caps for shaders that must stay under a known ceiling.</li>
+
           <li>Ignore rules and allow rules so reports stay focused on what matters to your team.</li>
+
         </ul>
+
       </div>
+
       <figure class="sales-block__media sales-media-card">
+
         <img
+
           class="marketing-image"
+
           src="/assets/images/ShaderVariantBudgetCIGuard/marketing/Enforce%20hard%20budgets.jpg"
+
           alt="Enforce hard budgets"
+
           data-gallery-item
+
           data-gallery-caption="Enforce hard budgets"
+
           loading="lazy"
+
         >
+
         <figcaption>Budget rules for totals, deltas, and per-shader counts</figcaption>
+
       </figure>
+
     </section>
+
+
 
     <section id="reports" class="sales-section sales-block reveal">
+
       <div class="sales-block__content sales-copy" data-stagger>
+
         <p class="sales-kicker">Clear outputs</p>
+
         <h2>Get readable results when a snapshot breaks the rules.</h2>
+
         <ul class="sales-feature-list">
+
           <li>Clear warnings and blocking violations when budgets are crossed.</li>
+
           <li>Diagnostics inside the editor window for parser health and data confidence.</li>
+
           <li>Incomplete snapshot gating so bad data does not quietly pass.</li>
+
         </ul>
+
       </div>
+
       <figure class="sales-block__media sales-media-card">
+
         <img
+
           class="marketing-image"
+
           src="/assets/images/ShaderVariantBudgetCIGuard/marketing/Clear%20violation%20reports.jpg"
+
           alt="Clear violation reports"
+
           data-gallery-item
+
           data-gallery-caption="Clear violation reports"
+
           loading="lazy"
+
         >
+
         <figcaption>Readable findings instead of vague warnings</figcaption>
+
       </figure>
+
     </section>
+
+
 
     <section id="ci" class="sales-section sales-block sales-block--reverse reveal">
+
       <div class="sales-block__content sales-copy" data-stagger>
+
         <p class="sales-kicker">CI ready</p>
+
         <h2>Gate builds automatically with reports, baselines, and stable exit codes.</h2>
+
         <ul class="sales-feature-list">
+
           <li>Compare against <code>latest</code>, <code>latestPassing</code>, or a specific snapshot path.</li>
+
           <li>Use profile-aware baseline matching and latest-passing index overrides.</li>
+
           <li>Write JSON and Markdown reports directly into CI artifacts.</li>
+
         </ul>
+
       </div>
+
       <figure class="sales-block__media sales-media-card">
+
         <img
+
           class="marketing-image"
+
           src="/assets/images/ShaderVariantBudgetCIGuard/marketing/Export%20to....jpg"
+
           alt="Export reports and CI outputs"
+
           data-gallery-item
+
           data-gallery-caption="Export reports and CI outputs"
+
           loading="lazy"
+
         >
+
         <figcaption>Export reports and enforce budgets in CI</figcaption>
+
       </figure>
+
     </section>
+
+
 
     <section id="fit" class="sales-section reveal">
+
       <div class="sales-panel-grid">
+
         <div class="sales-side-card" data-spotlight>
+
           <div class="sales-copy" data-stagger>
+
             <p class="sales-kicker">Who it is for</p>
+
             <h2>Built for teams that want structure around shader variant growth.</h2>
+
             <ul class="sales-feature-list">
+
               <li>Multi-target projects where variant creep turns into real build pain.</li>
+
               <li>Teams reviewing build health in CI or on shared branches.</li>
+
               <li>Projects that want repeatable baselines instead of memory and guesswork.</li>
+
             </ul>
+
           </div>
+
         </div>
+
         <div class="sales-side-card" data-spotlight>
+
           <div class="sales-copy" data-stagger>
+
             <p class="sales-kicker">Who it is not for</p>
+
             <h2>Not meant for runtime shader optimization or teams that never inspect build outputs.</h2>
+
             <ul class="sales-feature-list">
+
               <li>Runtime GPU profiling workflows, since this tool operates on editor and batchmode build data.</li>
+
               <li>Projects that do not need baselines, budgets, or regression checks.</li>
+
               <li>Teams expecting a runtime package or in-game UI.</li>
+
             </ul>
+
           </div>
+
         </div>
+
       </div>
+
     </section>
+
+
 
     <section id="faq" class="sales-section reveal">
+
       <div class="sales-copy" data-stagger>
+
         <p class="sales-kicker">FAQ</p>
+
         <h2>Common questions before rollout.</h2>
+
         <div class="sales-faq-list">
+
           <details class="sales-faq" data-spotlight>
+
             <summary>Does this change shaders or build output?</summary>
+
             <p>No. It reads variant information from <code>Editor.log</code>, stores snapshots, compares them, and evaluates budgets.</p>
+
           </details>
+
           <details class="sales-faq" data-spotlight>
+
             <summary>Can it fail CI automatically?</summary>
+
             <p>Yes. It includes a batchmode runner with stable exit codes, external budget JSON support, and report export options.</p>
+
           </details>
+
           <details class="sales-faq" data-spotlight>
+
             <summary>Can I compare explicit snapshot files?</summary>
+
             <p>Yes. The editor window supports path-based comparison, and batchmode supports explicit baseline and current paths.</p>
+
           </details>
+
           <details class="sales-faq" data-spotlight>
+
             <summary>What happens if a snapshot is incomplete?</summary>
+
             <p>Incomplete snapshots are hidden by default in the editor and fail the batch check by default so bad data does not quietly pass.</p>
+
           </details>
+
         </div>
+
       </div>
+
     </section>
 
-    <section id="final-cta" class="sales-section reveal">
-      <div class="sales-cta-panel" data-spotlight>
+<section id="tool-articles" class="sales-section reveal">
         <div class="sales-copy" data-stagger>
-          <p class="sales-kicker">Buy Now</p>
-          <h2>Turn shader variants into something visible, trackable, and enforceable.</h2>
-          <p>Buy Shader Variant Budget &amp; CI Guard, capture a baseline, and start enforcing the budgets that match your project.</p>
-          <div class="sales-actions">
-            <a class="sales-button sales-button--primary" target="_blank" rel="noopener noreferrer" href="https://u3d.as/3SYC">Buy on Unity Asset Store</a>
-            <a class="sales-button sales-button--secondary" href="#buy-now">Review purchase options</a>
-          </div>
+          <p class="sales-kicker">Articles</p>
+          <h2>Guides built around Shader Variant Budget &amp; CI Guard</h2>
+          <p class="sales-lede">These articles stay tied to one workflow and one tool so the rollout steps, limitations, and CTA all stay specific.</p>
         </div>
+        <div class="sales-articles-grid">
+<article class="sales-article-card" data-spotlight>
+            <img src="/assets/images/ShaderVariantBudgetCIGuard/marketing/Cover%20image.jpg" alt="How to Reduce Shader Variant Creep in Unity" loading="lazy">
+            <div class="sales-article-meta">
+              <span class="sales-article-pill">Build &amp; CI</span>
+              <span class="sales-article-pill">8 min read</span>
+            </div>
+            <h3>How to Reduce Shader Variant Creep in Unity</h3>
+            <p>Use snapshot-based visibility to catch shader variant growth before it turns into a release problem.</p>
+            <div class="sales-actions">
+              <a class="sales-button sales-button--primary" href="/articles/shader-variant-budget-ci-guard/reduce-shader-variant-creep-in-unity/">Read article</a>
+              <a class="sales-button sales-button--ghost" href="/assets/shader-variant-budget-ci-guard/docs/">Docs</a>
+            </div>
+          </article>
+<article class="sales-article-card" data-spotlight>
+            <img src="/assets/images/ShaderVariantBudgetCIGuard/marketing/Enforce%20hard%20budgets.jpg" alt="How to Set Shader Variant Budgets in Unity CI" loading="lazy">
+            <div class="sales-article-meta">
+              <span class="sales-article-pill">Build &amp; CI</span>
+              <span class="sales-article-pill">8 min read</span>
+            </div>
+            <h3>How to Set Shader Variant Budgets in Unity CI</h3>
+            <p>Turn shader variant growth into a measurable CI gate with deterministic snapshots, ignore rules, and budget policies.</p>
+            <div class="sales-actions">
+              <a class="sales-button sales-button--primary" href="/articles/shader-variant-budget-ci-guard/set-shader-variant-budgets-in-unity-ci/">Read article</a>
+              <a class="sales-button sales-button--ghost" href="/assets/shader-variant-budget-ci-guard/docs/">Docs</a>
+            </div>
+          </article>
+<article class="sales-article-card" data-spotlight>
+            <img src="/assets/images/ShaderVariantBudgetCIGuard/marketing/See%20what%20changed%20fast.jpg" alt="How to Compare Shader Variant Snapshots from Editor.log" loading="lazy">
+            <div class="sales-article-meta">
+              <span class="sales-article-pill">Build &amp; CI</span>
+              <span class="sales-article-pill">7 min read</span>
+            </div>
+            <h3>How to Compare Shader Variant Snapshots from Editor.log</h3>
+            <p>Capture and compare Editor.log variant snapshots to see what changed between builds and why it matters.</p>
+            <div class="sales-actions">
+              <a class="sales-button sales-button--primary" href="/articles/shader-variant-budget-ci-guard/compare-shader-variant-snapshots-from-editor-log/">Read article</a>
+              <a class="sales-button sales-button--ghost" href="/assets/shader-variant-budget-ci-guard/docs/">Docs</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+
+
+      <section id="final-cta" class="sales-section reveal">
+
+      <div class="sales-cta-panel" data-spotlight>
+
+        <div class="sales-copy" data-stagger>
+
+          <p class="sales-kicker">Buy Now</p>
+
+          <h2>Turn shader variants into something visible, trackable, and enforceable.</h2>
+
+          <p>Buy Shader Variant Budget &amp; CI Guard, capture a baseline, and start enforcing the budgets that match your project.</p>
+
+          <div class="sales-actions">
+
+            <a class="sales-button sales-button--primary" target="_blank" rel="noopener noreferrer" href="https://u3d.as/3SYC">Buy on Unity Asset Store</a>
+
+            <a class="sales-button sales-button--secondary" href="#buy-now">Review purchase options</a>
+
+          </div>
+
+        </div>
+
       </div>
+
     </section>
+
   </div>
+
 </main>
+
+
+
 
   <footer class="site-footer">
     <div class="container footer-shell">
@@ -509,9 +980,9 @@
           <ul class="link-list">
             <li><a href="/">Home</a></li>
             <li><a href="/tools/">Tools</a></li>
+            <li><a href="/articles/">Articles</a></li>
             <li><a href="/games/">Games</a></li>
             <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li>
-            <li><a href="https://www.youtube.com/@devwithkevin" target="_blank" rel="noopener noreferrer">Socials</a></li>
             <li><a href="/support/">Support</a></li>
           </ul>
         </section>
@@ -519,11 +990,22 @@
           <h2>Tools</h2>
           <ul class="link-list">
             <li><a href="/assets/build-size-guard/">Build Size Guard</a></li>
-            <li><a href="/assets/shader-variant-budget-ci-guard/">Shader Variant Budget &amp; CI Guard</a></li>
-            <li><a href="/assets/compliance/">Third-Party Notices &amp; Credits</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/">Shader Variant Budget & CI Guard</a></li>
             <li><a href="/assets/unity-serialization-migration-guard/">Unity Serialization Migration Guard</a></li>
-            <li><a href="/assets/import-settings-validator-fix/">Import Settings Validator &amp; Fix</a></li>
+            <li><a href="/assets/import-settings-validator-fix/">Import Settings Validator & Fix</a></li>
+            <li><a href="/assets/compliance/">Third-Party Notices & Credits</a></li>
             <li><a href="/tools/">Tools Directory</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Articles</h2>
+          <ul class="link-list">
+            <li><a href="/articles/">All Articles</a></li>
+            <li><a href="/articles/?category=build-ci">Build & CI</a></li>
+            <li><a href="/articles/?category=asset-pipeline">Asset Pipeline</a></li>
+            <li><a href="/articles/?category=serialization-refactoring">Serialization & Refactoring</a></li>
+            <li><a href="/articles/?category=compliance-release">Compliance & Release</a></li>
+            <li><a href="/articles/?sort=title">Sort A-Z</a></li>
           </ul>
         </section>
         <section>
@@ -555,18 +1037,57 @@
     </div>
   </footer>
 
+
+
+
   <div class="mobile-cta" aria-label="Mobile call to action">
+
     <div class="container">
+
       <a class="sales-cta-link" target="_blank" rel="noopener noreferrer" href="https://u3d.as/3SYC">Buy Now</a>
+
     </div>
+
   </div>
+
   <script src="/assets/js/ui/reveal.js"></script>
+
   <script src="/assets/js/ui/tool-sales-pages.js"></script>
+
   <script src="/assets/js/product-gallery.js"></script>
+
   <script defer src="/assets/js/site/nav.js"></script>
+
   <script defer src="/assets/js/site/link-decorators.js"></script>
+
 </body>
+
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

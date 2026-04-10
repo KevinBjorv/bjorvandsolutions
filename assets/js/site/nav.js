@@ -701,7 +701,32 @@
     });
   }
 
+  function ensureFooterServiceLink() {
+    const exploreSection = Array.from(document.querySelectorAll(".site-footer section")).find((section) => {
+      const heading = section.querySelector("h2");
+      return heading && heading.textContent.trim().toLowerCase() === "explore";
+    });
+
+    if (!exploreSection) {
+      return;
+    }
+
+    const linkList = exploreSection.querySelector(".link-list");
+    if (!linkList || linkList.querySelector("[data-footer-service-link='youtube-thumbnail-preview']")) {
+      return;
+    }
+
+    const listItem = document.createElement("li");
+    const link = document.createElement("a");
+    link.href = "/youtube-thumbnail-preview/";
+    link.textContent = "YouTube Thumbnail Preview";
+    link.setAttribute("data-footer-service-link", "youtube-thumbnail-preview");
+    listItem.append(link);
+    linkList.append(listItem);
+  }
+
   markCurrentPageInNavigation();
+  ensureFooterServiceLink();
 
   const year = String(new Date().getFullYear());
   document.querySelectorAll("[data-current-year]").forEach((node) => {

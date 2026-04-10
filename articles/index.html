@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unity Tool Articles | Build, CI, Refactoring, and Release Guides</title>
+  <meta name="description" content="Browse 15 Unity workflow articles about build size, shader variants, import settings, serialization migrations, and release compliance.">
+  <meta name="author" content="Kevin Ahlgren Bjorvand">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Unity Tool Articles | Build, CI, Refactoring, and Release Guides">
+  <meta property="og:description" content="Browse 15 Unity workflow articles about build size, shader variants, import settings, serialization migrations, and release compliance.">
+  <meta property="og:url" content="https://bjorv.com/articles/">
+  <meta property="og:image" content="https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Unity Tool Articles | Build, CI, Refactoring, and Release Guides">
+  <meta name="twitter:description" content="Browse 15 Unity workflow articles about build size, shader variants, import settings, serialization migrations, and release compliance.">
+  <meta name="twitter:image" content="https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.jpg">
+  <link rel="canonical" href="https://bjorv.com/articles/">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+  <link rel="icon" href="/assets/favicon/favicon.ico">
+  <link rel="manifest" href="/assets/favicon/site.webmanifest">
+  <script src="/assets/js/site/theme-init.js"></script>
+  <link rel="stylesheet" href="/assets/css/site/tokens.css">
+  <link rel="stylesheet" href="/assets/css/site/base.css">
+  <link rel="stylesheet" href="/assets/css/site/layout.css">
+  <link rel="stylesheet" href="/assets/css/site/components.css">
+  <link rel="stylesheet" href="/assets/css/site/pages/articles.css">
+  <link rel="stylesheet" href="/assets/css/shared/link-decorators.css">
+  <link rel="stylesheet" href="/assets/css/shared/typography-overrides.css">
+  <script src="/assets/js/site/mailerlite-universal.js"></script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://bjorv.com/articles/#collection",
+      "url": "https://bjorv.com/articles/",
+      "name": "Unity Tool Articles | Bjorvand Solutions",
+      "description": "Articles about Unity build pipelines, import standards, migration safety, and compliance workflows.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Bjorvand Solutions",
+        "url": "https://bjorv.com"
+      },
+      "about": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "Build Size Guard",
+          "applicationCategory": "DeveloperApplication",
+          "url": "https://bjorv.com/assets/build-size-guard/"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "Shader Variant Budget & CI Guard",
+          "applicationCategory": "DeveloperApplication",
+          "url": "https://bjorv.com/assets/shader-variant-budget-ci-guard/"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "Unity Serialization Migration Guard",
+          "applicationCategory": "DeveloperApplication",
+          "url": "https://bjorv.com/assets/unity-serialization-migration-guard/"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "Import Settings Validator & Fix",
+          "applicationCategory": "DeveloperApplication",
+          "url": "https://bjorv.com/assets/import-settings-validator-fix/"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "Third-Party Notices & Credits",
+          "applicationCategory": "DeveloperApplication",
+          "url": "https://bjorv.com/assets/compliance/"
+        }
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://bjorv.com/articles/#list",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "url": "https://bjorv.com/articles/unity-serialization-migration-guard/audit-unity-yaml-coverage-before-removing-old-rename-mappings/",
+          "name": "How to Audit Unity YAML Coverage Before Removing Old Rename Mappings"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "url": "https://bjorv.com/articles/compliance/build-a-repeatable-unity-license-compliance-workflow/",
+          "name": "How to Build a Repeatable Unity License Compliance Workflow"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "url": "https://bjorv.com/articles/build-size-guard/catch-unity-build-size-regressions-before-release/",
+          "name": "How to Catch Unity Build Size Regressions Before Release"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "url": "https://bjorv.com/articles/shader-variant-budget-ci-guard/compare-shader-variant-snapshots-from-editor-log/",
+          "name": "How to Compare Shader Variant Snapshots from Editor.log"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "url": "https://bjorv.com/articles/build-size-guard/compare-unity-build-snapshots-and-find-what-changed/",
+          "name": "How to Compare Unity Build Snapshots and Find What Changed"
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "url": "https://bjorv.com/articles/import-settings-validator-fix/enforce-unity-import-settings-across-a-team/",
+          "name": "How to Enforce Unity Import Settings Across a Team"
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "url": "https://bjorv.com/articles/compliance/export-unity-credits-and-compliance-manifests-before-release/",
+          "name": "How to Export Unity Credits and Compliance Manifests Before Release"
+        },
+        {
+          "@type": "ListItem",
+          "position": 8,
+          "url": "https://bjorv.com/articles/import-settings-validator-fix/fix-import-setting-drift-without-manual-reimports/",
+          "name": "How to Fix Import Setting Drift Without Manual Reimports"
+        },
+        {
+          "@type": "ListItem",
+          "position": 9,
+          "url": "https://bjorv.com/articles/compliance/generate-third-party-notices-for-a-unity-game/",
+          "name": "How to Generate Third-Party Notices for a Unity Game"
+        },
+        {
+          "@type": "ListItem",
+          "position": 10,
+          "url": "https://bjorv.com/articles/unity-serialization-migration-guard/preview-and-validate-unity-reserialization-during-refactors/",
+          "name": "How to Preview and Validate Unity Reserialization During Refactors"
+        },
+        {
+          "@type": "ListItem",
+          "position": 11,
+          "url": "https://bjorv.com/articles/shader-variant-budget-ci-guard/reduce-shader-variant-creep-in-unity/",
+          "name": "How to Reduce Shader Variant Creep in Unity"
+        },
+        {
+          "@type": "ListItem",
+          "position": 12,
+          "url": "https://bjorv.com/articles/unity-serialization-migration-guard/safely-rename-serialized-fields-in-unity/",
+          "name": "How to Safely Rename Serialized Fields in Unity"
+        },
+        {
+          "@type": "ListItem",
+          "position": 13,
+          "url": "https://bjorv.com/articles/build-size-guard/set-build-size-budgets-in-unity-ci/",
+          "name": "How to Set Build Size Budgets in Unity CI"
+        },
+        {
+          "@type": "ListItem",
+          "position": 14,
+          "url": "https://bjorv.com/articles/shader-variant-budget-ci-guard/set-shader-variant-budgets-in-unity-ci/",
+          "name": "How to Set Shader Variant Budgets in Unity CI"
+        },
+        {
+          "@type": "ListItem",
+          "position": 15,
+          "url": "https://bjorv.com/articles/import-settings-validator-fix/validate-texture-audio-and-model-import-settings-in-unity/",
+          "name": "How to Validate Texture, Audio, and Model Import Settings in Unity"
+        }
+      ]
+    }
+  ]
+}</script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Bjorvand Solutions</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="menu-root">
+          <li class="menu-item">
+            <a class="menu-link" href="/tools/" data-nav-trigger="tools" aria-haspopup="menu" aria-expanded="false" aria-controls="menu-tools">Tools <span class="menu-chevron" aria-hidden="true">v</span></a>
+            <div class="dropdown" id="menu-tools" data-nav-menu="tools" role="menu" aria-label="Tools links">
+              <a role="menuitem" href="/tools/">Tools Overview</a>
+
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/assets/build-size-guard/" aria-haspopup="menu">Build Size Guard <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Build Size Guard links">
+                  <a role="menuitem" href="/assets/build-size-guard/">Homepage</a>
+                  <a role="menuitem" href="/assets/build-size-guard/docs/">Docs</a>
+                  <a role="menuitem" href="/support/">Support</a>
+                  <a role="menuitem" href="/assets/build-size-guard/license/">License</a>
+                </div>
+              </div>
+  
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/assets/shader-variant-budget-ci-guard/" aria-haspopup="menu">Shader Variant Budget & CI Guard <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Shader Variant Budget & CI Guard links">
+                  <a role="menuitem" href="/assets/shader-variant-budget-ci-guard/">Homepage</a>
+                  <a role="menuitem" href="/assets/shader-variant-budget-ci-guard/docs/">Docs</a>
+                  <a role="menuitem" href="/support/">Support</a>
+                  <a role="menuitem" href="/assets/shader-variant-budget-ci-guard/license/">License</a>
+                </div>
+              </div>
+  
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/assets/unity-serialization-migration-guard/" aria-haspopup="menu">Unity Serialization Migration Guard <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Unity Serialization Migration Guard links">
+                  <a role="menuitem" href="/assets/unity-serialization-migration-guard/">Homepage</a>
+                  <a role="menuitem" href="/assets/unity-serialization-migration-guard/docs/">Docs</a>
+                  <a role="menuitem" href="/support/">Support</a>
+                  <a role="menuitem" href="/assets/unity-serialization-migration-guard/license/">License</a>
+                </div>
+              </div>
+  
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/assets/import-settings-validator-fix/" aria-haspopup="menu">Import Settings Validator & Fix <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Import Settings Validator & Fix links">
+                  <a role="menuitem" href="/assets/import-settings-validator-fix/">Homepage</a>
+                  <a role="menuitem" href="/assets/import-settings-validator-fix/docs/">Docs</a>
+                  <a role="menuitem" href="/support/">Support</a>
+                  <a role="menuitem" href="/assets/import-settings-validator-fix/license/">License</a>
+                </div>
+              </div>
+  
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/assets/compliance/" aria-haspopup="menu">Third-Party Notices & Credits <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Third-Party Notices & Credits links">
+                  <a role="menuitem" href="/assets/compliance/">Homepage</a>
+                  <a role="menuitem" href="/assets/compliance/docs/">Docs</a>
+                  <a role="menuitem" href="/support/">Support</a>
+                  <a role="menuitem" href="/assets/compliance/license/">License</a>
+                </div>
+              </div>
+  
+            </div>
+          </li>
+          <li class="menu-item">
+            <a class="menu-link" href="/articles/" data-nav-trigger="articles" aria-haspopup="menu" aria-expanded="false" aria-controls="menu-articles">Articles <span class="menu-chevron" aria-hidden="true">v</span></a>
+            <div class="dropdown" id="menu-articles" data-nav-menu="articles" role="menu" aria-label="Articles links">
+              <a role="menuitem" href="/articles/">All Articles</a>
+              <a role="menuitem" href="/articles/?category=build-ci">Build & CI</a>
+              <a role="menuitem" href="/articles/?category=asset-pipeline">Asset Pipeline</a>
+              <a role="menuitem" href="/articles/?category=serialization-refactoring">Serialization & Refactoring</a>
+              <a role="menuitem" href="/articles/?category=compliance-release">Compliance & Release</a>
+<div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/articles/?tool=build-size-guard" aria-haspopup="menu">Build Size Guard <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Build Size Guard article links">
+                  <a role="menuitem" href="/articles/build-size-guard/catch-unity-build-size-regressions-before-release/">How to Catch Unity Build Size Regressions Before Release</a>
+                  <a role="menuitem" href="/articles/build-size-guard/set-build-size-budgets-in-unity-ci/">How to Set Build Size Budgets in Unity CI</a>
+                  <a role="menuitem" href="/articles/build-size-guard/compare-unity-build-snapshots-and-find-what-changed/">How to Compare Unity Build Snapshots and Find What Changed</a>
+                </div>
+              </div>
+<div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/articles/?tool=shader-variant-budget-ci-guard" aria-haspopup="menu">Shader Variant Budget & CI Guard <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Shader Variant Budget & CI Guard article links">
+                  <a role="menuitem" href="/articles/shader-variant-budget-ci-guard/reduce-shader-variant-creep-in-unity/">How to Reduce Shader Variant Creep in Unity</a>
+                  <a role="menuitem" href="/articles/shader-variant-budget-ci-guard/set-shader-variant-budgets-in-unity-ci/">How to Set Shader Variant Budgets in Unity CI</a>
+                  <a role="menuitem" href="/articles/shader-variant-budget-ci-guard/compare-shader-variant-snapshots-from-editor-log/">How to Compare Shader Variant Snapshots from Editor.log</a>
+                </div>
+              </div>
+<div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/articles/?tool=unity-serialization-migration-guard" aria-haspopup="menu">Unity Serialization Migration Guard <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Unity Serialization Migration Guard article links">
+                  <a role="menuitem" href="/articles/unity-serialization-migration-guard/safely-rename-serialized-fields-in-unity/">How to Safely Rename Serialized Fields in Unity</a>
+                  <a role="menuitem" href="/articles/unity-serialization-migration-guard/audit-unity-yaml-coverage-before-removing-old-rename-mappings/">How to Audit Unity YAML Coverage Before Removing Old Rename Mappings</a>
+                  <a role="menuitem" href="/articles/unity-serialization-migration-guard/preview-and-validate-unity-reserialization-during-refactors/">How to Preview and Validate Unity Reserialization During Refactors</a>
+                </div>
+              </div>
+<div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/articles/?tool=import-settings-validator-fix" aria-haspopup="menu">Import Settings Validator & Fix <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Import Settings Validator & Fix article links">
+                  <a role="menuitem" href="/articles/import-settings-validator-fix/enforce-unity-import-settings-across-a-team/">How to Enforce Unity Import Settings Across a Team</a>
+                  <a role="menuitem" href="/articles/import-settings-validator-fix/validate-texture-audio-and-model-import-settings-in-unity/">How to Validate Texture, Audio, and Model Import Settings in Unity</a>
+                  <a role="menuitem" href="/articles/import-settings-validator-fix/fix-import-setting-drift-without-manual-reimports/">How to Fix Import Setting Drift Without Manual Reimports</a>
+                </div>
+              </div>
+<div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/articles/?tool=compliance" aria-haspopup="menu">Third-Party Notices & Credits <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Third-Party Notices & Credits article links">
+                  <a role="menuitem" href="/articles/compliance/generate-third-party-notices-for-a-unity-game/">How to Generate Third-Party Notices for a Unity Game</a>
+                  <a role="menuitem" href="/articles/compliance/build-a-repeatable-unity-license-compliance-workflow/">How to Build a Repeatable Unity License Compliance Workflow</a>
+                  <a role="menuitem" href="/articles/compliance/export-unity-credits-and-compliance-manifests-before-release/">How to Export Unity Credits and Compliance Manifests Before Release</a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="menu-item">
+            <a class="menu-link" href="/games/" data-nav-trigger="games" aria-haspopup="menu" aria-expanded="false" aria-controls="menu-games">Games <span class="menu-chevron" aria-hidden="true">v</span></a>
+            <div class="dropdown" id="menu-games" data-nav-menu="games" role="menu" aria-label="Games links">
+              <a role="menuitem" href="/games/">Games Overview</a>
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/games/orbital-chaos/" aria-haspopup="menu">Orbital Chaos <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Orbital Chaos links">
+                  <a role="menuitem" href="/games/orbital-chaos/">Homepage</a>
+                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.kevinbjorvand.orbitalchaos">Google Play</a>
+                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://apps.apple.com/us/app/orbital-chaos/id6754812237">App Store</a>
+                </div>
+              </div>
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/games/neonsurge-2/" aria-haspopup="menu">NeonSurge 2 <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="NeonSurge 2 links">
+                  <a role="menuitem" href="/games/neonsurge-2/">Homepage</a>
+                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge-2">itch.io</a>
+                </div>
+              </div>
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/games/neonsurge/" aria-haspopup="menu">NeonSurge <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="NeonSurge links">
+                  <a role="menuitem" href="/games/neonsurge/">Homepage</a>
+                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge">itch.io</a>
+                </div>
+              </div>
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/games/#prototype-games-title" aria-haspopup="menu">Prototypes <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Prototype links">
+                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/teleportation-prototype">Teleportation Prototype</a>
+                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/core-ascend">Core Ascend</a>
+                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/dodge-the-blocks">Dodge the Blocks</a>
+                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/lumacore-minigame">LumaCore</a>
+                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/duestien">Duestien: City Scene</a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="menu-item menu-item-smart-indie">
+            <a class="menu-link menu-link-smart-indie" target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a>
+          </li>
+          <li class="menu-item">
+            <a class="menu-link" href="/support/">Contact</a>
+          </li>
+          <li class="menu-item">
+            <a class="menu-link" href="https://www.youtube.com/@devwithkevin" target="_blank" rel="noopener noreferrer" data-external-indicator="off" data-nav-trigger="socials" aria-haspopup="menu" aria-expanded="false" aria-controls="menu-socials">Socials <span class="menu-chevron" aria-hidden="true">v</span></a>
+            <div class="dropdown" id="menu-socials" data-nav-menu="socials" role="menu" aria-label="Social links">
+              <a class="social-nav-link" role="menuitem" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/@devwithkevin"><img class="social-nav-icon" src="/assets/images/icons/youtube.png" alt="" aria-hidden="true" loading="lazy">YouTube</a>
+              <a class="social-nav-link" role="menuitem" target="_blank" rel="noopener noreferrer" href="https://x.com/BjorvandKevin"><img class="social-nav-icon" src="/assets/images/icons/twitter.png" alt="" aria-hidden="true" loading="lazy">X</a>
+              <a class="social-nav-link" role="menuitem" target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/kevinbdev/"><img class="social-nav-icon" src="/assets/images/icons/instagram.png" alt="" aria-hidden="true" loading="lazy">Instagram</a>
+              <a class="social-nav-link" role="menuitem" target="_blank" rel="noopener noreferrer" href="https://www.tiktok.com/@kevinbdev"><img class="social-nav-icon" src="/assets/images/icons/tiktok.png" alt="" aria-hidden="true" loading="lazy">TikTok</a>
+              <a class="social-nav-link" role="menuitem" target="_blank" rel="noopener noreferrer" href="https://skool.com/@kevin-bjorvand-9175"><img class="social-nav-icon social-nav-icon-skool" src="/Skool%20logo.png" alt="" aria-hidden="true" loading="lazy">Skool</a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+
+      <button class="mobile-nav-toggle" type="button" data-mobile-nav-toggle aria-controls="mobileNavPanel" aria-expanded="false">Menu</button>
+    </div>
+
+    <div class="mobile-nav-panel" id="mobileNavPanel" data-mobile-nav-panel hidden>
+      <div class="mobile-nav-shell container">
+        <details class="mobile-nav-group">
+          <summary>Tools</summary>
+          <ul>
+            <li><a href="/tools/">Tools Overview</a></li>
+
+            <li><a href="/assets/build-size-guard/">Build Size Guard Homepage</a></li>
+            <li><a href="/assets/build-size-guard/docs/">Build Size Guard Docs</a></li>
+            <li><a href="/assets/build-size-guard/license/">Build Size Guard License</a></li>
+  
+            <li><a href="/assets/shader-variant-budget-ci-guard/">Shader Variant Budget & CI Guard Homepage</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/docs/">Shader Variant Budget & CI Guard Docs</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/license/">Shader Variant Budget & CI Guard License</a></li>
+  
+            <li><a href="/assets/unity-serialization-migration-guard/">Unity Serialization Migration Guard Homepage</a></li>
+            <li><a href="/assets/unity-serialization-migration-guard/docs/">Unity Serialization Migration Guard Docs</a></li>
+            <li><a href="/assets/unity-serialization-migration-guard/license/">Unity Serialization Migration Guard License</a></li>
+  
+            <li><a href="/assets/import-settings-validator-fix/">Import Settings Validator & Fix Homepage</a></li>
+            <li><a href="/assets/import-settings-validator-fix/docs/">Import Settings Validator & Fix Docs</a></li>
+            <li><a href="/assets/import-settings-validator-fix/license/">Import Settings Validator & Fix License</a></li>
+  
+            <li><a href="/assets/compliance/">Third-Party Notices & Credits Homepage</a></li>
+            <li><a href="/assets/compliance/docs/">Third-Party Notices & Credits Docs</a></li>
+            <li><a href="/assets/compliance/license/">Third-Party Notices & Credits License</a></li>
+  
+            <li><a href="/support/">Support Form</a></li>
+          </ul>
+        </details>
+        <details class="mobile-nav-group">
+          <summary>Articles</summary>
+          <ul>
+            <li><a href="/articles/">All Articles</a></li>
+            <li><a href="/articles/?category=build-ci">Build & CI</a></li>
+            <li><a href="/articles/?category=asset-pipeline">Asset Pipeline</a></li>
+            <li><a href="/articles/?category=serialization-refactoring">Serialization & Refactoring</a></li>
+            <li><a href="/articles/?category=compliance-release">Compliance & Release</a></li>
+            <li class="mobile-nav-list-label">Build Size Guard</li>
+            <li><a href="/articles/build-size-guard/catch-unity-build-size-regressions-before-release/">How to Catch Unity Build Size Regressions Before Release</a></li>
+            <li><a href="/articles/build-size-guard/set-build-size-budgets-in-unity-ci/">How to Set Build Size Budgets in Unity CI</a></li>
+            <li><a href="/articles/build-size-guard/compare-unity-build-snapshots-and-find-what-changed/">How to Compare Unity Build Snapshots and Find What Changed</a></li>
+            <li class="mobile-nav-list-label">Shader Variant Budget & CI Guard</li>
+            <li><a href="/articles/shader-variant-budget-ci-guard/reduce-shader-variant-creep-in-unity/">How to Reduce Shader Variant Creep in Unity</a></li>
+            <li><a href="/articles/shader-variant-budget-ci-guard/set-shader-variant-budgets-in-unity-ci/">How to Set Shader Variant Budgets in Unity CI</a></li>
+            <li><a href="/articles/shader-variant-budget-ci-guard/compare-shader-variant-snapshots-from-editor-log/">How to Compare Shader Variant Snapshots from Editor.log</a></li>
+            <li class="mobile-nav-list-label">Unity Serialization Migration Guard</li>
+            <li><a href="/articles/unity-serialization-migration-guard/safely-rename-serialized-fields-in-unity/">How to Safely Rename Serialized Fields in Unity</a></li>
+            <li><a href="/articles/unity-serialization-migration-guard/audit-unity-yaml-coverage-before-removing-old-rename-mappings/">How to Audit Unity YAML Coverage Before Removing Old Rename Mappings</a></li>
+            <li><a href="/articles/unity-serialization-migration-guard/preview-and-validate-unity-reserialization-during-refactors/">How to Preview and Validate Unity Reserialization During Refactors</a></li>
+            <li class="mobile-nav-list-label">Import Settings Validator & Fix</li>
+            <li><a href="/articles/import-settings-validator-fix/enforce-unity-import-settings-across-a-team/">How to Enforce Unity Import Settings Across a Team</a></li>
+            <li><a href="/articles/import-settings-validator-fix/validate-texture-audio-and-model-import-settings-in-unity/">How to Validate Texture, Audio, and Model Import Settings in Unity</a></li>
+            <li><a href="/articles/import-settings-validator-fix/fix-import-setting-drift-without-manual-reimports/">How to Fix Import Setting Drift Without Manual Reimports</a></li>
+            <li class="mobile-nav-list-label">Third-Party Notices & Credits</li>
+            <li><a href="/articles/compliance/generate-third-party-notices-for-a-unity-game/">How to Generate Third-Party Notices for a Unity Game</a></li>
+            <li><a href="/articles/compliance/build-a-repeatable-unity-license-compliance-workflow/">How to Build a Repeatable Unity License Compliance Workflow</a></li>
+            <li><a href="/articles/compliance/export-unity-credits-and-compliance-manifests-before-release/">How to Export Unity Credits and Compliance Manifests Before Release</a></li>
+          </ul>
+        </details>
+        <details class="mobile-nav-group">
+          <summary>Games</summary>
+          <ul>
+            <li><a href="/games/">Games Overview</a></li>
+            <li><a href="/games/orbital-chaos/">Orbital Chaos Homepage</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.kevinbjorvand.orbitalchaos">Orbital Chaos Google Play</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://apps.apple.com/us/app/orbital-chaos/id6754812237">Orbital Chaos App Store</a></li>
+            <li><a href="/games/neonsurge-2/">NeonSurge 2 Homepage</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge-2">NeonSurge 2 itch.io</a></li>
+            <li><a href="/games/neonsurge/">NeonSurge Homepage</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge">NeonSurge itch.io</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/teleportation-prototype">Teleportation Prototype</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/core-ascend">Core Ascend</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/dodge-the-blocks">Dodge the Blocks</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/lumacore-minigame">LumaCore</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/duestien">Duestien: City Scene</a></li>
+          </ul>
+        </details>
+        <div class="mobile-nav-group mobile-nav-single-link">
+          <a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a>
+        </div>
+        <div class="mobile-nav-group mobile-nav-single-link">
+          <a href="/support/">Contact</a>
+        </div>
+        <details class="mobile-nav-group">
+          <summary>Socials</summary>
+          <ul>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/@devwithkevin">YouTube</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://x.com/BjorvandKevin">X</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/kevinbdev/">Instagram</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://www.tiktok.com/@kevinbdev">TikTok</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://skool.com/@kevin-bjorvand-9175">Skool</a></li>
+          </ul>
+        </details>
+      </div>
+    </div>
+  </header>
+  <main class="site-main">
+    <div class="container articles-page">
+      <section class="articles-hero">
+        <span class="badge">Articles</span>
+        <h1>Articles for Unity tool workflows that need fewer surprises.</h1>
+        <p>The hub stays static and indexable, while the filters help people narrow the list by tool, category, and sort order after the page loads. Every article is tied to one tool and one concrete implementation problem.</p>
+        <div class="articles-summary-strip" aria-label="Article summary">
+          <article>
+            <strong>15 articles</strong>
+            <span>Three articles per tool across five tool workflows.</span>
+          </article>
+          <article>
+            <strong>5 tools</strong>
+            <span>Each guide links back to the matching homepage, docs, and support path.</span>
+          </article>
+          <article>
+            <strong>4 categories</strong>
+            <span>Build &amp; CI, Asset Pipeline, Serialization &amp; Refactoring, and Compliance &amp; Release.</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="articles-toolbar" aria-labelledby="articles-toolbar-title">
+        <div class="articles-toolbar-head">
+          <div>
+            <h2 id="articles-toolbar-title">Browse and sort the full article library</h2>
+            <p>All 15 article links are in the HTML by default, then progressively enhanced with sort and filter controls.</p>
+          </div>
+          <div class="sort-field">
+            <label for="article-sort">Sort</label>
+            <select id="article-sort" data-article-sort>
+              <option value="newest">Newest</option>
+              <option value="oldest">Oldest</option>
+              <option value="title">Title</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="filter-group" aria-labelledby="tool-filters-title">
+          <h2 id="tool-filters-title">Tools</h2>
+          <div class="filter-pills">
+            <button class="filter-pill is-active" type="button" data-tool-filter data-filter-value="all" aria-pressed="true">All tools</button>
+              <button class="filter-pill" type="button" data-tool-filter data-filter-value="build-size-guard" aria-pressed="false">Build Size Guard</button>
+              <button class="filter-pill" type="button" data-tool-filter data-filter-value="shader-variant-budget-ci-guard" aria-pressed="false">Shader Variant Budget &amp; CI Guard</button>
+              <button class="filter-pill" type="button" data-tool-filter data-filter-value="unity-serialization-migration-guard" aria-pressed="false">Unity Serialization Migration Guard</button>
+              <button class="filter-pill" type="button" data-tool-filter data-filter-value="import-settings-validator-fix" aria-pressed="false">Import Settings Validator &amp; Fix</button>
+              <button class="filter-pill" type="button" data-tool-filter data-filter-value="compliance" aria-pressed="false">Third-Party Notices &amp; Credits</button>
+          </div>
+        </div>
+
+        <div class="filter-group" aria-labelledby="category-filters-title">
+          <h2 id="category-filters-title">Categories</h2>
+          <div class="filter-pills">
+            <button class="filter-pill is-active" type="button" data-category-filter data-filter-value="all" aria-pressed="true">All categories</button>
+              <button class="filter-pill" type="button" data-category-filter data-filter-value="build-ci" aria-pressed="false">Build &amp; CI</button>
+              <button class="filter-pill" type="button" data-category-filter data-filter-value="asset-pipeline" aria-pressed="false">Asset Pipeline</button>
+              <button class="filter-pill" type="button" data-category-filter data-filter-value="serialization-refactoring" aria-pressed="false">Serialization &amp; Refactoring</button>
+              <button class="filter-pill" type="button" data-category-filter data-filter-value="compliance-release" aria-pressed="false">Compliance &amp; Release</button>
+          </div>
+        </div>
+
+        <p class="articles-status" data-article-status>Showing 15 articles</p>
+      </section>
+
+      <section aria-labelledby="articles-grid-title">
+        <div class="section-head">
+          <h2 id="articles-grid-title">Article library</h2>
+          <p class="articles-toolbar-note">Use the sort and filters above, or open any article directly from the cards below.</p>
+        </div>
+        <div class="articles-grid" data-articles-grid>
+<article class="card article-card" data-article-card data-tool="unity-serialization-migration-guard" data-category="serialization-refactoring" data-date="2026-03-11" data-title="how to audit unity yaml coverage before removing old rename mappings">
+            <figure>
+              <img src="/assets/images/UnitySerializationMigrationGuard/marketing/Locate%20every%20affected%20asset.jpg" alt="How to Audit Unity YAML Coverage Before Removing Old Rename Mappings" loading="lazy">
+            </figure>
+            <div class="article-card-body">
+              <div class="article-card-meta">
+                <span class="article-tag">Serialization &amp; Refactoring</span>
+                <span class="article-tag">8 min read</span>
+              </div>
+              <div class="article-card-tags">
+                <span class="article-tag">Unity Serialization Migration Guard</span>
+                <span class="article-tag">March 11, 2026</span>
+              </div>
+              <h2><a href="/articles/unity-serialization-migration-guard/audit-unity-yaml-coverage-before-removing-old-rename-mappings/">How to Audit Unity YAML Coverage Before Removing Old Rename Mappings</a></h2>
+              <p>Use coverage scans to prove whether old serialized field names still exist before removing migration safety attributes.</p>
+              <div class="card-actions">
+                <a class="button button-primary" href="/articles/unity-serialization-migration-guard/audit-unity-yaml-coverage-before-removing-old-rename-mappings/">Read article</a>
+                <a class="button button-secondary" href="/assets/unity-serialization-migration-guard/">View tool</a>
+              </div>
+            </div>
+          </article>
+<article class="card article-card" data-article-card data-tool="compliance" data-category="compliance-release" data-date="2026-03-11" data-title="how to build a repeatable unity license compliance workflow">
+            <figure>
+              <img src="/assets/images/CompliancePack/marketing/Deterministic%20output.jpg" alt="How to Build a Repeatable Unity License Compliance Workflow" loading="lazy">
+            </figure>
+            <div class="article-card-body">
+              <div class="article-card-meta">
+                <span class="article-tag">Compliance &amp; Release</span>
+                <span class="article-tag">8 min read</span>
+              </div>
+              <div class="article-card-tags">
+                <span class="article-tag">Third-Party Notices &amp; Credits</span>
+                <span class="article-tag">March 11, 2026</span>
+              </div>
+              <h2><a href="/articles/compliance/build-a-repeatable-unity-license-compliance-workflow/">How to Build a Repeatable Unity License Compliance Workflow</a></h2>
+              <p>Turn Unity license compliance into a deterministic scan-review-export process before release pressure takes over.</p>
+              <div class="card-actions">
+                <a class="button button-primary" href="/articles/compliance/build-a-repeatable-unity-license-compliance-workflow/">Read article</a>
+                <a class="button button-secondary" href="/assets/compliance/">View tool</a>
+              </div>
+            </div>
+          </article>
+<article class="card article-card" data-article-card data-tool="build-size-guard" data-category="build-ci" data-date="2026-03-11" data-title="how to catch unity build size regressions before release">
+            <figure>
+              <img src="/assets/images/BuildSizeGuard/BuildSizeGuardMarketing/Build%20size%20guard%20cover%20image.jpg" alt="How to Catch Unity Build Size Regressions Before Release" loading="lazy">
+            </figure>
+            <div class="article-card-body">
+              <div class="article-card-meta">
+                <span class="article-tag">Build &amp; CI</span>
+                <span class="article-tag">8 min read</span>
+              </div>
+              <div class="article-card-tags">
+                <span class="article-tag">Build Size Guard</span>
+                <span class="article-tag">March 11, 2026</span>
+              </div>
+              <h2><a href="/articles/build-size-guard/catch-unity-build-size-regressions-before-release/">How to Catch Unity Build Size Regressions Before Release</a></h2>
+              <p>Use build snapshots, diffs, and grouped totals to make Unity build size regressions visible before release day.</p>
+              <div class="card-actions">
+                <a class="button button-primary" href="/articles/build-size-guard/catch-unity-build-size-regressions-before-release/">Read article</a>
+                <a class="button button-secondary" href="/assets/build-size-guard/">View tool</a>
+              </div>
+            </div>
+          </article>
+<article class="card article-card" data-article-card data-tool="shader-variant-budget-ci-guard" data-category="build-ci" data-date="2026-03-11" data-title="how to compare shader variant snapshots from editor.log">
+            <figure>
+              <img src="/assets/images/ShaderVariantBudgetCIGuard/marketing/See%20what%20changed%20fast.jpg" alt="How to Compare Shader Variant Snapshots from Editor.log" loading="lazy">
+            </figure>
+            <div class="article-card-body">
+              <div class="article-card-meta">
+                <span class="article-tag">Build &amp; CI</span>
+                <span class="article-tag">7 min read</span>
+              </div>
+              <div class="article-card-tags">
+                <span class="article-tag">Shader Variant Budget &amp; CI Guard</span>
+                <span class="article-tag">March 11, 2026</span>
+              </div>
+              <h2><a href="/articles/shader-variant-budget-ci-guard/compare-shader-variant-snapshots-from-editor-log/">How to Compare Shader Variant Snapshots from Editor.log</a></h2>
+              <p>Capture and compare Editor.log variant snapshots to see what changed between builds and why it matters.</p>
+              <div class="card-actions">
+                <a class="button button-primary" href="/articles/shader-variant-budget-ci-guard/compare-shader-variant-snapshots-from-editor-log/">Read article</a>
+                <a class="button button-secondary" href="/assets/shader-variant-budget-ci-guard/">View tool</a>
+              </div>
+            </div>
+          </article>
+<article class="card article-card" data-article-card data-tool="build-size-guard" data-category="build-ci" data-date="2026-03-11" data-title="how to compare unity build snapshots and find what changed">
+            <figure>
+              <img src="/assets/images/BuildSizeGuard/BuildSizeGuardMarketing/Compare%20any%20two%20builds%20in%20seconds.jpg" alt="How to Compare Unity Build Snapshots and Find What Changed" loading="lazy">
+            </figure>
+            <div class="article-card-body">
+              <div class="article-card-meta">
+                <span class="article-tag">Build &amp; CI</span>
+                <span class="article-tag">7 min read</span>
+              </div>
+              <div class="article-card-tags">
+                <span class="article-tag">Build Size Guard</span>
+                <span class="article-tag">March 11, 2026</span>
+              </div>
+              <h2><a href="/articles/build-size-guard/compare-unity-build-snapshots-and-find-what-changed/">How to Compare Unity Build Snapshots and Find What Changed</a></h2>
+              <p>Break down build growth with baseline comparisons, grouped totals, and contributor-focused diffs inside Unity.</p>
+              <div class="card-actions">
+                <a class="button button-primary" href="/articles/build-size-guard/compare-unity-build-snapshots-and-find-what-changed/">Read article</a>
+                <a class="button button-secondary" href="/assets/build-size-guard/">View tool</a>
+              </div>
+            </div>
+          </article>
+<article class="card article-card" data-article-card data-tool="import-settings-validator-fix" data-category="asset-pipeline" data-date="2026-03-11" data-title="how to enforce unity import settings across a team">
+            <figure>
+              <img src="/assets/images/ImportSettingsValidatorFix/marketing/Cover%20image.jpg" alt="How to Enforce Unity Import Settings Across a Team" loading="lazy">
+            </figure>
+            <div class="article-card-body">
+              <div class="article-card-meta">
+                <span class="article-tag">Asset Pipeline</span>
+                <span class="article-tag">7 min read</span>
+              </div>
+              <div class="article-card-tags">
+                <span class="article-tag">Import Settings Validator &amp; Fix</span>
+                <span class="article-tag">March 11, 2026</span>
+              </div>
+              <h2><a href="/articles/import-settings-validator-fix/enforce-unity-import-settings-across-a-team/">How to Enforce Unity Import Settings Across a Team</a></h2>
+              <p>Use deterministic rules to keep Unity import settings consistent across contributors, machines, and asset drops.</p>
+              <div class="card-actions">
+                <a class="button button-primary" href="/articles/import-settings-validator-fix/enforce-unity-import-settings-across-a-team/">Read article</a>
+                <a class="button button-secondary" href="/assets/import-settings-validator-fix/">View tool</a>
+              </div>
+            </div>
+          </article>
+<article class="card article-card" data-article-card data-tool="compliance" data-category="compliance-release" data-date="2026-03-11" data-title="how to export unity credits and compliance manifests before release">
+            <figure>
+              <img src="/assets/images/CompliancePack/marketing/Evidence%20based.jpg" alt="How to Export Unity Credits and Compliance Manifests Before Release" loading="lazy">
+            </figure>
+            <div class="article-card-body">
+              <div class="article-card-meta">
+                <span class="article-tag">Compliance &amp; Release</span>
+                <span class="article-tag">7 min read</span>
+              </div>
+              <div class="article-card-tags">
+                <span class="article-tag">Third-Party Notices &amp; Credits</span>
+                <span class="article-tag">March 11, 2026</span>
+              </div>
+              <h2><a href="/articles/compliance/export-unity-credits-and-compliance-manifests-before-release/">How to Export Unity Credits and Compliance Manifests Before Release</a></h2>
+              <p>Export credits, notices, and manifest files with stable structure so legal review and release checks stay predictable.</p>
+              <div class="card-actions">
+                <a class="button button-primary" href="/articles/compliance/export-unity-credits-and-compliance-manifests-before-release/">Read article</a>
+                <a class="button button-secondary" href="/assets/compliance/">View tool</a>
+              </div>
+            </div>
+          </article>
+<article class="card article-card" data-article-card data-tool="import-settings-validator-fix" data-category="asset-pipeline" data-date="2026-03-11" data-title="how to fix import setting drift without manual reimports">
+            <figure>
+              <img src="/assets/images/ImportSettingsValidatorFix/marketing/Rule%20based%20import%20standards.jpg" alt="How to Fix Import Setting Drift Without Manual Reimports" loading="lazy">
+            </figure>
+            <div class="article-card-body">
+              <div class="article-card-meta">
+                <span class="article-tag">Asset Pipeline</span>
+                <span class="article-tag">7 min read</span>
+              </div>
+              <div class="article-card-tags">
+                <span class="article-tag">Import Settings Validator &amp; Fix</span>
+                <span class="article-tag">March 11, 2026</span>
+              </div>
+              <h2><a href="/articles/import-settings-validator-fix/fix-import-setting-drift-without-manual-reimports/">How to Fix Import Setting Drift Without Manual Reimports</a></h2>
+              <p>Reduce repetitive importer cleanup work by using rule-based fixes instead of manual asset-by-asset reimports.</p>
+              <div class="card-actions">
+                <a class="button button-primary" href="/articles/import-settings-validator-fix/fix-import-setting-drift-without-manual-reimports/">Read article</a>
+                <a class="button button-secondary" href="/assets/import-settings-validator-fix/">View tool</a>
+              </div>
+            </div>
+          </article>
+<article class="card article-card" data-article-card data-tool="compliance" data-category="compliance-release" data-date="2026-03-11" data-title="how to generate third-party notices for a unity game">
+            <figure>
+              <img src="/assets/images/CompliancePack/marketing/Overview.jpg" alt="How to Generate Third-Party Notices for a Unity Game" loading="lazy">
+            </figure>
+            <div class="article-card-body">
+              <div class="article-card-meta">
+                <span class="article-tag">Compliance &amp; Release</span>
+                <span class="article-tag">8 min read</span>
+              </div>
+              <div class="article-card-tags">
+                <span class="article-tag">Third-Party Notices &amp; Credits</span>
+                <span class="article-tag">March 11, 2026</span>
+              </div>
+              <h2><a href="/articles/compliance/generate-third-party-notices-for-a-unity-game/">How to Generate Third-Party Notices for a Unity Game</a></h2>
+              <p>Build repeatable third-party notice output for Unity projects with conservative license resolution and export artifacts.</p>
+              <div class="card-actions">
+                <a class="button button-primary" href="/articles/compliance/generate-third-party-notices-for-a-unity-game/">Read article</a>
+                <a class="button button-secondary" href="/assets/compliance/">View tool</a>
+              </div>
+            </div>
+          </article>
+<article class="card article-card" data-article-card data-tool="unity-serialization-migration-guard" data-category="serialization-refactoring" data-date="2026-03-11" data-title="how to preview and validate unity reserialization during refactors">
+            <figure>
+              <img src="/assets/images/UnitySerializationMigrationGuard/marketing/Preview%20migrations%20safely.jpg" alt="How to Preview and Validate Unity Reserialization During Refactors" loading="lazy">
+            </figure>
+            <div class="article-card-body">
+              <div class="article-card-meta">
+                <span class="article-tag">Serialization &amp; Refactoring</span>
+                <span class="article-tag">8 min read</span>
+              </div>
+              <div class="article-card-tags">
+                <span class="article-tag">Unity Serialization Migration Guard</span>
+                <span class="article-tag">March 11, 2026</span>
+              </div>
+              <h2><a href="/articles/unity-serialization-migration-guard/preview-and-validate-unity-reserialization-during-refactors/">How to Preview and Validate Unity Reserialization During Refactors</a></h2>
+              <p>Build previews, scope runs carefully, and keep backups when you need to reserialize Unity assets during refactors.</p>
+              <div class="card-actions">
+                <a class="button button-primary" href="/articles/unity-serialization-migration-guard/preview-and-validate-unity-reserialization-during-refactors/">Read article</a>
+                <a class="button button-secondary" href="/assets/unity-serialization-migration-guard/">View tool</a>
+              </div>
+            </div>
+          </article>
+<article class="card article-card" data-article-card data-tool="shader-variant-budget-ci-guard" data-category="build-ci" data-date="2026-03-11" data-title="how to reduce shader variant creep in unity">
+            <figure>
+              <img src="/assets/images/ShaderVariantBudgetCIGuard/marketing/Cover%20image.jpg" alt="How to Reduce Shader Variant Creep in Unity" loading="lazy">
+            </figure>
+            <div class="article-card-body">
+              <div class="article-card-meta">
+                <span class="article-tag">Build &amp; CI</span>
+                <span class="article-tag">8 min read</span>
+              </div>
+              <div class="article-card-tags">
+                <span class="article-tag">Shader Variant Budget &amp; CI Guard</span>
+                <span class="article-tag">March 11, 2026</span>
+              </div>
+              <h2><a href="/articles/shader-variant-budget-ci-guard/reduce-shader-variant-creep-in-unity/">How to Reduce Shader Variant Creep in Unity</a></h2>
+              <p>Use snapshot-based visibility to catch shader variant growth before it turns into a release problem.</p>
+              <div class="card-actions">
+                <a class="button button-primary" href="/articles/shader-variant-budget-ci-guard/reduce-shader-variant-creep-in-unity/">Read article</a>
+                <a class="button button-secondary" href="/assets/shader-variant-budget-ci-guard/">View tool</a>
+              </div>
+            </div>
+          </article>
+<article class="card article-card" data-article-card data-tool="unity-serialization-migration-guard" data-category="serialization-refactoring" data-date="2026-03-11" data-title="how to safely rename serialized fields in unity">
+            <figure>
+              <img src="/assets/images/UnitySerializationMigrationGuard/marketing/Cover%20image.jpg" alt="How to Safely Rename Serialized Fields in Unity" loading="lazy">
+            </figure>
+            <div class="article-card-body">
+              <div class="article-card-meta">
+                <span class="article-tag">Serialization &amp; Refactoring</span>
+                <span class="article-tag">8 min read</span>
+              </div>
+              <div class="article-card-tags">
+                <span class="article-tag">Unity Serialization Migration Guard</span>
+                <span class="article-tag">March 11, 2026</span>
+              </div>
+              <h2><a href="/articles/unity-serialization-migration-guard/safely-rename-serialized-fields-in-unity/">How to Safely Rename Serialized Fields in Unity</a></h2>
+              <p>Reduce serialization risk during Unity refactors by validating rename mappings before data disappears.</p>
+              <div class="card-actions">
+                <a class="button button-primary" href="/articles/unity-serialization-migration-guard/safely-rename-serialized-fields-in-unity/">Read article</a>
+                <a class="button button-secondary" href="/assets/unity-serialization-migration-guard/">View tool</a>
+              </div>
+            </div>
+          </article>
+<article class="card article-card" data-article-card data-tool="build-size-guard" data-category="build-ci" data-date="2026-03-11" data-title="how to set build size budgets in unity ci">
+            <figure>
+              <img src="/assets/images/BuildSizeGuard/BuildSizeGuardMarketing/Set%20budgets%20and%20regression%20rules.jpg" alt="How to Set Build Size Budgets in Unity CI" loading="lazy">
+            </figure>
+            <div class="article-card-body">
+              <div class="article-card-meta">
+                <span class="article-tag">Build &amp; CI</span>
+                <span class="article-tag">8 min read</span>
+              </div>
+              <div class="article-card-tags">
+                <span class="article-tag">Build Size Guard</span>
+                <span class="article-tag">March 11, 2026</span>
+              </div>
+              <h2><a href="/articles/build-size-guard/set-build-size-budgets-in-unity-ci/">How to Set Build Size Budgets in Unity CI</a></h2>
+              <p>Set measurable Unity build size budgets and enforce them in CI with deterministic reports and exit codes.</p>
+              <div class="card-actions">
+                <a class="button button-primary" href="/articles/build-size-guard/set-build-size-budgets-in-unity-ci/">Read article</a>
+                <a class="button button-secondary" href="/assets/build-size-guard/">View tool</a>
+              </div>
+            </div>
+          </article>
+<article class="card article-card" data-article-card data-tool="shader-variant-budget-ci-guard" data-category="build-ci" data-date="2026-03-11" data-title="how to set shader variant budgets in unity ci">
+            <figure>
+              <img src="/assets/images/ShaderVariantBudgetCIGuard/marketing/Enforce%20hard%20budgets.jpg" alt="How to Set Shader Variant Budgets in Unity CI" loading="lazy">
+            </figure>
+            <div class="article-card-body">
+              <div class="article-card-meta">
+                <span class="article-tag">Build &amp; CI</span>
+                <span class="article-tag">8 min read</span>
+              </div>
+              <div class="article-card-tags">
+                <span class="article-tag">Shader Variant Budget &amp; CI Guard</span>
+                <span class="article-tag">March 11, 2026</span>
+              </div>
+              <h2><a href="/articles/shader-variant-budget-ci-guard/set-shader-variant-budgets-in-unity-ci/">How to Set Shader Variant Budgets in Unity CI</a></h2>
+              <p>Turn shader variant growth into a measurable CI gate with deterministic snapshots, ignore rules, and budget policies.</p>
+              <div class="card-actions">
+                <a class="button button-primary" href="/articles/shader-variant-budget-ci-guard/set-shader-variant-budgets-in-unity-ci/">Read article</a>
+                <a class="button button-secondary" href="/assets/shader-variant-budget-ci-guard/">View tool</a>
+              </div>
+            </div>
+          </article>
+<article class="card article-card" data-article-card data-tool="import-settings-validator-fix" data-category="asset-pipeline" data-date="2026-03-11" data-title="how to validate texture, audio, and model import settings in unity">
+            <figure>
+              <img src="/assets/images/ImportSettingsValidatorFix/marketing/Validate%20the%20project.jpg" alt="How to Validate Texture, Audio, and Model Import Settings in Unity" loading="lazy">
+            </figure>
+            <div class="article-card-body">
+              <div class="article-card-meta">
+                <span class="article-tag">Asset Pipeline</span>
+                <span class="article-tag">8 min read</span>
+              </div>
+              <div class="article-card-tags">
+                <span class="article-tag">Import Settings Validator &amp; Fix</span>
+                <span class="article-tag">March 11, 2026</span>
+              </div>
+              <h2><a href="/articles/import-settings-validator-fix/validate-texture-audio-and-model-import-settings-in-unity/">How to Validate Texture, Audio, and Model Import Settings in Unity</a></h2>
+              <p>Scan a Unity project for non-compliant import settings and surface the exact rule and diff for each asset.</p>
+              <div class="card-actions">
+                <a class="button button-primary" href="/articles/import-settings-validator-fix/validate-texture-audio-and-model-import-settings-in-unity/">Read article</a>
+                <a class="button button-secondary" href="/assets/import-settings-validator-fix/">View tool</a>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="articles-empty" data-article-empty>
+          <h2>No articles match the current filters.</h2>
+          <p>Clear one of the filters or switch the sort order to reopen the full library.</p>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-shell">
+      <div class="footer-columns">
+        <section>
+          <h2>Explore</h2>
+          <ul class="link-list">
+            <li><a href="/">Home</a></li>
+            <li><a href="/tools/">Tools</a></li>
+            <li><a href="/articles/">Articles</a></li>
+            <li><a href="/games/">Games</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li>
+            <li><a href="/support/">Support</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Tools</h2>
+          <ul class="link-list">
+            <li><a href="/assets/build-size-guard/">Build Size Guard</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/">Shader Variant Budget & CI Guard</a></li>
+            <li><a href="/assets/unity-serialization-migration-guard/">Unity Serialization Migration Guard</a></li>
+            <li><a href="/assets/import-settings-validator-fix/">Import Settings Validator & Fix</a></li>
+            <li><a href="/assets/compliance/">Third-Party Notices & Credits</a></li>
+            <li><a href="/tools/">Tools Directory</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Articles</h2>
+          <ul class="link-list">
+            <li><a href="/articles/">All Articles</a></li>
+            <li><a href="/articles/?category=build-ci">Build & CI</a></li>
+            <li><a href="/articles/?category=asset-pipeline">Asset Pipeline</a></li>
+            <li><a href="/articles/?category=serialization-refactoring">Serialization & Refactoring</a></li>
+            <li><a href="/articles/?category=compliance-release">Compliance & Release</a></li>
+            <li><a href="/articles/?sort=title">Sort A-Z</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Games</h2>
+          <ul class="link-list">
+            <li><a href="/games/">Games Directory</a></li>
+            <li><a href="/games/orbital-chaos/">Orbital Chaos Homepage</a></li>
+            <li><a href="/games/neonsurge-2/">NeonSurge 2 Homepage</a></li>
+            <li><a href="/games/neonsurge/">NeonSurge Homepage</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/games/">Smart Indie Games</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Support</h2>
+          <ul class="link-list">
+            <li><a href="/support/">Support Form</a></li>
+            <li><a href="/support/#docs-shortcuts-title">Documentation</a></li>
+            <li><a href="/support/#faq">Support FAQ</a></li>
+          </ul>
+        </section>
+        <section class="footer-email-updates" aria-label="Email subscription">
+          <h2>Email Updates</h2>
+          <div class="ml-embedded" data-form="bk4D7K"></div>
+        </section>
+      </div>
+      <div class="footer-legal">
+        <span>&copy; Bjorvand Solutions <span data-current-year>2026</span> &bull; Company registration number: 836 135 652 (Norway)</span>
+      </div>
+    </div>
+  </footer>
+  <script defer src="/assets/js/site/nav.js"></script>
+  <script defer src="/assets/js/site/articles.js"></script>
+  <script defer src="/assets/js/site/link-decorators.js"></script>
+</body>
+</html>

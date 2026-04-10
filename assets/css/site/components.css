@@ -238,6 +238,10 @@
   z-index: 150;
 }
 
+.site-header #menu-articles {
+  width: min(92vw, 420px);
+}
+
 .menu-item.is-open > .dropdown {
   display: grid;
   gap: 0.32rem;
@@ -383,6 +387,15 @@
   padding: 0 0.6rem 0.72rem;
   display: grid;
   gap: 0.42rem;
+}
+
+.mobile-nav-list-label {
+  padding: 0.45rem 0.25rem 0.1rem;
+  color: var(--color-text);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .mobile-nav-group a {

@@ -12,6 +12,17 @@
     <image:image><image:loc>https://bjorv.com/Skool%20logo.png</image:loc></image:image>
   </url>
   <url>
+    <loc>https://bjorv.com/youtube-thumbnail-preview/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/apple-touch-icon.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-16x16.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-32x32.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/images/icons/youtube.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/Mockup%20thmbnails/Biking%20The%20Philippines%20-%20Finale.avif</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/Mockup%20thmbnails/POV%20-%20You%20finally%20started%20posting%20to%20YouTube.avif</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/Mockup%20thmbnails/Spring%20-%20Blender%20Open%20Movie.avif</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/Mockup%20thmbnails/The%20Spongebob%20Movie%20-%20Search%20for%20Squarepants%20-%20Animation%20Breakdown.avif</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://bjorv.com/assets/build-size-guard/</loc>
     <image:image><image:loc>https://bjorv.com/assets/build-size-guard/favicon/android-chrome-192x192.png</image:loc></image:image>
     <image:image><image:loc>https://bjorv.com/assets/build-size-guard/favicon/apple-touch-icon.png</image:loc></image:image>
@@ -285,5 +296,84 @@
     <image:image><image:loc>https://bjorv.com/assets/images/icons/twitter.png</image:loc></image:image>
     <image:image><image:loc>https://bjorv.com/assets/images/icons/youtube.png</image:loc></image:image>
     <image:image><image:loc>https://bjorv.com/Skool%20logo.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://bjorv.com/articles/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://bjorv.com/articles/build-size-guard/catch-unity-build-size-regressions-before-release/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/images/BuildSizeGuard/BuildSizeGuardMarketing/Build%20size%20guard%20cover%20image.jpg</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://bjorv.com/articles/build-size-guard/set-build-size-budgets-in-unity-ci/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/images/BuildSizeGuard/BuildSizeGuardMarketing/Set%20budgets%20and%20regression%20rules.jpg</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://bjorv.com/articles/build-size-guard/compare-unity-build-snapshots-and-find-what-changed/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/images/BuildSizeGuard/BuildSizeGuardMarketing/Compare%20any%20two%20builds%20in%20seconds.jpg</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://bjorv.com/articles/shader-variant-budget-ci-guard/reduce-shader-variant-creep-in-unity/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/images/ShaderVariantBudgetCIGuard/marketing/Cover%20image.jpg</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://bjorv.com/articles/shader-variant-budget-ci-guard/set-shader-variant-budgets-in-unity-ci/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/images/ShaderVariantBudgetCIGuard/marketing/Enforce%20hard%20budgets.jpg</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://bjorv.com/articles/shader-variant-budget-ci-guard/compare-shader-variant-snapshots-from-editor-log/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/images/ShaderVariantBudgetCIGuard/marketing/See%20what%20changed%20fast.jpg</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://bjorv.com/articles/unity-serialization-migration-guard/safely-rename-serialized-fields-in-unity/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/images/UnitySerializationMigrationGuard/marketing/Cover%20image.jpg</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://bjorv.com/articles/unity-serialization-migration-guard/audit-unity-yaml-coverage-before-removing-old-rename-mappings/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/images/UnitySerializationMigrationGuard/marketing/Locate%20every%20affected%20asset.jpg</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://bjorv.com/articles/unity-serialization-migration-guard/preview-and-validate-unity-reserialization-during-refactors/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/images/UnitySerializationMigrationGuard/marketing/Preview%20migrations%20safely.jpg</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://bjorv.com/articles/import-settings-validator-fix/enforce-unity-import-settings-across-a-team/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/images/ImportSettingsValidatorFix/marketing/Cover%20image.jpg</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://bjorv.com/articles/import-settings-validator-fix/validate-texture-audio-and-model-import-settings-in-unity/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/images/ImportSettingsValidatorFix/marketing/Validate%20the%20project.jpg</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://bjorv.com/articles/import-settings-validator-fix/fix-import-setting-drift-without-manual-reimports/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/images/ImportSettingsValidatorFix/marketing/Rule%20based%20import%20standards.jpg</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://bjorv.com/articles/compliance/generate-third-party-notices-for-a-unity-game/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/images/CompliancePack/marketing/Overview.jpg</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://bjorv.com/articles/compliance/build-a-repeatable-unity-license-compliance-workflow/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/images/CompliancePack/marketing/Deterministic%20output.jpg</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://bjorv.com/articles/compliance/export-unity-credits-and-compliance-manifests-before-release/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/images/CompliancePack/marketing/Evidence%20based.jpg</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.jpg</image:loc></image:image>
   </url>
 </urlset>

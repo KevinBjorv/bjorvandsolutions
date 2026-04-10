@@ -26,7 +26,7 @@
   const themeStorageKey = "youtube-thumbnail-preview-theme";
   const maxCustomSlots = 6;
   const minCustomSlots = 1;
-  const initialCustomSlotCount = 3;
+  const initialCustomSlotCount = 1;
   const slotIds = Array.from({ length: maxCustomSlots }, (_, index) => `slot-${index + 1}`);
   const defaultSlots = Object.fromEntries(
     slotIds.map((slotId, index) => [

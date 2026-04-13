@@ -1,0 +1,54 @@
+.legal-hero {
+  gap: var(--space-md);
+}
+
+.legal-hero h1 {
+  max-width: none;
+}
+
+.legal-hero-meta {
+  display: grid;
+  gap: 0.35rem;
+  color: var(--color-text-muted);
+}
+
+.legal-document {
+  max-width: 78ch;
+}
+
+.legal-document h2,
+.legal-document h3 {
+  margin-top: var(--space-xl);
+}
+
+.legal-document h2:first-child,
+.legal-document h3:first-child {
+  margin-top: 0;
+}
+
+.legal-document p,
+.legal-document li {
+  color: var(--color-text-muted);
+}
+
+.legal-document p + p,
+.legal-document p + ul,
+.legal-document p + ol,
+.legal-document ul + p,
+.legal-document ol + p,
+.legal-document ul + ul,
+.legal-document ol + ol,
+.legal-document ul + ol,
+.legal-document ol + ul {
+  margin-top: var(--space-md);
+}
+
+.legal-document ul,
+.legal-document ol {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.legal-document strong {
+  color: var(--color-text);
+}

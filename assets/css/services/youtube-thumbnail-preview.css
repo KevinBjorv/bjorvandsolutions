@@ -260,101 +260,13 @@ body[data-theme="dark"] .preview-slot-button:hover {
 }
 
 .yt-icon {
-  position: relative;
-  display: inline-block;
+  display: block;
   width: 18px;
   height: 18px;
   flex: 0 0 18px;
-}
-
-.yt-icon::before,
-.yt-icon::after {
-  content: "";
-  position: absolute;
-  background: currentColor;
-}
-
-.yt-icon--menu::before {
-  inset: 3px 1px auto;
-  height: 2px;
-  box-shadow: 0 5px 0 currentColor, 0 10px 0 currentColor;
-}
-
-.yt-icon--search::before {
-  top: 2px;
-  left: 2px;
-  width: 10px;
-  height: 10px;
-  border: 2px solid currentColor;
-  border-radius: 999px;
-  background: transparent;
-}
-
-.yt-icon--search::after {
-  right: 1px;
-  bottom: 2px;
-  width: 2px;
-  height: 7px;
-  transform: rotate(-45deg);
-  transform-origin: center;
-}
-
-.yt-icon--mic::before {
-  top: 1px;
-  left: 5px;
-  width: 8px;
-  height: 11px;
-  border-radius: 999px;
-}
-
-.yt-icon--mic::after {
-  left: 8px;
-  bottom: 1px;
-  width: 2px;
-  height: 7px;
-  box-shadow: -4px -2px 0 0 transparent, 0 3px 0 0 currentColor;
-}
-
-.yt-icon--theme::before {
-  inset: 1px;
-  border-radius: 999px;
-  box-shadow: inset 6px 0 0 currentColor;
-  background: transparent;
-  border: 2px solid currentColor;
-}
-
-.yt-icon--plus::before,
-.yt-icon--plus::after {
-  top: 8px;
-  left: 3px;
-  width: 12px;
-  height: 2px;
-}
-
-.yt-icon--plus::after {
-  top: 3px;
-  left: 8px;
-  width: 2px;
-  height: 12px;
-}
-
-.yt-icon--bell::before {
-  top: 2px;
-  left: 4px;
-  width: 10px;
-  height: 10px;
-  border: 2px solid currentColor;
-  border-bottom: 0;
-  border-radius: 6px 6px 0 0;
-  background: transparent;
-}
-
-.yt-icon--bell::after {
-  left: 7px;
-  bottom: 2px;
-  width: 4px;
-  height: 4px;
-  border-radius: 999px;
+  overflow: visible;
+  fill: none;
+  stroke: currentColor;
 }
 
 .yt-layout {
@@ -411,84 +323,13 @@ body[data-theme="dark"] .preview-slot-button:hover {
 }
 
 .yt-sidebar__icon {
-  position: relative;
+  display: block;
   width: 20px;
   height: 20px;
   flex: 0 0 20px;
-}
-
-.yt-sidebar__icon::before,
-.yt-sidebar__icon::after {
-  content: "";
-  position: absolute;
-  border: 2px solid currentColor;
-  background: transparent;
-}
-
-.yt-sidebar__icon--home::before {
-  inset: 7px 4px 2px;
-  border-top: 0;
-}
-
-.yt-sidebar__icon--home::after {
-  inset: 2px 3px 8px;
-  transform: rotate(45deg);
-  border-bottom: 0;
-  border-left: 0;
-}
-
-.yt-sidebar__icon--shorts::before {
-  inset: 2px 6px;
-  border-radius: 6px;
-  transform: skewY(-18deg);
-}
-
-.yt-sidebar__icon--shorts::after {
-  top: 6px;
-  left: 8px;
-  border-width: 4px 0 4px 6px;
-  border-style: solid;
-  border-color: transparent transparent transparent currentColor;
-}
-
-.yt-sidebar__icon--subscriptions::before,
-.yt-sidebar__icon--playlist::before {
-  inset: 4px 3px;
-  border-radius: 4px;
-}
-
-.yt-sidebar__icon--subscriptions::after,
-.yt-sidebar__icon--playlist::after {
-  inset: 8px 7px;
-  border-width: 3px 0 3px 5px;
-  border-style: solid;
-  border-color: transparent transparent transparent currentColor;
-}
-
-.yt-sidebar__icon--you::before {
-  top: 2px;
-  left: 6px;
-  width: 8px;
-  height: 8px;
-  border-radius: 999px;
-}
-
-.yt-sidebar__icon--you::after {
-  inset: 11px 4px 1px;
-  border-radius: 999px 999px 4px 4px;
-}
-
-.yt-sidebar__icon--history::before {
-  inset: 2px;
-  border-radius: 999px;
-}
-
-.yt-sidebar__icon--history::after {
-  top: 5px;
-  left: 9px;
-  width: 2px;
-  height: 7px;
-  box-shadow: -4px 3px 0 -1px currentColor;
+  overflow: visible;
+  fill: none;
+  stroke: currentColor;
 }
 
 .yt-sidebar__note {

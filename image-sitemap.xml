@@ -243,6 +243,16 @@
     <image:image><image:loc>https://bjorv.com/Skool%20logo.png</image:loc></image:image>
   </url>
   <url>
+    <loc>https://bjorv.com/games/forbiddenbuttons/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/apple-touch-icon.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-16x16.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-32x32.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/images/ForbiddenButtons/library-hero.jpg</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/images/ForbiddenButtons/main-capsule.jpg</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/images/ForbiddenButtons/page-background.jpg</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/images/ForbiddenButtons/vertical-capsule.jpg</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://bjorv.com/games/neonsurge/</loc>
     <image:image><image:loc>https://bjorv.com/assets/favicon/apple-touch-icon.png</image:loc></image:image>
     <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-16x16.png</image:loc></image:image>

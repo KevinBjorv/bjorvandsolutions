@@ -352,6 +352,14 @@
     games: {
       published: [
         {
+          name: "Forbidden Buttons",
+          summary: "Bright first-person puzzle rooms where a single forbidden button rewrites the rules.",
+          links: [
+            { label: "Homepage", href: "/games/forbiddenbuttons/" },
+            { label: "Wishlist on Steam", href: "https://store.steampowered.com/app/4540560/Forbidden_buttons" }
+          ]
+        },
+        {
           name: "Orbital Chaos",
           summary: "Arcade game available on mobile storefronts.",
           links: [

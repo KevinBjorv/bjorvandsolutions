@@ -41,13 +41,13 @@
   const buildUrl = "/dopamine/Build";
   const config = {
     arguments: [],
-    dataUrl: `${buildUrl}/Dopamine Machine Release.data`,
-    frameworkUrl: `${buildUrl}/Dopamine Machine Release.framework.js`,
-    codeUrl: `${buildUrl}/Dopamine Machine Release.wasm`,
+    dataUrl: `${buildUrl}/DM 1.1.1.data`,
+    frameworkUrl: `${buildUrl}/DM 1.1.1.framework.js`,
+    codeUrl: `${buildUrl}/DM 1.1.1.wasm`,
     streamingAssetsUrl: "/dopamine/StreamingAssets",
     companyName: "Bjorvand Solutions",
     productName: "Dopamine Machine",
-    productVersion: "1.0",
+    productVersion: "1.1.1",
     showBanner: unityShowBanner,
   };
 
@@ -62,7 +62,7 @@
   }
 
   const loaderScript = document.createElement("script");
-  loaderScript.src = `${buildUrl}/Dopamine Machine Release.loader.js`;
+  loaderScript.src = `${buildUrl}/DM 1.1.1.loader.js`;
   loaderScript.onload = () => {
     window.createUnityInstance(canvas, config, (progress) => {
       if (progressBar) {

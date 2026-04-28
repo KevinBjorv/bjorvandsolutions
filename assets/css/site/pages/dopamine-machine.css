@@ -1,0 +1,180 @@
+.dopamine-page {
+  background: #000000;
+}
+
+.dopamine-page::before {
+  display: none;
+}
+
+.dopamine-page .site-header {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.dopamine-page .site-footer {
+  background: #000000;
+}
+
+.dopamine-main {
+  padding-block: clamp(1.5rem, 4vw, 3rem);
+}
+
+.dopamine-stage {
+  display: grid;
+  justify-items: center;
+  gap: clamp(1.25rem, 3vw, 2rem);
+}
+
+.dopamine-banner {
+  width: min(100%, 630px);
+  height: auto;
+}
+
+.dopamine-stage h1 {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  text-align: center;
+}
+
+.dopamine-player {
+  width: min(100%, 1040px);
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.dopamine-player h2 {
+  font-size: clamp(1.35rem, 3vw, 1.8rem);
+  text-align: center;
+}
+
+.dopamine-unity {
+  position: relative;
+  display: grid;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+#unity-canvas {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  height: auto;
+  display: block;
+  background: #000000;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.unity-loading-bar {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: min(72%, 420px);
+  display: grid;
+  gap: 0.65rem;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  text-align: center;
+}
+
+.unity-loading-bar[hidden] {
+  display: none;
+}
+
+.unity-loading-label {
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.unity-progress-bar {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 0.6rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.unity-progress-bar::-webkit-progress-bar {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.unity-progress-bar::-webkit-progress-value {
+  background: linear-gradient(90deg, #ff9b00, #ff2f87, #24b7ff);
+}
+
+.unity-progress-bar::-moz-progress-bar {
+  background: linear-gradient(90deg, #ff9b00, #ff2f87, #24b7ff);
+}
+
+.unity-warning {
+  position: absolute;
+  inset: 0 0 auto;
+  display: none;
+  padding: 0.75rem;
+  color: #101114;
+  font-weight: 600;
+  text-align: center;
+}
+
+.unity-warning.is-visible {
+  display: block;
+}
+
+.unity-warning-message {
+  padding: 0.6rem 0.8rem;
+  background: #ffd566;
+}
+
+.unity-warning-message.is-error {
+  color: #ffffff;
+  background: #b00020;
+}
+
+.unity-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.92rem;
+}
+
+.unity-fullscreen-button {
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: var(--radius-pill);
+  padding: 0.45rem 0.8rem;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.unity-fullscreen-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.dopamine-cta {
+  max-width: 70ch;
+  color: rgba(255, 255, 255, 0.78);
+  text-align: center;
+}
+
+.dopamine-cta a {
+  color: #39d7e6;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+@media (max-width: 720px) {
+  .dopamine-stage {
+    gap: var(--space-lg);
+  }
+
+  .unity-footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .unity-fullscreen-button {
+    width: 100%;
+  }
+}

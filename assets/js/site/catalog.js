@@ -360,6 +360,13 @@
           ]
         },
         {
+          name: "Dopamine Machine",
+          summary: "Playable WebGL browser game on bjorv.com.",
+          links: [
+            { label: "Play", href: "/dopamine/" }
+          ]
+        },
+        {
           name: "Orbital Chaos",
           summary: "Arcade game available on mobile storefronts.",
           links: [

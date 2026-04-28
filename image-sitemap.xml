@@ -253,6 +253,10 @@
     <image:image><image:loc>https://bjorv.com/assets/images/ForbiddenButtons/vertical-capsule.jpg</image:loc></image:image>
   </url>
   <url>
+    <loc>https://bjorv.com/dopamine/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/images/DopamineMachine/banner.png</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://bjorv.com/games/neonsurge/</loc>
     <image:image><image:loc>https://bjorv.com/assets/favicon/apple-touch-icon.png</image:loc></image:image>
     <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-16x16.png</image:loc></image:image>

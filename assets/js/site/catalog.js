@@ -1,7 +1,7 @@
 (() => {
   window.SiteCatalog = {
-    snapshotDate: "2026-03-11",
-    snapshotDateLabel: "March 11, 2026",
+    snapshotDate: "2026-05-03",
+    snapshotDateLabel: "May 3, 2026",
     author: {
       name: "Kevin Ahlgren Bjorvand",
       role: "Founder, Bjorvand Solutions",
@@ -66,6 +66,25 @@
           license: "/assets/unity-serialization-migration-guard/license/",
           store: "https://u3d.as/3Sae"
         }
+      },
+      {
+        key: "fast-play-mode-safety-guard",
+        name: "Fast Play Mode Safety Guard",
+        summary: "Scan Unity projects for static state, reset coverage, and runtime persistence risks before disabling Domain Reload.",
+        audience: "Teams that want faster Play Mode entry without hidden static-state leaks.",
+        links: {
+          product: "/assets/fast-play-mode-safety-guard/",
+          docs: "/assets/fast-play-mode-safety-guard/docs/",
+          license: "/assets/fast-play-mode-safety-guard/license/"
+        },
+        images: [
+          "/assets/images/FastPlayModeSafetyGuard/marketing/cover-placeholder.svg",
+          "/assets/images/FastPlayModeSafetyGuard/marketing/scan-placeholder.svg",
+          "/assets/images/FastPlayModeSafetyGuard/marketing/readiness-placeholder.svg",
+          "/assets/images/FastPlayModeSafetyGuard/marketing/reset-stub-placeholder.svg",
+          "/assets/images/FastPlayModeSafetyGuard/marketing/double-play-placeholder.svg",
+          "/assets/images/FastPlayModeSafetyGuard/marketing/ci-placeholder.svg"
+        ]
       },
       {
         key: "import-settings-validator-fix",

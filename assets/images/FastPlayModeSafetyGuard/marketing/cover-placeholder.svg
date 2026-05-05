@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Fast Play Mode Safety Guard placeholder cover</title>
+  <desc id="desc">Placeholder artwork showing a Unity editor safety report layout.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#111827"/>
+      <stop offset="0.55" stop-color="#172033"/>
+      <stop offset="1" stop-color="#0b1017"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" x2="1">
+      <stop offset="0" stop-color="#fb8114"/>
+      <stop offset="1" stop-color="#ffbd7a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg)"/>
+  <path d="M0 112h1280M0 224h1280M0 336h1280M0 448h1280M0 560h1280M160 0v720M320 0v720M480 0v720M640 0v720M800 0v720M960 0v720M1120 0v720" stroke="#ffffff" stroke-opacity="0.045"/>
+  <rect x="122" y="82" width="1036" height="556" rx="28" fill="#151f2d" stroke="#334155"/>
+  <rect x="158" y="124" width="968" height="66" rx="18" fill="#0f1724" stroke="#2f3d52"/>
+  <circle cx="198" cy="157" r="13" fill="#fb8114"/>
+  <circle cx="236" cy="157" r="13" fill="#f6b15f"/>
+  <circle cx="274" cy="157" r="13" fill="#41d27d"/>
+  <text x="328" y="166" fill="#ecf1f8" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700">Fast Play Mode Safety Guard</text>
+  <rect x="158" y="228" width="284" height="326" rx="18" fill="#0d1420" stroke="#2f3d52"/>
+  <text x="190" y="274" fill="#9fb1c7" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="700">Readiness</text>
+  <text x="190" y="334" fill="#ffbd7a" font-family="Segoe UI, Arial, sans-serif" font-size="56" font-weight="800">Needs Review</text>
+  <rect x="190" y="388" width="214" height="18" rx="9" fill="#263244"/>
+  <rect x="190" y="388" width="144" height="18" rx="9" fill="url(#accent)"/>
+  <text x="190" y="460" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="21">Static state risks found</text>
+  <text x="190" y="500" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="21">Reset evidence required</text>
+  <rect x="488" y="228" width="638" height="326" rx="18" fill="#0d1420" stroke="#2f3d52"/>
+  <text x="522" y="274" fill="#ecf1f8" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="700">Top Active Risks</text>
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="22">
+    <rect x="522" y="312" width="560" height="52" rx="12" fill="#151f2d"/>
+    <text x="546" y="346" fill="#ecf1f8">Static events retaining subscribers</text>
+    <rect x="522" y="382" width="560" height="52" rx="12" fill="#151f2d"/>
+    <text x="546" y="416" fill="#ecf1f8">Singleton instance survives play mode</text>
+    <rect x="522" y="452" width="560" height="52" rx="12" fill="#151f2d"/>
+    <text x="546" y="486" fill="#ecf1f8">Static collection keeps runtime data</text>
+  </g>
+  <text x="122" y="688" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="22">Placeholder image - replace with final product screenshots</text>
+</svg>

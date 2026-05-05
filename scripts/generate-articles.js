@@ -1066,23 +1066,23 @@ function renderSection(section) {
 }
 
 function renderHeader() {
-  const toolsMenu = catalog.tools.map((tool) => `
-              <div class="dropdown-submenu">
-                <a class="dropdown-submenu-trigger" role="menuitem" href="${tool.links.product}" aria-haspopup="menu">${tool.name} <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
-                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="${tool.name} links">
-                  <a role="menuitem" href="${tool.links.product}">Homepage</a>
-                  <a role="menuitem" href="${tool.links.docs}">Docs</a>
-                  <a role="menuitem" href="/support/">Support</a>
-                  <a role="menuitem" href="${tool.links.license}">License</a>
-                </div>
-              </div>
-  `).join("");
+  const toolsMenu = catalog.tools.map((tool) => [
+    `              <div class="dropdown-submenu">`,
+    `                <a class="dropdown-submenu-trigger" role="menuitem" href="${tool.links.product}" aria-haspopup="menu">${tool.name} <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>`,
+    `                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="${tool.name} links">`,
+    `                  <a role="menuitem" href="${tool.links.product}">Homepage</a>`,
+    `                  <a role="menuitem" href="${tool.links.docs}">Docs</a>`,
+    `                  <a role="menuitem" href="/support/">Support</a>`,
+    `                  <a role="menuitem" href="${tool.links.license}">License</a>`,
+    `                </div>`,
+    `              </div>`
+  ].join("\n")).join("\n");
 
   const articleCategories = catalog.articleCategories.map((category) =>
     `              <a role="menuitem" href="/articles/?category=${category.slug}">${category.label}</a>`
   ).join("\n");
 
-  const articleToolSubmenus = catalog.tools.map((tool) => {
+  const articleToolSubmenus = catalog.tools.filter((tool) => (articlesByTool.get(tool.key) || []).length).map((tool) => {
     const toolArticles = articlesByTool.get(tool.key) || [];
     const articleLinks = toolArticles.map((article) =>
       `                  <a role="menuitem" href="${article.path}">${article.title}</a>`
@@ -1098,17 +1098,17 @@ ${articleLinks}
     `.trim();
   }).join("\n");
 
-  const toolsMobile = catalog.tools.map((tool) => `
-            <li><a href="${tool.links.product}">${tool.name} Homepage</a></li>
-            <li><a href="${tool.links.docs}">${tool.name} Docs</a></li>
-            <li><a href="${tool.links.license}">${tool.name} License</a></li>
-  `).join("");
+  const toolsMobile = catalog.tools.map((tool) => [
+    `            <li><a href="${tool.links.product}">${tool.name} Homepage</a></li>`,
+    `            <li><a href="${tool.links.docs}">${tool.name} Docs</a></li>`,
+    `            <li><a href="${tool.links.license}">${tool.name} License</a></li>`
+  ].join("\n")).join("\n");
 
   const articleCategoriesMobile = catalog.articleCategories.map((category) =>
     `            <li><a href="/articles/?category=${category.slug}">${category.label}</a></li>`
   ).join("\n");
 
-  const articleLinksMobile = catalog.tools.map((tool) => {
+  const articleLinksMobile = catalog.tools.filter((tool) => (articlesByTool.get(tool.key) || []).length).map((tool) => {
     const toolArticles = articlesByTool.get(tool.key) || [];
     return [
       `            <li class="mobile-nav-list-label">${tool.name}</li>`,
@@ -1393,8 +1393,9 @@ function renderHubPage() {
   const sortedArticles = [...catalog.articles].sort((left, right) =>
     right.publishDate.localeCompare(left.publishDate) || left.title.localeCompare(right.title)
   );
+  const toolKeysWithArticles = new Set(catalog.articles.map((article) => article.toolKey));
 
-  const toolFilters = catalog.tools.map((tool) =>
+  const toolFilters = catalog.tools.filter((tool) => toolKeysWithArticles.has(tool.key)).map((tool) =>
     `<button class="filter-pill" type="button" data-tool-filter data-filter-value="${tool.key}" aria-pressed="false">${htmlEscape(tool.name)}</button>`
   ).join("\n              ");
 
@@ -1509,7 +1510,7 @@ function renderHubPage() {
         <div class="articles-summary-strip" aria-label="Article summary">
           <article>
             <strong>${catalog.articles.length} articles</strong>
-            <span>Three articles per tool across five tool workflows.</span>
+            <span>${toolKeysWithArticles.size} tool workflows represented in the article library.</span>
           </article>
           <article>
             <strong>${catalog.tools.length} tools</strong>
@@ -1909,6 +1910,10 @@ function updateToolHomepages() {
 
     const content = fs.readFileSync(filePath, "utf8");
     const sectionMarkup = renderToolRelatedSection(tool);
+    if (!sectionMarkup) {
+      return;
+    }
+
     const existingPattern = /\s*<section id="tool-articles"[\s\S]*?(?=\s*<section id="final-cta")/;
     let nextContent = content;
 
@@ -1955,11 +1960,40 @@ function sitemapEntryMeta(url) {
 function updateSitemap() {
   const sitemapPath = path.join(rootDir, "sitemap.xml");
   const current = fs.readFileSync(sitemapPath, "utf8");
-  const existingUrls = Array.from(current.matchAll(/<loc>([^<]+)<\/loc>/g)).map((match) => match[1]);
+  const existingEntries = new Map();
+  const existingUrls = [];
+  const readTag = (block, tag) => {
+    const match = block.match(new RegExp(`<${tag}>([^<]+)</${tag}>`));
+    return match ? match[1] : "";
+  };
+
+  Array.from(current.matchAll(/<url>\s*[\s\S]*?<\/url>/g)).forEach((match) => {
+    const block = match[0];
+    const url = readTag(block, "loc");
+    if (!url) {
+      return;
+    }
+
+    existingUrls.push(url);
+    existingEntries.set(url, {
+      lastmod: readTag(block, "lastmod"),
+      changefreq: readTag(block, "changefreq"),
+      priority: readTag(block, "priority")
+    });
+  });
+
+  const toolUrls = catalog.tools.flatMap((tool) => [
+    tool.links.product,
+    tool.links.docs,
+    tool.links.license
+  ].filter(Boolean).map((value) => absoluteUrl(value)));
+
   const orderedUrls = [];
   const seen = new Set();
 
-  existingUrls.concat([`${siteUrl}/articles/`], catalog.articles.map((article) => absoluteUrl(article.path))).forEach((url) => {
+  existingUrls
+    .concat(toolUrls, [`${siteUrl}/articles/`], catalog.articles.map((article) => absoluteUrl(article.path)))
+    .forEach((url) => {
     if (seen.has(url)) {
       return;
     }
@@ -1969,10 +2003,17 @@ function updateSitemap() {
   });
 
   const body = orderedUrls.map((url) => {
-    const meta = sitemapEntryMeta(url);
+    const currentEntry = existingEntries.get(url);
+    const fallbackMeta = sitemapEntryMeta(url);
+    const meta = {
+      lastmod: currentEntry && currentEntry.lastmod ? currentEntry.lastmod : catalog.snapshotDate,
+      changefreq: currentEntry && currentEntry.changefreq ? currentEntry.changefreq : fallbackMeta.changefreq,
+      priority: currentEntry && currentEntry.priority ? currentEntry.priority : fallbackMeta.priority
+    };
+
     return `  <url>
     <loc>${url}</loc>
-    <lastmod>${catalog.snapshotDate}</lastmod>
+    <lastmod>${meta.lastmod}</lastmod>
     <changefreq>${meta.changefreq}</changefreq>
     <priority>${meta.priority}</priority>
   </url>`;
@@ -1983,7 +2024,8 @@ function updateSitemap() {
     `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${body}
-</urlset>`
+</urlset>
+`
   );
 }
 
@@ -2000,6 +2042,27 @@ function updateImageSitemap() {
   const current = fs.readFileSync(sitemapPath, "utf8");
   const additions = [];
   const hubUrl = `${siteUrl}/articles/`;
+  const defaultIconImages = [
+    "/assets/favicon/apple-touch-icon.png",
+    "/assets/favicon/favicon-16x16.png",
+    "/assets/favicon/favicon-32x32.png"
+  ];
+
+  catalog.tools.forEach((tool) => {
+    const toolImageEntries = [
+      { url: absoluteUrl(tool.links.product), images: tool.images && tool.images.length ? tool.images : defaultIconImages },
+      { url: absoluteUrl(tool.links.docs), images: defaultIconImages },
+      { url: absoluteUrl(tool.links.license), images: defaultIconImages }
+    ];
+
+    toolImageEntries.forEach((entry) => {
+      if (!entry.url || current.includes(`<loc>${entry.url}</loc>`)) {
+        return;
+      }
+
+      additions.push(renderImageSitemapEntry(entry.url, entry.images));
+    });
+  });
 
   if (!current.includes(`<loc>${hubUrl}</loc>`)) {
     additions.push(renderImageSitemapEntry(hubUrl, [authorImage]));

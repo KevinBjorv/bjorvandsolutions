@@ -3,100 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>How to Audit Unity YAML Coverage Before Removing Old Rename Mappings | Unity Serialization Migration Guard Article</title>
-  <meta name="description" content="Use coverage scans to prove whether old serialized field names still exist before removing migration safety attributes.">
-  <meta name="author" content="Kevin Ahlgren Bjorvand">
-  <meta property="og:type" content="article">
-  <meta property="og:title" content="How to Audit Unity YAML Coverage Before Removing Old Rename Mappings">
-  <meta property="og:description" content="Use coverage scans to prove whether old serialized field names still exist before removing migration safety attributes.">
-  <meta property="og:url" content="https://bjorv.com/articles/unity-serialization-migration-guard/audit-unity-yaml-coverage-before-removing-old-rename-mappings/">
-  <meta property="og:image" content="https://bjorv.com/assets/images/UnitySerializationMigrationGuard/marketing/Locate%20every%20affected%20asset.jpg">
-  <meta property="article:published_time" content="2026-03-11">
-  <meta property="article:modified_time" content="2026-03-11">
-  <meta property="article:author" content="Kevin Ahlgren Bjorvand">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="How to Audit Unity YAML Coverage Before Removing Old Rename Mappings">
-  <meta name="twitter:description" content="Use coverage scans to prove whether old serialized field names still exist before removing migration safety attributes.">
-  <meta name="twitter:image" content="https://bjorv.com/assets/images/UnitySerializationMigrationGuard/marketing/Locate%20every%20affected%20asset.jpg">
-  <link rel="canonical" href="https://bjorv.com/articles/unity-serialization-migration-guard/audit-unity-yaml-coverage-before-removing-old-rename-mappings/">
+  <title>Fast Play Mode Safety Guard Documentation | Unity Static State and Domain Reload Checks</title>
+  <meta name="description" content="Clean setup and usage documentation for Fast Play Mode Safety Guard, including scans, reset coverage, Safe Fast Play, Double Play tests, settings, and CI JSON reports.">
+  <link rel="canonical" href="/assets/fast-play-mode-safety-guard/docs/">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
-  <link rel="icon" href="/assets/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon/android-chrome-192x192.png">
+  <link rel="icon" type="image/x-icon" href="/assets/favicon/favicon.ico">
   <link rel="manifest" href="/assets/favicon/site.webmanifest">
-  <script src="/assets/js/site/theme-init.js"></script>
-  <link rel="stylesheet" href="/assets/css/site/tokens.css">
-  <link rel="stylesheet" href="/assets/css/site/base.css">
-  <link rel="stylesheet" href="/assets/css/site/layout.css">
-  <link rel="stylesheet" href="/assets/css/site/components.css">
-  <link rel="stylesheet" href="/assets/css/site/pages/article-detail.css">
+  <link rel="stylesheet" href="/assets/css/products/product-docs.css">
+  <script src="/assets/js/theme/theme-init.js"></script>
+  <link rel="stylesheet" href="/assets/css/shared/site-navbar.css">
   <link rel="stylesheet" href="/assets/css/shared/link-decorators.css">
   <link rel="stylesheet" href="/assets/css/shared/typography-overrides.css">
   <script src="/assets/js/site/mailerlite-universal.js"></script>
-  <script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Article",
-      "headline": "How to Audit Unity YAML Coverage Before Removing Old Rename Mappings",
-      "description": "Use coverage scans to prove whether old serialized field names still exist before removing migration safety attributes.",
-      "image": [
-        "https://bjorv.com/assets/images/UnitySerializationMigrationGuard/marketing/Locate%20every%20affected%20asset.jpg"
-      ],
-      "author": {
-        "@type": "Person",
-        "name": "Kevin Ahlgren Bjorvand",
-        "image": "https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.jpg"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Bjorvand Solutions",
-        "url": "https://bjorv.com"
-      },
-      "mainEntityOfPage": "https://bjorv.com/articles/unity-serialization-migration-guard/audit-unity-yaml-coverage-before-removing-old-rename-mappings/",
-      "datePublished": "2026-03-11",
-      "dateModified": "2026-03-11",
-      "articleSection": "Serialization & Refactoring",
-      "about": [
-        {
-          "@type": "SoftwareApplication",
-          "name": "Unity Serialization Migration Guard",
-          "applicationCategory": "DeveloperApplication",
-          "url": "https://bjorv.com/assets/unity-serialization-migration-guard/"
-        }
-      ]
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://bjorv.com"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Articles",
-          "item": "https://bjorv.com/articles/?tool=unity-serialization-migration-guard"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Unity Serialization Migration Guard",
-          "item": "https://bjorv.com/assets/unity-serialization-migration-guard/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 4,
-          "name": "How to Audit Unity YAML Coverage Before Removing Old Rename Mappings",
-          "item": "https://bjorv.com/articles/unity-serialization-migration-guard/audit-unity-yaml-coverage-before-removing-old-rename-mappings/"
-        }
-      ]
-    }
-  ]
-}</script>
 </head>
 <body>
   <header class="site-header">
@@ -379,178 +300,235 @@
       </div>
     </div>
   </header>
-  <main class="site-main">
-    <div class="container article-page">
-      <nav class="article-breadcrumbs" aria-label="Breadcrumb">
-        <a href="/">Home</a><span aria-hidden="true">/</span>
-        <a href="/articles/?tool=unity-serialization-migration-guard">Articles</a><span aria-hidden="true">/</span>
-        <a href="/assets/unity-serialization-migration-guard/">Unity Serialization Migration Guard</a><span aria-hidden="true">/</span>
-        <span aria-current="page">How to Audit Unity YAML Coverage Before Removing Old Rename Mappings</span>
+
+  <div class="shell layout">
+    <aside class="sidebar" aria-label="Documentation navigation">
+      <h2>Documentation</h2>
+      <p>Setup and usage reference for scans, reset evidence, Double Play, Safe Fast Play, and CI reports.</p>
+      <label class="search-label" for="docSearch">Search</label>
+      <input class="search-input" type="search" id="docSearch" placeholder="Search scan, reset, double play, CI..." autocomplete="off">
+      <p class="search-status" id="searchStatus">Showing 13 sections</p>
+      <nav class="sidebar-nav" id="sidebarNav">
+        <a class="sidebar-link" href="#overview">Overview</a>
+        <a class="sidebar-link" href="#requirements">Requirements</a>
+        <a class="sidebar-link" href="#quick-start">Quick start</a>
+        <a class="sidebar-link" href="#main-window">Main window</a>
+        <a class="sidebar-link" href="#readiness-status">Readiness status</a>
+        <a class="sidebar-link" href="#risk-categories">Risk categories</a>
+        <a class="sidebar-link" href="#reset-coverage">Reset coverage</a>
+        <a class="sidebar-link" href="#attributes">Attributes</a>
+        <a class="sidebar-link" href="#generated-reset-stub">Generated reset stub</a>
+        <a class="sidebar-link" href="#double-play-test">Double Play test</a>
+        <a class="sidebar-link" href="#ci-usage">CI usage</a>
+        <a class="sidebar-link" href="#settings">Settings</a>
+        <a class="sidebar-link" href="#limitations">Limitations</a>
       </nav>
+    </aside>
 
-      <section class="article-hero">
-        <div class="article-hero-copy">
-          <div class="article-eyebrow">
-            <span class="article-kicker">Serialization &amp; Refactoring</span>
-            <span class="article-chip">Unity Serialization Migration Guard</span>
-          </div>
-          <h1>How to Audit Unity YAML Coverage Before Removing Old Rename Mappings</h1>
-          <p>Use coverage scans to prove whether old serialized field names still exist before removing migration safety attributes.</p>
-          <div class="article-meta-line">
-            <span>March 11, 2026</span>
-            <span>&bull;</span>
-            <span>8 min read</span>
-            <span>&bull;</span>
-            <span>Kevin Ahlgren Bjorvand</span>
-          </div>
-          <div class="article-answer">
-            <p>Before you remove old rename mappings in Unity, scan YAML coverage first so you can prove whether the legacy token still exists in supported assets and whether the scan scope was complete enough to trust the answer.</p>
-          </div>
-          <div class="article-keyline">
-            <span class="article-chip">Updated March 11, 2026</span>
-            <span class="article-chip">Tool homepage, docs, support, and license linked in the sidebar</span>
-          </div>
-        </div>
-        <figure class="article-hero-media">
-          <img src="/assets/images/UnitySerializationMigrationGuard/marketing/Locate%20every%20affected%20asset.jpg" alt="How to Audit Unity YAML Coverage Before Removing Old Rename Mappings" loading="eager" fetchpriority="high">
-          <figcaption>Coverage is the proof step between a clean audit and a safe cleanup.</figcaption>
-        </figure>
-      </section>
-
-      <div class="article-layout">
-        <article class="article-main">
-<section class="article-section" id="why-yaml-coverage-is-the-proof-step" data-article-section>
-        <h2>Why is YAML coverage the proof step?</h2>
-        <p>An audit tells you whether the mapping is plausible in code. Coverage tells you whether the old token still exists inside the assets that matter. Those are different questions, and the second one is the one that protects cleanup.</p>
-<p>If the project still contains the legacy token in supported assets, removing the old path is not a cleanup win. It is an avoidable migration risk.</p>
-        <ul>
-  <li>Coverage moves the discussion from code intent to stored asset reality.</li>
-  <li>The result is useful only if the scan scope is visible and complete enough to trust.</li>
-  <li>A zero count without a supported scope check is not strong evidence.</li>
-</ul>
-        
-        
-      </section>
-<section class="article-section" id="what-the-coverage-scan-requires" data-article-section>
-        <h2>What does the coverage scan require first?</h2>
-        <p>The scan requires valid manual mappings and Force Text serialization mode in Unity. Without those prerequisites, the tool cannot reliably inspect YAML keys for legacy field tokens.</p>
-<p>The supported scope includes scenes, prefabs, standalone ScriptableObject assets, and embedded ScriptableObject parent assets.</p>
-        <ul>
-  <li>Valid mapping rows with type, old, and new names filled in.</li>
-  <li>Asset Serialization Mode set to Force Text.</li>
-  <li>Understanding that unreadable supported assets are surfaced and counted.</li>
-</ul>
-        
-        
-      </section>
-      <section class="article-cta-panel" aria-label="Primary call to action">
-        <h2>Do not remove rename safety paths until the asset coverage says you can.</h2>
-        <p>Unity Serialization Migration Guard turns coverage into a concrete report with affected assets, token counts, unreadable files, and cleanup proof status.</p>
-        <div class="article-cta-actions">
-          <a class="button button-primary" href="/assets/unity-serialization-migration-guard/">Open Unity Serialization Migration Guard</a>
-          <a class="button button-secondary" href="/assets/unity-serialization-migration-guard/docs/">Read Unity Serialization Migration Guard docs</a>
+    <main class="content" id="docContent">
+      <section class="doc-card" id="overview" data-section>
+        <h1>Fast Play Mode Safety Guard documentation</h1>
+        <p class="lead">Fast Play Mode Safety Guard is a Unity Editor utility for teams that want faster Play Mode entry with Domain Reload disabled, but still need to see static-state risks before they trust the workflow.</p>
+        <div class="callout">
+          The tool reports evidence. It does not prove every gameplay path is safe, and it does not automatically rewrite user scripts.
         </div>
       </section>
-<section class="article-section" id="which-results-actually-matter" data-article-section>
-        <h2>Which result fields matter when you decide about cleanup?</h2>
-        <p>The output is more than a yes or no. The report shows candidate assets, scanned assets, unreadable assets, supported-scope completeness, affected assets, and legacy token occurrence counts.</p>
-<p>That gives the team enough context to decide whether the scan proved safety or whether the remaining uncertainty is still too high.</p>
+
+      <section class="doc-card" id="requirements" data-section>
+        <h2>1. Requirements</h2>
         <ul>
-  <li>Affected asset count tells you where the old token still appears.</li>
-  <li>Occurrence totals show whether the problem is isolated or widespread.</li>
-  <li>Unreadable assets and incomplete scope tell you when the proof is still weak.</li>
-</ul>
-        
-        
+          <li>The project must compile so the tool can inspect compiled assemblies.</li>
+          <li>The scanner works from Unity Editor code and does not ship in the player build.</li>
+          <li>The Double Play test requires Enter Play Mode Options enabled with Domain Reload disabled.</li>
+          <li>By default, scans focus on user project assemblies. Package, Unity, editor-only, this tool's own assemblies, and bundled demo findings are hidden unless enabled in Settings.</li>
+        </ul>
       </section>
-<section class="article-section" id="how-cleanup-proof-uses-the-coverage-report" data-article-section>
-        <h2>How does the cleanup proof use that coverage report?</h2>
-        <p>Cleanup proof is only safe when the coverage report is both clean and complete for the supported scope. The tool marks cleanup unsafe when no coverage report exists, when legacy tokens remain, or when unreadable supported assets leave the scope incomplete.</p>
-<p>That is the right bias. Cleanup should be blocked by missing evidence rather than allowed by optimism.</p>
+
+      <section class="doc-card" id="quick-start" data-section>
+        <h2>2. Quick start</h2>
+        <ol>
+          <li>Open <code>Tools &gt; Kevin Bjorvand &gt; Fast Play Mode Safety Guard &gt; Open Window</code>.</li>
+          <li>Click <code>Scan Project</code>.</li>
+          <li>Review the summary, readiness status, scan scope, scan duration, and top active risk groups.</li>
+          <li>Select a finding to read the risk explanation, reset evidence, and suggested fix.</li>
+          <li>Fix the code, generate a reset stub, ignore a false positive, or mark a reviewed risk as handled.</li>
+          <li>Export the JSON report when you need a snapshot for review or CI.</li>
+          <li>With Domain Reload disabled, run the Double Play test for runtime persistence evidence.</li>
+          <li>Use <code>Enter Safe Fast Play</code> after scanning when you want a guarded Play Mode entry point.</li>
+        </ol>
+      </section>
+
+      <section class="doc-card" id="main-window" data-section>
+        <h2>3. Main window</h2>
+        <p>Open the window from:</p>
+        <pre><code class="language-text">Tools &gt; Kevin Bjorvand &gt; Fast Play Mode Safety Guard &gt; Open Window</code></pre>
+        <p>The window includes the scan summary, readiness status, active risk groups, filters, search, paging, a sortable table, and a detail panel for the selected risk.</p>
         <ul>
-  <li>No coverage report means cleanup is unsafe.</li>
-  <li>Remaining legacy token occurrences mean cleanup is unsafe.</li>
-  <li>Incomplete supported scope means cleanup is unsafe even when the hit count looks good.</li>
-</ul>
-        
-        
+          <li><code>Scan Project</code> refreshes the current report.</li>
+          <li><code>Generate Reset Stub</code> creates or updates the separate generated reset file.</li>
+          <li><code>Export Report</code> writes a JSON report.</li>
+          <li><code>Run Double Play Test</code> checks runtime persistence for scanned active risks.</li>
+          <li><code>Enter Safe Fast Play</code> enters Play Mode directly when the report is safe enough, or warns when active risks remain.</li>
+        </ul>
       </section>
-          <section class="article-callout">
-            <h2>Use the tool page when you are ready to run coverage and cleanup checks together.</h2>
-            <p>The docs and support paths are one click away from the homepage.</p>
-            <div class="article-cta-actions">
-              <a class="button button-primary" href="/assets/unity-serialization-migration-guard/">Open Unity Serialization Migration Guard</a>
-              <a class="button button-secondary" href="/assets/unity-serialization-migration-guard/">Visit Unity Serialization Migration Guard</a>
-            </div>
-          </section>
 
-          <section class="article-section" id="related-articles">
-            <h2>More articles for Unity Serialization Migration Guard</h2>
-            <p>The tool workflow stays easier to evaluate when the next steps stay inside the same product and documentation surface.</p>
-            <div class="article-related-grid">
-<article class="card article-related-card">
-              <img src="/assets/images/UnitySerializationMigrationGuard/marketing/Cover%20image.jpg" alt="How to Safely Rename Serialized Fields in Unity" loading="lazy">
-              <span>8 min read</span>
-              <h3><a href="/articles/unity-serialization-migration-guard/safely-rename-serialized-fields-in-unity/">How to Safely Rename Serialized Fields in Unity</a></h3>
-              <p>Reduce serialization risk during Unity refactors by validating rename mappings before data disappears.</p>
-            </article>
-<article class="card article-related-card">
-              <img src="/assets/images/UnitySerializationMigrationGuard/marketing/Preview%20migrations%20safely.jpg" alt="How to Preview and Validate Unity Reserialization During Refactors" loading="lazy">
-              <span>8 min read</span>
-              <h3><a href="/articles/unity-serialization-migration-guard/preview-and-validate-unity-reserialization-during-refactors/">How to Preview and Validate Unity Reserialization During Refactors</a></h3>
-              <p>Build previews, scope runs carefully, and keep backups when you need to reserialize Unity assets during refactors.</p>
-            </article>
-            </div>
-          </section>
-        </article>
+      <section class="doc-card" id="readiness-status" data-section>
+        <h2>4. Readiness status</h2>
+        <table class="data-table">
+          <thead><tr><th>Status</th><th>Meaning</th></tr></thead>
+          <tbody>
+            <tr><td><code>Unsafe</code></td><td>At least one active critical risk is present.</td></tr>
+            <tr><td><code>NeedsReview</code></td><td>At least one active high-risk item is present.</td></tr>
+            <tr><td><code>ProbablySafe</code></td><td>Warnings remain, but no active high or critical risks were found.</td></tr>
+            <tr><td><code>SafeEnoughForFastPlayMode</code></td><td>No active warning, high, or critical risks remain.</td></tr>
+          </tbody>
+        </table>
+        <p>Ignored, manually handled, and covered findings stay visible as evidence, but they do not count as active risks.</p>
+      </section>
 
-        <aside class="article-sidebar" aria-label="Article sidebar">
-          <section class="article-sidebar-card">
-            <h2>On this page</h2>
-            <nav class="article-toc" aria-label="Table of contents">
-            <a href="#why-yaml-coverage-is-the-proof-step" data-article-toc-link>Why is YAML coverage the proof step?</a>
-            <a href="#what-the-coverage-scan-requires" data-article-toc-link>What does the coverage scan require first?</a>
-            <a href="#which-results-actually-matter" data-article-toc-link>Which result fields matter when you decide about cleanup?</a>
-            <a href="#how-cleanup-proof-uses-the-coverage-report" data-article-toc-link>How does the cleanup proof use that coverage report?</a>
-            </nav>
-          </section>
+      <section class="doc-card" id="risk-categories" data-section>
+        <h2>5. Risk categories</h2>
+        <ul>
+          <li><code>StaticEvent</code> and <code>StaticDelegate</code>: critical because old subscribers can survive later Play Mode sessions.</li>
+          <li><code>StaticCollection</code>, <code>StaticDictionary</code>, and <code>StaticArray</code>: high risk because runtime data can accumulate or stay changed.</li>
+          <li><code>StaticUnityObjectReference</code>: high risk because cached scene or asset objects can become stale.</li>
+          <li><code>SingletonInstance</code>: high risk because <code>Instance</code> fields can keep old state alive.</li>
+          <li><code>InitializationFlag</code>: high risk because flags such as <code>IsInitialized</code> can skip setup on the next run.</li>
+          <li><code>StaticServiceLocator</code>: high risk because global service caches often survive when Domain Reload is disabled.</li>
+          <li><code>MutableStaticField</code>: warning for other mutable static fields that may still need reset coverage.</li>
+          <li><code>RuntimePersistence</code>: runtime evidence produced by the Double Play test.</li>
+        </ul>
+      </section>
 
-          <section class="article-sidebar-card">
-            <h2>Author</h2>
-            <div class="author-card">
-              <div class="author-card-header">
-                <img src="/assets/images/authors/kevin-ahlgren-bjorvand.jpg" alt="Kevin Ahlgren Bjorvand" loading="lazy">
-                <div>
-                  <strong>Kevin Ahlgren Bjorvand</strong>
-                  <p>Founder, Bjorvand Solutions</p>
-                </div>
-              </div>
-              <p>Kevin builds Unity tools focused on release safety, build visibility, migration safety, and deterministic compliance workflows.</p>
-            </div>
-          </section>
+      <section class="doc-card" id="reset-coverage" data-section>
+        <h2>6. Reset coverage</h2>
+        <table class="data-table">
+          <thead><tr><th>Status</th><th>Meaning</th></tr></thead>
+          <tbody>
+            <tr><td><code>None</code></td><td>No reset coverage was found.</td></tr>
+            <tr><td><code>Potential</code></td><td>A reset-like method exists, but exact safe member coverage was not proven.</td></tr>
+            <tr><td><code>Covered</code></td><td>The tool found explicit safe evidence, such as a safe attribute, handled setting, generated reset coverage, or verified reset assignment.</td></tr>
+            <tr><td><code>Ignored</code></td><td>The member is suppressed in project settings or with an ignore attribute.</td></tr>
+            <tr><td><code>ManuallyHandled</code></td><td>The member is reviewed and handled outside what the scanner can prove.</td></tr>
+          </tbody>
+        </table>
+        <p>Exact reset coverage is conservative. References, delegates, and events must reset to <code>null</code>; initialization flags must reset to <code>false</code>; value fields are covered only when compiled IL proves a zero or default assignment.</p>
+      </section>
 
-          <section class="article-sidebar-card">
-            <h2>Unity Serialization Migration Guard links</h2>
-            <ul>
-              <li><a href="/assets/unity-serialization-migration-guard/">Unity Serialization Migration Guard homepage</a></li>
-              <li><a href="/assets/unity-serialization-migration-guard/docs/">Unity Serialization Migration Guard docs</a></li>
-              <li><a href="/support/">Support</a></li>
-              <li><a href="/assets/unity-serialization-migration-guard/license/">Unity Serialization Migration Guard license</a></li>
-            </ul>
-          </section>
+      <section class="doc-card" id="attributes" data-section>
+        <h2>7. Attributes</h2>
+        <p>Use attributes only after a member or type has been reviewed.</p>
+        <pre><code class="language-csharp">[FastPlayModeSafe]
+[FastPlayModeIgnore("Accepted false positive.")]
+[FastPlayModeResetHandled("Reset by project bootstrap.")]</code></pre>
+        <ul>
+          <li>Use <code>FastPlayModeIgnore</code> for accepted false positives.</li>
+          <li>Use <code>FastPlayModeResetHandled</code> when the risk is real but the lifecycle handling exists outside what the scanner can prove.</li>
+          <li>Use <code>FastPlayModeSafe</code> only when the static state is intentionally safe for Fast Play Mode.</li>
+        </ul>
+      </section>
 
-          <section class="article-sidebar-card">
-            <h2>Same-tool articles</h2>
-            <ul>
-              <li><a href="/articles/unity-serialization-migration-guard/safely-rename-serialized-fields-in-unity/">How to Safely Rename Serialized Fields in Unity</a></li>
-              <li><a href="/articles/unity-serialization-migration-guard/preview-and-validate-unity-reserialization-during-refactors/">How to Preview and Validate Unity Reserialization During Refactors</a></li>
-            </ul>
-          </section>
-        </aside>
+      <section class="doc-card" id="generated-reset-stub" data-section>
+        <h2>8. Generated reset stub</h2>
+        <p><code>Generate Reset Stub</code> creates a separate file:</p>
+        <pre><code class="language-text">Assets/FastPlayModeSafetyGuard/Generated/FastPlayModeGeneratedReset.cs</code></pre>
+        <p>The generator does not edit user scripts. It emits compile-safe reset assignments only when the field, declaring type, compile access, and reset value are proven safe.</p>
+        <p>Unsupported members, such as events, private fields, readonly fields, generic types, inaccessible assemblies, or unsupported value types, are written as comments. Review generated code before relying on it in production.</p>
+        <p>Preferred reset pattern:</p>
+        <pre><code class="language-csharp">using UnityEngine;
+
+public sealed class GameManager
+{
+    public static GameManager Instance;
+
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    private static void ResetStaticState()
+    {
+        Instance = null;
+    }
+}</code></pre>
+      </section>
+
+      <section class="doc-card" id="double-play-test" data-section>
+        <h2>9. Double Play test</h2>
+        <p><code>Run Double Play Test</code> is a runtime check for scanned active risks. It requires Enter Play Mode Options with Domain Reload disabled.</p>
+        <ol>
+          <li>Capture a static-state snapshot.</li>
+          <li>Enter and exit Play Mode.</li>
+          <li>Capture a second snapshot.</li>
+          <li>Enter and exit Play Mode again.</li>
+          <li>Capture a final snapshot and report persistence evidence.</li>
+        </ol>
+        <p>The test can flag retained subscribers, initialization flags that stay true, collections that keep or grow items, singleton references that remain non-null, and scalar values that changed and stayed changed.</p>
+      </section>
+
+      <section class="doc-card" id="ci-usage" data-section>
+        <h2>10. CI usage</h2>
+        <p>Run the scanner in Unity batch mode:</p>
+        <pre><code class="language-bash">Unity.exe -batchmode -quit -projectPath "ProjectPath" -executeMethod FastPlayModeSafetyGuard.CI.RunScan</code></pre>
+        <p>Override the report path per run:</p>
+        <pre><code class="language-bash">Unity.exe -batchmode -quit -projectPath "ProjectPath" -executeMethod FastPlayModeSafetyGuard.CI.RunScan -fastPlayModeReportPath "Library/FastPlayModeSafetyGuard/CIReport.json"</code></pre>
+        <table class="data-table">
+          <thead><tr><th>Exit code</th><th>Meaning</th></tr></thead>
+          <tbody>
+            <tr><td><code>0</code></td><td>The configured threshold passed.</td></tr>
+            <tr><td><code>1</code></td><td>The configured risk threshold failed.</td></tr>
+            <tr><td><code>2</code></td><td>Editor readiness blocked the scan.</td></tr>
+          </tbody>
+        </table>
+        <p>CI uses the saved settings asset, exports JSON, logs a summary, and can fail on warnings, high risks, or critical risks based on settings.</p>
+      </section>
+
+      <section class="doc-card" id="settings" data-section>
+        <h2>11. Settings</h2>
+        <p>The settings asset is stored at:</p>
+        <pre><code class="language-text">Assets/FastPlayModeSafetyGuard/Settings/FastPlayModeGuardSettings.asset</code></pre>
+        <ul>
+          <li>Include or exclude package assemblies.</li>
+          <li>Include or exclude Unity assemblies.</li>
+          <li>Include or exclude editor-only assemblies.</li>
+          <li>Include or exclude this tool's own assemblies and bundled demo findings.</li>
+          <li>Configure CI failure behavior and severity threshold.</li>
+          <li>Configure the default JSON report path.</li>
+          <li>Review and remove ignored or manually handled entries.</li>
+        </ul>
+      </section>
+
+      <section class="doc-card" id="limitations" data-section>
+        <h2>12. Limitations</h2>
+        <ul>
+          <li>The scanner works from compiled assemblies. Comment-based suppression is not implemented.</li>
+          <li>Reset coverage is <code>Covered</code> only when there is explicit safe evidence.</li>
+          <li>Generated reset stubs are conservative, created on demand, and do not modify user scripts.</li>
+          <li>The Double Play test only inspects static risks already found by the scanner.</li>
+          <li>The Double Play test provides runtime persistence evidence, not full gameplay coverage.</li>
+          <li>Unusual generated assemblies may need settings changes or future classifier tuning.</li>
+          <li>A project with compile errors may prevent the tool from loading.</li>
+        </ul>
+      </section>
+
+      <section class="doc-card" id="demo-and-support" data-section>
+        <h2>13. Demo, license, and support</h2>
+        <p>The included demo scene is located at:</p>
+        <pre><code class="language-text">Assets/FastPlayModeSafetyGuard/Demo/Scenes/FastPlayModeSafetyGuardDemo.unity</code></pre>
+        <ul>
+          <li>Enable <code>Include Fast Play Mode Safety Guard assemblies</code> in Settings when scanning the bundled demo.</li>
+          <li>Use <code>Tools &gt; Kevin Bjorvand &gt; Fast Play Mode Safety Guard &gt; Rebuild Demo Scene</code> if the demo scene layout needs to be rebuilt.</li>
+          <li>License page: <a href="/assets/fast-play-mode-safety-guard/license/">Fast Play Mode Safety Guard License</a></li>
+          <li>Support page: <a href="/support/">Bjorvand Solutions Support</a></li>
+        </ul>
+      </section>
+
+      <div class="empty-state" id="emptyState" role="status" aria-live="polite">
+        No sections match your search. Try a broader term like <code>reset</code>, <code>scan</code>, or <code>CI</code>.
       </div>
-    </div>
-  </main>
-  <footer class="site-footer">
+    </main>
+  </div>
+
+  <script src="/assets/js/docs/product-docs.js"></script>
+  <script defer src="/assets/js/site/nav.js"></script>
+  <script defer src="/assets/js/site/link-decorators.js"></script>
+<footer class="site-footer">
     <div class="container footer-shell">
       <div class="footer-columns">
         <section>
@@ -616,8 +594,5 @@
       </div>
     </div>
   </footer>
-  <script defer src="/assets/js/site/nav.js"></script>
-  <script defer src="/assets/js/site/article-detail.js"></script>
-  <script defer src="/assets/js/site/link-decorators.js"></script>
 </body>
 </html>

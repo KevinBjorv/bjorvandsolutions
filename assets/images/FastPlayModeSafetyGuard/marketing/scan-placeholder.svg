@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Fast Play Mode Safety Guard scan placeholder</title>
+  <desc id="desc">Placeholder artwork for project scan results.</desc>
+  <rect width="1280" height="720" fill="#0b1017"/>
+  <rect x="120" y="92" width="1040" height="536" rx="28" fill="#131c2a" stroke="#334155"/>
+  <text x="164" y="162" fill="#ecf1f8" font-family="Segoe UI, Arial, sans-serif" font-size="40" font-weight="800">Scan compiled project code</text>
+  <text x="164" y="212" fill="#9fb1c7" font-family="Segoe UI, Arial, sans-serif" font-size="24">Find static fields, events, singletons, collections, and cached Unity object references.</text>
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="24" fill="#ecf1f8">
+    <rect x="164" y="276" width="952" height="58" rx="14" fill="#0f1724" stroke="#2f3d52"/>
+    <text x="194" y="313">Critical: StaticEvent - GameEvents.OnWaveStarted</text>
+    <rect x="164" y="358" width="952" height="58" rx="14" fill="#0f1724" stroke="#2f3d52"/>
+    <text x="194" y="395">High: SingletonInstance - AudioService.Instance</text>
+    <rect x="164" y="440" width="952" height="58" rx="14" fill="#0f1724" stroke="#2f3d52"/>
+    <text x="194" y="477">High: StaticCollection - MatchCache.ActivePlayers</text>
+    <rect x="164" y="522" width="952" height="58" rx="14" fill="#0f1724" stroke="#2f3d52"/>
+    <text x="194" y="559">Warning: MutableStaticField - UiBootstrap.HasLoaded</text>
+  </g>
+  <circle cx="1070" cy="147" r="38" fill="#fb8114"/>
+  <path d="M1052 148l13 13 28-31" fill="none" stroke="#111827" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="120" y="688" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="22">Placeholder image - replace with final product screenshots</text>
+</svg>

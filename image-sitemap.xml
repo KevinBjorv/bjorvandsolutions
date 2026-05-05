@@ -390,4 +390,25 @@
     <image:image><image:loc>https://bjorv.com/assets/images/CompliancePack/marketing/Evidence%20based.jpg</image:loc></image:image>
     <image:image><image:loc>https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.jpg</image:loc></image:image>
   </url>
+  <url>
+    <loc>https://bjorv.com/assets/fast-play-mode-safety-guard/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/images/FastPlayModeSafetyGuard/marketing/cover-placeholder.svg</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/images/FastPlayModeSafetyGuard/marketing/scan-placeholder.svg</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/images/FastPlayModeSafetyGuard/marketing/readiness-placeholder.svg</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/images/FastPlayModeSafetyGuard/marketing/reset-stub-placeholder.svg</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/images/FastPlayModeSafetyGuard/marketing/double-play-placeholder.svg</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/images/FastPlayModeSafetyGuard/marketing/ci-placeholder.svg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://bjorv.com/assets/fast-play-mode-safety-guard/docs/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/apple-touch-icon.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-16x16.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-32x32.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://bjorv.com/assets/fast-play-mode-safety-guard/license/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/apple-touch-icon.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-16x16.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-32x32.png</image:loc></image:image>
+  </url>
 </urlset>

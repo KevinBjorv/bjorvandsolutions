@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inspector Event Link Doctor Documentation | UnityEvent and Animation Event Callback Checks</title>
+  <meta name="description" content="Setup and usage documentation for Inspector Event Link Doctor, including scan modes, result statuses, UnityEvent checks, Animation Event context, exports, ignores, and CI validation.">
+  <link rel="canonical" href="/assets/inspector-event-link-doctor/docs/">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon/android-chrome-192x192.png">
+  <link rel="icon" type="image/x-icon" href="/assets/favicon/favicon.ico">
+  <link rel="manifest" href="/assets/favicon/site.webmanifest">
+  <link rel="stylesheet" href="/assets/css/products/product-docs.css">
+  <script src="/assets/js/theme/theme-init.js"></script>
+  <link rel="stylesheet" href="/assets/css/shared/site-navbar.css">
+  <link rel="stylesheet" href="/assets/css/shared/link-decorators.css">
+  <link rel="stylesheet" href="/assets/css/shared/typography-overrides.css">
+  <script src="/assets/js/site/mailerlite-universal.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Bjorvand Solutions</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="menu-root">
+          <li class="menu-item">
+            <a class="menu-link" href="/tools/" data-nav-trigger="tools" aria-haspopup="menu" aria-expanded="false" aria-controls="menu-tools">Tools <span class="menu-chevron" aria-hidden="true">v</span></a>
+            <div class="dropdown" id="menu-tools" data-nav-menu="tools" role="menu" aria-label="Tools links">
+              <a role="menuitem" href="/tools/">Tools Overview</a>
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/assets/build-size-guard/" aria-haspopup="menu">Build Size Guard <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Build Size Guard links">
+                  <a role="menuitem" href="/assets/build-size-guard/">Homepage</a>
+                  <a role="menuitem" href="/assets/build-size-guard/docs/">Docs</a>
+                  <a role="menuitem" href="/support/">Support</a>
+                  <a role="menuitem" href="/assets/build-size-guard/license/">License</a>
+                </div>
+              </div>
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/assets/shader-variant-budget-ci-guard/" aria-haspopup="menu">Shader Variant Budget & CI Guard <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Shader Variant Budget & CI Guard links">
+                  <a role="menuitem" href="/assets/shader-variant-budget-ci-guard/">Homepage</a>
+                  <a role="menuitem" href="/assets/shader-variant-budget-ci-guard/docs/">Docs</a>
+                  <a role="menuitem" href="/support/">Support</a>
+                  <a role="menuitem" href="/assets/shader-variant-budget-ci-guard/license/">License</a>
+                </div>
+              </div>
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/assets/unity-serialization-migration-guard/" aria-haspopup="menu">Unity Serialization Migration Guard <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Unity Serialization Migration Guard links">
+                  <a role="menuitem" href="/assets/unity-serialization-migration-guard/">Homepage</a>
+                  <a role="menuitem" href="/assets/unity-serialization-migration-guard/docs/">Docs</a>
+                  <a role="menuitem" href="/support/">Support</a>
+                  <a role="menuitem" href="/assets/unity-serialization-migration-guard/license/">License</a>
+                </div>
+              </div>
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/assets/il2cpp-strip-guard/" aria-haspopup="menu">IL2CPP Strip Guard <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="IL2CPP Strip Guard links">
+                  <a role="menuitem" href="/assets/il2cpp-strip-guard/">Homepage</a>
+                  <a role="menuitem" href="/assets/il2cpp-strip-guard/docs/">Docs</a>
+                  <a role="menuitem" href="/support/">Support</a>
+                  <a role="menuitem" href="/assets/il2cpp-strip-guard/license/">License</a>
+                </div>
+              </div>
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/assets/inspector-event-link-doctor/" aria-haspopup="menu">Inspector Event Link Doctor <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Inspector Event Link Doctor links">
+                  <a role="menuitem" href="/assets/inspector-event-link-doctor/">Homepage</a>
+                  <a role="menuitem" href="/assets/inspector-event-link-doctor/docs/">Docs</a>
+                  <a role="menuitem" href="/support/">Support</a>
+                  <a role="menuitem" href="/assets/inspector-event-link-doctor/license/">License</a>
+                </div>
+              </div>
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/assets/fast-play-mode-safety-guard/" aria-haspopup="menu">Fast Play Mode Safety Guard <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Fast Play Mode Safety Guard links">
+                  <a role="menuitem" href="/assets/fast-play-mode-safety-guard/">Homepage</a>
+                  <a role="menuitem" href="/assets/fast-play-mode-safety-guard/docs/">Docs</a>
+                  <a role="menuitem" href="/support/">Support</a>
+                  <a role="menuitem" href="/assets/fast-play-mode-safety-guard/license/">License</a>
+                </div>
+              </div>
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/assets/import-settings-validator-fix/" aria-haspopup="menu">Import Settings Validator & Fix <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Import Settings Validator & Fix links">
+                  <a role="menuitem" href="/assets/import-settings-validator-fix/">Homepage</a>
+                  <a role="menuitem" href="/assets/import-settings-validator-fix/docs/">Docs</a>
+                  <a role="menuitem" href="/support/">Support</a>
+                  <a role="menuitem" href="/assets/import-settings-validator-fix/license/">License</a>
+                </div>
+              </div>
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/assets/compliance/" aria-haspopup="menu">Third-Party Notices & Credits <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Third-Party Notices & Credits links">
+                  <a role="menuitem" href="/assets/compliance/">Homepage</a>
+                  <a role="menuitem" href="/assets/compliance/docs/">Docs</a>
+                  <a role="menuitem" href="/support/">Support</a>
+                  <a role="menuitem" href="/assets/compliance/license/">License</a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="menu-item">
+            <a class="menu-link" href="/articles/" data-nav-trigger="articles" aria-haspopup="menu" aria-expanded="false" aria-controls="menu-articles">Articles <span class="menu-chevron" aria-hidden="true">v</span></a>
+            <div class="dropdown" id="menu-articles" data-nav-menu="articles" role="menu" aria-label="Articles links">
+              <a role="menuitem" href="/articles/">All Articles</a>
+              <a role="menuitem" href="/articles/?category=build-ci">Build & CI</a>
+              <a role="menuitem" href="/articles/?category=asset-pipeline">Asset Pipeline</a>
+              <a role="menuitem" href="/articles/?category=serialization-refactoring">Serialization & Refactoring</a>
+              <a role="menuitem" href="/articles/?category=compliance-release">Compliance & Release</a>
+<div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/articles/?tool=build-size-guard" aria-haspopup="menu">Build Size Guard <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Build Size Guard article links">
+                  <a role="menuitem" href="/articles/build-size-guard/catch-unity-build-size-regressions-before-release/">How to Catch Unity Build Size Regressions Before Release</a>
+                  <a role="menuitem" href="/articles/build-size-guard/set-build-size-budgets-in-unity-ci/">How to Set Build Size Budgets in Unity CI</a>
+                  <a role="menuitem" href="/articles/build-size-guard/compare-unity-build-snapshots-and-find-what-changed/">How to Compare Unity Build Snapshots and Find What Changed</a>
+                </div>
+              </div>
+<div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/articles/?tool=shader-variant-budget-ci-guard" aria-haspopup="menu">Shader Variant Budget & CI Guard <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Shader Variant Budget & CI Guard article links">
+                  <a role="menuitem" href="/articles/shader-variant-budget-ci-guard/reduce-shader-variant-creep-in-unity/">How to Reduce Shader Variant Creep in Unity</a>
+                  <a role="menuitem" href="/articles/shader-variant-budget-ci-guard/set-shader-variant-budgets-in-unity-ci/">How to Set Shader Variant Budgets in Unity CI</a>
+                  <a role="menuitem" href="/articles/shader-variant-budget-ci-guard/compare-shader-variant-snapshots-from-editor-log/">How to Compare Shader Variant Snapshots from Editor.log</a>
+                </div>
+              </div>
+<div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/articles/?tool=unity-serialization-migration-guard" aria-haspopup="menu">Unity Serialization Migration Guard <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Unity Serialization Migration Guard article links">
+                  <a role="menuitem" href="/articles/unity-serialization-migration-guard/safely-rename-serialized-fields-in-unity/">How to Safely Rename Serialized Fields in Unity</a>
+                  <a role="menuitem" href="/articles/unity-serialization-migration-guard/audit-unity-yaml-coverage-before-removing-old-rename-mappings/">How to Audit Unity YAML Coverage Before Removing Old Rename Mappings</a>
+                  <a role="menuitem" href="/articles/unity-serialization-migration-guard/preview-and-validate-unity-reserialization-during-refactors/">How to Preview and Validate Unity Reserialization During Refactors</a>
+                </div>
+              </div>
+<div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/articles/?tool=import-settings-validator-fix" aria-haspopup="menu">Import Settings Validator & Fix <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Import Settings Validator & Fix article links">
+                  <a role="menuitem" href="/articles/import-settings-validator-fix/enforce-unity-import-settings-across-a-team/">How to Enforce Unity Import Settings Across a Team</a>
+                  <a role="menuitem" href="/articles/import-settings-validator-fix/validate-texture-audio-and-model-import-settings-in-unity/">How to Validate Texture, Audio, and Model Import Settings in Unity</a>
+                  <a role="menuitem" href="/articles/import-settings-validator-fix/fix-import-setting-drift-without-manual-reimports/">How to Fix Import Setting Drift Without Manual Reimports</a>
+                </div>
+              </div>
+<div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/articles/?tool=compliance" aria-haspopup="menu">Third-Party Notices & Credits <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Third-Party Notices & Credits article links">
+                  <a role="menuitem" href="/articles/compliance/generate-third-party-notices-for-a-unity-game/">How to Generate Third-Party Notices for a Unity Game</a>
+                  <a role="menuitem" href="/articles/compliance/build-a-repeatable-unity-license-compliance-workflow/">How to Build a Repeatable Unity License Compliance Workflow</a>
+                  <a role="menuitem" href="/articles/compliance/export-unity-credits-and-compliance-manifests-before-release/">How to Export Unity Credits and Compliance Manifests Before Release</a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="menu-item">
+            <a class="menu-link" href="/games/" data-nav-trigger="games" aria-haspopup="menu" aria-expanded="false" aria-controls="menu-games">Games <span class="menu-chevron" aria-hidden="true">v</span></a>
+            <div class="dropdown" id="menu-games" data-nav-menu="games" role="menu" aria-label="Games links">
+              <a role="menuitem" href="/games/">Games Overview</a>
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/dopamine/" aria-haspopup="menu">Dopamine Machine <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Dopamine Machine links">
+                  <a role="menuitem" href="/dopamine/">Play</a>
+                </div>
+              </div>
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/games/orbital-chaos/" aria-haspopup="menu">Orbital Chaos <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Orbital Chaos links">
+                  <a role="menuitem" href="/games/orbital-chaos/">Homepage</a>
+                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.kevinbjorvand.orbitalchaos">Google Play</a>
+                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://apps.apple.com/us/app/orbital-chaos/id6754812237">App Store</a>
+                </div>
+              </div>
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/games/neonsurge-2/" aria-haspopup="menu">NeonSurge 2 <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="NeonSurge 2 links">
+                  <a role="menuitem" href="/games/neonsurge-2/">Homepage</a>
+                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge-2">itch.io</a>
+                </div>
+              </div>
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/games/neonsurge/" aria-haspopup="menu">NeonSurge <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="NeonSurge links">
+                  <a role="menuitem" href="/games/neonsurge/">Homepage</a>
+                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge">itch.io</a>
+                </div>
+              </div>
+              <div class="dropdown-submenu">
+                <a class="dropdown-submenu-trigger" role="menuitem" href="/games/#prototype-games-title" aria-haspopup="menu">Prototypes <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
+                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Prototype links">
+                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/teleportation-prototype">Teleportation Prototype</a>
+                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/core-ascend">Core Ascend</a>
+                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/dodge-the-blocks">Dodge the Blocks</a>
+                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/lumacore-minigame">LumaCore</a>
+                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/duestien">Duestien: City Scene</a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="menu-item menu-item-smart-indie">
+            <a class="menu-link menu-link-smart-indie" target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a>
+          </li>
+          <li class="menu-item">
+            <a class="menu-link" href="/support/">Contact</a>
+          </li>
+          <li class="menu-item">
+            <a class="menu-link" href="https://www.youtube.com/@devwithkevin" target="_blank" rel="noopener noreferrer" data-external-indicator="off" data-nav-trigger="socials" aria-haspopup="menu" aria-expanded="false" aria-controls="menu-socials">Socials <span class="menu-chevron" aria-hidden="true">v</span></a>
+            <div class="dropdown" id="menu-socials" data-nav-menu="socials" role="menu" aria-label="Social links">
+              <a class="social-nav-link" role="menuitem" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/@devwithkevin"><img class="social-nav-icon" src="/assets/images/icons/youtube.png" alt="" aria-hidden="true" loading="lazy">YouTube</a>
+              <a class="social-nav-link" role="menuitem" target="_blank" rel="noopener noreferrer" href="https://x.com/BjorvandKevin"><img class="social-nav-icon" src="/assets/images/icons/twitter.png" alt="" aria-hidden="true" loading="lazy">X</a>
+              <a class="social-nav-link" role="menuitem" target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/kevinbdev/"><img class="social-nav-icon" src="/assets/images/icons/instagram.png" alt="" aria-hidden="true" loading="lazy">Instagram</a>
+              <a class="social-nav-link" role="menuitem" target="_blank" rel="noopener noreferrer" href="https://www.tiktok.com/@kevinbdev"><img class="social-nav-icon" src="/assets/images/icons/tiktok.png" alt="" aria-hidden="true" loading="lazy">TikTok</a>
+              <a class="social-nav-link" role="menuitem" target="_blank" rel="noopener noreferrer" href="https://skool.com/@kevin-bjorvand-9175"><img class="social-nav-icon social-nav-icon-skool" src="/Skool%20logo.png" alt="" aria-hidden="true" loading="lazy">Skool</a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+
+      <button class="mobile-nav-toggle" type="button" data-mobile-nav-toggle aria-controls="mobileNavPanel" aria-expanded="false">Menu</button>
+    </div>
+
+    <div class="mobile-nav-panel" id="mobileNavPanel" data-mobile-nav-panel hidden>
+      <div class="mobile-nav-shell container">
+        <details class="mobile-nav-group">
+          <summary>Tools</summary>
+          <ul>
+            <li><a href="/tools/">Tools Overview</a></li>
+            <li><a href="/assets/build-size-guard/">Build Size Guard Homepage</a></li>
+            <li><a href="/assets/build-size-guard/docs/">Build Size Guard Docs</a></li>
+            <li><a href="/assets/build-size-guard/license/">Build Size Guard License</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/">Shader Variant Budget & CI Guard Homepage</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/docs/">Shader Variant Budget & CI Guard Docs</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/license/">Shader Variant Budget & CI Guard License</a></li>
+            <li><a href="/assets/unity-serialization-migration-guard/">Unity Serialization Migration Guard Homepage</a></li>
+            <li><a href="/assets/unity-serialization-migration-guard/docs/">Unity Serialization Migration Guard Docs</a></li>
+            <li><a href="/assets/unity-serialization-migration-guard/license/">Unity Serialization Migration Guard License</a></li>
+            <li><a href="/assets/il2cpp-strip-guard/">IL2CPP Strip Guard Homepage</a></li>
+            <li><a href="/assets/il2cpp-strip-guard/docs/">IL2CPP Strip Guard Docs</a></li>
+            <li><a href="/assets/il2cpp-strip-guard/license/">IL2CPP Strip Guard License</a></li>
+            <li><a href="/assets/inspector-event-link-doctor/">Inspector Event Link Doctor Homepage</a></li>
+            <li><a href="/assets/inspector-event-link-doctor/docs/">Inspector Event Link Doctor Docs</a></li>
+            <li><a href="/assets/inspector-event-link-doctor/license/">Inspector Event Link Doctor License</a></li>
+            <li><a href="/assets/fast-play-mode-safety-guard/">Fast Play Mode Safety Guard Homepage</a></li>
+            <li><a href="/assets/fast-play-mode-safety-guard/docs/">Fast Play Mode Safety Guard Docs</a></li>
+            <li><a href="/assets/fast-play-mode-safety-guard/license/">Fast Play Mode Safety Guard License</a></li>
+            <li><a href="/assets/import-settings-validator-fix/">Import Settings Validator & Fix Homepage</a></li>
+            <li><a href="/assets/import-settings-validator-fix/docs/">Import Settings Validator & Fix Docs</a></li>
+            <li><a href="/assets/import-settings-validator-fix/license/">Import Settings Validator & Fix License</a></li>
+            <li><a href="/assets/compliance/">Third-Party Notices & Credits Homepage</a></li>
+            <li><a href="/assets/compliance/docs/">Third-Party Notices & Credits Docs</a></li>
+            <li><a href="/assets/compliance/license/">Third-Party Notices & Credits License</a></li>
+            <li><a href="/support/">Support Form</a></li>
+          </ul>
+        </details>
+        <details class="mobile-nav-group">
+          <summary>Articles</summary>
+          <ul>
+            <li><a href="/articles/">All Articles</a></li>
+            <li><a href="/articles/?category=build-ci">Build & CI</a></li>
+            <li><a href="/articles/?category=asset-pipeline">Asset Pipeline</a></li>
+            <li><a href="/articles/?category=serialization-refactoring">Serialization & Refactoring</a></li>
+            <li><a href="/articles/?category=compliance-release">Compliance & Release</a></li>
+            <li class="mobile-nav-list-label">Build Size Guard</li>
+            <li><a href="/articles/build-size-guard/catch-unity-build-size-regressions-before-release/">How to Catch Unity Build Size Regressions Before Release</a></li>
+            <li><a href="/articles/build-size-guard/set-build-size-budgets-in-unity-ci/">How to Set Build Size Budgets in Unity CI</a></li>
+            <li><a href="/articles/build-size-guard/compare-unity-build-snapshots-and-find-what-changed/">How to Compare Unity Build Snapshots and Find What Changed</a></li>
+            <li class="mobile-nav-list-label">Shader Variant Budget & CI Guard</li>
+            <li><a href="/articles/shader-variant-budget-ci-guard/reduce-shader-variant-creep-in-unity/">How to Reduce Shader Variant Creep in Unity</a></li>
+            <li><a href="/articles/shader-variant-budget-ci-guard/set-shader-variant-budgets-in-unity-ci/">How to Set Shader Variant Budgets in Unity CI</a></li>
+            <li><a href="/articles/shader-variant-budget-ci-guard/compare-shader-variant-snapshots-from-editor-log/">How to Compare Shader Variant Snapshots from Editor.log</a></li>
+            <li class="mobile-nav-list-label">Unity Serialization Migration Guard</li>
+            <li><a href="/articles/unity-serialization-migration-guard/safely-rename-serialized-fields-in-unity/">How to Safely Rename Serialized Fields in Unity</a></li>
+            <li><a href="/articles/unity-serialization-migration-guard/audit-unity-yaml-coverage-before-removing-old-rename-mappings/">How to Audit Unity YAML Coverage Before Removing Old Rename Mappings</a></li>
+            <li><a href="/articles/unity-serialization-migration-guard/preview-and-validate-unity-reserialization-during-refactors/">How to Preview and Validate Unity Reserialization During Refactors</a></li>
+            <li class="mobile-nav-list-label">Import Settings Validator & Fix</li>
+            <li><a href="/articles/import-settings-validator-fix/enforce-unity-import-settings-across-a-team/">How to Enforce Unity Import Settings Across a Team</a></li>
+            <li><a href="/articles/import-settings-validator-fix/validate-texture-audio-and-model-import-settings-in-unity/">How to Validate Texture, Audio, and Model Import Settings in Unity</a></li>
+            <li><a href="/articles/import-settings-validator-fix/fix-import-setting-drift-without-manual-reimports/">How to Fix Import Setting Drift Without Manual Reimports</a></li>
+            <li class="mobile-nav-list-label">Third-Party Notices & Credits</li>
+            <li><a href="/articles/compliance/generate-third-party-notices-for-a-unity-game/">How to Generate Third-Party Notices for a Unity Game</a></li>
+            <li><a href="/articles/compliance/build-a-repeatable-unity-license-compliance-workflow/">How to Build a Repeatable Unity License Compliance Workflow</a></li>
+            <li><a href="/articles/compliance/export-unity-credits-and-compliance-manifests-before-release/">How to Export Unity Credits and Compliance Manifests Before Release</a></li>
+          </ul>
+        </details>
+        <details class="mobile-nav-group">
+          <summary>Games</summary>
+          <ul>
+            <li><a href="/games/">Games Overview</a></li>
+            <li><a href="/dopamine/">Dopamine Machine Play</a></li>
+            <li><a href="/games/orbital-chaos/">Orbital Chaos Homepage</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.kevinbjorvand.orbitalchaos">Orbital Chaos Google Play</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://apps.apple.com/us/app/orbital-chaos/id6754812237">Orbital Chaos App Store</a></li>
+            <li><a href="/games/neonsurge-2/">NeonSurge 2 Homepage</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge-2">NeonSurge 2 itch.io</a></li>
+            <li><a href="/games/neonsurge/">NeonSurge Homepage</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge">NeonSurge itch.io</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/teleportation-prototype">Teleportation Prototype</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/core-ascend">Core Ascend</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/dodge-the-blocks">Dodge the Blocks</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/lumacore-minigame">LumaCore</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/duestien">Duestien: City Scene</a></li>
+          </ul>
+        </details>
+        <div class="mobile-nav-group mobile-nav-single-link">
+          <a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a>
+        </div>
+        <div class="mobile-nav-group mobile-nav-single-link">
+          <a href="/support/">Contact</a>
+        </div>
+        <details class="mobile-nav-group">
+          <summary>Socials</summary>
+          <ul>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/@devwithkevin">YouTube</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://x.com/BjorvandKevin">X</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/kevinbdev/">Instagram</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://www.tiktok.com/@kevinbdev">TikTok</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://skool.com/@kevin-bjorvand-9175">Skool</a></li>
+          </ul>
+        </details>
+      </div>
+    </div>
+  </header>
+
+  <div class="shell layout">
+    <aside class="sidebar" aria-label="Documentation navigation">
+      <h2>Documentation</h2>
+      <p>Setup and usage reference for callback scans, result statuses, ignores, exports, Animation Events, and CI validation.</p>
+      <label class="search-label" for="docSearch">Search</label>
+      <input class="search-input" type="search" id="docSearch" placeholder="Search scan, status, CI..." autocomplete="off">
+      <p class="search-status" id="searchStatus">Showing 14 sections</p>
+      <nav class="sidebar-nav" id="sidebarNav">
+        <a class="sidebar-link" href="#overview">Overview</a>
+        <a class="sidebar-link" href="#requirements">Requirements</a>
+        <a class="sidebar-link" href="#quick-start">Quick start</a>
+        <a class="sidebar-link" href="#scan-modes">Scan modes</a>
+        <a class="sidebar-link" href="#what-it-scans">What it scans</a>
+        <a class="sidebar-link" href="#unityevent-validation">UnityEvent validation</a>
+        <a class="sidebar-link" href="#animation-events">Animation Events</a>
+        <a class="sidebar-link" href="#statuses">Result statuses</a>
+        <a class="sidebar-link" href="#main-window">Main window</a>
+        <a class="sidebar-link" href="#settings-ignores">Settings and ignores</a>
+        <a class="sidebar-link" href="#exports">Exports</a>
+        <a class="sidebar-link" href="#ci-validation">CI validation</a>
+        <a class="sidebar-link" href="#demo-support">Demo and support</a>
+        <a class="sidebar-link" href="#faq">FAQ</a>
+      </nav>
+    </aside>
+
+    <main class="content" id="docContent">
+      <section class="doc-card" id="overview" data-section>
+        <h1>Inspector Event Link Doctor documentation</h1>
+        <p class="lead">Inspector Event Link Doctor is a Unity Editor utility for finding broken and risky Inspector-connected callbacks before runtime.</p>
+        <div class="callout">
+          The tool is a focused report utility for serialized Inspector callback links. It is not a graph editor, repair engine, or runtime debugger.
+        </div>
+      </section>
+
+      <section class="doc-card" id="requirements" data-section>
+        <h2>1. Requirements</h2>
+        <ul>
+          <li>Source project version: <code>1.0.0</code>.</li>
+          <li>Current source project Unity version: <code>6000.4.4f1</code>.</li>
+          <li>Target support currently claimed in the source documentation: Unity 6.</li>
+          <li>The editor assembly is Editor-only and does not add required runtime code to user projects.</li>
+        </ul>
+      </section>
+
+      <section class="doc-card" id="quick-start" data-section>
+        <h2>2. Quick start</h2>
+        <ol>
+          <li>Open <code>Tools &gt; Inspector Event Link Doctor &gt; Open Window</code>.</li>
+          <li>Click <code>Current Scene</code>.</li>
+          <li>Review Broken, Risky, and Unresolved Context results.</li>
+          <li>Select a result row to inspect full details.</li>
+          <li>Use Ping Source, Select Source, Open Scene, Ping Target, Copy Method, Copy Path, Copy Issue, or Ignore as needed.</li>
+          <li>Fix the serialized callback in the Inspector.</li>
+          <li>Re-scan.</li>
+          <li>Optionally export a report or run CI validation.</li>
+        </ol>
+        <p>For a project-wide pass, click <code>Entire Project</code>. For demo validation, click <code>Demo</code>.</p>
+      </section>
+
+      <section class="doc-card" id="scan-modes" data-section>
+        <h2>3. Scan modes</h2>
+        <table class="data-table">
+          <thead><tr><th>Mode</th><th>Scope</th></tr></thead>
+          <tbody>
+            <tr><td><code>Current Scene</code></td><td>Scans the active loaded scene.</td></tr>
+            <tr><td><code>Build Scenes</code></td><td>Scans enabled scenes from Unity Build Settings.</td></tr>
+            <tr><td><code>Selected</code></td><td>Scans selected assets or folders from the Project window.</td></tr>
+            <tr><td><code>Entire Project</code></td><td>Scans supported assets under <code>Assets</code>, with optional all-scene inclusion through settings.</td></tr>
+            <tr><td><code>Demo</code></td><td>Scans the included demo folder with package demo inclusion enabled.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="doc-card" id="what-it-scans" data-section>
+        <h2>4. What it scans</h2>
+        <p>Supported source asset types include open active scenes, enabled Build Settings scenes, selected or all-Assets scene assets, prefab assets, ScriptableObject assets, and AnimationClip assets.</p>
+        <ul>
+          <li>Serialized UnityEvent persistent calls.</li>
+          <li>UI events that serialize through UnityEvent, including Button and Toggle.</li>
+          <li>Custom UnityEvent fields on MonoBehaviours.</li>
+          <li>Custom typed UnityEvents for common primitive and Unity object argument types.</li>
+          <li>UnityEvents inside nested serializable fields when visible through Unity serialization.</li>
+          <li>UnityEvents on ScriptableObjects.</li>
+          <li>Animation Events on AnimationClip assets.</li>
+          <li>Missing scripts on GameObjects and scanner exceptions as reportable errors.</li>
+        </ul>
+        <p>By default, scans skip <code>Library</code>, <code>Temp</code>, <code>Logs</code>, <code>Packages</code>, generated folders, user-configured ignored folders, package documentation, and package demo content.</p>
+      </section>
+
+      <section class="doc-card" id="unityevent-validation" data-section>
+        <h2>5. UnityEvent validation</h2>
+        <p>The scanner walks <code>SerializedObject</code> visible properties and looks for the serialized persistent-call structure <code>m_PersistentCalls.m_Calls</code>.</p>
+        <ul>
+          <li>Broken results include missing or null targets, empty method names, unresolved target types, invalid listener modes, missing methods, and wrong signatures.</li>
+          <li>Risky results include disabled calls, ambiguous compatible methods, private methods, obsolete methods, editor-only target types, disabled components, inactive GameObjects, missing target scripts, prefab instance sources, and cross-prefab references.</li>
+          <li>Valid results have an existing target, matching method signature, and no detected risk flags.</li>
+        </ul>
+        <p>Return type must be <code>void</code>. Parameter count and type must match the expected persistent listener mode.</p>
+      </section>
+
+      <section class="doc-card" id="animation-events" data-section>
+        <h2>6. Animation Events</h2>
+        <p>The scanner reads Animation Events from AnimationClip assets through Unity editor APIs and records clip, event index, time, function name, parameters, source path, and receiver context when known.</p>
+        <ul>
+          <li>Without receiver context, empty function names are Broken and non-empty functions are Unresolved Context.</li>
+          <li>With receiver context, missing receiver methods and incompatible signatures are Broken.</li>
+          <li>Object parameter gaps, multiple compatible methods, duplicate same-time events, and suspicious function names are Risky.</li>
+        </ul>
+        <p>Animation Events are context-dependent. A clip can be valid in one receiver context and broken or ambiguous in another.</p>
+      </section>
+
+      <section class="doc-card" id="statuses" data-section>
+        <h2>7. Result statuses</h2>
+        <table class="data-table">
+          <thead><tr><th>Status</th><th>Meaning</th></tr></thead>
+          <tbody>
+            <tr><td><code>Valid</code></td><td>The callback resolves cleanly.</td></tr>
+            <tr><td><code>Risky</code></td><td>The callback currently resolves, but a fragile or suspicious condition should be reviewed.</td></tr>
+            <tr><td><code>Broken</code></td><td>A required target, type, method, signature, or serialized mode is invalid.</td></tr>
+            <tr><td><code>Ignored</code></td><td>The result matched an ignored folder, ignored issue type, or specific result ignore rule.</td></tr>
+            <tr><td><code>Unresolved Context</code></td><td>The scanner needs more receiver information before it can classify an Animation Event.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="doc-card" id="main-window" data-section>
+        <h2>8. Main window</h2>
+        <p>Open the window from:</p>
+        <pre><code class="language-text">Tools &gt; Inspector Event Link Doctor &gt; Open Window</code></pre>
+        <ul>
+          <li>Docs button, scan toolbar, export format selector, export button, and Project Settings button.</li>
+          <li>Status summary chips and status, source, and kind filters.</li>
+          <li>Paged result list and result details panel.</li>
+          <li>Default visible filters: Broken, Risky, and Unresolved Context.</li>
+          <li>Default hidden filters: Valid and Ignored.</li>
+        </ul>
+      </section>
+
+      <section class="doc-card" id="settings-ignores" data-section>
+        <h2>9. Settings and ignores</h2>
+        <p>Open settings from:</p>
+        <pre><code class="language-text">Project Settings &gt; Inspector Event Link Doctor</code></pre>
+        <ul>
+          <li>Configure scan defaults, result paging, export defaults, and Advanced CI settings.</li>
+          <li>Add, reveal, and remove ignored project folders under <code>Assets</code>.</li>
+          <li>Ignore issue types globally when a category is accepted noise.</li>
+          <li>Ignore a specific result by source GUID, source object global ID, event field path, target global ID, method name, and issue type.</li>
+        </ul>
+        <p>Ignored results do not fail CI by default. If CI includes ignored results, each ignored row is counted by its original status for threshold checks.</p>
+      </section>
+
+      <section class="doc-card" id="exports" data-section>
+        <h2>10. Exports</h2>
+        <p>Supported report formats:</p>
+        <ul>
+          <li>Markdown (<code>.md</code>)</li>
+          <li>JSON (<code>.json</code>)</li>
+          <li>Text (<code>.txt</code>)</li>
+          <li>HTML (<code>.html</code>)</li>
+          <li>CSV (<code>.csv</code>)</li>
+          <li>XML (<code>.xml</code>)</li>
+        </ul>
+        <p>Common report metadata includes tool version, scan date UTC, Unity version, project name, project path, summary counts, and result list. JSON is intended for CI and external tooling.</p>
+      </section>
+
+      <section class="doc-card" id="ci-validation" data-section>
+        <h2>11. CI validation</h2>
+        <p>Run the static batchmode entry point:</p>
+        <pre><code class="language-bash">Unity -batchmode -quit -projectPath "ProjectPath" -executeMethod KevinBjorvand.EventLinkDoctor.EventLinkDoctorCI.RunValidation</code></pre>
+        <p>Useful arguments:</p>
+        <pre><code class="language-bash">-eventLinkDoctorOutput "Reports/EventLinkDoctorReport.json"
+-eventLinkDoctorBrokenThreshold 0
+-eventLinkDoctorFailOnRisky true
+-eventLinkDoctorRiskyThreshold 0
+-eventLinkDoctorIncludeIgnored false
+-eventLinkDoctorIncludeAllScenes true
+-eventLinkDoctorIncludePackageDemo false</code></pre>
+        <ul>
+          <li>Uses saved settings unless command-line overrides are supplied.</li>
+          <li>Exports JSON when an output path is configured.</li>
+          <li>Exits with code <code>1</code> if broken results exceed the broken threshold.</li>
+          <li>Optionally exits with code <code>1</code> if risky results exceed the risky threshold.</li>
+          <li>Exits with code <code>0</code> when thresholds pass.</li>
+        </ul>
+      </section>
+
+      <section class="doc-card" id="demo-support" data-section>
+        <h2>12. Demo, limitations, and support</h2>
+        <p>Demo content is located under:</p>
+        <pre><code class="language-text">Assets/InspectorEventLinkDoctor/Demo</code></pre>
+        <ul>
+          <li>Demo scenes intentionally include valid, broken, risky, and unresolved examples.</li>
+          <li>Demo content is ignored by normal scans by default.</li>
+          <li>Rebuild demo content from <code>Tools &gt; Inspector Event Link Doctor &gt; Rebuild Demo Content</code>.</li>
+          <li>License source status: <a href="/assets/inspector-event-link-doctor/license/">Inspector Event Link Doctor License</a></li>
+          <li>Support page: <a href="/support/">Bjorvand Solutions Support</a></li>
+        </ul>
+      </section>
+
+      <section class="doc-card" id="faq" data-section>
+        <h2>13. FAQ</h2>
+        <h3>Does this repair broken callbacks?</h3>
+        <p>No. Version 1.0.0 reports the exact source and suggested fix. Automatic repair is intentionally out of scope for the MVP.</p>
+        <h3>Does this require runtime code?</h3>
+        <p>No. Product scanner, window, exporter, settings, and CI command code is editor-only.</p>
+        <h3>Why is my AnimationClip marked Unresolved Context?</h3>
+        <p>The clip has Animation Events, but the scanner did not find a scanned scene or prefab where the clip is assigned to a receiver.</p>
+      </section>
+
+      <div class="empty-state" id="emptyState" role="status" aria-live="polite">
+        No sections match your search. Try a broader term like <code>scan</code>, <code>status</code>, or <code>CI</code>.
+      </div>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-shell">
+      <div class="footer-columns">
+        <section>
+          <h2>Explore</h2>
+          <ul class="link-list">
+            <li><a href="/">Home</a></li>
+            <li><a href="/tools/">Tools</a></li>
+            <li><a href="/articles/">Articles</a></li>
+            <li><a href="/games/">Games</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li>
+            <li><a href="/support/">Support</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Tools</h2>
+          <ul class="link-list">
+            <li><a href="/assets/build-size-guard/">Build Size Guard</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/">Shader Variant Budget & CI Guard</a></li>
+            <li><a href="/assets/unity-serialization-migration-guard/">Unity Serialization Migration Guard</a></li>
+            <li><a href="/assets/il2cpp-strip-guard/">IL2CPP Strip Guard</a></li>
+            <li><a href="/assets/inspector-event-link-doctor/">Inspector Event Link Doctor</a></li>
+            <li><a href="/assets/fast-play-mode-safety-guard/">Fast Play Mode Safety Guard</a></li>
+            <li><a href="/assets/import-settings-validator-fix/">Import Settings Validator & Fix</a></li>
+            <li><a href="/assets/compliance/">Third-Party Notices & Credits</a></li>
+            <li><a href="/tools/">Tools Directory</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Articles</h2>
+          <ul class="link-list">
+            <li><a href="/articles/">All Articles</a></li>
+            <li><a href="/articles/?category=build-ci">Build & CI</a></li>
+            <li><a href="/articles/?category=asset-pipeline">Asset Pipeline</a></li>
+            <li><a href="/articles/?category=serialization-refactoring">Serialization & Refactoring</a></li>
+            <li><a href="/articles/?category=compliance-release">Compliance & Release</a></li>
+            <li><a href="/articles/?sort=title">Sort A-Z</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Games</h2>
+          <ul class="link-list">
+            <li><a href="/games/">Games Directory</a></li>
+            <li><a href="/dopamine/">Dopamine Machine Play</a></li>
+            <li><a href="/games/orbital-chaos/">Orbital Chaos Homepage</a></li>
+            <li><a href="/games/neonsurge-2/">NeonSurge 2 Homepage</a></li>
+            <li><a href="/games/neonsurge/">NeonSurge Homepage</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/games/">Smart Indie Games</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Support</h2>
+          <ul class="link-list">
+            <li><a href="/support/">Support Form</a></li>
+            <li><a href="/support/#docs-shortcuts-title">Documentation</a></li>
+            <li><a href="/support/#faq">Support FAQ</a></li>
+          </ul>
+        </section>
+        <section class="footer-email-updates" aria-label="Email subscription">
+          <h2>Email Updates</h2>
+          <div class="ml-embedded" data-form="bk4D7K"></div>
+        </section>
+      </div>
+      <div class="footer-legal">
+        <span>&copy; Bjorvand Solutions <span data-current-year>2026</span> &bull; Company registration number: 836 135 652 (Norway)</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/docs/product-docs.js"></script>
+  <script defer src="/assets/js/site/nav.js"></script>
+  <script defer src="/assets/js/site/link-decorators.js"></script>
+</body>
+</html>

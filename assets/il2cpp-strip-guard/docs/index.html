@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IL2CPP Strip Guard Documentation | Unity Stripping, Reflection, and AOT Risk Checks</title>
+  <meta name="description" content="Setup and usage documentation for IL2CPP Strip Guard, including scans, preserve coverage, generated link.xml output, reports, settings, CI mode, and limitations.">
+  <link rel="canonical" href="/assets/il2cpp-strip-guard/docs/">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon/android-chrome-192x192.png">
+  <link rel="icon" type="image/x-icon" href="/assets/favicon/favicon.ico">
+  <link rel="manifest" href="/assets/favicon/site.webmanifest">
+  <link rel="stylesheet" href="/assets/css/products/product-docs.css">
+  <script src="/assets/js/theme/theme-init.js"></script>
+  <link rel="stylesheet" href="/assets/css/shared/site-navbar.css">
+  <link rel="stylesheet" href="/assets/css/shared/link-decorators.css">
+  <link rel="stylesheet" href="/assets/css/shared/typography-overrides.css">
+  <script src="/assets/js/site/mailerlite-universal.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Bjorvand Solutions</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="menu-root">
+          <li class="menu-item"><a class="menu-link" href="/tools/">Tools</a></li>
+          <li class="menu-item"><a class="menu-link" href="/articles/">Articles</a></li>
+          <li class="menu-item"><a class="menu-link" href="/games/">Games</a></li>
+          <li class="menu-item menu-item-smart-indie"><a class="menu-link menu-link-smart-indie" target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li>
+          <li class="menu-item"><a class="menu-link" href="/support/">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="mobile-nav-toggle" type="button" data-mobile-nav-toggle aria-controls="mobileNavPanel" aria-expanded="false">Menu</button>
+    </div>
+    <div class="mobile-nav-panel" id="mobileNavPanel" data-mobile-nav-panel hidden>
+      <div class="mobile-nav-shell container">
+        <details class="mobile-nav-group">
+          <summary>Tools</summary>
+          <ul>
+            <li><a href="/tools/">Tools Overview</a></li>
+            <li><a href="/assets/il2cpp-strip-guard/">IL2CPP Strip Guard Homepage</a></li>
+            <li><a href="/assets/il2cpp-strip-guard/docs/">IL2CPP Strip Guard Docs</a></li>
+            <li><a href="/assets/il2cpp-strip-guard/license/">IL2CPP Strip Guard License</a></li>
+            <li><a href="/support/">Support Form</a></li>
+          </ul>
+        </details>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/articles/">Articles</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/games/">Games</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/support/">Contact</a></div>
+      </div>
+    </div>
+  </header>
+
+  <div class="shell layout">
+    <aside class="sidebar" aria-label="Documentation navigation">
+      <h2>Documentation</h2>
+      <p>Setup and reference for scans, preserve coverage, generated fixes, reports, CI mode, and limitations.</p>
+      <label class="search-label" for="docSearch">Search</label>
+      <input class="search-input" type="search" id="docSearch" placeholder="Search stripping, reflection, link.xml, CI..." autocomplete="off">
+      <p class="search-status" id="searchStatus">Showing 20 sections</p>
+      <nav class="sidebar-nav" id="sidebarNav">
+        <a class="sidebar-link" href="#overview">Overview</a>
+        <a class="sidebar-link" href="#requirements">Requirements</a>
+        <a class="sidebar-link" href="#package-scope">Package scope</a>
+        <a class="sidebar-link" href="#installation">Installation</a>
+        <a class="sidebar-link" href="#quick-start">Quick start</a>
+        <a class="sidebar-link" href="#entry-points">Entry points</a>
+        <a class="sidebar-link" href="#ui">User interface</a>
+        <a class="sidebar-link" href="#severity-status">Severity and status</a>
+        <a class="sidebar-link" href="#scan-inputs">Scan inputs</a>
+        <a class="sidebar-link" href="#csharp-detection">C# detection</a>
+        <a class="sidebar-link" href="#serialized-detection">Serialized detection</a>
+        <a class="sidebar-link" href="#preserve-coverage">Preserve coverage</a>
+        <a class="sidebar-link" href="#generated-linkxml">Generated link.xml</a>
+        <a class="sidebar-link" href="#aot-hints">AOT hints</a>
+        <a class="sidebar-link" href="#reports">Reports</a>
+        <a class="sidebar-link" href="#settings">Settings</a>
+        <a class="sidebar-link" href="#ci-mode">CI mode</a>
+        <a class="sidebar-link" href="#demo">Demo sample</a>
+        <a class="sidebar-link" href="#source-layout">Source and tests</a>
+        <a class="sidebar-link" href="#troubleshooting">Troubleshooting</a>
+      </nav>
+    </aside>
+
+    <main class="content" id="docContent">
+      <section class="doc-card" id="overview" data-section>
+        <h1>IL2CPP Strip Guard documentation</h1>
+        <p class="lead">IL2CPP Strip Guard is a Unity Editor utility that scans a Unity project for common IL2CPP managed stripping, reflection, serialized type reference, and AOT generic risk patterns before they become build-only bugs.</p>
+        <div class="callout">
+          Core promise: Find IL2CPP stripping risks before your build breaks. The tool provides a practical scan and reviewable fixes; it does not prove that a project is perfectly IL2CPP-safe.
+        </div>
+        <ul>
+          <li>Documentation source date: May 5, 2026</li>
+          <li>Publisher: Kevin bjorvand / Bjorvand Solutions</li>
+          <li>Support: <a href="mailto:kevin@smartindie.dev">kevin@smartindie.dev</a> or <a href="/support/">Bjorvand Solutions support</a></li>
+          <li>Product page: <a href="/assets/il2cpp-strip-guard/">IL2CPP Strip Guard homepage</a></li>
+        </ul>
+      </section>
+
+      <section class="doc-card" id="requirements" data-section>
+        <h2>1. Requirements and target users</h2>
+        <p>Minimum supported Unity target:</p>
+        <pre><code class="language-text">Unity 2021.3 LTS+</code></pre>
+        <p>Preferred tested versions:</p>
+        <ul>
+          <li>Unity 2021.3 LTS</li>
+          <li>Unity 2022.3 LTS</li>
+          <li>Unity 6+</li>
+        </ul>
+        <p>The current validation workspace was created with Unity <code>6000.4.4f1</code>.</p>
+        <p>The tool is for Unity developers shipping to IL2CPP targets such as WebGL, Android, iOS, VR, console-like platforms, and any project using IL2CPP as the scripting backend.</p>
+      </section>
+
+      <section class="doc-card" id="package-scope" data-section>
+        <h2>2. Release package scope</h2>
+        <p>Release format:</p>
+        <pre><code class="language-text">Unity Asset Store .unitypackage export</code></pre>
+        <p>Include only the releasable product folder:</p>
+        <pre><code class="language-text">Assets/IL2CPPStripGuard/**</code></pre>
+        <p>Exclude generated output:</p>
+        <ul>
+          <li><code>Assets/IL2CPPStripGuard/Generated/**</code></li>
+          <li><code>Assets/IL2CPPStripGuard/Generated.meta</code></li>
+        </ul>
+        <p>Exclude validation project content such as <code>Assets/IL2CPPStripGuardTests/**</code>, scenes, project settings, package settings, <code>Library</code>, <code>Logs</code>, <code>Temp</code>, and <code>UserSettings</code>. The sample under <code>Assets/IL2CPPStripGuard/Samples</code> is part of the product asset folder and is included.</p>
+      </section>
+
+      <section class="doc-card" id="installation" data-section>
+        <h2>3. Installation</h2>
+        <ol>
+          <li>Import the asset into a Unity project.</li>
+          <li>Let Unity compile the editor assembly.</li>
+          <li>Open the tool from <code>Tools &gt; IL2CPP Strip Guard</code>.</li>
+        </ol>
+        <p>Product code is editor-only and is contained in:</p>
+        <pre><code class="language-text">Assets/IL2CPPStripGuard/Editor</code></pre>
+        <p>Assemblies:</p>
+        <ul>
+          <li><code>KevinBjorvand.IL2CPPStripGuard.Editor</code></li>
+          <li><code>KevinBjorvand.IL2CPPStripGuard.Samples</code></li>
+        </ul>
+        <p>Editor tests live outside the release package under <code>Assets/IL2CPPStripGuardTests</code>. The asset should import cleanly without external paid dependencies.</p>
+      </section>
+
+      <section class="doc-card" id="quick-start" data-section>
+        <h2>4. Quick start</h2>
+        <ol>
+          <li>Import the asset.</li>
+          <li>Open <code>Tools &gt; IL2CPP Strip Guard</code>.</li>
+          <li>Click <code>Scan IL2CPP Risks</code>.</li>
+          <li>Review the Dashboard and Findings tabs.</li>
+          <li>Open Generated Fixes.</li>
+          <li>Click <code>Preview link.xml</code> to inspect suggested preserve entries.</li>
+          <li>Click <code>Generate link.xml</code> when you want to write the generated file.</li>
+          <li>Click <code>Export Report</code> to write JSON and Markdown reports.</li>
+          <li>Configure scan options, output paths, thresholds, and ignore rules in <code>Project Settings &gt; IL2CPP Strip Guard</code>.</li>
+        </ol>
+        <p>The tool never modifies user source code, player settings, existing user link.xml files, or build settings automatically.</p>
+      </section>
+
+      <section class="doc-card" id="entry-points" data-section>
+        <h2>5. Main Unity entry points</h2>
+        <ul>
+          <li>Editor window: <code>Tools &gt; IL2CPP Strip Guard</code></li>
+          <li>Project settings: <code>Project Settings &gt; IL2CPP Strip Guard</code></li>
+          <li>Settings asset: <code>Assets/IL2CPPStripGuard/Settings/IL2CPPStripGuardSettings.asset</code></li>
+          <li>CI method: <code>IL2CPPStripGuard.Editor.IL2CPPStripGuardCI.Run</code></li>
+          <li>Fully namespaced CI method: <code>KevinBjorvand.IL2CPPStripGuard.Editor.IL2CPPStripGuardCI.Run</code></li>
+        </ul>
+      </section>
+
+      <section class="doc-card" id="ui" data-section>
+        <h2>6. User interface</h2>
+        <h3>Dashboard tab</h3>
+        <ul>
+          <li>Scan IL2CPP Risks</li>
+          <li>Generate link.xml</li>
+          <li>Export Report</li>
+          <li>Open Settings</li>
+          <li>Last scan date, Unity version, scripting backend, build target, severity/status counts, and CI threshold result</li>
+        </ul>
+        <h3>Findings tab</h3>
+        <ul>
+          <li>Filters: All, Critical, High, Medium, Low, Covered, Ignored</li>
+          <li>Columns: Severity, Risk Type, Symbol, Location, Covered, Suggested Fix</li>
+          <li>Expanded findings include explanation, source snippet, suggested fix, preserve coverage, ignore reason, ignore button, copy ID, and open source</li>
+        </ul>
+        <h3>Generated Fixes tab</h3>
+        <ul>
+          <li>Generated link.xml output path</li>
+          <li>Preview link.xml, Generate link.xml, Copy Suggestion, Open File, Regenerate</li>
+          <li>Optional Generate AOT Hints button when enabled in settings</li>
+        </ul>
+      </section>
+
+      <section class="doc-card" id="severity-status" data-section>
+        <h2>7. Finding severity and status</h2>
+        <table class="data-table">
+          <thead><tr><th>Severity</th><th>Meaning</th></tr></thead>
+          <tbody>
+            <tr><td>Critical</td><td>String-based dynamic creation, especially assembly/type string overloads such as <code>Activator.CreateInstance("Assembly", "Type")</code>.</td></tr>
+            <tr><td>High</td><td>String-based type lookup, dynamic type construction, open generic type metadata, <code>MakeGenericType</code>, <code>MakeGenericMethod</code>, and likely IL2CPP AOT risks.</td></tr>
+            <tr><td>Medium</td><td>Reflection member lookup, reflected invocation, managed reference type names in serialized data, and namespaced serialized strings that look like type names.</td></tr>
+            <tr><td>Low</td><td>Lower-confidence signals such as <code>SerializeReference</code> usage or simple type-like registry strings.</td></tr>
+          </tbody>
+        </table>
+        <table class="data-table">
+          <thead><tr><th>Status</th><th>Meaning</th></tr></thead>
+          <tbody>
+            <tr><td>Active</td><td>The risk is currently uncovered and not ignored.</td></tr>
+            <tr><td>Covered</td><td>The risk appears covered by a recognized preserve source.</td></tr>
+            <tr><td>Ignored</td><td>The risk matches a user ignore rule or source comment and remains visible in the Ignored filter.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="doc-card" id="scan-inputs" data-section>
+        <h2>8. Scan inputs</h2>
+        <p>The scanner inspects C# files, serialized files, existing Assets link.xml files, generated preserve files, and Preserve attributes in scanned C# files.</p>
+        <p>Serialized file extensions scanned:</p>
+        <ul>
+          <li><code>.asset</code>, <code>.prefab</code>, <code>.unity</code>, <code>.controller</code>, <code>.overrideController</code></li>
+          <li><code>.playable</code>, <code>.inputactions</code>, <code>.json</code></li>
+        </ul>
+        <p>Package C# and serialized files are scanned only when Scan Packages is enabled.</p>
+        <p>Common exclusions include <code>.meta</code> files, <code>Library</code>, <code>Temp</code>, <code>Obj</code>, generated folders when disabled, and <code>AddressableAssetsData</code> when Scan Addressables is disabled.</p>
+      </section>
+
+      <section class="doc-card" id="csharp-detection" data-section>
+        <h2>9. C# risk detection</h2>
+        <p>The C# scanner detects common risky patterns including:</p>
+        <ul>
+          <li><code>Type.GetType("Namespace.Type")</code> and <code>assembly.GetType("Namespace.Type")</code></li>
+          <li><code>Activator.CreateInstance("Assembly", "Type")</code>, <code>Activator.CreateInstance(type)</code>, and <code>Activator.CreateInstance(typeof(SomeType))</code></li>
+          <li><code>GetMethod</code>, <code>GetField</code>, <code>GetProperty</code>, <code>MethodInfo.Invoke</code>, <code>FieldInfo.GetValue</code>, and <code>FieldInfo.SetValue</code></li>
+          <li><code>MakeGenericType</code>, <code>MakeGenericMethod</code>, <code>typeof(Generic&lt;&gt;)</code>, and <code>[SerializeReference]</code></li>
+        </ul>
+        <p>The scanner also tracks simple local variables where possible, including Type variables assigned from <code>typeof(SomeType)</code> and MethodInfo or FieldInfo variables associated with <code>typeof(SomeType)</code>.</p>
+      </section>
+
+      <section class="doc-card" id="serialized-detection" data-section>
+        <h2>10. Serialized asset risk detection</h2>
+        <p>The serialized scanner detects:</p>
+        <ul>
+          <li><code>managedReferenceFullTypename</code></li>
+          <li><code>managedReferenceFieldTypename</code></li>
+          <li>Serialized strings that look like namespaced type names</li>
+          <li>Serialized key/value pairs where the key suggests type, class, command, action, event, factory, handler, or serializer usage and the value looks like a type name</li>
+        </ul>
+        <p>The scanner intentionally skips common false-positive shapes such as YAML directive lines, very long serialized lines, URLs, file paths, numeric values, hex-like identifiers, and values beginning with JSON/YAML anchors or collection markers.</p>
+      </section>
+
+      <section class="doc-card" id="preserve-coverage" data-section>
+        <h2>11. Preserve coverage detection</h2>
+        <p>Recognized coverage sources:</p>
+        <ul>
+          <li><code>[UnityEngine.Scripting.Preserve]</code>, <code>[Preserve]</code>, and <code>[assembly: Preserve]</code></li>
+          <li>Existing link.xml files under Assets</li>
+          <li>Generated link.xml under <code>Assets/IL2CPPStripGuard/Generated</code></li>
+          <li>Assembly-level, namespace-level, type-level, and applicable member-level preserve entries</li>
+        </ul>
+        <p>Only link.xml files under Assets are counted as Unity-applied preserve coverage. Package-local link.xml files are not counted as coverage.</p>
+        <p>Nested type names are normalized internally with <code>+</code>. Generated link.xml output uses Unity's nested type separator <code>/</code>.</p>
+      </section>
+
+      <section class="doc-card" id="generated-linkxml" data-section>
+        <h2>12. Generated link.xml</h2>
+        <p>Default output path:</p>
+        <pre><code class="language-text">Assets/IL2CPPStripGuard/Generated/link.xml</code></pre>
+        <p>The generator writes valid XML, groups entries by assembly, adds explanatory comments, avoids duplicate assembly/type entries, and uses <code>preserve="all"</code> for generated type entries.</p>
+        <p>Safety behavior:</p>
+        <ul>
+          <li>Includes active findings with a concrete type name.</li>
+          <li>Keeps generated-covered entries during regeneration.</li>
+          <li>Does not include AOT-only findings with no concrete type.</li>
+          <li>Does not overwrite existing user link.xml files.</li>
+          <li>Refuses generated output paths outside <code>Assets/IL2CPPStripGuard/Generated</code>.</li>
+          <li>Refuses to replace an existing file that does not look generated by IL2CPP Strip Guard.</li>
+        </ul>
+        <p>Generated link.xml files are suggestions and are safe to delete.</p>
+      </section>
+
+      <section class="doc-card" id="aot-hints" data-section>
+        <h2>13. Generated AOT hints</h2>
+        <p>Default output path:</p>
+        <pre><code class="language-text">Assets/IL2CPPStripGuard/Generated/IL2CPPAotHints.cs</code></pre>
+        <p>AOT hint generation is disabled by default. When enabled, the current generator writes a safe placeholder class unless the scanner can infer concrete generic references without guessing.</p>
+        <div class="callout">
+          link.xml can preserve metadata, but it may not force every closed generic instantiation. Add explicit runtime references or hand-authored AOT hints when a project depends on dynamic generic construction.
+        </div>
+      </section>
+
+      <section class="doc-card" id="reports" data-section>
+        <h2>14. Report export</h2>
+        <p>Default report folder:</p>
+        <pre><code class="language-text">Library/IL2CPPStripGuard/Reports</code></pre>
+        <p>Export Report writes JSON and Markdown reports with scan date, Unity version, scripting backend, build target, CI result, total findings, severity counts, covered and ignored counts, grouped findings, explanations, suggested fixes, coverage source, ignore reason, and generated link.xml preview.</p>
+        <p>Report output paths must stay under <code>Library/IL2CPPStripGuard/Reports</code>.</p>
+      </section>
+
+      <section class="doc-card" id="settings" data-section>
+        <h2>15. Project settings</h2>
+        <p>Settings asset:</p>
+        <pre><code class="language-text">Assets/IL2CPPStripGuard/Settings/IL2CPPStripGuardSettings.asset</code></pre>
+        <table class="data-table">
+          <thead><tr><th>Setting</th><th>Default</th></tr></thead>
+          <tbody>
+            <tr><td>Scan Packages</td><td>false</td></tr>
+            <tr><td>Scan Generated Folders</td><td>false</td></tr>
+            <tr><td>Scan Addressables</td><td>true</td></tr>
+            <tr><td>Enable Generated AOT Hints</td><td>false</td></tr>
+            <tr><td>Fail on Critical</td><td>true</td></tr>
+            <tr><td>Fail on High</td><td>true</td></tr>
+            <tr><td>Fail on Medium</td><td>false</td></tr>
+            <tr><td>Fail on Low</td><td>false</td></tr>
+          </tbody>
+        </table>
+        <p>Default output paths:</p>
+        <ul>
+          <li><code>Assets/IL2CPPStripGuard/Generated/link.xml</code></li>
+          <li><code>Assets/IL2CPPStripGuard/Generated/IL2CPPAotHints.cs</code></li>
+          <li><code>Library/IL2CPPStripGuard/Reports</code></li>
+        </ul>
+        <p>Ignore lists include namespaces, paths, types, assemblies, and finding IDs. Source ignore comment:</p>
+        <pre><code class="language-csharp">// IL2CPPStripGuard: ignore</code></pre>
+        <p>The source ignore comment applies to the line containing it or the line immediately following it.</p>
+      </section>
+
+      <section class="doc-card" id="ci-mode" data-section>
+        <h2>16. CI mode</h2>
+        <p>Unity command line method:</p>
+        <pre><code class="language-text">-executeMethod IL2CPPStripGuard.Editor.IL2CPPStripGuardCI.Run</code></pre>
+        <p>Fully namespaced equivalent:</p>
+        <pre><code class="language-text">-executeMethod KevinBjorvand.IL2CPPStripGuard.Editor.IL2CPPStripGuardCI.Run</code></pre>
+        <p>CI mode loads saved settings, runs the scanner without opening the window, builds a generated link.xml preview, exports JSON and Markdown reports, logs severity and status counts, uses configured fail thresholds, exits with code <code>1</code> when thresholds are exceeded, and exits with code <code>0</code> when thresholds are not exceeded.</p>
+        <p>Default CI thresholds fail on active Critical and High findings.</p>
+        <pre><code class="language-text">IL2CPP Strip Guard Scan Complete
+Critical: 1
+High: 4
+Medium: 12
+Low: 0
+Covered: 2
+Ignored: 0
+Reports:
+Library/IL2CPPStripGuard/Reports/IL2CPPStripGuardReport_...
+Result: Failed
+Reason: Findings exceed the configured severity threshold.</code></pre>
+      </section>
+
+      <section class="doc-card" id="demo" data-section>
+        <h2>17. Demo sample</h2>
+        <p>Sample folder:</p>
+        <pre><code class="language-text">Assets/IL2CPPStripGuard/Samples/IL2CPP Strip Guard Demo</code></pre>
+        <p>Open this scene:</p>
+        <pre><code class="language-text">Assets/IL2CPPStripGuard/Samples/IL2CPP Strip Guard Demo/Scenes/IL2CPPStripGuardDemo.unity</code></pre>
+        <p>The sample contains safe direct references, risky Type.GetType and Activator.CreateInstance examples, reflected method invocation, Preserve and link.xml examples, SerializeReference examples, generic AOT risks, and a demo intro canvas prefab.</p>
+        <p>Expected demo-only scan result:</p>
+        <ul>
+          <li>Critical: 0</li>
+          <li>High: 4</li>
+          <li>Medium: 2</li>
+          <li>Low: 1</li>
+          <li>Covered: 2</li>
+        </ul>
+        <p>Counts can be higher if the host project is scanned at the same time.</p>
+      </section>
+
+      <section class="doc-card" id="source-layout" data-section>
+        <h2>18. Source and test layout</h2>
+        <p>Product root:</p>
+        <pre><code class="language-text">Assets/IL2CPPStripGuard</code></pre>
+        <p>Key files include the user-facing README, model definitions, settings provider, scanner, output generators, editor window, assembly info, settings asset, samples, release package scope documentation, and project documentation.</p>
+        <p>Editor test folder:</p>
+        <pre><code class="language-text">Assets/IL2CPPStripGuardTests/Editor</code></pre>
+        <p>Test assembly:</p>
+        <pre><code class="language-text">KevinBjorvand.IL2CPPStripGuard.Editor.Tests</code></pre>
+        <p>Tests cover concrete type extraction, reflection member declaring type inference, assembly-qualified type parsing, serialized JSON detection, YAML directive skipping, demo expected counts, Preserve/link.xml coverage, generated link.xml collection, nested type conversion, package link.xml exclusion, generated path rejection, Markdown report path usage, and reset-to-defaults behavior.</p>
+      </section>
+
+      <section class="doc-card" id="troubleshooting" data-section>
+        <h2>19. Safety, limitations, troubleshooting, and release checklist</h2>
+        <h3>Safety guarantees</h3>
+        <p>The tool must not modify user source code automatically, overwrite existing user link.xml files automatically, delete user files, force player builds, or change project settings without explicit user action.</p>
+        <p>Allowed writes require a clear user action: save settings, save ignore rules, generate link.xml, generate AOT hints, or export reports.</p>
+        <h3>Limitations</h3>
+        <ul>
+          <li>The scanner is heuristic.</li>
+          <li>It does not run player builds or upload/validate platform builds.</li>
+          <li>It does not perform deep third-party package-specific analysis.</li>
+          <li>It does not prove generic AOT coverage.</li>
+          <li>Generated link.xml preserves metadata but may not force every generic method body or closed generic instantiation.</li>
+          <li>False positives and false negatives are possible.</li>
+        </ul>
+        <h3>Troubleshooting</h3>
+        <ul>
+          <li>No settings asset in CI: open the Unity project once or create/save settings through <code>Project Settings &gt; IL2CPP Strip Guard</code>.</li>
+          <li>No findings appear: confirm scan scope for packages, generated folders, and Addressables.</li>
+          <li>A covered type still appears: covered findings remain visible for auditability.</li>
+          <li>A package link.xml is not counted: only link.xml files under Assets are counted as project coverage.</li>
+          <li>Generated link.xml refuses to write: keep the path under <code>Assets/IL2CPPStripGuard/Generated</code>, ending in <code>.xml</code>, and avoid replacing non-generated files.</li>
+          <li>CI fails: check configured fail thresholds. By default, active Critical and High findings fail CI.</li>
+        </ul>
+        <h3>Release checklist</h3>
+        <ul>
+          <li>Import the asset into a clean Unity project and confirm no compile errors.</li>
+          <li>Run Edit Mode tests.</li>
+          <li>Open <code>Tools &gt; IL2CPP Strip Guard</code>, scan, preview link.xml, and export reports.</li>
+          <li>Run the demo sample and confirm expected demo findings.</li>
+          <li>Confirm release export includes only <code>Assets/IL2CPPStripGuard/**</code> and excludes generated output.</li>
+          <li>Confirm README, sample README, release scope, and project documentation are up to date.</li>
+        </ul>
+      </section>
+
+      <div class="empty-state" id="emptyState" role="status" aria-live="polite">
+        No sections match your search. Try a broader term like <code>reflection</code>, <code>link.xml</code>, <code>preserve</code>, or <code>CI</code>.
+      </div>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-shell">
+      <div class="footer-columns">
+        <section>
+          <h2>Explore</h2>
+          <ul class="link-list">
+            <li><a href="/">Home</a></li>
+            <li><a href="/tools/">Tools</a></li>
+            <li><a href="/articles/">Articles</a></li>
+            <li><a href="/games/">Games</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li>
+            <li><a href="/support/">Support</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Tools</h2>
+          <ul class="link-list">
+            <li><a href="/assets/il2cpp-strip-guard/">IL2CPP Strip Guard</a></li>
+            <li><a href="/assets/build-size-guard/">Build Size Guard</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/">Shader Variant Budget &amp; CI Guard</a></li>
+            <li><a href="/assets/unity-serialization-migration-guard/">Unity Serialization Migration Guard</a></li>
+            <li><a href="/assets/inspector-event-link-doctor/">Inspector Event Link Doctor</a></li>
+            <li><a href="/assets/fast-play-mode-safety-guard/">Fast Play Mode Safety Guard</a></li>
+            <li><a href="/assets/import-settings-validator-fix/">Import Settings Validator &amp; Fix</a></li>
+            <li><a href="/assets/compliance/">Third-Party Notices &amp; Credits</a></li>
+            <li><a href="/tools/">Tools Directory</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Support</h2>
+          <ul class="link-list">
+            <li><a href="/assets/il2cpp-strip-guard/docs/">IL2CPP Strip Guard Docs</a></li>
+            <li><a href="/assets/il2cpp-strip-guard/license/">License Status</a></li>
+            <li><a href="/support/">Support Form</a></li>
+          </ul>
+        </section>
+        <section class="footer-email-updates" aria-label="Email subscription">
+          <h2>Email Updates</h2>
+          <div class="ml-embedded" data-form="bk4D7K"></div>
+        </section>
+      </div>
+      <div class="footer-legal">
+        <span>&copy; Bjorvand Solutions <span data-current-year>2026</span> &bull; Company registration number: 836 135 652 (Norway)</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/docs/product-docs.js"></script>
+  <script defer src="/assets/js/site/nav.js"></script>
+  <script defer src="/assets/js/site/link-decorators.js"></script>
+</body>
+</html>

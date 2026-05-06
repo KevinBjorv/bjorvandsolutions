@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">IL2CPP Strip Guard findings placeholder</title>
+  <desc id="desc">Placeholder artwork showing a findings table with severity filters.</desc>
+  <rect width="1280" height="720" fill="#0b1017"/>
+  <rect x="96" y="74" width="1088" height="572" rx="28" fill="#151f2d" stroke="#334155"/>
+  <text x="144" y="138" fill="#ecf1f8" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="800">Findings</text>
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="19" font-weight="700">
+    <rect x="144" y="170" width="104" height="40" rx="20" fill="#fb8114"/>
+    <text x="180" y="197" fill="#0b1017">All</text>
+    <rect x="264" y="170" width="122" height="40" rx="20" fill="#0f1724" stroke="#2f3d52"/>
+    <text x="294" y="197" fill="#ffbd7a">Critical</text>
+    <rect x="402" y="170" width="92" height="40" rx="20" fill="#0f1724" stroke="#2f3d52"/>
+    <text x="432" y="197" fill="#cbd5e1">High</text>
+    <rect x="510" y="170" width="116" height="40" rx="20" fill="#0f1724" stroke="#2f3d52"/>
+    <text x="538" y="197" fill="#cbd5e1">Covered</text>
+  </g>
+  <rect x="144" y="246" width="992" height="60" rx="14" fill="#0f1724"/>
+  <g fill="#9fb1c7" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700">
+    <text x="176" y="283">Severity</text>
+    <text x="318" y="283">Risk Type</text>
+    <text x="558" y="283">Symbol</text>
+    <text x="842" y="283">Coverage</text>
+  </g>
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="21">
+    <rect x="144" y="324" width="992" height="66" rx="14" fill="#111b2a" stroke="#263244"/>
+    <text x="176" y="365" fill="#ffbd7a" font-weight="800">Critical</text>
+    <text x="318" y="365" fill="#ecf1f8">Dynamic creation</text>
+    <text x="558" y="365" fill="#cbd5e1">Activator.CreateInstance</text>
+    <text x="842" y="365" fill="#fb7185">Active</text>
+    <rect x="144" y="408" width="992" height="66" rx="14" fill="#111b2a" stroke="#263244"/>
+    <text x="176" y="449" fill="#fbbf24" font-weight="800">High</text>
+    <text x="318" y="449" fill="#ecf1f8">Type lookup</text>
+    <text x="558" y="449" fill="#cbd5e1">Type.GetType</text>
+    <text x="842" y="449" fill="#fb7185">Active</text>
+    <rect x="144" y="492" width="992" height="66" rx="14" fill="#111b2a" stroke="#263244"/>
+    <text x="176" y="533" fill="#93c5fd" font-weight="800">Medium</text>
+    <text x="318" y="533" fill="#ecf1f8">Serialized type</text>
+    <text x="558" y="533" fill="#cbd5e1">managedReferenceFullTypename</text>
+    <text x="842" y="533" fill="#41d27d">Covered</text>
+  </g>
+  <text x="96" y="686" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="22">Placeholder image - replace with final product screenshots</text>
+</svg>

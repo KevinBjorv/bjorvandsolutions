@@ -1,7 +1,7 @@
 (() => {
   window.SiteCatalog = {
-    snapshotDate: "2026-05-03",
-    snapshotDateLabel: "May 3, 2026",
+    snapshotDate: "2026-05-05",
+    snapshotDateLabel: "May 5, 2026",
     author: {
       name: "Kevin Ahlgren Bjorvand",
       role: "Founder, Bjorvand Solutions",
@@ -66,6 +66,38 @@
           license: "/assets/unity-serialization-migration-guard/license/",
           store: "https://u3d.as/3Sae"
         }
+      },
+      {
+        key: "il2cpp-strip-guard",
+        name: "IL2CPP Strip Guard",
+        summary: "Scan Unity projects for IL2CPP managed stripping, reflection, serialized type reference, and AOT generic risk patterns.",
+        audience: "Unity developers shipping IL2CPP targets such as WebGL, Android, iOS, VR, or console-like platforms.",
+        links: {
+          product: "/assets/il2cpp-strip-guard/",
+          docs: "/assets/il2cpp-strip-guard/docs/",
+          license: "/assets/il2cpp-strip-guard/license/"
+        },
+        images: [
+          "/assets/images/IL2CPPStripGuard/marketing/cover-placeholder.svg",
+          "/assets/images/IL2CPPStripGuard/marketing/findings-placeholder.svg",
+          "/assets/images/IL2CPPStripGuard/marketing/generated-fixes-placeholder.svg",
+          "/assets/images/IL2CPPStripGuard/marketing/ci-placeholder.svg"
+        ]
+      },
+      {
+        key: "inspector-event-link-doctor",
+        name: "Inspector Event Link Doctor",
+        summary: "Scan Unity scenes, prefabs, ScriptableObjects, and animation clips for broken or risky Inspector-connected callbacks.",
+        audience: "UI-heavy Unity teams, prefab-heavy projects, and developers validating callbacks before builds or refactors.",
+        links: {
+          product: "/assets/inspector-event-link-doctor/",
+          docs: "/assets/inspector-event-link-doctor/docs/",
+          license: "/assets/inspector-event-link-doctor/license/"
+        },
+        images: [
+          "/assets/images/InspectorEventLinkDoctor/marketing/cover-placeholder.svg",
+          "/assets/images/InspectorEventLinkDoctor/icons/Icon160.png"
+        ]
       },
       {
         key: "fast-play-mode-safety-guard",

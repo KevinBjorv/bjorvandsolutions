@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">IL2CPP Strip Guard generated fixes placeholder</title>
+  <desc id="desc">Placeholder artwork showing generated link.xml suggestions.</desc>
+  <rect width="1280" height="720" fill="#0b1017"/>
+  <rect x="104" y="78" width="1072" height="564" rx="28" fill="#151f2d" stroke="#334155"/>
+  <text x="150" y="144" fill="#ecf1f8" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="800">Generated Fixes</text>
+  <rect x="150" y="182" width="980" height="64" rx="16" fill="#0f1724" stroke="#2f3d52"/>
+  <text x="182" y="222" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="22">Assets/IL2CPPStripGuard/Generated/link.xml</text>
+  <rect x="150" y="284" width="980" height="276" rx="18" fill="#07111f" stroke="#2f3d52"/>
+  <g font-family="Cascadia Mono, Consolas, monospace" font-size="21">
+    <text x="190" y="334" fill="#9fb1c7">&lt;linker&gt;</text>
+    <text x="220" y="380" fill="#9fb1c7">&lt;assembly fullname="Game.Runtime"&gt;</text>
+    <text x="250" y="426" fill="#ffbd7a">&lt;type fullname="Game.Commands.SpawnCommand" preserve="all" /&gt;</text>
+    <text x="250" y="472" fill="#ffbd7a">&lt;type fullname="Game.Save.PlayerSave" preserve="all" /&gt;</text>
+    <text x="220" y="518" fill="#9fb1c7">&lt;/assembly&gt;</text>
+    <text x="190" y="546" fill="#9fb1c7">&lt;/linker&gt;</text>
+  </g>
+  <rect x="150" y="586" width="196" height="46" rx="23" fill="#fb8114"/>
+  <text x="196" y="617" fill="#0b1017" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="800">Preview</text>
+  <rect x="366" y="586" width="236" height="46" rx="23" fill="#0f1724" stroke="#fb8114"/>
+  <text x="414" y="617" fill="#ffbd7a" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="800">Generate link.xml</text>
+  <text x="104" y="686" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="22">Placeholder image - replace with final product screenshots</text>
+</svg>

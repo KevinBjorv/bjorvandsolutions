@@ -232,6 +232,50 @@
     <image:image><image:loc>https://bjorv.com/Skool%20logo.png</image:loc></image:image>
   </url>
   <url>
+    <loc>https://bjorv.com/assets/il2cpp-strip-guard/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/images/IL2CPPStripGuard/marketing/cover-placeholder.svg</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/images/IL2CPPStripGuard/marketing/findings-placeholder.svg</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/images/IL2CPPStripGuard/marketing/generated-fixes-placeholder.svg</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/images/IL2CPPStripGuard/marketing/ci-placeholder.svg</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/apple-touch-icon.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-16x16.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-32x32.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://bjorv.com/assets/il2cpp-strip-guard/docs/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/apple-touch-icon.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-16x16.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-32x32.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://bjorv.com/assets/il2cpp-strip-guard/license/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/apple-touch-icon.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-16x16.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-32x32.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://bjorv.com/assets/inspector-event-link-doctor/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/images/InspectorEventLinkDoctor/marketing/cover-placeholder.svg</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/images/InspectorEventLinkDoctor/icons/Icon160.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/apple-touch-icon.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-16x16.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-32x32.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://bjorv.com/assets/inspector-event-link-doctor/docs/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/images/InspectorEventLinkDoctor/icons/Icon160.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/apple-touch-icon.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-16x16.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-32x32.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://bjorv.com/assets/inspector-event-link-doctor/license/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/images/InspectorEventLinkDoctor/icons/Icon160.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/apple-touch-icon.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-16x16.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-32x32.png</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://bjorv.com/games/</loc>
     <image:image><image:loc>https://bjorv.com/assets/favicon/apple-touch-icon.png</image:loc></image:image>
     <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-16x16.png</image:loc></image:image>

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">IL2CPP Strip Guard overview placeholder</title>
+  <desc id="desc">Placeholder artwork showing an IL2CPP stripping risk dashboard.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#0b1017"/>
+      <stop offset="0.54" stop-color="#132032"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" x2="1">
+      <stop offset="0" stop-color="#fb8114"/>
+      <stop offset="1" stop-color="#ffbd7a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg)"/>
+  <path d="M0 120h1280M0 240h1280M0 360h1280M0 480h1280M0 600h1280M160 0v720M320 0v720M480 0v720M640 0v720M800 0v720M960 0v720M1120 0v720" stroke="#ffffff" stroke-opacity="0.045"/>
+  <rect x="104" y="82" width="1072" height="556" rx="28" fill="#151f2d" stroke="#334155"/>
+  <rect x="142" y="124" width="996" height="70" rx="18" fill="#0f1724" stroke="#2f3d52"/>
+  <circle cx="184" cy="159" r="13" fill="#fb8114"/>
+  <circle cx="222" cy="159" r="13" fill="#f6b15f"/>
+  <circle cx="260" cy="159" r="13" fill="#41d27d"/>
+  <text x="320" y="169" fill="#ecf1f8" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="700">IL2CPP Strip Guard</text>
+  <text x="874" y="168" fill="#9fb1c7" font-family="Segoe UI, Arial, sans-serif" font-size="22">Scan Complete</text>
+  <rect x="142" y="232" width="304" height="300" rx="18" fill="#0d1420" stroke="#2f3d52"/>
+  <text x="178" y="278" fill="#9fb1c7" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="700">Risk Status</text>
+  <text x="178" y="342" fill="#ffbd7a" font-family="Segoe UI, Arial, sans-serif" font-size="56" font-weight="800">Needs Fix</text>
+  <rect x="178" y="398" width="222" height="18" rx="9" fill="#263244"/>
+  <rect x="178" y="398" width="154" height="18" rx="9" fill="url(#accent)"/>
+  <text x="178" y="466" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="21">Critical and High findings</text>
+  <text x="178" y="506" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="21">Preserve coverage detected</text>
+  <rect x="488" y="232" width="650" height="300" rx="18" fill="#0d1420" stroke="#2f3d52"/>
+  <text x="526" y="278" fill="#ecf1f8" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="700">Top IL2CPP Risks</text>
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="22">
+    <rect x="526" y="316" width="560" height="52" rx="12" fill="#151f2d"/>
+    <text x="550" y="350" fill="#ecf1f8">String-based dynamic creation</text>
+    <rect x="526" y="386" width="560" height="52" rx="12" fill="#151f2d"/>
+    <text x="550" y="420" fill="#ecf1f8">Reflection member invocation</text>
+    <rect x="526" y="456" width="560" height="52" rx="12" fill="#151f2d"/>
+    <text x="550" y="490" fill="#ecf1f8">Generic AOT construction</text>
+  </g>
+  <text x="104" y="688" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="22">Placeholder image - replace with final product screenshots</text>
+</svg>

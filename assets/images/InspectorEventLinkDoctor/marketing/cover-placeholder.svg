@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Inspector Event Link Doctor scan report preview</title>
+  <desc id="desc">Illustrated Unity editor report showing broken, risky, and unresolved Inspector event links.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#111827"/>
+      <stop offset="0.58" stop-color="#172033"/>
+      <stop offset="1" stop-color="#0b1017"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" x2="1">
+      <stop offset="0" stop-color="#fb8114"/>
+      <stop offset="1" stop-color="#ffbd7a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg)"/>
+  <path d="M0 112h1280M0 224h1280M0 336h1280M0 448h1280M0 560h1280M160 0v720M320 0v720M480 0v720M640 0v720M800 0v720M960 0v720M1120 0v720" stroke="#ffffff" stroke-opacity="0.045"/>
+  <rect x="112" y="72" width="1056" height="572" rx="28" fill="#151f2d" stroke="#334155"/>
+  <rect x="150" y="116" width="980" height="72" rx="18" fill="#0f1724" stroke="#2f3d52"/>
+  <circle cx="190" cy="152" r="13" fill="#fb8114"/>
+  <circle cx="228" cy="152" r="13" fill="#f6b15f"/>
+  <circle cx="266" cy="152" r="13" fill="#41d27d"/>
+  <text x="324" y="162" fill="#ecf1f8" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700">Inspector Event Link Doctor</text>
+  <rect x="150" y="224" width="292" height="334" rx="18" fill="#0d1420" stroke="#2f3d52"/>
+  <text x="184" y="270" fill="#9fb1c7" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="700">Summary</text>
+  <text x="184" y="336" fill="#ffbd7a" font-family="Segoe UI, Arial, sans-serif" font-size="60" font-weight="800">12</text>
+  <text x="270" y="335" fill="#ecf1f8" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700">Broken</text>
+  <text x="184" y="408" fill="#f6b15f" font-family="Segoe UI, Arial, sans-serif" font-size="38" font-weight="800">8 Risky</text>
+  <text x="184" y="462" fill="#9fb1c7" font-family="Segoe UI, Arial, sans-serif" font-size="24">143 Valid</text>
+  <text x="184" y="506" fill="#9fb1c7" font-family="Segoe UI, Arial, sans-serif" font-size="24">3 Unresolved</text>
+  <rect x="490" y="224" width="640" height="334" rx="18" fill="#0d1420" stroke="#2f3d52"/>
+  <text x="524" y="270" fill="#ecf1f8" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="700">Callback Issues</text>
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="22">
+    <rect x="524" y="310" width="560" height="54" rx="12" fill="#151f2d"/>
+    <circle cx="552" cy="337" r="8" fill="#fb8114"/>
+    <text x="576" y="346" fill="#ecf1f8">Button.onClick points to a missing method</text>
+    <rect x="524" y="382" width="560" height="54" rx="12" fill="#151f2d"/>
+    <circle cx="552" cy="409" r="8" fill="#f6b15f"/>
+    <text x="576" y="418" fill="#ecf1f8">Animation Event has unresolved receiver context</text>
+    <rect x="524" y="454" width="560" height="54" rx="12" fill="#151f2d"/>
+    <circle cx="552" cy="481" r="8" fill="#41d27d"/>
+    <text x="576" y="490" fill="#ecf1f8">ScriptableObject UnityEvent resolves cleanly</text>
+  </g>
+  <rect x="524" y="584" width="184" height="26" rx="13" fill="url(#accent)"/>
+  <text x="734" y="604" fill="#9fb1c7" font-family="Segoe UI, Arial, sans-serif" font-size="22">Illustrated preview, not a final screenshot</text>
+</svg>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IL2CPP Strip Guard for Unity | Find Stripping Risks Before Builds Break</title>
+  <meta name="description" content="IL2CPP Strip Guard scans Unity projects for managed stripping, reflection, serialized type reference, and AOT generic risk patterns before build-only bugs appear.">
+  <link rel="canonical" href="/assets/il2cpp-strip-guard/">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon/android-chrome-192x192.png">
+  <link rel="icon" type="image/x-icon" href="/assets/favicon/favicon.ico">
+  <link rel="manifest" href="/assets/favicon/site.webmanifest">
+  <script src="/assets/js/theme/theme-init.js"></script>
+  <link rel="stylesheet" href="/assets/css/products/tool-sales-pages.css">
+  <link rel="stylesheet" href="/assets/css/product-gallery.css">
+  <link rel="stylesheet" href="/assets/css/shared/site-navbar.css">
+  <link rel="stylesheet" href="/assets/css/shared/link-decorators.css">
+  <link rel="stylesheet" href="/assets/css/shared/typography-overrides.css">
+  <script src="/assets/js/site/mailerlite-universal.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Bjorvand Solutions</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="menu-root">
+          <li class="menu-item"><a class="menu-link" href="/tools/">Tools</a></li>
+          <li class="menu-item"><a class="menu-link" href="/articles/">Articles</a></li>
+          <li class="menu-item"><a class="menu-link" href="/games/">Games</a></li>
+          <li class="menu-item menu-item-smart-indie"><a class="menu-link menu-link-smart-indie" target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li>
+          <li class="menu-item"><a class="menu-link" href="/support/">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="mobile-nav-toggle" type="button" data-mobile-nav-toggle aria-controls="mobileNavPanel" aria-expanded="false">Menu</button>
+    </div>
+    <div class="mobile-nav-panel" id="mobileNavPanel" data-mobile-nav-panel hidden>
+      <div class="mobile-nav-shell container">
+        <details class="mobile-nav-group">
+          <summary>Tools</summary>
+          <ul>
+            <li><a href="/tools/">Tools Overview</a></li>
+            <li><a href="/assets/il2cpp-strip-guard/">IL2CPP Strip Guard Homepage</a></li>
+            <li><a href="/assets/il2cpp-strip-guard/docs/">IL2CPP Strip Guard Docs</a></li>
+            <li><a href="/assets/il2cpp-strip-guard/license/">IL2CPP Strip Guard License</a></li>
+            <li><a href="/support/">Support Form</a></li>
+          </ul>
+        </details>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/articles/">Articles</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/games/">Games</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/support/">Contact</a></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container sales-page">
+      <section class="sales-section sales-hero reveal">
+        <div class="sales-hero__content sales-copy" data-stagger>
+          <p class="sales-kicker">Unity Editor Tool</p>
+          <h1>IL2CPP Strip Guard for Unity</h1>
+          <p class="sales-subtitle">Find IL2CPP stripping risks before your build breaks.</p>
+          <p class="sales-lede">Scan a Unity project for common managed stripping, reflection, serialized type reference, and AOT generic risk patterns before they turn into build-only bugs.</p>
+          <ul class="sales-chip-list" aria-label="Primary capabilities">
+            <li>Managed stripping risk scan</li>
+            <li>Reflection risk detection</li>
+            <li>Serialized type reference checks</li>
+            <li>Preserve coverage review</li>
+            <li>CI reports</li>
+          </ul>
+          <div class="sales-actions">
+            <a class="sales-button sales-button--primary" href="/assets/il2cpp-strip-guard/docs/">Read the docs</a>
+            <a class="sales-button sales-button--secondary" href="/support/">Contact support</a>
+          </div>
+          <div class="sales-stat-list">
+            <article class="sales-stat" data-spotlight>
+              <strong>Unity 2021.3 LTS+</strong>
+              <span>Built for IL2CPP projects on WebGL, Android, iOS, VR, and similar targets.</span>
+            </article>
+            <article class="sales-stat" data-spotlight>
+              <strong>Reviewable fixes</strong>
+              <span>Preview generated link.xml entries before writing generated files.</span>
+            </article>
+            <article class="sales-stat" data-spotlight>
+              <strong>Editor-only</strong>
+              <span>The tool does not modify source code, build settings, or existing link.xml files automatically.</span>
+            </article>
+          </div>
+        </div>
+        <figure class="sales-hero__media sales-media-card">
+          <img class="marketing-image" src="/assets/images/IL2CPPStripGuard/marketing/cover-placeholder.svg" alt="Placeholder overview for IL2CPP Strip Guard" data-gallery-item data-gallery-caption="IL2CPP Strip Guard overview" loading="eager" fetchpriority="high">
+          <figcaption>Placeholder overview image</figcaption>
+        </figure>
+      </section>
+
+      <section id="source-needed" class="sales-section reveal">
+        <div class="sales-purchase-shell">
+          <div class="sales-copy" data-stagger>
+            <p class="sales-kicker">Evaluation Path</p>
+            <h2>Use the confirmed docs and support paths while final storefront and license sources are pending.</h2>
+            <p class="sales-lede">The provided product documentation includes support and release-package details, but it does not include a public storefront URL or canonical license text.</p>
+            <div class="sales-actions">
+              <a class="sales-button sales-button--primary" href="/assets/il2cpp-strip-guard/docs/">Open documentation</a>
+              <a class="sales-button sales-button--secondary" href="/assets/il2cpp-strip-guard/license/">License status</a>
+            </div>
+          </div>
+          <aside class="sales-side-card" data-spotlight>
+            <div class="sales-copy" data-stagger>
+              <h3>Everything after evaluation</h3>
+              <div class="sales-support-grid">
+                <a class="sales-support-link" href="/assets/il2cpp-strip-guard/docs/">
+                  <span>Documentation</span>
+                  <small>Setup, scans, preserve coverage, generated fixes, reports, CI, and troubleshooting.</small>
+                </a>
+                <a class="sales-support-link" href="/assets/il2cpp-strip-guard/license/">
+                  <span>License</span>
+                  <small>Source-needed placeholder until canonical terms are provided.</small>
+                </a>
+                <a class="sales-support-link" href="/support/">
+                  <span>Support</span>
+                  <small>Use the support form for setup questions and missing source links.</small>
+                </a>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="problem" class="sales-section reveal">
+        <div class="sales-copy" data-stagger>
+          <p class="sales-kicker">Why teams use it</p>
+          <h2>IL2CPP failures are often found late, when build-only debugging is already expensive.</h2>
+          <p class="sales-lede">Projects that rely on reflection, runtime type loading, custom serializers, save systems, registries, dependency injection, Addressables, generic factories, or modding-style systems can hide risks until a platform build is created.</p>
+          <ul class="sales-feature-list">
+            <li>String-based type lookup can be stripped if preserve coverage is missing.</li>
+            <li>Reflection member access can fail when metadata is unavailable.</li>
+            <li>Dynamic generic construction can expose AOT coverage gaps.</li>
+            <li>Serialized type names can point at runtime construction paths that need review.</li>
+          </ul>
+          <p>IL2CPP Strip Guard turns those patterns into visible findings before release pressure takes over.</p>
+        </div>
+      </section>
+
+      <section id="scan-risks" class="sales-section sales-block reveal">
+        <div class="sales-block__content sales-copy" data-stagger>
+          <p class="sales-kicker">Project scan</p>
+          <h2>Scan C# source and serialized assets for common IL2CPP risk patterns.</h2>
+          <p>The scanner reviews C# files, serialized assets, existing Assets link.xml files, generated preserve files, and Preserve attributes in the configured scope.</p>
+          <ul class="sales-feature-list">
+            <li>Detects Type.GetType, assembly.GetType, Activator.CreateInstance, reflected member lookup, Invoke, MakeGenericType, MakeGenericMethod, open generic metadata, and SerializeReference signals.</li>
+            <li>Flags managedReferenceFullTypename, managedReferenceFieldTypename, and serialized strings that look like type references.</li>
+            <li>Supports package scanning, generated-folder scanning, Addressables scanning, and ignore rules through settings.</li>
+          </ul>
+        </div>
+        <figure class="sales-block__media sales-media-card">
+          <img class="marketing-image" src="/assets/images/IL2CPPStripGuard/marketing/findings-placeholder.svg" alt="Placeholder findings view for IL2CPP Strip Guard" data-gallery-item data-gallery-caption="IL2CPP Strip Guard findings" loading="lazy">
+          <figcaption>Findings placeholder</figcaption>
+        </figure>
+      </section>
+
+      <section id="preserve-coverage" class="sales-section sales-block sales-block--reverse reveal">
+        <div class="sales-block__content sales-copy" data-stagger>
+          <p class="sales-kicker">Preserve coverage</p>
+          <h2>Separate active findings from risks already covered by preserve sources.</h2>
+          <p>Findings remain visible for auditability, but recognized preserve coverage changes their status so review can focus on active risks.</p>
+          <ul class="sales-feature-list">
+            <li>Recognizes UnityEngine.Scripting.Preserve, Preserve, assembly preserve attributes, and Assets link.xml files.</li>
+            <li>Handles assembly-level, namespace-level, type-level, and member-level coverage where applicable.</li>
+            <li>Does not count package-local link.xml files as Unity-applied project coverage.</li>
+          </ul>
+        </div>
+        <figure class="sales-block__media sales-media-card">
+          <img class="marketing-image" src="/assets/images/IL2CPPStripGuard/marketing/findings-placeholder.svg" alt="Placeholder preserve coverage findings for IL2CPP Strip Guard" data-gallery-item data-gallery-caption="Preserve coverage review" loading="lazy">
+          <figcaption>Coverage placeholder</figcaption>
+        </figure>
+      </section>
+
+      <section id="generated-fixes" class="sales-section sales-block reveal">
+        <div class="sales-block__content sales-copy" data-stagger>
+          <p class="sales-kicker">Generated fixes</p>
+          <h2>Preview generated link.xml entries before writing suggestions.</h2>
+          <p>The generator writes valid XML under the tool's generated folder, groups entries by assembly, avoids duplicates, and refuses unsafe output paths.</p>
+          <ul class="sales-feature-list">
+            <li>Default path: <code>Assets/IL2CPPStripGuard/Generated/link.xml</code>.</li>
+            <li>Uses <code>preserve="all"</code> for generated type entries with concrete type names.</li>
+            <li>Does not overwrite existing user link.xml files or modify source code automatically.</li>
+            <li>Optional AOT hint generation is disabled by default and stays conservative.</li>
+          </ul>
+        </div>
+        <figure class="sales-block__media sales-media-card">
+          <img class="marketing-image" src="/assets/images/IL2CPPStripGuard/marketing/generated-fixes-placeholder.svg" alt="Placeholder generated fixes view for IL2CPP Strip Guard" data-gallery-item data-gallery-caption="Generated link.xml suggestions" loading="lazy">
+          <figcaption>Generated fixes placeholder</figcaption>
+        </figure>
+      </section>
+
+      <section id="ci-reports" class="sales-section sales-block sales-block--reverse reveal">
+        <div class="sales-block__content sales-copy" data-stagger>
+          <p class="sales-kicker">CI reports</p>
+          <h2>Export JSON and Markdown reports, then fail CI by configured severity thresholds.</h2>
+          <p>CI mode loads saved settings, runs the scanner without opening the editor window, builds a generated link.xml preview, exports reports, logs counts, and exits based on thresholds.</p>
+          <ul class="sales-feature-list">
+            <li>Default report folder: <code>Library/IL2CPPStripGuard/Reports</code>.</li>
+            <li>Default CI thresholds fail on active Critical and High findings.</li>
+            <li>Use <code>IL2CPPStripGuard.Editor.IL2CPPStripGuardCI.Run</code> or the fully namespaced equivalent.</li>
+          </ul>
+        </div>
+        <figure class="sales-block__media sales-media-card">
+          <img class="marketing-image" src="/assets/images/IL2CPPStripGuard/marketing/ci-placeholder.svg" alt="Placeholder CI output for IL2CPP Strip Guard" data-gallery-item data-gallery-caption="CI output" loading="lazy">
+          <figcaption>CI output placeholder</figcaption>
+        </figure>
+      </section>
+
+      <section id="fit" class="sales-section reveal">
+        <div class="sales-panel-grid">
+          <div class="sales-side-card" data-spotlight>
+            <div class="sales-copy" data-stagger>
+              <p class="sales-kicker">Who it is for</p>
+              <h2>Built for Unity developers shipping IL2CPP targets.</h2>
+              <ul class="sales-feature-list">
+                <li>WebGL, Android, iOS, VR, and console-like projects.</li>
+                <li>Projects using reflection, runtime type loading, or custom serializers.</li>
+                <li>Save systems, command registries, event systems, dialogue systems, action systems, dependency injection, Addressables, and generic factories.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="sales-side-card" data-spotlight>
+            <div class="sales-copy" data-stagger>
+              <p class="sales-kicker">What it does not claim</p>
+              <h2>Not a mathematical proof that every IL2CPP build is safe.</h2>
+              <ul class="sales-feature-list">
+                <li>The scanner is heuristic and false positives or false negatives are possible.</li>
+                <li>It does not run player builds or validate platform builds.</li>
+                <li>Generated link.xml preserves metadata, but it may not force every closed generic instantiation.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" class="sales-section reveal">
+        <div class="sales-copy" data-stagger>
+          <p class="sales-kicker">FAQ</p>
+          <h2>Common questions before rollout.</h2>
+          <div class="sales-faq-list">
+            <details class="sales-faq" data-spotlight>
+              <summary>Does it modify my source code?</summary>
+              <p>No. It never modifies user source code, player settings, existing user link.xml files, or build settings automatically.</p>
+            </details>
+            <details class="sales-faq" data-spotlight>
+              <summary>Can it generate link.xml suggestions?</summary>
+              <p>Yes. You can preview generated link.xml output and write it only when you choose to generate the file.</p>
+            </details>
+            <details class="sales-faq" data-spotlight>
+              <summary>Can it run in CI?</summary>
+              <p>Yes. The CI runner exports JSON and Markdown reports and exits with code 1 when configured thresholds are exceeded.</p>
+            </details>
+            <details class="sales-faq" data-spotlight>
+              <summary>Does it prove generic AOT coverage?</summary>
+              <p>No. link.xml can preserve metadata, but dynamic generic construction may still need explicit runtime references or hand-authored AOT hints.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section id="final-cta" class="sales-section reveal">
+        <div class="sales-cta-panel" data-spotlight>
+          <div class="sales-copy" data-stagger>
+            <p class="sales-kicker">Next Step</p>
+            <h2>Review IL2CPP risk before the build is the only debugger.</h2>
+            <p>Open the docs for setup, scan scope, generated link.xml behavior, reports, CI usage, demo expectations, and limitations.</p>
+            <div class="sales-actions">
+              <a class="sales-button sales-button--primary" href="/assets/il2cpp-strip-guard/docs/">Read the documentation</a>
+              <a class="sales-button sales-button--secondary" href="/support/">Contact support</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div class="mobile-cta" aria-label="Mobile call to action">
+    <div class="container">
+      <a class="sales-cta-link" href="/assets/il2cpp-strip-guard/docs/">Read Docs</a>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-shell">
+      <div class="footer-columns">
+        <section>
+          <h2>Explore</h2>
+          <ul class="link-list">
+            <li><a href="/">Home</a></li>
+            <li><a href="/tools/">Tools</a></li>
+            <li><a href="/articles/">Articles</a></li>
+            <li><a href="/games/">Games</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li>
+            <li><a href="/support/">Support</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Tools</h2>
+          <ul class="link-list">
+            <li><a href="/assets/il2cpp-strip-guard/">IL2CPP Strip Guard</a></li>
+            <li><a href="/assets/build-size-guard/">Build Size Guard</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/">Shader Variant Budget &amp; CI Guard</a></li>
+            <li><a href="/assets/unity-serialization-migration-guard/">Unity Serialization Migration Guard</a></li>
+            <li><a href="/assets/inspector-event-link-doctor/">Inspector Event Link Doctor</a></li>
+            <li><a href="/assets/fast-play-mode-safety-guard/">Fast Play Mode Safety Guard</a></li>
+            <li><a href="/assets/import-settings-validator-fix/">Import Settings Validator &amp; Fix</a></li>
+            <li><a href="/assets/compliance/">Third-Party Notices &amp; Credits</a></li>
+            <li><a href="/tools/">Tools Directory</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Support</h2>
+          <ul class="link-list">
+            <li><a href="/assets/il2cpp-strip-guard/docs/">IL2CPP Strip Guard Docs</a></li>
+            <li><a href="/assets/il2cpp-strip-guard/license/">License Status</a></li>
+            <li><a href="/support/">Support Form</a></li>
+          </ul>
+        </section>
+        <section class="footer-email-updates" aria-label="Email subscription">
+          <h2>Email Updates</h2>
+          <div class="ml-embedded" data-form="bk4D7K"></div>
+        </section>
+      </div>
+      <div class="footer-legal">
+        <span>&copy; Bjorvand Solutions <span data-current-year>2026</span> &bull; Company registration number: 836 135 652 (Norway)</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/ui/reveal.js"></script>
+  <script src="/assets/js/ui/tool-sales-pages.js"></script>
+  <script src="/assets/js/product-gallery.js"></script>
+  <script defer src="/assets/js/site/nav.js"></script>
+  <script defer src="/assets/js/site/link-decorators.js"></script>
+</body>
+</html>

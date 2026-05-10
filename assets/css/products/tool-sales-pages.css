@@ -600,6 +600,66 @@ section[id] {
   text-transform: uppercase;
 }
 
+.testimonial-section {
+  gap: clamp(1.15rem, 2.4vw, 1.8rem);
+}
+
+.testimonial-head {
+  max-width: 68ch;
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.4rem);
+}
+
+.testimonial-card {
+  position: relative;
+  display: grid;
+  gap: 0.9rem;
+  min-width: 0;
+  margin: 0;
+  padding: clamp(1.1rem, 2vw, 1.35rem);
+  border: 1px solid rgba(159, 177, 199, 0.2);
+  border-radius: var(--page-radius-md);
+  background:
+    linear-gradient(150deg, rgba(251, 129, 20, 0.06), transparent 42%),
+    rgba(20, 30, 45, 0.72);
+  box-shadow: var(--page-shadow-soft);
+}
+
+.testimonial-rating {
+  color: #ffc857;
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+  line-height: 1;
+}
+
+.testimonial-card blockquote {
+  margin: 0;
+}
+
+.testimonial-card blockquote p {
+  margin: 0;
+  color: var(--page-text);
+  font-size: clamp(0.98rem, 1.25vw, 1.08rem);
+  line-height: 1.65;
+}
+
+.testimonial-card a {
+  color: var(--page-accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.16em;
+  overflow-wrap: anywhere;
+}
+
+.testimonial-card figcaption {
+  color: var(--page-text-muted);
+  font-size: 0.88rem;
+}
+
 footer,
 .site-footer {
   padding: 0 0 clamp(2.4rem, 5vw, 4rem);
@@ -781,6 +841,7 @@ footer,
   .sales-purchase-shell,
   .sales-panel-grid,
   .sales-articles-grid,
+  .testimonial-grid,
   .footer-columns {
     grid-template-columns: 1fr;
   }

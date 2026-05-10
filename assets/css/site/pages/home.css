@@ -252,6 +252,168 @@
   min-width: 0;
 }
 
+.home-main .testimonial-section {
+  display: grid;
+  gap: clamp(1.15rem, 2.5vw, 1.8rem);
+}
+
+.home-main .testimonial-head {
+  margin-bottom: 0;
+}
+
+.home-main .testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.4rem);
+}
+
+.home-main .testimonial-card {
+  position: relative;
+  display: grid;
+  gap: 0.9rem;
+  min-width: 0;
+  margin: 0;
+  padding: clamp(1.1rem, 2vw, 1.35rem);
+  border: 1px solid color-mix(in srgb, var(--color-border-strong) 78%, var(--color-accent) 22%);
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(150deg, color-mix(in srgb, var(--color-accent) 10%, transparent), transparent 42%),
+    color-mix(in srgb, var(--color-surface) 90%, transparent);
+  box-shadow: var(--shadow-card);
+}
+
+.home-main .testimonial-rating {
+  color: #ffc857;
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+  line-height: 1;
+}
+
+.home-main .testimonial-card blockquote {
+  margin: 0;
+}
+
+.home-main .testimonial-card blockquote p {
+  margin: 0;
+  color: var(--color-text);
+  font-size: clamp(0.98rem, 1.05vw, 1.08rem);
+  line-height: 1.65;
+}
+
+.home-main .testimonial-card a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.16em;
+  overflow-wrap: anywhere;
+}
+
+.home-main .testimonial-card figcaption {
+  color: var(--color-text-muted);
+  font-size: 0.88rem;
+}
+
+.home-main .creator-award-section {
+  display: grid;
+  gap: clamp(1.15rem, 2.5vw, 1.8rem);
+}
+
+.home-main .creator-award-head {
+  margin-bottom: 0;
+}
+
+.creator-award-card {
+  position: relative;
+  display: grid;
+  gap: 1rem;
+  max-width: 760px;
+  min-width: 0;
+  padding: clamp(1.2rem, 2.4vw, 1.65rem);
+  border: 1px solid color-mix(in srgb, var(--color-border-strong) 80%, var(--color-accent) 20%);
+  border-radius: calc(var(--radius-lg) + 2px);
+  background:
+    radial-gradient(circle at 8% 18%, color-mix(in srgb, var(--color-accent) 16%, transparent), transparent 30%),
+    linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 94%, transparent), color-mix(in srgb, var(--color-surface-2) 96%, transparent));
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.creator-award-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(251, 129, 20, 0.7), transparent 68%);
+}
+
+.creator-award-profile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.creator-award-profile img {
+  width: clamp(4rem, 8vw, 5.5rem);
+  aspect-ratio: 1;
+  border: 1px solid color-mix(in srgb, var(--color-border-strong) 72%, var(--color-accent) 28%);
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 12px 24px rgba(4, 8, 14, 0.28);
+}
+
+.creator-award-label {
+  margin-bottom: 0.35rem;
+  color: var(--color-accent);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.creator-award-card h3 {
+  margin: 0;
+  font-size: clamp(1.18rem, 2vw, 1.55rem);
+}
+
+.creator-award-card p {
+  max-width: 62ch;
+  color: var(--color-text-muted);
+}
+
+.creator-award-quote {
+  display: grid;
+  gap: 0.65rem;
+  max-width: 62ch;
+  margin: 0;
+  padding: 1rem;
+  border-left: 3px solid var(--color-accent);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--color-surface-2) 72%, transparent);
+}
+
+.creator-award-quote p {
+  color: var(--color-text);
+  font-size: clamp(1rem, 1.2vw, 1.08rem);
+  line-height: 1.65;
+}
+
+.creator-award-quote cite {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.creator-award-proof {
+  width: fit-content;
+  color: var(--color-accent);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
 .decision-grid {
   counter-reset: decision;
   gap: clamp(1rem, 1.8vw, 1.35rem);
@@ -815,6 +977,7 @@
 @media (max-width: 860px) {
   .decision-grid,
   .games-grid,
+  .testimonial-grid,
   .feature-grid {
     grid-template-columns: 1fr;
     grid-template-areas: none;
@@ -869,6 +1032,10 @@
   .home-footer .footer-email-updates .ml-form-embedSubmit,
   .home-footer .footer-email-updates .ml-form-embedSubmit button {
     width: 100%;
+  }
+
+  .creator-award-profile {
+    align-items: flex-start;
   }
 }
 

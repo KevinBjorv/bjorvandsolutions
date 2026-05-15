@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@700&display=swap");
 
 * {
   box-sizing: border-box;
@@ -47,11 +47,20 @@ a {
 
 p {
   margin: 0;
+  line-height: 1.6;
+  font-weight: 400;
 }
 
 h1,
 h2,
-h3,
+h3 {
+  margin: 0;
+  line-height: 0.95;
+  font-family: var(--font-display);
+  letter-spacing: -0.04em;
+  font-weight: 700;
+}
+
 h4 {
   margin: 0;
   line-height: 1.2;

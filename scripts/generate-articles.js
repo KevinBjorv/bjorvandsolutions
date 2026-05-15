@@ -1066,56 +1066,6 @@ function renderSection(section) {
 }
 
 function renderHeader() {
-  const toolsMenu = catalog.tools.map((tool) => [
-    `              <div class="dropdown-submenu">`,
-    `                <a class="dropdown-submenu-trigger" role="menuitem" href="${tool.links.product}" aria-haspopup="menu">${tool.name} <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>`,
-    `                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="${tool.name} links">`,
-    `                  <a role="menuitem" href="${tool.links.product}">Homepage</a>`,
-    `                  <a role="menuitem" href="${tool.links.docs}">Docs</a>`,
-    `                  <a role="menuitem" href="/support/">Support</a>`,
-    `                  <a role="menuitem" href="${tool.links.license}">License</a>`,
-    `                </div>`,
-    `              </div>`
-  ].join("\n")).join("\n");
-
-  const articleCategories = catalog.articleCategories.map((category) =>
-    `              <a role="menuitem" href="/articles/?category=${category.slug}">${category.label}</a>`
-  ).join("\n");
-
-  const articleToolSubmenus = catalog.tools.filter((tool) => (articlesByTool.get(tool.key) || []).length).map((tool) => {
-    const toolArticles = articlesByTool.get(tool.key) || [];
-    const articleLinks = toolArticles.map((article) =>
-      `                  <a role="menuitem" href="${article.path}">${article.title}</a>`
-    ).join("\n");
-
-    return `
-              <div class="dropdown-submenu">
-                <a class="dropdown-submenu-trigger" role="menuitem" href="/articles/?tool=${tool.key}" aria-haspopup="menu">${tool.name} <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
-                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="${tool.name} article links">
-${articleLinks}
-                </div>
-              </div>
-    `.trim();
-  }).join("\n");
-
-  const toolsMobile = catalog.tools.map((tool) => [
-    `            <li><a href="${tool.links.product}">${tool.name} Homepage</a></li>`,
-    `            <li><a href="${tool.links.docs}">${tool.name} Docs</a></li>`,
-    `            <li><a href="${tool.links.license}">${tool.name} License</a></li>`
-  ].join("\n")).join("\n");
-
-  const articleCategoriesMobile = catalog.articleCategories.map((category) =>
-    `            <li><a href="/articles/?category=${category.slug}">${category.label}</a></li>`
-  ).join("\n");
-
-  const articleLinksMobile = catalog.tools.filter((tool) => (articlesByTool.get(tool.key) || []).length).map((tool) => {
-    const toolArticles = articlesByTool.get(tool.key) || [];
-    return [
-      `            <li class="mobile-nav-list-label">${tool.name}</li>`,
-      toolArticles.map((article) => `            <li><a href="${article.path}">${article.title}</a></li>`).join("\n")
-    ].join("\n");
-  }).join("\n");
-
   return `
   <header class="site-header">
     <div class="container nav-shell">
@@ -1123,143 +1073,27 @@ ${articleLinks}
         <span class="brand-mark" aria-hidden="true"></span>
         <span>Bjorvand Solutions</span>
       </a>
-
       <nav class="site-nav" aria-label="Primary">
         <ul class="menu-root">
-          <li class="menu-item">
-            <a class="menu-link" href="/tools/" data-nav-trigger="tools" aria-haspopup="menu" aria-expanded="false" aria-controls="menu-tools">Tools <span class="menu-chevron" aria-hidden="true">v</span></a>
-            <div class="dropdown" id="menu-tools" data-nav-menu="tools" role="menu" aria-label="Tools links">
-              <a role="menuitem" href="/tools/">Tools Overview</a>
-${toolsMenu}
-            </div>
-          </li>
-          <li class="menu-item">
-            <a class="menu-link" href="/articles/" data-nav-trigger="articles" aria-haspopup="menu" aria-expanded="false" aria-controls="menu-articles">Articles <span class="menu-chevron" aria-hidden="true">v</span></a>
-            <div class="dropdown" id="menu-articles" data-nav-menu="articles" role="menu" aria-label="Articles links">
-              <a role="menuitem" href="/articles/">All Articles</a>
-${articleCategories}
-${articleToolSubmenus}
-            </div>
-          </li>
-          <li class="menu-item">
-            <a class="menu-link" href="/games/" data-nav-trigger="games" aria-haspopup="menu" aria-expanded="false" aria-controls="menu-games">Games <span class="menu-chevron" aria-hidden="true">v</span></a>
-            <div class="dropdown" id="menu-games" data-nav-menu="games" role="menu" aria-label="Games links">
-              <a role="menuitem" href="/games/">Games Overview</a>
-              <div class="dropdown-submenu">
-                <a class="dropdown-submenu-trigger" role="menuitem" href="/dopamine/" aria-haspopup="menu">Dopamine Machine <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
-                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Dopamine Machine links">
-                  <a role="menuitem" href="/dopamine/">Play</a>
-                </div>
-              </div>
-              <div class="dropdown-submenu">
-                <a class="dropdown-submenu-trigger" role="menuitem" href="/games/orbital-chaos/" aria-haspopup="menu">Orbital Chaos <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
-                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Orbital Chaos links">
-                  <a role="menuitem" href="/games/orbital-chaos/">Homepage</a>
-                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.kevinbjorvand.orbitalchaos">Google Play</a>
-                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://apps.apple.com/us/app/orbital-chaos/id6754812237">App Store</a>
-                </div>
-              </div>
-              <div class="dropdown-submenu">
-                <a class="dropdown-submenu-trigger" role="menuitem" href="/games/neonsurge-2/" aria-haspopup="menu">NeonSurge 2 <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
-                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="NeonSurge 2 links">
-                  <a role="menuitem" href="/games/neonsurge-2/">Homepage</a>
-                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge-2">itch.io</a>
-                </div>
-              </div>
-              <div class="dropdown-submenu">
-                <a class="dropdown-submenu-trigger" role="menuitem" href="/games/neonsurge/" aria-haspopup="menu">NeonSurge <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
-                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="NeonSurge links">
-                  <a role="menuitem" href="/games/neonsurge/">Homepage</a>
-                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge">itch.io</a>
-                </div>
-              </div>
-              <div class="dropdown-submenu">
-                <a class="dropdown-submenu-trigger" role="menuitem" href="/games/#prototype-games-title" aria-haspopup="menu">Prototypes <span class="menu-chevron-sub" aria-hidden="true">&gt;</span></a>
-                <div class="dropdown dropdown-submenu-panel" role="menu" aria-label="Prototype links">
-                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/teleportation-prototype">Teleportation Prototype</a>
-                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/core-ascend">Core Ascend</a>
-                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/dodge-the-blocks">Dodge the Blocks</a>
-                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/lumacore-minigame">LumaCore</a>
-                  <a role="menuitem" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/duestien">Duestien: City Scene</a>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="menu-item menu-item-smart-indie">
-            <a class="menu-link menu-link-smart-indie" target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a>
-          </li>
-          <li class="menu-item">
-            <a class="menu-link" href="/support/">Contact</a>
-          </li>
-          <li class="menu-item">
-            <a class="menu-link" href="https://www.youtube.com/@devwithkevin" target="_blank" rel="noopener noreferrer" data-external-indicator="off" data-nav-trigger="socials" aria-haspopup="menu" aria-expanded="false" aria-controls="menu-socials">Socials <span class="menu-chevron" aria-hidden="true">v</span></a>
-            <div class="dropdown" id="menu-socials" data-nav-menu="socials" role="menu" aria-label="Social links">
-              <a class="social-nav-link" role="menuitem" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/@devwithkevin"><img class="social-nav-icon" src="/assets/images/icons/youtube.png" alt="" aria-hidden="true" loading="lazy">YouTube</a>
-              <a class="social-nav-link" role="menuitem" target="_blank" rel="noopener noreferrer" href="https://x.com/BjorvandKevin"><img class="social-nav-icon" src="/assets/images/icons/twitter.png" alt="" aria-hidden="true" loading="lazy">X</a>
-              <a class="social-nav-link" role="menuitem" target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/kevinbdev/"><img class="social-nav-icon" src="/assets/images/icons/instagram.png" alt="" aria-hidden="true" loading="lazy">Instagram</a>
-              <a class="social-nav-link" role="menuitem" target="_blank" rel="noopener noreferrer" href="https://www.tiktok.com/@kevinbdev"><img class="social-nav-icon" src="/assets/images/icons/tiktok.png" alt="" aria-hidden="true" loading="lazy">TikTok</a>
-              <a class="social-nav-link" role="menuitem" target="_blank" rel="noopener noreferrer" href="https://skool.com/@kevin-bjorvand-9175"><img class="social-nav-icon social-nav-icon-skool" src="/Skool%20logo.png" alt="" aria-hidden="true" loading="lazy">Skool</a>
-            </div>
-          </li>
+          <li class="menu-item"><a class="menu-link" href="/">Home</a></li>
+          <li class="menu-item"><a class="menu-link" href="/tools/">Tools</a></li>
+          <li class="menu-item"><a class="menu-link" href="/games/">Games</a></li>
+          <li class="menu-item"><a class="menu-link" href="/articles/">Articles</a></li>
+          <li class="menu-item menu-item-smart-indie"><a class="menu-link menu-link-smart-indie" target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li>
+          <li class="menu-item"><a class="menu-link" href="/support/">Support</a></li>
         </ul>
       </nav>
 
       <button class="mobile-nav-toggle" type="button" data-mobile-nav-toggle aria-controls="mobileNavPanel" aria-expanded="false">Menu</button>
     </div>
-
     <div class="mobile-nav-panel" id="mobileNavPanel" data-mobile-nav-panel hidden>
       <div class="mobile-nav-shell container">
-        <details class="mobile-nav-group">
-          <summary>Tools</summary>
-          <ul>
-            <li><a href="/tools/">Tools Overview</a></li>
-${toolsMobile}
-            <li><a href="/support/">Support Form</a></li>
-          </ul>
-        </details>
-        <details class="mobile-nav-group">
-          <summary>Articles</summary>
-          <ul>
-            <li><a href="/articles/">All Articles</a></li>
-${articleCategoriesMobile}
-${articleLinksMobile}
-          </ul>
-        </details>
-        <details class="mobile-nav-group">
-          <summary>Games</summary>
-          <ul>
-            <li><a href="/games/">Games Overview</a></li>
-            <li><a href="/dopamine/">Dopamine Machine Play</a></li>
-            <li><a href="/games/orbital-chaos/">Orbital Chaos Homepage</a></li>
-            <li><a target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.kevinbjorvand.orbitalchaos">Orbital Chaos Google Play</a></li>
-            <li><a target="_blank" rel="noopener noreferrer" href="https://apps.apple.com/us/app/orbital-chaos/id6754812237">Orbital Chaos App Store</a></li>
-            <li><a href="/games/neonsurge-2/">NeonSurge 2 Homepage</a></li>
-            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge-2">NeonSurge 2 itch.io</a></li>
-            <li><a href="/games/neonsurge/">NeonSurge Homepage</a></li>
-            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge">NeonSurge itch.io</a></li>
-            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/teleportation-prototype">Teleportation Prototype</a></li>
-            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/core-ascend">Core Ascend</a></li>
-            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/dodge-the-blocks">Dodge the Blocks</a></li>
-            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/lumacore-minigame">LumaCore</a></li>
-            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/duestien">Duestien: City Scene</a></li>
-          </ul>
-        </details>
-        <div class="mobile-nav-group mobile-nav-single-link">
-          <a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a>
-        </div>
-        <div class="mobile-nav-group mobile-nav-single-link">
-          <a href="/support/">Contact</a>
-        </div>
-        <details class="mobile-nav-group">
-          <summary>Socials</summary>
-          <ul>
-            <li><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/@devwithkevin">YouTube</a></li>
-            <li><a target="_blank" rel="noopener noreferrer" href="https://x.com/BjorvandKevin">X</a></li>
-            <li><a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/kevinbdev/">Instagram</a></li>
-            <li><a target="_blank" rel="noopener noreferrer" href="https://www.tiktok.com/@kevinbdev">TikTok</a></li>
-            <li><a target="_blank" rel="noopener noreferrer" href="https://skool.com/@kevin-bjorvand-9175">Skool</a></li>
-          </ul>
-        </details>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/">Home</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/tools/">Tools</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/games/">Games</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/articles/">Articles</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/support/">Support</a></div>
       </div>
     </div>
   </header>

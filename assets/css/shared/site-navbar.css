@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@700&display=swap");
 
 .site-header {
   --site-nav-bg: #0b1017;
@@ -25,7 +25,7 @@
   background: rgba(11, 16, 23, 0.84);
   backdrop-filter: blur(14px);
   color: var(--site-nav-text);
-  font-family: "Sora", "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
+  font-family: "Geist", "Inter", sans-serif;
 }
 
 .site-header * {
@@ -55,7 +55,7 @@
   align-items: center;
   gap: 0.65rem;
   margin-right: auto;
-  font-family: "Space Grotesk", "Sora", "Avenir Next", "Segoe UI", sans-serif;
+  font-family: "Space Grotesk", "Geist", sans-serif;
   font-size: 1.12rem;
   font-weight: 700;
   letter-spacing: 0.02em;
@@ -243,7 +243,7 @@
   background: rgba(11, 16, 23, 0.96);
   border-top: 1px solid var(--site-nav-border);
   color: var(--site-nav-text);
-  font-family: "Sora", "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
+  font-family: "Geist", "Inter", sans-serif;
 }
 
 .mobile-nav-panel[hidden] {

@@ -12,7 +12,7 @@
   --radius: 14px;
   --content-width: 1240px;
   --sidebar-width: 290px;
-  --font-main: "Segoe UI", "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-main: "Geist", "Inter", sans-serif;
   --font-mono: "Cascadia Mono", "Consolas", "Liberation Mono", monospace;
 }
 
@@ -29,7 +29,7 @@ body {
   font-family: var(--font-main);
   background: radial-gradient(circle at 15% 0%, #ffffff 0%, var(--bg) 55%);
   color: var(--text);
-  line-height: 1.65;
+  line-height: 1.6;
 }
 
 a {
@@ -273,9 +273,11 @@ h2,
 h3,
 h4 {
   margin: 0 0 10px;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
   color: #12243d;
+  font-family: "Space Grotesk", "Geist", sans-serif;
+  font-weight: 700;
 }
 
 h1 {
@@ -301,6 +303,8 @@ h4 {
 p {
   margin: 0 0 12px;
   color: var(--muted);
+  line-height: 1.6;
+  font-weight: 400;
 }
 
 ul,

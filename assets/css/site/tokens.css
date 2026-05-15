@@ -1,7 +1,7 @@
 :root {
   color-scheme: dark;
-  --font-display: "Space Grotesk", "Sora", "Avenir Next", "Segoe UI", sans-serif;
-  --font-body: "Sora", "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
+  --font-display: "Space Grotesk", "Geist", sans-serif;
+  --font-body: "Geist", "Inter", sans-serif;
 
   --color-bg: #0b1017;
   --color-bg-soft: #101724;

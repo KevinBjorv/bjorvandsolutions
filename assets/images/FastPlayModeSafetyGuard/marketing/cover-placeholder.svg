@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
-  <title id="title">Fast Play Mode Safety Guard placeholder cover</title>
-  <desc id="desc">Placeholder artwork showing a Unity editor safety report layout.</desc>
+  <title id="title">Fast Play Mode Safety Guard preview cover</title>
+  <desc id="desc">preview artwork showing a Unity editor safety report layout.</desc>
   <defs>
     <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
       <stop offset="0" stop-color="#111827"/>
@@ -37,5 +37,5 @@
     <rect x="522" y="452" width="560" height="52" rx="12" fill="#151f2d"/>
     <text x="546" y="486" fill="#ecf1f8">Static collection keeps runtime data</text>
   </g>
-  <text x="122" y="688" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="22">Placeholder image - replace with final product screenshots</text>
+  <text x="122" y="688" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="22">Preview visual</text>
 </svg>

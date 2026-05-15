@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
-  <title id="title">Fast Play Mode Safety Guard readiness placeholder</title>
-  <desc id="desc">Placeholder artwork for readiness states.</desc>
+  <title id="title">Fast Play Mode Safety Guard readiness preview</title>
+  <desc id="desc">preview artwork for readiness states.</desc>
   <rect width="1280" height="720" fill="#101724"/>
   <text x="132" y="132" fill="#ecf1f8" font-family="Segoe UI, Arial, sans-serif" font-size="44" font-weight="800">Readiness status, not guesswork</text>
   <g font-family="Segoe UI, Arial, sans-serif">
@@ -19,5 +19,5 @@
   </g>
   <path d="M220 594h840" stroke="#334155" stroke-width="12" stroke-linecap="round"/>
   <path d="M220 594h534" stroke="#fb8114" stroke-width="12" stroke-linecap="round"/>
-  <text x="132" y="688" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="22">Placeholder image - replace with final product screenshots</text>
+  <text x="132" y="688" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="22">Preview visual</text>
 </svg>

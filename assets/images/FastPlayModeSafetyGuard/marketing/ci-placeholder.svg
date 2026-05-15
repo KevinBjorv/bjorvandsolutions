@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
-  <title id="title">Fast Play Mode Safety Guard CI placeholder</title>
-  <desc id="desc">Placeholder artwork for CI JSON reports and exit codes.</desc>
+  <title id="title">Fast Play Mode Safety Guard CI preview</title>
+  <desc id="desc">preview artwork for CI JSON reports and exit codes.</desc>
   <rect width="1280" height="720" fill="#0b1017"/>
   <rect x="116" y="88" width="1048" height="544" rx="28" fill="#131c2a" stroke="#334155"/>
   <text x="164" y="154" fill="#ecf1f8" font-family="Segoe UI, Arial, sans-serif" font-size="42" font-weight="800">CI reports for Fast Play Mode rollout</text>
@@ -20,5 +20,5 @@
     <rect x="834" y="470" width="282" height="86" rx="18" fill="#27151f" stroke="#e11d48"/>
     <text x="876" y="524" fill="#fecdd3" font-size="28" font-weight="800">Exit 2</text>
   </g>
-  <text x="116" y="688" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="22">Placeholder image - replace with final product screenshots</text>
+  <text x="116" y="688" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="22">Preview visual</text>
 </svg>

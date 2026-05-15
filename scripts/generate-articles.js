@@ -291,9 +291,9 @@ Object.assign(articleBodies, {
   },
   "build-a-repeatable-unity-license-compliance-workflow": {
     answer: "A repeatable Unity license compliance workflow is built around the same sequence every time: scan, review evidence, resolve gaps conservatively, export structured artifacts, and keep build-time behavior aligned with that review policy.",
-    heroCaption: "Compliance gets more manageable when the workflow is deterministic and reviewable.",
+    heroCaption: "Compliance gets more manageable when the scan, review, and export steps are clear.",
     midCtaTitle: "Make license compliance a workflow instead of a release scramble.",
-    midCtaText: "Third-Party Notices & Credits is designed around deterministic scans, override review, and stable export files so teams can repeat the same process each release.",
+    midCtaText: "Compliance Exporter is designed around project scans, override review, and stable export files so teams can repeat the same process each release.",
     endTitle: "Use the product page when you want the full rollout path and support links.",
     endText: "The homepage keeps the scan, docs, license, and support routes together.",
     sections: [
@@ -423,7 +423,7 @@ Object.assign(articleBodies, {
 
 Object.assign(articleBodies, {
   "enforce-unity-import-settings-across-a-team": {
-    answer: "The reliable way to enforce Unity import settings across a team is to define deterministic rules, connect them to presets, and let the tool apply or validate those rules every time assets enter the project.",
+    answer: "A reliable way to enforce Unity import settings across a team is to define rule presets, connect them to asset paths, and validate those rules every time assets enter the project.",
     heroCaption: "Import policies hold better when the project enforces them instead of relying on memory.",
     midCtaTitle: "Replace importer policing with a repeatable rule set.",
     midCtaText: "Import Settings Validator & Fix is designed around rule sets, preset-driven enforcement, and project-wide validation so standards stay consistent across contributors and machines.",
@@ -475,7 +475,7 @@ Object.assign(articleBodies, {
         id: "where-the-tool-draws-the-line",
         title: "Where does the tool deliberately draw the line?",
         paragraphs: [
-          "The design is deliberately deterministic. It does not claim to discover the best settings for you, and it is not framed as a heuristic optimization tool.",
+          "The design is deliberately rules-based. It does not claim to discover the best settings for you, and it is not framed as a heuristic optimization tool.",
           "Its value is repeatability: one declared standard, one import path, one place to review drift when it happens."
         ],
         bullets: [
@@ -602,7 +602,7 @@ Object.assign(articleBodies, {
         title: "What should you check before using a broad fix-all pass?",
         paragraphs: [
           "The rule order should be deliberate, and the diff summary should read like a policy you want to enforce. If either one looks wrong, fix the rule set before running the broad action.",
-          "That keeps the tool aligned with its main value: deterministic enforcement of a standard the team already trusts."
+          "That keeps the tool aligned with its main value: rule-based enforcement of a standard the team already trusts."
         ],
         bullets: [
           "Make sure the right rule is winning for the assets in scope.",
@@ -812,7 +812,7 @@ Object.assign(articleBodies, {
     answer: "The reliable way to reduce shader variant creep in Unity is to capture variant snapshots consistently, compare them against a baseline, and review the top offenders before variant growth becomes accepted as normal.",
     heroCaption: "Variant creep is easier to control when the build log becomes structured snapshot data.",
     midCtaTitle: "Make shader variant growth visible before it becomes background noise.",
-    midCtaText: "Shader Variant Budget & CI Guard turns Editor.log output into deterministic snapshots, compare results, and budget findings that teams can act on quickly.",
+    midCtaText: "Shader Variant Guard turns Editor.log output into snapshots, compare results, and budget findings that teams can act on quickly.",
     endTitle: "Open the product page when you want the complete workflow and support links.",
     endText: "It links directly to the documentation, license page, and support channel.",
     sections: [
@@ -833,7 +833,7 @@ Object.assign(articleBodies, {
         id: "what-the-tool-captures",
         title: "What does Shader Variant Budget & CI Guard actually capture?",
         paragraphs: [
-          "The tool reads Editor.log, extracts summary totals and per-shader contributor data, stores deterministic snapshot JSON, and carries parser diagnostics alongside the numbers. That matters because you need both the totals and the confidence that the parser saw a valid snapshot.",
+          "The tool reads Editor.log, extracts summary totals and per-shader contributor data, stores stable snapshot JSON, and carries parser diagnostics alongside the numbers. That matters because you need both the totals and the confidence that the parser saw a valid snapshot.",
           "The same pipeline runs in the editor and in batchmode, so the local comparison path and the CI path stay aligned."
         ],
         bullets: [
@@ -847,7 +847,7 @@ Object.assign(articleBodies, {
         id: "how-to-use-snapshots-to-control-creep",
         title: "How do you use snapshots to control the creep instead of reacting late?",
         paragraphs: [
-          "The fastest routine is to capture a snapshot after a build, refresh the browser list, and compare the new snapshot against the nearest valid baseline. In the editor window, Compare Selection uses a deterministic baseline order that prefers the same target and build profile when possible.",
+          "The fastest routine is to capture a snapshot after a build, refresh the browser list, and compare the new snapshot against the nearest valid baseline. In the editor window, Compare Selection uses a defined baseline order that prefers the same target and build profile when possible.",
           "That baseline logic matters because it reduces false comparison pairs. You get a result that is more likely to explain real growth instead of noise from unrelated targets."
         ],
         steps: [
@@ -962,7 +962,7 @@ Object.assign(articleBodies, {
         id: "how-baseline-selection-works",
         title: "How does baseline selection work in the editor window?",
         paragraphs: [
-          "You can select baseline and current explicitly, but Compare Selection is usually faster because the baseline order is deterministic. It first prefers older or newer snapshots with the same target and build profile, then falls back to same-target matches, and finally any different snapshot if nothing else exists.",
+          "You can select baseline and current explicitly, but Compare Selection is usually faster because the baseline order is defined. It first prefers older or newer snapshots with the same target and build profile, then falls back to same-target matches, and finally any different snapshot if nothing else exists.",
           "That ordering keeps the common workflow short when you are comparing neighboring captures from the same build context."
         ],
         steps: [
@@ -1380,7 +1380,7 @@ function renderToolRelatedSection(tool) {
         <div class="sales-copy" data-stagger>
           <p class="sales-kicker">Articles</p>
           <h2>Guides built around ${htmlEscape(tool.name)}</h2>
-          <p class="sales-lede">These articles stay tied to one workflow and one tool so the rollout steps, limitations, and CTA all stay specific.</p>
+          <p class="sales-lede">Related guides for setup, rollout, and release checks.</p>
         </div>
         <div class="sales-articles-grid">
 ${cards}
@@ -1467,17 +1467,17 @@ function renderHubPage() {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Unity Tool Articles | Build, CI, Refactoring, and Release Guides</title>
-  <meta name="description" content="Browse 15 Unity workflow articles about build size, shader variants, import settings, serialization migrations, and release compliance.">
+  <title>Unity Release Workflows | Bjorvand Solutions</title>
+  <meta name="description" content="Practical guides for catching build, asset, refactor, and compliance problems before they hit release.">
   <meta name="author" content="${htmlEscape(catalog.author.name)}">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Unity Tool Articles | Build, CI, Refactoring, and Release Guides">
-  <meta property="og:description" content="Browse 15 Unity workflow articles about build size, shader variants, import settings, serialization migrations, and release compliance.">
+  <meta property="og:title" content="Unity Release Workflows | Bjorvand Solutions">
+  <meta property="og:description" content="Practical guides for catching build, asset, refactor, and compliance problems before they hit release.">
   <meta property="og:url" content="${siteUrl}/articles/">
   <meta property="og:image" content="${absoluteUrl(authorImage)}">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Unity Tool Articles | Build, CI, Refactoring, and Release Guides">
-  <meta name="twitter:description" content="Browse 15 Unity workflow articles about build size, shader variants, import settings, serialization migrations, and release compliance.">
+  <meta name="twitter:title" content="Unity Release Workflows | Bjorvand Solutions">
+  <meta name="twitter:description" content="Practical guides for catching build, asset, refactor, and compliance problems before they hit release.">
   <meta name="twitter:image" content="${absoluteUrl(authorImage)}">
   <link rel="canonical" href="${siteUrl}/articles/">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
@@ -1505,20 +1505,13 @@ function renderHubPage() {
     <div class="container articles-page">
       <section class="articles-hero">
         <span class="badge">Articles</span>
-        <h1>Articles for Unity tool workflows that need fewer surprises.</h1>
-        <p>The hub stays static and indexable, while the filters help people narrow the list by tool, category, and sort order after the page loads. Every article is tied to one tool and one concrete implementation problem.</p>
+        <h1>Unity Release Workflows</h1>
+        <p>Practical guides for catching build, asset, refactor, and compliance problems before they hit release.</p>
+        <p>Build size &middot; Shader variants &middot; Import settings &middot; Serialization &middot; Compliance</p>
         <div class="articles-summary-strip" aria-label="Article summary">
           <article>
-            <strong>${catalog.articles.length} articles</strong>
-            <span>${toolKeysWithArticles.size} tool workflows represented in the article library.</span>
-          </article>
-          <article>
-            <strong>${catalog.tools.length} tools</strong>
-            <span>Each guide links back to the matching homepage, docs, and support path.</span>
-          </article>
-          <article>
-            <strong>${catalog.articleCategories.length} categories</strong>
-            <span>Build &amp; CI, Asset Pipeline, Serialization &amp; Refactoring, and Compliance &amp; Release.</span>
+            <strong>${catalog.articles.length} practical guides</strong>
+            <span>Unity release workflows for build, asset, refactor, and compliance cleanup.</span>
           </article>
         </div>
       </section>
@@ -1526,8 +1519,8 @@ function renderHubPage() {
       <section class="articles-toolbar" aria-labelledby="articles-toolbar-title">
         <div class="articles-toolbar-head">
           <div>
-            <h2 id="articles-toolbar-title">Browse and sort the full article library</h2>
-            <p>All 15 article links are in the HTML by default, then progressively enhanced with sort and filter controls.</p>
+            <h2 id="articles-toolbar-title">Find the workflow you are trying to clean up.</h2>
+            <p>Filter by tool, category, or release problem.</p>
           </div>
           <div class="sort-field">
             <label for="article-sort">Sort</label>
@@ -1540,7 +1533,7 @@ function renderHubPage() {
         </div>
 
         <div class="filter-group" aria-labelledby="tool-filters-title">
-          <h2 id="tool-filters-title">Tools</h2>
+          <h2 id="tool-filters-title">Tool filters</h2>
           <div class="filter-pills">
             <button class="filter-pill is-active" type="button" data-tool-filter data-filter-value="all" aria-pressed="true">All tools</button>
               ${toolFilters}
@@ -1548,7 +1541,7 @@ function renderHubPage() {
         </div>
 
         <div class="filter-group" aria-labelledby="category-filters-title">
-          <h2 id="category-filters-title">Categories</h2>
+          <h2 id="category-filters-title">Workflow filters</h2>
           <div class="filter-pills">
             <button class="filter-pill is-active" type="button" data-category-filter data-filter-value="all" aria-pressed="true">All categories</button>
               ${categoryFilters}
@@ -1561,7 +1554,7 @@ function renderHubPage() {
       <section aria-labelledby="articles-grid-title">
         <div class="section-head">
           <h2 id="articles-grid-title">Article library</h2>
-          <p class="articles-toolbar-note">Use the sort and filters above, or open any article directly from the cards below.</p>
+          <p class="articles-toolbar-note">Use the filters above, or open any guide directly from the cards below.</p>
         </div>
         <div class="articles-grid" data-articles-grid>
 ${cards}

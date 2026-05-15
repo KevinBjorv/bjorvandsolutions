@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
-  <title id="title">Fast Play Mode Safety Guard Double Play placeholder</title>
-  <desc id="desc">Placeholder artwork for the Double Play runtime test.</desc>
+  <title id="title">Fast Play Mode Safety Guard Double Play preview</title>
+  <desc id="desc">preview artwork for the Double Play runtime test.</desc>
   <rect width="1280" height="720" fill="#111827"/>
   <text x="130" y="132" fill="#ecf1f8" font-family="Segoe UI, Arial, sans-serif" font-size="44" font-weight="800">Double Play runtime evidence</text>
   <g fill="none" stroke="#fb8114" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
@@ -20,5 +20,5 @@
     <text x="798" y="312" fill="#ffbd7a" font-size="28" font-weight="800">Persistence found</text>
     <text x="798" y="362" fill="#fed7aa" font-size="20">Static state survived play mode</text>
   </g>
-  <text x="130" y="688" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="22">Placeholder image - replace with final product screenshots</text>
+  <text x="130" y="688" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="22">Preview visual</text>
 </svg>

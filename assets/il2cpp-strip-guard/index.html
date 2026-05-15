@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IL2CPP Strip Guard for Unity | Find Stripping Risks Before Builds Break</title>
-  <meta name="description" content="IL2CPP Strip Guard scans Unity projects for managed stripping, reflection, serialized type reference, and AOT generic risk patterns before build-only bugs appear.">
+  <title>IL2CPP Strip Guard for Unity | Preview Stripping Risks Before Release</title>
+  <meta name="description" content="Preview IL2CPP stripping risks by reviewing reflection usage, serialized type references, preserve coverage, and generated link.xml suggestions.">
   <link rel="canonical" href="/assets/il2cpp-strip-guard/">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
@@ -29,31 +29,25 @@
       </a>
       <nav class="site-nav" aria-label="Primary">
         <ul class="menu-root">
+          <li class="menu-item"><a class="menu-link" href="/">Home</a></li>
           <li class="menu-item"><a class="menu-link" href="/tools/">Tools</a></li>
-          <li class="menu-item"><a class="menu-link" href="/articles/">Articles</a></li>
           <li class="menu-item"><a class="menu-link" href="/games/">Games</a></li>
+          <li class="menu-item"><a class="menu-link" href="/articles/">Articles</a></li>
           <li class="menu-item menu-item-smart-indie"><a class="menu-link menu-link-smart-indie" target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li>
-          <li class="menu-item"><a class="menu-link" href="/support/">Contact</a></li>
+          <li class="menu-item"><a class="menu-link" href="/support/">Support</a></li>
         </ul>
       </nav>
+
       <button class="mobile-nav-toggle" type="button" data-mobile-nav-toggle aria-controls="mobileNavPanel" aria-expanded="false">Menu</button>
     </div>
     <div class="mobile-nav-panel" id="mobileNavPanel" data-mobile-nav-panel hidden>
       <div class="mobile-nav-shell container">
-        <details class="mobile-nav-group">
-          <summary>Tools</summary>
-          <ul>
-            <li><a href="/tools/">Tools Overview</a></li>
-            <li><a href="/assets/il2cpp-strip-guard/">IL2CPP Strip Guard Homepage</a></li>
-            <li><a href="/assets/il2cpp-strip-guard/docs/">IL2CPP Strip Guard Docs</a></li>
-            <li><a href="/assets/il2cpp-strip-guard/license/">IL2CPP Strip Guard License</a></li>
-            <li><a href="/support/">Support Form</a></li>
-          </ul>
-        </details>
-        <div class="mobile-nav-group mobile-nav-single-link"><a href="/articles/">Articles</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/">Home</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/tools/">Tools</a></div>
         <div class="mobile-nav-group mobile-nav-single-link"><a href="/games/">Games</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/articles/">Articles</a></div>
         <div class="mobile-nav-group mobile-nav-single-link"><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></div>
-        <div class="mobile-nav-group mobile-nav-single-link"><a href="/support/">Contact</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/support/">Support</a></div>
       </div>
     </div>
   </header>
@@ -64,14 +58,14 @@
         <div class="sales-hero__content sales-copy" data-stagger>
           <p class="sales-kicker">Unity Editor Tool</p>
           <h1>IL2CPP Strip Guard for Unity</h1>
-          <p class="sales-subtitle">Find IL2CPP stripping risks before your build breaks.</p>
-          <p class="sales-lede">Scan a Unity project for common managed stripping, reflection, serialized type reference, and AOT generic risk patterns before they turn into build-only bugs.</p>
+          <p class="sales-subtitle">Preview: find IL2CPP stripping risks before platform builds break.</p>
+          <p class="sales-lede">Review reflection usage, serialized type references, preserve coverage, and generated link.xml suggestions before release pressure hits.</p>
+          <p class="sales-inline-lines">Preview page. Store and license links should be added only when the release package is final.</p>
           <ul class="sales-chip-list" aria-label="Primary capabilities">
-            <li>Managed stripping risk scan</li>
-            <li>Reflection risk detection</li>
-            <li>Serialized type reference checks</li>
-            <li>Preserve coverage review</li>
-            <li>CI reports</li>
+            <li>Reflection usage review</li>
+            <li>Serialized type references</li>
+            <li>Preserve coverage</li>
+            <li>link.xml suggestions</li>
           </ul>
           <div class="sales-actions">
             <a class="sales-button sales-button--primary" href="/assets/il2cpp-strip-guard/docs/">Read the docs</a>
@@ -93,45 +87,17 @@
           </div>
         </div>
         <figure class="sales-hero__media sales-media-card">
-          <img class="marketing-image" src="/assets/images/IL2CPPStripGuard/marketing/cover-placeholder.svg" alt="Placeholder overview for IL2CPP Strip Guard" data-gallery-item data-gallery-caption="IL2CPP Strip Guard overview" loading="eager" fetchpriority="high">
-          <figcaption>Placeholder overview image</figcaption>
+          <img class="marketing-image" src="/assets/images/IL2CPPStripGuard/marketing/cover-placeholder.svg" alt="IL2CPP Strip Guard preview report" data-gallery-item data-gallery-caption="IL2CPP Strip Guard preview report" loading="eager" fetchpriority="high">
+          <figcaption>Preview report</figcaption>
         </figure>
-      </section>
-
-      <section id="asset-store-reviews" class="sales-section testimonial-section reveal" aria-labelledby="asset-store-reviews-title">
-        <div class="testimonial-head sales-copy" data-stagger>
-          <p class="sales-kicker">Customer reviews</p>
-          <h2 id="asset-store-reviews-title">5-star Unity Asset Store reviews</h2>
-          <p class="sales-lede">Developers are using these tools to keep real Unity projects easier to inspect and maintain.</p>
-        </div>
-        <div class="testimonial-grid" data-stagger>
-          <figure class="testimonial-card">
-            <div class="testimonial-rating" aria-label="5 out of 5 stars">
-              <span aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            </div>
-            <blockquote>
-              <p>Interesting diagnostioc tool was used it to inspect shaders in my Artisitc VFX package</p>
-            </blockquote>
-            <figcaption>Unity Asset Store review for Shader Variant Budget &amp; CI Guard</figcaption>
-          </figure>
-          <figure class="testimonial-card">
-            <div class="testimonial-rating" aria-label="5 out of 5 stars">
-              <span aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            </div>
-            <blockquote>
-              <p>I found this tool very useful for keeping import settings consistent with a few clicks. Now I can save time and I don't have to manually check all the settings for all the textures, materials, models of my project. I recommend grabbing this tool for big projects. The developer is active and open for feedback, which is a big plus! Thanks to the creator of this tool :)</p>
-            </blockquote>
-            <figcaption>Unity Asset Store review for Import Settings Validator &amp; Fix</figcaption>
-          </figure>
-        </div>
       </section>
 
       <section id="source-needed" class="sales-section reveal">
         <div class="sales-purchase-shell">
           <div class="sales-copy" data-stagger>
-            <p class="sales-kicker">Evaluation Path</p>
-            <h2>Use the confirmed docs and support paths while final storefront and license sources are pending.</h2>
-            <p class="sales-lede">The provided product documentation includes support and release-package details, but it does not include a public storefront URL or canonical license text.</p>
+            <p class="sales-kicker">Preview status</p>
+            <h2>Preview page. Not currently available for purchase.</h2>
+            <p class="sales-lede">Use the confirmed docs and support paths. Store and license links will be added when the release package is final.</p>
             <div class="sales-actions">
               <a class="sales-button sales-button--primary" href="/assets/il2cpp-strip-guard/docs/">Open documentation</a>
               <a class="sales-button sales-button--secondary" href="/assets/il2cpp-strip-guard/license/">License status</a>
@@ -147,11 +113,11 @@
                 </a>
                 <a class="sales-support-link" href="/assets/il2cpp-strip-guard/license/">
                   <span>License</span>
-                  <small>Source-needed placeholder until canonical terms are provided.</small>
+                  <small>Preview status until canonical terms are provided.</small>
                 </a>
                 <a class="sales-support-link" href="/support/">
                   <span>Support</span>
-                  <small>Use the support form for setup questions and missing source links.</small>
+                  <small>Use the support form for availability and setup questions.</small>
                 </a>
               </div>
             </div>
@@ -186,8 +152,8 @@
           </ul>
         </div>
         <figure class="sales-block__media sales-media-card">
-          <img class="marketing-image" src="/assets/images/IL2CPPStripGuard/marketing/findings-placeholder.svg" alt="Placeholder findings view for IL2CPP Strip Guard" data-gallery-item data-gallery-caption="IL2CPP Strip Guard findings" loading="lazy">
-          <figcaption>Findings placeholder</figcaption>
+          <img class="marketing-image" src="/assets/images/IL2CPPStripGuard/marketing/findings-placeholder.svg" alt="IL2CPP Strip Guard findings preview" data-gallery-item data-gallery-caption="IL2CPP Strip Guard findings" loading="lazy">
+          <figcaption>Findings preview</figcaption>
         </figure>
       </section>
 
@@ -203,8 +169,8 @@
           </ul>
         </div>
         <figure class="sales-block__media sales-media-card">
-          <img class="marketing-image" src="/assets/images/IL2CPPStripGuard/marketing/findings-placeholder.svg" alt="Placeholder preserve coverage findings for IL2CPP Strip Guard" data-gallery-item data-gallery-caption="Preserve coverage review" loading="lazy">
-          <figcaption>Coverage placeholder</figcaption>
+          <img class="marketing-image" src="/assets/images/IL2CPPStripGuard/marketing/findings-placeholder.svg" alt="IL2CPP Strip Guard preserve coverage preview" data-gallery-item data-gallery-caption="Preserve coverage review" loading="lazy">
+          <figcaption>Coverage preview</figcaption>
         </figure>
       </section>
 
@@ -221,8 +187,8 @@
           </ul>
         </div>
         <figure class="sales-block__media sales-media-card">
-          <img class="marketing-image" src="/assets/images/IL2CPPStripGuard/marketing/generated-fixes-placeholder.svg" alt="Placeholder generated fixes view for IL2CPP Strip Guard" data-gallery-item data-gallery-caption="Generated link.xml suggestions" loading="lazy">
-          <figcaption>Generated fixes placeholder</figcaption>
+          <img class="marketing-image" src="/assets/images/IL2CPPStripGuard/marketing/generated-fixes-placeholder.svg" alt="IL2CPP Strip Guard generated fixes preview" data-gallery-item data-gallery-caption="Generated link.xml suggestions" loading="lazy">
+          <figcaption>Generated fixes preview</figcaption>
         </figure>
       </section>
 
@@ -238,8 +204,8 @@
           </ul>
         </div>
         <figure class="sales-block__media sales-media-card">
-          <img class="marketing-image" src="/assets/images/IL2CPPStripGuard/marketing/ci-placeholder.svg" alt="Placeholder CI output for IL2CPP Strip Guard" data-gallery-item data-gallery-caption="CI output" loading="lazy">
-          <figcaption>CI output placeholder</figcaption>
+          <img class="marketing-image" src="/assets/images/IL2CPPStripGuard/marketing/ci-placeholder.svg" alt="IL2CPP Strip Guard CI output preview" data-gallery-item data-gallery-caption="CI output" loading="lazy">
+          <figcaption>CI output preview</figcaption>
         </figure>
       </section>
 
@@ -316,46 +282,38 @@
       <a class="sales-cta-link" href="/assets/il2cpp-strip-guard/docs/">Read Docs</a>
     </div>
   </div>
-
   <footer class="site-footer">
     <div class="container footer-shell">
       <div class="footer-columns">
         <section>
-          <h2>Explore</h2>
+          <h2>Products</h2>
           <ul class="link-list">
-            <li><a href="/">Home</a></li>
             <li><a href="/tools/">Tools</a></li>
-            <li><a href="/articles/">Articles</a></li>
-            <li><a href="/games/">Games</a></li>
             <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li>
+            <li><a href="/games/">Games</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Resources</h2>
+          <ul class="link-list">
+            <li><a href="/articles/">Articles</a></li>
+            <li><a href="/support/#docs-shortcuts-title">Documentation</a></li>
             <li><a href="/support/">Support</a></li>
           </ul>
         </section>
-        <section>
-          <h2>Tools</h2>
-          <ul class="link-list">
-            <li><a href="/assets/il2cpp-strip-guard/">IL2CPP Strip Guard</a></li>
-            <li><a href="/assets/build-size-guard/">Build Size Guard</a></li>
-            <li><a href="/assets/shader-variant-budget-ci-guard/">Shader Variant Budget &amp; CI Guard</a></li>
-            <li><a href="/assets/unity-serialization-migration-guard/">Unity Serialization Migration Guard</a></li>
-            <li><a href="/assets/inspector-event-link-doctor/">Inspector Event Link Doctor</a></li>
-            <li><a href="/assets/fast-play-mode-safety-guard/">Fast Play Mode Safety Guard</a></li>
-            <li><a href="/assets/import-settings-validator-fix/">Import Settings Validator &amp; Fix</a></li>
-            <li><a href="/assets/compliance/">Third-Party Notices &amp; Credits</a></li>
-            <li><a href="/tools/">Tools Directory</a></li>
-          </ul>
-        </section>
-        <section>
-          <h2>Support</h2>
-          <ul class="link-list">
-            <li><a href="/assets/il2cpp-strip-guard/docs/">IL2CPP Strip Guard Docs</a></li>
-            <li><a href="/assets/il2cpp-strip-guard/license/">License Status</a></li>
-            <li><a href="/support/">Support Form</a></li>
-          </ul>
-        </section>
         <section class="footer-email-updates" aria-label="Email subscription">
-          <h2>Email Updates</h2>
+          <h2>Company</h2>
+          <ul class="link-list">
+            <li><a href="/">Bjorvand Solutions</a></li>
+            <li><a href="/support/">Contact</a></li>
+          </ul>
           <div class="ml-embedded" data-form="bk4D7K"></div>
+        </section>
+        <section>
+          <h2>Legal</h2>
+          <ul class="link-list">
+            <li><a href="/tools/">Tool licenses</a></li>
+          </ul>
         </section>
       </div>
       <div class="footer-legal">

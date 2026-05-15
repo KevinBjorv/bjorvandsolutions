@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
-  <title id="title">IL2CPP Strip Guard overview placeholder</title>
-  <desc id="desc">Placeholder artwork showing an IL2CPP stripping risk dashboard.</desc>
+  <title id="title">IL2CPP Strip Guard overview preview</title>
+  <desc id="desc">preview artwork showing an IL2CPP stripping risk dashboard.</desc>
   <defs>
     <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
       <stop offset="0" stop-color="#0b1017"/>
@@ -38,5 +38,5 @@
     <rect x="526" y="456" width="560" height="52" rx="12" fill="#151f2d"/>
     <text x="550" y="490" fill="#ecf1f8">Generic AOT construction</text>
   </g>
-  <text x="104" y="688" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="22">Placeholder image - replace with final product screenshots</text>
+  <text x="104" y="688" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="22">Preview visual</text>
 </svg>

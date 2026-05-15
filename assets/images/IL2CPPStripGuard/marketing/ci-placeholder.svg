@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
-  <title id="title">IL2CPP Strip Guard CI placeholder</title>
-  <desc id="desc">Placeholder artwork showing IL2CPP Strip Guard CI output.</desc>
+  <title id="title">IL2CPP Strip Guard CI preview</title>
+  <desc id="desc">preview artwork showing IL2CPP Strip Guard CI output.</desc>
   <rect width="1280" height="720" fill="#0b1017"/>
   <rect x="118" y="86" width="1044" height="540" rx="28" fill="#111b2a" stroke="#334155"/>
   <rect x="154" y="122" width="972" height="70" rx="18" fill="#07111f" stroke="#2f3d52"/>
@@ -19,5 +19,5 @@
   </g>
   <rect x="154" y="582" width="250" height="46" rx="23" fill="#0f1724" stroke="#fb8114"/>
   <text x="204" y="613" fill="#ffbd7a" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="800">Export reports</text>
-  <text x="118" y="686" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="22">Placeholder image - replace with final product screenshots</text>
+  <text x="118" y="686" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="22">Preview visual</text>
 </svg>

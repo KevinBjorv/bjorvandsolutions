@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
-  <title id="title">Fast Play Mode Safety Guard reset stub placeholder</title>
-  <desc id="desc">Placeholder artwork for generated reset stub workflow.</desc>
+  <title id="title">Fast Play Mode Safety Guard reset stub preview</title>
+  <desc id="desc">preview artwork for generated reset stub workflow.</desc>
   <rect width="1280" height="720" fill="#0b1017"/>
   <rect x="110" y="86" width="1060" height="548" rx="28" fill="#131c2a" stroke="#334155"/>
   <text x="154" y="154" fill="#ecf1f8" font-family="Segoe UI, Arial, sans-serif" font-size="42" font-weight="800">Generate a reset stub</text>
@@ -16,5 +16,5 @@
   <text x="962" y="344" fill="#bbf7d0" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="800">Separate</text>
   <text x="962" y="392" fill="#dcfce7" font-family="Segoe UI, Arial, sans-serif" font-size="22">Generated file</text>
   <text x="962" y="440" fill="#dcfce7" font-family="Segoe UI, Arial, sans-serif" font-size="22">Review first</text>
-  <text x="110" y="688" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="22">Placeholder image - replace with final product screenshots</text>
+  <text x="110" y="688" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="22">Preview visual</text>
 </svg>

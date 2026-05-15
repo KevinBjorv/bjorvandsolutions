@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
-  <title id="title">IL2CPP Strip Guard generated fixes placeholder</title>
-  <desc id="desc">Placeholder artwork showing generated link.xml suggestions.</desc>
+  <title id="title">IL2CPP Strip Guard generated fixes preview</title>
+  <desc id="desc">preview artwork showing generated link.xml suggestions.</desc>
   <rect width="1280" height="720" fill="#0b1017"/>
   <rect x="104" y="78" width="1072" height="564" rx="28" fill="#151f2d" stroke="#334155"/>
   <text x="150" y="144" fill="#ecf1f8" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="800">Generated Fixes</text>
@@ -19,5 +19,5 @@
   <text x="196" y="617" fill="#0b1017" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="800">Preview</text>
   <rect x="366" y="586" width="236" height="46" rx="23" fill="#0f1724" stroke="#fb8114"/>
   <text x="414" y="617" fill="#ffbd7a" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="800">Generate link.xml</text>
-  <text x="104" y="686" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="22">Placeholder image - replace with final product screenshots</text>
+  <text x="104" y="686" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="22">Preview visual</text>
 </svg>

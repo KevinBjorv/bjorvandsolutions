@@ -5,28 +5,28 @@
     author: {
       name: "Kevin Ahlgren Bjorvand",
       role: "Founder, Bjorvand Solutions",
-      bio: "Kevin builds Unity tools focused on release safety, build visibility, migration safety, and deterministic compliance workflows.",
+      bio: "Kevin builds Unity tools focused on release safety, build visibility, migration safety, and compliance evidence.",
       image: "/assets/images/authors/kevin-ahlgren-bjorvand.jpg"
     },
     articleCategories: [
       {
         slug: "build-ci",
-        label: "Build & CI",
+        label: "Build size and CI",
         description: "Articles about budgets, regressions, automation, and release pipeline guardrails."
       },
       {
         slug: "asset-pipeline",
-        label: "Asset Pipeline",
+        label: "Import settings",
         description: "Articles about import standards, validation, and asset setup consistency."
       },
       {
         slug: "serialization-refactoring",
-        label: "Serialization & Refactoring",
+        label: "Serialization",
         description: "Articles about safe field renames, coverage checks, and reserialize workflows."
       },
       {
         slug: "compliance-release",
-        label: "Compliance & Release",
+        label: "Compliance",
         description: "Articles about notices, credits, manifests, and release-readiness checks."
       }
     ],
@@ -34,7 +34,7 @@
       {
         key: "build-size-guard",
         name: "Build Size Guard",
-        summary: "Detect and prevent Unity build size regressions with snapshots, diffs, budgets, and CI-ready reports.",
+        summary: "Catch build size spikes with snapshots, diff reports, and CI budget checks.",
         audience: "Unity teams shipping frequent builds and enforcing size budgets.",
         links: {
           product: "/assets/build-size-guard/",
@@ -46,7 +46,7 @@
       {
         key: "shader-variant-budget-ci-guard",
         name: "Shader Variant Budget & CI Guard",
-        summary: "Capture shader variant snapshots from Editor.log, compare builds, enforce budgets, and stop regressions in CI.",
+        summary: "Track shader variant growth from Editor.log and enforce variant budgets.",
         audience: "Teams that need shader variant visibility across editor workflows and CI.",
         links: {
           product: "/assets/shader-variant-budget-ci-guard/",
@@ -57,8 +57,8 @@
       },
       {
         key: "unity-serialization-migration-guard",
-        name: "Unity Serialization Migration Guard",
-        summary: "Audit serialized rename mappings, scan YAML coverage, preview reserialize work, and prove cleanup safety.",
+        name: "Serialization Migration Guard",
+        summary: "Audit renamed serialized fields before old mappings are removed.",
         audience: "Teams migrating serialized fields during refactors and long-lived data model changes.",
         links: {
           product: "/assets/unity-serialization-migration-guard/",
@@ -70,7 +70,7 @@
       {
         key: "il2cpp-strip-guard",
         name: "IL2CPP Strip Guard",
-        summary: "Scan Unity projects for IL2CPP managed stripping, reflection, serialized type reference, and AOT generic risk patterns.",
+        summary: "Preview IL2CPP stripping risks before platform builds expose them.",
         audience: "Unity developers shipping IL2CPP targets such as WebGL, Android, iOS, VR, or console-like platforms.",
         links: {
           product: "/assets/il2cpp-strip-guard/",
@@ -87,7 +87,7 @@
       {
         key: "inspector-event-link-doctor",
         name: "Inspector Event Link Doctor",
-        summary: "Scan Unity scenes, prefabs, ScriptableObjects, and animation clips for broken or risky Inspector-connected callbacks.",
+        summary: "Find broken UnityEvent, Button, callback, and Animation Event references before runtime.",
         audience: "UI-heavy Unity teams, prefab-heavy projects, and developers validating callbacks before builds or refactors.",
         links: {
           product: "/assets/inspector-event-link-doctor/",
@@ -101,8 +101,8 @@
       },
       {
         key: "fast-play-mode-safety-guard",
-        name: "Fast Play Mode Safety Guard",
-        summary: "Scan Unity projects for static state, reset coverage, and runtime persistence risks before disabling Domain Reload.",
+        name: "Fast Play Mode Watcher",
+        summary: "Check static-state risks before disabling Domain Reload.",
         audience: "Teams that want faster Play Mode entry without hidden static-state leaks.",
         links: {
           product: "/assets/fast-play-mode-safety-guard/",
@@ -121,7 +121,7 @@
       {
         key: "import-settings-validator-fix",
         name: "Import Settings Validator & Fix",
-        summary: "Enforce Unity import setting standards and validate/fix drift across projects.",
+        summary: "Validate texture, audio, and model imports against project rules, then fix drift when enforcement is enabled.",
         audience: "Teams standardizing texture, audio, and model import settings across contributors.",
         links: {
           product: "/assets/import-settings-validator-fix/",
@@ -132,8 +132,8 @@
       },
       {
         key: "compliance",
-        name: "Third-Party Notices & Credits",
-        summary: "Generate deterministic third-party notice, credits, and manifest files for Unity release workflows.",
+        name: "Compliance Exporter",
+        summary: "Generate third-party notices, credits, and compliance files from project evidence.",
         audience: "Teams that need repeatable attribution outputs before shipping.",
         links: {
           product: "/assets/compliance/",
@@ -168,7 +168,7 @@
         toolName: "Build Size Guard",
         category: "build-ci",
         title: "How to Set Build Size Budgets in Unity CI",
-        description: "Set measurable Unity build size budgets and enforce them in CI with deterministic reports and exit codes.",
+        description: "Set build size budgets, compare snapshots, and catch unexpected growth before release.",
         publishDate: "2026-03-11",
         updatedDate: "2026-03-11",
         readTime: "8 min read",
@@ -219,7 +219,7 @@
         toolName: "Shader Variant Budget & CI Guard",
         category: "build-ci",
         title: "How to Set Shader Variant Budgets in Unity CI",
-        description: "Turn shader variant growth into a measurable CI gate with deterministic snapshots, ignore rules, and budget policies.",
+        description: "Set shader variant budgets, compare snapshots, and fail CI when variant growth crosses your rules.",
         publishDate: "2026-03-11",
         updatedDate: "2026-03-11",
         readTime: "8 min read",
@@ -304,7 +304,7 @@
         toolName: "Import Settings Validator & Fix",
         category: "asset-pipeline",
         title: "How to Enforce Unity Import Settings Across a Team",
-        description: "Use deterministic rules to keep Unity import settings consistent across contributors, machines, and asset drops.",
+        description: "Use rule presets to keep Unity import settings consistent across contributors, machines, and asset drops.",
         publishDate: "2026-03-11",
         updatedDate: "2026-03-11",
         readTime: "7 min read",
@@ -372,7 +372,7 @@
         toolName: "Third-Party Notices & Credits",
         category: "compliance-release",
         title: "How to Build a Repeatable Unity License Compliance Workflow",
-        description: "Turn Unity license compliance into a deterministic scan-review-export process before release pressure takes over.",
+        description: "Turn Unity license compliance into a scan, review, and export process before release pressure takes over.",
         publishDate: "2026-03-11",
         updatedDate: "2026-03-11",
         readTime: "8 min read",

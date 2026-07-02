@@ -55,6 +55,7 @@
   align-items: center;
   gap: 0.65rem;
   margin-right: auto;
+  position: relative;
   font-family: "Space Grotesk", "Geist", sans-serif;
   font-size: 1.12rem;
   font-weight: 700;
@@ -62,7 +63,23 @@
 }
 
 .site-header .brand-mark {
-  display: none;
+  display: block;
+  width: clamp(8.75rem, 16vw, 10.5rem);
+  height: clamp(2.1rem, 4vw, 2.65rem);
+  flex: 0 0 auto;
+  background: url("/assets/images/brand/bjorvand-solutions-logo.png") center / contain no-repeat;
+}
+
+.site-header .brand > span:not(.brand-mark) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .site-header .site-nav {

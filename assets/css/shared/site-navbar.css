@@ -154,7 +154,10 @@
 .site-header .language-switcher {
   display: inline-flex;
   align-items: center;
+  flex: 0 0 auto;
+  flex-wrap: nowrap;
   gap: 0.2rem;
+  min-width: max-content;
   padding: 0.18rem;
   border: 1px solid var(--site-nav-border-strong);
   border-radius: var(--site-nav-radius-pill);
@@ -164,6 +167,7 @@
 .site-header .language-link {
   display: inline-flex;
   align-items: center;
+  flex: 0 0 auto;
   gap: 0.32rem;
   min-height: 2rem;
   padding: 0.34rem 0.5rem;
@@ -172,10 +176,12 @@
   font-size: 0.78rem;
   font-weight: 700;
   line-height: 1;
+  white-space: nowrap;
 }
 
 .site-header .language-link img,
 .mobile-nav-panel .mobile-language-options img {
+  flex: 0 0 auto;
   width: 1.125rem;
   height: 0.75rem;
   border-radius: 2px;

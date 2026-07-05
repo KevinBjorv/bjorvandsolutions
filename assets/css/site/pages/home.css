@@ -977,7 +977,7 @@
 @media (max-width: 860px) {
   .decision-grid,
   .games-grid,
-  .testimonial-grid,
+  .home-main .testimonial-grid,
   .feature-grid {
     grid-template-columns: 1fr;
     grid-template-areas: none;

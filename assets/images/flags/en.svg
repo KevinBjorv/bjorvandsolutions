@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" role="img" aria-labelledby="title desc">
+  <title id="title">English flag</title>
+  <desc id="desc">White flag with a red St George cross.</desc>
+  <rect width="30" height="20" fill="#fff"/>
+  <path fill="#c8102e" d="M12 0h6v20h-6zM0 7h30v6H0z"/>
+</svg>

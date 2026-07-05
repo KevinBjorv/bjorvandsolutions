@@ -22,23 +22,7 @@
     <image:image><image:loc>https://bjorv.com/Mockup%20thmbnails/Spring%20-%20Blender%20Open%20Movie.avif</image:loc></image:image>
     <image:image><image:loc>https://bjorv.com/Mockup%20thmbnails/The%20Spongebob%20Movie%20-%20Search%20for%20Squarepants%20-%20Animation%20Breakdown.avif</image:loc></image:image>
   </url>
-  <url>
-    <loc>https://bjorv.com/assets/build-size-guard/</loc>
-    <image:image><image:loc>https://bjorv.com/assets/build-size-guard/favicon/android-chrome-192x192.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/build-size-guard/favicon/apple-touch-icon.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/build-size-guard/favicon/favicon-16x16.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/build-size-guard/favicon/favicon-32x32.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/BuildSizeGuard/BuildSizeGuardMarketing/Build%20automatically%20create%20snapshots.jpg</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/BuildSizeGuard/BuildSizeGuardMarketing/Build%20size%20guard%20cover%20image.jpg</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/BuildSizeGuard/BuildSizeGuardMarketing/CLI%20and%20batch%20mode%20for%20CL%20pipelines%20%2B%20documentation%20image.jpg</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/BuildSizeGuard/BuildSizeGuardMarketing/See%20excactly%20what%20changed.jpg</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/BuildSizeGuard/BuildSizeGuardMarketing/Set%20budgets%20and%20regression%20rules.jpg</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/icons/instagram.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/icons/tiktok.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/icons/twitter.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/icons/youtube.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/Skool%20logo.png</image:loc></image:image>
-  </url>
+  
   <url>
     <loc>https://bjorv.com/assets/build-size-guard/docs/</loc>
     <image:image><image:loc>https://bjorv.com/assets/build-size-guard/favicon/android-chrome-192x192.png</image:loc></image:image>
@@ -63,23 +47,7 @@
     <image:image><image:loc>https://bjorv.com/assets/images/icons/youtube.png</image:loc></image:image>
     <image:image><image:loc>https://bjorv.com/Skool%20logo.png</image:loc></image:image>
   </url>
-  <url>
-    <loc>https://bjorv.com/assets/compliance/</loc>
-    <image:image><image:loc>https://bjorv.com/assets/compliance/favicon/android-chrome-192x192.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/compliance/favicon/apple-touch-icon.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/compliance/favicon/favicon-16x16.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/compliance/favicon/favicon-32x32.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/CompliancePack/marketing/Card%20image.jpg</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/CompliancePack/marketing/Evidence%20based.jpg</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/CompliancePack/marketing/Manual%20components.jpg</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/CompliancePack/marketing/Overview.jpg</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/CompliancePack/marketing/What%20it%20scans.jpg</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/icons/instagram.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/icons/tiktok.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/icons/twitter.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/icons/youtube.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/Skool%20logo.png</image:loc></image:image>
-  </url>
+  
   <url>
     <loc>https://bjorv.com/assets/compliance/docs/</loc>
     <image:image><image:loc>https://bjorv.com/assets/compliance/favicon/android-chrome-192x192.png</image:loc></image:image>
@@ -104,24 +72,7 @@
     <image:image><image:loc>https://bjorv.com/assets/images/icons/youtube.png</image:loc></image:image>
     <image:image><image:loc>https://bjorv.com/Skool%20logo.png</image:loc></image:image>
   </url>
-  <url>
-    <loc>https://bjorv.com/assets/import-settings-validator-fix/</loc>
-    <image:image><image:loc>https://bjorv.com/assets/images/icons/instagram.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/icons/tiktok.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/icons/twitter.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/icons/youtube.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/ImportSettingsValidatorFix/marketing/Cover%20image.jpg</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/ImportSettingsValidatorFix/marketing/Covers%20the%20big%203.jpg</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/ImportSettingsValidatorFix/marketing/Import%20Settings%20Validator%20%26%20Fix%20card.jpg</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/ImportSettingsValidatorFix/marketing/Platform%20based%20rules.jpg</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/ImportSettingsValidatorFix/marketing/Setup%20in%203%20steps.jpg</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/ImportSettingsValidatorFix/marketing/Validate%20the%20project.jpg</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/import-settings-validator-fix/favicon/android-chrome-192x192.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/import-settings-validator-fix/favicon/apple-touch-icon.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/import-settings-validator-fix/favicon/favicon-16x16.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/import-settings-validator-fix/favicon/favicon-32x32.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/Skool%20logo.png</image:loc></image:image>
-  </url>
+  
   <url>
     <loc>https://bjorv.com/assets/import-settings-validator-fix/docs/</loc>
     <image:image><image:loc>https://bjorv.com/assets/images/icons/instagram.png</image:loc></image:image>
@@ -146,25 +97,7 @@
     <image:image><image:loc>https://bjorv.com/assets/import-settings-validator-fix/favicon/favicon-32x32.png</image:loc></image:image>
     <image:image><image:loc>https://bjorv.com/Skool%20logo.png</image:loc></image:image>
   </url>
-  <url>
-    <loc>https://bjorv.com/assets/shader-variant-budget-ci-guard/</loc>
-    <image:image><image:loc>https://bjorv.com/assets/favicon/android-chrome-192x192.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/favicon/apple-touch-icon.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-16x16.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-32x32.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/icons/instagram.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/icons/tiktok.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/icons/twitter.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/icons/youtube.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/ShaderVariantBudgetCIGuard/marketing/Catch%20top%20offenders.jpg</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/ShaderVariantBudgetCIGuard/marketing/Clear%20violation%20reports.jpg</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/ShaderVariantBudgetCIGuard/marketing/Cover%20image.jpg</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/ShaderVariantBudgetCIGuard/marketing/Enforce%20hard%20budgets.jpg</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/ShaderVariantBudgetCIGuard/marketing/Export%20to....jpg</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/ShaderVariantBudgetCIGuard/marketing/See%20what%20changed%20fast.jpg</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/ShaderVariantBudgetCIGuard/marketing/Stop%20shader%20variant%20creep.jpg</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/Skool%20logo.png</image:loc></image:image>
-  </url>
+  
   <url>
     <loc>https://bjorv.com/assets/shader-variant-budget-ci-guard/docs/</loc>
     <image:image><image:loc>https://bjorv.com/assets/favicon/android-chrome-192x192.png</image:loc></image:image>
@@ -189,24 +122,7 @@
     <image:image><image:loc>https://bjorv.com/assets/images/icons/youtube.png</image:loc></image:image>
     <image:image><image:loc>https://bjorv.com/Skool%20logo.png</image:loc></image:image>
   </url>
-  <url>
-    <loc>https://bjorv.com/assets/unity-serialization-migration-guard/</loc>
-    <image:image><image:loc>https://bjorv.com/assets/favicon/android-chrome-192x192.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/favicon/apple-touch-icon.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-16x16.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-32x32.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/icons/instagram.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/icons/tiktok.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/icons/twitter.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/icons/youtube.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/UnitySerializationMigrationGuard/marketing/Cover%20image.jpg</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/UnitySerializationMigrationGuard/marketing/Define%20safe%20rename%20mappings.jpg</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/UnitySerializationMigrationGuard/marketing/Locate%20every%20affected%20asset.jpg</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/UnitySerializationMigrationGuard/marketing/Preview%20migrations%20safely.jpg</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/UnitySerializationMigrationGuard/marketing/Rmport%20renames%20from%20git.jpg</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/UnitySerializationMigrationGuard/marketing/See%20what%20data%20still%20exists.jpg</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/Skool%20logo.png</image:loc></image:image>
-  </url>
+  
   <url>
     <loc>https://bjorv.com/assets/unity-serialization-migration-guard/docs/</loc>
     <image:image><image:loc>https://bjorv.com/assets/favicon/android-chrome-192x192.png</image:loc></image:image>
@@ -231,16 +147,7 @@
     <image:image><image:loc>https://bjorv.com/assets/images/icons/youtube.png</image:loc></image:image>
     <image:image><image:loc>https://bjorv.com/Skool%20logo.png</image:loc></image:image>
   </url>
-  <url>
-    <loc>https://bjorv.com/assets/il2cpp-strip-guard/</loc>
-    <image:image><image:loc>https://bjorv.com/assets/images/IL2CPPStripGuard/marketing/cover-placeholder.svg</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/IL2CPPStripGuard/marketing/findings-placeholder.svg</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/IL2CPPStripGuard/marketing/generated-fixes-placeholder.svg</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/IL2CPPStripGuard/marketing/ci-placeholder.svg</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/favicon/apple-touch-icon.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-16x16.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-32x32.png</image:loc></image:image>
-  </url>
+  
   <url>
     <loc>https://bjorv.com/assets/il2cpp-strip-guard/docs/</loc>
     <image:image><image:loc>https://bjorv.com/assets/favicon/apple-touch-icon.png</image:loc></image:image>
@@ -253,14 +160,7 @@
     <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-16x16.png</image:loc></image:image>
     <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-32x32.png</image:loc></image:image>
   </url>
-  <url>
-    <loc>https://bjorv.com/assets/inspector-event-link-doctor/</loc>
-    <image:image><image:loc>https://bjorv.com/assets/images/InspectorEventLinkDoctor/marketing/cover-placeholder.svg</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/InspectorEventLinkDoctor/icons/Icon160.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/favicon/apple-touch-icon.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-16x16.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-32x32.png</image:loc></image:image>
-  </url>
+  
   <url>
     <loc>https://bjorv.com/assets/inspector-event-link-doctor/docs/</loc>
     <image:image><image:loc>https://bjorv.com/assets/images/InspectorEventLinkDoctor/icons/Icon160.png</image:loc></image:image>
@@ -286,53 +186,14 @@
     <image:image><image:loc>https://bjorv.com/assets/images/icons/youtube.png</image:loc></image:image>
     <image:image><image:loc>https://bjorv.com/Skool%20logo.png</image:loc></image:image>
   </url>
-  <url>
-    <loc>https://bjorv.com/games/forbiddenbuttons/</loc>
-    <image:image><image:loc>https://bjorv.com/assets/favicon/apple-touch-icon.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-16x16.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-32x32.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/ForbiddenButtons/library-hero.jpg</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/ForbiddenButtons/main-capsule.jpg</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/ForbiddenButtons/page-background.jpg</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/ForbiddenButtons/vertical-capsule.jpg</image:loc></image:image>
-  </url>
+  
   <url>
     <loc>https://bjorv.com/dopamine/</loc>
     <image:image><image:loc>https://bjorv.com/assets/images/DopamineMachine/banner.png</image:loc></image:image>
   </url>
-  <url>
-    <loc>https://bjorv.com/games/neonsurge/</loc>
-    <image:image><image:loc>https://bjorv.com/assets/favicon/apple-touch-icon.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-16x16.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-32x32.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/icons/instagram.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/icons/tiktok.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/icons/twitter.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/icons/youtube.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/Skool%20logo.png</image:loc></image:image>
-  </url>
-  <url>
-    <loc>https://bjorv.com/games/neonsurge-2/</loc>
-    <image:image><image:loc>https://bjorv.com/assets/favicon/apple-touch-icon.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-16x16.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-32x32.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/icons/instagram.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/icons/tiktok.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/icons/twitter.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/icons/youtube.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/Skool%20logo.png</image:loc></image:image>
-  </url>
-  <url>
-    <loc>https://bjorv.com/games/orbital-chaos/</loc>
-    <image:image><image:loc>https://bjorv.com/assets/favicon/apple-touch-icon.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-16x16.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-32x32.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/icons/instagram.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/icons/tiktok.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/icons/twitter.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/icons/youtube.png</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/Skool%20logo.png</image:loc></image:image>
-  </url>
+  
+  
+  
   <url>
     <loc>https://bjorv.com/support/</loc>
     <image:image><image:loc>https://bjorv.com/assets/favicon/apple-touch-icon.png</image:loc></image:image>
@@ -434,15 +295,7 @@
     <image:image><image:loc>https://bjorv.com/assets/images/CompliancePack/marketing/Evidence%20based.jpg</image:loc></image:image>
     <image:image><image:loc>https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.jpg</image:loc></image:image>
   </url>
-  <url>
-    <loc>https://bjorv.com/assets/fast-play-mode-safety-guard/</loc>
-    <image:image><image:loc>https://bjorv.com/assets/images/FastPlayModeSafetyGuard/marketing/cover-placeholder.svg</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/FastPlayModeSafetyGuard/marketing/scan-placeholder.svg</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/FastPlayModeSafetyGuard/marketing/readiness-placeholder.svg</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/FastPlayModeSafetyGuard/marketing/reset-stub-placeholder.svg</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/FastPlayModeSafetyGuard/marketing/double-play-placeholder.svg</image:loc></image:image>
-    <image:image><image:loc>https://bjorv.com/assets/images/FastPlayModeSafetyGuard/marketing/ci-placeholder.svg</image:loc></image:image>
-  </url>
+  
   <url>
     <loc>https://bjorv.com/assets/fast-play-mode-safety-guard/docs/</loc>
     <image:image><image:loc>https://bjorv.com/assets/favicon/apple-touch-icon.png</image:loc></image:image>
@@ -455,4 +308,5 @@
     <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-16x16.png</image:loc></image:image>
     <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-32x32.png</image:loc></image:image>
   </url>
+
 </urlset>

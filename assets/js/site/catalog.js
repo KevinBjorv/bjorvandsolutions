@@ -37,7 +37,6 @@
         summary: "Catch build size spikes with snapshots, diff reports, and CI budget checks.",
         audience: "Unity teams shipping frequent builds and enforcing size budgets.",
         links: {
-          product: "/assets/build-size-guard/",
           docs: "/assets/build-size-guard/docs/",
           license: "/assets/build-size-guard/license/",
           store: "https://assetstore.unity.com/packages/slug/361332"
@@ -49,7 +48,6 @@
         summary: "Track shader variant growth from Editor.log and enforce variant budgets.",
         audience: "Teams that need shader variant visibility across editor workflows and CI.",
         links: {
-          product: "/assets/shader-variant-budget-ci-guard/",
           docs: "/assets/shader-variant-budget-ci-guard/docs/",
           license: "/assets/shader-variant-budget-ci-guard/license/",
           store: "https://u3d.as/3SYC"
@@ -61,7 +59,6 @@
         summary: "Audit renamed serialized fields before old mappings are removed.",
         audience: "Teams migrating serialized fields during refactors and long-lived data model changes.",
         links: {
-          product: "/assets/unity-serialization-migration-guard/",
           docs: "/assets/unity-serialization-migration-guard/docs/",
           license: "/assets/unity-serialization-migration-guard/license/",
           store: "https://u3d.as/3Sae"
@@ -73,7 +70,6 @@
         summary: "Preview IL2CPP stripping risks before platform builds expose them.",
         audience: "Unity developers shipping IL2CPP targets such as WebGL, Android, iOS, VR, or console-like platforms.",
         links: {
-          product: "/assets/il2cpp-strip-guard/",
           docs: "/assets/il2cpp-strip-guard/docs/",
           license: "/assets/il2cpp-strip-guard/license/"
         },
@@ -90,7 +86,6 @@
         summary: "Find broken UnityEvent, Button, callback, and Animation Event references before runtime.",
         audience: "UI-heavy Unity teams, prefab-heavy projects, and developers validating callbacks before builds or refactors.",
         links: {
-          product: "/assets/inspector-event-link-doctor/",
           docs: "/assets/inspector-event-link-doctor/docs/",
           license: "/assets/inspector-event-link-doctor/license/"
         },
@@ -105,7 +100,6 @@
         summary: "Check static-state risks before disabling Domain Reload.",
         audience: "Teams that want faster Play Mode entry without hidden static-state leaks.",
         links: {
-          product: "/assets/fast-play-mode-safety-guard/",
           docs: "/assets/fast-play-mode-safety-guard/docs/",
           license: "/assets/fast-play-mode-safety-guard/license/"
         },
@@ -124,7 +118,6 @@
         summary: "Validate texture, audio, and model imports against project rules, then fix drift when enforcement is enabled.",
         audience: "Teams standardizing texture, audio, and model import settings across contributors.",
         links: {
-          product: "/assets/import-settings-validator-fix/",
           docs: "/assets/import-settings-validator-fix/docs/",
           license: "/assets/import-settings-validator-fix/license/",
           store: "https://assetstore.unity.com/packages/slug/362308"
@@ -136,7 +129,6 @@
         summary: "Generate third-party notices, credits, and compliance files from project evidence.",
         audience: "Teams that need repeatable attribution outputs before shipping.",
         links: {
-          product: "/assets/compliance/",
           docs: "/assets/compliance/docs/",
           license: "/assets/compliance/license/",
           store: "https://u3d.as/3PWR"
@@ -157,8 +149,8 @@
         readTime: "8 min read",
         heroImage: "/assets/images/BuildSizeGuard/BuildSizeGuardMarketing/Build%20size%20guard%20cover%20image.jpg",
         author: "Kevin Ahlgren Bjorvand",
-        primaryCtaLabel: "Open Build Size Guard",
-        primaryCtaHref: "/assets/build-size-guard/",
+        primaryCtaLabel: "Read Build Size Guard docs",
+        primaryCtaHref: "/assets/build-size-guard/docs/",
         relatedLinks: ["/assets/build-size-guard/docs/", "/support/", "/assets/build-size-guard/license/"]
       },
       {
@@ -191,8 +183,8 @@
         readTime: "7 min read",
         heroImage: "/assets/images/BuildSizeGuard/BuildSizeGuardMarketing/Compare%20any%20two%20builds%20in%20seconds.jpg",
         author: "Kevin Ahlgren Bjorvand",
-        primaryCtaLabel: "Open Build Size Guard",
-        primaryCtaHref: "/assets/build-size-guard/",
+        primaryCtaLabel: "Read Build Size Guard docs",
+        primaryCtaHref: "/assets/build-size-guard/docs/",
         relatedLinks: ["/assets/build-size-guard/docs/", "/support/", "/assets/build-size-guard/license/"]
       },
       {
@@ -208,8 +200,8 @@
         readTime: "8 min read",
         heroImage: "/assets/images/ShaderVariantBudgetCIGuard/marketing/Cover%20image.jpg",
         author: "Kevin Ahlgren Bjorvand",
-        primaryCtaLabel: "Open Shader Variant Budget & CI Guard",
-        primaryCtaHref: "/assets/shader-variant-budget-ci-guard/",
+        primaryCtaLabel: "Read Shader Variant Budget & CI Guard docs",
+        primaryCtaHref: "/assets/shader-variant-budget-ci-guard/docs/",
         relatedLinks: ["/assets/shader-variant-budget-ci-guard/docs/", "/support/", "/assets/shader-variant-budget-ci-guard/license/"]
       },
       {
@@ -242,8 +234,8 @@
         readTime: "7 min read",
         heroImage: "/assets/images/ShaderVariantBudgetCIGuard/marketing/See%20what%20changed%20fast.jpg",
         author: "Kevin Ahlgren Bjorvand",
-        primaryCtaLabel: "Open Shader Variant Budget & CI Guard",
-        primaryCtaHref: "/assets/shader-variant-budget-ci-guard/",
+        primaryCtaLabel: "Read Shader Variant Budget & CI Guard docs",
+        primaryCtaHref: "/assets/shader-variant-budget-ci-guard/docs/",
         relatedLinks: ["/assets/shader-variant-budget-ci-guard/docs/", "/support/", "/assets/shader-variant-budget-ci-guard/license/"]
       },
       {
@@ -259,8 +251,8 @@
         readTime: "8 min read",
         heroImage: "/assets/images/UnitySerializationMigrationGuard/marketing/Cover%20image.jpg",
         author: "Kevin Ahlgren Bjorvand",
-        primaryCtaLabel: "Open Unity Serialization Migration Guard",
-        primaryCtaHref: "/assets/unity-serialization-migration-guard/",
+        primaryCtaLabel: "Read Unity Serialization Migration Guard docs",
+        primaryCtaHref: "/assets/unity-serialization-migration-guard/docs/",
         relatedLinks: ["/assets/unity-serialization-migration-guard/docs/", "/support/", "/assets/unity-serialization-migration-guard/license/"]
       },
       {
@@ -276,8 +268,8 @@
         readTime: "8 min read",
         heroImage: "/assets/images/UnitySerializationMigrationGuard/marketing/Locate%20every%20affected%20asset.jpg",
         author: "Kevin Ahlgren Bjorvand",
-        primaryCtaLabel: "Open Unity Serialization Migration Guard",
-        primaryCtaHref: "/assets/unity-serialization-migration-guard/",
+        primaryCtaLabel: "Read Unity Serialization Migration Guard docs",
+        primaryCtaHref: "/assets/unity-serialization-migration-guard/docs/",
         relatedLinks: ["/assets/unity-serialization-migration-guard/docs/", "/support/", "/assets/unity-serialization-migration-guard/license/"]
       },
       {
@@ -310,8 +302,8 @@
         readTime: "7 min read",
         heroImage: "/assets/images/ImportSettingsValidatorFix/marketing/Cover%20image.jpg",
         author: "Kevin Ahlgren Bjorvand",
-        primaryCtaLabel: "Open Import Settings Validator & Fix",
-        primaryCtaHref: "/assets/import-settings-validator-fix/",
+        primaryCtaLabel: "Read Import Settings Validator & Fix docs",
+        primaryCtaHref: "/assets/import-settings-validator-fix/docs/",
         relatedLinks: ["/assets/import-settings-validator-fix/docs/", "/support/", "/assets/import-settings-validator-fix/license/"]
       },
       {
@@ -344,8 +336,8 @@
         readTime: "7 min read",
         heroImage: "/assets/images/ImportSettingsValidatorFix/marketing/Rule%20based%20import%20standards.jpg",
         author: "Kevin Ahlgren Bjorvand",
-        primaryCtaLabel: "Open Import Settings Validator & Fix",
-        primaryCtaHref: "/assets/import-settings-validator-fix/",
+        primaryCtaLabel: "Read Import Settings Validator & Fix docs",
+        primaryCtaHref: "/assets/import-settings-validator-fix/docs/",
         relatedLinks: ["/assets/import-settings-validator-fix/docs/", "/support/", "/assets/import-settings-validator-fix/license/"]
       },
       {
@@ -361,8 +353,8 @@
         readTime: "8 min read",
         heroImage: "/assets/images/CompliancePack/marketing/Overview.jpg",
         author: "Kevin Ahlgren Bjorvand",
-        primaryCtaLabel: "Open Third-Party Notices & Credits",
-        primaryCtaHref: "/assets/compliance/",
+        primaryCtaLabel: "Read Third-Party Notices & Credits docs",
+        primaryCtaHref: "/assets/compliance/docs/",
         relatedLinks: ["/assets/compliance/docs/", "/support/", "/assets/compliance/license/"]
       },
       {
@@ -406,7 +398,6 @@
           name: "Forbidden Buttons",
           summary: "Bright first-person puzzle rooms where a single forbidden button rewrites the rules.",
           links: [
-            { label: "Homepage", href: "/games/forbiddenbuttons/" },
             { label: "Wishlist on Steam", href: "https://store.steampowered.com/app/4540560/Forbidden_buttons" }
           ]
         },

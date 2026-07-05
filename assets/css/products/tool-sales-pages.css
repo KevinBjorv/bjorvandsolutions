@@ -676,7 +676,7 @@ footer,
 .footer-columns {
   display: grid;
   gap: 1.25rem;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   padding: clamp(1.2rem, 2vw, 1.8rem);
   border: 1px solid var(--page-border);
   border-radius: var(--page-radius-lg);

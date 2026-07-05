@@ -14,6 +14,14 @@ const authorImage = catalog.author.image;
 const toolByKey = new Map(catalog.tools.map((tool) => [tool.key, tool]));
 const categoryBySlug = new Map(catalog.articleCategories.map((category) => [category.slug, category]));
 const articlesByTool = new Map();
+const removedProductPaths = catalog.tools.map((tool) => `/assets/${tool.key}/`).concat(["/assets/game-compliance-pack/"]);
+const removedGamePaths = ["forbiddenbuttons", "orbital-chaos", "neonsurge-2", "neonsurge"].map((slug) => `/games/${slug}/`);
+const norwegianPaths = [
+  "/no/",
+  "/no/tools/",
+  "/no/games/",
+  "/no/support/"
+];
 
 catalog.tools.forEach((tool) => articlesByTool.set(tool.key, []));
 catalog.articles.forEach((article) => {
@@ -32,8 +40,8 @@ Object.assign(articleBodies, {
     heroCaption: "Build snapshots and grouped totals make regressions visible before release day.",
     midCtaTitle: "Make build size visible before the release branch gets noisy.",
     midCtaText: "Build Size Guard gives you snapshot capture, side-by-side comparisons, and direct links into documentation so the size jump is measured instead of guessed.",
-    endTitle: "Use the tool page when you are ready to connect the workflow to your build pipeline.",
-    endText: "The product page links directly to setup docs, license details, and support routes.",
+    endTitle: "Use the documentation when you are ready to connect the workflow to your build pipeline.",
+    endText: "Docs, Asset Store, and license links stay available from the tool directory.",
     sections: [
       {
         id: "why-build-size-regressions-get-missed",
@@ -97,7 +105,7 @@ Object.assign(articleBodies, {
     heroCaption: "Budget rules, reports, and CI baselines work best when the policy is explicit.",
     midCtaTitle: "Turn build size from a feeling into a release gate.",
     midCtaText: "Build Size Guard supports batchmode execution, JSON and Markdown reports, and baseline-aware comparisons so your CI run can block the regression where it starts.",
-    endTitle: "If you are ready to wire budgets into CI, start from the product page and docs.",
+    endTitle: "If you are ready to wire budgets into CI, start from the documentation and Asset Store link.",
     endText: "That path keeps the policy, setup, and support links in one place.",
     sections: [
       {
@@ -162,7 +170,7 @@ Object.assign(articleBodies, {
     heroCaption: "Snapshot comparison works best when the baseline is trusted and the diff stays readable.",
     midCtaTitle: "Stop diffing build folders by hand.",
     midCtaText: "Build Size Guard keeps the current snapshot, baseline snapshot, grouped totals, and report exports in one place so the review stays short and concrete.",
-    endTitle: "Open the tool page if you want the full compare workflow and rollout links.",
+    endTitle: "Open the documentation if you want the full compare workflow and rollout links.",
     endText: "It leads straight into documentation, licensing, and support.",
     sections: [
       {
@@ -229,8 +237,8 @@ Object.assign(articleBodies, {
     heroCaption: "Attribution output is safer when it comes from project evidence instead of memory.",
     midCtaTitle: "Replace notice guesswork with a repeatable export workflow.",
     midCtaText: "Third-Party Notices & Credits scans packages, folders, and native libraries, then exports notices, credits, and manifest data from the project state it can actually verify.",
-    endTitle: "Open the product page when you want the scan, export, and support links in one place.",
-    endText: "The homepage leads directly to the docs, license, and support routes.",
+    endTitle: "Open the documentation when you want the scan, export, and rollout details in one place.",
+    endText: "Docs, Asset Store, and license links stay available from the tool directory.",
     sections: [
       {
         id: "why-notice-generation-turns-chaotic",
@@ -294,8 +302,8 @@ Object.assign(articleBodies, {
     heroCaption: "Compliance gets more manageable when the scan, review, and export steps are clear.",
     midCtaTitle: "Make license compliance a workflow instead of a release scramble.",
     midCtaText: "Compliance Exporter is designed around project scans, override review, and stable export files so teams can repeat the same process each release.",
-    endTitle: "Use the product page when you want the full rollout path and support links.",
-    endText: "The homepage keeps the scan, docs, license, and support routes together.",
+    endTitle: "Use the documentation when you want the full rollout path.",
+    endText: "Docs, Asset Store, and license links stay available from the tool directory.",
     sections: [
       {
         id: "why-repeatability-matters",
@@ -357,8 +365,8 @@ Object.assign(articleBodies, {
     heroCaption: "Release-ready compliance output should be readable by both people and pipelines.",
     midCtaTitle: "Export the files release reviewers actually need.",
     midCtaText: "Third-Party Notices & Credits produces notices, credits, and manifest files with stable structure so the release handoff stays predictable.",
-    endTitle: "Open the product page if you want the export workflow, docs, and support in one place.",
-    endText: "The homepage links directly to the documentation, license, and support route.",
+    endTitle: "Open the documentation if you want the export workflow and setup details in one place.",
+    endText: "Docs, Asset Store, and license links stay available from the tool directory.",
     sections: [
       {
         id: "why-export-multiple-artifacts",
@@ -427,8 +435,8 @@ Object.assign(articleBodies, {
     heroCaption: "Import policies hold better when the project enforces them instead of relying on memory.",
     midCtaTitle: "Replace importer policing with a repeatable rule set.",
     midCtaText: "Import Settings Validator & Fix is designed around rule sets, preset-driven enforcement, and project-wide validation so standards stay consistent across contributors and machines.",
-    endTitle: "Open the product page when you want the setup path and support links.",
-    endText: "The homepage keeps the docs, license page, and support route close together.",
+    endTitle: "Open the documentation when you want the setup path.",
+    endText: "Docs, Asset Store, and license links stay available from the tool directory.",
     sections: [
       {
         id: "why-import-settings-drift",
@@ -491,8 +499,8 @@ Object.assign(articleBodies, {
     heroCaption: "Project-wide validation works best when the diff is readable and the rule match is visible.",
     midCtaTitle: "Audit importer drift without checking assets one by one.",
     midCtaText: "Import Settings Validator & Fix is designed to scan textures, audio, and models against the active rule set and surface the exact mismatches in one workflow.",
-    endTitle: "Use the tool page if you want the full validation and setup path.",
-    endText: "It links directly to the product page, documentation, license, and support.",
+    endTitle: "Use the documentation if you want the full validation and setup path.",
+    endText: "Docs, Asset Store, and license links stay available from the tool directory.",
     sections: [
       {
         id: "what-good-validation-looks-like",
@@ -511,7 +519,7 @@ Object.assign(articleBodies, {
         id: "which-asset-types-should-you-start-with",
         title: "Which asset types should you start with?",
         paragraphs: [
-          "The most practical first pass is the same one highlighted on the product page: textures, audio, and models. Those categories create a large share of importer drift in typical Unity projects.",
+          "The most practical first pass is the same one highlighted in the tool documentation: textures, audio, and models. Those categories create a large share of importer drift in typical Unity projects.",
           "They also map cleanly to the rule and preset workflow, which keeps the initial rollout manageable."
         ],
         bullets: [
@@ -554,7 +562,7 @@ Object.assign(articleBodies, {
     heroCaption: "Fix actions are more useful when the policy is already declared and the scope is filtered first.",
     midCtaTitle: "Stop burning review time on repetitive importer cleanup.",
     midCtaText: "Import Settings Validator & Fix is designed to move teams from manual asset-by-asset cleanup to rule-driven fixes with confirmations and readable diffs.",
-    endTitle: "Open the product page if you want the full enforcement and fix workflow.",
+    endTitle: "Open the documentation if you want the full enforcement and fix workflow.",
     endText: "That path keeps setup, licensing, and support one click away.",
     sections: [
       {
@@ -620,7 +628,7 @@ Object.assign(articleBodies, {
     heroCaption: "Field renames become safer when mappings, attributes, and risks are checked together.",
     midCtaTitle: "Treat serialized field renames like migration work, not a search-and-replace.",
     midCtaText: "Unity Serialization Migration Guard gives you a focused audit workflow for mappings, risk checks, and diff import so the rename is reviewed before cleanup starts.",
-    endTitle: "Open the product page if you want the full audit and cleanup workflow.",
+    endTitle: "Open the documentation if you want the full audit and cleanup workflow.",
     endText: "It links directly to the documentation, license, and support pages.",
     sections: [
       {
@@ -685,8 +693,8 @@ Object.assign(articleBodies, {
     heroCaption: "Coverage is the proof step between a clean audit and a safe cleanup.",
     midCtaTitle: "Do not remove rename safety paths until the asset coverage says you can.",
     midCtaText: "Unity Serialization Migration Guard turns coverage into a concrete report with affected assets, token counts, unreadable files, and cleanup proof status.",
-    endTitle: "Use the tool page when you are ready to run coverage and cleanup checks together.",
-    endText: "The docs and support paths are one click away from the homepage.",
+    endTitle: "Use the documentation when you are ready to run coverage and cleanup checks together.",
+    endText: "Docs, Asset Store, and license links stay available from the tool directory.",
     sections: [
       {
         id: "why-yaml-coverage-is-the-proof-step",
@@ -747,8 +755,8 @@ Object.assign(articleBodies, {
     heroCaption: "Preview, scope control, and backups matter more than speed when a reserialize pass touches real project data.",
     midCtaTitle: "Do not run a broad reserialize pass until the scope is visible.",
     midCtaText: "Unity Serialization Migration Guard gives you previewed target sets, scope selection, and backup controls so the run stays reviewable before it becomes destructive.",
-    endTitle: "Open the product page when you are ready to connect preview, coverage, and cleanup in one flow.",
-    endText: "The homepage links directly to docs, licensing, and support.",
+    endTitle: "Open the documentation when you are ready to connect preview, coverage, and cleanup in one flow.",
+    endText: "Docs, Asset Store, and license links stay available from the tool directory.",
     sections: [
       {
         id: "why-preview-matters",
@@ -813,7 +821,7 @@ Object.assign(articleBodies, {
     heroCaption: "Variant creep is easier to control when the build log becomes structured snapshot data.",
     midCtaTitle: "Make shader variant growth visible before it becomes background noise.",
     midCtaText: "Shader Variant Guard turns Editor.log output into snapshots, compare results, and budget findings that teams can act on quickly.",
-    endTitle: "Open the product page when you want the complete workflow and support links.",
+    endTitle: "Open the documentation when you want the complete workflow.",
     endText: "It links directly to the documentation, license page, and support channel.",
     sections: [
       {
@@ -877,8 +885,8 @@ Object.assign(articleBodies, {
     heroCaption: "Explicit policy beats manual log reading when a branch starts drifting.",
     midCtaTitle: "Move shader variant policy out of tribal knowledge and into CI.",
     midCtaText: "The tool supports hard caps, warnings, per-shader limits, and batchmode report output so the CI rule is explicit instead of informal.",
-    endTitle: "Start from the product page if you want the full CI rollout path.",
-    endText: "You can go directly from the homepage into docs, license terms, and support.",
+    endTitle: "Start from the documentation if you want the full CI rollout path.",
+    endText: "Docs, Asset Store, and license links stay available from the tool directory.",
     sections: [
       {
         id: "why-ci-enforcement-matters",
@@ -942,7 +950,7 @@ Object.assign(articleBodies, {
     heroCaption: "Editor.log becomes much more useful once it is stored as snapshot data with diagnostics.",
     midCtaTitle: "Compare shader variant output without living in raw log files.",
     midCtaText: "Shader Variant Budget & CI Guard turns log parsing, baseline pairing, and completeness checks into one review loop so the comparison stays trustworthy.",
-    endTitle: "Open the tool page if you want the full window reference and CI entrypoints.",
+    endTitle: "Open the documentation if you want the full window reference and CI entrypoints.",
     endText: "That path keeps setup, license, and support links close together.",
     sections: [
       {
@@ -1053,6 +1061,54 @@ function renderTable(table) {
   return `<table>${head}${rows}</table>`;
 }
 
+function toolPrimaryLink(tool) {
+  if (tool.links.store) {
+    return {
+      label: "Asset Store",
+      href: tool.links.store
+    };
+  }
+
+  return {
+    label: "Docs",
+    href: tool.links.docs
+  };
+}
+
+function toolSecondaryLink(tool, primaryHref) {
+  if (primaryHref !== tool.links.docs) {
+    return {
+      label: "Docs",
+      href: tool.links.docs
+    };
+  }
+
+  if (tool.links.store && primaryHref !== tool.links.store) {
+    return {
+      label: "Asset Store",
+      href: tool.links.store
+    };
+  }
+
+  return {
+    label: "License",
+    href: tool.links.license
+  };
+}
+
+function renderToolLinkItems(tool) {
+  const links = [
+    { label: `${tool.name} docs`, href: tool.links.docs },
+    tool.links.store ? { label: `${tool.name} Asset Store`, href: tool.links.store, external: true } : null,
+    { label: `${tool.name} license`, href: tool.links.license }
+  ].filter(Boolean);
+
+  return links.map((link) => {
+    const targetAttrs = link.external ? ' target="_blank" rel="noopener noreferrer"' : "";
+    return `<li><a${targetAttrs} href="${link.href}">${htmlEscape(link.label)}</a></li>`;
+  }).join("\n              ");
+}
+
 function renderSection(section) {
   return `
       <section class="article-section" id="${section.id}" data-article-section>
@@ -1079,13 +1135,25 @@ function renderHeader() {
           <li class="menu-item"><a class="menu-link" href="/tools/">Tools</a></li>
           <li class="menu-item"><a class="menu-link" href="/games/">Games</a></li>
           <li class="menu-item"><a class="menu-link" href="/articles/">Articles</a></li>
-          <li class="menu-item"><a class="menu-link" target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot.no</a></li>
-          <li class="menu-item menu-item-smart-indie"><a class="menu-link menu-link-smart-indie" target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li>
           <li class="menu-item"><a class="menu-link" href="/support/">Support</a></li>
+          <li class="menu-item"><a class="menu-link" target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot</a></li>
+          <li class="menu-item menu-item-smart-indie"><a class="menu-link menu-link-smart-indie" target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li>
         </ul>
       </nav>
 
-      <button class="mobile-nav-toggle" type="button" data-mobile-nav-toggle aria-controls="mobileNavPanel" aria-expanded="false">Menu</button>
+      <div class="nav-actions">
+        <div class="language-switcher" aria-label="Language">
+          <a class="language-link" href="/" hreflang="en" lang="en" data-language-option="en" aria-label="English">
+            <img src="/assets/images/flags/en.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>EN</span>
+          </a>
+          <a class="language-link" href="/no/" hreflang="no" lang="no" data-language-option="no" aria-label="Norsk">
+            <img src="/assets/images/flags/no.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>NO</span>
+          </a>
+        </div>
+        <button class="mobile-nav-toggle" type="button" data-mobile-nav-toggle aria-controls="mobileNavPanel" aria-expanded="false">Menu</button>
+      </div>
     </div>
     <div class="mobile-nav-panel" id="mobileNavPanel" data-mobile-nav-panel hidden>
       <div class="mobile-nav-shell container">
@@ -1093,9 +1161,19 @@ function renderHeader() {
         <div class="mobile-nav-group mobile-nav-single-link"><a href="/tools/">Tools</a></div>
         <div class="mobile-nav-group mobile-nav-single-link"><a href="/games/">Games</a></div>
         <div class="mobile-nav-group mobile-nav-single-link"><a href="/articles/">Articles</a></div>
-        <div class="mobile-nav-group mobile-nav-single-link"><a target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot.no</a></div>
-        <div class="mobile-nav-group mobile-nav-single-link"><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></div>
         <div class="mobile-nav-group mobile-nav-single-link"><a href="/support/">Support</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></div>
+        <div class="mobile-nav-group mobile-language-options" aria-label="Language">
+          <a href="/" hreflang="en" lang="en" data-language-option="en">
+            <img src="/assets/images/flags/en.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>English</span>
+          </a>
+          <a href="/no/" hreflang="no" lang="no" data-language-option="no">
+            <img src="/assets/images/flags/no.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>Norsk</span>
+          </a>
+        </div>
       </div>
     </div>
   </header>
@@ -1112,35 +1190,42 @@ function renderFooter() {
           <ul class="link-list">
             <li><a href="/">Home</a></li>
             <li><a href="/tools/">Tools</a></li>
-            <li><a href="/articles/">Articles</a></li>
             <li><a href="/games/">Games</a></li>
+            <li><a href="/articles/">Articles</a></li>
+            <li><a href="/youtube-thumbnail-preview/" data-footer-service-link="youtube-thumbnail-preview">YouTube Thumbnail Preview</a></li>
             <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot</a></li>
             <li><a href="/support/">Support</a></li>
           </ul>
         </section>
         <section>
-          <h2>Tools</h2>
+          <h2>Tool Docs</h2>
           <ul class="link-list">
-            ${catalog.tools.map((tool) => `<li><a href="${tool.links.product}">${tool.name}</a></li>`).join("\n            ")}
-            <li><a href="/tools/">Tools Directory</a></li>
+            ${catalog.tools.map((tool) => `<li><a href="${tool.links.docs}">${tool.name}</a></li>`).join("\n            ")}
           </ul>
         </section>
         <section>
-          <h2>Articles</h2>
+          <h2>Asset Store</h2>
           <ul class="link-list">
-            <li><a href="/articles/">All Articles</a></li>
-            ${catalog.articleCategories.map((category) => `<li><a href="/articles/?category=${category.slug}">${category.label}</a></li>`).join("\n            ")}
-            <li><a href="/articles/?sort=title">Sort A-Z</a></li>
+            ${catalog.tools.filter((tool) => tool.links.store).map((tool) => `<li><a target="_blank" rel="noopener noreferrer" href="${tool.links.store}">${tool.name}</a></li>`).join("\n            ")}
           </ul>
         </section>
         <section>
-          <h2>Games</h2>
+          <h2>Licenses</h2>
+          <ul class="link-list">
+            ${catalog.tools.map((tool) => `<li><a href="${tool.links.license}">${tool.name}</a></li>`).join("\n            ")}
+          </ul>
+        </section>
+        <section>
+          <h2>Game Links</h2>
           <ul class="link-list">
             <li><a href="/games/">Games Directory</a></li>
             <li><a href="/dopamine/">Dopamine Machine Play</a></li>
-            <li><a href="/games/orbital-chaos/">Orbital Chaos Homepage</a></li>
-            <li><a href="/games/neonsurge-2/">NeonSurge 2 Homepage</a></li>
-            <li><a href="/games/neonsurge/">NeonSurge Homepage</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://store.steampowered.com/app/4540560/Forbidden_buttons">Forbidden Buttons on Steam</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.kevinbjorvand.orbitalchaos">Orbital Chaos on Google Play</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://apps.apple.com/us/app/orbital-chaos/id6754812237">Orbital Chaos on App Store</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge-2">NeonSurge 2 on itch.io</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge">NeonSurge on itch.io</a></li>
             <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/games/">Smart Indie Games</a></li>
           </ul>
         </section>
@@ -1151,10 +1236,6 @@ function renderFooter() {
             <li><a href="/support/#docs-shortcuts-title">Documentation</a></li>
             <li><a href="/support/#faq">Support FAQ</a></li>
           </ul>
-        </section>
-        <section class="footer-email-updates" aria-label="Email subscription">
-          <h2>Email Updates</h2>
-          <div class="ml-embedded" data-form="bk4D7K"></div>
         </section>
       </div>
       <div class="footer-legal">
@@ -1242,6 +1323,7 @@ function renderHubPage() {
   const cards = sortedArticles.map((article) => {
     const tool = toolByKey.get(article.toolKey);
     const category = categoryBySlug.get(article.category);
+    const primaryLink = toolPrimaryLink(tool);
     return `
           <article class="card article-card" data-article-card data-tool="${article.toolKey}" data-category="${article.category}" data-date="${article.publishDate}" data-title="${htmlEscape(article.title.toLowerCase())}">
             <figure>
@@ -1260,7 +1342,7 @@ function renderHubPage() {
               <p>${htmlEscape(article.description)}</p>
               <div class="card-actions">
                 <a class="button button-primary" href="${article.path}">Read article</a>
-                <a class="button button-secondary" href="${tool.links.product}">View tool</a>
+                <a class="button button-secondary" href="${primaryLink.href}">${htmlEscape(primaryLink.label)}</a>
               </div>
             </div>
           </article>
@@ -1282,7 +1364,7 @@ function renderHubPage() {
       "@type": "SoftwareApplication",
       name: tool.name,
       applicationCategory: "DeveloperApplication",
-      url: absoluteUrl(tool.links.product)
+      url: absoluteUrl(tool.links.docs)
     }))
   };
 
@@ -1329,7 +1411,6 @@ function renderHubPage() {
   <link rel="stylesheet" href="/assets/css/site/pages/articles.css">
   <link rel="stylesheet" href="/assets/css/shared/link-decorators.css">
   <link rel="stylesheet" href="/assets/css/shared/typography-overrides.css">
-  <script src="/assets/js/site/mailerlite-universal.js"></script>
   ${renderJsonLd({
     "@context": "https://schema.org",
     "@graph": [collectionSchema, itemListSchema]
@@ -1421,17 +1502,20 @@ function renderArticlePage(article) {
 
   const visibleDate = formatDateLabel(article.publishDate);
   const sameToolArticles = (articlesByTool.get(article.toolKey) || []).filter((candidate) => candidate.slug !== article.slug);
+  const primaryLink = toolPrimaryLink(tool);
+  const secondaryLink = toolSecondaryLink(tool, article.primaryCtaHref);
+  const primaryCtaAttrs = /^https?:\/\//.test(article.primaryCtaHref) ? ' target="_blank" rel="noopener noreferrer"' : "";
+  const secondaryCtaAttrs = /^https?:\/\//.test(secondaryLink.href) ? ' target="_blank" rel="noopener noreferrer"' : "";
   const sidebarLinks = [
-    { label: `${tool.name} homepage`, href: tool.links.product },
     { label: `${tool.name} docs`, href: tool.links.docs },
-    { label: "Support", href: "/support/" },
+    tool.links.store ? { label: `${tool.name} Asset Store`, href: tool.links.store, external: true } : null,
     { label: `${tool.name} license`, href: tool.links.license }
-  ];
+  ].filter(Boolean);
 
   const breadcrumbs = [
     { label: "Home", href: "/" },
     { label: "Articles", href: `/articles/?tool=${article.toolKey}` },
-    { label: tool.name, href: tool.links.product },
+    { label: tool.name, href: tool.links.docs },
     { label: article.title }
   ];
 
@@ -1450,8 +1534,8 @@ function renderArticlePage(article) {
         <h2>${htmlEscape(body.midCtaTitle)}</h2>
         <p>${htmlEscape(body.midCtaText)}</p>
         <div class="article-cta-actions">
-          <a class="button button-primary" href="${article.primaryCtaHref}">${htmlEscape(article.primaryCtaLabel)}</a>
-          <a class="button button-secondary" href="${tool.links.docs}">Read ${htmlEscape(tool.name)} docs</a>
+          <a class="button button-primary"${primaryCtaAttrs} href="${article.primaryCtaHref}">${htmlEscape(article.primaryCtaLabel)}</a>
+          <a class="button button-secondary"${secondaryCtaAttrs} href="${secondaryLink.href}">${htmlEscape(secondaryLink.label)}</a>
         </div>
       </section>`;
   }).join("\n");
@@ -1492,7 +1576,7 @@ function renderArticlePage(article) {
             "@type": "SoftwareApplication",
             name: tool.name,
             applicationCategory: "DeveloperApplication",
-            url: absoluteUrl(tool.links.product)
+            url: absoluteUrl(tool.links.docs)
           }
         ]
       },
@@ -1515,7 +1599,7 @@ function renderArticlePage(article) {
             "@type": "ListItem",
             position: 3,
             name: tool.name,
-            item: absoluteUrl(tool.links.product)
+            item: absoluteUrl(tool.links.docs)
           },
           {
             "@type": "ListItem",
@@ -1563,7 +1647,6 @@ function renderArticlePage(article) {
   <link rel="stylesheet" href="/assets/css/site/pages/article-detail.css">
   <link rel="stylesheet" href="/assets/css/shared/link-decorators.css">
   <link rel="stylesheet" href="/assets/css/shared/typography-overrides.css">
-  <script src="/assets/js/site/mailerlite-universal.js"></script>
   ${renderJsonLd(articleSchema)}
 </head>
 <body>
@@ -1601,7 +1684,7 @@ function renderArticlePage(article) {
           </div>
           <div class="article-keyline">
             <span class="article-chip">Updated ${htmlEscape(formatDateLabel(article.updatedDate))}</span>
-            <span class="article-chip">Tool homepage, docs, support, and license linked in the sidebar</span>
+            <span class="article-chip">Docs, Asset Store, and license links stay in the sidebar</span>
           </div>
         </div>
         <figure class="article-hero-media">
@@ -1617,8 +1700,8 @@ ${mainSections}
             <h2>${htmlEscape(body.endTitle)}</h2>
             <p>${htmlEscape(body.endText)}</p>
             <div class="article-cta-actions">
-              <a class="button button-primary" href="${article.primaryCtaHref}">${htmlEscape(article.primaryCtaLabel)}</a>
-              <a class="button button-secondary" href="${tool.links.product}">Visit ${htmlEscape(tool.name)}</a>
+              <a class="button button-primary"${primaryCtaAttrs} href="${article.primaryCtaHref}">${htmlEscape(article.primaryCtaLabel)}</a>
+              <a class="button button-secondary"${secondaryCtaAttrs} href="${secondaryLink.href}">${htmlEscape(secondaryLink.label)}</a>
             </div>
           </section>
 
@@ -1656,7 +1739,7 @@ ${relatedCards}
           <section class="article-sidebar-card">
             <h2>${htmlEscape(tool.name)} links</h2>
             <ul>
-              ${sidebarLinks.map((link) => `<li><a href="${link.href}">${htmlEscape(link.label)}</a></li>`).join("\n              ")}
+              ${sidebarLinks.map((link) => `<li><a${link.external ? ' target="_blank" rel="noopener noreferrer"' : ""} href="${link.href}">${htmlEscape(link.label)}</a></li>`).join("\n              ")}
             </ul>
           </section>
 
@@ -1702,7 +1785,10 @@ function walkHtmlFiles(directory, output = []) {
 function updateSharedChrome() {
   const headerPattern = /<header class="site-header">[\s\S]*?<\/header>/;
   const footerPattern = /<footer class="site-footer">[\s\S]*?<\/footer>/;
-  const htmlFiles = walkHtmlFiles(rootDir).filter((filePath) => !filePath.includes(`${path.sep}.git${path.sep}`));
+  const htmlFiles = walkHtmlFiles(rootDir).filter((filePath) =>
+    !filePath.includes(`${path.sep}.git${path.sep}`) &&
+    !filePath.includes(`${path.sep}no${path.sep}`)
+  );
 
   htmlFiles.forEach((filePath) => {
     let content = fs.readFileSync(filePath, "utf8");
@@ -1730,34 +1816,6 @@ function updateSharedChrome() {
   });
 }
 
-function updateToolHomepages() {
-  catalog.tools.forEach((tool) => {
-    const filePath = filePathFromSitePath(tool.links.product);
-    if (!fs.existsSync(filePath)) {
-      return;
-    }
-
-    const content = fs.readFileSync(filePath, "utf8");
-    const sectionMarkup = renderToolRelatedSection(tool);
-    if (!sectionMarkup) {
-      return;
-    }
-
-    const existingPattern = /\s*<section id="tool-articles"[\s\S]*?(?=\s*<section id="final-cta")/;
-    let nextContent = content;
-
-    if (existingPattern.test(content)) {
-      nextContent = content.replace(existingPattern, `\n\n${sectionMarkup}\n`);
-    } else {
-      nextContent = content.replace(/\s*<section id="final-cta"/, `\n\n${sectionMarkup}\n\n      <section id="final-cta"`);
-    }
-
-    if (nextContent !== content) {
-      writeFile(filePath, nextContent);
-    }
-  });
-}
-
 function generateArticlePages() {
   writeFile(filePathFromSitePath("/articles/"), renderHubPage());
   catalog.articles.forEach((article) => {
@@ -1773,6 +1831,10 @@ function sitemapEntryMeta(url) {
   if (
     url === `${siteUrl}/articles/` ||
     url === `${siteUrl}/games/` ||
+    url === `${siteUrl}/no/` ||
+    url === `${siteUrl}/no/games/` ||
+    url === `${siteUrl}/no/support/` ||
+    url === `${siteUrl}/no/tools/` ||
     url === `${siteUrl}/support/` ||
     url === `${siteUrl}/tools/`
   ) {
@@ -1811,18 +1873,23 @@ function updateSitemap() {
     });
   });
 
+  const removedUrls = new Set(removedProductPaths.concat(removedGamePaths).map((value) => absoluteUrl(value)));
   const toolUrls = catalog.tools.flatMap((tool) => [
-    tool.links.product,
     tool.links.docs,
     tool.links.license
   ].filter(Boolean).map((value) => absoluteUrl(value)));
+  const localizedUrls = norwegianPaths.map((value) => absoluteUrl(value));
 
   const orderedUrls = [];
   const seen = new Set();
 
   existingUrls
-    .concat(toolUrls, [`${siteUrl}/articles/`], catalog.articles.map((article) => absoluteUrl(article.path)))
+    .concat(toolUrls, localizedUrls, [`${siteUrl}/articles/`], catalog.articles.map((article) => absoluteUrl(article.path)))
     .forEach((url) => {
+    if (removedUrls.has(url)) {
+      return;
+    }
+
     if (seen.has(url)) {
       return;
     }
@@ -1869,6 +1936,11 @@ ${uniqueImages.map((image) => `    <image:image><image:loc>${image}</image:loc><
 function updateImageSitemap() {
   const sitemapPath = path.join(rootDir, "image-sitemap.xml");
   const current = fs.readFileSync(sitemapPath, "utf8");
+  const removedUrls = new Set(removedProductPaths.concat(removedGamePaths).map((value) => absoluteUrl(value)));
+  let next = current.replace(/<url>\s*[\s\S]*?<\/url>/g, (block) => {
+    const match = block.match(/<loc>([^<]+)<\/loc>/);
+    return match && removedUrls.has(match[1]) ? "" : block;
+  });
   const additions = [];
   const hubUrl = `${siteUrl}/articles/`;
   const defaultIconImages = [
@@ -1879,13 +1951,12 @@ function updateImageSitemap() {
 
   catalog.tools.forEach((tool) => {
     const toolImageEntries = [
-      { url: absoluteUrl(tool.links.product), images: tool.images && tool.images.length ? tool.images : defaultIconImages },
       { url: absoluteUrl(tool.links.docs), images: defaultIconImages },
       { url: absoluteUrl(tool.links.license), images: defaultIconImages }
     ];
 
     toolImageEntries.forEach((entry) => {
-      if (!entry.url || current.includes(`<loc>${entry.url}</loc>`)) {
+      if (!entry.url || next.includes(`<loc>${entry.url}</loc>`)) {
         return;
       }
 
@@ -1893,33 +1964,32 @@ function updateImageSitemap() {
     });
   });
 
-  if (!current.includes(`<loc>${hubUrl}</loc>`)) {
+  if (!next.includes(`<loc>${hubUrl}</loc>`)) {
     additions.push(renderImageSitemapEntry(hubUrl, [authorImage]));
   }
 
   catalog.articles.forEach((article) => {
     const articleUrl = absoluteUrl(article.path);
-    if (current.includes(`<loc>${articleUrl}</loc>`)) {
+    if (next.includes(`<loc>${articleUrl}</loc>`)) {
       return;
     }
 
     additions.push(renderImageSitemapEntry(articleUrl, [article.heroImage, authorImage]));
   });
 
-  if (!additions.length) {
+  if (!additions.length && next === current) {
     return;
   }
 
   writeFile(
     sitemapPath,
-    current.replace(/\s*<\/urlset>\s*$/, `\n${additions.join("\n")}\n</urlset>\n`)
+    next.replace(/\s*<\/urlset>\s*$/, `\n${additions.join("\n")}\n</urlset>\n`)
   );
 }
 
 generateArticlePages();
 updateSharedChrome();
-updateToolHomepages();
 updateSitemap();
 updateImageSitemap();
 
-console.log(`Generated ${catalog.articles.length} article pages and updated shared navigation, tool homepages, and sitemaps.`);
+console.log(`Generated ${catalog.articles.length} article pages and updated shared navigation and sitemaps.`);

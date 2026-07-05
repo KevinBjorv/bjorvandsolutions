@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>How to Build a Repeatable Unity License Compliance Workflow | Third-Party Notices &amp; Credits Article</title>
-  <meta name="description" content="Turn Unity license compliance into a deterministic scan-review-export process before release pressure takes over.">
+  <title>How to Build a Repeatable Unity License Compliance Workflow | Compliance Exporter Article</title>
+  <meta name="description" content="Turn Unity license compliance into a scan, review, and export process before release pressure takes over.">
   <meta name="author" content="Kevin Ahlgren Bjorvand">
   <meta property="og:type" content="article">
   <meta property="og:title" content="How to Build a Repeatable Unity License Compliance Workflow">
-  <meta property="og:description" content="Turn Unity license compliance into a deterministic scan-review-export process before release pressure takes over.">
+  <meta property="og:description" content="Turn Unity license compliance into a scan, review, and export process before release pressure takes over.">
   <meta property="og:url" content="https://bjorv.com/articles/compliance/build-a-repeatable-unity-license-compliance-workflow/">
   <meta property="og:image" content="https://bjorv.com/assets/images/CompliancePack/marketing/Deterministic%20output.jpg">
   <meta property="article:published_time" content="2026-03-11">
@@ -16,7 +16,7 @@
   <meta property="article:author" content="Kevin Ahlgren Bjorvand">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="How to Build a Repeatable Unity License Compliance Workflow">
-  <meta name="twitter:description" content="Turn Unity license compliance into a deterministic scan-review-export process before release pressure takes over.">
+  <meta name="twitter:description" content="Turn Unity license compliance into a scan, review, and export process before release pressure takes over.">
   <meta name="twitter:image" content="https://bjorv.com/assets/images/CompliancePack/marketing/Deterministic%20output.jpg">
   <link rel="canonical" href="https://bjorv.com/articles/compliance/build-a-repeatable-unity-license-compliance-workflow/">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
@@ -32,14 +32,13 @@
   <link rel="stylesheet" href="/assets/css/site/pages/article-detail.css">
   <link rel="stylesheet" href="/assets/css/shared/link-decorators.css">
   <link rel="stylesheet" href="/assets/css/shared/typography-overrides.css">
-  <script src="/assets/js/site/mailerlite-universal.js"></script>
   <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "Article",
       "headline": "How to Build a Repeatable Unity License Compliance Workflow",
-      "description": "Turn Unity license compliance into a deterministic scan-review-export process before release pressure takes over.",
+      "description": "Turn Unity license compliance into a scan, review, and export process before release pressure takes over.",
       "image": [
         "https://bjorv.com/assets/images/CompliancePack/marketing/Deterministic%20output.jpg"
       ],
@@ -56,13 +55,13 @@
       "mainEntityOfPage": "https://bjorv.com/articles/compliance/build-a-repeatable-unity-license-compliance-workflow/",
       "datePublished": "2026-03-11",
       "dateModified": "2026-03-11",
-      "articleSection": "Compliance & Release",
+      "articleSection": "Compliance",
       "about": [
         {
           "@type": "SoftwareApplication",
-          "name": "Third-Party Notices & Credits",
+          "name": "Compliance Exporter",
           "applicationCategory": "DeveloperApplication",
-          "url": "https://bjorv.com/assets/compliance/"
+          "url": "https://bjorv.com/assets/compliance/docs/"
         }
       ]
     },
@@ -84,8 +83,8 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "Third-Party Notices & Credits",
-          "item": "https://bjorv.com/assets/compliance/"
+          "name": "Compliance Exporter",
+          "item": "https://bjorv.com/assets/compliance/docs/"
         },
         {
           "@type": "ListItem",
@@ -111,13 +110,25 @@
           <li class="menu-item"><a class="menu-link" href="/tools/">Tools</a></li>
           <li class="menu-item"><a class="menu-link" href="/games/">Games</a></li>
           <li class="menu-item"><a class="menu-link" href="/articles/">Articles</a></li>
-          <li class="menu-item"><a class="menu-link" target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot.no</a></li>
-          <li class="menu-item menu-item-smart-indie"><a class="menu-link menu-link-smart-indie" target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li>
           <li class="menu-item"><a class="menu-link" href="/support/">Support</a></li>
+          <li class="menu-item"><a class="menu-link" target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot</a></li>
+          <li class="menu-item menu-item-smart-indie"><a class="menu-link menu-link-smart-indie" target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li>
         </ul>
       </nav>
 
-      <button class="mobile-nav-toggle" type="button" data-mobile-nav-toggle aria-controls="mobileNavPanel" aria-expanded="false">Menu</button>
+      <div class="nav-actions">
+        <div class="language-switcher" aria-label="Language">
+          <a class="language-link" href="/" hreflang="en" lang="en" data-language-option="en" aria-label="English">
+            <img src="/assets/images/flags/en.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>EN</span>
+          </a>
+          <a class="language-link" href="/no/" hreflang="no" lang="no" data-language-option="no" aria-label="Norsk">
+            <img src="/assets/images/flags/no.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>NO</span>
+          </a>
+        </div>
+        <button class="mobile-nav-toggle" type="button" data-mobile-nav-toggle aria-controls="mobileNavPanel" aria-expanded="false">Menu</button>
+      </div>
     </div>
     <div class="mobile-nav-panel" id="mobileNavPanel" data-mobile-nav-panel hidden>
       <div class="mobile-nav-shell container">
@@ -125,9 +136,19 @@
         <div class="mobile-nav-group mobile-nav-single-link"><a href="/tools/">Tools</a></div>
         <div class="mobile-nav-group mobile-nav-single-link"><a href="/games/">Games</a></div>
         <div class="mobile-nav-group mobile-nav-single-link"><a href="/articles/">Articles</a></div>
-        <div class="mobile-nav-group mobile-nav-single-link"><a target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot.no</a></div>
-        <div class="mobile-nav-group mobile-nav-single-link"><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></div>
         <div class="mobile-nav-group mobile-nav-single-link"><a href="/support/">Support</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></div>
+        <div class="mobile-nav-group mobile-language-options" aria-label="Language">
+          <a href="/" hreflang="en" lang="en" data-language-option="en">
+            <img src="/assets/images/flags/en.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>English</span>
+          </a>
+          <a href="/no/" hreflang="no" lang="no" data-language-option="no">
+            <img src="/assets/images/flags/no.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>Norsk</span>
+          </a>
+        </div>
       </div>
     </div>
   </header>
@@ -136,18 +157,18 @@
       <nav class="article-breadcrumbs" aria-label="Breadcrumb">
         <a href="/">Home</a><span aria-hidden="true">/</span>
         <a href="/articles/?tool=compliance">Articles</a><span aria-hidden="true">/</span>
-        <a href="/assets/compliance/">Third-Party Notices &amp; Credits</a><span aria-hidden="true">/</span>
+        <a href="/assets/compliance/docs/">Compliance Exporter</a><span aria-hidden="true">/</span>
         <span aria-current="page">How to Build a Repeatable Unity License Compliance Workflow</span>
       </nav>
 
       <section class="article-hero">
         <div class="article-hero-copy">
           <div class="article-eyebrow">
-            <span class="article-kicker">Compliance &amp; Release</span>
-            <span class="article-chip">Third-Party Notices &amp; Credits</span>
+            <span class="article-kicker">Compliance</span>
+            <span class="article-chip">Compliance Exporter</span>
           </div>
           <h1>How to Build a Repeatable Unity License Compliance Workflow</h1>
-          <p>Turn Unity license compliance into a deterministic scan-review-export process before release pressure takes over.</p>
+          <p>Turn Unity license compliance into a scan, review, and export process before release pressure takes over.</p>
           <div class="article-meta-line">
             <span>March 11, 2026</span>
             <span>&bull;</span>
@@ -160,12 +181,12 @@
           </div>
           <div class="article-keyline">
             <span class="article-chip">Updated March 11, 2026</span>
-            <span class="article-chip">Tool homepage, docs, support, and license linked in the sidebar</span>
+            <span class="article-chip">Docs, Asset Store, and license links stay in the sidebar</span>
           </div>
         </div>
         <figure class="article-hero-media">
           <img src="/assets/images/CompliancePack/marketing/Deterministic%20output.jpg" alt="How to Build a Repeatable Unity License Compliance Workflow" loading="eager" fetchpriority="high">
-          <figcaption>Compliance gets more manageable when the workflow is deterministic and reviewable.</figcaption>
+          <figcaption>Compliance gets more manageable when the scan, review, and export steps are clear.</figcaption>
         </figure>
       </section>
 
@@ -198,10 +219,10 @@
       </section>
       <section class="article-cta-panel" aria-label="Primary call to action">
         <h2>Make license compliance a workflow instead of a release scramble.</h2>
-        <p>Third-Party Notices &amp; Credits is designed around deterministic scans, override review, and stable export files so teams can repeat the same process each release.</p>
+        <p>Compliance Exporter is designed around project scans, override review, and stable export files so teams can repeat the same process each release.</p>
         <div class="article-cta-actions">
-          <a class="button button-primary" href="https://u3d.as/3PWR">Buy Third-Party Notices &amp; Credits</a>
-          <a class="button button-secondary" href="/assets/compliance/docs/">Read Third-Party Notices &amp; Credits docs</a>
+          <a class="button button-primary" target="_blank" rel="noopener noreferrer" href="https://u3d.as/3PWR">Buy Third-Party Notices &amp; Credits</a>
+          <a class="button button-secondary" href="/assets/compliance/docs/">Docs</a>
         </div>
       </section>
 <section class="article-section" id="how-build-integration-fits" data-article-section>
@@ -229,16 +250,16 @@
         
       </section>
           <section class="article-callout">
-            <h2>Use the product page when you want the full rollout path and support links.</h2>
-            <p>The homepage keeps the scan, docs, license, and support routes together.</p>
+            <h2>Use the documentation when you want the full rollout path.</h2>
+            <p>Docs, Asset Store, and license links stay available from the tool directory.</p>
             <div class="article-cta-actions">
-              <a class="button button-primary" href="https://u3d.as/3PWR">Buy Third-Party Notices &amp; Credits</a>
-              <a class="button button-secondary" href="/assets/compliance/">Visit Third-Party Notices &amp; Credits</a>
+              <a class="button button-primary" target="_blank" rel="noopener noreferrer" href="https://u3d.as/3PWR">Buy Third-Party Notices &amp; Credits</a>
+              <a class="button button-secondary" href="/assets/compliance/docs/">Docs</a>
             </div>
           </section>
 
           <section class="article-section" id="related-articles">
-            <h2>More articles for Third-Party Notices &amp; Credits</h2>
+            <h2>More articles for Compliance Exporter</h2>
             <p>The tool workflow stays easier to evaluate when the next steps stay inside the same product and documentation surface.</p>
             <div class="article-related-grid">
 <article class="card article-related-card">
@@ -278,17 +299,16 @@
                   <p>Founder, Bjorvand Solutions</p>
                 </div>
               </div>
-              <p>Kevin builds Unity tools focused on release safety, build visibility, migration safety, and deterministic compliance workflows.</p>
+              <p>Kevin builds Unity tools focused on release safety, build visibility, migration safety, and compliance evidence.</p>
             </div>
           </section>
 
           <section class="article-sidebar-card">
-            <h2>Third-Party Notices &amp; Credits links</h2>
+            <h2>Compliance Exporter links</h2>
             <ul>
-              <li><a href="/assets/compliance/">Third-Party Notices &amp; Credits homepage</a></li>
-              <li><a href="/assets/compliance/docs/">Third-Party Notices &amp; Credits docs</a></li>
-              <li><a href="/support/">Support</a></li>
-              <li><a href="/assets/compliance/license/">Third-Party Notices &amp; Credits license</a></li>
+              <li><a href="/assets/compliance/docs/">Compliance Exporter docs</a></li>
+              <li><a target="_blank" rel="noopener noreferrer" href="https://u3d.as/3PWR">Compliance Exporter Asset Store</a></li>
+              <li><a href="/assets/compliance/license/">Compliance Exporter license</a></li>
             </ul>
           </section>
 
@@ -311,45 +331,60 @@
           <ul class="link-list">
             <li><a href="/">Home</a></li>
             <li><a href="/tools/">Tools</a></li>
-            <li><a href="/articles/">Articles</a></li>
             <li><a href="/games/">Games</a></li>
+            <li><a href="/articles/">Articles</a></li>
+            <li><a href="/youtube-thumbnail-preview/" data-footer-service-link="youtube-thumbnail-preview">YouTube Thumbnail Preview</a></li>
             <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot</a></li>
             <li><a href="/support/">Support</a></li>
           </ul>
         </section>
         <section>
-          <h2>Tools</h2>
+          <h2>Tool Docs</h2>
           <ul class="link-list">
-            <li><a href="/assets/build-size-guard/">Build Size Guard</a></li>
-            <li><a href="/assets/shader-variant-budget-ci-guard/">Shader Variant Budget & CI Guard</a></li>
-            <li><a href="/assets/unity-serialization-migration-guard/">Unity Serialization Migration Guard</a></li>
-            <li><a href="/assets/il2cpp-strip-guard/">IL2CPP Strip Guard</a></li>
-            <li><a href="/assets/inspector-event-link-doctor/">Inspector Event Link Doctor</a></li>
-            <li><a href="/assets/fast-play-mode-safety-guard/">Fast Play Mode Safety Guard</a></li>
-            <li><a href="/assets/import-settings-validator-fix/">Import Settings Validator & Fix</a></li>
-            <li><a href="/assets/compliance/">Third-Party Notices & Credits</a></li>
-            <li><a href="/tools/">Tools Directory</a></li>
+            <li><a href="/assets/build-size-guard/docs/">Build Size Guard</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/docs/">Shader Variant Budget & CI Guard</a></li>
+            <li><a href="/assets/unity-serialization-migration-guard/docs/">Serialization Migration Guard</a></li>
+            <li><a href="/assets/il2cpp-strip-guard/docs/">IL2CPP Strip Guard</a></li>
+            <li><a href="/assets/inspector-event-link-doctor/docs/">Inspector Event Link Doctor</a></li>
+            <li><a href="/assets/fast-play-mode-safety-guard/docs/">Fast Play Mode Watcher</a></li>
+            <li><a href="/assets/import-settings-validator-fix/docs/">Import Settings Validator & Fix</a></li>
+            <li><a href="/assets/compliance/docs/">Compliance Exporter</a></li>
           </ul>
         </section>
         <section>
-          <h2>Articles</h2>
+          <h2>Asset Store</h2>
           <ul class="link-list">
-            <li><a href="/articles/">All Articles</a></li>
-            <li><a href="/articles/?category=build-ci">Build & CI</a></li>
-            <li><a href="/articles/?category=asset-pipeline">Asset Pipeline</a></li>
-            <li><a href="/articles/?category=serialization-refactoring">Serialization & Refactoring</a></li>
-            <li><a href="/articles/?category=compliance-release">Compliance & Release</a></li>
-            <li><a href="/articles/?sort=title">Sort A-Z</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/361332">Build Size Guard</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://u3d.as/3SYC">Shader Variant Budget & CI Guard</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://u3d.as/3Sae">Serialization Migration Guard</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/362308">Import Settings Validator & Fix</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://u3d.as/3PWR">Compliance Exporter</a></li>
           </ul>
         </section>
         <section>
-          <h2>Games</h2>
+          <h2>Licenses</h2>
+          <ul class="link-list">
+            <li><a href="/assets/build-size-guard/license/">Build Size Guard</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/license/">Shader Variant Budget & CI Guard</a></li>
+            <li><a href="/assets/unity-serialization-migration-guard/license/">Serialization Migration Guard</a></li>
+            <li><a href="/assets/il2cpp-strip-guard/license/">IL2CPP Strip Guard</a></li>
+            <li><a href="/assets/inspector-event-link-doctor/license/">Inspector Event Link Doctor</a></li>
+            <li><a href="/assets/fast-play-mode-safety-guard/license/">Fast Play Mode Watcher</a></li>
+            <li><a href="/assets/import-settings-validator-fix/license/">Import Settings Validator & Fix</a></li>
+            <li><a href="/assets/compliance/license/">Compliance Exporter</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Game Links</h2>
           <ul class="link-list">
             <li><a href="/games/">Games Directory</a></li>
             <li><a href="/dopamine/">Dopamine Machine Play</a></li>
-            <li><a href="/games/orbital-chaos/">Orbital Chaos Homepage</a></li>
-            <li><a href="/games/neonsurge-2/">NeonSurge 2 Homepage</a></li>
-            <li><a href="/games/neonsurge/">NeonSurge Homepage</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://store.steampowered.com/app/4540560/Forbidden_buttons">Forbidden Buttons on Steam</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.kevinbjorvand.orbitalchaos">Orbital Chaos on Google Play</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://apps.apple.com/us/app/orbital-chaos/id6754812237">Orbital Chaos on App Store</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge-2">NeonSurge 2 on itch.io</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge">NeonSurge on itch.io</a></li>
             <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/games/">Smart Indie Games</a></li>
           </ul>
         </section>
@@ -360,10 +395,6 @@
             <li><a href="/support/#docs-shortcuts-title">Documentation</a></li>
             <li><a href="/support/#faq">Support FAQ</a></li>
           </ul>
-        </section>
-        <section class="footer-email-updates" aria-label="Email subscription">
-          <h2>Email Updates</h2>
-          <div class="ml-embedded" data-form="bk4D7K"></div>
         </section>
       </div>
       <div class="footer-legal">

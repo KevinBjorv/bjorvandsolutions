@@ -13,12 +13,6 @@
     <priority>0.60</priority>
   </url>
   <url>
-    <loc>https://bjorv.com/assets/build-size-guard/</loc>
-    <lastmod>2026-03-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.70</priority>
-  </url>
-  <url>
     <loc>https://bjorv.com/assets/build-size-guard/docs/</loc>
     <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
@@ -26,12 +20,6 @@
   </url>
   <url>
     <loc>https://bjorv.com/assets/build-size-guard/license/</loc>
-    <lastmod>2026-03-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://bjorv.com/assets/compliance/</loc>
     <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.70</priority>
@@ -49,12 +37,6 @@
     <priority>0.70</priority>
   </url>
   <url>
-    <loc>https://bjorv.com/assets/import-settings-validator-fix/</loc>
-    <lastmod>2026-03-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.70</priority>
-  </url>
-  <url>
     <loc>https://bjorv.com/assets/import-settings-validator-fix/docs/</loc>
     <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
@@ -62,12 +44,6 @@
   </url>
   <url>
     <loc>https://bjorv.com/assets/import-settings-validator-fix/license/</loc>
-    <lastmod>2026-03-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://bjorv.com/assets/shader-variant-budget-ci-guard/</loc>
     <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.70</priority>
@@ -85,12 +61,6 @@
     <priority>0.70</priority>
   </url>
   <url>
-    <loc>https://bjorv.com/assets/unity-serialization-migration-guard/</loc>
-    <lastmod>2026-03-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.70</priority>
-  </url>
-  <url>
     <loc>https://bjorv.com/assets/unity-serialization-migration-guard/docs/</loc>
     <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
@@ -103,12 +73,6 @@
     <priority>0.70</priority>
   </url>
   <url>
-    <loc>https://bjorv.com/assets/il2cpp-strip-guard/</loc>
-    <lastmod>2026-05-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.70</priority>
-  </url>
-  <url>
     <loc>https://bjorv.com/assets/il2cpp-strip-guard/docs/</loc>
     <lastmod>2026-05-05</lastmod>
     <changefreq>monthly</changefreq>
@@ -116,12 +80,6 @@
   </url>
   <url>
     <loc>https://bjorv.com/assets/il2cpp-strip-guard/license/</loc>
-    <lastmod>2026-05-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://bjorv.com/assets/inspector-event-link-doctor/</loc>
     <lastmod>2026-05-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.70</priority>
@@ -149,30 +107,6 @@
     <lastmod>2026-04-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://bjorv.com/games/forbiddenbuttons/</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://bjorv.com/games/neonsurge/</loc>
-    <lastmod>2026-05-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://bjorv.com/games/neonsurge-2/</loc>
-    <lastmod>2026-03-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.70</priority>
-  </url>
-  <url>
-    <loc>https://bjorv.com/games/orbital-chaos/</loc>
-    <lastmod>2026-03-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.70</priority>
   </url>
   <url>
     <loc>https://bjorv.com/support/</loc>
@@ -283,12 +217,6 @@
     <priority>0.74</priority>
   </url>
   <url>
-    <loc>https://bjorv.com/assets/fast-play-mode-safety-guard/</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.70</priority>
-  </url>
-  <url>
     <loc>https://bjorv.com/assets/fast-play-mode-safety-guard/docs/</loc>
     <lastmod>2026-05-03</lastmod>
     <changefreq>monthly</changefreq>
@@ -299,5 +227,29 @@
     <lastmod>2026-05-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://bjorv.com/no/</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://bjorv.com/no/tools/</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://bjorv.com/no/games/</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://bjorv.com/no/support/</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
   </url>
 </urlset>

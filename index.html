@@ -11,6 +11,8 @@
   <title>Unity Tools, Games, and Training for Developers Who Ship | Bjorvand Solutions</title>
   <meta name="description" content="Browse practical Unity editor tools, original games, and Smart Indie training from Bjorvand Solutions.">
   <link rel="canonical" href="/">
+  <link rel="alternate" hreflang="en" href="/">
+  <link rel="alternate" hreflang="no" href="/no/">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
 
@@ -35,7 +37,6 @@
   <link rel="stylesheet" href="/assets/css/site/pages/home.css">
   <link rel="stylesheet" href="/assets/css/shared/link-decorators.css">
   <link rel="stylesheet" href="/assets/css/shared/typography-overrides.css">
-  <script src="/assets/js/site/mailerlite-universal.js"></script>
 </head>
 <body>
 
@@ -51,13 +52,25 @@
           <li class="menu-item"><a class="menu-link" href="/tools/">Tools</a></li>
           <li class="menu-item"><a class="menu-link" href="/games/">Games</a></li>
           <li class="menu-item"><a class="menu-link" href="/articles/">Articles</a></li>
-          <li class="menu-item"><a class="menu-link" target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot.no</a></li>
-          <li class="menu-item menu-item-smart-indie"><a class="menu-link menu-link-smart-indie" target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li>
           <li class="menu-item"><a class="menu-link" href="/support/">Support</a></li>
+          <li class="menu-item"><a class="menu-link" target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot</a></li>
+          <li class="menu-item menu-item-smart-indie"><a class="menu-link menu-link-smart-indie" target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li>
         </ul>
       </nav>
 
-      <button class="mobile-nav-toggle" type="button" data-mobile-nav-toggle aria-controls="mobileNavPanel" aria-expanded="false">Menu</button>
+      <div class="nav-actions">
+        <div class="language-switcher" aria-label="Language">
+          <a class="language-link" href="/" hreflang="en" lang="en" data-language-option="en" aria-label="English">
+            <img src="/assets/images/flags/en.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>EN</span>
+          </a>
+          <a class="language-link" href="/no/" hreflang="no" lang="no" data-language-option="no" aria-label="Norsk">
+            <img src="/assets/images/flags/no.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>NO</span>
+          </a>
+        </div>
+        <button class="mobile-nav-toggle" type="button" data-mobile-nav-toggle aria-controls="mobileNavPanel" aria-expanded="false">Menu</button>
+      </div>
     </div>
     <div class="mobile-nav-panel" id="mobileNavPanel" data-mobile-nav-panel hidden>
       <div class="mobile-nav-shell container">
@@ -65,9 +78,19 @@
         <div class="mobile-nav-group mobile-nav-single-link"><a href="/tools/">Tools</a></div>
         <div class="mobile-nav-group mobile-nav-single-link"><a href="/games/">Games</a></div>
         <div class="mobile-nav-group mobile-nav-single-link"><a href="/articles/">Articles</a></div>
-        <div class="mobile-nav-group mobile-nav-single-link"><a target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot.no</a></div>
-        <div class="mobile-nav-group mobile-nav-single-link"><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></div>
         <div class="mobile-nav-group mobile-nav-single-link"><a href="/support/">Support</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></div>
+        <div class="mobile-nav-group mobile-language-options" aria-label="Language">
+          <a href="/" hreflang="en" lang="en" data-language-option="en">
+            <img src="/assets/images/flags/en.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>English</span>
+          </a>
+          <a href="/no/" hreflang="no" lang="no" data-language-option="no">
+            <img src="/assets/images/flags/no.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>Norsk</span>
+          </a>
+        </div>
       </div>
     </div>
   </header>
@@ -166,8 +189,8 @@
         <li>CI-friendly reporting</li>
       </ul>
       <div class="card-actions">
-        <a class="button button-primary" href="/assets/build-size-guard/">Product Page</a>
-        <a class="button button-secondary" href="/assets/build-size-guard/docs/">Docs</a>
+        <a class="button button-primary" href="/assets/build-size-guard/docs/">Docs</a>
+        <a class="button button-secondary" target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/361332">Asset Store</a>
         <a class="button button-secondary" href="/assets/build-size-guard/license/">License</a>
       </div>
     </article>
@@ -181,8 +204,8 @@
         <li>Budget enforcement in CI</li>
       </ul>
       <div class="card-actions">
-        <a class="button button-primary" href="/assets/shader-variant-budget-ci-guard/">Product Page</a>
-        <a class="button button-secondary" href="/assets/shader-variant-budget-ci-guard/docs/">Docs</a>
+        <a class="button button-primary" href="/assets/shader-variant-budget-ci-guard/docs/">Docs</a>
+        <a class="button button-secondary" target="_blank" rel="noopener noreferrer" href="https://u3d.as/3SYC">Asset Store</a>
         <a class="button button-secondary" href="/assets/shader-variant-budget-ci-guard/license/">License</a>
       </div>
     </article>
@@ -196,8 +219,8 @@
         <li>Run batchmode audit, coverage, and cleanup checks</li>
       </ul>
       <div class="card-actions">
-        <a class="button button-primary" href="/assets/unity-serialization-migration-guard/">Product Page</a>
-        <a class="button button-secondary" href="/assets/unity-serialization-migration-guard/docs/">Docs</a>
+        <a class="button button-primary" href="/assets/unity-serialization-migration-guard/docs/">Docs</a>
+        <a class="button button-secondary" target="_blank" rel="noopener noreferrer" href="https://u3d.as/3Sae">Asset Store</a>
         <a class="button button-secondary" href="/assets/unity-serialization-migration-guard/license/">License</a>
       </div>
     </article>
@@ -211,8 +234,8 @@
         <li>Optional fixes</li>
       </ul>
       <div class="card-actions">
-        <a class="button button-primary" href="/assets/import-settings-validator-fix/">Product Page</a>
-        <a class="button button-secondary" href="/assets/import-settings-validator-fix/docs/">Docs</a>
+        <a class="button button-primary" href="/assets/import-settings-validator-fix/docs/">Docs</a>
+        <a class="button button-secondary" target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/362308">Asset Store</a>
         <a class="button button-secondary" href="/assets/import-settings-validator-fix/license/">License</a>
       </div>
     </article>
@@ -226,13 +249,13 @@
         <li>Compliance manifest</li>
       </ul>
       <div class="card-actions">
-        <a class="button button-primary" href="/assets/compliance/">Product Page</a>
-        <a class="button button-secondary" href="/assets/compliance/docs/">Docs</a>
+        <a class="button button-primary" href="/assets/compliance/docs/">Docs</a>
+        <a class="button button-secondary" target="_blank" rel="noopener noreferrer" href="https://u3d.as/3PWR">Asset Store</a>
         <a class="button button-secondary" href="/assets/compliance/license/">License</a>
       </div>
     </article>
     <article class="card tool-card">
-      <span class="badge">Preview / docs only</span>
+      <span class="badge">Docs only</span>
       <h3>IL2CPP Strip Guard</h3>
       <p>Preview IL2CPP stripping risks before platform builds expose them.</p>
       <ul>
@@ -241,12 +264,12 @@
         <li>link.xml suggestions</li>
       </ul>
       <div class="card-actions">
-        <a class="button button-primary" href="/assets/il2cpp-strip-guard/">Preview Page</a>
-        <a class="button button-secondary" href="/assets/il2cpp-strip-guard/docs/">Docs</a>
+        <a class="button button-primary" href="/assets/il2cpp-strip-guard/docs/">Docs</a>
+        <a class="button button-secondary" href="/assets/il2cpp-strip-guard/license/">License</a>
       </div>
     </article>
     <article class="card tool-card">
-      <span class="badge">Preview / docs only</span>
+      <span class="badge">Docs only</span>
       <h3>Inspector Event Link Doctor</h3>
       <p>Find broken UnityEvent, Button, callback, and Animation Event references.</p>
       <ul>
@@ -255,12 +278,12 @@
         <li>Fix guidance</li>
       </ul>
       <div class="card-actions">
-        <a class="button button-primary" href="/assets/inspector-event-link-doctor/">Preview Page</a>
-        <a class="button button-secondary" href="/assets/inspector-event-link-doctor/docs/">Docs</a>
+        <a class="button button-primary" href="/assets/inspector-event-link-doctor/docs/">Docs</a>
+        <a class="button button-secondary" href="/assets/inspector-event-link-doctor/license/">License</a>
       </div>
     </article>
     <article class="card tool-card">
-      <span class="badge">Preview / docs only</span>
+      <span class="badge">Docs only</span>
       <h3>Fast Play Mode Watcher</h3>
       <p>Check static-state risks before disabling Domain Reload.</p>
       <ul>
@@ -269,8 +292,8 @@
         <li>Play Mode checklist</li>
       </ul>
       <div class="card-actions">
-        <a class="button button-primary" href="/assets/fast-play-mode-safety-guard/">Preview Page</a>
-        <a class="button button-secondary" href="/assets/fast-play-mode-safety-guard/docs/">Docs</a>
+        <a class="button button-primary" href="/assets/fast-play-mode-safety-guard/docs/">Docs</a>
+        <a class="button button-secondary" href="/assets/fast-play-mode-safety-guard/license/">License</a>
       </div>
     </article>
   </div>
@@ -321,16 +344,14 @@
           <h3>Forbidden Buttons</h3>
           <p>A bright first-person puzzle game where each room revolves around pressing the one button you absolutely should not press.</p>
           <div class="card-actions">
-            <a class="button button-primary" href="/games/forbiddenbuttons/">Homepage</a>
-            <a class="button button-secondary" target="_blank" rel="noopener noreferrer" href="https://store.steampowered.com/app/4540560/Forbidden_buttons">Wishlist on Steam</a>
+            <a class="button button-primary" target="_blank" rel="noopener noreferrer" href="https://store.steampowered.com/app/4540560/Forbidden_buttons">Wishlist on Steam</a>
           </div>
         </article>
         <article class="card game-card">
           <h3>Orbital Chaos</h3>
-          <p>A released mobile game with a dedicated landing page and official store listings.</p>
+          <p>A released mobile game with official store listings.</p>
           <div class="card-actions">
-            <a class="button button-primary" href="/games/orbital-chaos/">Homepage</a>
-            <a class="button button-secondary" target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.kevinbjorvand.orbitalchaos">Google Play</a>
+            <a class="button button-primary" target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.kevinbjorvand.orbitalchaos">Google Play</a>
             <a class="button button-secondary" target="_blank" rel="noopener noreferrer" href="https://apps.apple.com/us/app/orbital-chaos/id6754812237">App Store</a>
           </div>
         </article>
@@ -338,16 +359,14 @@
           <h3>NeonSurge 2</h3>
           <p>The sequel to NeonSurge, built as a focused arcade score experience.</p>
           <div class="card-actions">
-            <a class="button button-primary" href="/games/neonsurge-2/">Homepage</a>
-            <a class="button button-secondary" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge-2">Open on itch.io</a>
+            <a class="button button-primary" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge-2">Open on itch.io</a>
           </div>
         </article>
         <article class="card game-card">
           <h3>NeonSurge</h3>
-          <p>The original NeonSurge release with a dedicated landing page.</p>
+          <p>The original NeonSurge release on itch.io.</p>
           <div class="card-actions">
-            <a class="button button-primary" href="/games/neonsurge/">Homepage</a>
-            <a class="button button-secondary" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge">Open on itch.io</a>
+            <a class="button button-primary" target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge">Open on itch.io</a>
           </div>
         </article>
       </div>
@@ -383,33 +402,73 @@
     <div class="container footer-shell">
       <div class="footer-columns">
         <section>
-          <h2>Products</h2>
+          <h2>Explore</h2>
           <ul class="link-list">
+            <li><a href="/">Home</a></li>
             <li><a href="/tools/">Tools</a></li>
-            <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li>
             <li><a href="/games/">Games</a></li>
-          </ul>
-        </section>
-        <section>
-          <h2>Resources</h2>
-          <ul class="link-list">
             <li><a href="/articles/">Articles</a></li>
-            <li><a href="/support/#docs-shortcuts-title">Documentation</a></li>
+            <li><a href="/youtube-thumbnail-preview/" data-footer-service-link="youtube-thumbnail-preview">YouTube Thumbnail Preview</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot</a></li>
             <li><a href="/support/">Support</a></li>
           </ul>
         </section>
-        <section class="footer-email-updates" aria-label="Email subscription">
-          <h2>Company</h2>
+        <section>
+          <h2>Tool Docs</h2>
           <ul class="link-list">
-            <li><a href="/">Bjorvand Solutions</a></li>
-            <li><a href="/support/">Contact</a></li>
+            <li><a href="/assets/build-size-guard/docs/">Build Size Guard</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/docs/">Shader Variant Budget & CI Guard</a></li>
+            <li><a href="/assets/unity-serialization-migration-guard/docs/">Serialization Migration Guard</a></li>
+            <li><a href="/assets/il2cpp-strip-guard/docs/">IL2CPP Strip Guard</a></li>
+            <li><a href="/assets/inspector-event-link-doctor/docs/">Inspector Event Link Doctor</a></li>
+            <li><a href="/assets/fast-play-mode-safety-guard/docs/">Fast Play Mode Watcher</a></li>
+            <li><a href="/assets/import-settings-validator-fix/docs/">Import Settings Validator & Fix</a></li>
+            <li><a href="/assets/compliance/docs/">Compliance Exporter</a></li>
           </ul>
-          <div class="ml-embedded" data-form="bk4D7K"></div>
         </section>
         <section>
-          <h2>Legal</h2>
+          <h2>Asset Store</h2>
           <ul class="link-list">
-            <li><a href="/tools/">Tool licenses</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/361332">Build Size Guard</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://u3d.as/3SYC">Shader Variant Budget & CI Guard</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://u3d.as/3Sae">Serialization Migration Guard</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/362308">Import Settings Validator & Fix</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://u3d.as/3PWR">Compliance Exporter</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Licenses</h2>
+          <ul class="link-list">
+            <li><a href="/assets/build-size-guard/license/">Build Size Guard</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/license/">Shader Variant Budget & CI Guard</a></li>
+            <li><a href="/assets/unity-serialization-migration-guard/license/">Serialization Migration Guard</a></li>
+            <li><a href="/assets/il2cpp-strip-guard/license/">IL2CPP Strip Guard</a></li>
+            <li><a href="/assets/inspector-event-link-doctor/license/">Inspector Event Link Doctor</a></li>
+            <li><a href="/assets/fast-play-mode-safety-guard/license/">Fast Play Mode Watcher</a></li>
+            <li><a href="/assets/import-settings-validator-fix/license/">Import Settings Validator & Fix</a></li>
+            <li><a href="/assets/compliance/license/">Compliance Exporter</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Game Links</h2>
+          <ul class="link-list">
+            <li><a href="/games/">Games Directory</a></li>
+            <li><a href="/dopamine/">Dopamine Machine Play</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://store.steampowered.com/app/4540560/Forbidden_buttons">Forbidden Buttons on Steam</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.kevinbjorvand.orbitalchaos">Orbital Chaos on Google Play</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://apps.apple.com/us/app/orbital-chaos/id6754812237">Orbital Chaos on App Store</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge-2">NeonSurge 2 on itch.io</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge">NeonSurge on itch.io</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/games/">Smart Indie Games</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Support</h2>
+          <ul class="link-list">
+            <li><a href="/support/">Support Form</a></li>
+            <li><a href="/support/#docs-shortcuts-title">Documentation</a></li>
+            <li><a href="/support/#faq">Support FAQ</a></li>
           </ul>
         </section>
       </div>

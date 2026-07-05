@@ -725,7 +725,49 @@
     linkList.append(listItem);
   }
 
+  function localizePath(pathname, language) {
+    const currentPath = normalizePathname(pathname);
+    const isNorwegian = currentPath === "/no" || currentPath.startsWith("/no/");
+    const englishPath = isNorwegian ? normalizePathname(currentPath.replace(/^\/no/, "") || "/") : currentPath;
+    const norwegianPaths = new Map([
+      ["/", "/no/"],
+      ["/tools", "/no/tools/"],
+      ["/games", "/no/games/"],
+      ["/support", "/no/support/"],
+    ]);
+
+    if (language === "no") {
+      return norwegianPaths.get(englishPath) || "/no/";
+    }
+
+    if (englishPath === "/") {
+      return "/";
+    }
+
+    return `${englishPath}/`.replace(/\/{2,}/g, "/");
+  }
+
+  function updateLanguageLinks() {
+    const currentPath = normalizePathname(window.location.pathname);
+    const currentLanguage = currentPath === "/no" || currentPath.startsWith("/no/") ? "no" : "en";
+
+    document.querySelectorAll("[data-language-option]").forEach((link) => {
+      const language = link.getAttribute("data-language-option");
+      if (!language) {
+        return;
+      }
+
+      link.href = localizePath(currentPath, language);
+      if (language === currentLanguage) {
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+  }
+
   markCurrentPageInNavigation();
+  updateLanguageLinks();
   ensureFooterServiceLink();
 
   const year = String(new Date().getFullYear());

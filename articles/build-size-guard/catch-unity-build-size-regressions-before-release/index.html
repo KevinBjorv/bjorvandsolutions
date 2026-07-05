@@ -32,7 +32,6 @@
   <link rel="stylesheet" href="/assets/css/site/pages/article-detail.css">
   <link rel="stylesheet" href="/assets/css/shared/link-decorators.css">
   <link rel="stylesheet" href="/assets/css/shared/typography-overrides.css">
-  <script src="/assets/js/site/mailerlite-universal.js"></script>
   <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@graph": [
@@ -56,13 +55,13 @@
       "mainEntityOfPage": "https://bjorv.com/articles/build-size-guard/catch-unity-build-size-regressions-before-release/",
       "datePublished": "2026-03-11",
       "dateModified": "2026-03-11",
-      "articleSection": "Build & CI",
+      "articleSection": "Build size and CI",
       "about": [
         {
           "@type": "SoftwareApplication",
           "name": "Build Size Guard",
           "applicationCategory": "DeveloperApplication",
-          "url": "https://bjorv.com/assets/build-size-guard/"
+          "url": "https://bjorv.com/assets/build-size-guard/docs/"
         }
       ]
     },
@@ -85,7 +84,7 @@
           "@type": "ListItem",
           "position": 3,
           "name": "Build Size Guard",
-          "item": "https://bjorv.com/assets/build-size-guard/"
+          "item": "https://bjorv.com/assets/build-size-guard/docs/"
         },
         {
           "@type": "ListItem",
@@ -111,13 +110,25 @@
           <li class="menu-item"><a class="menu-link" href="/tools/">Tools</a></li>
           <li class="menu-item"><a class="menu-link" href="/games/">Games</a></li>
           <li class="menu-item"><a class="menu-link" href="/articles/">Articles</a></li>
-          <li class="menu-item"><a class="menu-link" target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot.no</a></li>
-          <li class="menu-item menu-item-smart-indie"><a class="menu-link menu-link-smart-indie" target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li>
           <li class="menu-item"><a class="menu-link" href="/support/">Support</a></li>
+          <li class="menu-item"><a class="menu-link" target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot</a></li>
+          <li class="menu-item menu-item-smart-indie"><a class="menu-link menu-link-smart-indie" target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li>
         </ul>
       </nav>
 
-      <button class="mobile-nav-toggle" type="button" data-mobile-nav-toggle aria-controls="mobileNavPanel" aria-expanded="false">Menu</button>
+      <div class="nav-actions">
+        <div class="language-switcher" aria-label="Language">
+          <a class="language-link" href="/" hreflang="en" lang="en" data-language-option="en" aria-label="English">
+            <img src="/assets/images/flags/en.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>EN</span>
+          </a>
+          <a class="language-link" href="/no/" hreflang="no" lang="no" data-language-option="no" aria-label="Norsk">
+            <img src="/assets/images/flags/no.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>NO</span>
+          </a>
+        </div>
+        <button class="mobile-nav-toggle" type="button" data-mobile-nav-toggle aria-controls="mobileNavPanel" aria-expanded="false">Menu</button>
+      </div>
     </div>
     <div class="mobile-nav-panel" id="mobileNavPanel" data-mobile-nav-panel hidden>
       <div class="mobile-nav-shell container">
@@ -125,9 +136,19 @@
         <div class="mobile-nav-group mobile-nav-single-link"><a href="/tools/">Tools</a></div>
         <div class="mobile-nav-group mobile-nav-single-link"><a href="/games/">Games</a></div>
         <div class="mobile-nav-group mobile-nav-single-link"><a href="/articles/">Articles</a></div>
-        <div class="mobile-nav-group mobile-nav-single-link"><a target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot.no</a></div>
-        <div class="mobile-nav-group mobile-nav-single-link"><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></div>
         <div class="mobile-nav-group mobile-nav-single-link"><a href="/support/">Support</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></div>
+        <div class="mobile-nav-group mobile-language-options" aria-label="Language">
+          <a href="/" hreflang="en" lang="en" data-language-option="en">
+            <img src="/assets/images/flags/en.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>English</span>
+          </a>
+          <a href="/no/" hreflang="no" lang="no" data-language-option="no">
+            <img src="/assets/images/flags/no.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>Norsk</span>
+          </a>
+        </div>
       </div>
     </div>
   </header>
@@ -136,14 +157,14 @@
       <nav class="article-breadcrumbs" aria-label="Breadcrumb">
         <a href="/">Home</a><span aria-hidden="true">/</span>
         <a href="/articles/?tool=build-size-guard">Articles</a><span aria-hidden="true">/</span>
-        <a href="/assets/build-size-guard/">Build Size Guard</a><span aria-hidden="true">/</span>
+        <a href="/assets/build-size-guard/docs/">Build Size Guard</a><span aria-hidden="true">/</span>
         <span aria-current="page">How to Catch Unity Build Size Regressions Before Release</span>
       </nav>
 
       <section class="article-hero">
         <div class="article-hero-copy">
           <div class="article-eyebrow">
-            <span class="article-kicker">Build &amp; CI</span>
+            <span class="article-kicker">Build size and CI</span>
             <span class="article-chip">Build Size Guard</span>
           </div>
           <h1>How to Catch Unity Build Size Regressions Before Release</h1>
@@ -160,7 +181,7 @@
           </div>
           <div class="article-keyline">
             <span class="article-chip">Updated March 11, 2026</span>
-            <span class="article-chip">Tool homepage, docs, support, and license linked in the sidebar</span>
+            <span class="article-chip">Docs, Asset Store, and license links stay in the sidebar</span>
           </div>
         </div>
         <figure class="article-hero-media">
@@ -201,8 +222,8 @@
         <h2>Make build size visible before the release branch gets noisy.</h2>
         <p>Build Size Guard gives you snapshot capture, side-by-side comparisons, and direct links into documentation so the size jump is measured instead of guessed.</p>
         <div class="article-cta-actions">
-          <a class="button button-primary" href="/assets/build-size-guard/">Open Build Size Guard</a>
-          <a class="button button-secondary" href="/assets/build-size-guard/docs/">Read Build Size Guard docs</a>
+          <a class="button button-primary" href="/assets/build-size-guard/docs/">Read Build Size Guard docs</a>
+          <a class="button button-secondary" target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/361332">Asset Store</a>
         </div>
       </section>
 <section class="article-section" id="how-build-size-guard-fits-the-workflow" data-article-section>
@@ -231,11 +252,11 @@
         
       </section>
           <section class="article-callout">
-            <h2>Use the tool page when you are ready to connect the workflow to your build pipeline.</h2>
-            <p>The product page links directly to setup docs, license details, and support routes.</p>
+            <h2>Use the documentation when you are ready to connect the workflow to your build pipeline.</h2>
+            <p>Docs, Asset Store, and license links stay available from the tool directory.</p>
             <div class="article-cta-actions">
-              <a class="button button-primary" href="/assets/build-size-guard/">Open Build Size Guard</a>
-              <a class="button button-secondary" href="/assets/build-size-guard/">Visit Build Size Guard</a>
+              <a class="button button-primary" href="/assets/build-size-guard/docs/">Read Build Size Guard docs</a>
+              <a class="button button-secondary" target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/361332">Asset Store</a>
             </div>
           </section>
 
@@ -247,7 +268,7 @@
               <img src="/assets/images/BuildSizeGuard/BuildSizeGuardMarketing/Set%20budgets%20and%20regression%20rules.jpg" alt="How to Set Build Size Budgets in Unity CI" loading="lazy">
               <span>8 min read</span>
               <h3><a href="/articles/build-size-guard/set-build-size-budgets-in-unity-ci/">How to Set Build Size Budgets in Unity CI</a></h3>
-              <p>Set measurable Unity build size budgets and enforce them in CI with deterministic reports and exit codes.</p>
+              <p>Set build size budgets, compare snapshots, and catch unexpected growth before release.</p>
             </article>
 <article class="card article-related-card">
               <img src="/assets/images/BuildSizeGuard/BuildSizeGuardMarketing/Compare%20any%20two%20builds%20in%20seconds.jpg" alt="How to Compare Unity Build Snapshots and Find What Changed" loading="lazy">
@@ -280,16 +301,15 @@
                   <p>Founder, Bjorvand Solutions</p>
                 </div>
               </div>
-              <p>Kevin builds Unity tools focused on release safety, build visibility, migration safety, and deterministic compliance workflows.</p>
+              <p>Kevin builds Unity tools focused on release safety, build visibility, migration safety, and compliance evidence.</p>
             </div>
           </section>
 
           <section class="article-sidebar-card">
             <h2>Build Size Guard links</h2>
             <ul>
-              <li><a href="/assets/build-size-guard/">Build Size Guard homepage</a></li>
               <li><a href="/assets/build-size-guard/docs/">Build Size Guard docs</a></li>
-              <li><a href="/support/">Support</a></li>
+              <li><a target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/361332">Build Size Guard Asset Store</a></li>
               <li><a href="/assets/build-size-guard/license/">Build Size Guard license</a></li>
             </ul>
           </section>
@@ -313,45 +333,60 @@
           <ul class="link-list">
             <li><a href="/">Home</a></li>
             <li><a href="/tools/">Tools</a></li>
-            <li><a href="/articles/">Articles</a></li>
             <li><a href="/games/">Games</a></li>
+            <li><a href="/articles/">Articles</a></li>
+            <li><a href="/youtube-thumbnail-preview/" data-footer-service-link="youtube-thumbnail-preview">YouTube Thumbnail Preview</a></li>
             <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot</a></li>
             <li><a href="/support/">Support</a></li>
           </ul>
         </section>
         <section>
-          <h2>Tools</h2>
+          <h2>Tool Docs</h2>
           <ul class="link-list">
-            <li><a href="/assets/build-size-guard/">Build Size Guard</a></li>
-            <li><a href="/assets/shader-variant-budget-ci-guard/">Shader Variant Budget & CI Guard</a></li>
-            <li><a href="/assets/unity-serialization-migration-guard/">Unity Serialization Migration Guard</a></li>
-            <li><a href="/assets/il2cpp-strip-guard/">IL2CPP Strip Guard</a></li>
-            <li><a href="/assets/inspector-event-link-doctor/">Inspector Event Link Doctor</a></li>
-            <li><a href="/assets/fast-play-mode-safety-guard/">Fast Play Mode Safety Guard</a></li>
-            <li><a href="/assets/import-settings-validator-fix/">Import Settings Validator & Fix</a></li>
-            <li><a href="/assets/compliance/">Third-Party Notices & Credits</a></li>
-            <li><a href="/tools/">Tools Directory</a></li>
+            <li><a href="/assets/build-size-guard/docs/">Build Size Guard</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/docs/">Shader Variant Budget & CI Guard</a></li>
+            <li><a href="/assets/unity-serialization-migration-guard/docs/">Serialization Migration Guard</a></li>
+            <li><a href="/assets/il2cpp-strip-guard/docs/">IL2CPP Strip Guard</a></li>
+            <li><a href="/assets/inspector-event-link-doctor/docs/">Inspector Event Link Doctor</a></li>
+            <li><a href="/assets/fast-play-mode-safety-guard/docs/">Fast Play Mode Watcher</a></li>
+            <li><a href="/assets/import-settings-validator-fix/docs/">Import Settings Validator & Fix</a></li>
+            <li><a href="/assets/compliance/docs/">Compliance Exporter</a></li>
           </ul>
         </section>
         <section>
-          <h2>Articles</h2>
+          <h2>Asset Store</h2>
           <ul class="link-list">
-            <li><a href="/articles/">All Articles</a></li>
-            <li><a href="/articles/?category=build-ci">Build & CI</a></li>
-            <li><a href="/articles/?category=asset-pipeline">Asset Pipeline</a></li>
-            <li><a href="/articles/?category=serialization-refactoring">Serialization & Refactoring</a></li>
-            <li><a href="/articles/?category=compliance-release">Compliance & Release</a></li>
-            <li><a href="/articles/?sort=title">Sort A-Z</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/361332">Build Size Guard</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://u3d.as/3SYC">Shader Variant Budget & CI Guard</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://u3d.as/3Sae">Serialization Migration Guard</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/362308">Import Settings Validator & Fix</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://u3d.as/3PWR">Compliance Exporter</a></li>
           </ul>
         </section>
         <section>
-          <h2>Games</h2>
+          <h2>Licenses</h2>
+          <ul class="link-list">
+            <li><a href="/assets/build-size-guard/license/">Build Size Guard</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/license/">Shader Variant Budget & CI Guard</a></li>
+            <li><a href="/assets/unity-serialization-migration-guard/license/">Serialization Migration Guard</a></li>
+            <li><a href="/assets/il2cpp-strip-guard/license/">IL2CPP Strip Guard</a></li>
+            <li><a href="/assets/inspector-event-link-doctor/license/">Inspector Event Link Doctor</a></li>
+            <li><a href="/assets/fast-play-mode-safety-guard/license/">Fast Play Mode Watcher</a></li>
+            <li><a href="/assets/import-settings-validator-fix/license/">Import Settings Validator & Fix</a></li>
+            <li><a href="/assets/compliance/license/">Compliance Exporter</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Game Links</h2>
           <ul class="link-list">
             <li><a href="/games/">Games Directory</a></li>
             <li><a href="/dopamine/">Dopamine Machine Play</a></li>
-            <li><a href="/games/orbital-chaos/">Orbital Chaos Homepage</a></li>
-            <li><a href="/games/neonsurge-2/">NeonSurge 2 Homepage</a></li>
-            <li><a href="/games/neonsurge/">NeonSurge Homepage</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://store.steampowered.com/app/4540560/Forbidden_buttons">Forbidden Buttons on Steam</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.kevinbjorvand.orbitalchaos">Orbital Chaos on Google Play</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://apps.apple.com/us/app/orbital-chaos/id6754812237">Orbital Chaos on App Store</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge-2">NeonSurge 2 on itch.io</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge">NeonSurge on itch.io</a></li>
             <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/games/">Smart Indie Games</a></li>
           </ul>
         </section>
@@ -362,10 +397,6 @@
             <li><a href="/support/#docs-shortcuts-title">Documentation</a></li>
             <li><a href="/support/#faq">Support FAQ</a></li>
           </ul>
-        </section>
-        <section class="footer-email-updates" aria-label="Email subscription">
-          <h2>Email Updates</h2>
-          <div class="ml-embedded" data-form="bk4D7K"></div>
         </section>
       </div>
       <div class="footer-legal">

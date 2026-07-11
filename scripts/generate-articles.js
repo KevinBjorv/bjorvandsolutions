@@ -1011,6 +1011,199 @@ Object.assign(articleBodies, {
   }
 });
 
+Object.assign(articleBodies, {
+  "test-unity-ui-across-breakpoints-and-safe-areas": {
+    answer: "To test Unity UGUI layouts across breakpoints, run the same saved target through a defined matrix of viewport, orientation, safe-area, and text profiles, then review measured findings instead of relying on one Game view size.",
+    heroCaption: "Measured overlays expose overflow, clipping, overlap, and safe-area problems at each layout profile.",
+    midCtaTitle: "Turn one-off Game view checks into a repeatable layout matrix.",
+    midCtaText: "UI Breakpoint Lab captures a selected scene Canvas or UI prefab across saved profiles and keeps screenshots and measured findings together in one contact sheet.",
+    endTitle: "Start with Mobile Essentials, then save the matrix your project actually needs.",
+    endText: "The documentation covers targets, profiles, rules, suppressions, and the approximation limits of isolated Editor captures.",
+    sections: [
+      {
+        id: "why-one-game-view-size-is-not-enough",
+        title: "Why is one Game view size not enough for Unity UI testing?",
+        paragraphs: [
+          "A UGUI screen can look correct at one resolution and still overflow, clip, overlap, or enter a safe area at another shape. Orientation and asymmetric safe areas add layout pressure that a single desktop preview does not represent.",
+          "The useful change is consistency: keep the target and rule policy fixed while the viewport profile changes. That makes each result comparable instead of turning the review into a series of unrelated manual resizes."
+        ],
+        bullets: [
+          "Phone, tablet, desktop, ultrawide, and console-safe-area profiles cover different layout shapes.",
+          "Custom profiles can store pixel dimensions, DPI metadata, pixels per point, orientation, and a safe rectangle.",
+          "Each isolated capture is labeled as an approximation rather than a physical-device emulation."
+        ]
+      },
+      {
+        id: "how-to-run-the-first-matrix",
+        title: "How do you run the first breakpoint matrix?",
+        paragraphs: [
+          "Open a scene with a UGUI Canvas or select a UI prefab, then open Tools > UI Breakpoint Lab. The Mobile Essentials preset is the shortest documented route to a useful first contact sheet.",
+          "The tool clones the target into an isolated preview scene. It does not save or edit the source scene or prefab during analysis."
+        ],
+        steps: [
+          "Choose the active scene, a specific Canvas, or a UI prefab as the target.",
+          "Select Mobile Essentials and keep the text passes you want to inspect.",
+          "Run the matrix and filter the contact sheet to warnings or failures.",
+          "Open a finding to review its rule ID, severity, profile, and exact measured evidence."
+        ]
+      },
+      {
+        id: "which-layout-findings-are-measured",
+        title: "Which UGUI layout findings are measured?",
+        paragraphs: [
+          "Version 1 includes six versioned rules. Deterministic geometry problems can be failures, while heuristic findings such as overlap are warnings by default. Suites can override severity per rule.",
+          "Each finding retains its source identity, screenshot coordinates, effective severity, and measured evidence so a reviewer can move from the contact sheet back to the responsible object when it still exists."
+        ],
+        bullets: [
+          "Viewport overflow and supported parent clipping.",
+          "Safe-area violations and text overflow.",
+          "Overlap heuristics and configurable touch-target checks.",
+          "Reasoned suppressions at object, hierarchy, profile, or suite scope."
+        ]
+      },
+      {
+        id: "where-the-preview-has-limits",
+        title: "Where does an Editor layout preview have limits?",
+        paragraphs: [
+          "Unity's public Editor APIs cannot replace Screen.width, Screen.height, Screen.safeArea, Screen.dpi, runtime orientation, or device services. Project code that reads those values directly continues to receive the Editor values.",
+          "UI Breakpoint Lab provides a preview context and safe-area adapter for custom layout code that needs simulated inputs, but the capture still does not claim exact device rendering, platform fonts, performance, or physical-device behavior."
+        ],
+        bullets: [
+          "UGUI is required; UI Toolkit is outside version 1 scope.",
+          "Built-in and URP are the release-tested rendering paths.",
+          "Physical-device testing remains necessary for final platform validation."
+        ]
+      }
+    ]
+  },
+  "find-unity-ui-text-overflow-with-expansion-passes": {
+    answer: "To expose Unity UI text pressure before localization arrives, run the same UGUI target with 120%, 150%, 200%, and deterministic pseudolocalized text passes, then inspect overflow, clipping, overlap, and safe-area findings on preview clones.",
+    heroCaption: "Text expansion passes make hidden clipping and overlap visible without changing the source UI.",
+    midCtaTitle: "Test the layout pressure, not only the current English strings.",
+    midCtaText: "UI Breakpoint Lab applies repeatable text passes to preview clones and records the layout evidence beside each capture.",
+    endTitle: "Use expansion passes as an early warning, then validate real localized content in the player.",
+    endText: "The documentation explains supported text components, preserved markup, and the boundaries of version 1 localization testing.",
+    sections: [
+      {
+        id: "why-text-expansion-belongs-in-layout-testing",
+        title: "Why should text expansion be part of Unity UI testing?",
+        paragraphs: [
+          "A label that fits its current string can fail when copy grows. The pressure may appear as text overflow, parent clipping, a button collision, or a control entering the safe area rather than as one obvious localization error.",
+          "Expansion passes make that pressure reproducible before every final translation is available. They are a layout check, not a substitute for reviewing the real language and font in a player build."
+        ],
+        bullets: [
+          "Original, 120%, 150%, and 200% passes provide predictable growth steps.",
+          "Deterministic ASCII pseudolocalization adds a repeatable alternate text shape.",
+          "The same viewport matrix can be reused for every text pass."
+        ]
+      },
+      {
+        id: "how-text-passes-protect-source-assets",
+        title: "How do text passes avoid changing source UI assets?",
+        paragraphs: [
+          "Text transformations run only on cloned UI inside the preview scene. They do not apply prefab overrides or write transformed strings into source scenes and prefabs.",
+          "Rich-text tags and composite-format placeholders are preserved. Pseudolocalization reuses existing characters so the run does not mutate dynamic font atlases."
+        ],
+        bullets: [
+          "Static UnityEngine.UI.Text is supported directly.",
+          "Public TextMesh Pro components are supported when the optional TMP assembly is available.",
+          "Custom text sources can opt in through the shipped preview-text adapter."
+        ]
+      },
+      {
+        id: "how-to-review-an-expansion-failure",
+        title: "How do you review a text-expansion failure?",
+        paragraphs: [
+          "Start from a marked contact-sheet tile and open the finding detail. The report records the text pass, profile, rule, severity, measured values, and stable source identity.",
+          "If the behavior is intentional, add a reasoned suppression at the narrowest scope that represents the design. Suppressed findings keep their measurements; the tool does not erase the evidence."
+        ],
+        steps: [
+          "Filter the result grid to warnings or failures.",
+          "Open the marked capture and select the finding or overlay.",
+          "Use object navigation to select or ping the recorded source component.",
+          "Fix the layout or add a narrow, reasoned suppression, then rerun the suite."
+        ]
+      },
+      {
+        id: "what-the-text-passes-do-not-simulate",
+        title: "What do the text passes intentionally not simulate?",
+        paragraphs: [
+          "Version 1 does not integrate with the Unity Localization package, simulate platform fonts, or promise exact line breaking on a physical device. It also does not rewrite anchors or layout groups automatically.",
+          "Treat expansion and pseudolocalization as repeatable stress tests. Final localization review still needs the real strings, font assets, runtime environment, and target devices."
+        ],
+        bullets: [
+          "No Unity Localization package integration in version 1.",
+          "No platform-font equivalence claim.",
+          "No automatic layout repair or gameplay navigation."
+        ]
+      }
+    ]
+  },
+  "add-unity-ui-visual-regression-checks-to-ci": {
+    answer: "To add Unity UI visual regression checks to CI, save a deterministic suite and reviewed PNG baseline, run that suite with graphics enabled, branch on the documented exit code, and archive the complete JSON, HTML, screenshot, and log output.",
+    heroCaption: "Saved suites and explicit baselines turn layout captures into reviewable CI evidence.",
+    midCtaTitle: "Make UGUI regression evidence survive beyond the CI console.",
+    midCtaText: "UI Breakpoint Lab uses the same profiles, rules, suppressions, baselines, and exporters in the Editor and command-line runner.",
+    endTitle: "Pin the environment before treating pixel differences as a release gate.",
+    endText: "The CI documentation defines required arguments, exit codes, artifact handling, and the environment metadata recorded with each run.",
+    sections: [
+      {
+        id: "what-makes-a-ui-suite-deterministic",
+        title: "What makes a UI regression suite suitable for CI?",
+        paragraphs: [
+          "A CI suite needs a saved scene, persistent Canvas reference, or UI prefab. The dynamic Active Scene target is rejected in batch mode because a headless Editor's active scene is not a stable test input.",
+          "The suite stores the ordered profile matrix, text passes, rules, severity policy, suppressions, baseline, tolerance, and ignored regions used by both local and automated runs."
+        ],
+        bullets: [
+          "Commit the suite, baseline assets, and referenced project assets with their .meta files.",
+          "Review the suite in the Editor before enabling a CI gate.",
+          "Keep animation and time-, random-, network-, or device-dependent preview content controlled."
+        ]
+      },
+      {
+        id: "how-to-run-the-suite-from-ci",
+        title: "How do you run a saved UI suite from CI?",
+        paragraphs: [
+          "Invoke KevinBjorvand.UIBreakpointLab.UIBreakpointCli.Run with an AssetDatabase suite path and a writable output directory. Screenshot capture requires a graphics environment, so -nographics is not supported.",
+          "The entry point owns termination to preserve its documented exit code. CI should read that process code instead of inferring success from the presence of an output file."
+        ],
+        steps: [
+          "Pass -ublSuite with a path beginning under Assets/.",
+          "Pass -ublOutput with a clean writable artifact directory.",
+          "Optionally add -ublFailOnWarnings when configured warnings should fail the gate.",
+          "Archive the complete output directory and Editor log after the run."
+        ]
+      },
+      {
+        id: "how-to-interpret-ci-exit-codes",
+        title: "How should CI interpret the exit codes?",
+        paragraphs: [
+          "Exit code 0 means the complete matrix ran, source integrity was verified, and the configured gate passed. Exit code 2 represents configured findings or required baseline and diff-budget failures.",
+          "Exit code 3 identifies invalid arguments, suite validation, or target setup. Exit code 4 means the run or export could not produce trustworthy complete evidence, including capture, completeness, source-integrity, output, or unexpected I/O failures."
+        ],
+        bullets: [
+          "Do not accept a new baseline to hide an internal or incomplete-run failure.",
+          "A missing or incompatible assigned baseline is a gate failure, not an untested state.",
+          "Retain the Editor log and diagnostic output for exit codes 3 and 4."
+        ]
+      },
+      {
+        id: "how-to-keep-pixel-comparisons-stable",
+        title: "How do you keep pixel comparisons stable across agents?",
+        paragraphs: [
+          "Pin the Unity patch, UI Breakpoint Lab version, render pipeline, color space, graphics API, operating-system image, and available fonts where practical. Pixel dimensions and color-space mismatches block numeric comparison.",
+          "The release contract is repeatability in the same environment. Identical pixels are not promised across different Unity versions, graphics APIs, operating systems, render pipelines, fonts, or color spaces."
+        ],
+        bullets: [
+          "Use ignored regions only for small, understood, intentionally variable areas.",
+          "Update only accepted profile and text-pass entries when a visual change is intentional.",
+          "Keep the portable HTML beside its complete sibling-assets folder."
+        ]
+      }
+    ]
+  }
+});
+
 function filePathFromSitePath(sitePath) {
   const cleaned = sitePath.replace(/^\/+/, "");
   return path.join(rootDir, cleaned, "index.html");
@@ -1386,16 +1579,16 @@ function renderHubPage() {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Unity Release Workflows | Bjorvand Solutions</title>
-  <meta name="description" content="Practical guides for catching build, asset, refactor, and compliance problems before they hit release.">
+  <meta name="description" content="Practical guides for catching build, asset, refactor, UI layout, and compliance problems before they hit release.">
   <meta name="author" content="${htmlEscape(catalog.author.name)}">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Unity Release Workflows | Bjorvand Solutions">
-  <meta property="og:description" content="Practical guides for catching build, asset, refactor, and compliance problems before they hit release.">
+  <meta property="og:description" content="Practical guides for catching build, asset, refactor, UI layout, and compliance problems before they hit release.">
   <meta property="og:url" content="${siteUrl}/articles/">
   <meta property="og:image" content="${absoluteUrl(authorImage)}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Unity Release Workflows | Bjorvand Solutions">
-  <meta name="twitter:description" content="Practical guides for catching build, asset, refactor, and compliance problems before they hit release.">
+  <meta name="twitter:description" content="Practical guides for catching build, asset, refactor, UI layout, and compliance problems before they hit release.">
   <meta name="twitter:image" content="${absoluteUrl(authorImage)}">
   <link rel="canonical" href="${siteUrl}/articles/">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
@@ -1423,8 +1616,8 @@ function renderHubPage() {
       <section class="articles-hero">
         <span class="badge">Articles</span>
         <h1>Unity Release Workflows</h1>
-        <p>Practical guides for catching build, asset, refactor, and compliance problems before they hit release.</p>
-        <p>Build size &middot; Shader variants &middot; Import settings &middot; Serialization &middot; Compliance</p>
+        <p>Practical guides for catching build, asset, refactor, UI layout, and compliance problems before they hit release.</p>
+        <p>Build size &middot; Shader variants &middot; Import settings &middot; Serialization &middot; UI layout &middot; Compliance</p>
         <div class="articles-summary-strip" aria-label="Article summary">
           <article>
             <strong>${catalog.articles.length} practical guides</strong>

@@ -1,0 +1,418 @@
+- generic [active] [ref=f3e1]:
+  - link "Skip to content" [ref=f3e2] [cursor=pointer]:
+    - /url: "#docContent"
+  - banner [ref=f3e3]:
+    - generic [ref=f3e4]:
+      - link "Bjorvand Solutions" [ref=f3e5] [cursor=pointer]:
+        - /url: /
+      - navigation "Primary" [ref=f3e8]:
+        - list [ref=f3e9]:
+          - listitem [ref=f3e10]:
+            - link "Home" [ref=f3e11] [cursor=pointer]:
+              - /url: /
+          - listitem [ref=f3e15]:
+            - link "Tools" [ref=f3e16] [cursor=pointer]:
+              - /url: /tools/
+          - listitem [ref=f3e19]:
+            - link "Games" [ref=f3e20] [cursor=pointer]:
+              - /url: /games/
+          - listitem [ref=f3e23]:
+            - link "Articles" [ref=f3e24] [cursor=pointer]:
+              - /url: /articles/
+          - listitem [ref=f3e27]:
+            - link "Support" [ref=f3e28] [cursor=pointer]:
+              - /url: /support/
+          - listitem
+          - listitem [ref=f3e36]:
+            - link "Smart Indie" [ref=f3e37] [cursor=pointer]:
+              - /url: https://smartindie.dev/
+      - generic "Language" [ref=f3e44]:
+        - link "English" [ref=f3e45] [cursor=pointer]:
+          - /url: /assets/ui-breakpoint-lab/docs/
+          - generic [ref=f3e47]: EN
+        - link "Norsk" [ref=f3e48] [cursor=pointer]:
+          - /url: /no/
+          - generic [ref=f3e50]: "NO"
+  - generic [ref=f3e51]:
+    - complementary "Documentation navigation" [ref=f3e52]:
+      - heading "Documentation" [level=2] [ref=f3e53]
+      - paragraph [ref=f3e54]: Version 1.0.0 workflows, requirements, and limits.
+      - generic [ref=f3e55]: Search
+      - searchbox "Search" [ref=f3e56]
+      - paragraph [ref=f3e57]: Showing 12 sections
+      - navigation [ref=f3e58]:
+        - link "Overview" [ref=f3e59] [cursor=pointer]:
+          - /url: "#overview"
+        - link "Requirements" [ref=f3e60] [cursor=pointer]:
+          - /url: "#requirements"
+        - link "Installation" [ref=f3e61] [cursor=pointer]:
+          - /url: "#installation"
+        - link "Quick Start" [ref=f3e62] [cursor=pointer]:
+          - /url: "#quick-start"
+        - link "Targets and Profiles" [ref=f3e63] [cursor=pointer]:
+          - /url: "#targets-and-profiles"
+        - link "Rules and Suppressions" [ref=f3e64] [cursor=pointer]:
+          - /url: "#rules-and-suppressions"
+        - link "Text Passes" [ref=f3e65] [cursor=pointer]:
+          - /url: "#text-passes"
+        - link "Baselines and Diffs" [ref=f3e66] [cursor=pointer]:
+          - /url: "#baselines-and-diffs"
+        - link "Reports" [ref=f3e67] [cursor=pointer]:
+          - /url: "#reports"
+        - link "Command Line and CI" [ref=f3e68] [cursor=pointer]:
+          - /url: "#command-line-and-ci"
+        - link "Limitations" [ref=f3e69] [cursor=pointer]:
+          - /url: "#limitations"
+        - link "Troubleshooting and Support" [ref=f3e70] [cursor=pointer]:
+          - /url: "#troubleshooting-and-support"
+    - main [ref=f3e71]:
+      - generic [ref=f3e72]:
+        - heading "UI Breakpoint Lab Documentation" [level=1] [ref=f3e73]
+        - paragraph [ref=f3e74]: UI Breakpoint Lab is a Unity Editor utility for repeatable UGUI layout checks and visual regression captures.
+        - paragraph [ref=f3e75]: It renders a selected scene Canvas or UI prefab against a saved matrix of viewport, orientation, safe-area, and text-expansion profiles, then presents screenshots and measured findings in one contact sheet.
+        - paragraph [ref=f3e76]: Every isolated capture is labeled as an approximation. It is layout-analysis evidence, not a substitute for a player build on physical hardware.
+        - paragraph [ref=f3e77]:
+          - link "Open UI Breakpoint Lab on the Unity Asset Store" [ref=f3e78] [cursor=pointer]:
+            - /url: https://assetstore.unity.com/packages/slug/392246
+          - text: .
+      - generic [ref=f3e80]:
+        - heading "1. Requirements and Compatibility" [level=2] [ref=f3e81]
+        - list [ref=f3e82]:
+          - listitem [ref=f3e83]:
+            - text: "Minimum Unity version:"
+            - code [ref=f3e84]: 2022.3.41f1
+            - text: .
+          - listitem [ref=f3e85]:
+            - text: "Release-tested editors:"
+            - code [ref=f3e86]: 2022.3.41f1
+            - text: ","
+            - code [ref=f3e87]: 6000.3.9f1
+            - text: ", and"
+            - code [ref=f3e88]: 6000.4.4f1
+            - text: .
+          - listitem [ref=f3e89]: UGUI is required.
+          - listitem [ref=f3e90]: Built-in Render Pipeline and Universal Render Pipeline are the release-tested paths.
+          - listitem [ref=f3e91]: TextMesh Pro is optional. TMP overflow checks and expansion passes are enabled when its public assembly is available.
+        - paragraph [ref=f3e92]:
+          - text: Other Scriptable Render Pipelines are conditional on accepting Unity's public standard camera render request. Unity versions older than
+          - code [ref=f3e93]: 2022.3.41f1
+          - text: are unsupported.
+      - generic [ref=f3e94]:
+        - heading "2. Installation" [level=2] [ref=f3e95]
+        - list [ref=f3e96]:
+          - listitem [ref=f3e97]: Import the complete UI Breakpoint Lab package into the Unity project.
+          - listitem [ref=f3e98]:
+            - text: Keep the supplied folders and
+            - code [ref=f3e99]: .meta
+            - text: files together.
+          - listitem [ref=f3e100]: Wait for compilation to finish and resolve the first Console error if Unity reports one.
+          - listitem [ref=f3e101]:
+            - text: Open the tool from
+            - strong [ref=f3e102]: Tools > UI Breakpoint Lab
+            - text: .
+        - paragraph [ref=f3e103]: If the menu item is missing, confirm the minimum Editor version, UGUI installation, complete import, and project compilation state.
+      - generic [ref=f3e104]:
+        - heading "3. Five-Minute Quick Start" [level=2] [ref=f3e105]
+        - list [ref=f3e106]:
+          - listitem [ref=f3e107]: Open a scene containing a UGUI Canvas, or select a UI prefab.
+          - listitem [ref=f3e108]:
+            - text: Open
+            - strong [ref=f3e109]: Tools > UI Breakpoint Lab
+            - text: .
+          - listitem [ref=f3e110]: Choose the active scene, a Canvas, or the prefab as the target.
+          - listitem [ref=f3e111]:
+            - text: Select
+            - strong [ref=f3e112]: Mobile Essentials
+            - text: .
+          - listitem [ref=f3e113]:
+            - text: Keep the text passes you want to inspect and select
+            - strong [ref=f3e114]: Run Matrix
+            - text: .
+          - listitem [ref=f3e115]: Filter the contact sheet to warnings or failures and open a finding.
+          - listitem [ref=f3e116]: Save the configuration as a suite. After review, capture the completed run as a baseline.
+        - paragraph [ref=f3e117]: Baseline capture accepts the current images as regression references. It does not mean every warning is resolved; rule severity and reasoned suppressions remain the suite's policy.
+      - generic [ref=f3e118]:
+        - heading "4. Targets and Profiles" [level=2] [ref=f3e119]
+        - heading "Supported targets" [level=3] [ref=f3e120]
+        - list [ref=f3e121]:
+          - listitem [ref=f3e122]: Root Canvases in the active or selected scene.
+          - listitem [ref=f3e123]: One Canvas in an open scene.
+          - listitem [ref=f3e124]: One isolated UI prefab.
+        - paragraph [ref=f3e125]:
+          - text: An unloaded scene can be opened additively long enough to clone its root Canvases, then closed without saving. Unity can still invoke project
+          - code [ref=f3e126]: ExecuteAlways
+          - text: code during scene loading.
+        - heading "Profiles" [level=3] [ref=f3e127]
+        - paragraph [ref=f3e128]: Built-in profiles cover generic phone, tablet, desktop, ultrawide, and console-safe-area layouts. Custom profiles store pixel dimensions, DPI metadata, pixels per point, orientation, and a bottom-left-origin safe rectangle.
+        - paragraph [ref=f3e129]: The source target is cloned into a preview scene. Source scenes and prefabs are not edited by analysis or text transformation.
+      - generic [ref=f3e130]:
+        - heading "5. Rules and Suppressions" [level=2] [ref=f3e131]
+        - paragraph [ref=f3e132]: "Version 1 includes six versioned layout rules with measured evidence:"
+        - list [ref=f3e133]:
+          - listitem [ref=f3e134]:
+            - code [ref=f3e135]: UBL001
+            - text: Viewport Overflow.
+          - listitem [ref=f3e136]:
+            - code [ref=f3e137]: UBL002
+            - text: Parent Clipping.
+          - listitem [ref=f3e138]:
+            - code [ref=f3e139]: UBL003
+            - text: Safe-Area Violation.
+          - listitem [ref=f3e140]:
+            - code [ref=f3e141]: UBL004
+            - text: Text Overflow.
+          - listitem [ref=f3e142]:
+            - code [ref=f3e143]: UBL005
+            - text: Overlap heuristic.
+          - listitem [ref=f3e144]:
+            - code [ref=f3e145]: UBL006
+            - text: Touch-target checks.
+        - paragraph [ref=f3e146]: Suites can override severity per rule. Suppressions require a reason and can target an object, hierarchy, profile and suite combination, or the whole suite. Use the narrowest scope that expresses the intended design.
+        - paragraph [ref=f3e147]: Suppressed findings retain their evidence and suppression state in reports.
+      - generic [ref=f3e148]:
+        - heading "6. Text Expansion and Pseudolocalization" [level=2] [ref=f3e149]
+        - paragraph [ref=f3e150]: Available passes are Original, 120%, 150%, 200%, and deterministic ASCII pseudolocalization.
+        - list [ref=f3e151]:
+          - listitem [ref=f3e152]: Transformations run only on preview clones.
+          - listitem [ref=f3e153]: Rich-text tags and composite-format placeholders are preserved.
+          - listitem [ref=f3e154]:
+            - text: Static
+            - code [ref=f3e155]: UnityEngine.UI.Text
+            - text: is supported directly.
+          - listitem [ref=f3e156]: Public TMP text components are supported when TMP is available.
+          - listitem [ref=f3e157]: Custom text sources can use the shipped preview-text adapter.
+        - paragraph [ref=f3e158]: Unity Localization package integration and platform-font equivalence are not included in version 1.
+      - generic [ref=f3e159]:
+        - heading "7. Baselines and Visual Diffs" [level=2] [ref=f3e160]
+        - paragraph [ref=f3e161]: A baseline is an explicitly accepted set of PNG captures and versioned metadata. Baseline identity prevents unrelated profile, text, tool, or rendering environments from being treated as interchangeable.
+        - list [ref=f3e162]:
+          - listitem [ref=f3e163]: Compare side by side, with a wipe, or through a heatmap.
+          - listitem [ref=f3e164]: Configure integer RGBA tolerance from 0 through 255.
+          - listitem [ref=f3e165]: Use small ignored regions only for understood, intentionally variable content.
+          - listitem [ref=f3e166]: Update one accepted profile and text-pass entry, or separately confirm a complete baseline replacement.
+        - paragraph [ref=f3e167]: Pixel-dimension and color-space mismatches block numeric comparison. Unity-version, render-pipeline, and graphics-API differences produce prominent compatibility warnings.
+      - generic [ref=f3e168]:
+        - heading "8. Reports and Annotations" [level=2] [ref=f3e169]
+        - paragraph [ref=f3e170]: In-Editor reports are versioned ScriptableObject assets containing captures, findings, environment metadata, annotations, progress outcome, and approximation warnings.
+        - paragraph [ref=f3e171]: Reports can be exported as JSON schema version 1 or portable HTML. Keep the HTML file beside its complete sibling-assets folder so screenshot references remain valid.
+        - paragraph [ref=f3e172]: Each finding records its rule and version, evidence type, effective severity, measured values, top-left-origin screenshot coordinates, stable source identity, and suppression state.
+      - generic [ref=f3e173]:
+        - heading "9. Command Line and CI" [level=2] [ref=f3e174]
+        - paragraph [ref=f3e175]: The command-line runner executes the same suite, profiles, rules, severity policy, suppressions, baselines, diff algorithm, and exporters as the Editor window.
+        - generic [ref=f3e176]:
+          - code [ref=f3e178]: Unity.exe -batchmode -projectPath "C:\work\MyGame" ^ -executeMethod KevinBjorvand.UIBreakpointLab.UIBreakpointCli.Run ^ -ublSuite "Assets/UI Tests/Main Menu.asset" ^ -ublOutput "C:\work\artifacts\ui-breakpoint-lab" ^ -logFile "C:\work\artifacts\ui-breakpoint-lab.log"
+          - button "Copy code" [ref=f3e179]:
+            - generic [ref=f3e183]: Copy
+        - paragraph [ref=f3e184]:
+          - text: Screenshot capture requires graphics. Do not use
+          - code [ref=f3e185]: "-nographics"
+          - text: . The suite target must be a saved scene, persistent Canvas reference, or prefab; dynamic Active Scene targets are rejected in batch mode.
+        - heading "Exit codes" [level=3] [ref=f3e186]
+        - list [ref=f3e187]:
+          - listitem [ref=f3e188]:
+            - code [ref=f3e189]: "0"
+            - text: ": complete matrix, verified source integrity, configured gate passed."
+          - listitem [ref=f3e190]:
+            - code [ref=f3e191]: "2"
+            - text: ": configured finding, required comparison, or diff-budget failure."
+          - listitem [ref=f3e192]:
+            - code [ref=f3e193]: "3"
+            - text: ": invalid arguments, suite path, suite validation, or target."
+          - listitem [ref=f3e194]:
+            - code [ref=f3e195]: "4"
+            - text: ": the run or export could not produce trustworthy complete evidence."
+        - paragraph [ref=f3e196]:
+          - text: Add
+          - code [ref=f3e197]: "-ublFailOnWarnings"
+          - text: when configured warnings should also fail the gate. Archive the complete output directory and Editor log.
+      - generic [ref=f3e198]:
+        - heading "10. Accuracy and Version 1 Limits" [level=2] [ref=f3e199]
+        - paragraph [ref=f3e200]: UI Breakpoint Lab uses documented public Unity APIs and does not reflect into Game view or Device Simulator internals.
+        - paragraph [ref=f3e201]:
+          - text: Public Editor APIs cannot replace
+          - code [ref=f3e202]: Screen.width
+          - text: ","
+          - code [ref=f3e203]: Screen.height
+          - text: ","
+          - code [ref=f3e204]: Screen.safeArea
+          - text: ","
+          - code [ref=f3e205]: Screen.dpi
+          - text: ", runtime orientation, or device services. Preview-aware project code can use the shipped preview context and safe-area adapter."
+        - paragraph [ref=f3e206]: Version 1 does not include UI Toolkit validation, XR or custom render-texture UI, physical-device rendering, performance simulation, exact platform-font rendering, automatic gameplay navigation, automatic layout rewriting, or Unity Localization package integration.
+      - generic [ref=f3e207]:
+        - heading "11. Troubleshooting and Support" [level=2] [ref=f3e208]
+        - heading "Blank or missing CI screenshots" [level=3] [ref=f3e209]
+        - paragraph [ref=f3e210]:
+          - text: Remove
+          - code [ref=f3e211]: "-nographics"
+          - text: ", confirm the agent has a usable graphics environment, and confirm the active pipeline accepts the public render request."
+        - heading "Repeated captures differ" [level=3] [ref=f3e212]
+        - paragraph [ref=f3e213]: Check the Unity version, pipeline, color space, graphics API, fonts, animation, generated assets, and time-, random-, network-, or device-dependent preview content.
+        - heading "Project code ignores the simulated safe area" [level=3] [ref=f3e214]
+        - paragraph [ref=f3e215]:
+          - text: Code that reads
+          - code [ref=f3e216]: Screen.safeArea
+          - text: directly receives the Editor value. Use the preview context or safe-area adapter for opt-in preview behavior.
+        - heading "Source scene or prefab becomes dirty" [level=3] [ref=f3e217]
+        - paragraph [ref=f3e218]: Do not save the unexpected changes. Cancel the run, preserve the target, phase, Editor log, and version-control diff, and report it as a defect.
+        - paragraph [ref=f3e219]:
+          - link "Contact support" [ref=f3e220] [cursor=pointer]:
+            - /url: /support/
+          - text: ", review the"
+          - link "license" [ref=f3e221] [cursor=pointer]:
+            - /url: /assets/ui-breakpoint-lab/license/
+          - text: ", or browse the"
+          - link "UI Breakpoint Lab articles" [ref=f3e222] [cursor=pointer]:
+            - /url: /articles/?tool=ui-breakpoint-lab
+          - text: .
+  - contentinfo [ref=f3e223]:
+    - generic [ref=f3e224]:
+      - generic [ref=f3e225]:
+        - generic [ref=f3e226]:
+          - heading "Explore" [level=2] [ref=f3e227]
+          - list [ref=f3e228]:
+            - listitem [ref=f3e229]:
+              - link "Home" [ref=f3e230] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=f3e231]:
+              - link "Tools" [ref=f3e232] [cursor=pointer]:
+                - /url: /tools/
+            - listitem [ref=f3e233]:
+              - link "Games" [ref=f3e234] [cursor=pointer]:
+                - /url: /games/
+            - listitem [ref=f3e235]:
+              - link "Articles" [ref=f3e236] [cursor=pointer]:
+                - /url: /articles/
+            - listitem [ref=f3e237]:
+              - link "YouTube Thumbnail Preview" [ref=f3e238] [cursor=pointer]:
+                - /url: /youtube-thumbnail-preview/
+            - listitem [ref=f3e239]:
+              - link "Smart Indie" [ref=f3e240] [cursor=pointer]:
+                - /url: https://smartindie.dev/
+            - listitem [ref=f3e244]:
+              - link "BilagPilot" [ref=f3e245] [cursor=pointer]:
+                - /url: https://bilagpilot.no/
+            - listitem [ref=f3e249]:
+              - link "Support" [ref=f3e250] [cursor=pointer]:
+                - /url: /support/
+        - generic [ref=f3e251]:
+          - heading "Tool Docs" [level=2] [ref=f3e252]
+          - list [ref=f3e253]:
+            - listitem [ref=f3e254]:
+              - link "Build Size Guard" [ref=f3e255] [cursor=pointer]:
+                - /url: /assets/build-size-guard/docs/
+            - listitem [ref=f3e256]:
+              - link "Shader Variant Budget & CI Guard" [ref=f3e257] [cursor=pointer]:
+                - /url: /assets/shader-variant-budget-ci-guard/docs/
+            - listitem [ref=f3e258]:
+              - link "Serialization Migration Guard" [ref=f3e259] [cursor=pointer]:
+                - /url: /assets/unity-serialization-migration-guard/docs/
+            - listitem [ref=f3e260]:
+              - link "IL2CPP Strip Guard" [ref=f3e261] [cursor=pointer]:
+                - /url: /assets/il2cpp-strip-guard/docs/
+            - listitem [ref=f3e262]:
+              - link "Inspector Event Link Doctor" [ref=f3e263] [cursor=pointer]:
+                - /url: /assets/inspector-event-link-doctor/docs/
+            - listitem [ref=f3e264]:
+              - link "Fast Play Mode Watcher" [ref=f3e265] [cursor=pointer]:
+                - /url: /assets/fast-play-mode-safety-guard/docs/
+            - listitem [ref=f3e266]:
+              - link "Import Settings Validator & Fix" [ref=f3e267] [cursor=pointer]:
+                - /url: /assets/import-settings-validator-fix/docs/
+            - listitem [ref=f3e268]:
+              - link "Compliance Exporter" [ref=f3e269] [cursor=pointer]:
+                - /url: /assets/compliance/docs/
+            - listitem [ref=f3e270]:
+              - link "UI Breakpoint Lab" [ref=f3e271] [cursor=pointer]:
+                - /url: /assets/ui-breakpoint-lab/docs/
+        - generic [ref=f3e272]:
+          - heading "Asset Store" [level=2] [ref=f3e273]
+          - list [ref=f3e274]:
+            - listitem [ref=f3e275]:
+              - link "Build Size Guard" [ref=f3e276] [cursor=pointer]:
+                - /url: https://assetstore.unity.com/packages/slug/361332
+            - listitem [ref=f3e278]:
+              - link "Shader Variant Budget & CI Guard" [ref=f3e279] [cursor=pointer]:
+                - /url: https://u3d.as/3SYC
+            - listitem [ref=f3e281]:
+              - link "Serialization Migration Guard" [ref=f3e282] [cursor=pointer]:
+                - /url: https://u3d.as/3Sae
+            - listitem [ref=f3e284]:
+              - link "Import Settings Validator & Fix" [ref=f3e285] [cursor=pointer]:
+                - /url: https://assetstore.unity.com/packages/slug/362308
+            - listitem [ref=f3e287]:
+              - link "Compliance Exporter" [ref=f3e288] [cursor=pointer]:
+                - /url: https://u3d.as/3PWR
+            - listitem [ref=f3e290]:
+              - link "UI Breakpoint Lab" [ref=f3e291] [cursor=pointer]:
+                - /url: https://assetstore.unity.com/packages/slug/392246
+        - generic [ref=f3e293]:
+          - heading "Licenses" [level=2] [ref=f3e294]
+          - list [ref=f3e295]:
+            - listitem [ref=f3e296]:
+              - link "Build Size Guard" [ref=f3e297] [cursor=pointer]:
+                - /url: /assets/build-size-guard/license/
+            - listitem [ref=f3e298]:
+              - link "Shader Variant Budget & CI Guard" [ref=f3e299] [cursor=pointer]:
+                - /url: /assets/shader-variant-budget-ci-guard/license/
+            - listitem [ref=f3e300]:
+              - link "Serialization Migration Guard" [ref=f3e301] [cursor=pointer]:
+                - /url: /assets/unity-serialization-migration-guard/license/
+            - listitem [ref=f3e302]:
+              - link "IL2CPP Strip Guard" [ref=f3e303] [cursor=pointer]:
+                - /url: /assets/il2cpp-strip-guard/license/
+            - listitem [ref=f3e304]:
+              - link "Inspector Event Link Doctor" [ref=f3e305] [cursor=pointer]:
+                - /url: /assets/inspector-event-link-doctor/license/
+            - listitem [ref=f3e306]:
+              - link "Fast Play Mode Watcher" [ref=f3e307] [cursor=pointer]:
+                - /url: /assets/fast-play-mode-safety-guard/license/
+            - listitem [ref=f3e308]:
+              - link "Import Settings Validator & Fix" [ref=f3e309] [cursor=pointer]:
+                - /url: /assets/import-settings-validator-fix/license/
+            - listitem [ref=f3e310]:
+              - link "Compliance Exporter" [ref=f3e311] [cursor=pointer]:
+                - /url: /assets/compliance/license/
+            - listitem [ref=f3e312]:
+              - link "UI Breakpoint Lab" [ref=f3e313] [cursor=pointer]:
+                - /url: /assets/ui-breakpoint-lab/license/
+        - generic [ref=f3e314]:
+          - heading "Game Links" [level=2] [ref=f3e315]
+          - list [ref=f3e316]:
+            - listitem [ref=f3e317]:
+              - link "Games Directory" [ref=f3e318] [cursor=pointer]:
+                - /url: /games/
+            - listitem [ref=f3e319]:
+              - link "Dopamine Machine Play" [ref=f3e320] [cursor=pointer]:
+                - /url: /dopamine/
+            - listitem [ref=f3e321]:
+              - link "Forbidden Buttons on Steam" [ref=f3e322] [cursor=pointer]:
+                - /url: https://store.steampowered.com/app/4540560/Forbidden_buttons
+            - listitem [ref=f3e326]:
+              - link "Orbital Chaos on Google Play" [ref=f3e327] [cursor=pointer]:
+                - /url: https://play.google.com/store/apps/details?id=com.kevinbjorvand.orbitalchaos
+            - listitem [ref=f3e329]:
+              - link "Orbital Chaos on App Store" [ref=f3e330] [cursor=pointer]:
+                - /url: https://apps.apple.com/us/app/orbital-chaos/id6754812237
+            - listitem [ref=f3e332]:
+              - link "NeonSurge 2 on itch.io" [ref=f3e333] [cursor=pointer]:
+                - /url: https://kevindevelopment.itch.io/neonsurge-2
+            - listitem [ref=f3e335]:
+              - link "NeonSurge on itch.io" [ref=f3e336] [cursor=pointer]:
+                - /url: https://kevindevelopment.itch.io/neonsurge
+            - listitem [ref=f3e338]:
+              - link "Smart Indie Games" [ref=f3e339] [cursor=pointer]:
+                - /url: https://smartindie.dev/games/
+        - generic [ref=f3e343]:
+          - heading "Support" [level=2] [ref=f3e344]
+          - list [ref=f3e345]:
+            - listitem [ref=f3e346]:
+              - link "Support Form" [ref=f3e347] [cursor=pointer]:
+                - /url: /support/
+            - listitem [ref=f3e348]:
+              - link "Documentation" [ref=f3e349] [cursor=pointer]:
+                - /url: /support/#docs-shortcuts-title
+            - listitem [ref=f3e350]:
+              - link "Support FAQ" [ref=f3e351] [cursor=pointer]:
+                - /url: /support/#faq
+      - generic [ref=f3e352]: "© Bjorvand Solutions 2026 • Company registration number: 836 135 652 (Norway)"

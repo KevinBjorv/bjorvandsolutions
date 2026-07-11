@@ -1,0 +1,496 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "Bjorvand Solutions" [ref=e4] [cursor=pointer]:
+        - /url: /
+      - navigation "Primary" [ref=e7]:
+        - list [ref=e8]:
+          - listitem [ref=e9]:
+            - link "Home" [ref=e10] [cursor=pointer]:
+              - /url: /
+          - listitem [ref=e11]:
+            - link "Tools" [ref=e12] [cursor=pointer]:
+              - /url: /tools/
+          - listitem [ref=e13]:
+            - link "Games" [ref=e14] [cursor=pointer]:
+              - /url: /games/
+          - listitem [ref=e15]:
+            - link "Articles" [ref=e16] [cursor=pointer]:
+              - /url: /articles/
+          - listitem [ref=e17]:
+            - link "Support" [ref=e18] [cursor=pointer]:
+              - /url: /support/
+          - listitem [ref=e19]:
+            - link [ref=e20] [cursor=pointer]:
+              - /url: https://bilagpilot.no/
+              - text: BilagPilot
+              - img "External link" [ref=e21]
+          - listitem [ref=e22]:
+            - link [ref=e23] [cursor=pointer]:
+              - /url: https://smartindie.dev/
+              - text: Smart Indie
+              - img "External link" [ref=e24]
+      - generic "Language" [ref=e26]:
+        - link "English" [ref=e27] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e29]: EN
+        - link "Norsk" [ref=e30] [cursor=pointer]:
+          - /url: /no/
+          - generic [ref=e32]: "NO"
+  - main [ref=e33]:
+    - generic [ref=e35]:
+      - generic [ref=e36]: Bjorvand Solutions
+      - heading "Unity tools, shipped games, and a clear path to finish your first game." [level=1] [ref=e37]
+      - paragraph [ref=e38]: Bjorvand Solutions builds practical Unity editor tools, original games, and Smart Indie, a structured system for beginners who want to stop collecting tutorials and release their first real game.
+      - paragraph [ref=e39]: Unity tools · Released games · Beginner game-dev education
+      - generic [ref=e40]:
+        - generic [ref=e41]:
+          - link "Browse Unity Tools" [ref=e42] [cursor=pointer]:
+            - /url: /tools/
+          - paragraph [ref=e43]: Find tools for build, asset, and release control.
+        - generic [ref=e44]:
+          - link [ref=e45] [cursor=pointer]:
+            - /url: https://smartindie.dev/
+            - text: Start Smart Indie
+            - img "External link" [ref=e46]
+          - paragraph [ref=e47]: Follow the path to your first released game.
+    - region [ref=e48]:
+      - generic [ref=e49]:
+        - heading "Used by Unity developers shipping real projects" [level=2] [ref=e50]
+        - paragraph [ref=e51]: Selected Unity Asset Store feedback.
+      - generic [ref=e52]:
+        - figure "Unity Asset Store review for Import Settings Validator & Fix, May 23, 2026" [ref=e53]:
+          - generic "5 out of 5 stars" [ref=e54]: ★★★★★
+          - blockquote [ref=e55]:
+            - paragraph [ref=e56]:
+              - strong [ref=e57]: Really Good
+              - text: If you've ever shipped a build and realized half your textures were uncompressed or your audio was set to Decompress on Load across the board, this tool is for you. You define your import rules once using Unity's built-in Presets, point them at folder paths, and from that point on, every asset that comes in gets checked and corrected automatically. It's editor-only, lightweight, and does exactly what it promises.
+        - figure "Unity Asset Store review for Shader Variant Budget & CI Guard, May 19, 2026" [ref=e59]:
+          - generic "5 out of 5 stars" [ref=e60]: ★★★★★
+          - blockquote [ref=e61]:
+            - paragraph [ref=e62]:
+              - strong [ref=e63]: Nice asset for shader heavy projects
+              - text: Nive asset to have when you're dealing with large collections of shaders but want to keep the number of variants under control.
+        - figure "Unity Asset Store review for Import Settings Validator & Fix, May 8, 2026" [ref=e65]:
+          - generic "5 out of 5 stars" [ref=e66]: ★★★★★
+          - blockquote [ref=e67]:
+            - paragraph [ref=e68]:
+              - strong [ref=e69]: Intuitive and useful
+              - text: I found this tool very useful for keeping import settings consistent with a few clicks. Now I can save time and I don't have to manually check all the settings for all the textures, materials, models of my project. I recommend grabbing this tool for big projects. The developer is active and open for feedback, which is a big plus! Thanks to the creator of this tool :)
+        - figure "Unity Asset Store review for Shader Variant Budget & CI Guard, May 4, 2026" [ref=e71]:
+          - generic "5 out of 5 stars" [ref=e72]: ★★★★★
+          - blockquote [ref=e73]:
+            - paragraph [ref=e74]:
+              - strong [ref=e75]: "Great Asset (:"
+              - text: Interesting diagnostic tool was used it to inspect shaders in my Artistic VFX package - VolFX
+    - region [ref=e77]:
+      - heading "Choose your next bottleneck" [level=2] [ref=e79]
+      - generic [ref=e80]:
+        - article [ref=e81]:
+          - heading "Ship a cleaner Unity project" [level=3] [ref=e82]
+          - paragraph [ref=e83]: Catch build size growth, shader variant creep, import drift, serialization risks, broken callbacks, and release compliance issues before they become release problems.
+          - link "Browse Unity Tools" [ref=e85] [cursor=pointer]:
+            - /url: /tools/
+        - article [ref=e86]:
+          - heading "Finish your first real game" [level=3] [ref=e87]
+          - paragraph [ref=e88]: Smart Indie gives beginner developers a scoped 60-day path from basics to prototypes, planning, and release.
+          - link [ref=e90] [cursor=pointer]:
+            - /url: https://smartindie.dev/
+            - text: Start Smart Indie
+            - img "External link" [ref=e91]
+        - article [ref=e92]:
+          - heading "Already using a tool?" [level=3] [ref=e93]
+          - paragraph [ref=e94]: Find documentation, licenses, setup steps, and support in one place.
+          - link "Get Support" [ref=e96] [cursor=pointer]:
+            - /url: /support/
+    - region [ref=e97]:
+      - generic [ref=e98]:
+        - heading "Unity tools for release control" [level=2] [ref=e99]
+        - paragraph [ref=e100]: Small editor tools that make hidden project risks visible before they slow down a release.
+      - generic [ref=e101]:
+        - article [ref=e102]:
+          - generic [ref=e103]: Available
+          - heading "Build Size Guard" [level=3] [ref=e104]
+          - paragraph [ref=e105]: Catch build size spikes with snapshots, diff reports, and CI budget checks.
+          - list [ref=e106]:
+            - listitem [ref=e107]: Snapshot size tracking
+            - listitem [ref=e108]: Diff-based comparison
+            - listitem [ref=e109]: CI-friendly reporting
+          - generic [ref=e110]:
+            - link "Docs" [ref=e111] [cursor=pointer]:
+              - /url: /assets/build-size-guard/docs/
+            - link [ref=e112] [cursor=pointer]:
+              - /url: https://assetstore.unity.com/packages/slug/361332
+              - img "Unity icon" [ref=e113]
+              - text: Asset Store
+              - img "External link" [ref=e114]
+            - link "License" [ref=e115] [cursor=pointer]:
+              - /url: /assets/build-size-guard/license/
+        - article [ref=e116]:
+          - generic [ref=e117]: Available
+          - heading "Shader Variant Budget & CI Guard" [level=3] [ref=e118]
+          - paragraph [ref=e119]: Track shader variant growth from Editor.log and enforce variant budgets.
+          - list [ref=e120]:
+            - listitem [ref=e121]: Editor.log snapshot capture
+            - listitem [ref=e122]: Baseline versus current diffing
+            - listitem [ref=e123]: Budget enforcement in CI
+          - generic [ref=e124]:
+            - link "Docs" [ref=e125] [cursor=pointer]:
+              - /url: /assets/shader-variant-budget-ci-guard/docs/
+            - link [ref=e126] [cursor=pointer]:
+              - /url: https://u3d.as/3SYC
+              - img "Unity icon" [ref=e127]
+              - text: Asset Store
+              - img "External link" [ref=e128]
+            - link "License" [ref=e129] [cursor=pointer]:
+              - /url: /assets/shader-variant-budget-ci-guard/license/
+        - article [ref=e130]:
+          - generic [ref=e131]: Available
+          - heading "Serialization Migration Guard" [level=3] [ref=e132]
+          - paragraph [ref=e133]: Audit renamed serialized fields before old mappings are removed.
+          - list [ref=e134]:
+            - listitem [ref=e135]: Audit mappings for risk level and resolution issues
+            - listitem [ref=e136]: Scan scenes, prefabs, and ScriptableObjects for legacy tokens
+            - listitem [ref=e137]: Run batchmode audit, coverage, and cleanup checks
+          - generic [ref=e138]:
+            - link "Docs" [ref=e139] [cursor=pointer]:
+              - /url: /assets/unity-serialization-migration-guard/docs/
+            - link [ref=e140] [cursor=pointer]:
+              - /url: https://u3d.as/3Sae
+              - img "Unity icon" [ref=e141]
+              - text: Asset Store
+              - img "External link" [ref=e142]
+            - link "License" [ref=e143] [cursor=pointer]:
+              - /url: /assets/unity-serialization-migration-guard/license/
+        - article [ref=e144]:
+          - generic [ref=e145]: Available
+          - heading "Import Settings Validator & Fix" [level=3] [ref=e146]
+          - paragraph [ref=e147]: Validate texture, audio, and model import settings against project rules.
+          - list [ref=e148]:
+            - listitem [ref=e149]: Rule presets
+            - listitem [ref=e150]: Import scans
+            - listitem [ref=e151]: Optional fixes
+          - generic [ref=e152]:
+            - link "Docs" [ref=e153] [cursor=pointer]:
+              - /url: /assets/import-settings-validator-fix/docs/
+            - link [ref=e154] [cursor=pointer]:
+              - /url: https://assetstore.unity.com/packages/slug/362308
+              - img "Unity icon" [ref=e155]
+              - text: Asset Store
+              - img "External link" [ref=e156]
+            - link "License" [ref=e157] [cursor=pointer]:
+              - /url: /assets/import-settings-validator-fix/license/
+        - article [ref=e158]:
+          - generic [ref=e159]: Available
+          - heading "Compliance Exporter" [level=3] [ref=e160]
+          - paragraph [ref=e161]: Generate third-party notices, credits, and compliance files from project evidence.
+          - list [ref=e162]:
+            - listitem [ref=e163]: THIRD_PARTY_NOTICES.txt
+            - listitem [ref=e164]: CREDITS.md
+            - listitem [ref=e165]: Compliance manifest
+          - generic [ref=e166]:
+            - link "Docs" [ref=e167] [cursor=pointer]:
+              - /url: /assets/compliance/docs/
+            - link [ref=e168] [cursor=pointer]:
+              - /url: https://u3d.as/3PWR
+              - img "Unity icon" [ref=e169]
+              - text: Asset Store
+              - img "External link" [ref=e170]
+            - link "License" [ref=e171] [cursor=pointer]:
+              - /url: /assets/compliance/license/
+        - article [ref=e172]:
+          - generic [ref=e173]: Docs only
+          - heading "IL2CPP Strip Guard" [level=3] [ref=e174]
+          - paragraph [ref=e175]: Preview IL2CPP stripping risks before platform builds expose them.
+          - list [ref=e176]:
+            - listitem [ref=e177]: Reflection risk scan
+            - listitem [ref=e178]: Preserve coverage review
+            - listitem [ref=e179]: link.xml suggestions
+          - generic [ref=e180]:
+            - link "Docs" [ref=e181] [cursor=pointer]:
+              - /url: /assets/il2cpp-strip-guard/docs/
+            - link "License" [ref=e182] [cursor=pointer]:
+              - /url: /assets/il2cpp-strip-guard/license/
+        - article [ref=e183]:
+          - generic [ref=e184]: Docs only
+          - heading "Inspector Event Link Doctor" [level=3] [ref=e185]
+          - paragraph [ref=e186]: Find broken UnityEvent, Button, callback, and Animation Event references.
+          - list [ref=e187]:
+            - listitem [ref=e188]: Callback scans
+            - listitem [ref=e189]: Broken-link reports
+            - listitem [ref=e190]: Fix guidance
+          - generic [ref=e191]:
+            - link "Docs" [ref=e192] [cursor=pointer]:
+              - /url: /assets/inspector-event-link-doctor/docs/
+            - link "License" [ref=e193] [cursor=pointer]:
+              - /url: /assets/inspector-event-link-doctor/license/
+        - article [ref=e194]:
+          - generic [ref=e195]: Docs only
+          - heading "Fast Play Mode Watcher" [level=3] [ref=e196]
+          - paragraph [ref=e197]: Check static-state risks before disabling Domain Reload.
+          - list [ref=e198]:
+            - listitem [ref=e199]: Static-state scan
+            - listitem [ref=e200]: Reset coverage report
+            - listitem [ref=e201]: Play Mode checklist
+          - generic [ref=e202]:
+            - link "Docs" [ref=e203] [cursor=pointer]:
+              - /url: /assets/fast-play-mode-safety-guard/docs/
+            - link "License" [ref=e204] [cursor=pointer]:
+              - /url: /assets/fast-play-mode-safety-guard/license/
+    - region [ref=e205]:
+      - generic [ref=e206]:
+        - generic [ref=e207]:
+          - heading "Stop watching tutorials. Ship your first game." [level=2] [ref=e208]
+          - paragraph [ref=e209]: Smart Indie is a 60-day system for beginner game developers who feel overwhelmed, keep restarting, or do not know what to build next.
+          - paragraph [ref=e210]: You get a clear path from basics to small prototypes, then a scoped first game you can actually finish and release.
+        - generic [ref=e211]:
+          - link [ref=e212] [cursor=pointer]:
+            - /url: https://smartindie.dev/
+            - text: Start Smart Indie
+            - img "External link" [ref=e213]
+          - paragraph [ref=e214]: See what is inside →
+    - region [ref=e215]:
+      - generic [ref=e216]:
+        - heading "Recognized inside Educational Content Creators" [level=2] [ref=e217]
+        - paragraph [ref=e218]: Kevin was named Community Member of the Week for contribution and initiative.
+      - article [ref=e219]:
+        - generic [ref=e220]:
+          - img "Hamza Ahmed profile photo" [ref=e221]
+          - generic [ref=e222]:
+            - paragraph [ref=e223]: Community Member of the Week
+            - heading "Hamza Ahmed recognized Kevin Bjorvand" [level=3] [ref=e224]
+        - blockquote [ref=e225]:
+          - paragraph [ref=e226]: "\"Kevin has been so active in the community replying to so many posts, giving feedback, recording whole videos of him roasting comments and he's just helping us for free which is just so generous.\""
+          - generic [ref=e227]: Hamza Ahmed
+        - link "View proof screenshot" [ref=e228] [cursor=pointer]:
+          - /url: /assets/images/Creator/community-member-of-the-week-proof.png
+    - region [ref=e229]:
+      - generic [ref=e230]:
+        - heading "Games by Bjorvand Solutions" [level=2] [ref=e231]
+        - paragraph [ref=e232]: Original games, mobile releases, browser games, and prototypes from Kevin Bjorvand.
+      - generic [ref=e233]:
+        - article [ref=e234]:
+          - heading "Forbidden Buttons" [level=3] [ref=e235]
+          - paragraph [ref=e236]: A bright first-person puzzle game where each room revolves around pressing the one button you absolutely should not press.
+          - link [ref=e238] [cursor=pointer]:
+            - /url: https://store.steampowered.com/app/4540560/Forbidden_buttons
+            - text: Wishlist on Steam
+            - img "External link" [ref=e239]
+        - article [ref=e240]:
+          - heading "Orbital Chaos" [level=3] [ref=e241]
+          - paragraph [ref=e242]: A released mobile game with official store listings.
+          - generic [ref=e243]:
+            - link [ref=e244] [cursor=pointer]:
+              - /url: https://play.google.com/store/apps/details?id=com.kevinbjorvand.orbitalchaos
+              - img "Google Play icon" [ref=e245]
+              - text: Google Play
+            - link [ref=e246] [cursor=pointer]:
+              - /url: https://apps.apple.com/us/app/orbital-chaos/id6754812237
+              - img "App Store icon" [ref=e247]
+              - text: App Store
+        - article [ref=e248]:
+          - heading "NeonSurge 2" [level=3] [ref=e249]
+          - paragraph [ref=e250]: The sequel to NeonSurge, built as a focused arcade score experience.
+          - link [ref=e252] [cursor=pointer]:
+            - /url: https://kevindevelopment.itch.io/neonsurge-2
+            - img "itch.io icon" [ref=e253]
+            - text: Open on itch.io
+        - article [ref=e254]:
+          - heading "NeonSurge" [level=3] [ref=e255]
+          - paragraph [ref=e256]: The original NeonSurge release on itch.io.
+          - link [ref=e258] [cursor=pointer]:
+            - /url: https://kevindevelopment.itch.io/neonsurge
+            - img "itch.io icon" [ref=e259]
+            - text: Open on itch.io
+    - region [ref=e260]:
+      - generic [ref=e261]:
+        - generic [ref=e262]:
+          - heading "Support and Documentation" [level=2] [ref=e263]
+          - paragraph [ref=e264]: Use the support hub for product documentation, license details, and direct inquiries.
+          - paragraph [ref=e265]: Requests are routed based on topic so you get the right answer without delay.
+        - generic [ref=e266]:
+          - link "Open Support" [ref=e267] [cursor=pointer]:
+            - /url: /support/
+          - paragraph [ref=e268]: Docs, licensing, and contact →
+    - generic [ref=e270]:
+      - heading "Start where your current bottleneck is." [level=2] [ref=e272]
+      - generic [ref=e273]:
+        - link "Browse Unity Tools" [ref=e274] [cursor=pointer]:
+          - /url: /tools/
+        - link [ref=e275] [cursor=pointer]:
+          - /url: https://smartindie.dev/
+          - text: Go to Smart Indie
+          - img "External link" [ref=e276]
+  - contentinfo [ref=e277]:
+    - generic [ref=e278]:
+      - generic [ref=e279]:
+        - generic [ref=e280]:
+          - heading "Explore" [level=2] [ref=e281]
+          - list [ref=e282]:
+            - listitem [ref=e283]:
+              - link "Home" [ref=e284] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=e285]:
+              - link "Tools" [ref=e286] [cursor=pointer]:
+                - /url: /tools/
+            - listitem [ref=e287]:
+              - link "Games" [ref=e288] [cursor=pointer]:
+                - /url: /games/
+            - listitem [ref=e289]:
+              - link "Articles" [ref=e290] [cursor=pointer]:
+                - /url: /articles/
+            - listitem [ref=e291]:
+              - link "YouTube Thumbnail Preview" [ref=e292] [cursor=pointer]:
+                - /url: /youtube-thumbnail-preview/
+            - listitem [ref=e293]:
+              - link [ref=e294] [cursor=pointer]:
+                - /url: https://smartindie.dev/
+                - text: Smart Indie
+                - img "External link" [ref=e295]
+            - listitem [ref=e296]:
+              - link [ref=e297] [cursor=pointer]:
+                - /url: https://bilagpilot.no/
+                - text: BilagPilot
+                - img "External link" [ref=e298]
+            - listitem [ref=e299]:
+              - link "Support" [ref=e300] [cursor=pointer]:
+                - /url: /support/
+        - generic [ref=e301]:
+          - heading "Tool Docs" [level=2] [ref=e302]
+          - list [ref=e303]:
+            - listitem [ref=e304]:
+              - link "Build Size Guard" [ref=e305] [cursor=pointer]:
+                - /url: /assets/build-size-guard/docs/
+            - listitem [ref=e306]:
+              - link "Shader Variant Budget & CI Guard" [ref=e307] [cursor=pointer]:
+                - /url: /assets/shader-variant-budget-ci-guard/docs/
+            - listitem [ref=e308]:
+              - link "Serialization Migration Guard" [ref=e309] [cursor=pointer]:
+                - /url: /assets/unity-serialization-migration-guard/docs/
+            - listitem [ref=e310]:
+              - link "IL2CPP Strip Guard" [ref=e311] [cursor=pointer]:
+                - /url: /assets/il2cpp-strip-guard/docs/
+            - listitem [ref=e312]:
+              - link "Inspector Event Link Doctor" [ref=e313] [cursor=pointer]:
+                - /url: /assets/inspector-event-link-doctor/docs/
+            - listitem [ref=e314]:
+              - link "Fast Play Mode Watcher" [ref=e315] [cursor=pointer]:
+                - /url: /assets/fast-play-mode-safety-guard/docs/
+            - listitem [ref=e316]:
+              - link "Import Settings Validator & Fix" [ref=e317] [cursor=pointer]:
+                - /url: /assets/import-settings-validator-fix/docs/
+            - listitem [ref=e318]:
+              - link "Compliance Exporter" [ref=e319] [cursor=pointer]:
+                - /url: /assets/compliance/docs/
+        - generic [ref=e320]:
+          - heading "Asset Store" [level=2] [ref=e321]
+          - list [ref=e322]:
+            - listitem [ref=e323]:
+              - link [ref=e324] [cursor=pointer]:
+                - /url: https://assetstore.unity.com/packages/slug/361332
+                - img "Unity icon" [ref=e325]
+                - text: Build Size Guard
+                - img "External link" [ref=e326]
+            - listitem [ref=e327]:
+              - link [ref=e328] [cursor=pointer]:
+                - /url: https://u3d.as/3SYC
+                - img "Unity icon" [ref=e329]
+                - text: Shader Variant Budget & CI Guard
+                - img "External link" [ref=e330]
+            - listitem [ref=e331]:
+              - link [ref=e332] [cursor=pointer]:
+                - /url: https://u3d.as/3Sae
+                - img "Unity icon" [ref=e333]
+                - text: Serialization Migration Guard
+                - img "External link" [ref=e334]
+            - listitem [ref=e335]:
+              - link [ref=e336] [cursor=pointer]:
+                - /url: https://assetstore.unity.com/packages/slug/362308
+                - img "Unity icon" [ref=e337]
+                - text: Import Settings Validator & Fix
+                - img "External link" [ref=e338]
+            - listitem [ref=e339]:
+              - link [ref=e340] [cursor=pointer]:
+                - /url: https://u3d.as/3PWR
+                - img "Unity icon" [ref=e341]
+                - text: Compliance Exporter
+                - img "External link" [ref=e342]
+        - generic [ref=e343]:
+          - heading "Licenses" [level=2] [ref=e344]
+          - list [ref=e345]:
+            - listitem [ref=e346]:
+              - link "Build Size Guard" [ref=e347] [cursor=pointer]:
+                - /url: /assets/build-size-guard/license/
+            - listitem [ref=e348]:
+              - link "Shader Variant Budget & CI Guard" [ref=e349] [cursor=pointer]:
+                - /url: /assets/shader-variant-budget-ci-guard/license/
+            - listitem [ref=e350]:
+              - link "Serialization Migration Guard" [ref=e351] [cursor=pointer]:
+                - /url: /assets/unity-serialization-migration-guard/license/
+            - listitem [ref=e352]:
+              - link "IL2CPP Strip Guard" [ref=e353] [cursor=pointer]:
+                - /url: /assets/il2cpp-strip-guard/license/
+            - listitem [ref=e354]:
+              - link "Inspector Event Link Doctor" [ref=e355] [cursor=pointer]:
+                - /url: /assets/inspector-event-link-doctor/license/
+            - listitem [ref=e356]:
+              - link "Fast Play Mode Watcher" [ref=e357] [cursor=pointer]:
+                - /url: /assets/fast-play-mode-safety-guard/license/
+            - listitem [ref=e358]:
+              - link "Import Settings Validator & Fix" [ref=e359] [cursor=pointer]:
+                - /url: /assets/import-settings-validator-fix/license/
+            - listitem [ref=e360]:
+              - link "Compliance Exporter" [ref=e361] [cursor=pointer]:
+                - /url: /assets/compliance/license/
+        - generic [ref=e362]:
+          - heading "Game Links" [level=2] [ref=e363]
+          - list [ref=e364]:
+            - listitem [ref=e365]:
+              - link "Games Directory" [ref=e366] [cursor=pointer]:
+                - /url: /games/
+            - listitem [ref=e367]:
+              - link "Dopamine Machine Play" [ref=e368] [cursor=pointer]:
+                - /url: /dopamine/
+            - listitem [ref=e369]:
+              - link [ref=e370] [cursor=pointer]:
+                - /url: https://store.steampowered.com/app/4540560/Forbidden_buttons
+                - text: Forbidden Buttons on Steam
+                - img "External link" [ref=e371]
+            - listitem [ref=e372]:
+              - link [ref=e373] [cursor=pointer]:
+                - /url: https://play.google.com/store/apps/details?id=com.kevinbjorvand.orbitalchaos
+                - img "Google Play icon" [ref=e374]
+                - text: Orbital Chaos on Google Play
+            - listitem [ref=e375]:
+              - link [ref=e376] [cursor=pointer]:
+                - /url: https://apps.apple.com/us/app/orbital-chaos/id6754812237
+                - img "App Store icon" [ref=e377]
+                - text: Orbital Chaos on App Store
+            - listitem [ref=e378]:
+              - link [ref=e379] [cursor=pointer]:
+                - /url: https://kevindevelopment.itch.io/neonsurge-2
+                - img "itch.io icon" [ref=e380]
+                - text: NeonSurge 2 on itch.io
+            - listitem [ref=e381]:
+              - link [ref=e382] [cursor=pointer]:
+                - /url: https://kevindevelopment.itch.io/neonsurge
+                - img "itch.io icon" [ref=e383]
+                - text: NeonSurge on itch.io
+            - listitem [ref=e384]:
+              - link [ref=e385] [cursor=pointer]:
+                - /url: https://smartindie.dev/games/
+                - text: Smart Indie Games
+                - img "External link" [ref=e386]
+        - generic [ref=e387]:
+          - heading "Support" [level=2] [ref=e388]
+          - list [ref=e389]:
+            - listitem [ref=e390]:
+              - link "Support Form" [ref=e391] [cursor=pointer]:
+                - /url: /support/
+            - listitem [ref=e392]:
+              - link "Documentation" [ref=e393] [cursor=pointer]:
+                - /url: /support/#docs-shortcuts-title
+            - listitem [ref=e394]:
+              - link "Support FAQ" [ref=e395] [cursor=pointer]:
+                - /url: /support/#faq
+      - generic [ref=e396]: "© Bjorvand Solutions 2026 • Company registration number: 836 135 652 (Norway)"

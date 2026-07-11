@@ -252,4 +252,34 @@
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
+  <url>
+    <loc>https://bjorv.com/assets/ui-breakpoint-lab/docs/</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://bjorv.com/assets/ui-breakpoint-lab/license/</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://bjorv.com/articles/ui-breakpoint-lab/test-unity-ui-across-breakpoints-and-safe-areas/</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.74</priority>
+  </url>
+  <url>
+    <loc>https://bjorv.com/articles/ui-breakpoint-lab/find-unity-ui-text-overflow-with-expansion-passes/</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.74</priority>
+  </url>
+  <url>
+    <loc>https://bjorv.com/articles/ui-breakpoint-lab/add-unity-ui-visual-regression-checks-to-ci/</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.74</priority>
+  </url>
 </urlset>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Find Unity UI Text Overflow with Expansion Passes | UI Breakpoint Lab Article</title>
+  <meta name="description" content="Use 120%, 150%, 200%, and pseudolocalized text passes to expose UGUI layout pressure without changing source assets.">
+  <meta name="author" content="Kevin Ahlgren Bjorvand">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="How to Find Unity UI Text Overflow with Expansion Passes">
+  <meta property="og:description" content="Use 120%, 150%, 200%, and pseudolocalized text passes to expose UGUI layout pressure without changing source assets.">
+  <meta property="og:url" content="https://bjorv.com/articles/ui-breakpoint-lab/find-unity-ui-text-overflow-with-expansion-passes/">
+  <meta property="og:image" content="https://bjorv.com/assets/images/UIBreakpointLab/marketing/text-expansion-findings.png">
+  <meta property="article:published_time" content="2026-07-11">
+  <meta property="article:modified_time" content="2026-07-11">
+  <meta property="article:author" content="Kevin Ahlgren Bjorvand">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How to Find Unity UI Text Overflow with Expansion Passes">
+  <meta name="twitter:description" content="Use 120%, 150%, 200%, and pseudolocalized text passes to expose UGUI layout pressure without changing source assets.">
+  <meta name="twitter:image" content="https://bjorv.com/assets/images/UIBreakpointLab/marketing/text-expansion-findings.png">
+  <link rel="canonical" href="https://bjorv.com/articles/ui-breakpoint-lab/find-unity-ui-text-overflow-with-expansion-passes/">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+  <link rel="icon" href="/assets/favicon/favicon.ico">
+  <link rel="manifest" href="/assets/favicon/site.webmanifest">
+  <script src="/assets/js/site/theme-init.js"></script>
+  <link rel="stylesheet" href="/assets/css/site/tokens.css">
+  <link rel="stylesheet" href="/assets/css/site/base.css">
+  <link rel="stylesheet" href="/assets/css/site/layout.css">
+  <link rel="stylesheet" href="/assets/css/site/components.css">
+  <link rel="stylesheet" href="/assets/css/site/pages/article-detail.css">
+  <link rel="stylesheet" href="/assets/css/shared/link-decorators.css">
+  <link rel="stylesheet" href="/assets/css/shared/typography-overrides.css">
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "How to Find Unity UI Text Overflow with Expansion Passes",
+      "description": "Use 120%, 150%, 200%, and pseudolocalized text passes to expose UGUI layout pressure without changing source assets.",
+      "image": [
+        "https://bjorv.com/assets/images/UIBreakpointLab/marketing/text-expansion-findings.png"
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "Kevin Ahlgren Bjorvand",
+        "image": "https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.jpg"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Bjorvand Solutions",
+        "url": "https://bjorv.com"
+      },
+      "mainEntityOfPage": "https://bjorv.com/articles/ui-breakpoint-lab/find-unity-ui-text-overflow-with-expansion-passes/",
+      "datePublished": "2026-07-11",
+      "dateModified": "2026-07-11",
+      "articleSection": "UI layout testing",
+      "about": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "UI Breakpoint Lab",
+          "applicationCategory": "DeveloperApplication",
+          "url": "https://bjorv.com/assets/ui-breakpoint-lab/docs/"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://bjorv.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Articles",
+          "item": "https://bjorv.com/articles/?tool=ui-breakpoint-lab"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "UI Breakpoint Lab",
+          "item": "https://bjorv.com/assets/ui-breakpoint-lab/docs/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "How to Find Unity UI Text Overflow with Expansion Passes",
+          "item": "https://bjorv.com/articles/ui-breakpoint-lab/find-unity-ui-text-overflow-with-expansion-passes/"
+        }
+      ]
+    }
+  ]
+}</script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Bjorvand Solutions</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="menu-root">
+          <li class="menu-item"><a class="menu-link" href="/">Home</a></li>
+          <li class="menu-item"><a class="menu-link" href="/tools/">Tools</a></li>
+          <li class="menu-item"><a class="menu-link" href="/games/">Games</a></li>
+          <li class="menu-item"><a class="menu-link" href="/articles/">Articles</a></li>
+          <li class="menu-item"><a class="menu-link" href="/support/">Support</a></li>
+          <li class="menu-item"><a class="menu-link" target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot</a></li>
+          <li class="menu-item menu-item-smart-indie"><a class="menu-link menu-link-smart-indie" target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="language-switcher" aria-label="Language">
+          <a class="language-link" href="/" hreflang="en" lang="en" data-language-option="en" aria-label="English">
+            <img src="/assets/images/flags/en.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>EN</span>
+          </a>
+          <a class="language-link" href="/no/" hreflang="no" lang="no" data-language-option="no" aria-label="Norsk">
+            <img src="/assets/images/flags/no.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>NO</span>
+          </a>
+        </div>
+        <button class="mobile-nav-toggle" type="button" data-mobile-nav-toggle aria-controls="mobileNavPanel" aria-expanded="false">Menu</button>
+      </div>
+    </div>
+    <div class="mobile-nav-panel" id="mobileNavPanel" data-mobile-nav-panel hidden>
+      <div class="mobile-nav-shell container">
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/">Home</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/tools/">Tools</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/games/">Games</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/articles/">Articles</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/support/">Support</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></div>
+        <div class="mobile-nav-group mobile-language-options" aria-label="Language">
+          <a href="/" hreflang="en" lang="en" data-language-option="en">
+            <img src="/assets/images/flags/en.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>English</span>
+          </a>
+          <a href="/no/" hreflang="no" lang="no" data-language-option="no">
+            <img src="/assets/images/flags/no.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>Norsk</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main class="site-main">
+    <div class="container article-page">
+      <nav class="article-breadcrumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a><span aria-hidden="true">/</span>
+        <a href="/articles/?tool=ui-breakpoint-lab">Articles</a><span aria-hidden="true">/</span>
+        <a href="/assets/ui-breakpoint-lab/docs/">UI Breakpoint Lab</a><span aria-hidden="true">/</span>
+        <span aria-current="page">How to Find Unity UI Text Overflow with Expansion Passes</span>
+      </nav>
+
+      <section class="article-hero">
+        <div class="article-hero-copy">
+          <div class="article-eyebrow">
+            <span class="article-kicker">UI layout testing</span>
+            <span class="article-chip">UI Breakpoint Lab</span>
+          </div>
+          <h1>How to Find Unity UI Text Overflow with Expansion Passes</h1>
+          <p>Use 120%, 150%, 200%, and pseudolocalized text passes to expose UGUI layout pressure without changing source assets.</p>
+          <div class="article-meta-line">
+            <span>July 11, 2026</span>
+            <span>&bull;</span>
+            <span>7 min read</span>
+            <span>&bull;</span>
+            <span>Kevin Ahlgren Bjorvand</span>
+          </div>
+          <div class="article-answer">
+            <p>To expose Unity UI text pressure before localization arrives, run the same UGUI target with 120%, 150%, 200%, and deterministic pseudolocalized text passes, then inspect overflow, clipping, overlap, and safe-area findings on preview clones.</p>
+          </div>
+          <div class="article-keyline">
+            <span class="article-chip">Updated July 11, 2026</span>
+            <span class="article-chip">Docs, Asset Store, and license links stay in the sidebar</span>
+          </div>
+        </div>
+        <figure class="article-hero-media">
+          <img src="/assets/images/UIBreakpointLab/marketing/text-expansion-findings.png" alt="How to Find Unity UI Text Overflow with Expansion Passes" loading="eager" fetchpriority="high">
+          <figcaption>Text expansion passes make hidden clipping and overlap visible without changing the source UI.</figcaption>
+        </figure>
+      </section>
+
+      <div class="article-layout">
+        <article class="article-main">
+<section class="article-section" id="why-text-expansion-belongs-in-layout-testing" data-article-section>
+        <h2>Why should text expansion be part of Unity UI testing?</h2>
+        <p>A label that fits its current string can fail when copy grows. The pressure may appear as text overflow, parent clipping, a button collision, or a control entering the safe area rather than as one obvious localization error.</p>
+<p>Expansion passes make that pressure reproducible before every final translation is available. They are a layout check, not a substitute for reviewing the real language and font in a player build.</p>
+        <ul>
+  <li>Original, 120%, 150%, and 200% passes provide predictable growth steps.</li>
+  <li>Deterministic ASCII pseudolocalization adds a repeatable alternate text shape.</li>
+  <li>The same viewport matrix can be reused for every text pass.</li>
+</ul>
+        
+        
+      </section>
+<section class="article-section" id="how-text-passes-protect-source-assets" data-article-section>
+        <h2>How do text passes avoid changing source UI assets?</h2>
+        <p>Text transformations run only on cloned UI inside the preview scene. They do not apply prefab overrides or write transformed strings into source scenes and prefabs.</p>
+<p>Rich-text tags and composite-format placeholders are preserved. Pseudolocalization reuses existing characters so the run does not mutate dynamic font atlases.</p>
+        <ul>
+  <li>Static UnityEngine.UI.Text is supported directly.</li>
+  <li>Public TextMesh Pro components are supported when the optional TMP assembly is available.</li>
+  <li>Custom text sources can opt in through the shipped preview-text adapter.</li>
+</ul>
+        
+        
+      </section>
+      <section class="article-cta-panel" aria-label="Primary call to action">
+        <h2>Test the layout pressure, not only the current English strings.</h2>
+        <p>UI Breakpoint Lab applies repeatable text passes to preview clones and records the layout evidence beside each capture.</p>
+        <div class="article-cta-actions">
+          <a class="button button-primary" target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/392246">Open UI Breakpoint Lab on the Asset Store</a>
+          <a class="button button-secondary" href="/assets/ui-breakpoint-lab/docs/">Docs</a>
+        </div>
+      </section>
+<section class="article-section" id="how-to-review-an-expansion-failure" data-article-section>
+        <h2>How do you review a text-expansion failure?</h2>
+        <p>Start from a marked contact-sheet tile and open the finding detail. The report records the text pass, profile, rule, severity, measured values, and stable source identity.</p>
+<p>If the behavior is intentional, add a reasoned suppression at the narrowest scope that represents the design. Suppressed findings keep their measurements; the tool does not erase the evidence.</p>
+        
+        <ol>
+  <li>Filter the result grid to warnings or failures.</li>
+  <li>Open the marked capture and select the finding or overlay.</li>
+  <li>Use object navigation to select or ping the recorded source component.</li>
+  <li>Fix the layout or add a narrow, reasoned suppression, then rerun the suite.</li>
+</ol>
+        
+      </section>
+<section class="article-section" id="what-the-text-passes-do-not-simulate" data-article-section>
+        <h2>What do the text passes intentionally not simulate?</h2>
+        <p>Version 1 does not integrate with the Unity Localization package, simulate platform fonts, or promise exact line breaking on a physical device. It also does not rewrite anchors or layout groups automatically.</p>
+<p>Treat expansion and pseudolocalization as repeatable stress tests. Final localization review still needs the real strings, font assets, runtime environment, and target devices.</p>
+        <ul>
+  <li>No Unity Localization package integration in version 1.</li>
+  <li>No platform-font equivalence claim.</li>
+  <li>No automatic layout repair or gameplay navigation.</li>
+</ul>
+        
+        
+      </section>
+          <section class="article-callout">
+            <h2>Use expansion passes as an early warning, then validate real localized content in the player.</h2>
+            <p>The documentation explains supported text components, preserved markup, and the boundaries of version 1 localization testing.</p>
+            <div class="article-cta-actions">
+              <a class="button button-primary" target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/392246">Open UI Breakpoint Lab on the Asset Store</a>
+              <a class="button button-secondary" href="/assets/ui-breakpoint-lab/docs/">Docs</a>
+            </div>
+          </section>
+
+          <section class="article-section" id="related-articles">
+            <h2>More articles for UI Breakpoint Lab</h2>
+            <p>The tool workflow stays easier to evaluate when the next steps stay inside the same product and documentation surface.</p>
+            <div class="article-related-grid">
+<article class="card article-related-card">
+              <img src="/assets/images/UIBreakpointLab/marketing/safe-area-findings.png" alt="How to Test Unity UI Across Breakpoints and Safe Areas" loading="lazy">
+              <span>8 min read</span>
+              <h3><a href="/articles/ui-breakpoint-lab/test-unity-ui-across-breakpoints-and-safe-areas/">How to Test Unity UI Across Breakpoints and Safe Areas</a></h3>
+              <p>Run a repeatable UGUI matrix across viewport, orientation, and safe-area profiles, then inspect measured layout findings.</p>
+            </article>
+<article class="card article-related-card">
+              <img src="/assets/images/UIBreakpointLab/marketing/pseudolocalization-findings.png" alt="How to Add Unity UI Visual Regression Checks to CI" loading="lazy">
+              <span>8 min read</span>
+              <h3><a href="/articles/ui-breakpoint-lab/add-unity-ui-visual-regression-checks-to-ci/">How to Add Unity UI Visual Regression Checks to CI</a></h3>
+              <p>Save a deterministic UGUI suite, compare PNG baselines, and export reviewable JSON and HTML evidence from CI.</p>
+            </article>
+            </div>
+          </section>
+        </article>
+
+        <aside class="article-sidebar" aria-label="Article sidebar">
+          <section class="article-sidebar-card">
+            <h2>On this page</h2>
+            <nav class="article-toc" aria-label="Table of contents">
+            <a href="#why-text-expansion-belongs-in-layout-testing" data-article-toc-link>Why should text expansion be part of Unity UI testing?</a>
+            <a href="#how-text-passes-protect-source-assets" data-article-toc-link>How do text passes avoid changing source UI assets?</a>
+            <a href="#how-to-review-an-expansion-failure" data-article-toc-link>How do you review a text-expansion failure?</a>
+            <a href="#what-the-text-passes-do-not-simulate" data-article-toc-link>What do the text passes intentionally not simulate?</a>
+            </nav>
+          </section>
+
+          <section class="article-sidebar-card">
+            <h2>Author</h2>
+            <div class="author-card">
+              <div class="author-card-header">
+                <img src="/assets/images/authors/kevin-ahlgren-bjorvand.jpg" alt="Kevin Ahlgren Bjorvand" loading="lazy">
+                <div>
+                  <strong>Kevin Ahlgren Bjorvand</strong>
+                  <p>Founder, Bjorvand Solutions</p>
+                </div>
+              </div>
+              <p>Kevin builds Unity tools focused on release safety, build visibility, migration safety, and compliance evidence.</p>
+            </div>
+          </section>
+
+          <section class="article-sidebar-card">
+            <h2>UI Breakpoint Lab links</h2>
+            <ul>
+              <li><a href="/assets/ui-breakpoint-lab/docs/">UI Breakpoint Lab docs</a></li>
+              <li><a target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/392246">UI Breakpoint Lab Asset Store</a></li>
+              <li><a href="/assets/ui-breakpoint-lab/license/">UI Breakpoint Lab license</a></li>
+            </ul>
+          </section>
+
+          <section class="article-sidebar-card">
+            <h2>Same-tool articles</h2>
+            <ul>
+              <li><a href="/articles/ui-breakpoint-lab/test-unity-ui-across-breakpoints-and-safe-areas/">How to Test Unity UI Across Breakpoints and Safe Areas</a></li>
+              <li><a href="/articles/ui-breakpoint-lab/add-unity-ui-visual-regression-checks-to-ci/">How to Add Unity UI Visual Regression Checks to CI</a></li>
+            </ul>
+          </section>
+        </aside>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-shell">
+      <div class="footer-columns">
+        <section>
+          <h2>Explore</h2>
+          <ul class="link-list">
+            <li><a href="/">Home</a></li>
+            <li><a href="/tools/">Tools</a></li>
+            <li><a href="/games/">Games</a></li>
+            <li><a href="/articles/">Articles</a></li>
+            <li><a href="/youtube-thumbnail-preview/" data-footer-service-link="youtube-thumbnail-preview">YouTube Thumbnail Preview</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot</a></li>
+            <li><a href="/support/">Support</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Tool Docs</h2>
+          <ul class="link-list">
+            <li><a href="/assets/build-size-guard/docs/">Build Size Guard</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/docs/">Shader Variant Budget & CI Guard</a></li>
+            <li><a href="/assets/unity-serialization-migration-guard/docs/">Serialization Migration Guard</a></li>
+            <li><a href="/assets/il2cpp-strip-guard/docs/">IL2CPP Strip Guard</a></li>
+            <li><a href="/assets/inspector-event-link-doctor/docs/">Inspector Event Link Doctor</a></li>
+            <li><a href="/assets/fast-play-mode-safety-guard/docs/">Fast Play Mode Watcher</a></li>
+            <li><a href="/assets/import-settings-validator-fix/docs/">Import Settings Validator & Fix</a></li>
+            <li><a href="/assets/compliance/docs/">Compliance Exporter</a></li>
+            <li><a href="/assets/ui-breakpoint-lab/docs/">UI Breakpoint Lab</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Asset Store</h2>
+          <ul class="link-list">
+            <li><a target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/361332">Build Size Guard</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://u3d.as/3SYC">Shader Variant Budget & CI Guard</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://u3d.as/3Sae">Serialization Migration Guard</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/362308">Import Settings Validator & Fix</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://u3d.as/3PWR">Compliance Exporter</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/392246">UI Breakpoint Lab</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Licenses</h2>
+          <ul class="link-list">
+            <li><a href="/assets/build-size-guard/license/">Build Size Guard</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/license/">Shader Variant Budget & CI Guard</a></li>
+            <li><a href="/assets/unity-serialization-migration-guard/license/">Serialization Migration Guard</a></li>
+            <li><a href="/assets/il2cpp-strip-guard/license/">IL2CPP Strip Guard</a></li>
+            <li><a href="/assets/inspector-event-link-doctor/license/">Inspector Event Link Doctor</a></li>
+            <li><a href="/assets/fast-play-mode-safety-guard/license/">Fast Play Mode Watcher</a></li>
+            <li><a href="/assets/import-settings-validator-fix/license/">Import Settings Validator & Fix</a></li>
+            <li><a href="/assets/compliance/license/">Compliance Exporter</a></li>
+            <li><a href="/assets/ui-breakpoint-lab/license/">UI Breakpoint Lab</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Game Links</h2>
+          <ul class="link-list">
+            <li><a href="/games/">Games Directory</a></li>
+            <li><a href="/dopamine/">Dopamine Machine Play</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://store.steampowered.com/app/4540560/Forbidden_buttons">Forbidden Buttons on Steam</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.kevinbjorvand.orbitalchaos">Orbital Chaos on Google Play</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://apps.apple.com/us/app/orbital-chaos/id6754812237">Orbital Chaos on App Store</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge-2">NeonSurge 2 on itch.io</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge">NeonSurge on itch.io</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/games/">Smart Indie Games</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Support</h2>
+          <ul class="link-list">
+            <li><a href="/support/">Support Form</a></li>
+            <li><a href="/support/#docs-shortcuts-title">Documentation</a></li>
+            <li><a href="/support/#faq">Support FAQ</a></li>
+          </ul>
+        </section>
+      </div>
+      <div class="footer-legal">
+        <span>&copy; Bjorvand Solutions <span data-current-year>2026</span> &bull; Company registration number: 836 135 652 (Norway)</span>
+      </div>
+    </div>
+  </footer>
+  <script defer src="/assets/js/site/nav.js"></script>
+  <script defer src="/assets/js/site/article-detail.js"></script>
+  <script defer src="/assets/js/site/link-decorators.js"></script>
+</body>
+</html>

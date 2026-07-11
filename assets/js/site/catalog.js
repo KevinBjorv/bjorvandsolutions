@@ -28,6 +28,11 @@
         slug: "compliance-release",
         label: "Compliance",
         description: "Articles about notices, credits, manifests, and release-readiness checks."
+      },
+      {
+        slug: "ui-layout-testing",
+        label: "UI layout testing",
+        description: "Articles about breakpoints, safe areas, text expansion, and visual regression checks."
       }
     ],
     tools: [
@@ -133,6 +138,22 @@
           license: "/assets/compliance/license/",
           store: "https://u3d.as/3PWR"
         }
+      },
+      {
+        key: "ui-breakpoint-lab",
+        name: "UI Breakpoint Lab",
+        summary: "Run repeatable UGUI layout checks across viewport, safe-area, and text-expansion profiles.",
+        audience: "Unity teams validating UGUI menus and HUDs across layout breakpoints before release.",
+        links: {
+          docs: "/assets/ui-breakpoint-lab/docs/",
+          license: "/assets/ui-breakpoint-lab/license/",
+          store: "https://assetstore.unity.com/packages/slug/392246"
+        },
+        images: [
+          "/assets/images/UIBreakpointLab/marketing/safe-area-findings.png",
+          "/assets/images/UIBreakpointLab/marketing/text-expansion-findings.png",
+          "/assets/images/UIBreakpointLab/marketing/pseudolocalization-findings.png"
+        ]
       }
     ],
     articles: [
@@ -390,6 +411,57 @@
         primaryCtaLabel: "Buy Third-Party Notices & Credits",
         primaryCtaHref: "https://u3d.as/3PWR",
         relatedLinks: ["/assets/compliance/docs/", "/support/", "/assets/compliance/license/"]
+      },
+      {
+        slug: "test-unity-ui-across-breakpoints-and-safe-areas",
+        path: "/articles/ui-breakpoint-lab/test-unity-ui-across-breakpoints-and-safe-areas/",
+        toolKey: "ui-breakpoint-lab",
+        toolName: "UI Breakpoint Lab",
+        category: "ui-layout-testing",
+        title: "How to Test Unity UI Across Breakpoints and Safe Areas",
+        description: "Run a repeatable UGUI matrix across viewport, orientation, and safe-area profiles, then inspect measured layout findings.",
+        publishDate: "2026-07-11",
+        updatedDate: "2026-07-11",
+        readTime: "8 min read",
+        heroImage: "/assets/images/UIBreakpointLab/marketing/safe-area-findings.png",
+        author: "Kevin Ahlgren Bjorvand",
+        primaryCtaLabel: "Read UI Breakpoint Lab docs",
+        primaryCtaHref: "/assets/ui-breakpoint-lab/docs/",
+        relatedLinks: ["/assets/ui-breakpoint-lab/docs/", "/support/", "/assets/ui-breakpoint-lab/license/"]
+      },
+      {
+        slug: "find-unity-ui-text-overflow-with-expansion-passes",
+        path: "/articles/ui-breakpoint-lab/find-unity-ui-text-overflow-with-expansion-passes/",
+        toolKey: "ui-breakpoint-lab",
+        toolName: "UI Breakpoint Lab",
+        category: "ui-layout-testing",
+        title: "How to Find Unity UI Text Overflow with Expansion Passes",
+        description: "Use 120%, 150%, 200%, and pseudolocalized text passes to expose UGUI layout pressure without changing source assets.",
+        publishDate: "2026-07-11",
+        updatedDate: "2026-07-11",
+        readTime: "7 min read",
+        heroImage: "/assets/images/UIBreakpointLab/marketing/text-expansion-findings.png",
+        author: "Kevin Ahlgren Bjorvand",
+        primaryCtaLabel: "Open UI Breakpoint Lab on the Asset Store",
+        primaryCtaHref: "https://assetstore.unity.com/packages/slug/392246",
+        relatedLinks: ["/assets/ui-breakpoint-lab/docs/", "/support/", "/assets/ui-breakpoint-lab/license/"]
+      },
+      {
+        slug: "add-unity-ui-visual-regression-checks-to-ci",
+        path: "/articles/ui-breakpoint-lab/add-unity-ui-visual-regression-checks-to-ci/",
+        toolKey: "ui-breakpoint-lab",
+        toolName: "UI Breakpoint Lab",
+        category: "ui-layout-testing",
+        title: "How to Add Unity UI Visual Regression Checks to CI",
+        description: "Save a deterministic UGUI suite, compare PNG baselines, and export reviewable JSON and HTML evidence from CI.",
+        publishDate: "2026-07-11",
+        updatedDate: "2026-07-11",
+        readTime: "8 min read",
+        heroImage: "/assets/images/UIBreakpointLab/marketing/pseudolocalization-findings.png",
+        author: "Kevin Ahlgren Bjorvand",
+        primaryCtaLabel: "Read UI Breakpoint Lab CI docs",
+        primaryCtaHref: "/assets/ui-breakpoint-lab/docs/#command-line-and-ci",
+        relatedLinks: ["/assets/ui-breakpoint-lab/docs/", "/support/", "/assets/ui-breakpoint-lab/license/"]
       }
     ],
     games: {

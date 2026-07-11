@@ -25,7 +25,10 @@
   <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="site-header">
     <div class="container nav-shell">
-      <a class="brand" href="/"><span class="brand-mark" aria-hidden="true"></span><span>Bjorvand Solutions</span></a>
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Bjorvand Solutions</span>
+      </a>
       <nav class="site-nav" aria-label="Primary">
         <ul class="menu-root">
           <li class="menu-item"><a class="menu-link" href="/">Home</a></li>
@@ -33,16 +36,45 @@
           <li class="menu-item"><a class="menu-link" href="/games/">Games</a></li>
           <li class="menu-item"><a class="menu-link" href="/articles/">Articles</a></li>
           <li class="menu-item"><a class="menu-link" href="/support/">Support</a></li>
+          <li class="menu-item"><a class="menu-link" target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot</a></li>
           <li class="menu-item menu-item-smart-indie"><a class="menu-link menu-link-smart-indie" target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li>
         </ul>
       </nav>
+
       <div class="nav-actions">
-        <div class="language-switcher" aria-label="Language"><a class="language-link" href="/tools/" hreflang="en" lang="en" data-language-option="en" aria-label="English"><img src="/assets/images/flags/en.svg" alt="" width="18" height="12" aria-hidden="true"><span>EN</span></a><a class="language-link" href="/no/tools/" hreflang="no" lang="no" data-language-option="no" aria-label="Norsk"><img src="/assets/images/flags/no.svg" alt="" width="18" height="12" aria-hidden="true"><span>NO</span></a></div>
+        <div class="language-switcher" aria-label="Language">
+          <a class="language-link" href="/" hreflang="en" lang="en" data-language-option="en" aria-label="English">
+            <img src="/assets/images/flags/en.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>EN</span>
+          </a>
+          <a class="language-link" href="/no/" hreflang="no" lang="no" data-language-option="no" aria-label="Norsk">
+            <img src="/assets/images/flags/no.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>NO</span>
+          </a>
+        </div>
         <button class="mobile-nav-toggle" type="button" data-mobile-nav-toggle aria-controls="mobileNavPanel" aria-expanded="false">Menu</button>
       </div>
     </div>
     <div class="mobile-nav-panel" id="mobileNavPanel" data-mobile-nav-panel hidden>
-      <div class="mobile-nav-shell container"><div class="mobile-nav-group mobile-nav-single-link"><a href="/">Home</a></div><div class="mobile-nav-group mobile-nav-single-link"><a href="/tools/">Tools</a></div><div class="mobile-nav-group mobile-nav-single-link"><a href="/games/">Games</a></div><div class="mobile-nav-group mobile-nav-single-link"><a href="/articles/">Articles</a></div><div class="mobile-nav-group mobile-nav-single-link"><a href="/support/">Support</a></div><div class="mobile-nav-group mobile-nav-single-link"><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></div><div class="mobile-nav-group mobile-language-options" aria-label="Language"><a href="/tools/" hreflang="en" lang="en" data-language-option="en"><img src="/assets/images/flags/en.svg" alt="" width="18" height="12" aria-hidden="true"><span>English</span></a><a href="/no/tools/" hreflang="no" lang="no" data-language-option="no"><img src="/assets/images/flags/no.svg" alt="" width="18" height="12" aria-hidden="true"><span>Norsk</span></a></div></div>
+      <div class="mobile-nav-shell container">
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/">Home</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/tools/">Tools</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/games/">Games</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/articles/">Articles</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/support/">Support</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></div>
+        <div class="mobile-nav-group mobile-language-options" aria-label="Language">
+          <a href="/" hreflang="en" lang="en" data-language-option="en">
+            <img src="/assets/images/flags/en.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>English</span>
+          </a>
+          <a href="/no/" hreflang="no" lang="no" data-language-option="no">
+            <img src="/assets/images/flags/no.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>Norsk</span>
+          </a>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -51,7 +83,7 @@
       <div>
         <div class="badge"><i data-lucide="wrench" aria-hidden="true"></i> Unity Editor Tools</div>
         <h1 id="tools-title">Control the problems that hide inside a Unity project.</h1>
-        <p>Focused editor tools for build size, shader variants, import settings, serialization, compliance, stripping, callbacks, and play mode safety.</p>
+        <p>Focused editor tools for build size, shader variants, import settings, serialization, UI layout testing, compliance, stripping, callbacks, and play mode safety.</p>
       </div>
       <div class="tools-hero-actions"><a class="button button-primary" href="#tool-catalog"><i data-lucide="search" aria-hidden="true"></i> Find a tool</a><a class="button button-secondary" href="/support/"><i data-lucide="life-buoy" aria-hidden="true"></i> Get support</a></div>
     </section>
@@ -72,7 +104,7 @@
           </div>
           <label class="catalog-status-field" for="tool-status"><span>Status</span><select class="catalog-select" id="tool-status" data-tool-status><option value="all">All tools</option><option value="available">Available</option><option value="docs-only">Docs only</option></select></label>
         </div>
-        <div class="catalog-result-row"><p data-tool-count role="status" aria-live="polite">Showing 8 tools</p><button class="catalog-clear" type="button" data-tool-clear><i data-lucide="rotate-ccw" aria-hidden="true"></i> Reset filters</button></div>
+        <div class="catalog-result-row"><p data-tool-count role="status" aria-live="polite">Showing 9 tools</p><button class="catalog-clear" type="button" data-tool-clear><i data-lucide="rotate-ccw" aria-hidden="true"></i> Reset filters</button></div>
       </div>
 
       <div class="tool-catalog-grid" data-tool-grid>
@@ -101,6 +133,11 @@
           <div class="tool-card-body"><div class="tool-card-head"><div class="tool-identity"><img class="tool-icon" src="/assets/images/CompliancePack/icons/IconcompliancePack160.jpg" width="48" height="48" alt=""><div><span class="tool-category">Release compliance</span><h3>Compliance Exporter</h3></div></div><span class="badge badge-available" data-status="available">Available</span></div><p>Generate third-party notices, credits, and compliance files from project evidence.</p><p class="tool-output"><i data-lucide="file-output" aria-hidden="true"></i><span><strong>Output:</strong> THIRD_PARTY_NOTICES.txt, CREDITS.md, and compliance manifests.</span></p><div class="card-actions"><a class="button button-primary" href="/assets/compliance/docs/">Docs</a><a class="button button-secondary" target="_blank" rel="noopener noreferrer" href="https://u3d.as/3PWR">Asset Store</a><a class="button button-ghost" href="/assets/compliance/license/">License</a></div></div>
         </article>
 
+        <article class="tool-catalog-item" data-tool-card data-name="UI Breakpoint Lab" data-category="editor-safety" data-status="available" data-search="ugui ui layout breakpoints viewport orientation safe area text expansion pseudolocalization screenshots visual regression baseline ci">
+          <a class="tool-card-media" href="/assets/ui-breakpoint-lab/docs/"><img src="/assets/images/UIBreakpointLab/marketing/safe-area-findings.png" width="1920" height="1080" loading="lazy" alt="UI Breakpoint Lab capture with measured UGUI layout findings"></a>
+          <div class="tool-card-body"><div class="tool-card-head"><div class="tool-identity"><img class="tool-icon" src="/assets/images/UIBreakpointLab/icons/Icon160.png" width="48" height="48" alt=""><div><span class="tool-category">UI layout testing</span><h3>UI Breakpoint Lab</h3></div></div><span class="badge badge-available" data-status="available">Available</span></div><p>Run repeatable UGUI layout checks across viewport, safe-area, and text-expansion profiles.</p><p class="tool-output"><i data-lucide="file-output" aria-hidden="true"></i><span><strong>Output:</strong> Contact sheets, measured findings, visual diffs, and JSON or HTML reports.</span></p><div class="card-actions"><a class="button button-primary" href="/assets/ui-breakpoint-lab/docs/">Docs</a><a class="button button-secondary" target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/392246">Asset Store</a><a class="button button-ghost" href="/assets/ui-breakpoint-lab/license/">License</a></div></div>
+        </article>
+
         <article class="tool-catalog-item tool-catalog-item-compact" data-tool-card data-name="IL2CPP Strip Guard" data-category="release" data-status="docs-only" data-search="il2cpp stripping reflection preserve link xml aot platform builds">
           <div class="tool-card-body"><div class="tool-card-head"><div class="tool-identity"><span class="tool-icon-fallback"><i data-lucide="shield" aria-hidden="true"></i></span><div><span class="tool-category">Build &amp; release</span><h3>IL2CPP Strip Guard</h3></div></div><span class="badge">Docs only</span></div><p>Review reflection usage, serialized type references, preserve coverage, and link.xml suggestions before platform builds expose stripping risks.</p><p class="tool-output"><i data-lucide="file-output" aria-hidden="true"></i><span><strong>Output:</strong> Stripping findings, preserve review, and fix previews.</span></p><div class="card-actions"><a class="button button-primary" href="/assets/il2cpp-strip-guard/docs/">Docs</a><a class="button button-ghost" href="/assets/il2cpp-strip-guard/license/">License</a></div></div>
         </article>
@@ -119,7 +156,88 @@
     <section class="tool-help-strip container reveal" aria-labelledby="tool-help-title"><div><p class="section-kicker">Already using a tool?</p><h2 id="tool-help-title">Documentation, licenses, and support stay one click away.</h2></div><div class="hero-actions"><a class="button button-primary" href="/support/#docs-shortcuts-title">Browse documentation</a><a class="button button-secondary" href="/support/">Open support</a></div></section>
   </main>
 
-  <footer class="site-footer"><div class="container footer-shell"><div class="footer-columns footer-columns-compact"><section><h2>Explore</h2><ul class="link-list"><li><a href="/tools/">Unity tools</a></li><li><a href="/games/">Games</a></li><li><a href="/articles/">Articles</a></li><li><a href="/support/">Support</a></li></ul></section><section><h2>Documentation</h2><ul class="link-list"><li><a href="/assets/build-size-guard/docs/">Build Size Guard</a></li><li><a href="/assets/import-settings-validator-fix/docs/">Import Settings Validator &amp; Fix</a></li><li><a href="/assets/compliance/docs/">Compliance Exporter</a></li><li><a href="/tools/">All tools and licenses</a></li></ul></section><section><h2>Company</h2><ul class="link-list"><li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li><li><a target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot</a></li><li><a href="/youtube-thumbnail-preview/">YouTube Thumbnail Preview</a></li><li><a href="/links/">Kevin Bjorvand</a></li></ul></section></div><div class="footer-legal"><span>&copy; Bjorvand Solutions <span data-current-year>2026</span> · Company registration number: 836 135 652 (Norway)</span><span>Unity tools, games, and training.</span></div></div></footer>
+  <footer class="site-footer">
+    <div class="container footer-shell">
+      <div class="footer-columns">
+        <section>
+          <h2>Explore</h2>
+          <ul class="link-list">
+            <li><a href="/">Home</a></li>
+            <li><a href="/tools/">Tools</a></li>
+            <li><a href="/games/">Games</a></li>
+            <li><a href="/articles/">Articles</a></li>
+            <li><a href="/youtube-thumbnail-preview/" data-footer-service-link="youtube-thumbnail-preview">YouTube Thumbnail Preview</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot</a></li>
+            <li><a href="/support/">Support</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Tool Docs</h2>
+          <ul class="link-list">
+            <li><a href="/assets/build-size-guard/docs/">Build Size Guard</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/docs/">Shader Variant Budget & CI Guard</a></li>
+            <li><a href="/assets/unity-serialization-migration-guard/docs/">Serialization Migration Guard</a></li>
+            <li><a href="/assets/il2cpp-strip-guard/docs/">IL2CPP Strip Guard</a></li>
+            <li><a href="/assets/inspector-event-link-doctor/docs/">Inspector Event Link Doctor</a></li>
+            <li><a href="/assets/fast-play-mode-safety-guard/docs/">Fast Play Mode Watcher</a></li>
+            <li><a href="/assets/import-settings-validator-fix/docs/">Import Settings Validator & Fix</a></li>
+            <li><a href="/assets/compliance/docs/">Compliance Exporter</a></li>
+            <li><a href="/assets/ui-breakpoint-lab/docs/">UI Breakpoint Lab</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Asset Store</h2>
+          <ul class="link-list">
+            <li><a target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/361332">Build Size Guard</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://u3d.as/3SYC">Shader Variant Budget & CI Guard</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://u3d.as/3Sae">Serialization Migration Guard</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/362308">Import Settings Validator & Fix</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://u3d.as/3PWR">Compliance Exporter</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/392246">UI Breakpoint Lab</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Licenses</h2>
+          <ul class="link-list">
+            <li><a href="/assets/build-size-guard/license/">Build Size Guard</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/license/">Shader Variant Budget & CI Guard</a></li>
+            <li><a href="/assets/unity-serialization-migration-guard/license/">Serialization Migration Guard</a></li>
+            <li><a href="/assets/il2cpp-strip-guard/license/">IL2CPP Strip Guard</a></li>
+            <li><a href="/assets/inspector-event-link-doctor/license/">Inspector Event Link Doctor</a></li>
+            <li><a href="/assets/fast-play-mode-safety-guard/license/">Fast Play Mode Watcher</a></li>
+            <li><a href="/assets/import-settings-validator-fix/license/">Import Settings Validator & Fix</a></li>
+            <li><a href="/assets/compliance/license/">Compliance Exporter</a></li>
+            <li><a href="/assets/ui-breakpoint-lab/license/">UI Breakpoint Lab</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Game Links</h2>
+          <ul class="link-list">
+            <li><a href="/games/">Games Directory</a></li>
+            <li><a href="/dopamine/">Dopamine Machine Play</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://store.steampowered.com/app/4540560/Forbidden_buttons">Forbidden Buttons on Steam</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.kevinbjorvand.orbitalchaos">Orbital Chaos on Google Play</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://apps.apple.com/us/app/orbital-chaos/id6754812237">Orbital Chaos on App Store</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge-2">NeonSurge 2 on itch.io</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge">NeonSurge on itch.io</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/games/">Smart Indie Games</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Support</h2>
+          <ul class="link-list">
+            <li><a href="/support/">Support Form</a></li>
+            <li><a href="/support/#docs-shortcuts-title">Documentation</a></li>
+            <li><a href="/support/#faq">Support FAQ</a></li>
+          </ul>
+        </section>
+      </div>
+      <div class="footer-legal">
+        <span>&copy; Bjorvand Solutions <span data-current-year>2026</span> &bull; Company registration number: 836 135 652 (Norway)</span>
+      </div>
+    </div>
+  </footer>
 
   <script defer src="/assets/js/site/catalog.js"></script>
   <script defer src="/assets/js/site/nav.js"></script>

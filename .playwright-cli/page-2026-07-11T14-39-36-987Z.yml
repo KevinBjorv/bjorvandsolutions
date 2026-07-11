@@ -1,0 +1,303 @@
+- generic [active] [ref=f4e1]:
+  - link "Skip to content" [ref=f4e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=f4e3]:
+    - generic [ref=f4e4]:
+      - link "Bjorvand Solutions" [ref=f4e5] [cursor=pointer]:
+        - /url: /
+      - button "Menu" [ref=f4e9] [cursor=pointer]
+  - main [ref=f4e11]:
+    - generic [ref=f4e12]:
+      - navigation "Breadcrumb" [ref=f4e13]:
+        - link "Home" [ref=f4e14] [cursor=pointer]:
+          - /url: /
+        - generic [ref=f4e15]: /
+        - link "Articles" [ref=f4e16] [cursor=pointer]:
+          - /url: /articles/?tool=ui-breakpoint-lab
+        - generic [ref=f4e17]: /
+        - link "UI Breakpoint Lab" [ref=f4e18] [cursor=pointer]:
+          - /url: /assets/ui-breakpoint-lab/docs/
+        - generic [ref=f4e19]: /
+        - generic [ref=f4e20]: How to Test Unity UI Across Breakpoints and Safe Areas
+      - generic [ref=f4e21]:
+        - generic [ref=f4e22]:
+          - generic [ref=f4e23]:
+            - generic [ref=f4e24]: UI layout testing
+            - generic [ref=f4e25]: UI Breakpoint Lab
+          - heading "How to Test Unity UI Across Breakpoints and Safe Areas" [level=1] [ref=f4e26]
+          - paragraph [ref=f4e27]: Run a repeatable UGUI matrix across viewport, orientation, and safe-area profiles, then inspect measured layout findings.
+          - generic [ref=f4e28]:
+            - generic [ref=f4e29]: July 11, 2026
+            - generic [ref=f4e30]: •
+            - generic [ref=f4e31]: 8 min read
+            - generic [ref=f4e32]: •
+            - generic [ref=f4e33]: Kevin Ahlgren Bjorvand
+          - paragraph [ref=f4e35]: To test Unity UGUI layouts across breakpoints, run the same saved target through a defined matrix of viewport, orientation, safe-area, and text profiles, then review measured findings instead of relying on one Game view size.
+          - generic [ref=f4e36]:
+            - generic [ref=f4e37]: Updated July 11, 2026
+            - generic [ref=f4e38]: Docs, Asset Store, and license links stay in the sidebar
+        - figure "Measured overlays expose overflow, clipping, overlap, and safe-area problems at each layout profile." [ref=f4e39]:
+          - img "How to Test Unity UI Across Breakpoints and Safe Areas" [ref=f4e40]
+      - generic [ref=f4e42]:
+        - article [ref=f4e43]:
+          - generic [ref=f4e44]:
+            - heading "Why is one Game view size not enough for Unity UI testing?" [level=2] [ref=f4e45]
+            - paragraph [ref=f4e46]: A UGUI screen can look correct at one resolution and still overflow, clip, overlap, or enter a safe area at another shape. Orientation and asymmetric safe areas add layout pressure that a single desktop preview does not represent.
+            - paragraph [ref=f4e47]: "The useful change is consistency: keep the target and rule policy fixed while the viewport profile changes. That makes each result comparable instead of turning the review into a series of unrelated manual resizes."
+            - list [ref=f4e48]:
+              - listitem [ref=f4e49]: Phone, tablet, desktop, ultrawide, and console-safe-area profiles cover different layout shapes.
+              - listitem [ref=f4e50]: Custom profiles can store pixel dimensions, DPI metadata, pixels per point, orientation, and a safe rectangle.
+              - listitem [ref=f4e51]: Each isolated capture is labeled as an approximation rather than a physical-device emulation.
+          - generic [ref=f4e52]:
+            - heading "How do you run the first breakpoint matrix?" [level=2] [ref=f4e53]
+            - paragraph [ref=f4e54]: Open a scene with a UGUI Canvas or select a UI prefab, then open Tools > UI Breakpoint Lab. The Mobile Essentials preset is the shortest documented route to a useful first contact sheet.
+            - paragraph [ref=f4e55]: The tool clones the target into an isolated preview scene. It does not save or edit the source scene or prefab during analysis.
+            - list [ref=f4e56]:
+              - listitem [ref=f4e57]: Choose the active scene, a specific Canvas, or a UI prefab as the target.
+              - listitem [ref=f4e58]: Select Mobile Essentials and keep the text passes you want to inspect.
+              - listitem [ref=f4e59]: Run the matrix and filter the contact sheet to warnings or failures.
+              - listitem [ref=f4e60]: Open a finding to review its rule ID, severity, profile, and exact measured evidence.
+          - region "Primary call to action" [ref=f4e61]:
+            - heading "Turn one-off Game view checks into a repeatable layout matrix." [level=2] [ref=f4e62]
+            - paragraph [ref=f4e63]: UI Breakpoint Lab captures a selected scene Canvas or UI prefab across saved profiles and keeps screenshots and measured findings together in one contact sheet.
+            - generic [ref=f4e64]:
+              - link "Read UI Breakpoint Lab docs" [ref=f4e65] [cursor=pointer]:
+                - /url: /assets/ui-breakpoint-lab/docs/
+              - link "Asset Store" [ref=f4e66] [cursor=pointer]:
+                - /url: https://assetstore.unity.com/packages/slug/392246
+          - generic [ref=f4e68]:
+            - heading "Which UGUI layout findings are measured?" [level=2] [ref=f4e69]
+            - paragraph [ref=f4e70]: Version 1 includes six versioned rules. Deterministic geometry problems can be failures, while heuristic findings such as overlap are warnings by default. Suites can override severity per rule.
+            - paragraph [ref=f4e71]: Each finding retains its source identity, screenshot coordinates, effective severity, and measured evidence so a reviewer can move from the contact sheet back to the responsible object when it still exists.
+            - list [ref=f4e72]:
+              - listitem [ref=f4e73]: Viewport overflow and supported parent clipping.
+              - listitem [ref=f4e74]: Safe-area violations and text overflow.
+              - listitem [ref=f4e75]: Overlap heuristics and configurable touch-target checks.
+              - listitem [ref=f4e76]: Reasoned suppressions at object, hierarchy, profile, or suite scope.
+          - generic [ref=f4e77]:
+            - heading "Where does an Editor layout preview have limits?" [level=2] [ref=f4e78]
+            - paragraph [ref=f4e79]: Unity's public Editor APIs cannot replace Screen.width, Screen.height, Screen.safeArea, Screen.dpi, runtime orientation, or device services. Project code that reads those values directly continues to receive the Editor values.
+            - paragraph [ref=f4e80]: UI Breakpoint Lab provides a preview context and safe-area adapter for custom layout code that needs simulated inputs, but the capture still does not claim exact device rendering, platform fonts, performance, or physical-device behavior.
+            - list [ref=f4e81]:
+              - listitem [ref=f4e82]: UGUI is required; UI Toolkit is outside version 1 scope.
+              - listitem [ref=f4e83]: Built-in and URP are the release-tested rendering paths.
+              - listitem [ref=f4e84]: Physical-device testing remains necessary for final platform validation.
+          - generic [ref=f4e85]:
+            - heading "Start with Mobile Essentials, then save the matrix your project actually needs." [level=2] [ref=f4e86]
+            - paragraph [ref=f4e87]: The documentation covers targets, profiles, rules, suppressions, and the approximation limits of isolated Editor captures.
+            - generic [ref=f4e88]:
+              - link "Read UI Breakpoint Lab docs" [ref=f4e89] [cursor=pointer]:
+                - /url: /assets/ui-breakpoint-lab/docs/
+              - link "Asset Store" [ref=f4e90] [cursor=pointer]:
+                - /url: https://assetstore.unity.com/packages/slug/392246
+          - generic [ref=f4e92]:
+            - heading "More articles for UI Breakpoint Lab" [level=2] [ref=f4e93]
+            - paragraph [ref=f4e94]: The tool workflow stays easier to evaluate when the next steps stay inside the same product and documentation surface.
+            - generic [ref=f4e95]:
+              - article [ref=f4e96]:
+                - img "How to Find Unity UI Text Overflow with Expansion Passes" [ref=f4e97]
+                - generic [ref=f4e98]: 7 min read
+                - heading [level=3] [ref=f4e99]:
+                  - link "How to Find Unity UI Text Overflow with Expansion Passes" [ref=f4e100] [cursor=pointer]:
+                    - /url: /articles/ui-breakpoint-lab/find-unity-ui-text-overflow-with-expansion-passes/
+                - paragraph [ref=f4e101]: Use 120%, 150%, 200%, and pseudolocalized text passes to expose UGUI layout pressure without changing source assets.
+              - article [ref=f4e102]:
+                - img "How to Add Unity UI Visual Regression Checks to CI" [ref=f4e103]
+                - generic [ref=f4e104]: 8 min read
+                - heading [level=3] [ref=f4e105]:
+                  - link "How to Add Unity UI Visual Regression Checks to CI" [ref=f4e106] [cursor=pointer]:
+                    - /url: /articles/ui-breakpoint-lab/add-unity-ui-visual-regression-checks-to-ci/
+                - paragraph [ref=f4e107]: Save a deterministic UGUI suite, compare PNG baselines, and export reviewable JSON and HTML evidence from CI.
+        - complementary "Article sidebar" [ref=f4e108]:
+          - generic [ref=f4e109]:
+            - heading "On this page" [level=2] [ref=f4e110]
+            - navigation "Table of contents" [ref=f4e111]:
+              - link "Why is one Game view size not enough for Unity UI testing?" [ref=f4e112] [cursor=pointer]:
+                - /url: "#why-one-game-view-size-is-not-enough"
+              - link "How do you run the first breakpoint matrix?" [ref=f4e113] [cursor=pointer]:
+                - /url: "#how-to-run-the-first-matrix"
+              - link "Which UGUI layout findings are measured?" [ref=f4e114] [cursor=pointer]:
+                - /url: "#which-layout-findings-are-measured"
+              - link "Where does an Editor layout preview have limits?" [ref=f4e115] [cursor=pointer]:
+                - /url: "#where-the-preview-has-limits"
+          - generic [ref=f4e116]:
+            - heading "Author" [level=2] [ref=f4e117]
+            - generic [ref=f4e118]:
+              - generic [ref=f4e119]:
+                - img "Kevin Ahlgren Bjorvand" [ref=f4e120]
+                - generic [ref=f4e121]:
+                  - strong [ref=f4e122]: Kevin Ahlgren Bjorvand
+                  - paragraph [ref=f4e123]: Founder, Bjorvand Solutions
+              - paragraph [ref=f4e124]: Kevin builds Unity tools focused on release safety, build visibility, migration safety, and compliance evidence.
+          - generic [ref=f4e125]:
+            - heading "UI Breakpoint Lab links" [level=2] [ref=f4e126]
+            - list [ref=f4e127]:
+              - listitem [ref=f4e128]:
+                - link "UI Breakpoint Lab docs" [ref=f4e129] [cursor=pointer]:
+                  - /url: /assets/ui-breakpoint-lab/docs/
+              - listitem [ref=f4e130]:
+                - link "UI Breakpoint Lab Asset Store" [ref=f4e131] [cursor=pointer]:
+                  - /url: https://assetstore.unity.com/packages/slug/392246
+              - listitem [ref=f4e133]:
+                - link "UI Breakpoint Lab license" [ref=f4e134] [cursor=pointer]:
+                  - /url: /assets/ui-breakpoint-lab/license/
+          - generic [ref=f4e135]:
+            - heading "Same-tool articles" [level=2] [ref=f4e136]
+            - list [ref=f4e137]:
+              - listitem [ref=f4e138]:
+                - link "How to Find Unity UI Text Overflow with Expansion Passes" [ref=f4e139] [cursor=pointer]:
+                  - /url: /articles/ui-breakpoint-lab/find-unity-ui-text-overflow-with-expansion-passes/
+              - listitem [ref=f4e140]:
+                - link "How to Add Unity UI Visual Regression Checks to CI" [ref=f4e141] [cursor=pointer]:
+                  - /url: /articles/ui-breakpoint-lab/add-unity-ui-visual-regression-checks-to-ci/
+  - contentinfo [ref=f4e142]:
+    - generic [ref=f4e143]:
+      - generic [ref=f4e144]:
+        - generic [ref=f4e145]:
+          - heading "Explore" [level=2] [ref=f4e146]
+          - list [ref=f4e147]:
+            - listitem [ref=f4e148]:
+              - link "Home" [ref=f4e149] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=f4e150]:
+              - link "Tools" [ref=f4e151] [cursor=pointer]:
+                - /url: /tools/
+            - listitem [ref=f4e152]:
+              - link "Games" [ref=f4e153] [cursor=pointer]:
+                - /url: /games/
+            - listitem [ref=f4e154]:
+              - link "Articles" [ref=f4e155] [cursor=pointer]:
+                - /url: /articles/
+            - listitem [ref=f4e156]:
+              - link "YouTube Thumbnail Preview" [ref=f4e157] [cursor=pointer]:
+                - /url: /youtube-thumbnail-preview/
+            - listitem [ref=f4e158]:
+              - link "Smart Indie" [ref=f4e159] [cursor=pointer]:
+                - /url: https://smartindie.dev/
+            - listitem [ref=f4e163]:
+              - link "BilagPilot" [ref=f4e164] [cursor=pointer]:
+                - /url: https://bilagpilot.no/
+            - listitem [ref=f4e168]:
+              - link "Support" [ref=f4e169] [cursor=pointer]:
+                - /url: /support/
+        - generic [ref=f4e170]:
+          - heading "Tool Docs" [level=2] [ref=f4e171]
+          - list [ref=f4e172]:
+            - listitem [ref=f4e173]:
+              - link "Build Size Guard" [ref=f4e174] [cursor=pointer]:
+                - /url: /assets/build-size-guard/docs/
+            - listitem [ref=f4e175]:
+              - link "Shader Variant Budget & CI Guard" [ref=f4e176] [cursor=pointer]:
+                - /url: /assets/shader-variant-budget-ci-guard/docs/
+            - listitem [ref=f4e177]:
+              - link "Serialization Migration Guard" [ref=f4e178] [cursor=pointer]:
+                - /url: /assets/unity-serialization-migration-guard/docs/
+            - listitem [ref=f4e179]:
+              - link "IL2CPP Strip Guard" [ref=f4e180] [cursor=pointer]:
+                - /url: /assets/il2cpp-strip-guard/docs/
+            - listitem [ref=f4e181]:
+              - link "Inspector Event Link Doctor" [ref=f4e182] [cursor=pointer]:
+                - /url: /assets/inspector-event-link-doctor/docs/
+            - listitem [ref=f4e183]:
+              - link "Fast Play Mode Watcher" [ref=f4e184] [cursor=pointer]:
+                - /url: /assets/fast-play-mode-safety-guard/docs/
+            - listitem [ref=f4e185]:
+              - link "Import Settings Validator & Fix" [ref=f4e186] [cursor=pointer]:
+                - /url: /assets/import-settings-validator-fix/docs/
+            - listitem [ref=f4e187]:
+              - link "Compliance Exporter" [ref=f4e188] [cursor=pointer]:
+                - /url: /assets/compliance/docs/
+            - listitem [ref=f4e189]:
+              - link "UI Breakpoint Lab" [ref=f4e190] [cursor=pointer]:
+                - /url: /assets/ui-breakpoint-lab/docs/
+        - generic [ref=f4e191]:
+          - heading "Asset Store" [level=2] [ref=f4e192]
+          - list [ref=f4e193]:
+            - listitem [ref=f4e194]:
+              - link "Build Size Guard" [ref=f4e195] [cursor=pointer]:
+                - /url: https://assetstore.unity.com/packages/slug/361332
+            - listitem [ref=f4e197]:
+              - link "Shader Variant Budget & CI Guard" [ref=f4e198] [cursor=pointer]:
+                - /url: https://u3d.as/3SYC
+            - listitem [ref=f4e200]:
+              - link "Serialization Migration Guard" [ref=f4e201] [cursor=pointer]:
+                - /url: https://u3d.as/3Sae
+            - listitem [ref=f4e203]:
+              - link "Import Settings Validator & Fix" [ref=f4e204] [cursor=pointer]:
+                - /url: https://assetstore.unity.com/packages/slug/362308
+            - listitem [ref=f4e206]:
+              - link "Compliance Exporter" [ref=f4e207] [cursor=pointer]:
+                - /url: https://u3d.as/3PWR
+            - listitem [ref=f4e209]:
+              - link "UI Breakpoint Lab" [ref=f4e210] [cursor=pointer]:
+                - /url: https://assetstore.unity.com/packages/slug/392246
+        - generic [ref=f4e212]:
+          - heading "Licenses" [level=2] [ref=f4e213]
+          - list [ref=f4e214]:
+            - listitem [ref=f4e215]:
+              - link "Build Size Guard" [ref=f4e216] [cursor=pointer]:
+                - /url: /assets/build-size-guard/license/
+            - listitem [ref=f4e217]:
+              - link "Shader Variant Budget & CI Guard" [ref=f4e218] [cursor=pointer]:
+                - /url: /assets/shader-variant-budget-ci-guard/license/
+            - listitem [ref=f4e219]:
+              - link "Serialization Migration Guard" [ref=f4e220] [cursor=pointer]:
+                - /url: /assets/unity-serialization-migration-guard/license/
+            - listitem [ref=f4e221]:
+              - link "IL2CPP Strip Guard" [ref=f4e222] [cursor=pointer]:
+                - /url: /assets/il2cpp-strip-guard/license/
+            - listitem [ref=f4e223]:
+              - link "Inspector Event Link Doctor" [ref=f4e224] [cursor=pointer]:
+                - /url: /assets/inspector-event-link-doctor/license/
+            - listitem [ref=f4e225]:
+              - link "Fast Play Mode Watcher" [ref=f4e226] [cursor=pointer]:
+                - /url: /assets/fast-play-mode-safety-guard/license/
+            - listitem [ref=f4e227]:
+              - link "Import Settings Validator & Fix" [ref=f4e228] [cursor=pointer]:
+                - /url: /assets/import-settings-validator-fix/license/
+            - listitem [ref=f4e229]:
+              - link "Compliance Exporter" [ref=f4e230] [cursor=pointer]:
+                - /url: /assets/compliance/license/
+            - listitem [ref=f4e231]:
+              - link "UI Breakpoint Lab" [ref=f4e232] [cursor=pointer]:
+                - /url: /assets/ui-breakpoint-lab/license/
+        - generic [ref=f4e233]:
+          - heading "Game Links" [level=2] [ref=f4e234]
+          - list [ref=f4e235]:
+            - listitem [ref=f4e236]:
+              - link "Games Directory" [ref=f4e237] [cursor=pointer]:
+                - /url: /games/
+            - listitem [ref=f4e238]:
+              - link "Dopamine Machine Play" [ref=f4e239] [cursor=pointer]:
+                - /url: /dopamine/
+            - listitem [ref=f4e240]:
+              - link "Forbidden Buttons on Steam" [ref=f4e241] [cursor=pointer]:
+                - /url: https://store.steampowered.com/app/4540560/Forbidden_buttons
+            - listitem [ref=f4e245]:
+              - link "Orbital Chaos on Google Play" [ref=f4e246] [cursor=pointer]:
+                - /url: https://play.google.com/store/apps/details?id=com.kevinbjorvand.orbitalchaos
+            - listitem [ref=f4e248]:
+              - link "Orbital Chaos on App Store" [ref=f4e249] [cursor=pointer]:
+                - /url: https://apps.apple.com/us/app/orbital-chaos/id6754812237
+            - listitem [ref=f4e251]:
+              - link "NeonSurge 2 on itch.io" [ref=f4e252] [cursor=pointer]:
+                - /url: https://kevindevelopment.itch.io/neonsurge-2
+            - listitem [ref=f4e254]:
+              - link "NeonSurge on itch.io" [ref=f4e255] [cursor=pointer]:
+                - /url: https://kevindevelopment.itch.io/neonsurge
+            - listitem [ref=f4e257]:
+              - link "Smart Indie Games" [ref=f4e258] [cursor=pointer]:
+                - /url: https://smartindie.dev/games/
+        - generic [ref=f4e262]:
+          - heading "Support" [level=2] [ref=f4e263]
+          - list [ref=f4e264]:
+            - listitem [ref=f4e265]:
+              - link "Support Form" [ref=f4e266] [cursor=pointer]:
+                - /url: /support/
+            - listitem [ref=f4e267]:
+              - link "Documentation" [ref=f4e268] [cursor=pointer]:
+                - /url: /support/#docs-shortcuts-title
+            - listitem [ref=f4e269]:
+              - link "Support FAQ" [ref=f4e270] [cursor=pointer]:
+                - /url: /support/#faq
+      - generic [ref=f4e271]: "© Bjorvand Solutions 2026 • Company registration number: 836 135 652 (Norway)"

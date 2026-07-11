@@ -308,5 +308,31 @@
     <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-16x16.png</image:loc></image:image>
     <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-32x32.png</image:loc></image:image>
   </url>
-
+  <url>
+    <loc>https://bjorv.com/assets/ui-breakpoint-lab/docs/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/apple-touch-icon.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-16x16.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-32x32.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://bjorv.com/assets/ui-breakpoint-lab/license/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/apple-touch-icon.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-16x16.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-32x32.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://bjorv.com/articles/ui-breakpoint-lab/test-unity-ui-across-breakpoints-and-safe-areas/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/images/UIBreakpointLab/marketing/safe-area-findings.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://bjorv.com/articles/ui-breakpoint-lab/find-unity-ui-text-overflow-with-expansion-passes/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/images/UIBreakpointLab/marketing/text-expansion-findings.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://bjorv.com/articles/ui-breakpoint-lab/add-unity-ui-visual-regression-checks-to-ci/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/images/UIBreakpointLab/marketing/pseudolocalization-findings.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.jpg</image:loc></image:image>
+  </url>
 </urlset>

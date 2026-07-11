@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UI Breakpoint Lab Documentation | Unity UGUI Layout Testing</title>
+  <meta name="description" content="Documentation for UI Breakpoint Lab: run UGUI layout matrices, inspect measured findings, compare visual baselines, and execute saved suites in Unity CI.">
+  <link rel="canonical" href="https://bjorv.com/assets/ui-breakpoint-lab/docs/">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+  <link rel="icon" href="/assets/favicon/favicon.ico">
+  <link rel="manifest" href="/assets/favicon/site.webmanifest">
+  <script src="/assets/js/theme/theme-init.js"></script>
+  <link rel="stylesheet" href="/assets/css/products/product-docs.css">
+  <link rel="stylesheet" href="/assets/css/shared/site-navbar.css">
+  <link rel="stylesheet" href="/assets/css/shared/link-decorators.css">
+  <link rel="stylesheet" href="/assets/css/shared/typography-overrides.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Bjorvand Solutions</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="menu-root">
+          <li class="menu-item"><a class="menu-link" href="/">Home</a></li>
+          <li class="menu-item"><a class="menu-link" href="/tools/">Tools</a></li>
+          <li class="menu-item"><a class="menu-link" href="/games/">Games</a></li>
+          <li class="menu-item"><a class="menu-link" href="/articles/">Articles</a></li>
+          <li class="menu-item"><a class="menu-link" href="/support/">Support</a></li>
+          <li class="menu-item"><a class="menu-link" target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot</a></li>
+          <li class="menu-item menu-item-smart-indie"><a class="menu-link menu-link-smart-indie" target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="language-switcher" aria-label="Language">
+          <a class="language-link" href="/" hreflang="en" lang="en" data-language-option="en" aria-label="English">
+            <img src="/assets/images/flags/en.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>EN</span>
+          </a>
+          <a class="language-link" href="/no/" hreflang="no" lang="no" data-language-option="no" aria-label="Norsk">
+            <img src="/assets/images/flags/no.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>NO</span>
+          </a>
+        </div>
+        <button class="mobile-nav-toggle" type="button" data-mobile-nav-toggle aria-controls="mobileNavPanel" aria-expanded="false">Menu</button>
+      </div>
+    </div>
+    <div class="mobile-nav-panel" id="mobileNavPanel" data-mobile-nav-panel hidden>
+      <div class="mobile-nav-shell container">
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/">Home</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/tools/">Tools</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/games/">Games</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/articles/">Articles</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/support/">Support</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></div>
+        <div class="mobile-nav-group mobile-language-options" aria-label="Language">
+          <a href="/" hreflang="en" lang="en" data-language-option="en">
+            <img src="/assets/images/flags/en.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>English</span>
+          </a>
+          <a href="/no/" hreflang="no" lang="no" data-language-option="no">
+            <img src="/assets/images/flags/no.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>Norsk</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="shell layout">
+    <aside class="sidebar" aria-label="Documentation navigation">
+      <h2>Documentation</h2>
+      <p>Version 1.0.0 workflows, requirements, and limits.</p>
+      <label class="search-label" for="docSearch">Search</label>
+      <input class="search-input" type="search" id="docSearch" placeholder="Search profiles, rules, baselines, CI..." autocomplete="off">
+      <p class="search-status" id="searchStatus">Showing 12 sections</p>
+      <nav class="sidebar-nav" id="sidebarNav">
+        <a class="sidebar-link" href="#overview">Overview</a>
+        <a class="sidebar-link" href="#requirements">Requirements</a>
+        <a class="sidebar-link" href="#installation">Installation</a>
+        <a class="sidebar-link" href="#quick-start">Quick Start</a>
+        <a class="sidebar-link" href="#targets-and-profiles">Targets and Profiles</a>
+        <a class="sidebar-link" href="#rules-and-suppressions">Rules and Suppressions</a>
+        <a class="sidebar-link" href="#text-passes">Text Passes</a>
+        <a class="sidebar-link" href="#baselines-and-diffs">Baselines and Diffs</a>
+        <a class="sidebar-link" href="#reports">Reports</a>
+        <a class="sidebar-link" href="#command-line-and-ci">Command Line and CI</a>
+        <a class="sidebar-link" href="#limitations">Limitations</a>
+        <a class="sidebar-link" href="#troubleshooting-and-support">Troubleshooting and Support</a>
+      </nav>
+    </aside>
+
+    <main class="content" id="docContent">
+      <section class="doc-card" id="overview" data-section>
+        <h1>UI Breakpoint Lab Documentation</h1>
+        <p class="lead">UI Breakpoint Lab is a Unity Editor utility for repeatable UGUI layout checks and visual regression captures.</p>
+        <p>It renders a selected scene Canvas or UI prefab against a saved matrix of viewport, orientation, safe-area, and text-expansion profiles, then presents screenshots and measured findings in one contact sheet.</p>
+        <p>Every isolated capture is labeled as an approximation. It is layout-analysis evidence, not a substitute for a player build on physical hardware.</p>
+        <p><a href="https://assetstore.unity.com/packages/slug/392246" target="_blank" rel="noopener noreferrer">Open UI Breakpoint Lab on the Unity Asset Store</a></p>
+      </section>
+
+      <section class="doc-card" id="requirements" data-section>
+        <h2>1. Requirements and Compatibility</h2>
+        <ul>
+          <li>Minimum Unity version: <code>2022.3.41f1</code>.</li>
+          <li>Release-tested editors: <code>2022.3.41f1</code>, <code>6000.3.9f1</code>, and <code>6000.4.4f1</code>.</li>
+          <li>UGUI is required.</li>
+          <li>Built-in Render Pipeline and Universal Render Pipeline are the release-tested paths.</li>
+          <li>TextMesh Pro is optional. TMP overflow checks and expansion passes are enabled when its public assembly is available.</li>
+        </ul>
+        <p>Other Scriptable Render Pipelines are conditional on accepting Unity's public standard camera render request. Unity versions older than <code>2022.3.41f1</code> are unsupported.</p>
+      </section>
+
+      <section class="doc-card" id="installation" data-section>
+        <h2>2. Installation</h2>
+        <ol>
+          <li>Import the complete UI Breakpoint Lab package into the Unity project.</li>
+          <li>Keep the supplied folders and <code>.meta</code> files together.</li>
+          <li>Wait for compilation to finish and resolve the first Console error if Unity reports one.</li>
+          <li>Open the tool from <strong>Tools &gt; UI Breakpoint Lab</strong>.</li>
+        </ol>
+        <p>If the menu item is missing, confirm the minimum Editor version, UGUI installation, complete import, and project compilation state.</p>
+      </section>
+
+      <section class="doc-card" id="quick-start" data-section>
+        <h2>3. Five-Minute Quick Start</h2>
+        <ol>
+          <li>Open a scene containing a UGUI Canvas, or select a UI prefab.</li>
+          <li>Open <strong>Tools &gt; UI Breakpoint Lab</strong>.</li>
+          <li>Choose the active scene, a Canvas, or the prefab as the target.</li>
+          <li>Select <strong>Mobile Essentials</strong>.</li>
+          <li>Keep the text passes you want to inspect and select <strong>Run Matrix</strong>.</li>
+          <li>Filter the contact sheet to warnings or failures and open a finding.</li>
+          <li>Save the configuration as a suite. After review, capture the completed run as a baseline.</li>
+        </ol>
+        <p>Baseline capture accepts the current images as regression references. It does not mean every warning is resolved; rule severity and reasoned suppressions remain the suite's policy.</p>
+      </section>
+
+      <section class="doc-card" id="targets-and-profiles" data-section>
+        <h2>4. Targets and Profiles</h2>
+        <h3>Supported targets</h3>
+        <ul>
+          <li>Root Canvases in the active or selected scene.</li>
+          <li>One Canvas in an open scene.</li>
+          <li>One isolated UI prefab.</li>
+        </ul>
+        <p>An unloaded scene can be opened additively long enough to clone its root Canvases, then closed without saving. Unity can still invoke project <code>ExecuteAlways</code> code during scene loading.</p>
+        <h3>Profiles</h3>
+        <p>Built-in profiles cover generic phone, tablet, desktop, ultrawide, and console-safe-area layouts. Custom profiles store pixel dimensions, DPI metadata, pixels per point, orientation, and a bottom-left-origin safe rectangle.</p>
+        <p>The source target is cloned into a preview scene. Source scenes and prefabs are not edited by analysis or text transformation.</p>
+      </section>
+
+      <section class="doc-card" id="rules-and-suppressions" data-section>
+        <h2>5. Rules and Suppressions</h2>
+        <p>Version 1 includes six versioned layout rules with measured evidence:</p>
+        <ul>
+          <li><code>UBL001</code> Viewport Overflow.</li>
+          <li><code>UBL002</code> Parent Clipping.</li>
+          <li><code>UBL003</code> Safe-Area Violation.</li>
+          <li><code>UBL004</code> Text Overflow.</li>
+          <li><code>UBL005</code> Overlap heuristic.</li>
+          <li><code>UBL006</code> Touch-target checks.</li>
+        </ul>
+        <p>Suites can override severity per rule. Suppressions require a reason and can target an object, hierarchy, profile and suite combination, or the whole suite. Use the narrowest scope that expresses the intended design.</p>
+        <p>Suppressed findings retain their evidence and suppression state in reports.</p>
+      </section>
+
+      <section class="doc-card" id="text-passes" data-section>
+        <h2>6. Text Expansion and Pseudolocalization</h2>
+        <p>Available passes are Original, 120%, 150%, 200%, and deterministic ASCII pseudolocalization.</p>
+        <ul>
+          <li>Transformations run only on preview clones.</li>
+          <li>Rich-text tags and composite-format placeholders are preserved.</li>
+          <li>Static <code>UnityEngine.UI.Text</code> is supported directly.</li>
+          <li>Public TMP text components are supported when TMP is available.</li>
+          <li>Custom text sources can use the shipped preview-text adapter.</li>
+        </ul>
+        <p>Unity Localization package integration and platform-font equivalence are not included in version 1.</p>
+      </section>
+
+      <section class="doc-card" id="baselines-and-diffs" data-section>
+        <h2>7. Baselines and Visual Diffs</h2>
+        <p>A baseline is an explicitly accepted set of PNG captures and versioned metadata. Baseline identity prevents unrelated profile, text, tool, or rendering environments from being treated as interchangeable.</p>
+        <ul>
+          <li>Compare side by side, with a wipe, or through a heatmap.</li>
+          <li>Configure integer RGBA tolerance from 0 through 255.</li>
+          <li>Use small ignored regions only for understood, intentionally variable content.</li>
+          <li>Update one accepted profile and text-pass entry, or separately confirm a complete baseline replacement.</li>
+        </ul>
+        <p>Pixel-dimension and color-space mismatches block numeric comparison. Unity-version, render-pipeline, and graphics-API differences produce prominent compatibility warnings.</p>
+      </section>
+
+      <section class="doc-card" id="reports" data-section>
+        <h2>8. Reports and Annotations</h2>
+        <p>In-Editor reports are versioned ScriptableObject assets containing captures, findings, environment metadata, annotations, progress outcome, and approximation warnings.</p>
+        <p>Reports can be exported as JSON schema version 1 or portable HTML. Keep the HTML file beside its complete sibling-assets folder so screenshot references remain valid.</p>
+        <p>Each finding records its rule and version, evidence type, effective severity, measured values, top-left-origin screenshot coordinates, stable source identity, and suppression state.</p>
+      </section>
+
+      <section class="doc-card" id="command-line-and-ci" data-section>
+        <h2>9. Command Line and CI</h2>
+        <p>The command-line runner executes the same suite, profiles, rules, severity policy, suppressions, baselines, diff algorithm, and exporters as the Editor window.</p>
+        <pre><code>Unity.exe -batchmode -projectPath "C:\work\MyGame" ^
+  -executeMethod KevinBjorvand.UIBreakpointLab.UIBreakpointCli.Run ^
+  -ublSuite "Assets/UI Tests/Main Menu.asset" ^
+  -ublOutput "C:\work\artifacts\ui-breakpoint-lab" ^
+  -logFile "C:\work\artifacts\ui-breakpoint-lab.log"</code></pre>
+        <p>Screenshot capture requires graphics. Do not use <code>-nographics</code>. The suite target must be a saved scene, persistent Canvas reference, or prefab; dynamic Active Scene targets are rejected in batch mode.</p>
+        <h3>Exit codes</h3>
+        <ul>
+          <li><code>0</code>: complete matrix, verified source integrity, configured gate passed.</li>
+          <li><code>2</code>: configured finding, required comparison, or diff-budget failure.</li>
+          <li><code>3</code>: invalid arguments, suite path, suite validation, or target.</li>
+          <li><code>4</code>: the run or export could not produce trustworthy complete evidence.</li>
+        </ul>
+        <p>Add <code>-ublFailOnWarnings</code> when configured warnings should also fail the gate. Archive the complete output directory and Editor log.</p>
+      </section>
+
+      <section class="doc-card" id="limitations" data-section>
+        <h2>10. Accuracy and Version 1 Limits</h2>
+        <p>UI Breakpoint Lab uses documented public Unity APIs and does not reflect into Game view or Device Simulator internals.</p>
+        <p>Public Editor APIs cannot replace <code>Screen.width</code>, <code>Screen.height</code>, <code>Screen.safeArea</code>, <code>Screen.dpi</code>, runtime orientation, or device services. Preview-aware project code can use the shipped preview context and safe-area adapter.</p>
+        <p>Version 1 does not include UI Toolkit validation, XR or custom render-texture UI, physical-device rendering, performance simulation, exact platform-font rendering, automatic gameplay navigation, automatic layout rewriting, or Unity Localization package integration.</p>
+      </section>
+
+      <section class="doc-card" id="troubleshooting-and-support" data-section>
+        <h2>11. Troubleshooting and Support</h2>
+        <h3>Blank or missing CI screenshots</h3>
+        <p>Remove <code>-nographics</code>, confirm the agent has a usable graphics environment, and confirm the active pipeline accepts the public render request.</p>
+        <h3>Repeated captures differ</h3>
+        <p>Check the Unity version, pipeline, color space, graphics API, fonts, animation, generated assets, and time-, random-, network-, or device-dependent preview content.</p>
+        <h3>Project code ignores the simulated safe area</h3>
+        <p>Code that reads <code>Screen.safeArea</code> directly receives the Editor value. Use the preview context or safe-area adapter for opt-in preview behavior.</p>
+        <h3>Source scene or prefab becomes dirty</h3>
+        <p>Do not save the unexpected changes. Cancel the run, preserve the target, phase, Editor log, and version-control diff, and report it as a defect.</p>
+        <p><a href="/support/">Contact support</a>, review the <a href="/assets/ui-breakpoint-lab/license/">license</a>, or browse the <a href="/articles/?tool=ui-breakpoint-lab">UI Breakpoint Lab articles</a>.</p>
+      </section>
+
+      <div class="empty-state" id="emptyState" role="status" aria-live="polite">No sections match your search. Try a broader term like <code>profile</code>, <code>baseline</code>, or <code>CI</code>.</div>
+    </main>
+  </div>
+
+  <script src="/assets/js/docs/product-docs.js"></script>
+  <script defer src="/assets/js/site/nav.js"></script>
+  <script defer src="/assets/js/site/link-decorators.js"></script>
+<footer class="site-footer">
+    <div class="container footer-shell">
+      <div class="footer-columns">
+        <section>
+          <h2>Explore</h2>
+          <ul class="link-list">
+            <li><a href="/">Home</a></li>
+            <li><a href="/tools/">Tools</a></li>
+            <li><a href="/games/">Games</a></li>
+            <li><a href="/articles/">Articles</a></li>
+            <li><a href="/youtube-thumbnail-preview/" data-footer-service-link="youtube-thumbnail-preview">YouTube Thumbnail Preview</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot</a></li>
+            <li><a href="/support/">Support</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Tool Docs</h2>
+          <ul class="link-list">
+            <li><a href="/assets/build-size-guard/docs/">Build Size Guard</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/docs/">Shader Variant Budget & CI Guard</a></li>
+            <li><a href="/assets/unity-serialization-migration-guard/docs/">Serialization Migration Guard</a></li>
+            <li><a href="/assets/il2cpp-strip-guard/docs/">IL2CPP Strip Guard</a></li>
+            <li><a href="/assets/inspector-event-link-doctor/docs/">Inspector Event Link Doctor</a></li>
+            <li><a href="/assets/fast-play-mode-safety-guard/docs/">Fast Play Mode Watcher</a></li>
+            <li><a href="/assets/import-settings-validator-fix/docs/">Import Settings Validator & Fix</a></li>
+            <li><a href="/assets/compliance/docs/">Compliance Exporter</a></li>
+            <li><a href="/assets/ui-breakpoint-lab/docs/">UI Breakpoint Lab</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Asset Store</h2>
+          <ul class="link-list">
+            <li><a target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/361332">Build Size Guard</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://u3d.as/3SYC">Shader Variant Budget & CI Guard</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://u3d.as/3Sae">Serialization Migration Guard</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/362308">Import Settings Validator & Fix</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://u3d.as/3PWR">Compliance Exporter</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/392246">UI Breakpoint Lab</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Licenses</h2>
+          <ul class="link-list">
+            <li><a href="/assets/build-size-guard/license/">Build Size Guard</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/license/">Shader Variant Budget & CI Guard</a></li>
+            <li><a href="/assets/unity-serialization-migration-guard/license/">Serialization Migration Guard</a></li>
+            <li><a href="/assets/il2cpp-strip-guard/license/">IL2CPP Strip Guard</a></li>
+            <li><a href="/assets/inspector-event-link-doctor/license/">Inspector Event Link Doctor</a></li>
+            <li><a href="/assets/fast-play-mode-safety-guard/license/">Fast Play Mode Watcher</a></li>
+            <li><a href="/assets/import-settings-validator-fix/license/">Import Settings Validator & Fix</a></li>
+            <li><a href="/assets/compliance/license/">Compliance Exporter</a></li>
+            <li><a href="/assets/ui-breakpoint-lab/license/">UI Breakpoint Lab</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Game Links</h2>
+          <ul class="link-list">
+            <li><a href="/games/">Games Directory</a></li>
+            <li><a href="/dopamine/">Dopamine Machine Play</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://store.steampowered.com/app/4540560/Forbidden_buttons">Forbidden Buttons on Steam</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.kevinbjorvand.orbitalchaos">Orbital Chaos on Google Play</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://apps.apple.com/us/app/orbital-chaos/id6754812237">Orbital Chaos on App Store</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge-2">NeonSurge 2 on itch.io</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge">NeonSurge on itch.io</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/games/">Smart Indie Games</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Support</h2>
+          <ul class="link-list">
+            <li><a href="/support/">Support Form</a></li>
+            <li><a href="/support/#docs-shortcuts-title">Documentation</a></li>
+            <li><a href="/support/#faq">Support FAQ</a></li>
+          </ul>
+        </section>
+      </div>
+      <div class="footer-legal">
+        <span>&copy; Bjorvand Solutions <span data-current-year>2026</span> &bull; Company registration number: 836 135 652 (Norway)</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

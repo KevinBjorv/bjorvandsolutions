@@ -4,17 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Unity Release Workflows | Bjorvand Solutions</title>
-  <meta name="description" content="Practical guides for catching build, asset, refactor, and compliance problems before they hit release.">
+  <meta name="description" content="Practical guides for catching build, asset, refactor, UI layout, and compliance problems before they hit release.">
   <meta name="author" content="Kevin Ahlgren Bjorvand">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Unity Release Workflows | Bjorvand Solutions">
-  <meta property="og:description" content="Practical guides for catching build, asset, refactor, and compliance problems before they hit release.">
+  <meta property="og:description" content="Practical guides for catching build, asset, refactor, UI layout, and compliance problems before they hit release.">
   <meta property="og:url" content="https://bjorv.com/articles/">
-  <meta property="og:image" content="https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.optimized.jpg">
+  <meta property="og:image" content="https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Unity Release Workflows | Bjorvand Solutions">
-  <meta name="twitter:description" content="Practical guides for catching build, asset, refactor, and compliance problems before they hit release.">
-  <meta name="twitter:image" content="https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.optimized.jpg">
+  <meta name="twitter:description" content="Practical guides for catching build, asset, refactor, UI layout, and compliance problems before they hit release.">
+  <meta name="twitter:image" content="https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.jpg">
   <link rel="canonical" href="https://bjorv.com/articles/">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
@@ -91,6 +91,12 @@
           "name": "Compliance Exporter",
           "applicationCategory": "DeveloperApplication",
           "url": "https://bjorv.com/assets/compliance/docs/"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "UI Breakpoint Lab",
+          "applicationCategory": "DeveloperApplication",
+          "url": "https://bjorv.com/assets/ui-breakpoint-lab/docs/"
         }
       ]
     },
@@ -101,90 +107,108 @@
         {
           "@type": "ListItem",
           "position": 1,
+          "url": "https://bjorv.com/articles/ui-breakpoint-lab/add-unity-ui-visual-regression-checks-to-ci/",
+          "name": "How to Add Unity UI Visual Regression Checks to CI"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "url": "https://bjorv.com/articles/ui-breakpoint-lab/find-unity-ui-text-overflow-with-expansion-passes/",
+          "name": "How to Find Unity UI Text Overflow with Expansion Passes"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "url": "https://bjorv.com/articles/ui-breakpoint-lab/test-unity-ui-across-breakpoints-and-safe-areas/",
+          "name": "How to Test Unity UI Across Breakpoints and Safe Areas"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
           "url": "https://bjorv.com/articles/unity-serialization-migration-guard/audit-unity-yaml-coverage-before-removing-old-rename-mappings/",
           "name": "How to Audit Unity YAML Coverage Before Removing Old Rename Mappings"
         },
         {
           "@type": "ListItem",
-          "position": 2,
+          "position": 5,
           "url": "https://bjorv.com/articles/compliance/build-a-repeatable-unity-license-compliance-workflow/",
           "name": "How to Build a Repeatable Unity License Compliance Workflow"
         },
         {
           "@type": "ListItem",
-          "position": 3,
+          "position": 6,
           "url": "https://bjorv.com/articles/build-size-guard/catch-unity-build-size-regressions-before-release/",
           "name": "How to Catch Unity Build Size Regressions Before Release"
         },
         {
           "@type": "ListItem",
-          "position": 4,
+          "position": 7,
           "url": "https://bjorv.com/articles/shader-variant-budget-ci-guard/compare-shader-variant-snapshots-from-editor-log/",
           "name": "How to Compare Shader Variant Snapshots from Editor.log"
         },
         {
           "@type": "ListItem",
-          "position": 5,
+          "position": 8,
           "url": "https://bjorv.com/articles/build-size-guard/compare-unity-build-snapshots-and-find-what-changed/",
           "name": "How to Compare Unity Build Snapshots and Find What Changed"
         },
         {
           "@type": "ListItem",
-          "position": 6,
+          "position": 9,
           "url": "https://bjorv.com/articles/import-settings-validator-fix/enforce-unity-import-settings-across-a-team/",
           "name": "How to Enforce Unity Import Settings Across a Team"
         },
         {
           "@type": "ListItem",
-          "position": 7,
+          "position": 10,
           "url": "https://bjorv.com/articles/compliance/export-unity-credits-and-compliance-manifests-before-release/",
           "name": "How to Export Unity Credits and Compliance Manifests Before Release"
         },
         {
           "@type": "ListItem",
-          "position": 8,
+          "position": 11,
           "url": "https://bjorv.com/articles/import-settings-validator-fix/fix-import-setting-drift-without-manual-reimports/",
           "name": "How to Fix Import Setting Drift Without Manual Reimports"
         },
         {
           "@type": "ListItem",
-          "position": 9,
+          "position": 12,
           "url": "https://bjorv.com/articles/compliance/generate-third-party-notices-for-a-unity-game/",
           "name": "How to Generate Third-Party Notices for a Unity Game"
         },
         {
           "@type": "ListItem",
-          "position": 10,
+          "position": 13,
           "url": "https://bjorv.com/articles/unity-serialization-migration-guard/preview-and-validate-unity-reserialization-during-refactors/",
           "name": "How to Preview and Validate Unity Reserialization During Refactors"
         },
         {
           "@type": "ListItem",
-          "position": 11,
+          "position": 14,
           "url": "https://bjorv.com/articles/shader-variant-budget-ci-guard/reduce-shader-variant-creep-in-unity/",
           "name": "How to Reduce Shader Variant Creep in Unity"
         },
         {
           "@type": "ListItem",
-          "position": 12,
+          "position": 15,
           "url": "https://bjorv.com/articles/unity-serialization-migration-guard/safely-rename-serialized-fields-in-unity/",
           "name": "How to Safely Rename Serialized Fields in Unity"
         },
         {
           "@type": "ListItem",
-          "position": 13,
+          "position": 16,
           "url": "https://bjorv.com/articles/build-size-guard/set-build-size-budgets-in-unity-ci/",
           "name": "How to Set Build Size Budgets in Unity CI"
         },
         {
           "@type": "ListItem",
-          "position": 14,
+          "position": 17,
           "url": "https://bjorv.com/articles/shader-variant-budget-ci-guard/set-shader-variant-budgets-in-unity-ci/",
           "name": "How to Set Shader Variant Budgets in Unity CI"
         },
         {
           "@type": "ListItem",
-          "position": 15,
+          "position": 18,
           "url": "https://bjorv.com/articles/import-settings-validator-fix/validate-texture-audio-and-model-import-settings-in-unity/",
           "name": "How to Validate Texture, Audio, and Model Import Settings in Unity"
         }
@@ -248,16 +272,16 @@
       </div>
     </div>
   </header>
-  <main class="site-main" id="main-content">
+  <main class="site-main">
     <div class="container articles-page">
       <section class="articles-hero">
         <span class="badge">Articles</span>
         <h1>Unity Release Workflows</h1>
-        <p>Practical guides for catching build, asset, refactor, and compliance problems before they hit release.</p>
-        <p>Build size &middot; Shader variants &middot; Import settings &middot; Serialization &middot; Compliance</p>
+        <p>Practical guides for catching build, asset, refactor, UI layout, and compliance problems before they hit release.</p>
+        <p>Build size &middot; Shader variants &middot; Import settings &middot; Serialization &middot; UI layout &middot; Compliance</p>
         <div class="articles-summary-strip" aria-label="Article summary">
           <article>
-            <strong>15 practical guides</strong>
+            <strong>18 practical guides</strong>
             <span>Unity release workflows for build, asset, refactor, and compliance cleanup.</span>
           </article>
         </div>
@@ -279,12 +303,6 @@
           </div>
         </div>
 
-        <label class="article-search-field" for="article-search">
-          <i data-lucide="search" aria-hidden="true"></i>
-          <span class="sr-only">Search articles</span>
-          <input id="article-search" type="search" placeholder="Search guides, tools, or workflow problems…" autocomplete="off" data-article-search>
-        </label>
-
         <div class="filter-group" aria-labelledby="tool-filters-title">
           <h2 id="tool-filters-title">Tool filters</h2>
           <div class="filter-pills">
@@ -294,6 +312,7 @@
               <button class="filter-pill" type="button" data-tool-filter data-filter-value="unity-serialization-migration-guard" aria-pressed="false">Serialization Migration Guard</button>
               <button class="filter-pill" type="button" data-tool-filter data-filter-value="import-settings-validator-fix" aria-pressed="false">Import Settings Validator &amp; Fix</button>
               <button class="filter-pill" type="button" data-tool-filter data-filter-value="compliance" aria-pressed="false">Compliance Exporter</button>
+              <button class="filter-pill" type="button" data-tool-filter data-filter-value="ui-breakpoint-lab" aria-pressed="false">UI Breakpoint Lab</button>
           </div>
         </div>
 
@@ -305,10 +324,11 @@
               <button class="filter-pill" type="button" data-category-filter data-filter-value="asset-pipeline" aria-pressed="false">Import settings</button>
               <button class="filter-pill" type="button" data-category-filter data-filter-value="serialization-refactoring" aria-pressed="false">Serialization</button>
               <button class="filter-pill" type="button" data-category-filter data-filter-value="compliance-release" aria-pressed="false">Compliance</button>
+              <button class="filter-pill" type="button" data-category-filter data-filter-value="ui-layout-testing" aria-pressed="false">UI layout testing</button>
           </div>
         </div>
 
-        <p class="articles-status" data-article-status>Showing 15 articles</p>
+        <p class="articles-status" data-article-status>Showing 18 articles</p>
       </section>
 
       <section aria-labelledby="articles-grid-title">
@@ -317,9 +337,72 @@
           <p class="articles-toolbar-note">Use the filters above, or open any guide directly from the cards below.</p>
         </div>
         <div class="articles-grid" data-articles-grid>
+<article class="card article-card" data-article-card data-tool="ui-breakpoint-lab" data-category="ui-layout-testing" data-date="2026-07-11" data-title="how to add unity ui visual regression checks to ci">
+            <figure>
+              <img src="/assets/images/UIBreakpointLab/marketing/pseudolocalization-findings.png" alt="How to Add Unity UI Visual Regression Checks to CI" loading="lazy">
+            </figure>
+            <div class="article-card-body">
+              <div class="article-card-meta">
+                <span class="article-tag">UI layout testing</span>
+                <span class="article-tag">8 min read</span>
+              </div>
+              <div class="article-card-tags">
+                <span class="article-tag">UI Breakpoint Lab</span>
+                <span class="article-tag">July 11, 2026</span>
+              </div>
+              <h2><a href="/articles/ui-breakpoint-lab/add-unity-ui-visual-regression-checks-to-ci/">How to Add Unity UI Visual Regression Checks to CI</a></h2>
+              <p>Save a deterministic UGUI suite, compare PNG baselines, and export reviewable JSON and HTML evidence from CI.</p>
+              <div class="card-actions">
+                <a class="button button-primary" href="/articles/ui-breakpoint-lab/add-unity-ui-visual-regression-checks-to-ci/">Read article</a>
+                <a class="button button-secondary" href="https://assetstore.unity.com/packages/slug/392246">Asset Store</a>
+              </div>
+            </div>
+          </article>
+<article class="card article-card" data-article-card data-tool="ui-breakpoint-lab" data-category="ui-layout-testing" data-date="2026-07-11" data-title="how to find unity ui text overflow with expansion passes">
+            <figure>
+              <img src="/assets/images/UIBreakpointLab/marketing/text-expansion-findings.png" alt="How to Find Unity UI Text Overflow with Expansion Passes" loading="lazy">
+            </figure>
+            <div class="article-card-body">
+              <div class="article-card-meta">
+                <span class="article-tag">UI layout testing</span>
+                <span class="article-tag">7 min read</span>
+              </div>
+              <div class="article-card-tags">
+                <span class="article-tag">UI Breakpoint Lab</span>
+                <span class="article-tag">July 11, 2026</span>
+              </div>
+              <h2><a href="/articles/ui-breakpoint-lab/find-unity-ui-text-overflow-with-expansion-passes/">How to Find Unity UI Text Overflow with Expansion Passes</a></h2>
+              <p>Use 120%, 150%, 200%, and pseudolocalized text passes to expose UGUI layout pressure without changing source assets.</p>
+              <div class="card-actions">
+                <a class="button button-primary" href="/articles/ui-breakpoint-lab/find-unity-ui-text-overflow-with-expansion-passes/">Read article</a>
+                <a class="button button-secondary" href="https://assetstore.unity.com/packages/slug/392246">Asset Store</a>
+              </div>
+            </div>
+          </article>
+<article class="card article-card" data-article-card data-tool="ui-breakpoint-lab" data-category="ui-layout-testing" data-date="2026-07-11" data-title="how to test unity ui across breakpoints and safe areas">
+            <figure>
+              <img src="/assets/images/UIBreakpointLab/marketing/safe-area-findings.png" alt="How to Test Unity UI Across Breakpoints and Safe Areas" loading="lazy">
+            </figure>
+            <div class="article-card-body">
+              <div class="article-card-meta">
+                <span class="article-tag">UI layout testing</span>
+                <span class="article-tag">8 min read</span>
+              </div>
+              <div class="article-card-tags">
+                <span class="article-tag">UI Breakpoint Lab</span>
+                <span class="article-tag">July 11, 2026</span>
+              </div>
+              <h2><a href="/articles/ui-breakpoint-lab/test-unity-ui-across-breakpoints-and-safe-areas/">How to Test Unity UI Across Breakpoints and Safe Areas</a></h2>
+              <p>Run a repeatable UGUI matrix across viewport, orientation, and safe-area profiles, then inspect measured layout findings.</p>
+              <div class="card-actions">
+                <a class="button button-primary" href="/articles/ui-breakpoint-lab/test-unity-ui-across-breakpoints-and-safe-areas/">Read article</a>
+                <a class="button button-secondary" href="https://assetstore.unity.com/packages/slug/392246">Asset Store</a>
+              </div>
+            </div>
+          </article>
 <article class="card article-card" data-article-card data-tool="unity-serialization-migration-guard" data-category="serialization-refactoring" data-date="2026-03-11" data-title="how to audit unity yaml coverage before removing old rename mappings">
             <figure>
-              <img src="/assets/images/UnitySerializationMigrationGuard/marketing/Locate%20every%20affected%20asset.optimized.jpg" alt="How to Audit Unity YAML Coverage Before Removing Old Rename Mappings" width="1000" height="667" loading="lazy">
+              <img src="/assets/images/UnitySerializationMigrationGuard/marketing/Locate%20every%20affected%20asset.jpg" alt="How to Audit Unity YAML Coverage Before Removing Old Rename Mappings" loading="lazy">
             </figure>
             <div class="article-card-body">
               <div class="article-card-meta">
@@ -340,7 +423,7 @@
           </article>
 <article class="card article-card" data-article-card data-tool="compliance" data-category="compliance-release" data-date="2026-03-11" data-title="how to build a repeatable unity license compliance workflow">
             <figure>
-              <img src="/assets/images/CompliancePack/marketing/Deterministic%20output.optimized.jpg" alt="How to Build a Repeatable Unity License Compliance Workflow" width="1000" height="667" loading="lazy">
+              <img src="/assets/images/CompliancePack/marketing/Deterministic%20output.jpg" alt="How to Build a Repeatable Unity License Compliance Workflow" loading="lazy">
             </figure>
             <div class="article-card-body">
               <div class="article-card-meta">
@@ -361,7 +444,7 @@
           </article>
 <article class="card article-card" data-article-card data-tool="build-size-guard" data-category="build-ci" data-date="2026-03-11" data-title="how to catch unity build size regressions before release">
             <figure>
-              <img src="/assets/images/BuildSizeGuard/BuildSizeGuardMarketing/Build%20size%20guard%20cover%20image.optimized.jpg" alt="How to Catch Unity Build Size Regressions Before Release" width="1000" height="667" loading="lazy">
+              <img src="/assets/images/BuildSizeGuard/BuildSizeGuardMarketing/Build%20size%20guard%20cover%20image.jpg" alt="How to Catch Unity Build Size Regressions Before Release" loading="lazy">
             </figure>
             <div class="article-card-body">
               <div class="article-card-meta">
@@ -382,7 +465,7 @@
           </article>
 <article class="card article-card" data-article-card data-tool="shader-variant-budget-ci-guard" data-category="build-ci" data-date="2026-03-11" data-title="how to compare shader variant snapshots from editor.log">
             <figure>
-              <img src="/assets/images/ShaderVariantBudgetCIGuard/marketing/See%20what%20changed%20fast.optimized.jpg" alt="How to Compare Shader Variant Snapshots from Editor.log" width="1000" height="667" loading="lazy">
+              <img src="/assets/images/ShaderVariantBudgetCIGuard/marketing/See%20what%20changed%20fast.jpg" alt="How to Compare Shader Variant Snapshots from Editor.log" loading="lazy">
             </figure>
             <div class="article-card-body">
               <div class="article-card-meta">
@@ -403,7 +486,7 @@
           </article>
 <article class="card article-card" data-article-card data-tool="build-size-guard" data-category="build-ci" data-date="2026-03-11" data-title="how to compare unity build snapshots and find what changed">
             <figure>
-              <img src="/assets/images/BuildSizeGuard/BuildSizeGuardMarketing/Compare%20any%20two%20builds%20in%20seconds.optimized.jpg" alt="How to Compare Unity Build Snapshots and Find What Changed" width="1000" height="667" loading="lazy">
+              <img src="/assets/images/BuildSizeGuard/BuildSizeGuardMarketing/Compare%20any%20two%20builds%20in%20seconds.jpg" alt="How to Compare Unity Build Snapshots and Find What Changed" loading="lazy">
             </figure>
             <div class="article-card-body">
               <div class="article-card-meta">
@@ -424,7 +507,7 @@
           </article>
 <article class="card article-card" data-article-card data-tool="import-settings-validator-fix" data-category="asset-pipeline" data-date="2026-03-11" data-title="how to enforce unity import settings across a team">
             <figure>
-              <img src="/assets/images/ImportSettingsValidatorFix/marketing/Cover%20image.optimized.jpg" alt="How to Enforce Unity Import Settings Across a Team" width="1000" height="667" loading="lazy">
+              <img src="/assets/images/ImportSettingsValidatorFix/marketing/Cover%20image.jpg" alt="How to Enforce Unity Import Settings Across a Team" loading="lazy">
             </figure>
             <div class="article-card-body">
               <div class="article-card-meta">
@@ -445,7 +528,7 @@
           </article>
 <article class="card article-card" data-article-card data-tool="compliance" data-category="compliance-release" data-date="2026-03-11" data-title="how to export unity credits and compliance manifests before release">
             <figure>
-              <img src="/assets/images/CompliancePack/marketing/Evidence%20based.optimized.jpg" alt="How to Export Unity Credits and Compliance Manifests Before Release" width="1000" height="667" loading="lazy">
+              <img src="/assets/images/CompliancePack/marketing/Evidence%20based.jpg" alt="How to Export Unity Credits and Compliance Manifests Before Release" loading="lazy">
             </figure>
             <div class="article-card-body">
               <div class="article-card-meta">
@@ -466,7 +549,7 @@
           </article>
 <article class="card article-card" data-article-card data-tool="import-settings-validator-fix" data-category="asset-pipeline" data-date="2026-03-11" data-title="how to fix import setting drift without manual reimports">
             <figure>
-              <img src="/assets/images/ImportSettingsValidatorFix/marketing/Rule%20based%20import%20standards.optimized.jpg" alt="How to Fix Import Setting Drift Without Manual Reimports" width="1000" height="667" loading="lazy">
+              <img src="/assets/images/ImportSettingsValidatorFix/marketing/Rule%20based%20import%20standards.jpg" alt="How to Fix Import Setting Drift Without Manual Reimports" loading="lazy">
             </figure>
             <div class="article-card-body">
               <div class="article-card-meta">
@@ -487,7 +570,7 @@
           </article>
 <article class="card article-card" data-article-card data-tool="compliance" data-category="compliance-release" data-date="2026-03-11" data-title="how to generate third-party notices for a unity game">
             <figure>
-              <img src="/assets/images/CompliancePack/marketing/Overview.optimized.jpg" alt="How to Generate Third-Party Notices for a Unity Game" width="1000" height="667" loading="lazy">
+              <img src="/assets/images/CompliancePack/marketing/Overview.jpg" alt="How to Generate Third-Party Notices for a Unity Game" loading="lazy">
             </figure>
             <div class="article-card-body">
               <div class="article-card-meta">
@@ -508,7 +591,7 @@
           </article>
 <article class="card article-card" data-article-card data-tool="unity-serialization-migration-guard" data-category="serialization-refactoring" data-date="2026-03-11" data-title="how to preview and validate unity reserialization during refactors">
             <figure>
-              <img src="/assets/images/UnitySerializationMigrationGuard/marketing/Preview%20migrations%20safely.optimized.jpg" alt="How to Preview and Validate Unity Reserialization During Refactors" width="1000" height="667" loading="lazy">
+              <img src="/assets/images/UnitySerializationMigrationGuard/marketing/Preview%20migrations%20safely.jpg" alt="How to Preview and Validate Unity Reserialization During Refactors" loading="lazy">
             </figure>
             <div class="article-card-body">
               <div class="article-card-meta">
@@ -529,7 +612,7 @@
           </article>
 <article class="card article-card" data-article-card data-tool="shader-variant-budget-ci-guard" data-category="build-ci" data-date="2026-03-11" data-title="how to reduce shader variant creep in unity">
             <figure>
-              <img src="/assets/images/ShaderVariantBudgetCIGuard/marketing/Cover%20image.optimized.jpg" alt="How to Reduce Shader Variant Creep in Unity" width="1000" height="667" loading="lazy">
+              <img src="/assets/images/ShaderVariantBudgetCIGuard/marketing/Cover%20image.jpg" alt="How to Reduce Shader Variant Creep in Unity" loading="lazy">
             </figure>
             <div class="article-card-body">
               <div class="article-card-meta">
@@ -550,7 +633,7 @@
           </article>
 <article class="card article-card" data-article-card data-tool="unity-serialization-migration-guard" data-category="serialization-refactoring" data-date="2026-03-11" data-title="how to safely rename serialized fields in unity">
             <figure>
-              <img src="/assets/images/UnitySerializationMigrationGuard/marketing/Cover%20image.optimized.jpg" alt="How to Safely Rename Serialized Fields in Unity" width="1000" height="667" loading="lazy">
+              <img src="/assets/images/UnitySerializationMigrationGuard/marketing/Cover%20image.jpg" alt="How to Safely Rename Serialized Fields in Unity" loading="lazy">
             </figure>
             <div class="article-card-body">
               <div class="article-card-meta">
@@ -571,7 +654,7 @@
           </article>
 <article class="card article-card" data-article-card data-tool="build-size-guard" data-category="build-ci" data-date="2026-03-11" data-title="how to set build size budgets in unity ci">
             <figure>
-              <img src="/assets/images/BuildSizeGuard/BuildSizeGuardMarketing/Set%20budgets%20and%20regression%20rules.optimized.jpg" alt="How to Set Build Size Budgets in Unity CI" width="1000" height="667" loading="lazy">
+              <img src="/assets/images/BuildSizeGuard/BuildSizeGuardMarketing/Set%20budgets%20and%20regression%20rules.jpg" alt="How to Set Build Size Budgets in Unity CI" loading="lazy">
             </figure>
             <div class="article-card-body">
               <div class="article-card-meta">
@@ -592,7 +675,7 @@
           </article>
 <article class="card article-card" data-article-card data-tool="shader-variant-budget-ci-guard" data-category="build-ci" data-date="2026-03-11" data-title="how to set shader variant budgets in unity ci">
             <figure>
-              <img src="/assets/images/ShaderVariantBudgetCIGuard/marketing/Enforce%20hard%20budgets.optimized.jpg" alt="How to Set Shader Variant Budgets in Unity CI" width="1000" height="667" loading="lazy">
+              <img src="/assets/images/ShaderVariantBudgetCIGuard/marketing/Enforce%20hard%20budgets.jpg" alt="How to Set Shader Variant Budgets in Unity CI" loading="lazy">
             </figure>
             <div class="article-card-body">
               <div class="article-card-meta">
@@ -613,7 +696,7 @@
           </article>
 <article class="card article-card" data-article-card data-tool="import-settings-validator-fix" data-category="asset-pipeline" data-date="2026-03-11" data-title="how to validate texture, audio, and model import settings in unity">
             <figure>
-              <img src="/assets/images/ImportSettingsValidatorFix/marketing/Validate%20the%20project.optimized.jpg" alt="How to Validate Texture, Audio, and Model Import Settings in Unity" width="1000" height="667" loading="lazy">
+              <img src="/assets/images/ImportSettingsValidatorFix/marketing/Validate%20the%20project.jpg" alt="How to Validate Texture, Audio, and Model Import Settings in Unity" loading="lazy">
             </figure>
             <div class="article-card-body">
               <div class="article-card-meta">
@@ -667,6 +750,7 @@
             <li><a href="/assets/fast-play-mode-safety-guard/docs/">Fast Play Mode Watcher</a></li>
             <li><a href="/assets/import-settings-validator-fix/docs/">Import Settings Validator & Fix</a></li>
             <li><a href="/assets/compliance/docs/">Compliance Exporter</a></li>
+            <li><a href="/assets/ui-breakpoint-lab/docs/">UI Breakpoint Lab</a></li>
           </ul>
         </section>
         <section>
@@ -677,6 +761,7 @@
             <li><a target="_blank" rel="noopener noreferrer" href="https://u3d.as/3Sae">Serialization Migration Guard</a></li>
             <li><a target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/362308">Import Settings Validator & Fix</a></li>
             <li><a target="_blank" rel="noopener noreferrer" href="https://u3d.as/3PWR">Compliance Exporter</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/392246">UI Breakpoint Lab</a></li>
           </ul>
         </section>
         <section>
@@ -690,6 +775,7 @@
             <li><a href="/assets/fast-play-mode-safety-guard/license/">Fast Play Mode Watcher</a></li>
             <li><a href="/assets/import-settings-validator-fix/license/">Import Settings Validator & Fix</a></li>
             <li><a href="/assets/compliance/license/">Compliance Exporter</a></li>
+            <li><a href="/assets/ui-breakpoint-lab/license/">UI Breakpoint Lab</a></li>
           </ul>
         </section>
         <section>

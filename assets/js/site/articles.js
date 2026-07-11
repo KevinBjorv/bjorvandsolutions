@@ -5,6 +5,7 @@
   }
 
   const sortSelect = document.querySelector("[data-article-sort]");
+  const searchInput = document.querySelector("[data-article-search]");
   const toolButtons = Array.from(document.querySelectorAll("[data-tool-filter]"));
   const categoryButtons = Array.from(document.querySelectorAll("[data-category-filter]"));
   const status = document.querySelector("[data-article-status]");
@@ -15,6 +16,7 @@
   let activeTool = params.get("tool") || "all";
   let activeCategory = params.get("category") || "all";
   let activeSort = params.get("sort") || "newest";
+  let activeQuery = params.get("q") || "";
 
   function compareCards(a, b) {
     const dateA = a.getAttribute("data-date") || "";
@@ -56,6 +58,10 @@
       next.set("sort", activeSort);
     }
 
+    if (activeQuery) {
+      next.set("q", activeQuery);
+    }
+
     const query = next.toString();
     const nextUrl = query ? `${window.location.pathname}?${query}` : window.location.pathname;
     window.history.replaceState({}, "", nextUrl);
@@ -68,7 +74,9 @@
       const category = card.getAttribute("data-category");
       const toolMatch = activeTool === "all" || tool === activeTool;
       const categoryMatch = activeCategory === "all" || category === activeCategory;
-      const isVisible = toolMatch && categoryMatch;
+      const searchable = `${card.getAttribute("data-title") || ""} ${card.textContent || ""}`.toLowerCase();
+      const queryMatch = !activeQuery || searchable.includes(activeQuery.toLowerCase());
+      const isVisible = toolMatch && categoryMatch && queryMatch;
       card.classList.toggle("is-hidden", !isVisible);
       card.hidden = !isVisible;
       if (isVisible) {
@@ -89,6 +97,10 @@
 
     if (sortSelect) {
       sortSelect.value = activeSort;
+    }
+
+    if (searchInput instanceof HTMLInputElement) {
+      searchInput.value = activeQuery;
     }
 
     syncButtons(toolButtons, activeTool);
@@ -113,6 +125,13 @@
   if (sortSelect) {
     sortSelect.addEventListener("change", () => {
       activeSort = sortSelect.value || "newest";
+      applyState();
+    });
+  }
+
+  if (searchInput instanceof HTMLInputElement) {
+    searchInput.addEventListener("input", () => {
+      activeQuery = searchInput.value.trim();
       applyState();
     });
   }

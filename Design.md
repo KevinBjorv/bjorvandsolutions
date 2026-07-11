@@ -1,20 +1,27 @@
-# Website Design Notes (v0.1)
+# Website Design Notes (v1.0)
 
 ## Goal
-A cohesive, futuristic-minimal website that can scale as Unity tools and games are added continuously, plus simple destinations for course redirect and personal info.
+A premium, technical, dark-first website for Bjorvand Solutions that helps Unity developers quickly find tools, games, documentation, support, and training.
 
 ## Style DNA
-- Dark-first, high-contrast, lots of negative space.
-- One cool secondary color (#fb8114) used sparingly for emphasis
-- Subtle grid/noise/gradient depth; clean, uncluttered surfaces.
-- Card-based composition with consistent radius, borders, shadow, and blur rules.
+- Near-black and navy form the foundation. Bjorvand red is the primary company accent.
+- Orange is reserved for Smart Indie links, buttons, and sections.
+- Real product icons, screenshots, and game art carry the visual hierarchy.
+- Surfaces use restrained borders, small-to-medium radii, quiet shadows, and minimal blur.
+- Layouts are dense enough to scan without oversized empty areas or repetitive card walls.
+
+## Typography and spacing
+- Use a local system sans-serif stack to avoid render-blocking font requests.
+- Display headings are compact and technical, with readable line height and limited line length.
+- The shared token scale controls spacing, radii, colors, shadows, and motion.
 
 ## Motion
-- Smooth, restrained transitions (fade + slight slide), consistent easing/timings.
-- Micro-interactions clarify state: hover lift, border/ glow increase, crisp focus states.
-- Scroll reveals are subtle and performant; respect reduced-motion.
+- Motion clarifies state through short fades, small lifts, active indicators, and subtle pointer response.
+- Content is visible by default. Animation is an enhancement and must never gate access to content.
+- Respect `prefers-reduced-motion` and keep transforms GPU-friendly.
 
-## Components and Consistency
-- Reusable system: buttons, badges (eg. “Available”, “Coming Soon”), cards, section headers.
-- Design tokens drive spacing, typography scale, radii, shadows, and animation durations.
-- Copy stays short, outcome-focused, and scannable.
+## Components and consistency
+- Reuse the shared header, footer, buttons, badges, cards, form controls, tool identities, and icon rules.
+- Lucide provides interface icons. Product and platform identities use their real local assets.
+- Copy stays factual, short, and outcome-focused.
+- Focus, hover, active, loading, success, and error states remain clearly distinguishable.

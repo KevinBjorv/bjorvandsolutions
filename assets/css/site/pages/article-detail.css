@@ -27,7 +27,7 @@
   border: 1px solid var(--color-border-strong);
   border-radius: var(--radius-lg);
   background:
-    radial-gradient(circle at 14% 20%, rgba(251, 129, 20, 0.18), transparent 24%),
+    radial-gradient(circle at 14% 20%, rgba(217, 47, 69, 0.16), transparent 28%),
     linear-gradient(160deg, color-mix(in srgb, var(--color-surface) 96%, transparent), color-mix(in srgb, var(--color-surface-2) 96%, transparent));
   box-shadow: var(--shadow-card);
 }
@@ -184,7 +184,7 @@
 
 .article-cta-panel {
   background:
-    radial-gradient(circle at 86% 18%, rgba(251, 129, 20, 0.18), transparent 30%),
+    radial-gradient(circle at 86% 18%, rgba(217, 47, 69, 0.16), transparent 32%),
     linear-gradient(160deg, color-mix(in srgb, var(--color-surface) 96%, transparent), color-mix(in srgb, var(--color-surface-2) 94%, transparent));
   border-color: color-mix(in srgb, var(--color-border-strong) 72%, var(--color-accent) 28%);
 }

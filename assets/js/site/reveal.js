@@ -4,8 +4,7 @@
     return;
   }
 
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    items.forEach((item) => item.classList.add("visible"));
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) {
     return;
   }
 

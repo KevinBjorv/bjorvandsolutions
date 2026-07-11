@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Unity-editorverktøy for bygg, assets og release | Bjorvand Solutions</title>
-  <meta name="description" content="Praktiske Unity-editorverktøy for å fange regresjoner, håndheve prosjektregler og lage rapporter før release.">
+  <title>Unity-editorverktøy for bygg, assets og lansering | Bjorvand Solutions</title>
+  <meta name="description" content="Praktiske Unity-editorverktøy for å fange regresjoner, håndheve prosjektregler og lage rapporter før lansering.">
   <link rel="canonical" href="/no/tools/">
   <link rel="alternate" hreflang="en" href="/tools/">
   <link rel="alternate" hreflang="no" href="/no/tools/">
@@ -20,136 +20,57 @@
   <link rel="stylesheet" href="/assets/css/site/components.css">
   <link rel="stylesheet" href="/assets/css/site/pages/tools.css">
   <link rel="stylesheet" href="/assets/css/shared/link-decorators.css">
-  <link rel="stylesheet" href="/assets/css/shared/typography-overrides.css">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Hopp til innhold</a>
   <header class="site-header">
     <div class="container nav-shell">
       <a class="brand" href="/no/"><span class="brand-mark" aria-hidden="true"></span><span>Bjorvand Solutions</span></a>
-      <nav class="site-nav" aria-label="Hovedmeny">
-        <ul class="menu-root">
-          <li class="menu-item"><a class="menu-link" href="/no/">Hjem</a></li>
-          <li class="menu-item"><a class="menu-link" href="/no/tools/">Verktøy</a></li>
-          <li class="menu-item"><a class="menu-link" href="/no/games/">Spill</a></li>
-          <li class="menu-item"><a class="menu-link" href="/articles/">Artikler</a></li>
-          <li class="menu-item"><a class="menu-link" href="/no/support/">Støtte</a></li>
-          <li class="menu-item"><a class="menu-link" target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot</a></li>
-          <li class="menu-item menu-item-smart-indie"><a class="menu-link menu-link-smart-indie" target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li>
-        </ul>
-      </nav>
-      <div class="nav-actions">
-        <div class="language-switcher" aria-label="Språk">
-          <a class="language-link" href="/tools/" hreflang="en" lang="en" data-language-option="en" aria-label="English"><img src="/assets/images/flags/en.svg" alt="" width="18" height="12" aria-hidden="true"><span>EN</span></a>
-          <a class="language-link" href="/no/tools/" hreflang="no" lang="no" data-language-option="no" aria-label="Norsk"><img src="/assets/images/flags/no.svg" alt="" width="18" height="12" aria-hidden="true"><span>NO</span></a>
-        </div>
-        <button class="mobile-nav-toggle" type="button" data-mobile-nav-toggle aria-controls="mobileNavPanel" aria-expanded="false">Meny</button>
-      </div>
+      <nav class="site-nav" aria-label="Hovedmeny"><ul class="menu-root"><li class="menu-item"><a class="menu-link" href="/no/">Hjem</a></li><li class="menu-item"><a class="menu-link" href="/no/tools/">Verktøy</a></li><li class="menu-item"><a class="menu-link" href="/no/games/">Spill</a></li><li class="menu-item"><a class="menu-link" href="/articles/">Artikler</a></li><li class="menu-item"><a class="menu-link" href="/no/support/">Støtte</a></li><li class="menu-item menu-item-smart-indie"><a class="menu-link menu-link-smart-indie" target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li></ul></nav>
+      <div class="nav-actions"><div class="language-switcher" aria-label="Språk"><a class="language-link" href="/tools/" hreflang="en" lang="en" data-language-option="en" aria-label="English"><img src="/assets/images/flags/en.svg" alt="" width="18" height="12" aria-hidden="true"><span>EN</span></a><a class="language-link" href="/no/tools/" hreflang="no" lang="no" data-language-option="no" aria-label="Norsk"><img src="/assets/images/flags/no.svg" alt="" width="18" height="12" aria-hidden="true"><span>NO</span></a></div><button class="mobile-nav-toggle" type="button" data-mobile-nav-toggle aria-controls="mobileNavPanel" aria-expanded="false">Meny</button></div>
     </div>
-    <div class="mobile-nav-panel" id="mobileNavPanel" data-mobile-nav-panel hidden>
-      <div class="mobile-nav-shell container">
-        <div class="mobile-nav-group mobile-nav-single-link"><a href="/no/">Hjem</a></div>
-        <div class="mobile-nav-group mobile-nav-single-link"><a href="/no/tools/">Verktøy</a></div>
-        <div class="mobile-nav-group mobile-nav-single-link"><a href="/no/games/">Spill</a></div>
-        <div class="mobile-nav-group mobile-nav-single-link"><a href="/articles/">Artikler</a></div>
-        <div class="mobile-nav-group mobile-nav-single-link"><a href="/no/support/">Støtte</a></div>
-        <div class="mobile-nav-group mobile-nav-single-link"><a target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot</a></div>
-        <div class="mobile-nav-group mobile-nav-single-link"><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></div>
-        <div class="mobile-nav-group mobile-language-options" aria-label="Språk">
-          <a href="/tools/" hreflang="en" lang="en" data-language-option="en"><img src="/assets/images/flags/en.svg" alt="" width="18" height="12" aria-hidden="true"><span>English</span></a>
-          <a href="/no/tools/" hreflang="no" lang="no" data-language-option="no"><img src="/assets/images/flags/no.svg" alt="" width="18" height="12" aria-hidden="true"><span>Norsk</span></a>
-        </div>
-      </div>
-    </div>
+    <div class="mobile-nav-panel" id="mobileNavPanel" data-mobile-nav-panel hidden><div class="mobile-nav-shell container"><div class="mobile-nav-group mobile-nav-single-link"><a href="/no/">Hjem</a></div><div class="mobile-nav-group mobile-nav-single-link"><a href="/no/tools/">Verktøy</a></div><div class="mobile-nav-group mobile-nav-single-link"><a href="/no/games/">Spill</a></div><div class="mobile-nav-group mobile-nav-single-link"><a href="/articles/">Artikler</a></div><div class="mobile-nav-group mobile-nav-single-link"><a href="/no/support/">Støtte</a></div><div class="mobile-nav-group mobile-nav-single-link"><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></div><div class="mobile-nav-group mobile-language-options" aria-label="Språk"><a href="/tools/" hreflang="en" lang="en" data-language-option="en"><img src="/assets/images/flags/en.svg" alt="" width="18" height="12" aria-hidden="true"><span>English</span></a><a href="/no/tools/" hreflang="no" lang="no" data-language-option="no"><img src="/assets/images/flags/no.svg" alt="" width="18" height="12" aria-hidden="true"><span>Norsk</span></a></div></div></div>
   </header>
 
-  <main class="site-main">
-    <section class="page-section container reveal">
-      <div class="hero">
-        <div class="badge">Unity-editorverktøy</div>
-        <h1>Unity-editorverktøy for bygg, assets og releasekontroll</h1>
-        <p>Praktiske Unity-verktøy for å fange regresjoner, håndheve prosjektregler og produsere rapporter du kan vurdere før release.</p>
-        <p class="hero-note">Byggstørrelse &middot; Shader-varianter &middot; Importinnstillinger &middot; Serialisering &middot; Compliance</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="#tool-list-title">Se verktøy</a>
-          <a class="button button-secondary" href="/no/support/">Få støtte</a>
-        </div>
+  <main class="site-main tools-main" id="main-content">
+    <section class="tools-hero container reveal" aria-labelledby="tools-title"><div><div class="badge"><i data-lucide="wrench" aria-hidden="true"></i> Unity-editorverktøy</div><h1 id="tools-title">Kontroller problemene som skjuler seg i et Unity-prosjekt.</h1><p>Fokuserte editorverktøy for byggstørrelse, shader-varianter, importinnstillinger, serialisering, compliance, stripping, callbacks og Play Mode-sikkerhet.</p></div><div class="tools-hero-actions"><a class="button button-primary" href="#tool-catalog"><i data-lucide="search" aria-hidden="true"></i> Finn et verktøy</a><a class="button button-secondary" href="/no/support/"><i data-lucide="life-buoy" aria-hidden="true"></i> Få støtte</a></div></section>
+
+    <section class="page-section tool-catalog-section container reveal" id="tool-catalog" aria-labelledby="tool-catalog-title">
+      <div class="section-head"><p class="section-kicker">Verktøykatalog</p><h2 id="tool-catalog-title">Finn lanseringsproblemet du vil kontrollere.</h2><p>Søk etter verktøy eller arbeidsflyt. «Kun dokumentasjon» betyr at teknisk dokumentasjon og lisens finnes, men ikke en Asset Store-lenke.</p></div>
+      <div class="catalog-toolbar" role="search" aria-label="Filtrer Unity-verktøy">
+        <label class="catalog-search-field" for="tool-search"><i data-lucide="search" aria-hidden="true"></i><span class="sr-only">Søk etter verktøy</span><input class="catalog-search" id="tool-search" type="search" placeholder="Søk etter verktøy, problem eller rapport…" autocomplete="off" data-tool-search></label>
+        <div class="catalog-filter-row"><div class="catalog-filters" role="group" aria-label="Arbeidsflytfilter"><button class="filter-pill is-active" type="button" data-tool-filter="all" aria-pressed="true">Alle</button><button class="filter-pill" type="button" data-tool-filter="build-ci" aria-pressed="false">Bygg og CI</button><button class="filter-pill" type="button" data-tool-filter="asset-pipeline" aria-pressed="false">Asset-pipeline</button><button class="filter-pill" type="button" data-tool-filter="refactoring" aria-pressed="false">Refaktorering</button><button class="filter-pill" type="button" data-tool-filter="release" aria-pressed="false">Lansering</button><button class="filter-pill" type="button" data-tool-filter="editor-safety" aria-pressed="false">Editorsikkerhet</button></div><label class="catalog-status-field" for="tool-status"><span>Status</span><select class="catalog-select" id="tool-status" data-tool-status><option value="all">Alle verktøy</option><option value="available">Tilgjengelig</option><option value="docs-only">Kun dokumentasjon</option></select></label></div>
+        <div class="catalog-result-row"><p data-tool-count role="status" aria-live="polite">Viser 8 verktøy</p><button class="catalog-clear" type="button" data-tool-clear><i data-lucide="rotate-ccw" aria-hidden="true"></i> Nullstill filtre</button></div>
       </div>
+
+      <div class="tool-catalog-grid" data-tool-grid>
+        <article class="tool-catalog-item tool-catalog-item-featured" data-tool-card data-name="Build Size Guard" data-category="build-ci" data-status="available" data-search="byggstørrelse snapshots differanser budsjett rapporter regresjon ci"><a class="tool-card-media" href="/assets/build-size-guard/docs/"><img src="/assets/images/BuildSizeGuard/BuildSizeGuardMarketing/Card%20incl%20name%20and%20mockup%20on%20pc%20screenshot%20CARD%20IMAGE.jpg" width="420" height="280" loading="lazy" alt="Build Size Guard med byggrapport"></a><div class="tool-card-body"><div class="tool-card-head"><div class="tool-identity"><img class="tool-icon" src="/assets/images/BuildSizeGuard/icons/BuildSizeGuardIcon160.jpg" width="48" height="48" alt=""><div><span class="tool-category">Bygg og CI</span><h3>Build Size Guard</h3></div></div><span class="badge badge-available" data-status="available">Tilgjengelig</span></div><p>Fang opp hopp i byggstørrelse med snapshots, differanserapporter og CI-budsjetter.</p><p class="tool-output"><i data-lucide="file-output" aria-hidden="true"></i><span><strong>Rapport:</strong> Bygg-snapshots, størrelsesdifferanser og budsjettrapporter.</span></p><div class="card-actions"><a class="button button-primary" href="/assets/build-size-guard/docs/">Dokumentasjon</a><a class="button button-secondary" target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/361332">Asset Store</a><a class="button button-ghost" href="/assets/build-size-guard/license/">Lisens</a></div></div></article>
+
+        <article class="tool-catalog-item" data-tool-card data-name="Shader Variant Budget &amp; CI Guard" data-category="build-ci" data-status="available" data-search="shader varianter editor log snapshots baseline differanser budsjett ci"><a class="tool-card-media" href="/assets/shader-variant-budget-ci-guard/docs/"><img src="/assets/images/ShaderVariantBudgetCIGuard/marketing/Card%20image.optimized.jpg" width="1000" height="667" loading="lazy" alt="Shader Variant Budget and CI Guard"></a><div class="tool-card-body"><div class="tool-card-head"><div class="tool-identity"><img class="tool-icon" src="/assets/images/ShaderVariantBudgetCIGuard/icons/Icon160.jpg" width="48" height="48" alt=""><div><span class="tool-category">Bygg og CI</span><h3>Shader Variant Budget &amp; CI Guard</h3></div></div><span class="badge badge-available">Tilgjengelig</span></div><p>Spor vekst i shader-varianter fra Editor.log og håndhev variantbudsjetter.</p><p class="tool-output"><i data-lucide="file-output" aria-hidden="true"></i><span><strong>Rapport:</strong> Variant-snapshots, differanser og CI-budsjetter.</span></p><div class="card-actions"><a class="button button-primary" href="/assets/shader-variant-budget-ci-guard/docs/">Dokumentasjon</a><a class="button button-secondary" target="_blank" rel="noopener noreferrer" href="https://u3d.as/3SYC">Asset Store</a><a class="button button-ghost" href="/assets/shader-variant-budget-ci-guard/license/">Lisens</a></div></div></article>
+
+        <article class="tool-catalog-item" data-tool-card data-name="Import Settings Validator &amp; Fix" data-category="asset-pipeline" data-status="available" data-search="import innstillinger tekstur lyd modell regler presets validering fiks assets"><a class="tool-card-media" href="/assets/import-settings-validator-fix/docs/"><img src="/assets/images/ImportSettingsValidatorFix/marketing/Import%20Settings%20Validator%20%26%20Fix%20card.jpg" width="420" height="280" loading="lazy" alt="Import Settings Validator and Fix"></a><div class="tool-card-body"><div class="tool-card-head"><div class="tool-identity"><img class="tool-icon" src="/assets/images/ImportSettingsValidatorFix/icons/ImportSettingsValidatorFixIcon160.jpg" width="48" height="48" alt=""><div><span class="tool-category">Asset-pipeline</span><h3>Import Settings Validator &amp; Fix</h3></div></div><span class="badge badge-available">Tilgjengelig</span></div><p>Valider tekstur-, lyd- og modellimport mot prosjektregler, og fiks avvik når håndheving er aktivert.</p><p class="tool-output"><i data-lucide="file-output" aria-hidden="true"></i><span><strong>Rapport:</strong> Regel-presets, importsøk og valgfrie rettelser.</span></p><div class="card-actions"><a class="button button-primary" href="/assets/import-settings-validator-fix/docs/">Dokumentasjon</a><a class="button button-secondary" target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/362308">Asset Store</a><a class="button button-ghost" href="/assets/import-settings-validator-fix/license/">Lisens</a></div></div></article>
+
+        <article class="tool-catalog-item" data-tool-card data-name="Unity Serialization Migration Guard" data-category="refactoring" data-status="available" data-search="serialisering serialisert omdøping mapping yaml dekning refaktorering migrering scener prefabs scriptableobjects"><a class="tool-card-media" href="/assets/unity-serialization-migration-guard/docs/"><img src="/assets/images/UnitySerializationMigrationGuard/marketing/Card%20image.jpg" width="420" height="280" loading="lazy" alt="Unity Serialization Migration Guard"></a><div class="tool-card-body"><div class="tool-card-head"><div class="tool-identity"><img class="tool-icon" src="/assets/images/UnitySerializationMigrationGuard/icons/Icon160.jpg" width="48" height="48" alt=""><div><span class="tool-category">Trygg refaktorering</span><h3>Serialization Migration Guard</h3></div></div><span class="badge badge-available">Tilgjengelig</span></div><p>Auditer omdøpte serialiserte felter før gamle mappinger fjernes.</p><p class="tool-output"><i data-lucide="file-output" aria-hidden="true"></i><span><strong>Rapport:</strong> Mapping-audit, YAML-dekningssøk og oppryddingsrapporter.</span></p><div class="card-actions"><a class="button button-primary" href="/assets/unity-serialization-migration-guard/docs/">Dokumentasjon</a><a class="button button-secondary" target="_blank" rel="noopener noreferrer" href="https://u3d.as/3Sae">Asset Store</a><a class="button button-ghost" href="/assets/unity-serialization-migration-guard/license/">Lisens</a></div></div></article>
+
+        <article class="tool-catalog-item" data-tool-card data-name="Compliance Exporter" data-category="release" data-status="available" data-search="compliance tredjepart notiser credits lisenser manifester dokumentasjon eksport lansering"><a class="tool-card-media" href="/assets/compliance/docs/"><img src="/assets/images/CompliancePack/Card%20image.jpg" width="420" height="280" loading="lazy" alt="Compliance Exporter"></a><div class="tool-card-body"><div class="tool-card-head"><div class="tool-identity"><img class="tool-icon" src="/assets/images/CompliancePack/icons/IconcompliancePack160.jpg" width="48" height="48" alt=""><div><span class="tool-category">Compliance før lansering</span><h3>Compliance Exporter</h3></div></div><span class="badge badge-available">Tilgjengelig</span></div><p>Generer tredjepartsnotiser, credits og compliance-filer fra prosjektdokumentasjon.</p><p class="tool-output"><i data-lucide="file-output" aria-hidden="true"></i><span><strong>Rapport:</strong> THIRD_PARTY_NOTICES.txt, CREDITS.md og compliance-manifester.</span></p><div class="card-actions"><a class="button button-primary" href="/assets/compliance/docs/">Dokumentasjon</a><a class="button button-secondary" target="_blank" rel="noopener noreferrer" href="https://u3d.as/3PWR">Asset Store</a><a class="button button-ghost" href="/assets/compliance/license/">Lisens</a></div></div></article>
+
+        <article class="tool-catalog-item tool-catalog-item-compact" data-tool-card data-name="IL2CPP Strip Guard" data-category="release" data-status="docs-only" data-search="il2cpp stripping reflection preserve link xml aot plattformbygg"><div class="tool-card-body"><div class="tool-card-head"><div class="tool-identity"><span class="tool-icon-fallback"><i data-lucide="shield" aria-hidden="true"></i></span><div><span class="tool-category">Bygg og lansering</span><h3>IL2CPP Strip Guard</h3></div></div><span class="badge">Kun dokumentasjon</span></div><p>Gå gjennom reflection-bruk, serialiserte typereferanser, preserve-dekning og link.xml-forslag før plattformbygg avslører strippingrisiko.</p><p class="tool-output"><i data-lucide="file-output" aria-hidden="true"></i><span><strong>Rapport:</strong> Strippingfunn, preserve-gjennomgang og forhåndsvisning av rettelser.</span></p><div class="card-actions"><a class="button button-primary" href="/assets/il2cpp-strip-guard/docs/">Dokumentasjon</a><a class="button button-ghost" href="/assets/il2cpp-strip-guard/license/">Lisens</a></div></div></article>
+
+        <article class="tool-catalog-item tool-catalog-item-compact" data-tool-card data-name="Inspector Event Link Doctor" data-category="refactoring" data-status="docs-only" data-search="unityevent button callback animation event ødelagte lenker inspector scriptableobject refaktorering"><div class="tool-card-body"><div class="tool-card-head"><div class="tool-identity"><img class="tool-icon" src="/assets/images/InspectorEventLinkDoctor/icons/Icon160.png" width="48" height="48" alt=""><div><span class="tool-category">Trygg refaktorering</span><h3>Inspector Event Link Doctor</h3></div></div><span class="badge">Kun dokumentasjon</span></div><p>Finn ødelagte UnityEvent-, Button-, ScriptableObject callback- og Animation Event-referanser før runtime.</p><p class="tool-output"><i data-lucide="file-output" aria-hidden="true"></i><span><strong>Rapport:</strong> Callback-søk, rapporter om ødelagte lenker og veiledning.</span></p><div class="card-actions"><a class="button button-primary" href="/assets/inspector-event-link-doctor/docs/">Dokumentasjon</a><a class="button button-ghost" href="/assets/inspector-event-link-doctor/license/">Lisens</a></div></div></article>
+
+        <article class="tool-catalog-item tool-catalog-item-compact" data-tool-card data-name="Fast Play Mode Watcher" data-category="editor-safety" data-status="docs-only" data-search="fast play mode domain reload statisk tilstand reset dekning editorsikkerhet"><div class="tool-card-body"><div class="tool-card-head"><div class="tool-identity"><span class="tool-icon-fallback"><i data-lucide="gauge" aria-hidden="true"></i></span><div><span class="tool-category">Editorsikkerhet</span><h3>Fast Play Mode Watcher</h3></div></div><span class="badge">Kun dokumentasjon</span></div><p>Sjekk risiko i statisk tilstand før Domain Reload slås av.</p><p class="tool-output"><i data-lucide="file-output" aria-hidden="true"></i><span><strong>Rapport:</strong> Søk i statisk tilstand, reset-dekning og Play Mode-sjekklister.</span></p><div class="card-actions"><a class="button button-primary" href="/assets/fast-play-mode-safety-guard/docs/">Dokumentasjon</a><a class="button button-ghost" href="/assets/fast-play-mode-safety-guard/license/">Lisens</a></div></div></article>
+      </div>
+      <div class="catalog-empty" data-tool-empty hidden><i data-lucide="search-x" aria-hidden="true"></i><h3>Ingen verktøy passer filtrene.</h3><p>Prøv et annet søkeord eller nullstill filtrene.</p><button class="button button-secondary" type="button" data-tool-clear>Nullstill filtre</button></div>
     </section>
 
-    <section class="page-section container reveal" aria-labelledby="tool-list-title">
-      <div class="section-head">
-        <h2 id="tool-list-title">Finn releaseproblemet du vil kontrollere</h2>
-        <p>Alle verktøykort peker bare til dokumentasjon, Asset Store der det finnes, og lisens.</p>
-      </div>
-      <div class="tool-grid card-list">
-        <article class="card">
-          <span class="badge">Tilgjengelig</span>
-          <h3>Build Size Guard</h3>
-          <p>Fang opp plutselige hopp i byggstørrelse med snapshots, diff-rapporter og CI-budsjetter.</p>
-          <div class="card-actions"><a class="button button-primary" href="/assets/build-size-guard/docs/">Dokumentasjon</a><a class="button button-secondary" target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/361332">Asset Store</a><a class="button button-secondary" href="/assets/build-size-guard/license/">Lisens</a></div>
-        </article>
-        <article class="card">
-          <span class="badge">Tilgjengelig</span>
-          <h3>Shader Variant Budget &amp; CI Guard</h3>
-          <p>Spor shader-variantvekst fra Editor.log og håndhev variantbudsjetter i CI.</p>
-          <div class="card-actions"><a class="button button-primary" href="/assets/shader-variant-budget-ci-guard/docs/">Dokumentasjon</a><a class="button button-secondary" target="_blank" rel="noopener noreferrer" href="https://u3d.as/3SYC">Asset Store</a><a class="button button-secondary" href="/assets/shader-variant-budget-ci-guard/license/">Lisens</a></div>
-        </article>
-        <article class="card">
-          <span class="badge">Tilgjengelig</span>
-          <h3>Serialization Migration Guard</h3>
-          <p>Auditer omdøpte serialiserte felter før gamle mappinger fjernes.</p>
-          <div class="card-actions"><a class="button button-primary" href="/assets/unity-serialization-migration-guard/docs/">Dokumentasjon</a><a class="button button-secondary" target="_blank" rel="noopener noreferrer" href="https://u3d.as/3Sae">Asset Store</a><a class="button button-secondary" href="/assets/unity-serialization-migration-guard/license/">Lisens</a></div>
-        </article>
-        <article class="card">
-          <span class="badge">Tilgjengelig</span>
-          <h3>Import Settings Validator &amp; Fix</h3>
-          <p>Valider tekstur-, lyd- og modellimport mot prosjektregler, og fiks avvik når håndheving er aktivert.</p>
-          <div class="card-actions"><a class="button button-primary" href="/assets/import-settings-validator-fix/docs/">Dokumentasjon</a><a class="button button-secondary" target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/362308">Asset Store</a><a class="button button-secondary" href="/assets/import-settings-validator-fix/license/">Lisens</a></div>
-        </article>
-        <article class="card">
-          <span class="badge">Tilgjengelig</span>
-          <h3>Compliance Exporter</h3>
-          <p>Generer tredjepartsnotiser, credits og compliance-filer fra prosjektdokumentasjon.</p>
-          <div class="card-actions"><a class="button button-primary" href="/assets/compliance/docs/">Dokumentasjon</a><a class="button button-secondary" target="_blank" rel="noopener noreferrer" href="https://u3d.as/3PWR">Asset Store</a><a class="button button-secondary" href="/assets/compliance/license/">Lisens</a></div>
-        </article>
-        <article class="card">
-          <span class="badge">Kun dokumentasjon</span>
-          <h3>IL2CPP Strip Guard</h3>
-          <p>Gå gjennom reflection-bruk, preserve-dekning og link.xml-forslag før plattformbygg avslører strippingrisiko.</p>
-          <div class="card-actions"><a class="button button-primary" href="/assets/il2cpp-strip-guard/docs/">Dokumentasjon</a><a class="button button-secondary" href="/assets/il2cpp-strip-guard/license/">Lisens</a></div>
-        </article>
-        <article class="card">
-          <span class="badge">Kun dokumentasjon</span>
-          <h3>Inspector Event Link Doctor</h3>
-          <p>Finn ødelagte UnityEvent-, Button-, callback- og Animation Event-referanser før runtime.</p>
-          <div class="card-actions"><a class="button button-primary" href="/assets/inspector-event-link-doctor/docs/">Dokumentasjon</a><a class="button button-secondary" href="/assets/inspector-event-link-doctor/license/">Lisens</a></div>
-        </article>
-        <article class="card">
-          <span class="badge">Kun dokumentasjon</span>
-          <h3>Fast Play Mode Watcher</h3>
-          <p>Sjekk statisk tilstandsrisiko før Domain Reload slås av.</p>
-          <div class="card-actions"><a class="button button-primary" href="/assets/fast-play-mode-safety-guard/docs/">Dokumentasjon</a><a class="button button-secondary" href="/assets/fast-play-mode-safety-guard/license/">Lisens</a></div>
-        </article>
-      </div>
-    </section>
+    <section class="tool-help-strip container reveal" aria-labelledby="tool-help-title"><div><p class="section-kicker">Bruker du allerede et verktøy?</p><h2 id="tool-help-title">Dokumentasjon, lisenser og støtte er alltid ett klikk unna.</h2></div><div class="hero-actions"><a class="button button-primary" href="/no/support/#docs-shortcuts-title">Se dokumentasjon</a><a class="button button-secondary" href="/no/support/">Åpne støtte</a></div></section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-shell">
-      <div class="footer-columns">
-        <section><h2>Utforsk</h2><ul class="link-list"><li><a href="/no/">Hjem</a></li><li><a href="/no/tools/">Verktøy</a></li><li><a href="/no/games/">Spill</a></li><li><a href="/articles/">Artikler</a></li><li><a href="/youtube-thumbnail-preview/" data-footer-service-link="youtube-thumbnail-preview">YouTube Thumbnail Preview</a></li><li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li><li><a target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot</a></li><li><a href="/no/support/">Støtte</a></li></ul></section>
-        <section><h2>Verktøydokumentasjon</h2><ul class="link-list"><li><a href="/assets/build-size-guard/docs/">Build Size Guard</a></li><li><a href="/assets/shader-variant-budget-ci-guard/docs/">Shader Variant Budget &amp; CI Guard</a></li><li><a href="/assets/unity-serialization-migration-guard/docs/">Serialization Migration Guard</a></li><li><a href="/assets/il2cpp-strip-guard/docs/">IL2CPP Strip Guard</a></li><li><a href="/assets/inspector-event-link-doctor/docs/">Inspector Event Link Doctor</a></li><li><a href="/assets/fast-play-mode-safety-guard/docs/">Fast Play Mode Watcher</a></li><li><a href="/assets/import-settings-validator-fix/docs/">Import Settings Validator &amp; Fix</a></li><li><a href="/assets/compliance/docs/">Compliance Exporter</a></li></ul></section>
-        <section><h2>Asset Store</h2><ul class="link-list"><li><a target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/361332">Build Size Guard</a></li><li><a target="_blank" rel="noopener noreferrer" href="https://u3d.as/3SYC">Shader Variant Budget &amp; CI Guard</a></li><li><a target="_blank" rel="noopener noreferrer" href="https://u3d.as/3Sae">Serialization Migration Guard</a></li><li><a target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/362308">Import Settings Validator &amp; Fix</a></li><li><a target="_blank" rel="noopener noreferrer" href="https://u3d.as/3PWR">Compliance Exporter</a></li></ul></section>
-        <section><h2>Lisenser</h2><ul class="link-list"><li><a href="/assets/build-size-guard/license/">Build Size Guard</a></li><li><a href="/assets/shader-variant-budget-ci-guard/license/">Shader Variant Budget &amp; CI Guard</a></li><li><a href="/assets/unity-serialization-migration-guard/license/">Serialization Migration Guard</a></li><li><a href="/assets/il2cpp-strip-guard/license/">IL2CPP Strip Guard</a></li><li><a href="/assets/inspector-event-link-doctor/license/">Inspector Event Link Doctor</a></li><li><a href="/assets/fast-play-mode-safety-guard/license/">Fast Play Mode Watcher</a></li><li><a href="/assets/import-settings-validator-fix/license/">Import Settings Validator &amp; Fix</a></li><li><a href="/assets/compliance/license/">Compliance Exporter</a></li></ul></section>
-        <section><h2>Spill-lenker</h2><ul class="link-list"><li><a href="/dopamine/">Dopamine Machine</a></li><li><a target="_blank" rel="noopener noreferrer" href="https://store.steampowered.com/app/4540560/Forbidden_buttons">Forbidden Buttons på Steam</a></li><li><a target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.kevinbjorvand.orbitalchaos">Orbital Chaos på Google Play</a></li><li><a target="_blank" rel="noopener noreferrer" href="https://apps.apple.com/us/app/orbital-chaos/id6754812237">Orbital Chaos på App Store</a></li><li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge-2">NeonSurge 2 på itch.io</a></li><li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge">NeonSurge på itch.io</a></li></ul></section>
-        <section><h2>Støtte</h2><ul class="link-list"><li><a href="/no/support/">Supportskjema</a></li><li><a href="/no/support/#docs-shortcuts-title">Dokumentasjon</a></li><li><a href="/no/support/#faq">Support FAQ</a></li></ul></section>
-      </div>
-      <div class="footer-legal"><span>&copy; Bjorvand Solutions <span data-current-year>2026</span> &bull; Organisasjonsnummer: 836 135 652 (Norge)</span></div>
-    </div>
-  </footer>
+  <footer class="site-footer"><div class="container footer-shell"><div class="footer-columns footer-columns-compact"><section><h2>Utforsk</h2><ul class="link-list"><li><a href="/no/tools/">Unity-verktøy</a></li><li><a href="/no/games/">Spill</a></li><li><a href="/articles/">Artikler</a></li><li><a href="/no/support/">Støtte</a></li></ul></section><section><h2>Dokumentasjon</h2><ul class="link-list"><li><a href="/assets/build-size-guard/docs/">Build Size Guard</a></li><li><a href="/assets/import-settings-validator-fix/docs/">Import Settings Validator &amp; Fix</a></li><li><a href="/assets/compliance/docs/">Compliance Exporter</a></li><li><a href="/no/tools/">Alle verktøy og lisenser</a></li></ul></section><section><h2>Selskapet</h2><ul class="link-list"><li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li><li><a target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot</a></li><li><a href="/youtube-thumbnail-preview/">YouTube Thumbnail Preview</a></li><li><a href="/links/">Kevin Bjorvand</a></li></ul></section></div><div class="footer-legal"><span>&copy; Bjorvand Solutions <span data-current-year>2026</span> · Organisasjonsnummer: 836 135 652 (Norge)</span><span>Unity-verktøy, spill og opplæring.</span></div></div></footer>
 
   <script defer src="/assets/js/site/catalog.js"></script>
   <script defer src="/assets/js/site/nav.js"></script>
+  <script defer src="/assets/js/site/tools-catalog.js"></script>
   <script defer src="/assets/js/site/reveal.js"></script>
   <script defer src="/assets/js/site/link-decorators.js"></script>
 </body>

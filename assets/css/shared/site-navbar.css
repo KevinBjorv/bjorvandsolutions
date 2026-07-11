@@ -1,20 +1,36 @@
-@import url("https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@700&display=swap");
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 500;
+  padding: 0.7rem 0.9rem;
+  border-radius: 10px;
+  color: #fff;
+  background: #b82037;
+  transform: translateY(-180%);
+  transition: transform 160ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
 
 .site-header {
-  --site-nav-bg: #0b1017;
-  --site-nav-bg-soft: #101724;
-  --site-nav-surface: #141e2d;
-  --site-nav-text: #ecf1f8;
-  --site-nav-text-muted: #9fb1c7;
-  --site-nav-border: #27364c;
-  --site-nav-border-strong: #3a4f6d;
-  --site-nav-accent: #fb8114;
-  --site-nav-radius-xs: 8px;
-  --site-nav-radius-sm: 12px;
-  --site-nav-radius-md: 16px;
+  --site-nav-bg: #070a11;
+  --site-nav-bg-soft: #0b111c;
+  --site-nav-surface: #101925;
+  --site-nav-text: #f3f5f8;
+  --site-nav-text-muted: #9aa9bc;
+  --site-nav-border: #223147;
+  --site-nav-border-strong: #344a64;
+  --site-nav-accent: #d92f45;
+  --site-nav-smart-indie: #fb8114;
+  --site-nav-radius-xs: 6px;
+  --site-nav-radius-sm: 10px;
+  --site-nav-radius-md: 14px;
   --site-nav-radius-pill: 999px;
-  --site-nav-max-width: 1140px;
-  --site-nav-height: 76px;
+  --site-nav-max-width: 1240px;
+  --site-nav-height: 68px;
   --site-nav-motion-fast: 160ms;
   --site-nav-motion-base: 240ms;
   --site-nav-easing: cubic-bezier(0.22, 1, 0.36, 1);
@@ -22,14 +38,22 @@
   top: 0;
   z-index: 120;
   border-bottom: 1px solid var(--site-nav-border);
-  background: rgba(11, 16, 23, 0.84);
-  backdrop-filter: blur(14px);
+  background: rgba(7, 10, 17, 0.88);
+  backdrop-filter: blur(16px);
   color: var(--site-nav-text);
-  font-family: "Geist", "Inter", sans-serif;
+  font-family: "Segoe UI Variable Text", "Aptos", "Segoe UI", system-ui, sans-serif;
 }
 
 .site-header * {
   box-sizing: border-box;
+}
+
+.site-header [data-lucide],
+.mobile-nav-panel [data-lucide] {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex: 0 0 auto;
 }
 
 .site-header a {
@@ -56,7 +80,7 @@
   gap: 0.65rem;
   margin-right: auto;
   position: relative;
-  font-family: "Space Grotesk", "Geist", sans-serif;
+  font-family: "Segoe UI Variable Display", "Aptos Display", "Segoe UI", system-ui, sans-serif;
   font-size: 1.12rem;
   font-weight: 700;
   letter-spacing: 0.02em;
@@ -120,6 +144,18 @@
     color var(--site-nav-motion-fast) var(--site-nav-easing);
 }
 
+.site-header .menu-link .lucide,
+.mobile-nav-panel .lucide {
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 auto;
+}
+
+.site-header .site-nav .menu-link[href^="https://bilagpilot.no"],
+.mobile-nav-panel a[href^="https://bilagpilot.no"] {
+  display: none !important;
+}
+
 .site-header .menu-link:hover,
 .site-header .menu-link[aria-expanded="true"],
 .site-header .menu-link[aria-current="page"] {
@@ -128,16 +164,16 @@
 }
 
 .site-header .menu-link-smart-indie {
-  background: var(--site-nav-accent);
-  border-color: color-mix(in srgb, var(--site-nav-accent) 78%, #000 22%);
+  background: var(--site-nav-smart-indie);
+  border-color: color-mix(in srgb, var(--site-nav-smart-indie) 78%, #000 22%);
   color: #101114;
   box-shadow: 0 12px 28px rgba(251, 129, 20, 0.28);
 }
 
 .site-header .menu-link-smart-indie:hover,
 .site-header .menu-link-smart-indie:focus-visible {
-  background: #ffa14d;
-  border-color: #ffa14d;
+  background: #ff9d3d;
+  border-color: #ff9d3d;
   color: #101114;
 }
 
@@ -192,7 +228,7 @@
 .site-header .language-link:hover,
 .site-header .language-link:focus-visible,
 .site-header .language-link[aria-current="page"] {
-  background: rgba(251, 129, 20, 0.16);
+  background: rgba(217, 47, 69, 0.14);
   color: var(--site-nav-text);
 }
 
@@ -234,7 +270,7 @@
 
 .site-header .dropdown a:hover,
 .site-header .dropdown a:focus-visible {
-  background: rgba(251, 129, 20, 0.16);
+  background: rgba(217, 47, 69, 0.14);
   color: var(--site-nav-text);
   outline: none;
 }
@@ -311,7 +347,7 @@
   background: rgba(11, 16, 23, 0.96);
   border-top: 1px solid var(--site-nav-border);
   color: var(--site-nav-text);
-  font-family: "Geist", "Inter", sans-serif;
+  font-family: "Segoe UI Variable Text", "Aptos", "Segoe UI", system-ui, sans-serif;
 }
 
 .mobile-nav-panel[hidden] {
@@ -367,7 +403,7 @@
 .mobile-nav-panel .mobile-nav-group a:hover,
 .mobile-nav-panel .mobile-nav-group a:focus-visible {
   color: var(--site-nav-text);
-  background: rgba(251, 129, 20, 0.16);
+  background: rgba(217, 47, 69, 0.14);
   text-decoration: none;
   outline: none;
 }

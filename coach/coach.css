@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@700&display=swap");
-
 :root {
   color-scheme: dark;
   --ink: #080907;
@@ -18,7 +16,7 @@
   --radius: 6px;
   --max: 1180px;
   --gutter: clamp(18px, 4vw, 48px);
-  --font: "Geist", "Inter", sans-serif;
+  --font: "Segoe UI Variable Text", "Aptos", "Segoe UI", system-ui, sans-serif;
 }
 
 * {
@@ -47,7 +45,7 @@ body {
 h1,
 h2,
 h3 {
-  font-family: "Space Grotesk", "Geist", sans-serif;
+  font-family: "Segoe UI Variable Display", "Aptos Display", "Segoe UI", system-ui, sans-serif;
   letter-spacing: -0.04em;
   line-height: 0.95;
   font-weight: 700;

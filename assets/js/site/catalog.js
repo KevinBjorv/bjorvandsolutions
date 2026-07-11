@@ -145,7 +145,7 @@
         summary: "Run repeatable UGUI layout checks across viewport, safe-area, and text-expansion profiles.",
         audience: "Unity teams validating UGUI menus and HUDs across layout breakpoints before release.",
         links: {
-          docs: "/assets/ui-breakpoint-lab/docs/",
+          docs: "/assets/UIBreakpoint/",
           license: "/assets/ui-breakpoint-lab/license/",
           store: "https://assetstore.unity.com/packages/slug/392246"
         },
@@ -426,8 +426,8 @@
         heroImage: "/assets/images/UIBreakpointLab/marketing/safe-area-findings.png",
         author: "Kevin Ahlgren Bjorvand",
         primaryCtaLabel: "Read UI Breakpoint Lab docs",
-        primaryCtaHref: "/assets/ui-breakpoint-lab/docs/",
-        relatedLinks: ["/assets/ui-breakpoint-lab/docs/", "/support/", "/assets/ui-breakpoint-lab/license/"]
+        primaryCtaHref: "/assets/UIBreakpoint/",
+        relatedLinks: ["/assets/UIBreakpoint/", "/support/", "/assets/ui-breakpoint-lab/license/"]
       },
       {
         slug: "find-unity-ui-text-overflow-with-expansion-passes",
@@ -444,7 +444,7 @@
         author: "Kevin Ahlgren Bjorvand",
         primaryCtaLabel: "Open UI Breakpoint Lab on the Asset Store",
         primaryCtaHref: "https://assetstore.unity.com/packages/slug/392246",
-        relatedLinks: ["/assets/ui-breakpoint-lab/docs/", "/support/", "/assets/ui-breakpoint-lab/license/"]
+        relatedLinks: ["/assets/UIBreakpoint/", "/support/", "/assets/ui-breakpoint-lab/license/"]
       },
       {
         slug: "add-unity-ui-visual-regression-checks-to-ci",
@@ -460,8 +460,8 @@
         heroImage: "/assets/images/UIBreakpointLab/marketing/pseudolocalization-findings.png",
         author: "Kevin Ahlgren Bjorvand",
         primaryCtaLabel: "Read UI Breakpoint Lab CI docs",
-        primaryCtaHref: "/assets/ui-breakpoint-lab/docs/#command-line-and-ci",
-        relatedLinks: ["/assets/ui-breakpoint-lab/docs/", "/support/", "/assets/ui-breakpoint-lab/license/"]
+        primaryCtaHref: "/assets/UIBreakpoint/#command-line-and-ci",
+        relatedLinks: ["/assets/UIBreakpoint/", "/support/", "/assets/ui-breakpoint-lab/license/"]
       }
     ],
     games: {

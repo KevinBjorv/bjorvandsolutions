@@ -253,12 +253,6 @@
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://bjorv.com/assets/ui-breakpoint-lab/docs/</loc>
-    <lastmod>2026-05-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.70</priority>
-  </url>
-  <url>
     <loc>https://bjorv.com/assets/ui-breakpoint-lab/license/</loc>
     <lastmod>2026-05-05</lastmod>
     <changefreq>monthly</changefreq>
@@ -281,5 +275,11 @@
     <lastmod>2026-05-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.74</priority>
+  </url>
+  <url>
+    <loc>https://bjorv.com/assets/UIBreakpoint/</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
   </url>
 </urlset>

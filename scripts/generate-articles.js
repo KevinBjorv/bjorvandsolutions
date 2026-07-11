@@ -14,7 +14,10 @@ const authorImage = catalog.author.image;
 const toolByKey = new Map(catalog.tools.map((tool) => [tool.key, tool]));
 const categoryBySlug = new Map(catalog.articleCategories.map((category) => [category.slug, category]));
 const articlesByTool = new Map();
-const removedProductPaths = catalog.tools.map((tool) => `/assets/${tool.key}/`).concat(["/assets/game-compliance-pack/"]);
+const removedProductPaths = catalog.tools.map((tool) => `/assets/${tool.key}/`).concat([
+  "/assets/game-compliance-pack/",
+  "/assets/ui-breakpoint-lab/docs/"
+]);
 const removedGamePaths = ["forbiddenbuttons", "orbital-chaos", "neonsurge-2", "neonsurge"].map((slug) => `/games/${slug}/`);
 const norwegianPaths = [
   "/no/",

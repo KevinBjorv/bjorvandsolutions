@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Review Unity Package Risks Before Import | Package Quarantine Article</title>
+  <meta name="description" content="Review code, native plugins, project settings, package-control files, conflicts, and archive limitations without treating a risk score as a safety verdict.">
+  <meta name="author" content="Kevin Ahlgren Bjorvand">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="How to Review Unity Package Risks Before Import">
+  <meta property="og:description" content="Review code, native plugins, project settings, package-control files, conflicts, and archive limitations without treating a risk score as a safety verdict.">
+  <meta property="og:url" content="https://bjorv.com/articles/package-quarantine/review-unity-package-risks-before-import/">
+  <meta property="og:image" content="https://bjorv.com/assets/images/PackageQuarantine/marketing/package-quarantine-cover.png">
+  <meta property="article:published_time" content="2026-07-11">
+  <meta property="article:modified_time" content="2026-07-11">
+  <meta property="article:author" content="Kevin Ahlgren Bjorvand">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How to Review Unity Package Risks Before Import">
+  <meta name="twitter:description" content="Review code, native plugins, project settings, package-control files, conflicts, and archive limitations without treating a risk score as a safety verdict.">
+  <meta name="twitter:image" content="https://bjorv.com/assets/images/PackageQuarantine/marketing/package-quarantine-cover.png">
+  <link rel="canonical" href="https://bjorv.com/articles/package-quarantine/review-unity-package-risks-before-import/">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+  <link rel="icon" href="/assets/favicon/favicon.ico">
+  <link rel="manifest" href="/assets/favicon/site.webmanifest">
+  <script src="/assets/js/site/theme-init.js"></script>
+  <link rel="stylesheet" href="/assets/css/site/tokens.css">
+  <link rel="stylesheet" href="/assets/css/site/base.css">
+  <link rel="stylesheet" href="/assets/css/site/layout.css">
+  <link rel="stylesheet" href="/assets/css/site/components.css">
+  <link rel="stylesheet" href="/assets/css/site/pages/article-detail.css">
+  <link rel="stylesheet" href="/assets/css/shared/link-decorators.css">
+  <link rel="stylesheet" href="/assets/css/shared/typography-overrides.css">
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "How to Review Unity Package Risks Before Import",
+      "description": "Review code, native plugins, project settings, package-control files, conflicts, and archive limitations without treating a risk score as a safety verdict.",
+      "image": [
+        "https://bjorv.com/assets/images/PackageQuarantine/marketing/package-quarantine-cover.png"
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "Kevin Ahlgren Bjorvand",
+        "image": "https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.jpg"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Bjorvand Solutions",
+        "url": "https://bjorv.com"
+      },
+      "mainEntityOfPage": "https://bjorv.com/articles/package-quarantine/review-unity-package-risks-before-import/",
+      "datePublished": "2026-07-11",
+      "dateModified": "2026-07-11",
+      "articleSection": "Package safety",
+      "about": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "Package Quarantine",
+          "applicationCategory": "DeveloperApplication",
+          "url": "https://bjorv.com/assets/PackageQuarantine/"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://bjorv.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Articles",
+          "item": "https://bjorv.com/articles/?tool=package-quarantine"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Package Quarantine",
+          "item": "https://bjorv.com/assets/PackageQuarantine/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "How to Review Unity Package Risks Before Import",
+          "item": "https://bjorv.com/articles/package-quarantine/review-unity-package-risks-before-import/"
+        }
+      ]
+    }
+  ]
+}</script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Bjorvand Solutions</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="menu-root">
+          <li class="menu-item"><a class="menu-link" href="/">Home</a></li>
+          <li class="menu-item"><a class="menu-link" href="/tools/">Tools</a></li>
+          <li class="menu-item"><a class="menu-link" href="/games/">Games</a></li>
+          <li class="menu-item"><a class="menu-link" href="/articles/">Articles</a></li>
+          <li class="menu-item"><a class="menu-link" href="/support/">Support</a></li>
+          <li class="menu-item"><a class="menu-link" target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot</a></li>
+          <li class="menu-item menu-item-smart-indie"><a class="menu-link menu-link-smart-indie" target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="language-switcher" aria-label="Language">
+          <a class="language-link" href="/" hreflang="en" lang="en" data-language-option="en" aria-label="English">
+            <img src="/assets/images/flags/en.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>EN</span>
+          </a>
+          <a class="language-link" href="/no/" hreflang="no" lang="no" data-language-option="no" aria-label="Norsk">
+            <img src="/assets/images/flags/no.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>NO</span>
+          </a>
+        </div>
+        <button class="mobile-nav-toggle" type="button" data-mobile-nav-toggle aria-controls="mobileNavPanel" aria-expanded="false">Menu</button>
+      </div>
+    </div>
+    <div class="mobile-nav-panel" id="mobileNavPanel" data-mobile-nav-panel hidden>
+      <div class="mobile-nav-shell container">
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/">Home</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/tools/">Tools</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/games/">Games</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/articles/">Articles</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/support/">Support</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></div>
+        <div class="mobile-nav-group mobile-language-options" aria-label="Language">
+          <a href="/" hreflang="en" lang="en" data-language-option="en">
+            <img src="/assets/images/flags/en.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>English</span>
+          </a>
+          <a href="/no/" hreflang="no" lang="no" data-language-option="no">
+            <img src="/assets/images/flags/no.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>Norsk</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main class="site-main">
+    <div class="container article-page">
+      <nav class="article-breadcrumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a><span aria-hidden="true">/</span>
+        <a href="/articles/?tool=package-quarantine">Articles</a><span aria-hidden="true">/</span>
+        <a href="/assets/PackageQuarantine/">Package Quarantine</a><span aria-hidden="true">/</span>
+        <span aria-current="page">How to Review Unity Package Risks Before Import</span>
+      </nav>
+
+      <section class="article-hero">
+        <div class="article-hero-copy">
+          <div class="article-eyebrow">
+            <span class="article-kicker">Package safety</span>
+            <span class="article-chip">Package Quarantine</span>
+          </div>
+          <h1>How to Review Unity Package Risks Before Import</h1>
+          <p>Review code, native plugins, project settings, package-control files, conflicts, and archive limitations without treating a risk score as a safety verdict.</p>
+          <div class="article-meta-line">
+            <span>July 11, 2026</span>
+            <span>&bull;</span>
+            <span>7 min read</span>
+            <span>&bull;</span>
+            <span>Kevin Ahlgren Bjorvand</span>
+          </div>
+          <div class="article-answer">
+            <p>A practical Unity package risk review checks code, native binaries, project settings, package-control files, overwrites, path collisions, and unsupported archive features while treating the score as evidence prioritization rather than a safety guarantee.</p>
+          </div>
+          <div class="article-keyline">
+            <span class="article-chip">Updated July 11, 2026</span>
+            <span class="article-chip">Docs and license links stay in the sidebar</span>
+          </div>
+        </div>
+        <figure class="article-hero-media">
+          <img src="/assets/images/PackageQuarantine/marketing/package-quarantine-cover.png" alt="How to Review Unity Package Risks Before Import" loading="eager" fetchpriority="high">
+          <figcaption>Concrete evidence matters more than a single package risk score.</figcaption>
+        </figure>
+      </section>
+
+      <div class="article-layout">
+        <article class="article-main">
+<section class="article-section" id="which-package-content-deserves-extra-review" data-article-section>
+        <h2>Which package content deserves extra review?</h2>
+        <p>Editor scripts, managed assemblies, native plugins, project settings, and files that overwrite existing project paths deserve deliberate review. Package-control files require special handling because they can change external dependencies.</p>
+<p>Package Quarantine groups the evidence so reviewers can filter the archive without assuming that every suspicious-looking file is malicious.</p>
+        <ul>
+  <li>Managed Editor code and native binaries.</li>
+  <li>ProjectSettings and package-control files.</li>
+  <li>Existing targets, asset and meta overwrites, and GUID effects.</li>
+  <li>Case, Unicode-equivalent, reserved-name, and ambiguous-path collisions.</li>
+</ul>
+        
+        
+      </section>
+<section class="article-section" id="why-path-and-archive-validation-matters" data-article-section>
+        <h2>Why do path and archive-format checks matter?</h2>
+        <p>The inspector accepts the supported Unity gzip/tar package layout and fails closed on traversal, unsafe roots, links, malformed members, and unrecognized extensions such as unsupported PAX or long-name records.</p>
+<p>Failing closed avoids interpreting an archive approximately. A benign package using an unsupported variant should be recreated with a validated Unity Editor or inspected separately.</p>
+        <ul>
+  <li>Canonical project-relative paths are required.</li>
+  <li>Reparse-point traversal is refused during recovery operations.</li>
+  <li>Platform-ambiguous archive paths are rejected.</li>
+</ul>
+        
+        
+      </section>
+      <section class="article-cta-panel" aria-label="Primary call to action">
+        <h2>Review the reasons behind the score before approving an import.</h2>
+        <p>Package Quarantine exposes file classifications, target conflicts, hashes, and warnings so the decision can be reviewed and exported.</p>
+        <div class="article-cta-actions">
+          <a class="button button-primary" href="/assets/PackageQuarantine/#inspection">Read Package Quarantine docs</a>
+          <a class="button button-secondary" href="/assets/PackageQuarantine/">Docs</a>
+        </div>
+      </section>
+<section class="article-section" id="how-to-share-the-review" data-article-section>
+        <h2>How do you share the review with another person?</h2>
+        <p>Copy Summary provides a short review record, while Export Markdown Dry Run includes the package hash, classifications, visible risk reasons, warnings, and project context. Exporting does not prepare recovery or modify the project.</p>
+<p>After import, Markdown and standalone HTML transaction reports record what Unity and the filesystem evidence observed. Keep the dry run and transaction report together when both approval and outcome matter.</p>
+        
+        <ol>
+  <li>Finish expanding and reviewing the findings.</li>
+  <li>Export the pre-import Markdown dry run.</li>
+  <li>Record the approval decision outside the tool when required.</li>
+  <li>Export the reconciled transaction report after import.</li>
+</ol>
+        
+      </section>
+<section class="article-section" id="what-remains-outside-version-one" data-article-section>
+        <h2>What remains outside version 1.0.0?</h2>
+        <p>Version 1.0.0 does not include publisher or hash trust notes, saved folder include/exclude presets, side-by-side text diffs, or Git status capture. Live path filtering, hashes, content evidence, collision warnings, and report exports remain available.</p>
+<p>Recovery also cannot capture unsaved in-memory state, operating-system side effects outside the project, ACLs, external processes, network activity, or every platform-specific file attribute.</p>
+        <ul>
+  <li>Use a separate diff or source-control tool for deferred evidence.</li>
+  <li>Commit or stash valuable work before import.</li>
+  <li>Treat unfamiliar code and binaries as untrusted until independently reviewed.</li>
+</ul>
+        
+        
+      </section>
+          <section class="article-callout">
+            <h2>Use the report as a review record, not as a trust certificate.</h2>
+            <p>The documentation defines the inspection boundary, fail-closed archive handling, and recovery limitations.</p>
+            <div class="article-cta-actions">
+              <a class="button button-primary" href="/assets/PackageQuarantine/#inspection">Read Package Quarantine docs</a>
+              <a class="button button-secondary" href="/assets/PackageQuarantine/">Docs</a>
+            </div>
+          </section>
+
+          <section class="article-section" id="related-articles">
+            <h2>More articles for Package Quarantine</h2>
+            <p>The tool workflow stays easier to evaluate when the next steps stay inside the same product and documentation surface.</p>
+            <div class="article-related-grid">
+<article class="card article-related-card">
+              <img src="/assets/images/PackageQuarantine/marketing/package-quarantine-cover.png" alt="How to Inspect a Unitypackage Before Importing It" loading="lazy">
+              <span>8 min read</span>
+              <h3><a href="/articles/package-quarantine/inspect-a-unitypackage-before-importing-it/">How to Inspect a Unitypackage Before Importing It</a></h3>
+              <p>Inspect archive paths, hashes, code, settings, collisions, and overwrite evidence before opening Unity&#39;s native import dialog.</p>
+            </article>
+<article class="card article-related-card">
+              <img src="/assets/images/PackageQuarantine/marketing/package-quarantine-cover.png" alt="How to Roll Back a Unitypackage Import Safely" loading="lazy">
+              <span>8 min read</span>
+              <h3><a href="/articles/package-quarantine/roll-back-a-unitypackage-import-safely/">How to Roll Back a Unitypackage Import Safely</a></h3>
+              <p>Use verified snapshots, asset and meta pairing, divergence checks, and post-refresh verification to recover from a Unity package import.</p>
+            </article>
+            </div>
+          </section>
+        </article>
+
+        <aside class="article-sidebar" aria-label="Article sidebar">
+          <section class="article-sidebar-card">
+            <h2>On this page</h2>
+            <nav class="article-toc" aria-label="Table of contents">
+            <a href="#which-package-content-deserves-extra-review" data-article-toc-link>Which package content deserves extra review?</a>
+            <a href="#why-path-and-archive-validation-matters" data-article-toc-link>Why do path and archive-format checks matter?</a>
+            <a href="#how-to-share-the-review" data-article-toc-link>How do you share the review with another person?</a>
+            <a href="#what-remains-outside-version-one" data-article-toc-link>What remains outside version 1.0.0?</a>
+            </nav>
+          </section>
+
+          <section class="article-sidebar-card">
+            <h2>Author</h2>
+            <div class="author-card">
+              <div class="author-card-header">
+                <img src="/assets/images/authors/kevin-ahlgren-bjorvand.jpg" alt="Kevin Ahlgren Bjorvand" loading="lazy">
+                <div>
+                  <strong>Kevin Ahlgren Bjorvand</strong>
+                  <p>Founder, Bjorvand Solutions</p>
+                </div>
+              </div>
+              <p>Kevin builds Unity tools focused on release safety, build visibility, migration safety, and compliance evidence.</p>
+            </div>
+          </section>
+
+          <section class="article-sidebar-card">
+            <h2>Package Quarantine links</h2>
+            <ul>
+              <li><a href="/assets/PackageQuarantine/">Package Quarantine docs</a></li>
+              <li><a href="/assets/package-quarantine/license/">Package Quarantine license</a></li>
+            </ul>
+          </section>
+
+          <section class="article-sidebar-card">
+            <h2>Same-tool articles</h2>
+            <ul>
+              <li><a href="/articles/package-quarantine/inspect-a-unitypackage-before-importing-it/">How to Inspect a Unitypackage Before Importing It</a></li>
+              <li><a href="/articles/package-quarantine/roll-back-a-unitypackage-import-safely/">How to Roll Back a Unitypackage Import Safely</a></li>
+            </ul>
+          </section>
+        </aside>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-shell">
+      <div class="footer-columns">
+        <section>
+          <h2>Explore</h2>
+          <ul class="link-list">
+            <li><a href="/">Home</a></li>
+            <li><a href="/tools/">Tools</a></li>
+            <li><a href="/games/">Games</a></li>
+            <li><a href="/articles/">Articles</a></li>
+            <li><a href="/youtube-thumbnail-preview/" data-footer-service-link="youtube-thumbnail-preview">YouTube Thumbnail Preview</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot</a></li>
+            <li><a href="/support/">Support</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Tool Docs</h2>
+          <ul class="link-list">
+            <li><a href="/assets/build-size-guard/docs/">Build Size Guard</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/docs/">Shader Variant Budget & CI Guard</a></li>
+            <li><a href="/assets/unity-serialization-migration-guard/docs/">Serialization Migration Guard</a></li>
+            <li><a href="/assets/il2cpp-strip-guard/docs/">IL2CPP Strip Guard</a></li>
+            <li><a href="/assets/inspector-event-link-doctor/docs/">Inspector Event Link Doctor</a></li>
+            <li><a href="/assets/fast-play-mode-safety-guard/docs/">Fast Play Mode Watcher</a></li>
+            <li><a href="/assets/import-settings-validator-fix/docs/">Import Settings Validator & Fix</a></li>
+            <li><a href="/assets/compliance/docs/">Compliance Exporter</a></li>
+            <li><a href="/assets/UIBreakpoint/">UI Breakpoint Lab</a></li>
+            <li><a href="/assets/PackageQuarantine/">Package Quarantine</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Asset Store</h2>
+          <ul class="link-list">
+            <li><a target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/361332">Build Size Guard</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://u3d.as/3SYC">Shader Variant Budget & CI Guard</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://u3d.as/3Sae">Serialization Migration Guard</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/362308">Import Settings Validator & Fix</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://u3d.as/3PWR">Compliance Exporter</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/392246">UI Breakpoint Lab</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Licenses</h2>
+          <ul class="link-list">
+            <li><a href="/assets/build-size-guard/license/">Build Size Guard</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/license/">Shader Variant Budget & CI Guard</a></li>
+            <li><a href="/assets/unity-serialization-migration-guard/license/">Serialization Migration Guard</a></li>
+            <li><a href="/assets/il2cpp-strip-guard/license/">IL2CPP Strip Guard</a></li>
+            <li><a href="/assets/inspector-event-link-doctor/license/">Inspector Event Link Doctor</a></li>
+            <li><a href="/assets/fast-play-mode-safety-guard/license/">Fast Play Mode Watcher</a></li>
+            <li><a href="/assets/import-settings-validator-fix/license/">Import Settings Validator & Fix</a></li>
+            <li><a href="/assets/compliance/license/">Compliance Exporter</a></li>
+            <li><a href="/assets/ui-breakpoint-lab/license/">UI Breakpoint Lab</a></li>
+            <li><a href="/assets/package-quarantine/license/">Package Quarantine</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Game Links</h2>
+          <ul class="link-list">
+            <li><a href="/games/">Games Directory</a></li>
+            <li><a href="/dopamine/">Dopamine Machine Play</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://store.steampowered.com/app/4540560/Forbidden_buttons">Forbidden Buttons on Steam</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.kevinbjorvand.orbitalchaos">Orbital Chaos on Google Play</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://apps.apple.com/us/app/orbital-chaos/id6754812237">Orbital Chaos on App Store</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge-2">NeonSurge 2 on itch.io</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge">NeonSurge on itch.io</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/games/">Smart Indie Games</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Support</h2>
+          <ul class="link-list">
+            <li><a href="/support/">Support Form</a></li>
+            <li><a href="/support/#docs-shortcuts-title">Documentation</a></li>
+            <li><a href="/support/#faq">Support FAQ</a></li>
+          </ul>
+        </section>
+      </div>
+      <div class="footer-legal">
+        <span>&copy; Bjorvand Solutions <span data-current-year>2026</span> &bull; Company registration number: 836 135 652 (Norway)</span>
+      </div>
+    </div>
+  </footer>
+  <script defer src="/assets/js/site/nav.js"></script>
+  <script defer src="/assets/js/site/article-detail.js"></script>
+  <script defer src="/assets/js/site/link-decorators.js"></script>
+</body>
+</html>

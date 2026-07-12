@@ -1207,6 +1207,200 @@ Object.assign(articleBodies, {
   }
 });
 
+Object.assign(articleBodies, {
+  "inspect-a-unitypackage-before-importing-it": {
+    answer: "To inspect a Unitypackage before importing it, review the archive paths, hashes, file types, overwrite targets, code, settings, and collisions before allowing Unity's native import dialog to modify the project.",
+    heroCaption: "Package inspection is most useful when archive evidence and current project conflicts are visible before import.",
+    midCtaTitle: "Put evidence between the package file and Unity's import dialog.",
+    midCtaText: "Package Quarantine hashes and inspects a local package, compares it with the project, and exports a reviewable dry run before recovery preparation begins.",
+    endTitle: "Review the package, preserve the evidence, then decide whether to import.",
+    endText: "The documentation covers inspection filters, preparation checks, reports, and the limits of package risk analysis.",
+    sections: [
+      {
+        id: "why-native-import-needs-a-review-step",
+        title: "Why does a Unitypackage need review before native import?",
+        paragraphs: [
+          "A local .unitypackage can add assets, overwrite existing files, introduce Editor code or native plugins, and target project configuration. Unity's native dialog lets you select items, but a useful review starts before the archive modifies Assets.",
+          "Package Quarantine inspects the archive without extracting its payloads into the project. It compares entries against the current project so the review includes both package content and collision context."
+        ],
+        bullets: [
+          "Archive paths and SHA-256 evidence.",
+          "Existing target files and overwrite classifications.",
+          "Managed code, native plugins, settings, and conflicts.",
+          "Case, Unicode, traversal, and unsafe-path checks."
+        ]
+      },
+      {
+        id: "how-to-run-a-dry-review",
+        title: "How do you run a dry review?",
+        paragraphs: [
+          "Open Tools > Package Quarantine > Inspect & Import and choose or drag in a local package. Inspection hashes the archive and compares it with the project without creating a recovery transaction or changing project files.",
+          "Expand every finding and use the Overwrites, Code, Settings, and Conflicts filters. The Code filter includes managed and native plugins."
+        ],
+        steps: [
+          "Choose the local .unitypackage file.",
+          "Wait for archive hashing and project comparison.",
+          "Review the summary, filters, target state, evidence, and warnings.",
+          "Copy the summary or export the Markdown dry-run report for approval."
+        ]
+      },
+      {
+        id: "what-happens-before-import",
+        title: "What happens before the package reaches Unity's dialog?",
+        paragraphs: [
+          "After the findings acknowledgement, Package Quarantine revalidates the package and target evidence. If relevant bytes changed since inspection, the refreshed result must be reviewed before continuing.",
+          "The tool then creates stable project snapshots, byte-verifies backup blobs, stages a verified copy of the inspected package, and only then opens Unity's supported native import dialog."
+        ],
+        bullets: [
+          "The original package length and SHA-256 are checked again.",
+          "Regular files under Assets, Packages, and ProjectSettings are included in the recovery scope.",
+          "Unity's native dialog remains responsible for final item selection and import."
+        ]
+      },
+      {
+        id: "what-inspection-does-not-prove",
+        title: "What does package inspection not prove?",
+        paragraphs: [
+          "Risk evidence is not a malware verdict. Unknown Editor code or binaries remain untrusted even when the numerical score is low, and selected Editor code may run while Unity imports or refreshes the project.",
+          "Package Quarantine is not an antivirus, execution sandbox, downloader, UPM dependency resolver, or replacement for version control."
+        ],
+        bullets: [
+          "Use source control before importing third-party assets.",
+          "Review unfamiliar code and binaries independently.",
+          "Treat an unsupported archive result as a compatibility outcome, not proof of malicious content."
+        ]
+      }
+    ]
+  },
+  "roll-back-a-unitypackage-import-safely": {
+    answer: "A safe Unitypackage rollback compares the recorded pre-import state, observed post-import state, and current bytes, restores assets with their meta files, and leaves later edits untouched unless a destructive action is explicitly chosen.",
+    heroCaption: "Verified snapshots and divergence checks keep rollback focused on package-owned changes.",
+    midCtaTitle: "Recover the import without silently overwriting work that happened afterward.",
+    midCtaText: "Package Quarantine builds a safe rollback preview from verified transaction evidence and defaults diverged files to leave untouched.",
+    endTitle: "Keep recovery data until the import is accepted or restoration is verified.",
+    endText: "The documentation covers transaction storage, rollback states, restart behavior, and manual restore instructions.",
+    sections: [
+      {
+        id: "why-a-simple-delete-is-not-a-rollback",
+        title: "Why is deleting imported files not a complete rollback?",
+        paragraphs: [
+          "A package can overwrite existing assets, replace meta files, remove paths, trigger reimports, and cause Editor callbacks to change files that were not listed in the archive. Removing newly added files does not restore those earlier bytes or GUID identities.",
+          "A recoverable import therefore needs a verified before-state and an observed after-state, not only a list of archive entries."
+        ],
+        bullets: [
+          "Assets and their .meta files must be treated together.",
+          "Callback-only and uncertain observations must remain distinguishable.",
+          "Later edits need protection from automatic restoration."
+        ]
+      },
+      {
+        id: "how-the-recovery-transaction-is-built",
+        title: "How is the recovery transaction built?",
+        paragraphs: [
+          "Before import, Package Quarantine captures consecutive stable snapshots of regular files and directories under Assets, Packages, and ProjectSettings. Every original file is copied into a byte-verified content-addressed blob before the transaction becomes armed.",
+          "The transaction is stored outside Assets under PackageQuarantineRecovery and includes journals, snapshots, backup blobs, import evidence, rollback records, and manual restore maps."
+        ],
+        bullets: [
+          "The recovery directory is not imported by Unity.",
+          "Transaction journals are authoritative; the history index can be rebuilt.",
+          "State is persisted before import and before each rollback mutation."
+        ]
+      },
+      {
+        id: "how-to-use-the-safe-preview",
+        title: "How do you use the safe rollback preview?",
+        paragraphs: [
+          "Open Recovery & History, select the transaction, and build the safe rollback preview. Each operation is classified by comparing the before-import, after-import, and current states.",
+          "Diverged files default to Leave untouched. Export current, then apply and Force apply are explicit choices for cases where the current bytes have been reviewed."
+        ],
+        steps: [
+          "Inspect created, modified, removed, moved, reimported, unchanged, and uncertain observations.",
+          "Build the safe rollback preview.",
+          "Review every diverged, manual-only, and blocked entry.",
+          "Apply selected safe operations and wait for Unity refresh and verification."
+        ]
+      },
+      {
+        id: "where-manual-recovery-is-required",
+        title: "When is manual recovery required?",
+        paragraphs: [
+          "Packages/manifest.json and Packages/packages-lock.json are manual-only because automatically restoring them can add, remove, or change external packages. Manual restore is also the fallback when Unity cannot load the isolated recovery window.",
+          "Close Unity, copy the current project, follow RESTORE.md and restore-map.tsv, and restore each asset with its meta file. Do not delete transaction-created files unless their current hashes still match the transaction evidence."
+        ],
+        bullets: [
+          "Do not delete an active or recoverable transaction.",
+          "Keep a separate copy of the current project before manual restoration.",
+          "Use source control to review package-management file changes."
+        ]
+      }
+    ]
+  },
+  "review-unity-package-risks-before-import": {
+    answer: "A practical Unity package risk review checks code, native binaries, project settings, package-control files, overwrites, path collisions, and unsupported archive features while treating the score as evidence prioritization rather than a safety guarantee.",
+    heroCaption: "Concrete evidence matters more than a single package risk score.",
+    midCtaTitle: "Review the reasons behind the score before approving an import.",
+    midCtaText: "Package Quarantine exposes file classifications, target conflicts, hashes, and warnings so the decision can be reviewed and exported.",
+    endTitle: "Use the report as a review record, not as a trust certificate.",
+    endText: "The documentation defines the inspection boundary, fail-closed archive handling, and recovery limitations.",
+    sections: [
+      {
+        id: "which-package-content-deserves-extra-review",
+        title: "Which package content deserves extra review?",
+        paragraphs: [
+          "Editor scripts, managed assemblies, native plugins, project settings, and files that overwrite existing project paths deserve deliberate review. Package-control files require special handling because they can change external dependencies.",
+          "Package Quarantine groups the evidence so reviewers can filter the archive without assuming that every suspicious-looking file is malicious."
+        ],
+        bullets: [
+          "Managed Editor code and native binaries.",
+          "ProjectSettings and package-control files.",
+          "Existing targets, asset and meta overwrites, and GUID effects.",
+          "Case, Unicode-equivalent, reserved-name, and ambiguous-path collisions."
+        ]
+      },
+      {
+        id: "why-path-and-archive-validation-matters",
+        title: "Why do path and archive-format checks matter?",
+        paragraphs: [
+          "The inspector accepts the supported Unity gzip/tar package layout and fails closed on traversal, unsafe roots, links, malformed members, and unrecognized extensions such as unsupported PAX or long-name records.",
+          "Failing closed avoids interpreting an archive approximately. A benign package using an unsupported variant should be recreated with a validated Unity Editor or inspected separately."
+        ],
+        bullets: [
+          "Canonical project-relative paths are required.",
+          "Reparse-point traversal is refused during recovery operations.",
+          "Platform-ambiguous archive paths are rejected."
+        ]
+      },
+      {
+        id: "how-to-share-the-review",
+        title: "How do you share the review with another person?",
+        paragraphs: [
+          "Copy Summary provides a short review record, while Export Markdown Dry Run includes the package hash, classifications, visible risk reasons, warnings, and project context. Exporting does not prepare recovery or modify the project.",
+          "After import, Markdown and standalone HTML transaction reports record what Unity and the filesystem evidence observed. Keep the dry run and transaction report together when both approval and outcome matter."
+        ],
+        steps: [
+          "Finish expanding and reviewing the findings.",
+          "Export the pre-import Markdown dry run.",
+          "Record the approval decision outside the tool when required.",
+          "Export the reconciled transaction report after import."
+        ]
+      },
+      {
+        id: "what-remains-outside-version-one",
+        title: "What remains outside version 1.0.0?",
+        paragraphs: [
+          "Version 1.0.0 does not include publisher or hash trust notes, saved folder include/exclude presets, side-by-side text diffs, or Git status capture. Live path filtering, hashes, content evidence, collision warnings, and report exports remain available.",
+          "Recovery also cannot capture unsaved in-memory state, operating-system side effects outside the project, ACLs, external processes, network activity, or every platform-specific file attribute."
+        ],
+        bullets: [
+          "Use a separate diff or source-control tool for deferred evidence.",
+          "Commit or stash valuable work before import.",
+          "Treat unfamiliar code and binaries as untrusted until independently reviewed."
+        ]
+      }
+    ]
+  }
+});
+
 function filePathFromSitePath(sitePath) {
   const cleaned = sitePath.replace(/^\/+/, "");
   return path.join(rootDir, cleaned, "index.html");
@@ -1582,16 +1776,16 @@ function renderHubPage() {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Unity Release Workflows | Bjorvand Solutions</title>
-  <meta name="description" content="Practical guides for catching build, asset, refactor, UI layout, and compliance problems before they hit release.">
+  <meta name="description" content="Practical guides for catching build, asset, refactor, UI layout, package safety, and compliance problems before release.">
   <meta name="author" content="${htmlEscape(catalog.author.name)}">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Unity Release Workflows | Bjorvand Solutions">
-  <meta property="og:description" content="Practical guides for catching build, asset, refactor, UI layout, and compliance problems before they hit release.">
+  <meta property="og:description" content="Practical guides for catching build, asset, refactor, UI layout, package safety, and compliance problems before release.">
   <meta property="og:url" content="${siteUrl}/articles/">
   <meta property="og:image" content="${absoluteUrl(authorImage)}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Unity Release Workflows | Bjorvand Solutions">
-  <meta name="twitter:description" content="Practical guides for catching build, asset, refactor, UI layout, and compliance problems before they hit release.">
+  <meta name="twitter:description" content="Practical guides for catching build, asset, refactor, UI layout, package safety, and compliance problems before release.">
   <meta name="twitter:image" content="${absoluteUrl(authorImage)}">
   <link rel="canonical" href="${siteUrl}/articles/">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
@@ -1619,8 +1813,8 @@ function renderHubPage() {
       <section class="articles-hero">
         <span class="badge">Articles</span>
         <h1>Unity Release Workflows</h1>
-        <p>Practical guides for catching build, asset, refactor, UI layout, and compliance problems before they hit release.</p>
-        <p>Build size &middot; Shader variants &middot; Import settings &middot; Serialization &middot; UI layout &middot; Compliance</p>
+        <p>Practical guides for catching build, asset, refactor, UI layout, package safety, and compliance problems before release.</p>
+        <p>Build size &middot; Shader variants &middot; Import settings &middot; Serialization &middot; UI layout &middot; Package safety &middot; Compliance</p>
         <div class="articles-summary-strip" aria-label="Article summary">
           <article>
             <strong>${catalog.articles.length} practical guides</strong>
@@ -1880,7 +2074,7 @@ function renderArticlePage(article) {
           </div>
           <div class="article-keyline">
             <span class="article-chip">Updated ${htmlEscape(formatDateLabel(article.updatedDate))}</span>
-            <span class="article-chip">Docs, Asset Store, and license links stay in the sidebar</span>
+            <span class="article-chip">${tool.links.store ? "Docs, Asset Store, and license links stay in the sidebar" : "Docs and license links stay in the sidebar"}</span>
           </div>
         </div>
         <figure class="article-hero-media">

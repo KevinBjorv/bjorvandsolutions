@@ -33,6 +33,11 @@
         slug: "ui-layout-testing",
         label: "UI layout testing",
         description: "Articles about breakpoints, safe areas, text expansion, and visual regression checks."
+      },
+      {
+        slug: "package-safety",
+        label: "Package safety",
+        description: "Articles about Unity package inspection, recovery evidence, and safe rollback workflows."
       }
     ],
     tools: [
@@ -153,6 +158,20 @@
           "/assets/images/UIBreakpointLab/marketing/safe-area-findings.png",
           "/assets/images/UIBreakpointLab/marketing/text-expansion-findings.png",
           "/assets/images/UIBreakpointLab/marketing/pseudolocalization-findings.png"
+        ]
+      },
+      {
+        key: "package-quarantine",
+        name: "Package Quarantine",
+        summary: "Inspect local Unity packages, prepare verified recovery, and review rollback evidence before keeping an import.",
+        audience: "Unity teams reviewing third-party .unitypackage imports and protecting existing project files.",
+        links: {
+          docs: "/assets/PackageQuarantine/",
+          license: "/assets/package-quarantine/license/"
+        },
+        images: [
+          "/assets/images/PackageQuarantine/marketing/package-quarantine-cover.png",
+          "/assets/images/PackageQuarantine/icons/Icon512.png"
         ]
       }
     ],
@@ -462,6 +481,57 @@
         primaryCtaLabel: "Read UI Breakpoint Lab CI docs",
         primaryCtaHref: "/assets/UIBreakpoint/#command-line-and-ci",
         relatedLinks: ["/assets/UIBreakpoint/", "/support/", "/assets/ui-breakpoint-lab/license/"]
+      },
+      {
+        slug: "inspect-a-unitypackage-before-importing-it",
+        path: "/articles/package-quarantine/inspect-a-unitypackage-before-importing-it/",
+        toolKey: "package-quarantine",
+        toolName: "Package Quarantine",
+        category: "package-safety",
+        title: "How to Inspect a Unitypackage Before Importing It",
+        description: "Inspect archive paths, hashes, code, settings, collisions, and overwrite evidence before opening Unity's native import dialog.",
+        publishDate: "2026-07-11",
+        updatedDate: "2026-07-11",
+        readTime: "8 min read",
+        heroImage: "/assets/images/PackageQuarantine/marketing/package-quarantine-cover.png",
+        author: "Kevin Ahlgren Bjorvand",
+        primaryCtaLabel: "Read Package Quarantine docs",
+        primaryCtaHref: "/assets/PackageQuarantine/",
+        relatedLinks: ["/assets/PackageQuarantine/", "/support/", "/assets/package-quarantine/license/"]
+      },
+      {
+        slug: "roll-back-a-unitypackage-import-safely",
+        path: "/articles/package-quarantine/roll-back-a-unitypackage-import-safely/",
+        toolKey: "package-quarantine",
+        toolName: "Package Quarantine",
+        category: "package-safety",
+        title: "How to Roll Back a Unitypackage Import Safely",
+        description: "Use verified snapshots, asset and meta pairing, divergence checks, and post-refresh verification to recover from a Unity package import.",
+        publishDate: "2026-07-11",
+        updatedDate: "2026-07-11",
+        readTime: "8 min read",
+        heroImage: "/assets/images/PackageQuarantine/marketing/package-quarantine-cover.png",
+        author: "Kevin Ahlgren Bjorvand",
+        primaryCtaLabel: "Read Package Quarantine recovery docs",
+        primaryCtaHref: "/assets/PackageQuarantine/#rollback",
+        relatedLinks: ["/assets/PackageQuarantine/", "/support/", "/assets/package-quarantine/license/"]
+      },
+      {
+        slug: "review-unity-package-risks-before-import",
+        path: "/articles/package-quarantine/review-unity-package-risks-before-import/",
+        toolKey: "package-quarantine",
+        toolName: "Package Quarantine",
+        category: "package-safety",
+        title: "How to Review Unity Package Risks Before Import",
+        description: "Review code, native plugins, project settings, package-control files, conflicts, and archive limitations without treating a risk score as a safety verdict.",
+        publishDate: "2026-07-11",
+        updatedDate: "2026-07-11",
+        readTime: "7 min read",
+        heroImage: "/assets/images/PackageQuarantine/marketing/package-quarantine-cover.png",
+        author: "Kevin Ahlgren Bjorvand",
+        primaryCtaLabel: "Read Package Quarantine docs",
+        primaryCtaHref: "/assets/PackageQuarantine/#inspection",
+        relatedLinks: ["/assets/PackageQuarantine/", "/support/", "/assets/package-quarantine/license/"]
       }
     ],
     games: {

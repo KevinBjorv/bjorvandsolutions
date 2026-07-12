@@ -4,16 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Unity Release Workflows | Bjorvand Solutions</title>
-  <meta name="description" content="Practical guides for catching build, asset, refactor, UI layout, and compliance problems before they hit release.">
+  <meta name="description" content="Practical guides for catching build, asset, refactor, UI layout, package safety, and compliance problems before release.">
   <meta name="author" content="Kevin Ahlgren Bjorvand">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Unity Release Workflows | Bjorvand Solutions">
-  <meta property="og:description" content="Practical guides for catching build, asset, refactor, UI layout, and compliance problems before they hit release.">
+  <meta property="og:description" content="Practical guides for catching build, asset, refactor, UI layout, package safety, and compliance problems before release.">
   <meta property="og:url" content="https://bjorv.com/articles/">
   <meta property="og:image" content="https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Unity Release Workflows | Bjorvand Solutions">
-  <meta name="twitter:description" content="Practical guides for catching build, asset, refactor, UI layout, and compliance problems before they hit release.">
+  <meta name="twitter:description" content="Practical guides for catching build, asset, refactor, UI layout, package safety, and compliance problems before release.">
   <meta name="twitter:image" content="https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.jpg">
   <link rel="canonical" href="https://bjorv.com/articles/">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
@@ -97,6 +97,12 @@
           "name": "UI Breakpoint Lab",
           "applicationCategory": "DeveloperApplication",
           "url": "https://bjorv.com/assets/UIBreakpoint/"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "Package Quarantine",
+          "applicationCategory": "DeveloperApplication",
+          "url": "https://bjorv.com/assets/PackageQuarantine/"
         }
       ]
     },
@@ -119,96 +125,114 @@
         {
           "@type": "ListItem",
           "position": 3,
+          "url": "https://bjorv.com/articles/package-quarantine/inspect-a-unitypackage-before-importing-it/",
+          "name": "How to Inspect a Unitypackage Before Importing It"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "url": "https://bjorv.com/articles/package-quarantine/review-unity-package-risks-before-import/",
+          "name": "How to Review Unity Package Risks Before Import"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "url": "https://bjorv.com/articles/package-quarantine/roll-back-a-unitypackage-import-safely/",
+          "name": "How to Roll Back a Unitypackage Import Safely"
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
           "url": "https://bjorv.com/articles/ui-breakpoint-lab/test-unity-ui-across-breakpoints-and-safe-areas/",
           "name": "How to Test Unity UI Across Breakpoints and Safe Areas"
         },
         {
           "@type": "ListItem",
-          "position": 4,
+          "position": 7,
           "url": "https://bjorv.com/articles/unity-serialization-migration-guard/audit-unity-yaml-coverage-before-removing-old-rename-mappings/",
           "name": "How to Audit Unity YAML Coverage Before Removing Old Rename Mappings"
         },
         {
           "@type": "ListItem",
-          "position": 5,
+          "position": 8,
           "url": "https://bjorv.com/articles/compliance/build-a-repeatable-unity-license-compliance-workflow/",
           "name": "How to Build a Repeatable Unity License Compliance Workflow"
         },
         {
           "@type": "ListItem",
-          "position": 6,
+          "position": 9,
           "url": "https://bjorv.com/articles/build-size-guard/catch-unity-build-size-regressions-before-release/",
           "name": "How to Catch Unity Build Size Regressions Before Release"
         },
         {
           "@type": "ListItem",
-          "position": 7,
+          "position": 10,
           "url": "https://bjorv.com/articles/shader-variant-budget-ci-guard/compare-shader-variant-snapshots-from-editor-log/",
           "name": "How to Compare Shader Variant Snapshots from Editor.log"
         },
         {
           "@type": "ListItem",
-          "position": 8,
+          "position": 11,
           "url": "https://bjorv.com/articles/build-size-guard/compare-unity-build-snapshots-and-find-what-changed/",
           "name": "How to Compare Unity Build Snapshots and Find What Changed"
         },
         {
           "@type": "ListItem",
-          "position": 9,
+          "position": 12,
           "url": "https://bjorv.com/articles/import-settings-validator-fix/enforce-unity-import-settings-across-a-team/",
           "name": "How to Enforce Unity Import Settings Across a Team"
         },
         {
           "@type": "ListItem",
-          "position": 10,
+          "position": 13,
           "url": "https://bjorv.com/articles/compliance/export-unity-credits-and-compliance-manifests-before-release/",
           "name": "How to Export Unity Credits and Compliance Manifests Before Release"
         },
         {
           "@type": "ListItem",
-          "position": 11,
+          "position": 14,
           "url": "https://bjorv.com/articles/import-settings-validator-fix/fix-import-setting-drift-without-manual-reimports/",
           "name": "How to Fix Import Setting Drift Without Manual Reimports"
         },
         {
           "@type": "ListItem",
-          "position": 12,
+          "position": 15,
           "url": "https://bjorv.com/articles/compliance/generate-third-party-notices-for-a-unity-game/",
           "name": "How to Generate Third-Party Notices for a Unity Game"
         },
         {
           "@type": "ListItem",
-          "position": 13,
+          "position": 16,
           "url": "https://bjorv.com/articles/unity-serialization-migration-guard/preview-and-validate-unity-reserialization-during-refactors/",
           "name": "How to Preview and Validate Unity Reserialization During Refactors"
         },
         {
           "@type": "ListItem",
-          "position": 14,
+          "position": 17,
           "url": "https://bjorv.com/articles/shader-variant-budget-ci-guard/reduce-shader-variant-creep-in-unity/",
           "name": "How to Reduce Shader Variant Creep in Unity"
         },
         {
           "@type": "ListItem",
-          "position": 15,
+          "position": 18,
           "url": "https://bjorv.com/articles/unity-serialization-migration-guard/safely-rename-serialized-fields-in-unity/",
           "name": "How to Safely Rename Serialized Fields in Unity"
         },
         {
           "@type": "ListItem",
-          "position": 16,
+          "position": 19,
           "url": "https://bjorv.com/articles/build-size-guard/set-build-size-budgets-in-unity-ci/",
           "name": "How to Set Build Size Budgets in Unity CI"
         },
         {
           "@type": "ListItem",
-          "position": 17,
+          "position": 20,
           "url": "https://bjorv.com/articles/shader-variant-budget-ci-guard/set-shader-variant-budgets-in-unity-ci/",
           "name": "How to Set Shader Variant Budgets in Unity CI"
         },
         {
           "@type": "ListItem",
-          "position": 18,
+          "position": 21,
           "url": "https://bjorv.com/articles/import-settings-validator-fix/validate-texture-audio-and-model-import-settings-in-unity/",
           "name": "How to Validate Texture, Audio, and Model Import Settings in Unity"
         }
@@ -277,11 +301,11 @@
       <section class="articles-hero">
         <span class="badge">Articles</span>
         <h1>Unity Release Workflows</h1>
-        <p>Practical guides for catching build, asset, refactor, UI layout, and compliance problems before they hit release.</p>
-        <p>Build size &middot; Shader variants &middot; Import settings &middot; Serialization &middot; UI layout &middot; Compliance</p>
+        <p>Practical guides for catching build, asset, refactor, UI layout, package safety, and compliance problems before release.</p>
+        <p>Build size &middot; Shader variants &middot; Import settings &middot; Serialization &middot; UI layout &middot; Package safety &middot; Compliance</p>
         <div class="articles-summary-strip" aria-label="Article summary">
           <article>
-            <strong>18 practical guides</strong>
+            <strong>21 practical guides</strong>
             <span>Unity release workflows for build, asset, refactor, and compliance cleanup.</span>
           </article>
         </div>
@@ -313,6 +337,7 @@
               <button class="filter-pill" type="button" data-tool-filter data-filter-value="import-settings-validator-fix" aria-pressed="false">Import Settings Validator &amp; Fix</button>
               <button class="filter-pill" type="button" data-tool-filter data-filter-value="compliance" aria-pressed="false">Compliance Exporter</button>
               <button class="filter-pill" type="button" data-tool-filter data-filter-value="ui-breakpoint-lab" aria-pressed="false">UI Breakpoint Lab</button>
+              <button class="filter-pill" type="button" data-tool-filter data-filter-value="package-quarantine" aria-pressed="false">Package Quarantine</button>
           </div>
         </div>
 
@@ -325,10 +350,11 @@
               <button class="filter-pill" type="button" data-category-filter data-filter-value="serialization-refactoring" aria-pressed="false">Serialization</button>
               <button class="filter-pill" type="button" data-category-filter data-filter-value="compliance-release" aria-pressed="false">Compliance</button>
               <button class="filter-pill" type="button" data-category-filter data-filter-value="ui-layout-testing" aria-pressed="false">UI layout testing</button>
+              <button class="filter-pill" type="button" data-category-filter data-filter-value="package-safety" aria-pressed="false">Package safety</button>
           </div>
         </div>
 
-        <p class="articles-status" data-article-status>Showing 18 articles</p>
+        <p class="articles-status" data-article-status>Showing 21 articles</p>
       </section>
 
       <section aria-labelledby="articles-grid-title">
@@ -376,6 +402,69 @@
               <div class="card-actions">
                 <a class="button button-primary" href="/articles/ui-breakpoint-lab/find-unity-ui-text-overflow-with-expansion-passes/">Read article</a>
                 <a class="button button-secondary" href="https://assetstore.unity.com/packages/slug/392246">Asset Store</a>
+              </div>
+            </div>
+          </article>
+<article class="card article-card" data-article-card data-tool="package-quarantine" data-category="package-safety" data-date="2026-07-11" data-title="how to inspect a unitypackage before importing it">
+            <figure>
+              <img src="/assets/images/PackageQuarantine/marketing/package-quarantine-cover.png" alt="How to Inspect a Unitypackage Before Importing It" loading="lazy">
+            </figure>
+            <div class="article-card-body">
+              <div class="article-card-meta">
+                <span class="article-tag">Package safety</span>
+                <span class="article-tag">8 min read</span>
+              </div>
+              <div class="article-card-tags">
+                <span class="article-tag">Package Quarantine</span>
+                <span class="article-tag">July 11, 2026</span>
+              </div>
+              <h2><a href="/articles/package-quarantine/inspect-a-unitypackage-before-importing-it/">How to Inspect a Unitypackage Before Importing It</a></h2>
+              <p>Inspect archive paths, hashes, code, settings, collisions, and overwrite evidence before opening Unity&#39;s native import dialog.</p>
+              <div class="card-actions">
+                <a class="button button-primary" href="/articles/package-quarantine/inspect-a-unitypackage-before-importing-it/">Read article</a>
+                <a class="button button-secondary" href="/assets/PackageQuarantine/">Docs</a>
+              </div>
+            </div>
+          </article>
+<article class="card article-card" data-article-card data-tool="package-quarantine" data-category="package-safety" data-date="2026-07-11" data-title="how to review unity package risks before import">
+            <figure>
+              <img src="/assets/images/PackageQuarantine/marketing/package-quarantine-cover.png" alt="How to Review Unity Package Risks Before Import" loading="lazy">
+            </figure>
+            <div class="article-card-body">
+              <div class="article-card-meta">
+                <span class="article-tag">Package safety</span>
+                <span class="article-tag">7 min read</span>
+              </div>
+              <div class="article-card-tags">
+                <span class="article-tag">Package Quarantine</span>
+                <span class="article-tag">July 11, 2026</span>
+              </div>
+              <h2><a href="/articles/package-quarantine/review-unity-package-risks-before-import/">How to Review Unity Package Risks Before Import</a></h2>
+              <p>Review code, native plugins, project settings, package-control files, conflicts, and archive limitations without treating a risk score as a safety verdict.</p>
+              <div class="card-actions">
+                <a class="button button-primary" href="/articles/package-quarantine/review-unity-package-risks-before-import/">Read article</a>
+                <a class="button button-secondary" href="/assets/PackageQuarantine/">Docs</a>
+              </div>
+            </div>
+          </article>
+<article class="card article-card" data-article-card data-tool="package-quarantine" data-category="package-safety" data-date="2026-07-11" data-title="how to roll back a unitypackage import safely">
+            <figure>
+              <img src="/assets/images/PackageQuarantine/marketing/package-quarantine-cover.png" alt="How to Roll Back a Unitypackage Import Safely" loading="lazy">
+            </figure>
+            <div class="article-card-body">
+              <div class="article-card-meta">
+                <span class="article-tag">Package safety</span>
+                <span class="article-tag">8 min read</span>
+              </div>
+              <div class="article-card-tags">
+                <span class="article-tag">Package Quarantine</span>
+                <span class="article-tag">July 11, 2026</span>
+              </div>
+              <h2><a href="/articles/package-quarantine/roll-back-a-unitypackage-import-safely/">How to Roll Back a Unitypackage Import Safely</a></h2>
+              <p>Use verified snapshots, asset and meta pairing, divergence checks, and post-refresh verification to recover from a Unity package import.</p>
+              <div class="card-actions">
+                <a class="button button-primary" href="/articles/package-quarantine/roll-back-a-unitypackage-import-safely/">Read article</a>
+                <a class="button button-secondary" href="/assets/PackageQuarantine/">Docs</a>
               </div>
             </div>
           </article>
@@ -751,6 +840,7 @@
             <li><a href="/assets/import-settings-validator-fix/docs/">Import Settings Validator & Fix</a></li>
             <li><a href="/assets/compliance/docs/">Compliance Exporter</a></li>
             <li><a href="/assets/UIBreakpoint/">UI Breakpoint Lab</a></li>
+            <li><a href="/assets/PackageQuarantine/">Package Quarantine</a></li>
           </ul>
         </section>
         <section>
@@ -776,6 +866,7 @@
             <li><a href="/assets/import-settings-validator-fix/license/">Import Settings Validator & Fix</a></li>
             <li><a href="/assets/compliance/license/">Compliance Exporter</a></li>
             <li><a href="/assets/ui-breakpoint-lab/license/">UI Breakpoint Lab</a></li>
+            <li><a href="/assets/package-quarantine/license/">Package Quarantine</a></li>
           </ul>
         </section>
         <section>

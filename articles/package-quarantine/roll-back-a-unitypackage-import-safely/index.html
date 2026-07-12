@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Roll Back a Unitypackage Import Safely | Package Quarantine Article</title>
+  <meta name="description" content="Use verified snapshots, asset and meta pairing, divergence checks, and post-refresh verification to recover from a Unity package import.">
+  <meta name="author" content="Kevin Ahlgren Bjorvand">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="How to Roll Back a Unitypackage Import Safely">
+  <meta property="og:description" content="Use verified snapshots, asset and meta pairing, divergence checks, and post-refresh verification to recover from a Unity package import.">
+  <meta property="og:url" content="https://bjorv.com/articles/package-quarantine/roll-back-a-unitypackage-import-safely/">
+  <meta property="og:image" content="https://bjorv.com/assets/images/PackageQuarantine/marketing/package-quarantine-cover.png">
+  <meta property="article:published_time" content="2026-07-11">
+  <meta property="article:modified_time" content="2026-07-11">
+  <meta property="article:author" content="Kevin Ahlgren Bjorvand">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How to Roll Back a Unitypackage Import Safely">
+  <meta name="twitter:description" content="Use verified snapshots, asset and meta pairing, divergence checks, and post-refresh verification to recover from a Unity package import.">
+  <meta name="twitter:image" content="https://bjorv.com/assets/images/PackageQuarantine/marketing/package-quarantine-cover.png">
+  <link rel="canonical" href="https://bjorv.com/articles/package-quarantine/roll-back-a-unitypackage-import-safely/">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+  <link rel="icon" href="/assets/favicon/favicon.ico">
+  <link rel="manifest" href="/assets/favicon/site.webmanifest">
+  <script src="/assets/js/site/theme-init.js"></script>
+  <link rel="stylesheet" href="/assets/css/site/tokens.css">
+  <link rel="stylesheet" href="/assets/css/site/base.css">
+  <link rel="stylesheet" href="/assets/css/site/layout.css">
+  <link rel="stylesheet" href="/assets/css/site/components.css">
+  <link rel="stylesheet" href="/assets/css/site/pages/article-detail.css">
+  <link rel="stylesheet" href="/assets/css/shared/link-decorators.css">
+  <link rel="stylesheet" href="/assets/css/shared/typography-overrides.css">
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "How to Roll Back a Unitypackage Import Safely",
+      "description": "Use verified snapshots, asset and meta pairing, divergence checks, and post-refresh verification to recover from a Unity package import.",
+      "image": [
+        "https://bjorv.com/assets/images/PackageQuarantine/marketing/package-quarantine-cover.png"
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "Kevin Ahlgren Bjorvand",
+        "image": "https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.jpg"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Bjorvand Solutions",
+        "url": "https://bjorv.com"
+      },
+      "mainEntityOfPage": "https://bjorv.com/articles/package-quarantine/roll-back-a-unitypackage-import-safely/",
+      "datePublished": "2026-07-11",
+      "dateModified": "2026-07-11",
+      "articleSection": "Package safety",
+      "about": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "Package Quarantine",
+          "applicationCategory": "DeveloperApplication",
+          "url": "https://bjorv.com/assets/PackageQuarantine/"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://bjorv.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Articles",
+          "item": "https://bjorv.com/articles/?tool=package-quarantine"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Package Quarantine",
+          "item": "https://bjorv.com/assets/PackageQuarantine/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "How to Roll Back a Unitypackage Import Safely",
+          "item": "https://bjorv.com/articles/package-quarantine/roll-back-a-unitypackage-import-safely/"
+        }
+      ]
+    }
+  ]
+}</script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Bjorvand Solutions</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="menu-root">
+          <li class="menu-item"><a class="menu-link" href="/">Home</a></li>
+          <li class="menu-item"><a class="menu-link" href="/tools/">Tools</a></li>
+          <li class="menu-item"><a class="menu-link" href="/games/">Games</a></li>
+          <li class="menu-item"><a class="menu-link" href="/articles/">Articles</a></li>
+          <li class="menu-item"><a class="menu-link" href="/support/">Support</a></li>
+          <li class="menu-item"><a class="menu-link" target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot</a></li>
+          <li class="menu-item menu-item-smart-indie"><a class="menu-link menu-link-smart-indie" target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="language-switcher" aria-label="Language">
+          <a class="language-link" href="/" hreflang="en" lang="en" data-language-option="en" aria-label="English">
+            <img src="/assets/images/flags/en.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>EN</span>
+          </a>
+          <a class="language-link" href="/no/" hreflang="no" lang="no" data-language-option="no" aria-label="Norsk">
+            <img src="/assets/images/flags/no.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>NO</span>
+          </a>
+        </div>
+        <button class="mobile-nav-toggle" type="button" data-mobile-nav-toggle aria-controls="mobileNavPanel" aria-expanded="false">Menu</button>
+      </div>
+    </div>
+    <div class="mobile-nav-panel" id="mobileNavPanel" data-mobile-nav-panel hidden>
+      <div class="mobile-nav-shell container">
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/">Home</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/tools/">Tools</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/games/">Games</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/articles/">Articles</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/support/">Support</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></div>
+        <div class="mobile-nav-group mobile-language-options" aria-label="Language">
+          <a href="/" hreflang="en" lang="en" data-language-option="en">
+            <img src="/assets/images/flags/en.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>English</span>
+          </a>
+          <a href="/no/" hreflang="no" lang="no" data-language-option="no">
+            <img src="/assets/images/flags/no.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>Norsk</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main class="site-main">
+    <div class="container article-page">
+      <nav class="article-breadcrumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a><span aria-hidden="true">/</span>
+        <a href="/articles/?tool=package-quarantine">Articles</a><span aria-hidden="true">/</span>
+        <a href="/assets/PackageQuarantine/">Package Quarantine</a><span aria-hidden="true">/</span>
+        <span aria-current="page">How to Roll Back a Unitypackage Import Safely</span>
+      </nav>
+
+      <section class="article-hero">
+        <div class="article-hero-copy">
+          <div class="article-eyebrow">
+            <span class="article-kicker">Package safety</span>
+            <span class="article-chip">Package Quarantine</span>
+          </div>
+          <h1>How to Roll Back a Unitypackage Import Safely</h1>
+          <p>Use verified snapshots, asset and meta pairing, divergence checks, and post-refresh verification to recover from a Unity package import.</p>
+          <div class="article-meta-line">
+            <span>July 11, 2026</span>
+            <span>&bull;</span>
+            <span>8 min read</span>
+            <span>&bull;</span>
+            <span>Kevin Ahlgren Bjorvand</span>
+          </div>
+          <div class="article-answer">
+            <p>A safe Unitypackage rollback compares the recorded pre-import state, observed post-import state, and current bytes, restores assets with their meta files, and leaves later edits untouched unless a destructive action is explicitly chosen.</p>
+          </div>
+          <div class="article-keyline">
+            <span class="article-chip">Updated July 11, 2026</span>
+            <span class="article-chip">Docs and license links stay in the sidebar</span>
+          </div>
+        </div>
+        <figure class="article-hero-media">
+          <img src="/assets/images/PackageQuarantine/marketing/package-quarantine-cover.png" alt="How to Roll Back a Unitypackage Import Safely" loading="eager" fetchpriority="high">
+          <figcaption>Verified snapshots and divergence checks keep rollback focused on package-owned changes.</figcaption>
+        </figure>
+      </section>
+
+      <div class="article-layout">
+        <article class="article-main">
+<section class="article-section" id="why-a-simple-delete-is-not-a-rollback" data-article-section>
+        <h2>Why is deleting imported files not a complete rollback?</h2>
+        <p>A package can overwrite existing assets, replace meta files, remove paths, trigger reimports, and cause Editor callbacks to change files that were not listed in the archive. Removing newly added files does not restore those earlier bytes or GUID identities.</p>
+<p>A recoverable import therefore needs a verified before-state and an observed after-state, not only a list of archive entries.</p>
+        <ul>
+  <li>Assets and their .meta files must be treated together.</li>
+  <li>Callback-only and uncertain observations must remain distinguishable.</li>
+  <li>Later edits need protection from automatic restoration.</li>
+</ul>
+        
+        
+      </section>
+<section class="article-section" id="how-the-recovery-transaction-is-built" data-article-section>
+        <h2>How is the recovery transaction built?</h2>
+        <p>Before import, Package Quarantine captures consecutive stable snapshots of regular files and directories under Assets, Packages, and ProjectSettings. Every original file is copied into a byte-verified content-addressed blob before the transaction becomes armed.</p>
+<p>The transaction is stored outside Assets under PackageQuarantineRecovery and includes journals, snapshots, backup blobs, import evidence, rollback records, and manual restore maps.</p>
+        <ul>
+  <li>The recovery directory is not imported by Unity.</li>
+  <li>Transaction journals are authoritative; the history index can be rebuilt.</li>
+  <li>State is persisted before import and before each rollback mutation.</li>
+</ul>
+        
+        
+      </section>
+      <section class="article-cta-panel" aria-label="Primary call to action">
+        <h2>Recover the import without silently overwriting work that happened afterward.</h2>
+        <p>Package Quarantine builds a safe rollback preview from verified transaction evidence and defaults diverged files to leave untouched.</p>
+        <div class="article-cta-actions">
+          <a class="button button-primary" href="/assets/PackageQuarantine/#rollback">Read Package Quarantine recovery docs</a>
+          <a class="button button-secondary" href="/assets/PackageQuarantine/">Docs</a>
+        </div>
+      </section>
+<section class="article-section" id="how-to-use-the-safe-preview" data-article-section>
+        <h2>How do you use the safe rollback preview?</h2>
+        <p>Open Recovery & History, select the transaction, and build the safe rollback preview. Each operation is classified by comparing the before-import, after-import, and current states.</p>
+<p>Diverged files default to Leave untouched. Export current, then apply and Force apply are explicit choices for cases where the current bytes have been reviewed.</p>
+        
+        <ol>
+  <li>Inspect created, modified, removed, moved, reimported, unchanged, and uncertain observations.</li>
+  <li>Build the safe rollback preview.</li>
+  <li>Review every diverged, manual-only, and blocked entry.</li>
+  <li>Apply selected safe operations and wait for Unity refresh and verification.</li>
+</ol>
+        
+      </section>
+<section class="article-section" id="where-manual-recovery-is-required" data-article-section>
+        <h2>When is manual recovery required?</h2>
+        <p>Packages/manifest.json and Packages/packages-lock.json are manual-only because automatically restoring them can add, remove, or change external packages. Manual restore is also the fallback when Unity cannot load the isolated recovery window.</p>
+<p>Close Unity, copy the current project, follow RESTORE.md and restore-map.tsv, and restore each asset with its meta file. Do not delete transaction-created files unless their current hashes still match the transaction evidence.</p>
+        <ul>
+  <li>Do not delete an active or recoverable transaction.</li>
+  <li>Keep a separate copy of the current project before manual restoration.</li>
+  <li>Use source control to review package-management file changes.</li>
+</ul>
+        
+        
+      </section>
+          <section class="article-callout">
+            <h2>Keep recovery data until the import is accepted or restoration is verified.</h2>
+            <p>The documentation covers transaction storage, rollback states, restart behavior, and manual restore instructions.</p>
+            <div class="article-cta-actions">
+              <a class="button button-primary" href="/assets/PackageQuarantine/#rollback">Read Package Quarantine recovery docs</a>
+              <a class="button button-secondary" href="/assets/PackageQuarantine/">Docs</a>
+            </div>
+          </section>
+
+          <section class="article-section" id="related-articles">
+            <h2>More articles for Package Quarantine</h2>
+            <p>The tool workflow stays easier to evaluate when the next steps stay inside the same product and documentation surface.</p>
+            <div class="article-related-grid">
+<article class="card article-related-card">
+              <img src="/assets/images/PackageQuarantine/marketing/package-quarantine-cover.png" alt="How to Inspect a Unitypackage Before Importing It" loading="lazy">
+              <span>8 min read</span>
+              <h3><a href="/articles/package-quarantine/inspect-a-unitypackage-before-importing-it/">How to Inspect a Unitypackage Before Importing It</a></h3>
+              <p>Inspect archive paths, hashes, code, settings, collisions, and overwrite evidence before opening Unity&#39;s native import dialog.</p>
+            </article>
+<article class="card article-related-card">
+              <img src="/assets/images/PackageQuarantine/marketing/package-quarantine-cover.png" alt="How to Review Unity Package Risks Before Import" loading="lazy">
+              <span>7 min read</span>
+              <h3><a href="/articles/package-quarantine/review-unity-package-risks-before-import/">How to Review Unity Package Risks Before Import</a></h3>
+              <p>Review code, native plugins, project settings, package-control files, conflicts, and archive limitations without treating a risk score as a safety verdict.</p>
+            </article>
+            </div>
+          </section>
+        </article>
+
+        <aside class="article-sidebar" aria-label="Article sidebar">
+          <section class="article-sidebar-card">
+            <h2>On this page</h2>
+            <nav class="article-toc" aria-label="Table of contents">
+            <a href="#why-a-simple-delete-is-not-a-rollback" data-article-toc-link>Why is deleting imported files not a complete rollback?</a>
+            <a href="#how-the-recovery-transaction-is-built" data-article-toc-link>How is the recovery transaction built?</a>
+            <a href="#how-to-use-the-safe-preview" data-article-toc-link>How do you use the safe rollback preview?</a>
+            <a href="#where-manual-recovery-is-required" data-article-toc-link>When is manual recovery required?</a>
+            </nav>
+          </section>
+
+          <section class="article-sidebar-card">
+            <h2>Author</h2>
+            <div class="author-card">
+              <div class="author-card-header">
+                <img src="/assets/images/authors/kevin-ahlgren-bjorvand.jpg" alt="Kevin Ahlgren Bjorvand" loading="lazy">
+                <div>
+                  <strong>Kevin Ahlgren Bjorvand</strong>
+                  <p>Founder, Bjorvand Solutions</p>
+                </div>
+              </div>
+              <p>Kevin builds Unity tools focused on release safety, build visibility, migration safety, and compliance evidence.</p>
+            </div>
+          </section>
+
+          <section class="article-sidebar-card">
+            <h2>Package Quarantine links</h2>
+            <ul>
+              <li><a href="/assets/PackageQuarantine/">Package Quarantine docs</a></li>
+              <li><a href="/assets/package-quarantine/license/">Package Quarantine license</a></li>
+            </ul>
+          </section>
+
+          <section class="article-sidebar-card">
+            <h2>Same-tool articles</h2>
+            <ul>
+              <li><a href="/articles/package-quarantine/inspect-a-unitypackage-before-importing-it/">How to Inspect a Unitypackage Before Importing It</a></li>
+              <li><a href="/articles/package-quarantine/review-unity-package-risks-before-import/">How to Review Unity Package Risks Before Import</a></li>
+            </ul>
+          </section>
+        </aside>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-shell">
+      <div class="footer-columns">
+        <section>
+          <h2>Explore</h2>
+          <ul class="link-list">
+            <li><a href="/">Home</a></li>
+            <li><a href="/tools/">Tools</a></li>
+            <li><a href="/games/">Games</a></li>
+            <li><a href="/articles/">Articles</a></li>
+            <li><a href="/youtube-thumbnail-preview/" data-footer-service-link="youtube-thumbnail-preview">YouTube Thumbnail Preview</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot</a></li>
+            <li><a href="/support/">Support</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Tool Docs</h2>
+          <ul class="link-list">
+            <li><a href="/assets/build-size-guard/docs/">Build Size Guard</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/docs/">Shader Variant Budget & CI Guard</a></li>
+            <li><a href="/assets/unity-serialization-migration-guard/docs/">Serialization Migration Guard</a></li>
+            <li><a href="/assets/il2cpp-strip-guard/docs/">IL2CPP Strip Guard</a></li>
+            <li><a href="/assets/inspector-event-link-doctor/docs/">Inspector Event Link Doctor</a></li>
+            <li><a href="/assets/fast-play-mode-safety-guard/docs/">Fast Play Mode Watcher</a></li>
+            <li><a href="/assets/import-settings-validator-fix/docs/">Import Settings Validator & Fix</a></li>
+            <li><a href="/assets/compliance/docs/">Compliance Exporter</a></li>
+            <li><a href="/assets/UIBreakpoint/">UI Breakpoint Lab</a></li>
+            <li><a href="/assets/PackageQuarantine/">Package Quarantine</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Asset Store</h2>
+          <ul class="link-list">
+            <li><a target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/361332">Build Size Guard</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://u3d.as/3SYC">Shader Variant Budget & CI Guard</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://u3d.as/3Sae">Serialization Migration Guard</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/362308">Import Settings Validator & Fix</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://u3d.as/3PWR">Compliance Exporter</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/392246">UI Breakpoint Lab</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Licenses</h2>
+          <ul class="link-list">
+            <li><a href="/assets/build-size-guard/license/">Build Size Guard</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/license/">Shader Variant Budget & CI Guard</a></li>
+            <li><a href="/assets/unity-serialization-migration-guard/license/">Serialization Migration Guard</a></li>
+            <li><a href="/assets/il2cpp-strip-guard/license/">IL2CPP Strip Guard</a></li>
+            <li><a href="/assets/inspector-event-link-doctor/license/">Inspector Event Link Doctor</a></li>
+            <li><a href="/assets/fast-play-mode-safety-guard/license/">Fast Play Mode Watcher</a></li>
+            <li><a href="/assets/import-settings-validator-fix/license/">Import Settings Validator & Fix</a></li>
+            <li><a href="/assets/compliance/license/">Compliance Exporter</a></li>
+            <li><a href="/assets/ui-breakpoint-lab/license/">UI Breakpoint Lab</a></li>
+            <li><a href="/assets/package-quarantine/license/">Package Quarantine</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Game Links</h2>
+          <ul class="link-list">
+            <li><a href="/games/">Games Directory</a></li>
+            <li><a href="/dopamine/">Dopamine Machine Play</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://store.steampowered.com/app/4540560/Forbidden_buttons">Forbidden Buttons on Steam</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.kevinbjorvand.orbitalchaos">Orbital Chaos on Google Play</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://apps.apple.com/us/app/orbital-chaos/id6754812237">Orbital Chaos on App Store</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge-2">NeonSurge 2 on itch.io</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge">NeonSurge on itch.io</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/games/">Smart Indie Games</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Support</h2>
+          <ul class="link-list">
+            <li><a href="/support/">Support Form</a></li>
+            <li><a href="/support/#docs-shortcuts-title">Documentation</a></li>
+            <li><a href="/support/#faq">Support FAQ</a></li>
+          </ul>
+        </section>
+      </div>
+      <div class="footer-legal">
+        <span>&copy; Bjorvand Solutions <span data-current-year>2026</span> &bull; Company registration number: 836 135 652 (Norway)</span>
+      </div>
+    </div>
+  </footer>
+  <script defer src="/assets/js/site/nav.js"></script>
+  <script defer src="/assets/js/site/article-detail.js"></script>
+  <script defer src="/assets/js/site/link-decorators.js"></script>
+</body>
+</html>

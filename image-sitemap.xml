@@ -335,4 +335,31 @@
     <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-16x16.png</image:loc></image:image>
     <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-32x32.png</image:loc></image:image>
   </url>
+  <url>
+    <loc>https://bjorv.com/assets/PackageQuarantine/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/apple-touch-icon.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-16x16.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-32x32.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://bjorv.com/assets/package-quarantine/license/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/apple-touch-icon.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-16x16.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-32x32.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://bjorv.com/articles/package-quarantine/inspect-a-unitypackage-before-importing-it/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/images/PackageQuarantine/marketing/package-quarantine-cover.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://bjorv.com/articles/package-quarantine/roll-back-a-unitypackage-import-safely/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/images/PackageQuarantine/marketing/package-quarantine-cover.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://bjorv.com/articles/package-quarantine/review-unity-package-risks-before-import/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/images/PackageQuarantine/marketing/package-quarantine-cover.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.jpg</image:loc></image:image>
+  </url>
 </urlset>

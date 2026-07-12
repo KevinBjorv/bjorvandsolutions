@@ -83,7 +83,7 @@
       <div>
         <div class="badge"><i data-lucide="wrench" aria-hidden="true"></i> Unity Editor Tools</div>
         <h1 id="tools-title">Control the problems that hide inside a Unity project.</h1>
-        <p>Focused editor tools for build size, shader variants, import settings, serialization, UI layout testing, compliance, stripping, callbacks, and play mode safety.</p>
+        <p>Focused editor tools for build size, shader variants, import settings, serialization, package imports, UI layout testing, compliance, stripping, callbacks, and play mode safety.</p>
       </div>
       <div class="tools-hero-actions"><a class="button button-primary" href="#tool-catalog"><i data-lucide="search" aria-hidden="true"></i> Find a tool</a><a class="button button-secondary" href="/support/"><i data-lucide="life-buoy" aria-hidden="true"></i> Get support</a></div>
     </section>
@@ -104,7 +104,7 @@
           </div>
           <label class="catalog-status-field" for="tool-status"><span>Status</span><select class="catalog-select" id="tool-status" data-tool-status><option value="all">All tools</option><option value="available">Available</option><option value="docs-only">Docs only</option></select></label>
         </div>
-        <div class="catalog-result-row"><p data-tool-count role="status" aria-live="polite">Showing 9 tools</p><button class="catalog-clear" type="button" data-tool-clear><i data-lucide="rotate-ccw" aria-hidden="true"></i> Reset filters</button></div>
+        <div class="catalog-result-row"><p data-tool-count role="status" aria-live="polite">Showing 10 tools</p><button class="catalog-clear" type="button" data-tool-clear><i data-lucide="rotate-ccw" aria-hidden="true"></i> Reset filters</button></div>
       </div>
 
       <div class="tool-catalog-grid" data-tool-grid>
@@ -136,6 +136,11 @@
         <article class="tool-catalog-item" data-tool-card data-name="UI Breakpoint Lab" data-category="editor-safety" data-status="available" data-search="ugui ui layout breakpoints viewport orientation safe area text expansion pseudolocalization screenshots visual regression baseline ci">
           <a class="tool-card-media" href="/assets/UIBreakpoint/"><img src="/assets/images/UIBreakpointLab/marketing/safe-area-findings.png" width="1920" height="1080" loading="lazy" alt="UI Breakpoint Lab capture with measured UGUI layout findings"></a>
           <div class="tool-card-body"><div class="tool-card-head"><div class="tool-identity"><img class="tool-icon" src="/assets/images/UIBreakpointLab/icons/Icon160.png" width="48" height="48" alt=""><div><span class="tool-category">UI layout testing</span><h3>UI Breakpoint Lab</h3></div></div><span class="badge badge-available" data-status="available">Available</span></div><p>Run repeatable UGUI layout checks across viewport, safe-area, and text-expansion profiles.</p><p class="tool-output"><i data-lucide="file-output" aria-hidden="true"></i><span><strong>Output:</strong> Contact sheets, measured findings, visual diffs, and JSON or HTML reports.</span></p><div class="card-actions"><a class="button button-primary" href="/assets/UIBreakpoint/">Docs</a><a class="button button-secondary" target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/392246">Asset Store</a><a class="button button-ghost" href="/assets/ui-breakpoint-lab/license/">License</a></div></div>
+        </article>
+
+        <article class="tool-catalog-item" data-tool-card data-name="Package Quarantine" data-category="editor-safety" data-status="docs-only" data-search="unitypackage package import quarantine inspection archive hash overwrite code plugin settings collision recovery rollback transaction">
+          <a class="tool-card-media" href="/assets/PackageQuarantine/"><img src="/assets/images/PackageQuarantine/marketing/package-quarantine-cover.png" width="1600" height="900" loading="lazy" alt="Package Quarantine logo for Unity package inspection and recovery"></a>
+          <div class="tool-card-body"><div class="tool-card-head"><div class="tool-identity"><img class="tool-icon" src="/assets/images/PackageQuarantine/icons/Icon160.png" width="48" height="48" alt=""><div><span class="tool-category">Package safety</span><h3>Package Quarantine</h3></div></div><span class="badge">Docs only</span></div><p>Inspect local Unity packages, prepare verified recovery, and review rollback evidence before keeping an import.</p><p class="tool-output"><i data-lucide="file-output" aria-hidden="true"></i><span><strong>Output:</strong> Dry-run reports, recovery transactions, import evidence, and rollback previews.</span></p><div class="card-actions"><a class="button button-primary" href="/assets/PackageQuarantine/">Docs</a><a class="button button-ghost" href="/assets/package-quarantine/license/">License</a></div></div>
         </article>
 
         <article class="tool-catalog-item tool-catalog-item-compact" data-tool-card data-name="IL2CPP Strip Guard" data-category="release" data-status="docs-only" data-search="il2cpp stripping reflection preserve link xml aot platform builds">
@@ -184,6 +189,7 @@
             <li><a href="/assets/import-settings-validator-fix/docs/">Import Settings Validator & Fix</a></li>
             <li><a href="/assets/compliance/docs/">Compliance Exporter</a></li>
             <li><a href="/assets/UIBreakpoint/">UI Breakpoint Lab</a></li>
+            <li><a href="/assets/PackageQuarantine/">Package Quarantine</a></li>
           </ul>
         </section>
         <section>
@@ -209,6 +215,7 @@
             <li><a href="/assets/import-settings-validator-fix/license/">Import Settings Validator & Fix</a></li>
             <li><a href="/assets/compliance/license/">Compliance Exporter</a></li>
             <li><a href="/assets/ui-breakpoint-lab/license/">UI Breakpoint Lab</a></li>
+            <li><a href="/assets/package-quarantine/license/">Package Quarantine</a></li>
           </ul>
         </section>
         <section>

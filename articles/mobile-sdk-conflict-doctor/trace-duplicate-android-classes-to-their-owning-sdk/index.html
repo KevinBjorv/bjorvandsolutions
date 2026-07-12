@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Trace Duplicate Android Classes to Their Owning SDK | Mobile SDK Conflict Doctor Article</title>
+  <meta name="description" content="Use archive entries, Maven states, source paths, and build-log evidence to identify both owners of a duplicate Java class in Unity.">
+  <meta name="author" content="Kevin Ahlgren Bjorvand">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="How to Trace Duplicate Android Classes to Their Owning SDK">
+  <meta property="og:description" content="Use archive entries, Maven states, source paths, and build-log evidence to identify both owners of a duplicate Java class in Unity.">
+  <meta property="og:url" content="https://bjorv.com/articles/mobile-sdk-conflict-doctor/trace-duplicate-android-classes-to-their-owning-sdk/">
+  <meta property="og:image" content="https://bjorv.com/assets/images/MobileSdkConflictDoctor/marketing/duplicate-classes.png">
+  <meta property="article:published_time" content="2026-07-12">
+  <meta property="article:modified_time" content="2026-07-12">
+  <meta property="article:author" content="Kevin Ahlgren Bjorvand">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How to Trace Duplicate Android Classes to Their Owning SDK">
+  <meta name="twitter:description" content="Use archive entries, Maven states, source paths, and build-log evidence to identify both owners of a duplicate Java class in Unity.">
+  <meta name="twitter:image" content="https://bjorv.com/assets/images/MobileSdkConflictDoctor/marketing/duplicate-classes.png">
+  <link rel="canonical" href="https://bjorv.com/articles/mobile-sdk-conflict-doctor/trace-duplicate-android-classes-to-their-owning-sdk/">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+  <link rel="icon" href="/assets/favicon/favicon.ico">
+  <link rel="manifest" href="/assets/favicon/site.webmanifest">
+  <script src="/assets/js/site/theme-init.js"></script>
+  <link rel="stylesheet" href="/assets/css/site/tokens.css">
+  <link rel="stylesheet" href="/assets/css/site/base.css">
+  <link rel="stylesheet" href="/assets/css/site/layout.css">
+  <link rel="stylesheet" href="/assets/css/site/components.css">
+  <link rel="stylesheet" href="/assets/css/site/pages/article-detail.css">
+  <link rel="stylesheet" href="/assets/css/shared/link-decorators.css">
+  <link rel="stylesheet" href="/assets/css/shared/typography-overrides.css">
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "How to Trace Duplicate Android Classes to Their Owning SDK",
+      "description": "Use archive entries, Maven states, source paths, and build-log evidence to identify both owners of a duplicate Java class in Unity.",
+      "image": [
+        "https://bjorv.com/assets/images/MobileSdkConflictDoctor/marketing/duplicate-classes.png"
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "Kevin Ahlgren Bjorvand",
+        "image": "https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.jpg"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Bjorvand Solutions",
+        "url": "https://bjorv.com"
+      },
+      "mainEntityOfPage": "https://bjorv.com/articles/mobile-sdk-conflict-doctor/trace-duplicate-android-classes-to-their-owning-sdk/",
+      "datePublished": "2026-07-12",
+      "dateModified": "2026-07-12",
+      "articleSection": "Mobile SDK diagnostics",
+      "about": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "Mobile SDK Conflict Doctor",
+          "applicationCategory": "DeveloperApplication",
+          "url": "https://bjorv.com/assets/MobileSDKConflictDoctor/"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://bjorv.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Articles",
+          "item": "https://bjorv.com/articles/?tool=mobile-sdk-conflict-doctor"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Mobile SDK Conflict Doctor",
+          "item": "https://bjorv.com/assets/MobileSDKConflictDoctor/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "How to Trace Duplicate Android Classes to Their Owning SDK",
+          "item": "https://bjorv.com/articles/mobile-sdk-conflict-doctor/trace-duplicate-android-classes-to-their-owning-sdk/"
+        }
+      ]
+    }
+  ]
+}</script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Bjorvand Solutions</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="menu-root">
+          <li class="menu-item"><a class="menu-link" href="/">Home</a></li>
+          <li class="menu-item"><a class="menu-link" href="/tools/">Tools</a></li>
+          <li class="menu-item"><a class="menu-link" href="/games/">Games</a></li>
+          <li class="menu-item"><a class="menu-link" href="/articles/">Articles</a></li>
+          <li class="menu-item"><a class="menu-link" href="/support/">Support</a></li>
+          <li class="menu-item"><a class="menu-link" target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot</a></li>
+          <li class="menu-item menu-item-smart-indie"><a class="menu-link menu-link-smart-indie" target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="language-switcher" aria-label="Language">
+          <a class="language-link" href="/" hreflang="en" lang="en" data-language-option="en" aria-label="English">
+            <img src="/assets/images/flags/en.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>EN</span>
+          </a>
+          <a class="language-link" href="/no/" hreflang="no" lang="no" data-language-option="no" aria-label="Norsk">
+            <img src="/assets/images/flags/no.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>NO</span>
+          </a>
+        </div>
+        <button class="mobile-nav-toggle" type="button" data-mobile-nav-toggle aria-controls="mobileNavPanel" aria-expanded="false">Menu</button>
+      </div>
+    </div>
+    <div class="mobile-nav-panel" id="mobileNavPanel" data-mobile-nav-panel hidden>
+      <div class="mobile-nav-shell container">
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/">Home</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/tools/">Tools</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/games/">Games</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/articles/">Articles</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/support/">Support</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></div>
+        <div class="mobile-nav-group mobile-language-options" aria-label="Language">
+          <a href="/" hreflang="en" lang="en" data-language-option="en">
+            <img src="/assets/images/flags/en.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>English</span>
+          </a>
+          <a href="/no/" hreflang="no" lang="no" data-language-option="no">
+            <img src="/assets/images/flags/no.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>Norsk</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main class="site-main">
+    <div class="container article-page">
+      <nav class="article-breadcrumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a><span aria-hidden="true">/</span>
+        <a href="/articles/?tool=mobile-sdk-conflict-doctor">Articles</a><span aria-hidden="true">/</span>
+        <a href="/assets/MobileSDKConflictDoctor/">Mobile SDK Conflict Doctor</a><span aria-hidden="true">/</span>
+        <span aria-current="page">How to Trace Duplicate Android Classes to Their Owning SDK</span>
+      </nav>
+
+      <section class="article-hero">
+        <div class="article-hero-copy">
+          <div class="article-eyebrow">
+            <span class="article-kicker">Mobile SDK diagnostics</span>
+            <span class="article-chip">Mobile SDK Conflict Doctor</span>
+          </div>
+          <h1>How to Trace Duplicate Android Classes to Their Owning SDK</h1>
+          <p>Use archive entries, Maven states, source paths, and build-log evidence to identify both owners of a duplicate Java class in Unity.</p>
+          <div class="article-meta-line">
+            <span>July 12, 2026</span>
+            <span>&bull;</span>
+            <span>8 min read</span>
+            <span>&bull;</span>
+            <span>Kevin Ahlgren Bjorvand</span>
+          </div>
+          <div class="article-answer">
+            <p>To resolve a duplicate Android class in Unity, identify both owning contributions, distinguish embedded archives from resolver output, compare their Maven and source provenance, and change only a vendor-supported durable declaration or obsolete embedded copy.</p>
+          </div>
+          <div class="article-keyline">
+            <span class="article-chip">Updated July 12, 2026</span>
+            <span class="article-chip">Docs and license links stay in the sidebar</span>
+          </div>
+        </div>
+        <figure class="article-hero-media">
+          <img src="/assets/images/MobileSdkConflictDoctor/marketing/duplicate-classes.png" alt="How to Trace Duplicate Android Classes to Their Owning SDK" loading="eager" fetchpriority="high">
+          <figcaption>Duplicate-class evidence is actionable when both archives and their owners are visible.</figcaption>
+        </figure>
+      </section>
+
+      <div class="article-layout">
+        <article class="article-main">
+<section class="article-section" id="why-duplicate-class-errors-are-hard-to-own" data-article-section>
+        <h2>Why are duplicate Java class errors hard to assign?</h2>
+        <p>The same class may arrive in an embedded AAR or JAR, a Maven-resolved artifact, or two SDK packages that bundle overlapping dependencies. The generated Gradle project shows the collision, but it may not reveal the durable Unity source that should change.</p>
+<p>A useful diagnosis therefore needs the class entry, both archive owners, each source path, and the relationship between requested, selected, forced, embedded, and excluded dependency states.</p>
+        <ul>
+  <li>Do not delete a generated resolver artifact as the lasting fix.</li>
+  <li>Do not assume two similarly named files have identical contents.</li>
+  <li>Keep exact source lines and archive entries with the finding.</li>
+</ul>
+        
+        
+      </section>
+<section class="article-section" id="how-to-confirm-both-owners" data-article-section>
+        <h2>How do you confirm both owners?</h2>
+        <p>Expand the duplicate-class finding and inspect every affected archive. Distinguish a package-owned embedded copy from a Maven artifact selected by EDM4U or another resolver.</p>
+<p>Use Open to navigate to the durable asset or declaration. If a failed build is available, import its log and check whether the versioned duplicate-class signature is marked build-confirmed.</p>
+        
+        <ol>
+  <li>Record the duplicated class name.</li>
+  <li>Open both archive entries and their owning paths.</li>
+  <li>Compare literal Maven coordinates and exact declaration lines.</li>
+  <li>Check whether one contribution is embedded and the other resolver-selected.</li>
+  <li>Confirm the failure with build-log evidence when possible.</li>
+</ol>
+        
+      </section>
+      <section class="article-cta-panel" aria-label="Primary call to action">
+        <h2>Trace the class to both contributors before removing anything.</h2>
+        <p>Mobile SDK Conflict Doctor retains archive entries, Maven states, source paths, and build-log confirmation so a duplicate is not reduced to a filename guess.</p>
+        <div class="article-cta-actions">
+          <a class="button button-primary" href="/assets/MobileSDKConflictDoctor/#findings">Read the conflict evidence guide</a>
+          <a class="button button-secondary" href="/assets/MobileSDKConflictDoctor/">Docs</a>
+        </div>
+      </section>
+<section class="article-section" id="where-the-durable-fix-belongs" data-article-section>
+        <h2>Where should the durable fix live?</h2>
+        <p>Prefer SDK vendor releases that are documented to coexist. If one SDK contains an obsolete embedded copy, replace or remove it only when the vendor's supported packaging guidance permits that change.</p>
+<p>For Maven declarations, align the owning Dependencies.xml or other durable declaration to a vendor-supported common version or range, resolve with the project's established EDM4U version, and rescan.</p>
+        <ul>
+  <li>Do not pick a version only because it is numerically newer.</li>
+  <li>Do not copy changes from generated Gradle output back blindly.</li>
+  <li>Run a real Android build after the rescan.</li>
+</ul>
+        
+        
+      </section>
+<section class="article-section" id="related-conflicts-to-review" data-article-section>
+        <h2>Which related conflicts should you review?</h2>
+        <p>A duplicate-class finding can coexist with incompatible Maven constraints, manifest contributors, native-library collisions, missing ABIs, or AndroidX and Jetifier mismatches. Review the complete ownership graph before treating one symptom as the whole problem.</p>
+<p>If the imported log remains Unrecognized, keep that classification and include the reviewed redacted support files, owning SDK versions, and durable source lines in the approved vendor or maintainer support route.</p>
+        <ul>
+  <li>Never include signing keys or raw secrets.</li>
+  <li>Review redacted output manually before sharing.</li>
+  <li>Use a disposable minimal reproduction when practical.</li>
+</ul>
+        
+        
+      </section>
+          <section class="article-callout">
+            <h2>Prefer compatible SDK releases over generated-output edits.</h2>
+            <p>The common-fix guide explains how duplicate classes, Maven constraints, manifests, native libraries, and AndroidX findings should be confirmed.</p>
+            <div class="article-cta-actions">
+              <a class="button button-primary" href="/assets/MobileSDKConflictDoctor/#findings">Read the conflict evidence guide</a>
+              <a class="button button-secondary" href="/assets/MobileSDKConflictDoctor/">Docs</a>
+            </div>
+          </section>
+
+          <section class="article-section" id="related-articles">
+            <h2>More articles for Mobile SDK Conflict Doctor</h2>
+            <p>The tool workflow stays easier to evaluate when the next steps stay inside the same product and documentation surface.</p>
+            <div class="article-related-grid">
+<article class="card article-related-card">
+              <img src="/assets/images/MobileSdkConflictDoctor/marketing/find-conflicts.png" alt="How to Diagnose Android SDK Conflicts in Unity" loading="lazy">
+              <span>8 min read</span>
+              <h3><a href="/articles/mobile-sdk-conflict-doctor/diagnose-android-sdk-conflicts-in-unity/">How to Diagnose Android SDK Conflicts in Unity</a></h3>
+              <p>Inventory Android SDK evidence, classify conflicts conservatively, and trace findings back to durable source files before changing a Unity project.</p>
+            </article>
+<article class="card article-related-card">
+              <img src="/assets/images/MobileSdkConflictDoctor/marketing/compare-changes.png" alt="How to Compare Mobile SDK Baselines in Unity CI" loading="lazy">
+              <span>7 min read</span>
+              <h3><a href="/articles/mobile-sdk-conflict-doctor/compare-mobile-sdk-baselines-in-unity-ci/">How to Compare Mobile SDK Baselines in Unity CI</a></h3>
+              <p>Save a healthy normalized Android SDK baseline, compare intentional changes, and enforce finding thresholds in Unity batch mode.</p>
+            </article>
+            </div>
+          </section>
+        </article>
+
+        <aside class="article-sidebar" aria-label="Article sidebar">
+          <section class="article-sidebar-card">
+            <h2>On this page</h2>
+            <nav class="article-toc" aria-label="Table of contents">
+            <a href="#why-duplicate-class-errors-are-hard-to-own" data-article-toc-link>Why are duplicate Java class errors hard to assign?</a>
+            <a href="#how-to-confirm-both-owners" data-article-toc-link>How do you confirm both owners?</a>
+            <a href="#where-the-durable-fix-belongs" data-article-toc-link>Where should the durable fix live?</a>
+            <a href="#related-conflicts-to-review" data-article-toc-link>Which related conflicts should you review?</a>
+            </nav>
+          </section>
+
+          <section class="article-sidebar-card">
+            <h2>Author</h2>
+            <div class="author-card">
+              <div class="author-card-header">
+                <img src="/assets/images/authors/kevin-ahlgren-bjorvand.jpg" alt="Kevin Ahlgren Bjorvand" loading="lazy">
+                <div>
+                  <strong>Kevin Ahlgren Bjorvand</strong>
+                  <p>Founder, Bjorvand Solutions</p>
+                </div>
+              </div>
+              <p>Kevin builds Unity tools focused on release safety, build visibility, migration safety, and compliance evidence.</p>
+            </div>
+          </section>
+
+          <section class="article-sidebar-card">
+            <h2>Mobile SDK Conflict Doctor links</h2>
+            <ul>
+              <li><a href="/assets/MobileSDKConflictDoctor/">Mobile SDK Conflict Doctor docs</a></li>
+              <li><a href="/assets/mobile-sdk-conflict-doctor/license/">Mobile SDK Conflict Doctor license</a></li>
+            </ul>
+          </section>
+
+          <section class="article-sidebar-card">
+            <h2>Same-tool articles</h2>
+            <ul>
+              <li><a href="/articles/mobile-sdk-conflict-doctor/diagnose-android-sdk-conflicts-in-unity/">How to Diagnose Android SDK Conflicts in Unity</a></li>
+              <li><a href="/articles/mobile-sdk-conflict-doctor/compare-mobile-sdk-baselines-in-unity-ci/">How to Compare Mobile SDK Baselines in Unity CI</a></li>
+            </ul>
+          </section>
+        </aside>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-shell">
+      <div class="footer-columns">
+        <section>
+          <h2>Explore</h2>
+          <ul class="link-list">
+            <li><a href="/">Home</a></li>
+            <li><a href="/tools/">Tools</a></li>
+            <li><a href="/games/">Games</a></li>
+            <li><a href="/articles/">Articles</a></li>
+            <li><a href="/youtube-thumbnail-preview/" data-footer-service-link="youtube-thumbnail-preview">YouTube Thumbnail Preview</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot</a></li>
+            <li><a href="/support/">Support</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Tool Docs</h2>
+          <ul class="link-list">
+            <li><a href="/assets/build-size-guard/docs/">Build Size Guard</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/docs/">Shader Variant Budget & CI Guard</a></li>
+            <li><a href="/assets/unity-serialization-migration-guard/docs/">Serialization Migration Guard</a></li>
+            <li><a href="/assets/il2cpp-strip-guard/docs/">IL2CPP Strip Guard</a></li>
+            <li><a href="/assets/inspector-event-link-doctor/docs/">Inspector Event Link Doctor</a></li>
+            <li><a href="/assets/fast-play-mode-safety-guard/docs/">Fast Play Mode Watcher</a></li>
+            <li><a href="/assets/import-settings-validator-fix/docs/">Import Settings Validator & Fix</a></li>
+            <li><a href="/assets/compliance/docs/">Compliance Exporter</a></li>
+            <li><a href="/assets/UIBreakpoint/">UI Breakpoint Lab</a></li>
+            <li><a href="/assets/PackageQuarantine/">Package Quarantine</a></li>
+            <li><a href="/assets/MobileSDKConflictDoctor/">Mobile SDK Conflict Doctor</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Asset Store</h2>
+          <ul class="link-list">
+            <li><a target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/361332">Build Size Guard</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://u3d.as/3SYC">Shader Variant Budget & CI Guard</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://u3d.as/3Sae">Serialization Migration Guard</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/362308">Import Settings Validator & Fix</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://u3d.as/3PWR">Compliance Exporter</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/392246">UI Breakpoint Lab</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Licenses</h2>
+          <ul class="link-list">
+            <li><a href="/assets/build-size-guard/license/">Build Size Guard</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/license/">Shader Variant Budget & CI Guard</a></li>
+            <li><a href="/assets/unity-serialization-migration-guard/license/">Serialization Migration Guard</a></li>
+            <li><a href="/assets/il2cpp-strip-guard/license/">IL2CPP Strip Guard</a></li>
+            <li><a href="/assets/inspector-event-link-doctor/license/">Inspector Event Link Doctor</a></li>
+            <li><a href="/assets/fast-play-mode-safety-guard/license/">Fast Play Mode Watcher</a></li>
+            <li><a href="/assets/import-settings-validator-fix/license/">Import Settings Validator & Fix</a></li>
+            <li><a href="/assets/compliance/license/">Compliance Exporter</a></li>
+            <li><a href="/assets/ui-breakpoint-lab/license/">UI Breakpoint Lab</a></li>
+            <li><a href="/assets/package-quarantine/license/">Package Quarantine</a></li>
+            <li><a href="/assets/mobile-sdk-conflict-doctor/license/">Mobile SDK Conflict Doctor</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Game Links</h2>
+          <ul class="link-list">
+            <li><a href="/games/">Games Directory</a></li>
+            <li><a href="/dopamine/">Dopamine Machine Play</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://store.steampowered.com/app/4540560/Forbidden_buttons">Forbidden Buttons on Steam</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.kevinbjorvand.orbitalchaos">Orbital Chaos on Google Play</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://apps.apple.com/us/app/orbital-chaos/id6754812237">Orbital Chaos on App Store</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge-2">NeonSurge 2 on itch.io</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge">NeonSurge on itch.io</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/games/">Smart Indie Games</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Support</h2>
+          <ul class="link-list">
+            <li><a href="/support/">Support Form</a></li>
+            <li><a href="/support/#docs-shortcuts-title">Documentation</a></li>
+            <li><a href="/support/#faq">Support FAQ</a></li>
+          </ul>
+        </section>
+      </div>
+      <div class="footer-legal">
+        <span>&copy; Bjorvand Solutions <span data-current-year>2026</span> &bull; Company registration number: 836 135 652 (Norway)</span>
+      </div>
+    </div>
+  </footer>
+  <script defer src="/assets/js/site/nav.js"></script>
+  <script defer src="/assets/js/site/article-detail.js"></script>
+  <script defer src="/assets/js/site/link-decorators.js"></script>
+</body>
+</html>

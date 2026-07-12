@@ -362,4 +362,31 @@
     <image:image><image:loc>https://bjorv.com/assets/images/PackageQuarantine/marketing/package-quarantine-cover.png</image:loc></image:image>
     <image:image><image:loc>https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.jpg</image:loc></image:image>
   </url>
+  <url>
+    <loc>https://bjorv.com/assets/MobileSDKConflictDoctor/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/apple-touch-icon.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-16x16.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-32x32.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://bjorv.com/assets/mobile-sdk-conflict-doctor/license/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/apple-touch-icon.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-16x16.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/favicon/favicon-32x32.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://bjorv.com/articles/mobile-sdk-conflict-doctor/diagnose-android-sdk-conflicts-in-unity/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/images/MobileSdkConflictDoctor/marketing/find-conflicts.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://bjorv.com/articles/mobile-sdk-conflict-doctor/trace-duplicate-android-classes-to-their-owning-sdk/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/images/MobileSdkConflictDoctor/marketing/duplicate-classes.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://bjorv.com/articles/mobile-sdk-conflict-doctor/compare-mobile-sdk-baselines-in-unity-ci/</loc>
+    <image:image><image:loc>https://bjorv.com/assets/images/MobileSdkConflictDoctor/marketing/compare-changes.png</image:loc></image:image>
+    <image:image><image:loc>https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.jpg</image:loc></image:image>
+  </url>
 </urlset>

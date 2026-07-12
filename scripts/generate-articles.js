@@ -1401,6 +1401,202 @@ Object.assign(articleBodies, {
   }
 });
 
+Object.assign(articleBodies, {
+  "diagnose-android-sdk-conflicts-in-unity": {
+    answer: "To diagnose Android SDK conflicts in Unity, inventory the durable project and package evidence first, classify only what the evidence supports, and trace each finding back to an owning archive, declaration, manifest, template, or native library before changing files.",
+    heroCaption: "A useful Android SDK preflight connects every conflict to evidence and an owner.",
+    midCtaTitle: "Move from a vague Gradle failure to reviewable project evidence.",
+    midCtaText: "Mobile SDK Conflict Doctor inventories Android integration layers, retains provenance, and separates detected conflicts from likely and informational findings.",
+    endTitle: "Change the durable source, then rescan and run a real build.",
+    endText: "The documentation covers inventory scope, evidence semantics, reports, remediation boundaries, and tested compatibility.",
+    sections: [
+      {
+        id: "what-an-android-sdk-preflight-should-inventory",
+        title: "What should an Android SDK preflight inventory?",
+        paragraphs: [
+          "Android SDK integrations can contribute binaries, Maven requests, manifests, Gradle configuration, native libraries, and resolver declarations from several Unity packages at once. Looking at only the final error often hides which durable input introduced the conflict.",
+          "Mobile SDK Conflict Doctor scans AAR, JAR, androidlib, POM, Maven, EDM4U, manifest, Gradle, properties, rules, and native-library evidence while retaining source paths and owners. Archives are read within safety bounds and are not extracted."
+        ],
+        bullets: [
+          "Requested, selected, forced, embedded, and excluded Maven states.",
+          "Manifest contributors and source lines.",
+          "Archive entries, classes, and native ABIs.",
+          "Unity, Gradle, AGP, Java, SDK, AndroidX, Jetifier, template, and ABI evidence when available."
+        ]
+      },
+      {
+        id: "how-to-read-the-finding-severity",
+        title: "How should you read finding severity?",
+        paragraphs: [
+          "Detected means direct conflicting evidence. Likely means the project evidence still needs build or vendor confirmation. Informational means the evidence matters but does not claim a conflict.",
+          "Build-confirmed is reserved for a supported versioned log or final-build signal. A source-only manifest result remains predictive because the Doctor does not reproduce Gradle's complete merger semantics."
+        ],
+        bullets: [
+          "Keep unknown environment values unknown.",
+          "Do not turn a likely finding into a certainty without build or vendor evidence.",
+          "Do not infer dependency compatibility from the numerically newest version."
+        ]
+      },
+      {
+        id: "a-repeatable-investigation-workflow",
+        title: "What is a repeatable investigation workflow?",
+        paragraphs: [
+          "Open Tools > Mobile SDK Conflict Doctor and run a fresh scan. Review Detected, Likely, and Informational groups, then expand evidence and navigate to the owning files or lines.",
+          "After a failed build, import the relevant Gradle or Unity log. A recognized versioned signature can add build-confirmed context; an unsupported message remains Unrecognized instead of receiving a guessed diagnosis."
+        ],
+        steps: [
+          "Scan the current project state.",
+          "Open both owners and their durable source evidence.",
+          "Import the complete relevant build-log section when available.",
+          "Export JSON, Markdown, HTML, or a reviewed redacted support set.",
+          "Make a vendor-supported durable-source change, rescan, and run a real Android build."
+        ]
+      },
+      {
+        id: "what-the-doctor-does-not-replace",
+        title: "What does the Doctor not replace?",
+        paragraphs: [
+          "The Doctor reads resolver and project evidence but never invokes, replaces, configures, or updates EDM4U. It does not download SDKs, mutate Unity packages, replace Android Studio, or certify an AGP, Gradle, and Java combination.",
+          "Most fixes therefore remain manual and should follow the owning SDK vendors' supported compatibility guidance."
+        ],
+        bullets: [
+          "Android is the version 1.0 scope; iOS and CocoaPods are excluded.",
+          "Generated Gradle output is evidence, not a remediation target.",
+          "No scan or recommendation guarantees a successful build."
+        ]
+      }
+    ]
+  },
+  "trace-duplicate-android-classes-to-their-owning-sdk": {
+    answer: "To resolve a duplicate Android class in Unity, identify both owning contributions, distinguish embedded archives from resolver output, compare their Maven and source provenance, and change only a vendor-supported durable declaration or obsolete embedded copy.",
+    heroCaption: "Duplicate-class evidence is actionable when both archives and their owners are visible.",
+    midCtaTitle: "Trace the class to both contributors before removing anything.",
+    midCtaText: "Mobile SDK Conflict Doctor retains archive entries, Maven states, source paths, and build-log confirmation so a duplicate is not reduced to a filename guess.",
+    endTitle: "Prefer compatible SDK releases over generated-output edits.",
+    endText: "The common-fix guide explains how duplicate classes, Maven constraints, manifests, native libraries, and AndroidX findings should be confirmed.",
+    sections: [
+      {
+        id: "why-duplicate-class-errors-are-hard-to-own",
+        title: "Why are duplicate Java class errors hard to assign?",
+        paragraphs: [
+          "The same class may arrive in an embedded AAR or JAR, a Maven-resolved artifact, or two SDK packages that bundle overlapping dependencies. The generated Gradle project shows the collision, but it may not reveal the durable Unity source that should change.",
+          "A useful diagnosis therefore needs the class entry, both archive owners, each source path, and the relationship between requested, selected, forced, embedded, and excluded dependency states."
+        ],
+        bullets: [
+          "Do not delete a generated resolver artifact as the lasting fix.",
+          "Do not assume two similarly named files have identical contents.",
+          "Keep exact source lines and archive entries with the finding."
+        ]
+      },
+      {
+        id: "how-to-confirm-both-owners",
+        title: "How do you confirm both owners?",
+        paragraphs: [
+          "Expand the duplicate-class finding and inspect every affected archive. Distinguish a package-owned embedded copy from a Maven artifact selected by EDM4U or another resolver.",
+          "Use Open to navigate to the durable asset or declaration. If a failed build is available, import its log and check whether the versioned duplicate-class signature is marked build-confirmed."
+        ],
+        steps: [
+          "Record the duplicated class name.",
+          "Open both archive entries and their owning paths.",
+          "Compare literal Maven coordinates and exact declaration lines.",
+          "Check whether one contribution is embedded and the other resolver-selected.",
+          "Confirm the failure with build-log evidence when possible."
+        ]
+      },
+      {
+        id: "where-the-durable-fix-belongs",
+        title: "Where should the durable fix live?",
+        paragraphs: [
+          "Prefer SDK vendor releases that are documented to coexist. If one SDK contains an obsolete embedded copy, replace or remove it only when the vendor's supported packaging guidance permits that change.",
+          "For Maven declarations, align the owning Dependencies.xml or other durable declaration to a vendor-supported common version or range, resolve with the project's established EDM4U version, and rescan."
+        ],
+        bullets: [
+          "Do not pick a version only because it is numerically newer.",
+          "Do not copy changes from generated Gradle output back blindly.",
+          "Run a real Android build after the rescan."
+        ]
+      },
+      {
+        id: "related-conflicts-to-review",
+        title: "Which related conflicts should you review?",
+        paragraphs: [
+          "A duplicate-class finding can coexist with incompatible Maven constraints, manifest contributors, native-library collisions, missing ABIs, or AndroidX and Jetifier mismatches. Review the complete ownership graph before treating one symptom as the whole problem.",
+          "If the imported log remains Unrecognized, keep that classification and include the reviewed redacted support files, owning SDK versions, and durable source lines in the approved vendor or maintainer support route."
+        ],
+        bullets: [
+          "Never include signing keys or raw secrets.",
+          "Review redacted output manually before sharing.",
+          "Use a disposable minimal reproduction when practical."
+        ]
+      }
+    ]
+  },
+  "compare-mobile-sdk-baselines-in-unity-ci": {
+    answer: "To compare Android SDK integrations in Unity CI, save a normalized baseline only after a healthy intentional build, commit that baseline, run the Doctor in batch mode, and fail the job when new findings meet the chosen evidence threshold.",
+    heroCaption: "A healthy normalized baseline makes SDK ownership and constraint changes reviewable in CI.",
+    midCtaTitle: "Turn SDK drift into an explicit code-review artifact.",
+    midCtaText: "Mobile SDK Conflict Doctor compares normalized nodes and exposes threshold-based batch exit codes while still exporting the report when CI fails.",
+    endTitle: "Treat the baseline as reviewed project policy, not generated noise.",
+    endText: "The batch documentation lists the execute method, output option, threshold levels, optional inputs, and exit codes.",
+    sections: [
+      {
+        id: "when-to-save-a-baseline",
+        title: "When should you save an SDK baseline?",
+        paragraphs: [
+          "Save Baseline writes ProjectSettings/MobileSdkConflictDoctor/Baseline.json. Create it only after the current Android integration is intentional and a healthy real build has validated that state.",
+          "Commit the baseline when the team wants new owners, constraints, manifests, archives, or environment evidence to appear as reviewable changes."
+        ],
+        bullets: [
+          "Do not normalize a broken build into the accepted baseline.",
+          "Review SDK upgrades before replacing the baseline.",
+          "Keep the baseline with the project settings it describes."
+        ]
+      },
+      {
+        id: "what-the-comparison-reports",
+        title: "What does a baseline comparison report?",
+        paragraphs: [
+          "Comparison shows added, removed, and changed normalized nodes. Stable IDs and contentSha256 values derive from normalized evidence so the review focuses on project state rather than report formatting.",
+          "Scan IDs and timestamps intentionally vary, so complete exported reports are not promised to be byte-identical. Compare normalized evidence instead of diffing the entire report as an opaque file."
+        ],
+        bullets: [
+          "New or removed SDK owners.",
+          "Changed Maven constraints and archive evidence.",
+          "Manifest, native-library, template, and environment changes."
+        ]
+      },
+      {
+        id: "how-to-run-the-doctor-in-ci",
+        title: "How do you run Mobile SDK Conflict Doctor in CI?",
+        paragraphs: [
+          "Call KevinBjorvand.MobileSdkConflictDoctor.MobileSdkConflictDoctorBatch.Run through Unity's executeMethod option and provide a mobileSdkDoctorOutput directory. The default threshold is detected.",
+          "Optional arguments can supply a build log, baseline path, threshold, or generated-output inclusion. Generated output is excluded by default and remains evidence-only when included."
+        ],
+        steps: [
+          "Run Unity with -batchmode and -nographics.",
+          "Pass -mobileSdkDoctorOutput with an archiveable directory.",
+          "Pass -mobileSdkDoctorBaseline for the reviewed baseline.",
+          "Choose detected, likely, information, or none for the threshold.",
+          "Publish the report even when the threshold fails the job."
+        ]
+      },
+      {
+        id: "how-to-handle-batch-exit-codes",
+        title: "How should CI handle the exit codes?",
+        paragraphs: [
+          "Exit code 0 is a pass. Code 2 means the configured finding threshold was met. Code 3 means the scan was incomplete, code 4 covers invalid input or export, and code 5 reports an unhandled failure.",
+          "Archive the generated report for code 2 so reviewers can see the exact evidence that failed policy. Treat incomplete or invalid execution separately from an evidence threshold failure."
+        ],
+        bullets: [
+          "Do not hide the report when the policy gate fails.",
+          "Keep secrets and signing material out of CI support artifacts.",
+          "Run a real Android build after accepting intentional SDK changes."
+        ]
+      }
+    ]
+  }
+});
+
 function filePathFromSitePath(sitePath) {
   const cleaned = sitePath.replace(/^\/+/, "");
   return path.join(rootDir, cleaned, "index.html");
@@ -1776,16 +1972,16 @@ function renderHubPage() {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Unity Release Workflows | Bjorvand Solutions</title>
-  <meta name="description" content="Practical guides for catching build, asset, refactor, UI layout, package safety, and compliance problems before release.">
+  <meta name="description" content="Practical guides for catching build, asset, refactor, UI layout, package safety, mobile SDK, and compliance problems before release.">
   <meta name="author" content="${htmlEscape(catalog.author.name)}">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Unity Release Workflows | Bjorvand Solutions">
-  <meta property="og:description" content="Practical guides for catching build, asset, refactor, UI layout, package safety, and compliance problems before release.">
+  <meta property="og:description" content="Practical guides for catching build, asset, refactor, UI layout, package safety, mobile SDK, and compliance problems before release.">
   <meta property="og:url" content="${siteUrl}/articles/">
   <meta property="og:image" content="${absoluteUrl(authorImage)}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Unity Release Workflows | Bjorvand Solutions">
-  <meta name="twitter:description" content="Practical guides for catching build, asset, refactor, UI layout, package safety, and compliance problems before release.">
+  <meta name="twitter:description" content="Practical guides for catching build, asset, refactor, UI layout, package safety, mobile SDK, and compliance problems before release.">
   <meta name="twitter:image" content="${absoluteUrl(authorImage)}">
   <link rel="canonical" href="${siteUrl}/articles/">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
@@ -1813,8 +2009,8 @@ function renderHubPage() {
       <section class="articles-hero">
         <span class="badge">Articles</span>
         <h1>Unity Release Workflows</h1>
-        <p>Practical guides for catching build, asset, refactor, UI layout, package safety, and compliance problems before release.</p>
-        <p>Build size &middot; Shader variants &middot; Import settings &middot; Serialization &middot; UI layout &middot; Package safety &middot; Compliance</p>
+        <p>Practical guides for catching build, asset, refactor, UI layout, package safety, mobile SDK, and compliance problems before release.</p>
+        <p>Build size &middot; Shader variants &middot; Import settings &middot; Serialization &middot; UI layout &middot; Package safety &middot; Mobile SDK diagnostics &middot; Compliance</p>
         <div class="articles-summary-strip" aria-label="Article summary">
           <article>
             <strong>${catalog.articles.length} practical guides</strong>

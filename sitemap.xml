@@ -312,4 +312,34 @@
     <changefreq>monthly</changefreq>
     <priority>0.74</priority>
   </url>
+  <url>
+    <loc>https://bjorv.com/assets/MobileSDKConflictDoctor/</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://bjorv.com/assets/mobile-sdk-conflict-doctor/license/</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://bjorv.com/articles/mobile-sdk-conflict-doctor/diagnose-android-sdk-conflicts-in-unity/</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.74</priority>
+  </url>
+  <url>
+    <loc>https://bjorv.com/articles/mobile-sdk-conflict-doctor/trace-duplicate-android-classes-to-their-owning-sdk/</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.74</priority>
+  </url>
+  <url>
+    <loc>https://bjorv.com/articles/mobile-sdk-conflict-doctor/compare-mobile-sdk-baselines-in-unity-ci/</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.74</priority>
+  </url>
 </urlset>

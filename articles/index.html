@@ -4,16 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Unity Release Workflows | Bjorvand Solutions</title>
-  <meta name="description" content="Practical guides for catching build, asset, refactor, UI layout, package safety, and compliance problems before release.">
+  <meta name="description" content="Practical guides for catching build, asset, refactor, UI layout, package safety, mobile SDK, and compliance problems before release.">
   <meta name="author" content="Kevin Ahlgren Bjorvand">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Unity Release Workflows | Bjorvand Solutions">
-  <meta property="og:description" content="Practical guides for catching build, asset, refactor, UI layout, package safety, and compliance problems before release.">
+  <meta property="og:description" content="Practical guides for catching build, asset, refactor, UI layout, package safety, mobile SDK, and compliance problems before release.">
   <meta property="og:url" content="https://bjorv.com/articles/">
   <meta property="og:image" content="https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Unity Release Workflows | Bjorvand Solutions">
-  <meta name="twitter:description" content="Practical guides for catching build, asset, refactor, UI layout, package safety, and compliance problems before release.">
+  <meta name="twitter:description" content="Practical guides for catching build, asset, refactor, UI layout, package safety, mobile SDK, and compliance problems before release.">
   <meta name="twitter:image" content="https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.jpg">
   <link rel="canonical" href="https://bjorv.com/articles/">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
@@ -103,6 +103,12 @@
           "name": "Package Quarantine",
           "applicationCategory": "DeveloperApplication",
           "url": "https://bjorv.com/assets/PackageQuarantine/"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "Mobile SDK Conflict Doctor",
+          "applicationCategory": "DeveloperApplication",
+          "url": "https://bjorv.com/assets/MobileSDKConflictDoctor/"
         }
       ]
     },
@@ -113,126 +119,144 @@
         {
           "@type": "ListItem",
           "position": 1,
+          "url": "https://bjorv.com/articles/mobile-sdk-conflict-doctor/compare-mobile-sdk-baselines-in-unity-ci/",
+          "name": "How to Compare Mobile SDK Baselines in Unity CI"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "url": "https://bjorv.com/articles/mobile-sdk-conflict-doctor/diagnose-android-sdk-conflicts-in-unity/",
+          "name": "How to Diagnose Android SDK Conflicts in Unity"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "url": "https://bjorv.com/articles/mobile-sdk-conflict-doctor/trace-duplicate-android-classes-to-their-owning-sdk/",
+          "name": "How to Trace Duplicate Android Classes to Their Owning SDK"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
           "url": "https://bjorv.com/articles/ui-breakpoint-lab/add-unity-ui-visual-regression-checks-to-ci/",
           "name": "How to Add Unity UI Visual Regression Checks to CI"
         },
         {
           "@type": "ListItem",
-          "position": 2,
+          "position": 5,
           "url": "https://bjorv.com/articles/ui-breakpoint-lab/find-unity-ui-text-overflow-with-expansion-passes/",
           "name": "How to Find Unity UI Text Overflow with Expansion Passes"
         },
         {
           "@type": "ListItem",
-          "position": 3,
+          "position": 6,
           "url": "https://bjorv.com/articles/package-quarantine/inspect-a-unitypackage-before-importing-it/",
           "name": "How to Inspect a Unitypackage Before Importing It"
         },
         {
           "@type": "ListItem",
-          "position": 4,
+          "position": 7,
           "url": "https://bjorv.com/articles/package-quarantine/review-unity-package-risks-before-import/",
           "name": "How to Review Unity Package Risks Before Import"
         },
         {
           "@type": "ListItem",
-          "position": 5,
+          "position": 8,
           "url": "https://bjorv.com/articles/package-quarantine/roll-back-a-unitypackage-import-safely/",
           "name": "How to Roll Back a Unitypackage Import Safely"
         },
         {
           "@type": "ListItem",
-          "position": 6,
+          "position": 9,
           "url": "https://bjorv.com/articles/ui-breakpoint-lab/test-unity-ui-across-breakpoints-and-safe-areas/",
           "name": "How to Test Unity UI Across Breakpoints and Safe Areas"
         },
         {
           "@type": "ListItem",
-          "position": 7,
+          "position": 10,
           "url": "https://bjorv.com/articles/unity-serialization-migration-guard/audit-unity-yaml-coverage-before-removing-old-rename-mappings/",
           "name": "How to Audit Unity YAML Coverage Before Removing Old Rename Mappings"
         },
         {
           "@type": "ListItem",
-          "position": 8,
+          "position": 11,
           "url": "https://bjorv.com/articles/compliance/build-a-repeatable-unity-license-compliance-workflow/",
           "name": "How to Build a Repeatable Unity License Compliance Workflow"
         },
         {
           "@type": "ListItem",
-          "position": 9,
+          "position": 12,
           "url": "https://bjorv.com/articles/build-size-guard/catch-unity-build-size-regressions-before-release/",
           "name": "How to Catch Unity Build Size Regressions Before Release"
         },
         {
           "@type": "ListItem",
-          "position": 10,
+          "position": 13,
           "url": "https://bjorv.com/articles/shader-variant-budget-ci-guard/compare-shader-variant-snapshots-from-editor-log/",
           "name": "How to Compare Shader Variant Snapshots from Editor.log"
         },
         {
           "@type": "ListItem",
-          "position": 11,
+          "position": 14,
           "url": "https://bjorv.com/articles/build-size-guard/compare-unity-build-snapshots-and-find-what-changed/",
           "name": "How to Compare Unity Build Snapshots and Find What Changed"
         },
         {
           "@type": "ListItem",
-          "position": 12,
+          "position": 15,
           "url": "https://bjorv.com/articles/import-settings-validator-fix/enforce-unity-import-settings-across-a-team/",
           "name": "How to Enforce Unity Import Settings Across a Team"
         },
         {
           "@type": "ListItem",
-          "position": 13,
+          "position": 16,
           "url": "https://bjorv.com/articles/compliance/export-unity-credits-and-compliance-manifests-before-release/",
           "name": "How to Export Unity Credits and Compliance Manifests Before Release"
         },
         {
           "@type": "ListItem",
-          "position": 14,
+          "position": 17,
           "url": "https://bjorv.com/articles/import-settings-validator-fix/fix-import-setting-drift-without-manual-reimports/",
           "name": "How to Fix Import Setting Drift Without Manual Reimports"
         },
         {
           "@type": "ListItem",
-          "position": 15,
+          "position": 18,
           "url": "https://bjorv.com/articles/compliance/generate-third-party-notices-for-a-unity-game/",
           "name": "How to Generate Third-Party Notices for a Unity Game"
         },
         {
           "@type": "ListItem",
-          "position": 16,
+          "position": 19,
           "url": "https://bjorv.com/articles/unity-serialization-migration-guard/preview-and-validate-unity-reserialization-during-refactors/",
           "name": "How to Preview and Validate Unity Reserialization During Refactors"
         },
         {
           "@type": "ListItem",
-          "position": 17,
+          "position": 20,
           "url": "https://bjorv.com/articles/shader-variant-budget-ci-guard/reduce-shader-variant-creep-in-unity/",
           "name": "How to Reduce Shader Variant Creep in Unity"
         },
         {
           "@type": "ListItem",
-          "position": 18,
+          "position": 21,
           "url": "https://bjorv.com/articles/unity-serialization-migration-guard/safely-rename-serialized-fields-in-unity/",
           "name": "How to Safely Rename Serialized Fields in Unity"
         },
         {
           "@type": "ListItem",
-          "position": 19,
+          "position": 22,
           "url": "https://bjorv.com/articles/build-size-guard/set-build-size-budgets-in-unity-ci/",
           "name": "How to Set Build Size Budgets in Unity CI"
         },
         {
           "@type": "ListItem",
-          "position": 20,
+          "position": 23,
           "url": "https://bjorv.com/articles/shader-variant-budget-ci-guard/set-shader-variant-budgets-in-unity-ci/",
           "name": "How to Set Shader Variant Budgets in Unity CI"
         },
         {
           "@type": "ListItem",
-          "position": 21,
+          "position": 24,
           "url": "https://bjorv.com/articles/import-settings-validator-fix/validate-texture-audio-and-model-import-settings-in-unity/",
           "name": "How to Validate Texture, Audio, and Model Import Settings in Unity"
         }
@@ -301,11 +325,11 @@
       <section class="articles-hero">
         <span class="badge">Articles</span>
         <h1>Unity Release Workflows</h1>
-        <p>Practical guides for catching build, asset, refactor, UI layout, package safety, and compliance problems before release.</p>
-        <p>Build size &middot; Shader variants &middot; Import settings &middot; Serialization &middot; UI layout &middot; Package safety &middot; Compliance</p>
+        <p>Practical guides for catching build, asset, refactor, UI layout, package safety, mobile SDK, and compliance problems before release.</p>
+        <p>Build size &middot; Shader variants &middot; Import settings &middot; Serialization &middot; UI layout &middot; Package safety &middot; Mobile SDK diagnostics &middot; Compliance</p>
         <div class="articles-summary-strip" aria-label="Article summary">
           <article>
-            <strong>21 practical guides</strong>
+            <strong>24 practical guides</strong>
             <span>Unity release workflows for build, asset, refactor, and compliance cleanup.</span>
           </article>
         </div>
@@ -338,6 +362,7 @@
               <button class="filter-pill" type="button" data-tool-filter data-filter-value="compliance" aria-pressed="false">Compliance Exporter</button>
               <button class="filter-pill" type="button" data-tool-filter data-filter-value="ui-breakpoint-lab" aria-pressed="false">UI Breakpoint Lab</button>
               <button class="filter-pill" type="button" data-tool-filter data-filter-value="package-quarantine" aria-pressed="false">Package Quarantine</button>
+              <button class="filter-pill" type="button" data-tool-filter data-filter-value="mobile-sdk-conflict-doctor" aria-pressed="false">Mobile SDK Conflict Doctor</button>
           </div>
         </div>
 
@@ -351,10 +376,11 @@
               <button class="filter-pill" type="button" data-category-filter data-filter-value="compliance-release" aria-pressed="false">Compliance</button>
               <button class="filter-pill" type="button" data-category-filter data-filter-value="ui-layout-testing" aria-pressed="false">UI layout testing</button>
               <button class="filter-pill" type="button" data-category-filter data-filter-value="package-safety" aria-pressed="false">Package safety</button>
+              <button class="filter-pill" type="button" data-category-filter data-filter-value="mobile-sdk-diagnostics" aria-pressed="false">Mobile SDK diagnostics</button>
           </div>
         </div>
 
-        <p class="articles-status" data-article-status>Showing 21 articles</p>
+        <p class="articles-status" data-article-status>Showing 24 articles</p>
       </section>
 
       <section aria-labelledby="articles-grid-title">
@@ -363,6 +389,69 @@
           <p class="articles-toolbar-note">Use the filters above, or open any guide directly from the cards below.</p>
         </div>
         <div class="articles-grid" data-articles-grid>
+<article class="card article-card" data-article-card data-tool="mobile-sdk-conflict-doctor" data-category="mobile-sdk-diagnostics" data-date="2026-07-12" data-title="how to compare mobile sdk baselines in unity ci">
+            <figure>
+              <img src="/assets/images/MobileSdkConflictDoctor/marketing/compare-changes.png" alt="How to Compare Mobile SDK Baselines in Unity CI" loading="lazy">
+            </figure>
+            <div class="article-card-body">
+              <div class="article-card-meta">
+                <span class="article-tag">Mobile SDK diagnostics</span>
+                <span class="article-tag">7 min read</span>
+              </div>
+              <div class="article-card-tags">
+                <span class="article-tag">Mobile SDK Conflict Doctor</span>
+                <span class="article-tag">July 12, 2026</span>
+              </div>
+              <h2><a href="/articles/mobile-sdk-conflict-doctor/compare-mobile-sdk-baselines-in-unity-ci/">How to Compare Mobile SDK Baselines in Unity CI</a></h2>
+              <p>Save a healthy normalized Android SDK baseline, compare intentional changes, and enforce finding thresholds in Unity batch mode.</p>
+              <div class="card-actions">
+                <a class="button button-primary" href="/articles/mobile-sdk-conflict-doctor/compare-mobile-sdk-baselines-in-unity-ci/">Read article</a>
+                <a class="button button-secondary" href="/assets/MobileSDKConflictDoctor/">Docs</a>
+              </div>
+            </div>
+          </article>
+<article class="card article-card" data-article-card data-tool="mobile-sdk-conflict-doctor" data-category="mobile-sdk-diagnostics" data-date="2026-07-12" data-title="how to diagnose android sdk conflicts in unity">
+            <figure>
+              <img src="/assets/images/MobileSdkConflictDoctor/marketing/find-conflicts.png" alt="How to Diagnose Android SDK Conflicts in Unity" loading="lazy">
+            </figure>
+            <div class="article-card-body">
+              <div class="article-card-meta">
+                <span class="article-tag">Mobile SDK diagnostics</span>
+                <span class="article-tag">8 min read</span>
+              </div>
+              <div class="article-card-tags">
+                <span class="article-tag">Mobile SDK Conflict Doctor</span>
+                <span class="article-tag">July 12, 2026</span>
+              </div>
+              <h2><a href="/articles/mobile-sdk-conflict-doctor/diagnose-android-sdk-conflicts-in-unity/">How to Diagnose Android SDK Conflicts in Unity</a></h2>
+              <p>Inventory Android SDK evidence, classify conflicts conservatively, and trace findings back to durable source files before changing a Unity project.</p>
+              <div class="card-actions">
+                <a class="button button-primary" href="/articles/mobile-sdk-conflict-doctor/diagnose-android-sdk-conflicts-in-unity/">Read article</a>
+                <a class="button button-secondary" href="/assets/MobileSDKConflictDoctor/">Docs</a>
+              </div>
+            </div>
+          </article>
+<article class="card article-card" data-article-card data-tool="mobile-sdk-conflict-doctor" data-category="mobile-sdk-diagnostics" data-date="2026-07-12" data-title="how to trace duplicate android classes to their owning sdk">
+            <figure>
+              <img src="/assets/images/MobileSdkConflictDoctor/marketing/duplicate-classes.png" alt="How to Trace Duplicate Android Classes to Their Owning SDK" loading="lazy">
+            </figure>
+            <div class="article-card-body">
+              <div class="article-card-meta">
+                <span class="article-tag">Mobile SDK diagnostics</span>
+                <span class="article-tag">8 min read</span>
+              </div>
+              <div class="article-card-tags">
+                <span class="article-tag">Mobile SDK Conflict Doctor</span>
+                <span class="article-tag">July 12, 2026</span>
+              </div>
+              <h2><a href="/articles/mobile-sdk-conflict-doctor/trace-duplicate-android-classes-to-their-owning-sdk/">How to Trace Duplicate Android Classes to Their Owning SDK</a></h2>
+              <p>Use archive entries, Maven states, source paths, and build-log evidence to identify both owners of a duplicate Java class in Unity.</p>
+              <div class="card-actions">
+                <a class="button button-primary" href="/articles/mobile-sdk-conflict-doctor/trace-duplicate-android-classes-to-their-owning-sdk/">Read article</a>
+                <a class="button button-secondary" href="/assets/MobileSDKConflictDoctor/">Docs</a>
+              </div>
+            </div>
+          </article>
 <article class="card article-card" data-article-card data-tool="ui-breakpoint-lab" data-category="ui-layout-testing" data-date="2026-07-11" data-title="how to add unity ui visual regression checks to ci">
             <figure>
               <img src="/assets/images/UIBreakpointLab/marketing/pseudolocalization-findings.png" alt="How to Add Unity UI Visual Regression Checks to CI" loading="lazy">
@@ -841,6 +930,7 @@
             <li><a href="/assets/compliance/docs/">Compliance Exporter</a></li>
             <li><a href="/assets/UIBreakpoint/">UI Breakpoint Lab</a></li>
             <li><a href="/assets/PackageQuarantine/">Package Quarantine</a></li>
+            <li><a href="/assets/MobileSDKConflictDoctor/">Mobile SDK Conflict Doctor</a></li>
           </ul>
         </section>
         <section>
@@ -867,6 +957,7 @@
             <li><a href="/assets/compliance/license/">Compliance Exporter</a></li>
             <li><a href="/assets/ui-breakpoint-lab/license/">UI Breakpoint Lab</a></li>
             <li><a href="/assets/package-quarantine/license/">Package Quarantine</a></li>
+            <li><a href="/assets/mobile-sdk-conflict-doctor/license/">Mobile SDK Conflict Doctor</a></li>
           </ul>
         </section>
         <section>

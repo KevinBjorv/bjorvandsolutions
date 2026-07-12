@@ -38,6 +38,11 @@
         slug: "package-safety",
         label: "Package safety",
         description: "Articles about Unity package inspection, recovery evidence, and safe rollback workflows."
+      },
+      {
+        slug: "mobile-sdk-diagnostics",
+        label: "Mobile SDK diagnostics",
+        description: "Articles about Android SDK conflicts, dependency provenance, build logs, baselines, and CI checks."
       }
     ],
     tools: [
@@ -172,6 +177,21 @@
         images: [
           "/assets/images/PackageQuarantine/marketing/package-quarantine-cover.png",
           "/assets/images/PackageQuarantine/icons/Icon512.png"
+        ]
+      },
+      {
+        key: "mobile-sdk-conflict-doctor",
+        name: "Mobile SDK Conflict Doctor",
+        summary: "Trace Android SDK dependency, manifest, archive, native-library, and build-log conflicts back to their owners.",
+        audience: "Unity teams integrating multiple Android SDKs, EDM4U declarations, custom Gradle templates, and native plugins.",
+        links: {
+          docs: "/assets/MobileSDKConflictDoctor/",
+          license: "/assets/mobile-sdk-conflict-doctor/license/"
+        },
+        images: [
+          "/assets/images/MobileSdkConflictDoctor/marketing/mobile-sdk-conflict-doctor-cover.png",
+          "/assets/images/MobileSdkConflictDoctor/marketing/duplicate-classes.png",
+          "/assets/images/MobileSdkConflictDoctor/marketing/compare-changes.png"
         ]
       }
     ],
@@ -532,6 +552,57 @@
         primaryCtaLabel: "Read Package Quarantine docs",
         primaryCtaHref: "/assets/PackageQuarantine/#inspection",
         relatedLinks: ["/assets/PackageQuarantine/", "/support/", "/assets/package-quarantine/license/"]
+      },
+      {
+        slug: "diagnose-android-sdk-conflicts-in-unity",
+        path: "/articles/mobile-sdk-conflict-doctor/diagnose-android-sdk-conflicts-in-unity/",
+        toolKey: "mobile-sdk-conflict-doctor",
+        toolName: "Mobile SDK Conflict Doctor",
+        category: "mobile-sdk-diagnostics",
+        title: "How to Diagnose Android SDK Conflicts in Unity",
+        description: "Inventory Android SDK evidence, classify conflicts conservatively, and trace findings back to durable source files before changing a Unity project.",
+        publishDate: "2026-07-12",
+        updatedDate: "2026-07-12",
+        readTime: "8 min read",
+        heroImage: "/assets/images/MobileSdkConflictDoctor/marketing/find-conflicts.png",
+        author: "Kevin Ahlgren Bjorvand",
+        primaryCtaLabel: "Read Mobile SDK Conflict Doctor docs",
+        primaryCtaHref: "/assets/MobileSDKConflictDoctor/",
+        relatedLinks: ["/assets/MobileSDKConflictDoctor/", "/support/", "/assets/mobile-sdk-conflict-doctor/license/"]
+      },
+      {
+        slug: "trace-duplicate-android-classes-to-their-owning-sdk",
+        path: "/articles/mobile-sdk-conflict-doctor/trace-duplicate-android-classes-to-their-owning-sdk/",
+        toolKey: "mobile-sdk-conflict-doctor",
+        toolName: "Mobile SDK Conflict Doctor",
+        category: "mobile-sdk-diagnostics",
+        title: "How to Trace Duplicate Android Classes to Their Owning SDK",
+        description: "Use archive entries, Maven states, source paths, and build-log evidence to identify both owners of a duplicate Java class in Unity.",
+        publishDate: "2026-07-12",
+        updatedDate: "2026-07-12",
+        readTime: "8 min read",
+        heroImage: "/assets/images/MobileSdkConflictDoctor/marketing/duplicate-classes.png",
+        author: "Kevin Ahlgren Bjorvand",
+        primaryCtaLabel: "Read the conflict evidence guide",
+        primaryCtaHref: "/assets/MobileSDKConflictDoctor/#findings",
+        relatedLinks: ["/assets/MobileSDKConflictDoctor/", "/support/", "/assets/mobile-sdk-conflict-doctor/license/"]
+      },
+      {
+        slug: "compare-mobile-sdk-baselines-in-unity-ci",
+        path: "/articles/mobile-sdk-conflict-doctor/compare-mobile-sdk-baselines-in-unity-ci/",
+        toolKey: "mobile-sdk-conflict-doctor",
+        toolName: "Mobile SDK Conflict Doctor",
+        category: "mobile-sdk-diagnostics",
+        title: "How to Compare Mobile SDK Baselines in Unity CI",
+        description: "Save a healthy normalized Android SDK baseline, compare intentional changes, and enforce finding thresholds in Unity batch mode.",
+        publishDate: "2026-07-12",
+        updatedDate: "2026-07-12",
+        readTime: "7 min read",
+        heroImage: "/assets/images/MobileSdkConflictDoctor/marketing/compare-changes.png",
+        author: "Kevin Ahlgren Bjorvand",
+        primaryCtaLabel: "Read the batch and CI docs",
+        primaryCtaHref: "/assets/MobileSDKConflictDoctor/#ci",
+        relatedLinks: ["/assets/MobileSDKConflictDoctor/", "/support/", "/assets/mobile-sdk-conflict-doctor/license/"]
       }
     ],
     games: {

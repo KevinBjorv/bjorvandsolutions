@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Compare Mobile SDK Baselines in Unity CI | Mobile SDK Conflict Doctor Article</title>
+  <meta name="description" content="Save a healthy normalized Android SDK baseline, compare intentional changes, and enforce finding thresholds in Unity batch mode.">
+  <meta name="author" content="Kevin Ahlgren Bjorvand">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="How to Compare Mobile SDK Baselines in Unity CI">
+  <meta property="og:description" content="Save a healthy normalized Android SDK baseline, compare intentional changes, and enforce finding thresholds in Unity batch mode.">
+  <meta property="og:url" content="https://bjorv.com/articles/mobile-sdk-conflict-doctor/compare-mobile-sdk-baselines-in-unity-ci/">
+  <meta property="og:image" content="https://bjorv.com/assets/images/MobileSdkConflictDoctor/marketing/compare-changes.png">
+  <meta property="article:published_time" content="2026-07-12">
+  <meta property="article:modified_time" content="2026-07-12">
+  <meta property="article:author" content="Kevin Ahlgren Bjorvand">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How to Compare Mobile SDK Baselines in Unity CI">
+  <meta name="twitter:description" content="Save a healthy normalized Android SDK baseline, compare intentional changes, and enforce finding thresholds in Unity batch mode.">
+  <meta name="twitter:image" content="https://bjorv.com/assets/images/MobileSdkConflictDoctor/marketing/compare-changes.png">
+  <link rel="canonical" href="https://bjorv.com/articles/mobile-sdk-conflict-doctor/compare-mobile-sdk-baselines-in-unity-ci/">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+  <link rel="icon" href="/assets/favicon/favicon.ico">
+  <link rel="manifest" href="/assets/favicon/site.webmanifest">
+  <script src="/assets/js/site/theme-init.js"></script>
+  <link rel="stylesheet" href="/assets/css/site/tokens.css">
+  <link rel="stylesheet" href="/assets/css/site/base.css">
+  <link rel="stylesheet" href="/assets/css/site/layout.css">
+  <link rel="stylesheet" href="/assets/css/site/components.css">
+  <link rel="stylesheet" href="/assets/css/site/pages/article-detail.css">
+  <link rel="stylesheet" href="/assets/css/shared/link-decorators.css">
+  <link rel="stylesheet" href="/assets/css/shared/typography-overrides.css">
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "How to Compare Mobile SDK Baselines in Unity CI",
+      "description": "Save a healthy normalized Android SDK baseline, compare intentional changes, and enforce finding thresholds in Unity batch mode.",
+      "image": [
+        "https://bjorv.com/assets/images/MobileSdkConflictDoctor/marketing/compare-changes.png"
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "Kevin Ahlgren Bjorvand",
+        "image": "https://bjorv.com/assets/images/authors/kevin-ahlgren-bjorvand.jpg"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Bjorvand Solutions",
+        "url": "https://bjorv.com"
+      },
+      "mainEntityOfPage": "https://bjorv.com/articles/mobile-sdk-conflict-doctor/compare-mobile-sdk-baselines-in-unity-ci/",
+      "datePublished": "2026-07-12",
+      "dateModified": "2026-07-12",
+      "articleSection": "Mobile SDK diagnostics",
+      "about": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "Mobile SDK Conflict Doctor",
+          "applicationCategory": "DeveloperApplication",
+          "url": "https://bjorv.com/assets/MobileSDKConflictDoctor/"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://bjorv.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Articles",
+          "item": "https://bjorv.com/articles/?tool=mobile-sdk-conflict-doctor"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Mobile SDK Conflict Doctor",
+          "item": "https://bjorv.com/assets/MobileSDKConflictDoctor/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "How to Compare Mobile SDK Baselines in Unity CI",
+          "item": "https://bjorv.com/articles/mobile-sdk-conflict-doctor/compare-mobile-sdk-baselines-in-unity-ci/"
+        }
+      ]
+    }
+  ]
+}</script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Bjorvand Solutions</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="menu-root">
+          <li class="menu-item"><a class="menu-link" href="/">Home</a></li>
+          <li class="menu-item"><a class="menu-link" href="/tools/">Tools</a></li>
+          <li class="menu-item"><a class="menu-link" href="/games/">Games</a></li>
+          <li class="menu-item"><a class="menu-link" href="/articles/">Articles</a></li>
+          <li class="menu-item"><a class="menu-link" href="/support/">Support</a></li>
+          <li class="menu-item"><a class="menu-link" target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot</a></li>
+          <li class="menu-item menu-item-smart-indie"><a class="menu-link menu-link-smart-indie" target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="language-switcher" aria-label="Language">
+          <a class="language-link" href="/" hreflang="en" lang="en" data-language-option="en" aria-label="English">
+            <img src="/assets/images/flags/en.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>EN</span>
+          </a>
+          <a class="language-link" href="/no/" hreflang="no" lang="no" data-language-option="no" aria-label="Norsk">
+            <img src="/assets/images/flags/no.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>NO</span>
+          </a>
+        </div>
+        <button class="mobile-nav-toggle" type="button" data-mobile-nav-toggle aria-controls="mobileNavPanel" aria-expanded="false">Menu</button>
+      </div>
+    </div>
+    <div class="mobile-nav-panel" id="mobileNavPanel" data-mobile-nav-panel hidden>
+      <div class="mobile-nav-shell container">
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/">Home</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/tools/">Tools</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/games/">Games</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/articles/">Articles</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/support/">Support</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></div>
+        <div class="mobile-nav-group mobile-language-options" aria-label="Language">
+          <a href="/" hreflang="en" lang="en" data-language-option="en">
+            <img src="/assets/images/flags/en.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>English</span>
+          </a>
+          <a href="/no/" hreflang="no" lang="no" data-language-option="no">
+            <img src="/assets/images/flags/no.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>Norsk</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main class="site-main">
+    <div class="container article-page">
+      <nav class="article-breadcrumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a><span aria-hidden="true">/</span>
+        <a href="/articles/?tool=mobile-sdk-conflict-doctor">Articles</a><span aria-hidden="true">/</span>
+        <a href="/assets/MobileSDKConflictDoctor/">Mobile SDK Conflict Doctor</a><span aria-hidden="true">/</span>
+        <span aria-current="page">How to Compare Mobile SDK Baselines in Unity CI</span>
+      </nav>
+
+      <section class="article-hero">
+        <div class="article-hero-copy">
+          <div class="article-eyebrow">
+            <span class="article-kicker">Mobile SDK diagnostics</span>
+            <span class="article-chip">Mobile SDK Conflict Doctor</span>
+          </div>
+          <h1>How to Compare Mobile SDK Baselines in Unity CI</h1>
+          <p>Save a healthy normalized Android SDK baseline, compare intentional changes, and enforce finding thresholds in Unity batch mode.</p>
+          <div class="article-meta-line">
+            <span>July 12, 2026</span>
+            <span>&bull;</span>
+            <span>7 min read</span>
+            <span>&bull;</span>
+            <span>Kevin Ahlgren Bjorvand</span>
+          </div>
+          <div class="article-answer">
+            <p>To compare Android SDK integrations in Unity CI, save a normalized baseline only after a healthy intentional build, commit that baseline, run the Doctor in batch mode, and fail the job when new findings meet the chosen evidence threshold.</p>
+          </div>
+          <div class="article-keyline">
+            <span class="article-chip">Updated July 12, 2026</span>
+            <span class="article-chip">Docs and license links stay in the sidebar</span>
+          </div>
+        </div>
+        <figure class="article-hero-media">
+          <img src="/assets/images/MobileSdkConflictDoctor/marketing/compare-changes.png" alt="How to Compare Mobile SDK Baselines in Unity CI" loading="eager" fetchpriority="high">
+          <figcaption>A healthy normalized baseline makes SDK ownership and constraint changes reviewable in CI.</figcaption>
+        </figure>
+      </section>
+
+      <div class="article-layout">
+        <article class="article-main">
+<section class="article-section" id="when-to-save-a-baseline" data-article-section>
+        <h2>When should you save an SDK baseline?</h2>
+        <p>Save Baseline writes ProjectSettings/MobileSdkConflictDoctor/Baseline.json. Create it only after the current Android integration is intentional and a healthy real build has validated that state.</p>
+<p>Commit the baseline when the team wants new owners, constraints, manifests, archives, or environment evidence to appear as reviewable changes.</p>
+        <ul>
+  <li>Do not normalize a broken build into the accepted baseline.</li>
+  <li>Review SDK upgrades before replacing the baseline.</li>
+  <li>Keep the baseline with the project settings it describes.</li>
+</ul>
+        
+        
+      </section>
+<section class="article-section" id="what-the-comparison-reports" data-article-section>
+        <h2>What does a baseline comparison report?</h2>
+        <p>Comparison shows added, removed, and changed normalized nodes. Stable IDs and contentSha256 values derive from normalized evidence so the review focuses on project state rather than report formatting.</p>
+<p>Scan IDs and timestamps intentionally vary, so complete exported reports are not promised to be byte-identical. Compare normalized evidence instead of diffing the entire report as an opaque file.</p>
+        <ul>
+  <li>New or removed SDK owners.</li>
+  <li>Changed Maven constraints and archive evidence.</li>
+  <li>Manifest, native-library, template, and environment changes.</li>
+</ul>
+        
+        
+      </section>
+      <section class="article-cta-panel" aria-label="Primary call to action">
+        <h2>Turn SDK drift into an explicit code-review artifact.</h2>
+        <p>Mobile SDK Conflict Doctor compares normalized nodes and exposes threshold-based batch exit codes while still exporting the report when CI fails.</p>
+        <div class="article-cta-actions">
+          <a class="button button-primary" href="/assets/MobileSDKConflictDoctor/#ci">Read the batch and CI docs</a>
+          <a class="button button-secondary" href="/assets/MobileSDKConflictDoctor/">Docs</a>
+        </div>
+      </section>
+<section class="article-section" id="how-to-run-the-doctor-in-ci" data-article-section>
+        <h2>How do you run Mobile SDK Conflict Doctor in CI?</h2>
+        <p>Call KevinBjorvand.MobileSdkConflictDoctor.MobileSdkConflictDoctorBatch.Run through Unity's executeMethod option and provide a mobileSdkDoctorOutput directory. The default threshold is detected.</p>
+<p>Optional arguments can supply a build log, baseline path, threshold, or generated-output inclusion. Generated output is excluded by default and remains evidence-only when included.</p>
+        
+        <ol>
+  <li>Run Unity with -batchmode and -nographics.</li>
+  <li>Pass -mobileSdkDoctorOutput with an archiveable directory.</li>
+  <li>Pass -mobileSdkDoctorBaseline for the reviewed baseline.</li>
+  <li>Choose detected, likely, information, or none for the threshold.</li>
+  <li>Publish the report even when the threshold fails the job.</li>
+</ol>
+        
+      </section>
+<section class="article-section" id="how-to-handle-batch-exit-codes" data-article-section>
+        <h2>How should CI handle the exit codes?</h2>
+        <p>Exit code 0 is a pass. Code 2 means the configured finding threshold was met. Code 3 means the scan was incomplete, code 4 covers invalid input or export, and code 5 reports an unhandled failure.</p>
+<p>Archive the generated report for code 2 so reviewers can see the exact evidence that failed policy. Treat incomplete or invalid execution separately from an evidence threshold failure.</p>
+        <ul>
+  <li>Do not hide the report when the policy gate fails.</li>
+  <li>Keep secrets and signing material out of CI support artifacts.</li>
+  <li>Run a real Android build after accepting intentional SDK changes.</li>
+</ul>
+        
+        
+      </section>
+          <section class="article-callout">
+            <h2>Treat the baseline as reviewed project policy, not generated noise.</h2>
+            <p>The batch documentation lists the execute method, output option, threshold levels, optional inputs, and exit codes.</p>
+            <div class="article-cta-actions">
+              <a class="button button-primary" href="/assets/MobileSDKConflictDoctor/#ci">Read the batch and CI docs</a>
+              <a class="button button-secondary" href="/assets/MobileSDKConflictDoctor/">Docs</a>
+            </div>
+          </section>
+
+          <section class="article-section" id="related-articles">
+            <h2>More articles for Mobile SDK Conflict Doctor</h2>
+            <p>The tool workflow stays easier to evaluate when the next steps stay inside the same product and documentation surface.</p>
+            <div class="article-related-grid">
+<article class="card article-related-card">
+              <img src="/assets/images/MobileSdkConflictDoctor/marketing/find-conflicts.png" alt="How to Diagnose Android SDK Conflicts in Unity" loading="lazy">
+              <span>8 min read</span>
+              <h3><a href="/articles/mobile-sdk-conflict-doctor/diagnose-android-sdk-conflicts-in-unity/">How to Diagnose Android SDK Conflicts in Unity</a></h3>
+              <p>Inventory Android SDK evidence, classify conflicts conservatively, and trace findings back to durable source files before changing a Unity project.</p>
+            </article>
+<article class="card article-related-card">
+              <img src="/assets/images/MobileSdkConflictDoctor/marketing/duplicate-classes.png" alt="How to Trace Duplicate Android Classes to Their Owning SDK" loading="lazy">
+              <span>8 min read</span>
+              <h3><a href="/articles/mobile-sdk-conflict-doctor/trace-duplicate-android-classes-to-their-owning-sdk/">How to Trace Duplicate Android Classes to Their Owning SDK</a></h3>
+              <p>Use archive entries, Maven states, source paths, and build-log evidence to identify both owners of a duplicate Java class in Unity.</p>
+            </article>
+            </div>
+          </section>
+        </article>
+
+        <aside class="article-sidebar" aria-label="Article sidebar">
+          <section class="article-sidebar-card">
+            <h2>On this page</h2>
+            <nav class="article-toc" aria-label="Table of contents">
+            <a href="#when-to-save-a-baseline" data-article-toc-link>When should you save an SDK baseline?</a>
+            <a href="#what-the-comparison-reports" data-article-toc-link>What does a baseline comparison report?</a>
+            <a href="#how-to-run-the-doctor-in-ci" data-article-toc-link>How do you run Mobile SDK Conflict Doctor in CI?</a>
+            <a href="#how-to-handle-batch-exit-codes" data-article-toc-link>How should CI handle the exit codes?</a>
+            </nav>
+          </section>
+
+          <section class="article-sidebar-card">
+            <h2>Author</h2>
+            <div class="author-card">
+              <div class="author-card-header">
+                <img src="/assets/images/authors/kevin-ahlgren-bjorvand.jpg" alt="Kevin Ahlgren Bjorvand" loading="lazy">
+                <div>
+                  <strong>Kevin Ahlgren Bjorvand</strong>
+                  <p>Founder, Bjorvand Solutions</p>
+                </div>
+              </div>
+              <p>Kevin builds Unity tools focused on release safety, build visibility, migration safety, and compliance evidence.</p>
+            </div>
+          </section>
+
+          <section class="article-sidebar-card">
+            <h2>Mobile SDK Conflict Doctor links</h2>
+            <ul>
+              <li><a href="/assets/MobileSDKConflictDoctor/">Mobile SDK Conflict Doctor docs</a></li>
+              <li><a href="/assets/mobile-sdk-conflict-doctor/license/">Mobile SDK Conflict Doctor license</a></li>
+            </ul>
+          </section>
+
+          <section class="article-sidebar-card">
+            <h2>Same-tool articles</h2>
+            <ul>
+              <li><a href="/articles/mobile-sdk-conflict-doctor/diagnose-android-sdk-conflicts-in-unity/">How to Diagnose Android SDK Conflicts in Unity</a></li>
+              <li><a href="/articles/mobile-sdk-conflict-doctor/trace-duplicate-android-classes-to-their-owning-sdk/">How to Trace Duplicate Android Classes to Their Owning SDK</a></li>
+            </ul>
+          </section>
+        </aside>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-shell">
+      <div class="footer-columns">
+        <section>
+          <h2>Explore</h2>
+          <ul class="link-list">
+            <li><a href="/">Home</a></li>
+            <li><a href="/tools/">Tools</a></li>
+            <li><a href="/games/">Games</a></li>
+            <li><a href="/articles/">Articles</a></li>
+            <li><a href="/youtube-thumbnail-preview/" data-footer-service-link="youtube-thumbnail-preview">YouTube Thumbnail Preview</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot</a></li>
+            <li><a href="/support/">Support</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Tool Docs</h2>
+          <ul class="link-list">
+            <li><a href="/assets/build-size-guard/docs/">Build Size Guard</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/docs/">Shader Variant Budget & CI Guard</a></li>
+            <li><a href="/assets/unity-serialization-migration-guard/docs/">Serialization Migration Guard</a></li>
+            <li><a href="/assets/il2cpp-strip-guard/docs/">IL2CPP Strip Guard</a></li>
+            <li><a href="/assets/inspector-event-link-doctor/docs/">Inspector Event Link Doctor</a></li>
+            <li><a href="/assets/fast-play-mode-safety-guard/docs/">Fast Play Mode Watcher</a></li>
+            <li><a href="/assets/import-settings-validator-fix/docs/">Import Settings Validator & Fix</a></li>
+            <li><a href="/assets/compliance/docs/">Compliance Exporter</a></li>
+            <li><a href="/assets/UIBreakpoint/">UI Breakpoint Lab</a></li>
+            <li><a href="/assets/PackageQuarantine/">Package Quarantine</a></li>
+            <li><a href="/assets/MobileSDKConflictDoctor/">Mobile SDK Conflict Doctor</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Asset Store</h2>
+          <ul class="link-list">
+            <li><a target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/361332">Build Size Guard</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://u3d.as/3SYC">Shader Variant Budget & CI Guard</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://u3d.as/3Sae">Serialization Migration Guard</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/362308">Import Settings Validator & Fix</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://u3d.as/3PWR">Compliance Exporter</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/392246">UI Breakpoint Lab</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Licenses</h2>
+          <ul class="link-list">
+            <li><a href="/assets/build-size-guard/license/">Build Size Guard</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/license/">Shader Variant Budget & CI Guard</a></li>
+            <li><a href="/assets/unity-serialization-migration-guard/license/">Serialization Migration Guard</a></li>
+            <li><a href="/assets/il2cpp-strip-guard/license/">IL2CPP Strip Guard</a></li>
+            <li><a href="/assets/inspector-event-link-doctor/license/">Inspector Event Link Doctor</a></li>
+            <li><a href="/assets/fast-play-mode-safety-guard/license/">Fast Play Mode Watcher</a></li>
+            <li><a href="/assets/import-settings-validator-fix/license/">Import Settings Validator & Fix</a></li>
+            <li><a href="/assets/compliance/license/">Compliance Exporter</a></li>
+            <li><a href="/assets/ui-breakpoint-lab/license/">UI Breakpoint Lab</a></li>
+            <li><a href="/assets/package-quarantine/license/">Package Quarantine</a></li>
+            <li><a href="/assets/mobile-sdk-conflict-doctor/license/">Mobile SDK Conflict Doctor</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Game Links</h2>
+          <ul class="link-list">
+            <li><a href="/games/">Games Directory</a></li>
+            <li><a href="/dopamine/">Dopamine Machine Play</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://store.steampowered.com/app/4540560/Forbidden_buttons">Forbidden Buttons on Steam</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.kevinbjorvand.orbitalchaos">Orbital Chaos on Google Play</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://apps.apple.com/us/app/orbital-chaos/id6754812237">Orbital Chaos on App Store</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge-2">NeonSurge 2 on itch.io</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge">NeonSurge on itch.io</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/games/">Smart Indie Games</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Support</h2>
+          <ul class="link-list">
+            <li><a href="/support/">Support Form</a></li>
+            <li><a href="/support/#docs-shortcuts-title">Documentation</a></li>
+            <li><a href="/support/#faq">Support FAQ</a></li>
+          </ul>
+        </section>
+      </div>
+      <div class="footer-legal">
+        <span>&copy; Bjorvand Solutions <span data-current-year>2026</span> &bull; Company registration number: 836 135 652 (Norway)</span>
+      </div>
+    </div>
+  </footer>
+  <script defer src="/assets/js/site/nav.js"></script>
+  <script defer src="/assets/js/site/article-detail.js"></script>
+  <script defer src="/assets/js/site/link-decorators.js"></script>
+</body>
+</html>

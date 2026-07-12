@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobile SDK Conflict Doctor Documentation | Unity Android SDK Diagnostics</title>
+  <meta name="description" content="Documentation for Mobile SDK Conflict Doctor: trace Android dependency, manifest, archive, native-library, and build-log conflicts in Unity projects.">
+  <link rel="canonical" href="https://bjorv.com/assets/MobileSDKConflictDoctor/">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/MobileSDKConflictDoctor/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/MobileSDKConflictDoctor/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/MobileSDKConflictDoctor/favicon/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/MobileSDKConflictDoctor/favicon/android-chrome-192x192.png">
+  <link rel="manifest" href="/assets/MobileSDKConflictDoctor/favicon/site.webmanifest">
+  <script src="/assets/js/theme/theme-init.js"></script>
+  <link rel="stylesheet" href="/assets/css/products/product-docs.css">
+  <link rel="stylesheet" href="/assets/css/shared/site-navbar.css">
+  <link rel="stylesheet" href="/assets/css/shared/link-decorators.css">
+  <link rel="stylesheet" href="/assets/css/shared/typography-overrides.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Bjorvand Solutions</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="menu-root">
+          <li class="menu-item"><a class="menu-link" href="/">Home</a></li>
+          <li class="menu-item"><a class="menu-link" href="/tools/">Tools</a></li>
+          <li class="menu-item"><a class="menu-link" href="/games/">Games</a></li>
+          <li class="menu-item"><a class="menu-link" href="/articles/">Articles</a></li>
+          <li class="menu-item"><a class="menu-link" href="/support/">Support</a></li>
+          <li class="menu-item"><a class="menu-link" target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot</a></li>
+          <li class="menu-item menu-item-smart-indie"><a class="menu-link menu-link-smart-indie" target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="language-switcher" aria-label="Language">
+          <a class="language-link" href="/" hreflang="en" lang="en" data-language-option="en" aria-label="English">
+            <img src="/assets/images/flags/en.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>EN</span>
+          </a>
+          <a class="language-link" href="/no/" hreflang="no" lang="no" data-language-option="no" aria-label="Norsk">
+            <img src="/assets/images/flags/no.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>NO</span>
+          </a>
+        </div>
+        <button class="mobile-nav-toggle" type="button" data-mobile-nav-toggle aria-controls="mobileNavPanel" aria-expanded="false">Menu</button>
+      </div>
+    </div>
+    <div class="mobile-nav-panel" id="mobileNavPanel" data-mobile-nav-panel hidden>
+      <div class="mobile-nav-shell container">
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/">Home</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/tools/">Tools</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/games/">Games</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/articles/">Articles</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a href="/support/">Support</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot</a></div>
+        <div class="mobile-nav-group mobile-nav-single-link"><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></div>
+        <div class="mobile-nav-group mobile-language-options" aria-label="Language">
+          <a href="/" hreflang="en" lang="en" data-language-option="en">
+            <img src="/assets/images/flags/en.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>English</span>
+          </a>
+          <a href="/no/" hreflang="no" lang="no" data-language-option="no">
+            <img src="/assets/images/flags/no.svg" alt="" width="18" height="12" aria-hidden="true">
+            <span>Norsk</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="shell layout">
+    <aside class="sidebar" aria-label="Documentation navigation">
+      <h2>Documentation</h2>
+      <p>Mobile SDK Conflict Doctor 1.0.0 workflows, evidence, reports, and limits.</p>
+      <label class="search-label" for="docSearch">Search</label>
+      <input class="search-input" type="search" id="docSearch" placeholder="Search conflicts, baselines, reports..." autocomplete="off">
+      <p class="search-status" id="searchStatus">Showing 12 sections</p>
+      <nav class="sidebar-nav" id="sidebarNav"><a class="sidebar-link" href="#overview">Overview</a><a class="sidebar-link" href="#requirements">Requirements</a><a class="sidebar-link" href="#installation">Installation</a><a class="sidebar-link" href="#quick-start">Quick Start</a><a class="sidebar-link" href="#evidence">Inventory and Evidence</a><a class="sidebar-link" href="#findings">Findings and Fixes</a><a class="sidebar-link" href="#logs">Build Logs</a><a class="sidebar-link" href="#baselines">Baselines</a><a class="sidebar-link" href="#reports">Reports and Privacy</a><a class="sidebar-link" href="#ci">Batch and CI</a><a class="sidebar-link" href="#limitations">Limitations</a><a class="sidebar-link" href="#troubleshooting">Troubleshooting</a></nav>
+    </aside>
+
+    <main class="content" id="docContent">
+      <section class="doc-card" id="overview" data-section>
+        <h1>Mobile SDK Conflict Doctor Documentation</h1>
+        <p class="lead">Mobile SDK Conflict Doctor is a Unity Editor preflight for diagnosing Android SDK integration conflicts.</p>
+        <p>It inventories AAR, JAR, androidlib, Maven, POM, EDM4U, manifest, Gradle, properties, rules, and native-library evidence while preserving the owning package, source path, archive entry, and XML line.</p>
+        <p>The Doctor explains project evidence and imports supported build-log signals. It does not replace EDM4U, Gradle, Android Studio, SDK installers, or vendor compatibility guidance.</p>
+      </section>
+
+      <section class="doc-card" id="requirements" data-section>
+        <h2>1. Requirements</h2>
+        <ul><li>Unity <code>2022.3.41f1</code> or newer.</li><li>Android Build Support for real Android builds; source-only scans do not require it.</li><li>An Android-targeting Unity project with SDK, dependency, manifest, archive, or build-log evidence to review.</li></ul>
+        <p>Release validation covered Unity <code>2022.3.41f1</code>, <code>6000.3.9f1</code>, and <code>6000.4.4f1</code>. The real Android build was exercised on <code>2022.3.41f1</code> with Gradle 7.5.1, Android Gradle Plugin 7.4.2, and Java 11.0.14.1.</p>
+      </section>
+
+      <section class="doc-card" id="installation" data-section>
+        <h2>2. Installation</h2>
+        <ol><li>Copy the complete <strong>Mobile SDK Conflict Doctor</strong> folder into <code>Assets</code>.</li><li>Preserve every supplied folder and <code>.meta</code> file.</li><li>Allow Unity to compile the Editor assemblies.</li><li>Open <strong>Tools &gt; Mobile SDK Conflict Doctor</strong>.</li></ol>
+        <p>The implementation uses public Unity APIs and does not download SDKs or change Unity packages.</p>
+      </section>
+
+      <section class="doc-card" id="quick-start" data-section>
+        <h2>3. Quick Start</h2>
+        <ol><li>Select <strong>Scan</strong>.</li><li>Review the Detected, Likely, and Informational groups.</li><li>Expand findings and open the owning files or source lines.</li><li>Import a Gradle or Unity log after a failed build.</li><li>Preview any supported remediation before confirming it.</li><li>Export JSON, Markdown, HTML, or redacted support files.</li><li>Save a baseline only after validating a healthy Android build.</li></ol>
+      </section>
+
+      <section class="doc-card" id="evidence" data-section>
+        <h2>4. Inventory and Evidence</h2>
+        <p>Archives are read with safety bounds and never extracted. The report retains owners, archive entries, Maven states, source paths, and XML lines so a conflict can be traced back to durable project or package inputs.</p>
+        <ul><li>AAR, JAR, androidlib, POM, Maven, and EDM4U declarations.</li><li>Android manifests, Gradle templates, properties, rules, and native libraries.</li><li>Requested, selected, forced, embedded, and excluded Maven states.</li><li>Unity, Gradle, AGP, Java, SDK, AndroidX, Jetifier, template, and ABI evidence when available.</li></ul>
+        <p>Unknown values remain unknown. Source manifest analysis is a conservative prediction until final-build evidence confirms merged intent.</p>
+      </section>
+
+      <section class="doc-card" id="findings" data-section>
+        <h2>5. Findings and Durable Fixes</h2>
+        <p><strong>Detected</strong> means direct conflicting evidence. <strong>Likely</strong> means project evidence still needs build or vendor confirmation. <strong>Informational</strong> is relevant without claiming a conflict.</p>
+        <ul><li>Duplicate Java classes and artifacts.</li><li>Incompatible Maven constraints.</li><li>Manifest provider or attribute conflicts.</li><li>Duplicate native libraries and missing ABIs.</li><li>AndroidX or Jetifier mismatches.</li><li>Obsolete Gradle workarounds and environment mismatches.</li></ul>
+        <p>Prefer vendor-supported SDK combinations and edit durable declarations rather than generated Gradle output. The numerically newest dependency is not automatically compatible.</p>
+      </section>
+
+      <section class="doc-card" id="logs" data-section>
+        <h2>6. Failed Build and Log Workflow</h2>
+        <ol><li>Run a fresh scan.</li><li>Import the relevant Gradle or Unity build log.</li><li>Check whether a versioned signature is marked build-confirmed.</li><li>Navigate from the finding to the durable source.</li><li>Export and manually review the redacted support set.</li></ol>
+        <p>An unsupported error stays <strong>Unrecognized</strong>. The Doctor does not fabricate a diagnosis or rewrite the message into a guessed fix.</p>
+      </section>
+
+      <section class="doc-card" id="baselines" data-section>
+        <h2>7. Baselines and Comparisons</h2>
+        <p><strong>Save Baseline</strong> writes <code>ProjectSettings/MobileSdkConflictDoctor/Baseline.json</code>. Save and commit a baseline only after an intentional, healthy Android build.</p>
+        <p>Comparison reports added, removed, and changed normalized nodes. Stable IDs and content hashes derive from normalized evidence, while scan IDs and timestamps intentionally vary.</p>
+      </section>
+
+      <section class="doc-card" id="reports" data-section>
+        <h2>8. Reports and Privacy</h2>
+        <p>Exports include machine-readable JSON plus Markdown and standalone HTML review views. The <code>support-redacted/</code> directory contains redacted JSON, Markdown, HTML, and a SHA-256 manifest.</p>
+        <p>Redaction covers common home-path and secret shapes but cannot guarantee removal of vendor-specific credentials. Review every file before sharing, and never include signing files or raw secrets.</p>
+      </section>
+
+      <section class="doc-card" id="ci" data-section>
+        <h2>9. Batch Mode and CI</h2>
+        <p>Run the public batch entry point with:</p>
+        <p><code>-batchmode -nographics -projectPath &lt;project&gt; -executeMethod KevinBjorvand.MobileSdkConflictDoctor.MobileSdkConflictDoctorBatch.Run -mobileSdkDoctorOutput &lt;directory&gt;</code></p>
+        <p>Options include <code>-mobileSdkDoctorThreshold detected|likely|information|none</code>, <code>-mobileSdkDoctorLog</code>, <code>-mobileSdkDoctorBaseline</code>, and <code>-mobileSdkDoctorIncludeGenerated</code>.</p>
+        <ul><li><code>0</code>: pass</li><li><code>2</code>: threshold met</li><li><code>3</code>: incomplete scan</li><li><code>4</code>: invalid input or export</li><li><code>5</code>: unhandled failure</li></ul>
+      </section>
+
+      <section class="doc-card" id="limitations" data-section>
+        <h2>10. Remediation and Limitations</h2>
+        <p>The only automatic 1.0 operation can change one explicit AndroidX or Jetifier property from <code>false</code> to <code>true</code> in a project-local <code>Assets/Plugins/Android/gradleTemplate.properties</code>, and only when resolver evidence makes the change unambiguous.</p>
+        <p>Preview, confirmation, exact backup, atomic write, verification, rescan, and rollback checks guard that operation. Missing, duplicate, already-true, ambiguous, package-owned, and generated targets stay manual.</p>
+        <ul><li>Android only; iOS and CocoaPods are excluded.</li><li>No downloader, package mutation, or resolver replacement.</li><li>Manifest analysis does not reproduce Gradle merger semantics.</li><li>Log recognition is versioned and finite.</li><li>Most fixes require manual vendor review.</li><li>No successful-build guarantee.</li></ul>
+      </section>
+
+      <section class="doc-card" id="troubleshooting" data-section>
+        <h2>11. Troubleshooting and Support</h2>
+        <h3>The menu is missing</h3><p>Preserve the complete folder and its <code>.meta</code> files, then resolve Unity Console compilation errors.</p>
+        <h3>Expected inputs are missing</h3><p>Confirm the Assets and Packages scan scope, then inspect safety-limit findings.</p>
+        <h3>No final manifest conclusion is shown</h3><p>Source analysis is predictive. Supply merged-manifest or final-build evidence before treating the result as build-confirmed.</p>
+        <h3>Apply is disabled</h3><p>No unambiguous supported durable edit exists. Follow the manual vendor-supported recommendation instead.</p>
+        <h3>A scan is slow</h3><p>Exclude generated output, use the conflict-only or collapsed graph view, or cancel through Unity's progress dialog.</p>
+        <p><a href="/support/">Contact support</a>, review the <a href="/assets/mobile-sdk-conflict-doctor/license/">MIT license</a>, or browse the <a href="/articles/?tool=mobile-sdk-conflict-doctor">Mobile SDK Conflict Doctor articles</a>.</p>
+      </section>
+
+      <div class="empty-state" id="emptyState" role="status" aria-live="polite">No sections match your search. Try a broader term such as <code>Android</code>, <code>conflict</code>, or <code>baseline</code>.</div>
+    </main>
+  </div>
+  <script src="/assets/js/docs/product-docs.js"></script>
+  <script defer src="/assets/js/site/nav.js"></script>
+  <script defer src="/assets/js/site/link-decorators.js"></script>
+<footer class="site-footer">
+    <div class="container footer-shell">
+      <div class="footer-columns">
+        <section>
+          <h2>Explore</h2>
+          <ul class="link-list">
+            <li><a href="/">Home</a></li>
+            <li><a href="/tools/">Tools</a></li>
+            <li><a href="/games/">Games</a></li>
+            <li><a href="/articles/">Articles</a></li>
+            <li><a href="/youtube-thumbnail-preview/" data-footer-service-link="youtube-thumbnail-preview">YouTube Thumbnail Preview</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/">Smart Indie</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://bilagpilot.no/">BilagPilot</a></li>
+            <li><a href="/support/">Support</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Tool Docs</h2>
+          <ul class="link-list">
+            <li><a href="/assets/build-size-guard/docs/">Build Size Guard</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/docs/">Shader Variant Budget & CI Guard</a></li>
+            <li><a href="/assets/unity-serialization-migration-guard/docs/">Serialization Migration Guard</a></li>
+            <li><a href="/assets/il2cpp-strip-guard/docs/">IL2CPP Strip Guard</a></li>
+            <li><a href="/assets/inspector-event-link-doctor/docs/">Inspector Event Link Doctor</a></li>
+            <li><a href="/assets/fast-play-mode-safety-guard/docs/">Fast Play Mode Watcher</a></li>
+            <li><a href="/assets/import-settings-validator-fix/docs/">Import Settings Validator & Fix</a></li>
+            <li><a href="/assets/compliance/docs/">Compliance Exporter</a></li>
+            <li><a href="/assets/UIBreakpoint/">UI Breakpoint Lab</a></li>
+            <li><a href="/assets/PackageQuarantine/">Package Quarantine</a></li>
+            <li><a href="/assets/MobileSDKConflictDoctor/">Mobile SDK Conflict Doctor</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Asset Store</h2>
+          <ul class="link-list">
+            <li><a target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/361332">Build Size Guard</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://u3d.as/3SYC">Shader Variant Budget & CI Guard</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://u3d.as/3Sae">Serialization Migration Guard</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/362308">Import Settings Validator & Fix</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://u3d.as/3PWR">Compliance Exporter</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://assetstore.unity.com/packages/slug/392246">UI Breakpoint Lab</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Licenses</h2>
+          <ul class="link-list">
+            <li><a href="/assets/build-size-guard/license/">Build Size Guard</a></li>
+            <li><a href="/assets/shader-variant-budget-ci-guard/license/">Shader Variant Budget & CI Guard</a></li>
+            <li><a href="/assets/unity-serialization-migration-guard/license/">Serialization Migration Guard</a></li>
+            <li><a href="/assets/il2cpp-strip-guard/license/">IL2CPP Strip Guard</a></li>
+            <li><a href="/assets/inspector-event-link-doctor/license/">Inspector Event Link Doctor</a></li>
+            <li><a href="/assets/fast-play-mode-safety-guard/license/">Fast Play Mode Watcher</a></li>
+            <li><a href="/assets/import-settings-validator-fix/license/">Import Settings Validator & Fix</a></li>
+            <li><a href="/assets/compliance/license/">Compliance Exporter</a></li>
+            <li><a href="/assets/ui-breakpoint-lab/license/">UI Breakpoint Lab</a></li>
+            <li><a href="/assets/package-quarantine/license/">Package Quarantine</a></li>
+            <li><a href="/assets/mobile-sdk-conflict-doctor/license/">Mobile SDK Conflict Doctor</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Game Links</h2>
+          <ul class="link-list">
+            <li><a href="/games/">Games Directory</a></li>
+            <li><a href="/dopamine/">Dopamine Machine Play</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://store.steampowered.com/app/4540560/Forbidden_buttons">Forbidden Buttons on Steam</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.kevinbjorvand.orbitalchaos">Orbital Chaos on Google Play</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://apps.apple.com/us/app/orbital-chaos/id6754812237">Orbital Chaos on App Store</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge-2">NeonSurge 2 on itch.io</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://kevindevelopment.itch.io/neonsurge">NeonSurge on itch.io</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="https://smartindie.dev/games/">Smart Indie Games</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2>Support</h2>
+          <ul class="link-list">
+            <li><a href="/support/">Support Form</a></li>
+            <li><a href="/support/#docs-shortcuts-title">Documentation</a></li>
+            <li><a href="/support/#faq">Support FAQ</a></li>
+          </ul>
+        </section>
+      </div>
+      <div class="footer-legal">
+        <span>&copy; Bjorvand Solutions <span data-current-year>2026</span> &bull; Company registration number: 836 135 652 (Norway)</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

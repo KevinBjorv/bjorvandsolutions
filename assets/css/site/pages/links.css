@@ -116,13 +116,10 @@
   border-radius: 0.45rem;
 }
 
-.links-button-icon--brreg {
-  background: #fff;
-}
-
 .links-button-icon--brreg img {
-  width: 2.35rem;
-  height: auto;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.45rem;
 }
 
 .links-button-badge {

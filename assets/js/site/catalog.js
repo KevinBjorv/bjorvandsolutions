@@ -710,7 +710,7 @@
       {
         platform: "Skool",
         handle: "Kevin Bjorvand",
-        href: "https://skool.com/@kevin-bjorvand-9175",
+        href: "https://www.skool.com/@bjo",
         content: "Community learning and discussion channel."
       }
     ],

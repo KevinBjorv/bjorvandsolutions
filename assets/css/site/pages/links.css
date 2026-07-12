@@ -109,6 +109,22 @@
   height: 1.7rem;
 }
 
+.links-button-icon--smart-indie img,
+.links-button-icon--bilagpilot img {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.45rem;
+}
+
+.links-button-icon--brreg {
+  background: #fff;
+}
+
+.links-button-icon--brreg img {
+  width: 2.35rem;
+  height: auto;
+}
+
 .links-button-badge {
   font-family: var(--font-display);
   font-size: 0.72rem;

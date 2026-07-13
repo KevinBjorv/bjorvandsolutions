@@ -122,6 +122,15 @@
   border-radius: 0.45rem;
 }
 
+.links-button-icon--unity {
+  background: #fff;
+}
+
+.links-button-icon--unity img {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
 .links-button-badge {
   font-family: var(--font-display);
   font-size: 0.72rem;
